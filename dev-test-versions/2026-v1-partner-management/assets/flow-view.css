@@ -1,7 +1,0 @@
-:root{color-scheme:light}
-*{box-sizing:border-box}
-body{margin:0;background:#eff3f9;color:#202b3c;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-.flow-page{max-width:1680px;margin:0 auto;padding:34px}
-.flow-header{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:22px}
-.flow-header h1{margin:5px 0 0;font-size:25px}.eyebrow{font-size:13px;color:#5b6c88;letter-spacing:.08em}.flow-actions{display:flex;gap:10px;flex-wrap:wrap}.flow-canvas{overflow:auto;min-height:600px;padding:34px;background:#fff;border:1px solid #dbe3ef;border-radius:16px;box-shadow:0 12px 30px rgba(42,58,88,.08)}.flow-canvas img{display:block;width:100%;min-width:1050px;height:auto}
-@media(max-width:760px){.flow-page{padding:16px}.flow-header{align-items:flex-start;flex-direction:column}.flow-canvas{padding:16px}}
