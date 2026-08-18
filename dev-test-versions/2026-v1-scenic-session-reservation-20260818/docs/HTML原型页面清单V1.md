@@ -19,7 +19,7 @@
 
 | 原型 | 本地入口 | 主要覆盖 |
 |---|---|---|
-| 游客端正式页原型 | [打开正式游客端原型](./outputs/product-preview/scenic-reservation/preview/index.html) | V01—V10；读取活动最后一次发布配置，最终交付和每次发布规则调整均必须同步更新 |
+| 游客端正式页原型 | [打开正式游客端原型](../prototype/visitor/index.html) | V01—V10；读取活动最后一次发布配置，最终交付和每次发布规则调整均必须同步更新 |
 | 后台游客端效果 | [打开管理端原型](./outputs/product-preview/scenic-reservation-admin/preview/index.html) | C01—C07 每步保存后的待发布配置，通过“游客端效果”进入与正式游客端相同的页面组件；仅展示，不提交预约 |
 | 管理与运营端 | [打开管理端原型](./outputs/product-preview/scenic-reservation-admin/preview/index.html) | A01、A02、C01—C07、O01—O08 的现有实现 |
 
