@@ -3,7 +3,7 @@ const { pathToFileURL } = require('url');
 const path = require('path');
 
 const pageUrl = pathToFileURL(path.join(__dirname, 'index.html')).href;
-const visitorUrl = pathToFileURL(path.join(__dirname, '../../scenic-reservation/preview/index.html')).href;
+const visitorUrl = pathToFileURL(path.join(__dirname, '../visitor/index.html')).href;
 
 async function enterConfig(page, step) {
   await page.goto(pageUrl);

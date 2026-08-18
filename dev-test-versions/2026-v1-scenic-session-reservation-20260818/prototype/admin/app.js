@@ -2,7 +2,7 @@ const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
 const activities = [
-  { id: 1, name: '呀诺达溪降体验预约', status: 'published', image:'../../scenic-reservation/preview/assets/activity-hero.jpg', coverImage:'../../scenic-reservation/preview/assets/activity-hero.jpg', heroBadge:'无需验票 · 免费预约', heroSubtitle:'门票已包含溪降体验，请提前预约心仪时段。', contactName:'溪降接待处', contactPhone:'0898-8388 3333', totalPeople: 1286, todayPeople: 32, created: '2026-08-11 16:28', updated: '2026-08-14 09:42', creator: '景区管理员-苏珊', updater: '苏珊' },
+  { id: 1, name: '呀诺达溪降体验预约', status: 'published', image:'../visitor/assets/activity-hero.jpg', coverImage:'../visitor/assets/activity-hero.jpg', heroBadge:'无需验票 · 免费预约', heroSubtitle:'门票已包含溪降体验，请提前预约心仪时段。', contactName:'溪降接待处', contactPhone:'0898-8388 3333', totalPeople: 1286, todayPeople: 32, created: '2026-08-11 16:28', updated: '2026-08-14 09:42', creator: '景区管理员-苏珊', updater: '苏珊' },
   { id: 2, name: '雨林观景线路预约', status: 'published', image:null, totalPeople: 96, todayPeople: 18, created: '2026-08-02 10:16', updated: '2026-08-13 18:05', creator: '运营管理员-林晓', updater: '林晓' },
   { id: 4, name: '呀诺达热带雨林高空滑索亲子探险体验项目预约活动暑期特别专场季', status: 'published', image:null, totalPeople: 735, todayPeople: 9, created: '2026-07-30 11:08', updated: '2026-08-12 16:45', creator: '景区管理员-陈晨', updater: '陈晨' },
   { id: 3, name: 'VIP 私家团场次预约', status: 'offline', image:null, totalPeople: 42, todayPeople: 0, created: '2026-07-28 14:09', updated: '2026-08-12 11:30', creator: '景区管理员-苏珊', updater: '苏珊' }
