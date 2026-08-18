@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#00A862">
+  <title>景区场次预约｜游客端原型</title>
+  <link rel="stylesheet" href="./styles.css?v=20260818-c03sync2">
+</head>
+<body data-theme="forest">
+  <aside class="prototype-panel" aria-label="原型控制台">
+    <div class="panel-eyebrow">游客端 HTML 原型</div>
+    <h1>景区场次预约</h1>
+    <p>首批包含活动详情、日期/场次/分类/项目选择、月历和必读须知；后续页面共用同一套主题与组件。</p>
+    <div class="panel-section">
+      <div class="panel-label">景区主题</div>
+      <div class="theme-switch" role="group" aria-label="景区主题">
+        <button class="theme-dot active" data-theme="forest" style="--dot:#00A862">绿色</button>
+        <button class="theme-dot" data-theme="ocean" style="--dot:#1976D2">蓝色</button>
+        <button class="theme-dot" data-theme="sunset" style="--dot:#D66A2C">暖色</button>
+      </div>
+    </div>
+    <div class="panel-section">
+      <div class="panel-label">设备宽度</div>
+      <div class="device-switch">
+        <button data-width="320">320</button>
+        <button data-width="375" class="active">375</button>
+        <button data-width="414">414</button>
+      </div>
+    </div>
+    <div class="panel-section">
+      <div class="panel-label">日期样式</div>
+      <div class="variant-switch date-variant-switch">
+        <button data-date-style="strip" class="active">横滑日期条</button>
+        <button data-date-style="month">月份排期卡</button>
+      </div>
+    </div>
+    <div class="panel-section">
+      <div class="panel-label">场次样式</div>
+      <div class="variant-switch session-variant-switch">
+        <button data-session-style="grid-named" class="active">紧凑块·有名称</button>
+        <button data-session-style="grid-time">紧凑块·无名称</button>
+        <button data-session-style="rail-named">横滑条·有名称</button>
+        <button data-session-style="rail-time">横滑条·无名称</button>
+      </div>
+    </div>
+    <div class="panel-section">
+      <div class="panel-label">场次数据样例</div>
+      <div class="variant-switch session-data-switch">
+        <button data-session-data="regular" class="active">常规溪降</button>
+        <button data-session-data="vip">VIP私家团</button>
+      </div>
+    </div>
+    <div class="panel-section">
+      <div class="panel-label">场次时间显示</div>
+      <div class="variant-switch time-display-switch">
+        <button data-time-display="range" class="active">起止时间</button>
+        <button data-time-display="start">仅开始时间</button>
+      </div>
+    </div>
+    <div class="panel-section">
+      <div class="panel-label">线路样式</div>
+      <div class="variant-switch project-style-switch">
+        <button data-project-style="detail" class="active">图文说明</button>
+        <button data-project-style="simple">简洁线路</button>
+      </div>
+    </div>
+    <div class="panel-section">
+      <div class="panel-label">库存样例</div>
+      <div class="variant-switch inventory-switch">
+        <button data-inventory-example="limited" class="active">有限名额日</button>
+        <button data-inventory-example="unlimited">不限名额日</button>
+      </div>
+    </div>
+    <div class="panel-section">
+      <div class="panel-label">项目模块</div>
+      <div class="variant-switch project-module-switch">
+        <button data-project-module="on" class="active">已配置项目</button>
+        <button data-project-module="off">未配置项目</button>
+      </div>
+    </div>
+    <div class="panel-section">
+      <div class="panel-label">参与人数统计模式</div>
+      <div class="variant-switch participant-mode-switch">
+        <button data-participant-mode="single">单人统计</button>
+        <button data-participant-mode="group" class="active">多人/团队统计</button>
+      </div>
+    </div>
+    <div class="panel-section">
+      <div class="panel-label">快速检查状态</div>
+      <button class="panel-action" data-test="notice">打开必读须知</button>
+      <button class="panel-action" data-test="calendar">打开日期月历</button>
+      <button class="panel-action" data-test="reset">重置本页选择</button>
+    </div>
+    <div class="panel-note">原型控制台仅用于评审，不属于小程序正式页面。</div>
+  </aside>
+
+  <main class="stage">
+    <div class="phone" id="phone" data-device-width="375">
+      <div class="miniapp" id="miniapp">
+        <header class="nav-bar">
+          <button class="nav-icon" aria-label="返回" id="backButton">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <div class="nav-title" id="navTitle">场次预约</div>
+          <div class="wx-capsule" aria-label="微信小程序胶囊">
+            <span class="capsule-more">•••</span><span class="capsule-line"></span><span class="capsule-ring"></span>
+          </div>
+        </header>
+
+        <section class="page active" data-page="select" aria-label="预约内容选择">
+          <div class="page-scroll select-scroll">
+            <article class="hero-card">
+              <img id="activityCover" src="./assets/activity-hero.jpg" alt="活动封面">
+              <div class="hero-gradient"></div>
+              <div class="hero-content">
+                <span class="hero-badge" id="activityHeroBadge">无需验票 · 免费预约</span>
+                <h2>呀诺达溪降体验预约</h2>
+                <p id="activityHeroSubtitle">门票已包含溪降体验，请提前预约心仪时段。</p>
+              </div>
+            </article>
+
+            <article class="info-card activity-info">
+              <div class="card-heading-row">
+                <div>
+                  <div class="eyebrow">预约活动</div>
+                  <h3>呀诺达溪降体验预约</h3>
+                </div>
+                <button class="text-link" data-go="records">我的预约 <span>›</span></button>
+              </div>
+              <div class="activity-copy clamp" id="activityCopy">
+                <p>尊敬的游客，该门票包含“溪降”体验项目。为确保安全与体验质量，该项目需提前预约时段，请仔细阅读以下说明：</p>
+                <ol>
+                  <li><strong>预约时段：</strong>每日开设7个班次（9:30—15:30，每个场次间隔1小时），每班次限流15人。购票成功后，请尽早选择心仪时段预约，系统将实时显示各时段余位。</li>
+                  <li><strong>实名登记：</strong>预约时需填写参与者其中一位的真实姓名和有效联系方式，用于安全备案及应急联络。</li>
+                  <li><strong>准时到达：</strong>预约成功后，请务必按所选时段准时抵达集合点。若错过时段，可能导致无法参与或需长时间等待，敬请谅解。</li>
+                  <li><strong>集合点：</strong>呀诺达-溪降接待处。</li>
+                </ol>
+                <p class="warm-tip"><strong>温馨提示：</strong>请根据预约成功的时间，提前15分钟到达景区检票。</p>
+              </div>
+              <button class="expand-link" id="expandActivity">展开详情</button>
+              <div class="contact-row" id="activityContact"><span class="contact-icon">☎</span><span id="activityContactName">咨询电话</span><a id="activityContactPhone" href="tel:0898-12345678">0898-12345678</a></div>
+            </article>
+
+            <section class="booking-card">
+              <div class="section-title-row">
+                <div>
+                  <span class="step-index">1</span>
+                  <h3>选择预约日期</h3>
+                </div>
+                <button class="calendar-entry" id="openCalendar"><span class="calendar-glyph">▦</span> 月历</button>
+              </div>
+              <div class="date-strip style-strip" id="dateStrip" aria-label="预约日期"></div>
+            </section>
+
+            <section class="booking-card reveal-section" id="sessionSection">
+              <div class="section-title-row">
+                <div><span class="step-index">2</span><h3>选择场次</h3></div>
+                <span class="section-value" id="chosenDateLabel">请先选择日期</span>
+              </div>
+              <div class="session-list style-grid-named" id="sessionList"></div>
+            </section>
+
+            <section class="booking-card reveal-section" id="projectSection">
+              <div class="section-title-row">
+                <div><span class="step-index">3</span><h3>选择体验线路</h3></div>
+                <span class="required-tip">必选 1 项</span>
+              </div>
+              <div class="category-tabs" id="categoryTabs" aria-label="项目分类"></div>
+              <div class="project-list" id="projectList"></div>
+            </section>
+
+            <div class="service-note"><span>i</span> 本页面仅办理场次预约，不校验购票信息。</div>
+          </div>
+          <footer class="bottom-bar">
+            <div class="selection-summary" id="selectionSummary">请选择预约日期</div>
+              <button class="primary-button" id="nextButton" disabled>立即预约</button>
+          </footer>
+        </section>
+
+        <section class="page" data-page="form" aria-label="填写游客信息">
+          <div class="page-scroll form-scroll">
+            <article class="summary-card" id="formSummary"></article>
+            <section class="form-card">
+              <div class="form-heading"><h3>预约人信息</h3><span><i>*</i> 为必填项</span></div>
+              <label class="field"><span>姓名 <i>*</i></span><input id="nameInput" type="text" maxlength="30" placeholder="请输入真实姓名" autocomplete="name"><small class="field-error"></small></label>
+              <label class="field"><span>手机号 <i>*</i></span><div class="field-inline"><input id="phoneInput" type="tel" inputmode="numeric" maxlength="11" placeholder="请输入手机号" autocomplete="tel"><button type="button" id="wxPhone">微信手机号</button></div><small class="field-error"></small></label>
+              <label class="field"><span>身份证号</span><input id="idInput" type="text" maxlength="18" placeholder="请输入身份证号（选填）"><small class="field-error"></small></label>
+              <label class="field select-field"><span>漂流装备尺码 <i>*</i></span><select id="sizeInput"><option value="">请选择</option><option>成人 S</option><option>成人 M</option><option>成人 L</option><option>成人 XL</option></select><small class="field-error"></small></label>
+            </section>
+            <section class="form-card single-person-card" id="singlePersonCard" hidden>
+              <div><h3>参与人数</h3><p>当前为单人统计模式，本单固定按 1 人统计。</p></div>
+              <strong>1 人</strong>
+            </section>
+            <section class="form-card people-card" id="groupPeopleCard">
+              <div><h3>实际参与人数</h3><p>本活动已开启多人预约，按填写人数占用名额。</p></div>
+              <div class="counter"><button id="minusPeople" aria-label="减少人数">−</button><strong id="peopleCount">1</strong><button id="addPeople" aria-label="增加人数">＋</button></div>
+            </section>
+            <label class="agree-row"><input type="checkbox" id="agreement"><span>我已阅读并同意本活动预约规则</span></label>
+          </div>
+          <footer class="bottom-bar single-action"><button class="primary-button" id="submitButton">确认预约</button></footer>
+        </section>
+
+        <section class="page" data-page="success" aria-label="预约成功">
+          <div class="page-scroll result-scroll">
+            <div class="success-mark"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29"/><path d="m19 33 9 9 18-21"/></svg></div>
+            <h2>预约成功</h2>
+            <p>请按预约时间提前到达，并向工作人员报出预约号。</p>
+            <div class="reservation-number"><span>游客预约号</span><strong>023</strong><small>按预约游玩日期生成，当日有效</small></div>
+            <article class="result-detail" id="successSummary"></article>
+            <div class="result-notice">预约成功仅代表取得场次名额，不代表已购买景区门票。</div>
+          </div>
+          <footer class="bottom-bar result-actions"><button class="secondary-button" data-go="select">返回活动</button><button class="primary-button" data-go="detail">查看预约详情</button></footer>
+        </section>
+
+        <section class="page" data-page="records" aria-label="我的预约">
+          <div class="page-scroll records-scroll">
+            <div class="record-tabs" id="recordTabs"><button class="active" data-filter="all">全部</button><button data-filter="active">已约/报名</button><button data-filter="cancelled">已取消</button></div>
+            <div class="record-list" id="recordList"></div>
+          </div>
+        </section>
+
+        <section class="page" data-page="detail" aria-label="预约详情">
+          <div class="page-scroll detail-scroll">
+            <div class="status-banner" id="detailBanner"><span class="status-symbol">✓</span><div><h2>预约成功</h2><p>请按预约场次提前到达</p></div></div>
+            <article class="detail-number-card" id="detailNumberCard">
+              <div><span>游客预约号</span><small>到场后向工作人员出示或报出此号码</small></div>
+              <strong id="detailReservationNumber">023</strong>
+            </article>
+            <article class="detail-card">
+              <div class="detail-card-title"><h3>预约信息</h3><span class="status-chip active">已约/报名</span></div>
+              <div id="detailBookingRows"></div>
+            </article>
+            <article class="detail-card"><div class="detail-card-title"><h3>游客信息</h3></div><div id="detailPersonRows"></div></article>
+            <article class="detail-card"><div class="detail-card-title"><h3>预约记录</h3></div><div class="detail-row"><span>提交时间</span><strong>2026-08-13 14:32</strong></div></article>
+          </div>
+          <footer class="bottom-bar result-actions" id="detailActions"><button class="secondary-button" id="cancelEntry">取消预约</button><button class="primary-button" data-go="edit">修改资料</button></footer>
+        </section>
+
+        <section class="page" data-page="edit" aria-label="修改预约资料">
+          <div class="page-scroll form-scroll">
+            <article class="summary-card readonly" id="editSummary"></article>
+            <section class="form-card">
+              <div class="form-heading"><h3>修改游客信息</h3><span>日期与场次不可修改</span></div>
+              <label class="field"><span>姓名 <i>*</i></span><input id="editName" value="苏珊"></label>
+              <label class="field"><span>手机号 <i>*</i></span><input id="editPhone" type="tel" value="13800138000"></label>
+              <label class="field"><span>身份证号</span><input id="editId" value="440106199208136521"></label>
+              <label class="field select-field"><span>漂流装备尺码 <i>*</i></span><select id="editSize"><option>成人 S</option><option selected>成人 M</option><option>成人 L</option><option>成人 XL</option></select></label>
+            </section>
+            <section class="form-card single-person-card" id="editSinglePersonCard" hidden>
+              <div><h3>参与人数</h3><p>当前为单人统计模式，本单固定按 1 人统计。</p></div>
+              <strong>1 人</strong>
+            </section>
+            <section class="form-card people-card" id="editGroupPeopleCard">
+              <div><h3>实际参与人数</h3><p>人数增加时将重新校验当前余量。</p></div>
+              <div class="counter"><button id="editMinus">−</button><strong id="editPeople">1</strong><button id="editAdd">＋</button></div>
+            </section>
+          </div>
+          <footer class="bottom-bar single-action"><button class="primary-button" id="saveEdit">保存修改</button></footer>
+        </section>
+
+        <div class="modal-layer" id="calendarModal" aria-hidden="true">
+          <button class="modal-mask" data-close="calendar" aria-label="关闭"></button>
+          <section class="sheet calendar-sheet" role="dialog" aria-modal="true" aria-labelledby="calendarTitle">
+            <div class="sheet-handle"></div><div class="sheet-heading"><h2 id="calendarTitle">选择预约日期</h2><button data-close="calendar">×</button></div>
+            <div class="month-nav"><button id="prevMonth">‹</button><strong id="monthTitle">2026年8月</strong><button id="nextMonth">›</button></div>
+            <div class="week-row"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+            <div class="calendar-legend"><span><i class="legend-special"></i> 特殊提示</span></div>
+          </section>
+        </div>
+
+        <div class="modal-layer" id="noticeModal" aria-hidden="true">
+          <button class="modal-mask" data-close="notice" aria-label="关闭"></button>
+          <section class="dialog notice-dialog" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
+            <button class="dialog-close" data-close="notice">×</button>
+            <div class="warning-icon">!</div><h2 id="noticeTitle">漂流预约必读须知</h2>
+            <div class="notice-content" id="noticeContent">
+              <div class="notice-alert"><strong>今日水位条件提示</strong><p>当日部分河段水位较高，请结合同行人员身体状况及景区现场提示谨慎预约。</p></div>
+              <p>1. 请按预约场次提前到达，迟到可能无法保留原场次名额。</p>
+              <p>2. 老人、儿童及身体不适游客请先向现场工作人员咨询。</p>
+              <p>3. 如遇天气、水位等不可抗力，景区可能调整开放安排。</p>
+            </div>
+            <button class="primary-button notice-confirm" id="noticeConfirm" disabled>已读并确认以上内容 (3)</button>
+          </section>
+        </div>
+
+        <div class="modal-layer" id="cancelModal" aria-hidden="true">
+          <button class="modal-mask" data-close="cancel" aria-label="关闭"></button>
+          <section class="dialog confirm-dialog" role="dialog" aria-modal="true">
+            <div class="danger-icon">!</div><h2>确认取消预约？</h2><p>取消后名额将立即释放，且本次操作不可撤销。如需参与，请重新预约。</p>
+            <label class="cancel-reason"><span>取消原因（选填）</span><textarea id="cancelReason" maxlength="100" placeholder="请输入取消原因"></textarea></label>
+            <div class="dialog-actions"><button class="secondary-button" data-close="cancel">暂不取消</button><button class="danger-button" id="confirmCancel">确认取消</button></div>
+          </section>
+        </div>
+
+        <div class="toast" id="toast" role="status"></div>
+        <div class="detail-image-preview" id="detailImagePreview" aria-hidden="true">
+          <button class="detail-image-mask" id="closeDetailImage" aria-label="关闭图片预览"></button>
+          <img id="detailImageFull" alt="详情图片大图预览">
+          <button class="detail-image-close" id="closeDetailImageButton" aria-label="关闭">×</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="./app.js?v=20260818-c03sync2"></script>
+</body>
+</html>
