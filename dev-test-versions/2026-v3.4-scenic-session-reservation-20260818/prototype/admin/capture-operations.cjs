@@ -1,0 +1,33 @@
+const { chromium } = require('playwright');
+const { pathToFileURL } = require('url');
+const path = require('path');
+
+(async()=>{
+  const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+  const page=await browser.newPage({viewport:{width:375,height:812},deviceScaleFactor:2,isMobile:true,hasTouch:true});
+  await page.goto(pathToFileURL(path.join(__dirname,'index.html')).href); await page.waitForTimeout(100);
+  await page.locator('#operationsEntry').evaluate(el=>el.click()); await page.waitForTimeout(100);
+  await page.screenshot({path:path.join(__dirname,'05-运营活动选择-750px.png')});
+  await page.locator('[data-operation-activity="1"]').evaluate(el=>el.click()); await page.waitForTimeout(100);
+  await page.screenshot({path:path.join(__dirname,'06-运营管理首页-750px.png')});
+  await page.locator('[data-op-go="records"]').evaluate(el=>el.click()); await page.waitForTimeout(100);
+  await page.screenshot({path:path.join(__dirname,'07-全部预约完整筛选-750px.png')});
+  await page.locator('#recordFieldSetting').evaluate(el=>el.click()); await page.waitForTimeout(100);
+  await page.screenshot({path:path.join(__dirname,'07B-详情卡片字段设置-750px.png')});
+  await page.locator('[data-close="field"]').last().evaluate(el=>el.click());
+  await page.locator('[data-booking="1"]').evaluate(el=>el.click()); await page.waitForTimeout(100);
+  await page.screenshot({path:path.join(__dirname,'08-管理端预约详情-750px.png')});
+  await page.locator('#adminModifyBooking').evaluate(el=>el.click()); await page.waitForTimeout(100);
+  await page.screenshot({path:path.join(__dirname,'08B-管理员修改预约-750px.png')});
+  await page.locator('[data-close="modify"]').last().evaluate(el=>el.click());
+  await page.locator('#adminCancelBooking').evaluate(el=>el.click()); await page.waitForTimeout(100);
+  await page.screenshot({path:path.join(__dirname,'08C-管理员取消预约-750px.png')});
+  await page.locator('[data-close="cancelBooking"]').last().evaluate(el=>el.click());
+  await page.locator('#backButton').evaluate(el=>el.click()); await page.locator('#backButton').evaluate(el=>el.click()); await page.locator('[data-op-go="sessions"]').evaluate(el=>el.click()); await page.waitForTimeout(100);
+  await page.screenshot({path:path.join(__dirname,'09-场次名单-750px.png')});
+  await page.locator('[data-roster="s4"]').evaluate(el=>el.click()); await page.waitForTimeout(100);
+  await page.screenshot({path:path.join(__dirname,'10-场次名单详情-750px.png')});
+  await page.locator('#backButton').evaluate(el=>el.click()); await page.locator('#backButton').evaluate(el=>el.click()); await page.locator('[data-op-go="export"]').evaluate(el=>el.click()); await page.waitForTimeout(100);
+  await page.screenshot({path:path.join(__dirname,'11-数据导出-750px.png')});
+  await browser.close(); console.log(JSON.stringify({ok:true},null,2));
+})().catch(error=>{console.error(error);process.exitCode=1;});
