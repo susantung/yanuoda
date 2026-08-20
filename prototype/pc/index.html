@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>活动管理</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>.menu-group>.menu-item{color:#4556f5}.submenu{height:44px;display:flex;align-items:center;padding:0 32px 0 52px;position:relative;color:#4556f5;background:rgba(69,86,245,.1);cursor:pointer}.submenu:after{content:"";position:absolute;right:0;top:10%;height:80%;width:3px;background:#4556f5}.invite-dialog{width:620px}.invite-body{min-height:310px;position:relative}.invite-method{display:flex;align-items:center;gap:18px;color:#333}.invite-method select{width:150px;height:32px;border:1px solid #dcdfe6;border-radius:4px;padding:0 12px;background:#fff}.invite-tip{margin-top:22px!important;color:#606266!important}.invite-qr{width:190px;height:190px;margin:18px auto 0;padding:12px;background-color:#fff;background-image:linear-gradient(90deg,#111 50%,transparent 50%),linear-gradient(#111 50%,transparent 50%);background-size:12px 12px;position:relative;border:9px solid #fff;box-shadow:inset 0 0 0 3px #111}.invite-qr:before,.invite-qr:after{content:"";position:absolute;width:42px;height:42px;border:8px solid #111;background:#fff;box-shadow:inset 0 0 0 7px #fff,inset 0 0 0 13px #111}.invite-qr:before{left:7px;top:7px}.invite-qr:after{right:7px;top:7px}.qr-logo{position:absolute;left:62px;top:67px;width:50px;height:50px;background:#fff;border-radius:50%;display:grid;place-items:center;z-index:2}.qr-logo .brand-mark{width:38px;height:38px}.invite-body .dialog-footer{position:absolute;right:15px;bottom:14px}</style>
+  <style>.submenu.plain{background:transparent;color:#606266}.submenu.plain:after{display:none}.submenu.active-submenu{color:#4556f5;background:rgba(69,86,245,.1)}.role-card{padding:0 20px 22px}.scenic-title{font-size:15px;font-weight:400;margin:0 -20px 18px;padding:18px 20px;border-bottom:1px solid #ebeef5}.role-tabs{display:flex;gap:34px;border-bottom:1px solid #dfe4ee;margin-bottom:14px}.role-tabs button{border:0;background:none;padding:0 0 12px;color:#606266;position:relative}.role-tabs button.active{color:#4556f5}.role-tabs button.active:after{content:"";position:absolute;height:2px;background:#4556f5;left:0;right:0;bottom:-1px}.role-filters{position:relative;padding-right:90px}.role-add{position:absolute;right:0;top:0}.role-table{width:100%;border-collapse:collapse}.role-table th,.role-table td{height:46px;padding:0 12px;border-bottom:1px solid #ebeef5;text-align:left}.role-table th{color:#606266;font-weight:500}.role-note{margin:18px 0 0}.bind-dialog{width:760px}.bind-tip{color:#606266;margin:0 0 14px}.bind-dialog .dialog-footer{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}.operator-table input[type=checkbox]{width:16px;height:16px}.operator-table .disabled-person{color:#a8abb2}.page-view.hidden{display:none}</style>
+  <style>.binding-role-tabs{display:flex;gap:0;border-bottom:1px solid #dfe4ee;margin-bottom:14px}.binding-role-tabs button{min-width:150px;border:0;background:none;padding:0 16px 12px;color:#606266;position:relative}.binding-role-tabs button.active{color:#4556f5}.binding-role-tabs button.active:after{content:"";position:absolute;left:16px;right:16px;bottom:-1px;height:2px;background:#4556f5}</style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark"></span><strong>全域景区后台</strong></div>
+      <nav>
+        <div class="menu-group ticket-group"><div class="menu-item"><span>▣</span>门票商品<span class="arrow">⌄</span></div><div class="submenu plain" id="scenicMenu">景区管理</div></div>
+        <div class="menu-item"><span>▣</span>小程序装修<span class="arrow">›</span></div>
+        <div class="menu-item"><span>☎</span>投诉建议<span class="arrow">›</span></div>
+        <div class="menu-item"><span>▤</span>内容管理<span class="arrow">›</span></div>
+        <div class="menu-item"><span>◉</span>智慧地图<span class="arrow">›</span></div>
+        <div class="menu-item"><span>◒</span>营销中心<span class="arrow">›</span></div>
+        <div class="menu-item"><span>▦</span>数据中心<span class="arrow">›</span></div>
+        <div class="menu-item"><span>▦</span>员工管理<span class="arrow">›</span></div>
+        <div class="menu-group activity-group"><div class="menu-item"><span>◴</span>活动预约管理<span class="arrow">⌃</span></div><div class="submenu active-submenu" id="activityMenu">活动管理</div></div>
+        <div class="menu-item"><span>⚙</span>系统配置<span class="arrow">›</span></div>
+      </nav>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div class="shop-select">呀诺达雨林，景区管理员 15677523 <span>⌄</span></div>
+        <div class="user"><span class="avatar">苏</span><span>苏珊&nbsp; ID:15677523</span><em>景区管理员</em><span>⌄</span></div>
+      </header>
+      <div class="tabs"><button class="tab active"><span id="tabTitle">活动管理</span> <span>×</span></button></div>
+      <div class="breadcrumb"><span id="breadGroup">活动预约管理</span>&nbsp; / &nbsp;<span id="breadTitle">活动管理</span></div>
+      <section class="page-view" id="activityPage">
+        <div class="card">
+          <form class="filters" id="filterForm">
+            <label>活动名称：<input id="nameFilter" placeholder="请输入活动名称"></label>
+            <label>活动状态：<select id="statusFilter"><option value="">全部</option><option>已发布</option><option>已下架</option></select></label>
+            <div class="filter-actions"><button class="btn primary" type="submit">查询</button><button class="btn" id="resetFilter" type="button">重置</button></div>
+          </form>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th style="width:90px">活动ID</th><th style="width:180px">活动名称</th><th style="width:76px">状态</th><th style="width:90px">总参与人数</th><th style="width:100px">今日预约人数</th><th style="width:135px">更新时间</th><th style="width:82px">更新人</th><th style="width:135px">创建时间</th><th style="width:82px">创建人</th><th class="fixed-head" style="width:150px">操作</th></tr></thead>
+              <tbody id="activityRows"></tbody>
+            </table>
+          </div>
+          <div class="pagination"><span id="totalText">共 4 条</span><select><option>10条/页</option><option>20条/页</option><option>50条/页</option></select><button disabled>‹</button><button class="current">1</button><button disabled>›</button><span>前往</span><input value="1"><span>页</span></div>
+        </div>
+      </section>
+      <section class="page-view hidden" id="scenicRolePage">
+        <div class="card role-card">
+          <h2 class="scenic-title">景区信息： <strong>呀诺达景区（1721132746393911）</strong></h2>
+          <div class="role-tabs"><button>运营人员</button><button>直通车导游</button><button>金钥匙导游</button><button class="active" data-system-role="管理员">活动/场次管理员</button><button data-system-role="运营人员">活动/场次运营人员</button></div>
+          <form class="filters role-filters" id="roleFilter"><label>名称：<input id="roleName" placeholder="请输入"></label><label>手机号：<input id="rolePhone" placeholder="请输入"></label><div class="filter-actions"><button class="btn primary" type="submit">查询</button><button class="btn" id="resetRole" type="button">重置</button></div><button class="btn primary role-add" id="addRoleOperator" type="button">添加</button></form>
+          <table class="role-table"><thead><tr><th>名称</th><th>手机号</th><th>绑定日期</th><th>状态</th><th>操作</th></tr></thead><tbody id="roleRows"></tbody></table>
+          <div class="pagination"><span id="roleTotal">共 4 条</span><select><option>10条/页</option></select><button disabled>‹</button><button class="current">1</button><button disabled>›</button><span>前往</span><input value="1"><span>页</span></div>
+          <p class="dialog-note role-note">说明：禁用后该人员不能登录小程序活动管理和运营管理；重新启用后恢复。活动数据范围仍由各活动的人员绑定关系决定。</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="promotionModal" aria-hidden="true">
+    <div class="dialog promotion-dialog">
+      <div class="dialog-head"><h2>推广</h2><button class="close" data-close>×</button></div>
+      <div class="dialog-tabs"><button class="active" data-promo-tab="path">访问路径</button><button data-promo-tab="qr">小程序码</button></div>
+      <div class="dialog-body promo-panel" data-promo-panel="path">
+        <label class="field-title">小程序路径</label>
+        <div class="copy-row"><input id="miniPath" readonly><button class="btn primary copy-btn" data-copy="miniPath">复制</button></div>
+        <p>可用于配置小程序间跳转、公众号菜单跳转小程序页面等</p>
+        <label class="field-title gap-top">H5跳小程序路径</label>
+        <div class="copy-row"><input id="h5Path" readonly><button class="btn primary copy-btn" data-copy="h5Path">复制</button></div>
+        <p>支持在微信外环境点击 H5 链接打开微信小程序页面</p>
+      </div>
+      <div class="dialog-body promo-panel hidden" data-promo-panel="qr">
+        <div class="option-row"><strong>二维码大小</strong><label><input type="radio" name="qrSize" checked> 280*280</label><label><input type="radio" name="qrSize"> 500*500</label><label><input type="radio" name="qrSize"> 1280*1280</label></div>
+        <div class="option-row"><strong>二维码底色</strong><label><input type="radio" name="qrBg" checked> 白底</label><label><input type="radio" name="qrBg"> 透明底</label></div>
+        <div class="qr-code" id="qrCode"><div class="qr-center">呀诺达</div></div>
+        <div class="link-actions"><button data-action="downloadQr">下载小程序码</button><button data-action="refreshQr">刷新小程序码</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="operatorModal" aria-hidden="true">
+    <div class="dialog operator-dialog">
+      <div class="dialog-head"><h2 id="operatorTitle">活动：</h2><button class="close" data-close>×</button></div>
+      <div class="dialog-body">
+        <div class="binding-role-tabs"><button class="active" data-binding-role="管理员">活动/场次管理员</button><button data-binding-role="运营人员">活动/场次运营人员</button></div>
+        <form class="operator-filter" id="operatorFilter"><label>名称 <input id="operatorName" placeholder="请输入"></label><label>手机号 <input id="operatorPhone" placeholder="请输入"></label><button class="btn primary" type="submit">查询</button><button class="btn" type="button" id="resetOperator">重置</button><button class="btn primary add-operator" type="button" id="addOperator">添加</button></form>
+        <table class="operator-table"><thead><tr><th>名称</th><th>手机号</th><th>绑定日期</th><th>状态</th></tr></thead><tbody id="operatorRows"></tbody></table>
+        <div class="pagination compact"><span id="operatorTotal">共 2 条</span><select><option>10条/页</option></select><button disabled>‹</button><button class="current">1</button><button disabled>›</button><span>前往</span><input value="1"><span>页</span></div>
+        <p class="dialog-note">说明：此处只配置当前活动可见人员，不创建、禁用或删除账号。人员请先在“景区管理－活动/场次运营人员”中维护。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="bindOperatorModal" aria-hidden="true">
+    <div class="dialog bind-dialog"><div class="dialog-head"><h2 id="bindDialogTitle">选择活动/场次管理员</h2><button class="close" data-close>×</button></div><div class="dialog-body"><p class="bind-tip" id="bindTip">从当前景区已创建的对应角色人员中勾选；同一人员可配置到多个活动。</p><table class="operator-table"><thead><tr><th>选择</th><th>名称</th><th>手机号</th><th>状态</th></tr></thead><tbody id="bindRows"></tbody></table><div class="dialog-footer"><button class="btn" type="button" data-close>取消</button><button class="btn primary" type="button" id="saveBindings">确定</button></div></div></div>
+  </div>
+  <div class="modal" id="inviteRoleModal" aria-hidden="true">
+    <div class="dialog invite-dialog"><div class="dialog-head"><h2>邀请</h2><button class="close" data-close>×</button></div><div class="dialog-body invite-body"><label class="invite-method">注册方式 <select><option>扫码注册</option></select></label><p class="invite-tip" id="inviteTip">将二维码分享给活动/场次管理员，其扫码注册成功后，即成为当前景区的活动/场次管理员。</p><div class="invite-qr"><div class="qr-logo"><span class="brand-mark"></span></div></div><div class="dialog-footer"><button class="btn" type="button" data-close>取消</button></div></div></div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

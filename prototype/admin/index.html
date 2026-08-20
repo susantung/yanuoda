@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>景区预约管理端原型</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./operations.css?v=20260819-o02review2">
+  <link rel="stylesheet" href="./config.css?v=20260819-c06fix1">
+</head>
+<body>
+  <aside class="prototype-panel">
+    <div class="eyebrow">管理端原型 · 活动配置第一稿</div>
+    <h1>活动/场次预约管理</h1>
+    <p>已串联工作台、活动管理、C01—C07 活动配置与发布后运营。</p>
+    <div class="panel-actions">
+      <button data-panel-go="workbench" class="active">A01 工作台</button>
+      <button data-panel-go="activities">A02 活动管理</button>
+      <button data-panel-go="config">C01—C07 活动配置</button>
+      <button data-panel-go="operationActivities">O00—O08 运营管理</button>
+    </div>
+    <div class="panel-note">点击活动卡片主体进入配置<br>配置页顶部横滑切换步骤<br>底部可保存并进入下一步</div>
+  </aside>
+
+  <main class="stage">
+    <div class="phone" id="phone">
+      <div class="miniapp">
+        <header class="nav-bar">
+          <button class="back-button" id="backButton" aria-label="返回">‹</button>
+          <strong id="navTitle">工作台</strong>
+          <div class="wx-capsule"><b>•••</b><i></i><span></span></div>
+        </header>
+
+        <section class="page active" data-page="workbench">
+          <div class="page-scroll workbench-scroll">
+            <section class="workbench-section">
+              <h2>基本功能</h2>
+              <article class="module-card">
+                <h3>景区管理</h3>
+                <div class="icon-grid">
+                  <button class="function-entry muted"><span class="app-icon orange">▣</span><b>直通车预约</b></button>
+                  <button class="function-entry muted"><span class="app-icon green">▤</span><b>直通车排班</b></button>
+                </div>
+              </article>
+              <article class="module-card">
+                <h3>活动/场次预约管理</h3>
+                <div class="icon-grid">
+                  <button class="function-entry" data-go="activities"><span class="app-icon brand">◫</span><b>活动管理</b></button>
+                  <button class="function-entry" id="operationsEntry"><span class="app-icon green">▦</span><b>运营管理</b></button>
+                  <button class="function-entry" id="specialDateEntry"><span class="app-icon blue">◆</span><b>特殊提示<br>日期管理</b></button>
+                </div>
+              </article>
+              <article class="module-card">
+                <h3>订单管理</h3>
+                <div class="icon-grid"><button class="function-entry muted"><span class="app-icon coral">▧</span><b>订单管理</b></button></div>
+              </article>
+            </section>
+          </div>
+          <nav class="tab-bar"><button>⌂<span>首页</span></button><button class="active">▣<span>工作台</span></button><button>○<span>我的</span></button></nav>
+        </section>
+
+        <section class="page" data-page="activities">
+          <div class="page-scroll activities-scroll">
+            <div class="list-tools">
+              <label class="search-box"><span>⌕</span><input id="activitySearch" placeholder="查询活动名称"></label>
+              <button class="create-button" id="createActivity">＋ 新建</button>
+            </div>
+            <div class="activity-tabs" id="activityTabs">
+              <button class="active" data-activity-status="published">已发布</button>
+              <button data-activity-status="offline">已下架</button>
+            </div>
+            <div class="list-summary"><span>共 <b id="activityCount">2</b> 个<span id="activityStatusLabel">已发布</span>活动</span><small>按最后更新时间倒序</small></div>
+            <div class="activity-list" id="activityList"></div>
+            <div class="empty-state" id="emptyState" hidden><span>⌕</span><h3>未找到相关活动</h3><p>请更换关键词后重新查询</p></div>
+          </div>
+        </section>
+
+        <section class="page" data-page="config">
+          <div class="config-head">
+            <div><span id="configMode">编辑预约活动</span><strong id="configActivityName">呀诺达溪降体验预约</strong></div>
+            <div class="config-head-tools"><em id="configSaveState">配置已保存</em><button id="configPreviewOpen">游客端效果</button></div>
+          </div>
+          <nav class="config-step-rail" id="configStepRail"></nav>
+          <div class="page-scroll config-scroll" id="configContent"></div>
+          <footer class="config-actions">
+            <button class="config-prev" id="configPrev">上一步</button>
+            <button class="config-save secondary-save" id="configSave">保存</button>
+            <button class="config-next" id="configNext">下一步</button>
+          </footer>
+        </section>
+
+        <section class="page" data-page="records">
+          <div class="page-scroll records-scroll">
+            <article class="record-context">
+              <div><span>当前预约活动</span><h2 id="recordActivityName">呀诺达溪降体验预约</h2></div>
+              <div class="record-today"><span>今日预约人数</span><b id="recordPeopleTotal">10000 人</b></div>
+            </article>
+            <div class="record-tabs" id="recordTabs"><button class="active" data-record-status="active">已预约</button><button data-record-status="cancelled">已取消</button></div>
+            <div class="record-tools">
+              <label class="search-box"><span>⌕</span><input id="recordSearch" placeholder="预约号、姓名或手机号"></label>
+              <button class="record-filter-toggle" id="recordFilterToggle" aria-expanded="false"><span>筛选</span><i>⌄</i></button>
+              <div class="view-switch"><button class="active" data-record-view="compact">简要</button><button data-record-view="detail">详情</button></div>
+            </div>
+            <div class="record-filter-panel" id="recordFilterPanel" hidden>
+              <div class="filter-strip">
+                <label><span>日期范围</span><select id="filterDateMode"><option value="single">指定单日</option><option value="all">全部日期</option></select></label>
+                <label class="filter-date-control" id="filterSingleDateWrap"><span>预约日期</span><input id="filterSingleDate" type="date" value="2026-08-19" aria-label="选择预约日期"></label>
+                <label><span>预约场次</span><select id="filterSession"><option value="">全部场次</option><option>09:30-10:30</option><option>10:30-11:30</option><option>11:30-12:30</option><option>12:30-13:30</option></select></label>
+                <label><span>分类</span><select id="filterCategory"><option value="">全部分类</option><option>常规溪降</option><option>VIP私家团</option></select></label>
+                <label><span>项目</span><select id="filterProject"><option value="">全部项目</option><option>常规溪降 A 线</option><option>常规溪降 B 线</option><option>VIP 私家团 A 线</option></select></label>
+              </div>
+            </div>
+            <div class="record-summary"><span id="recordResultSummary">3 条记录 · 5 人</span><div><select id="recordSort"><option value="created-desc">提交时间倒序</option><option value="created-asc">提交时间正序</option></select><button id="recordFieldSetting">卡片字段</button></div></div>
+            <div id="bookingList" class="booking-list compact"></div>
+            <div class="empty-state" id="recordEmpty" hidden><span>▧</span><h3 id="recordEmptyTitle">暂无相关预约</h3><p id="recordEmptyText">请更换状态或搜索关键词</p></div>
+          </div>
+        </section>
+
+        <section class="page" data-page="operationActivities">
+          <div class="page-scroll operation-activity-scroll">
+            <div class="operation-select-head"><div><span>预约运营</span><h2>选择预约活动</h2></div><small>按最后更新时间倒序</small></div>
+            <label class="search-box operation-activity-search"><span>⌕</span><input id="operationActivitySearch" placeholder="查询活动名称"></label>
+            <div class="activity-tabs" id="operationActivityTabs">
+              <button data-operation-activity-status="all">全部</button>
+              <button class="active" data-operation-activity-status="published">已发布</button>
+              <button data-operation-activity-status="offline">已下架</button>
+            </div>
+            <div class="operation-activity-summary" id="operationActivitySummary">共 3 个已发布活动</div>
+            <div class="operation-activity-list" id="operationActivityList"></div>
+            <div class="empty-state" id="operationActivityEmpty" hidden><span>⌕</span><h3>未找到相关活动</h3><p>请更换关键词或状态</p></div>
+          </div>
+        </section>
+
+        <section class="page" data-page="operations">
+          <div class="page-scroll operations-scroll">
+            <article class="operation-hero"><div><span class="status published">已发布</span><h2 id="operationActivityName">呀诺达溪降体验预约</h2><p>更新时间 2026-08-14 09:42 · 苏珊</p></div></article>
+            <div class="operation-metrics">
+              <div class="operation-metric-card people"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.25"></circle><path d="M6.5 19c.45-3.65 2.3-5.5 5.5-5.5s5.05 1.85 5.5 5.5"></path></svg></i><span><em>总参与人数</em><b>184</b></span></div>
+              <div class="operation-metric-card today"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="5.5" width="15" height="14" rx="2.5"></rect><path d="M8 3.8v3.4M16 3.8v3.4M4.5 10h15M12 13v4M10 15h4"></path></svg></i><span><em>今日预约人数</em><b>32</b></span></div>
+            </div>
+            <section class="operation-section"><h3>预约运营</h3><div class="operation-grid">
+              <button class="operation-entry records" data-op-go="records"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5h11v14H8zM5 8.5H3.5v11H14"></path><path d="M11 10h5M11 13.5h5M11 17h3"></path></svg></i><span class="operation-entry-copy"><b>全部预约</b><span>查询、查看、修改与取消预约</span></span><em>›</em></button>
+              <button class="operation-entry sessions" data-op-go="sessions"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2.5"></rect><path d="M7.5 3.5v4M16.5 3.5v4M3.5 10h17M8 14h2M14 14h2M8 17.5h2"></path></svg></i><span class="operation-entry-copy"><b>场次名单</b><span>按日期和场次查看参与名单</span></span><em>›</em></button>
+              <button class="operation-entry export" data-op-go="export"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11M8 11l4 4 4-4M4.5 19.5h15"></path></svg></i><span class="operation-entry-copy"><b>数据导出</b><span>按条件生成预约记录文件</span></span><em>›</em></button>
+            </div></section>
+          </div>
+        </section>
+
+        <section class="page" data-page="bookingDetail">
+          <div class="page-scroll booking-detail-scroll">
+            <article class="detail-status-card" id="adminDetailStatus"><div><span class="booking-status active">已预约</span><h2>预约号 <b id="adminDetailNumber">023</b></h2><p id="adminDetailActivity">呀诺达溪降体验预约</p></div><button data-copy-value="number">复制预约号</button></article>
+            <section class="admin-detail-card"><h3>预约信息</h3><div id="adminBookingInfo"></div></section>
+            <section class="admin-detail-card"><h3>游客填写资料</h3><div id="adminVisitorInfo"></div></section>
+            <section class="admin-detail-card"><h3>操作记录</h3><div class="timeline" id="adminTimeline"></div></section>
+          </div>
+          <footer class="admin-bottom-actions" id="adminDetailActions"><button class="secondary" id="adminCancelBooking">取消预约</button><button class="primary" id="adminModifyBooking">修改预约信息</button></footer>
+        </section>
+
+        <section class="page" data-page="sessions">
+          <div class="page-scroll session-manage-scroll">
+            <div class="session-filter-grid"><input id="sessionFilterDate" type="date" value="2026-08-20" aria-label="预约日期"><select><option>全部分类</option><option>常规溪降</option><option>VIP私家团</option></select><select><option>全部项目</option><option>常规溪降 A 线</option><option>常规溪降 B 线</option></select><select><option>全部状态</option><option>开放中</option><option>已暂停</option><option>已过期</option></select></div>
+            <div class="session-result"><span id="sessionResultDate">8月20日 周四</span><b>共 5 个场次</b></div>
+            <div class="session-progress-list" id="sessionProgressList"></div>
+          </div>
+        </section>
+
+        <section class="page" data-page="roster">
+          <div class="page-scroll roster-scroll">
+            <article class="roster-summary" id="rosterSummary"></article>
+            <section class="roster-query-card">
+              <div class="record-tools roster-tools"><label class="search-box"><span>⌕</span><input id="rosterSearch" placeholder="预约号、姓名或手机号"></label><button class="record-filter-toggle" id="rosterFilterToggle" aria-expanded="false"><span>筛选</span><i>⌄</i></button><div class="view-switch"><button class="active" data-roster-view="compact">简要</button><button data-roster-view="detail">详情</button></div></div>
+              <div class="roster-filter-panel" id="rosterFilterPanel" hidden><label><span>关联项目</span><select id="rosterProjectFilter" aria-label="项目筛选"><option value="">全部项目</option></select></label></div>
+              <div class="record-summary roster-result-bar"><span id="rosterCount">2 条记录 · 3 人</span><div><select id="rosterSort"><option value="created-desc">提交时间倒序</option><option value="created-asc">提交时间正序</option></select><button id="rosterFieldSetting">卡片字段</button></div></div>
+            </section>
+            <div class="booking-list compact roster-list" id="rosterList"></div>
+          </div>
+        </section>
+
+        <section class="page" data-page="export">
+          <div class="page-scroll export-scroll">
+            <section class="export-hero"><span>当前预约活动</span><h2>呀诺达溪降体验预约</h2><p>按导出类型和数据范围生成 Excel 文件</p></section>
+            <section class="export-card"><div class="export-card-title"><i>1</i><h3>选择导出内容</h3></div><div class="export-type"><label><input type="radio" name="exportType" value="records" checked><b>预约记录</b><span>导出预约单、预约内容及游客填写资料</span></label><label><input type="radio" name="exportType" value="roster"><b>场次名单</b><span>按预约日期和场次导出有效预约名单</span></label></div></section>
+            <section class="export-card"><div class="export-card-title"><i>2</i><h3>设置数据范围</h3></div><label class="export-field export-date-field"><span>预约游玩日期</span><div class="export-date-range"><input type="date" id="exportStart" value="2026-08-14" aria-label="开始日期"><i>至</i><input type="date" id="exportEnd" value="2026-08-31" aria-label="结束日期"></div></label><label class="export-field" id="exportStatusField"><span>预约状态</span><select id="exportStatus"><option>全部</option><option>已预约</option><option>已取消</option></select></label><button class="export-button" id="generateExport">生成导出文件</button></section>
+            <section class="export-card export-history-card"><div class="export-card-title"><i>3</i><h3>导出记录</h3></div><div class="export-history" id="exportHistory"><div><span>预约记录_20260814.xlsx</span><small>2026-08-14 10:36 · 已生成</small><button>下载</button></div></div></section>
+          </div>
+        </section>
+
+        <div class="sheet-layer" id="fieldLayer" aria-hidden="true">
+          <button class="mask" data-close="field"></button>
+          <section class="field-sheet">
+            <div class="sheet-handle"></div><h2>详情卡片字段</h2><p>默认显示当前活动配置的全部游客填写项；修改后，历史预约也按当前字段配置展示。</p>
+            <div class="field-options" id="fieldOptions">
+              <label><input type="checkbox" value="name" checked> 预约人姓名</label><label><input type="checkbox" value="phone" checked> 手机号码</label>
+              <label><input type="checkbox" value="idNumber" checked> 身份证号</label><label><input type="checkbox" value="people" checked> 实际参与人数</label>
+              <label><input type="checkbox" value="singleChoice" checked> 是否需要教练陪同</label><label><input type="checkbox" value="multiChoice" checked> 需要准备的装备</label>
+              <label><input type="checkbox" value="customNumber" checked> 同行儿童人数</label><label><input type="checkbox" value="customDate" checked> 预计到达日期</label>
+              <label><input type="checkbox" value="singleText" checked> 集合地点</label><label><input type="checkbox" value="multiText" checked> 其他需求说明</label>
+            </div>
+            <div class="field-sheet-actions"><button class="secondary" data-close="field">取消</button><button class="field-save" id="saveRecordFields">保存设置</button></div>
+          </section>
+        </div>
+
+        <div class="sheet-layer" id="modifyLayer" aria-hidden="true"><button class="mask" data-close="modify"></button><section class="modify-sheet"><div class="sheet-handle"></div><h2>修改预约信息</h2><p>预约日期、场次、分类和项目不可修改；以下字段来自该预约提交时的表单快照。</p><div class="modify-snapshot-fields" id="modifySnapshotFields"></div><div class="field-sheet-actions"><button class="secondary" data-close="modify">取消</button><button class="field-save" id="saveModify">保存修改</button></div></section></div>
+        <div class="dialog-layer" id="cancelBookingLayer" aria-hidden="true"><button class="mask" data-close="cancelBooking"></button><section class="dialog"><span class="danger-icon">!</span><h2>确认取消该预约？</h2><p>取消后立即返还场次和项目名额，操作不可恢复。</p><label class="cancel-input"><span>取消原因 <b>*</b></span><textarea id="adminCancelReason" placeholder="请输入管理员取消原因"></textarea></label><div class="dialog-actions"><button class="secondary" data-close="cancelBooking">暂不取消</button><button class="danger" id="confirmCancelBooking">确认取消</button></div></section></div>
+
+        <div class="sheet-layer" id="actionLayer" aria-hidden="true">
+          <button class="mask" data-close="action"></button>
+          <section class="action-sheet">
+            <div class="sheet-handle"></div>
+            <h2 id="actionTitle">活动操作</h2>
+            <button data-action="edit">编辑配置 <span>›</span></button>
+            <button data-action="copy">复制活动 <span>›</span></button>
+            <button class="danger-text" data-action="delete">删除活动 <span>›</span></button>
+            <button class="sheet-cancel" data-close="action">取消</button>
+          </section>
+        </div>
+
+        <div class="dialog-layer" id="deleteLayer" aria-hidden="true">
+          <button class="mask" data-close="delete"></button>
+          <section class="dialog">
+            <span class="danger-icon">!</span>
+            <h2>确认删除该活动？</h2>
+            <p><b id="deleteActivityName">当前活动</b>尚无预约数据。删除后活动及全部配置不可恢复，请谨慎操作。</p>
+            <div class="dialog-actions"><button class="secondary" data-close="delete">暂不删除</button><button class="danger" id="confirmDelete">确认删除</button></div>
+          </section>
+        </div>
+
+        <div class="dialog-layer" id="offlineActivityLayer" aria-hidden="true">
+          <button class="mask" data-close="offlineActivity"></button>
+          <section class="dialog">
+            <span class="danger-icon">!</span>
+            <h2>确认下架该活动？</h2>
+            <p><b id="offlineActivityName">当前活动</b>下架后将立即停止接受新预约；已有预约仍可查看、修改和取消，活动之后可以重新发布。</p>
+            <div class="dialog-actions"><button class="secondary" data-close="offlineActivity">暂不下架</button><button class="danger" id="confirmOfflineActivity">确认下架</button></div>
+          </section>
+        </div>
+
+        <div class="sheet-layer" id="configSheetLayer" aria-hidden="true">
+          <button class="mask" data-close="configSheet"></button>
+          <section class="config-sheet" id="configSheet"></section>
+        </div>
+
+        <div class="dialog-layer" id="configDialogLayer" aria-hidden="true">
+          <button class="mask" data-close="configDialog"></button>
+          <section class="dialog config-dialog" id="configDialog"></section>
+        </div>
+
+        <section class="config-preview-layer original-visitor-preview" id="configPreviewLayer" aria-hidden="true">
+          <div class="original-preview-shell"><iframe id="configPreviewFrame" title="原游客端配置效果" src="about:blank"></iframe></div>
+        </section>
+
+        <div class="toast" id="toast"></div>
+      </div>
+    </div>
+  </main>
+  <script src="./app.js?v=20260819-o02final"></script><script src="./operations.js?v=20260819-o02final"></script><script src="./config.js?v=20260819-o02final"></script>
+</body>
+</html>
