@@ -84,18 +84,23 @@ function renderOperationActivities() {
   $('#operationActivitySummary').textContent = `共 ${list.length} 个${statusName}活动`;
   $('#operationActivityEmpty').hidden = list.length > 0;
   $('#operationActivityList').innerHTML = list.map(item => `
-    <button class="operation-activity-card" data-operation-activity="${item.id}">
-      ${item.image ? `<img src="${resolveAdminAsset(item.image)}" alt="活动图片">` : `<span class="operation-activity-cover">${item.name.slice(0,1)}</span>`}
-      <span class="operation-activity-main">
-        <span class="operation-activity-title"><b>${item.name}</b></span>
-        <span>更新于 ${item.updated.slice(5,16)} · ${item.updater}</span>
+    <article class="operation-activity-card">
+      <button class="operation-activity-open" data-operation-activity="${item.id}" aria-label="进入${item.name}运营管理">
+        ${item.image ? `<img src="${resolveAdminAsset(item.image)}" alt="活动图片">` : `<span class="operation-activity-cover">${item.name.slice(0,1)}</span>`}
+        <span class="operation-activity-main">
+          <span class="operation-activity-title"><b>${item.name}</b></span>
+          <span class="operation-activity-update">更新于 ${item.updated.slice(5,16)} · ${item.updater}</span>
+        </span>
+      </button>
+      <div class="operation-activity-footer">
         <span class="operation-activity-metrics">
           <span class="operation-metric-item"><svg class="operation-metric-icon people" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.25"></circle><path d="M6.5 19c.45-3.65 2.3-5.5 5.5-5.5s5.05 1.85 5.5 5.5"></path></svg><em>总参与</em><b>${item.totalPeople}</b></span>
           <span class="operation-metric-item"><svg class="operation-metric-icon today" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="5.5" width="15" height="14" rx="2.5"></rect><path d="M8 3.8v3.4M16 3.8v3.4M4.5 10h15M12 13v4M10 15h4"></path></svg><em>今日预约</em><b>${item.todayPeople}</b></span>
         </span>
-      </span>
-      <span class="operation-activity-side"><i class="status ${item.status}">${item.status === 'published' ? '已发布' : '已下架'}</i><i class="operation-activity-enter">›</i></span>
-    </button>`).join('');
+      </div>
+      <span class="operation-activity-side"><i class="status ${item.status}">${item.status === 'published' ? '已发布' : '已下架'}</i></span>
+      <button class="operation-activity-poster" data-poster="${item.id}" aria-label="分享${item.name}"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"></circle><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="19" r="2.5"></circle><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span>分享</span></button>
+    </article>`).join('');
 }
 
 function renderBookings() {
@@ -103,8 +108,6 @@ function renderBookings() {
   const keyword = $('#recordSearch').value.trim().toLowerCase();
   const list = bookings.filter(item => item.activityId === activity.id && item.status === recordStatus && [item.number,item.name,item.phone].some(value => value.toLowerCase().includes(keyword)));
   const people = list.reduce((sum,item) => sum + item.people,0);
-  $('#recordActivityName').textContent = activity.name;
-  $('#recordPeopleTotal').textContent = `${activity.totalPeople} 人`;
   $('#recordResultSummary').textContent = `${list.length} 条记录 · ${people} 人`;
   $('#recordEmpty').hidden = list.length > 0;
   const container = $('#bookingList'); container.className = `booking-list ${recordView}`;
@@ -147,7 +150,7 @@ function renderActivities() {
           <span><svg class="metric-icon metric-icon-outline metric-icon-today" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="5.5" width="15" height="14" rx="2.5"></rect><path d="M8 3.8v3.4M16 3.8v3.4M4.5 10h15M12 13v4M10 15h4"></path></svg><em>今日预约</em><b>${item.todayPeople}</b><small>人</small></span>
         </div>
         <div class="compact-actions">
-          <button class="poster-entry" data-poster="${item.id}"><i class="poster-icon"><u></u></i><span>海报</span></button>
+          <button class="poster-entry" data-poster="${item.id}" aria-label="分享${item.name}"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"></circle><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="19" r="2.5"></circle><path d="m8.2 10.8 7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span>分享</span></button>
           <button class="expand-button" data-expand="${item.id}"><i class="info-icon">i</i><span>信息</span></button>
           ${item.status==='published'?`<button class="activity-offline-entry" data-offline-activity="${item.id}"><i>↓</i><span>下架</span></button>`:''}
           ${item.status==='offline'?`<button class="activity-delete-entry ${Number(item.totalPeople||0)>0?'is-disabled':''}" data-delete-activity="${item.id}" aria-disabled="${Number(item.totalPeople||0)>0}"><i>×</i><span>删除</span></button>`:''}
@@ -162,6 +165,19 @@ function openActions(id) {
   $('#actionTitle').textContent = currentActivity.name;
   $('#actionLayer').classList.add('open'); $('#actionLayer').setAttribute('aria-hidden','false');
 }
+function openPoster(id) {
+  const activity = activities.find(item => item.id === Number(id));
+  if (!activity) return;
+  currentActivity = activity;
+  $('#posterActivityName').textContent = activity.name;
+  $('#posterActivityName').title = activity.name;
+  const posterCover = $('#posterCover');
+  const cover = resolveAdminAsset(activity.coverImage || activity.image || '');
+  posterCover.classList.toggle('has-image', Boolean(cover));
+  posterCover.style.backgroundImage = cover ? `url("${cover}")` : '';
+  $('#posterLayer').classList.add('open');
+  $('#posterLayer').setAttribute('aria-hidden', 'false');
+}
 function closeLayer(id) { const layer = $(`#${id}Layer`); layer.classList.remove('open'); layer.setAttribute('aria-hidden','true'); }
 
 document.addEventListener('click', event => {
@@ -169,6 +185,8 @@ document.addEventListener('click', event => {
   if (go) { navigate(go.dataset.go || go.dataset.panelGo); return; }
   const edit = event.target.closest('[data-edit]');
   if (edit) { currentActivity = activities.find(item => item.id === Number(edit.dataset.edit)); openConfig(currentActivity, false, 'activities'); return; }
+  const poster = event.target.closest('[data-poster]');
+  if (poster) { openPoster(poster.dataset.poster); return; }
   const operationActivity = event.target.closest('[data-operation-activity]');
   if (operationActivity) { currentActivity = activities.find(item => item.id === Number(operationActivity.dataset.operationActivity)); navigate('operations'); return; }
   const expand = event.target.closest('[data-expand]');
@@ -176,8 +194,6 @@ document.addEventListener('click', event => {
     const card = expand.closest('.activity-card'); const open = card.classList.toggle('expanded');
     $('span', expand).textContent = open ? '收起' : '信息'; return;
   }
-  const poster = event.target.closest('[data-poster]');
-  if (poster) { showToast('下一批补充海报预览与保存'); return; }
   const offlineActivity=event.target.closest('[data-offline-activity]');
   if(offlineActivity){
     currentActivity=activities.find(item=>item.id===Number(offlineActivity.dataset.offlineActivity));if(!currentActivity)return;
@@ -250,6 +266,7 @@ $('#recordSearch').addEventListener('input', () => window.renderBookings());
 $('#recordTabs').addEventListener('click', event => { const button = event.target.closest('[data-record-status]'); if (!button) return; recordStatus = button.dataset.recordStatus; $$('[data-record-status]').forEach(item => item.classList.toggle('active',item===button)); window.renderBookings(); });
 $$('[data-record-view]').forEach(button => button.addEventListener('click', () => { recordView = button.dataset.recordView; $$('[data-record-view]').forEach(item => item.classList.toggle('active',item===button)); window.renderBookings(); }));
 $('#recordFieldSetting').addEventListener('click', () => openLayer('field'));
+$('#posterSave').addEventListener('click', () => showToast('分享图片已生成，请长按图片保存'));
 $('#confirmDelete').addEventListener('click', () => {
   if(!currentActivity||currentActivity.status!=='offline'||Number(currentActivity.totalPeople||0)>0){closeLayer('delete');showToast('当前活动不满足删除条件');return;}
   const index=activities.findIndex(item=>item.id===currentActivity.id);if(index>=0)activities.splice(index,1);

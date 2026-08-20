@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="920" viewBox="0 0 1440 920" role="img" aria-labelledby="title desc">
+  <title id="title">景区场次预约核心业务流程</title>
+  <desc id="desc">从活动配置发布、游客预约，到运营管理、权限控制和数据导出的核心流程图。</desc>
+  <defs>
+    <linearGradient id="top" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#e8fbf3"/><stop offset="1" stop-color="#f8fffc"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-15%" width="120%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#174d3a" flood-opacity=".1"/></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#78a393"/></marker>
+    <style>
+      .lane{font:700 18px 'PingFang SC','Microsoft YaHei',sans-serif;fill:#176f4c;letter-spacing:1px}.step{font:700 17px 'PingFang SC','Microsoft YaHei',sans-serif;fill:#193c30}.sub{font:400 13px 'PingFang SC','Microsoft YaHei',sans-serif;fill:#697a73}.tag{font:700 12px 'PingFang SC','Microsoft YaHei',sans-serif;fill:#16875b}.node{fill:#fff;stroke:#ccebdd;stroke-width:1.5}.node2{fill:#fffdf7;stroke:#f0dca6;stroke-width:1.5}.node3{fill:#f7fbff;stroke:#cde4fb;stroke-width:1.5}.line{stroke:#78a393;stroke-width:2;fill:none;marker-end:url(#arrow)}.dash{stroke:#a9bacd;stroke-width:1.6;stroke-dasharray:5 5;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1440" height="920" rx="28" fill="#f6faf8"/>
+  <rect x="36" y="28" width="1368" height="74" rx="18" fill="url(#top)" stroke="#ccebdd"/>
+  <text x="70" y="61" class="lane">景区场次预约 · 核心业务流程</text>
+  <text x="70" y="85" class="sub">配置发布、游客预约、运营处理、人员权限与数据导出均围绕“活动”与“预约快照”联动</text>
+
+  <g filter="url(#shadow)"><rect x="36" y="132" width="1368" height="214" rx="20" fill="#fff" stroke="#dcebe4"/></g>
+  <text x="62" y="166" class="lane">01　活动配置与发布</text>
+  <g><rect class="node" x="62" y="196" width="178" height="104" rx="14"/><text x="84" y="230" class="step">新建活动</text><text x="84" y="254" class="sub">独立默认数据</text><text x="84" y="275" class="sub">活动为数据边界</text></g>
+  <g><rect class="node" x="298" y="196" width="224" height="104" rx="14"/><text x="320" y="230" class="step">C01—C06 配置</text><text x="320" y="254" class="sub">日期场次、项目、表单、规则</text><text x="320" y="275" class="sub">保存草稿，不影响线上</text></g>
+  <g><rect class="node2" x="580" y="196" width="184" height="104" rx="14"/><text x="602" y="230" class="step">C07 发布校验</text><text x="602" y="254" class="sub">检查必填与可用配置</text><text x="602" y="275" class="sub">不通过则定位修正</text></g>
+  <g><rect class="node" x="822" y="196" width="196" height="104" rx="14"/><text x="844" y="230" class="step">发布 / 发布更新</text><text x="844" y="254" class="sub">已上架：发布更新</text><text x="844" y="275" class="sub">已下架：保存后发布</text></g>
+  <g><rect class="node3" x="1076" y="196" width="300" height="104" rx="14"/><text x="1098" y="230" class="step">线上游客端同步</text><text x="1098" y="254" class="sub">发布配置成为当前线上版本</text><text x="1098" y="275" class="sub">未发布草稿不改变游客端</text></g>
+  <path class="line" d="M240 248H298"/><path class="line" d="M522 248H580"/><path class="line" d="M764 248H822"/><path class="line" d="M1018 248H1076"/>
+
+  <g filter="url(#shadow)"><rect x="36" y="374" width="892" height="280" rx="20" fill="#fff" stroke="#dcebe4"/></g>
+  <text x="62" y="408" class="lane">02　游客预约与预约快照</text>
+  <g><rect class="node3" x="62" y="438" width="168" height="150" rx="14"/><text x="84" y="472" class="step">活动入口</text><text x="84" y="496" class="sub">推广链接 / 二维码</text><text x="84" y="517" class="sub">进入已发布活动</text></g>
+  <g><rect class="node" x="278" y="438" width="202" height="150" rx="14"/><text x="300" y="472" class="step">选择预约内容</text><text x="300" y="496" class="sub">日期 → 场次</text><text x="300" y="517" class="sub">分类 / 项目（如启用）</text><text x="300" y="545" class="tag">按剩余名额校验</text></g>
+  <g><rect class="node" x="528" y="438" width="176" height="150" rx="14"/><text x="550" y="472" class="step">填写游客资料</text><text x="550" y="496" class="sub">姓名固定必填</text><text x="550" y="517" class="sub">多人模式填写人数</text><text x="550" y="545" class="tag">按字段语义校验</text></g>
+  <g><rect class="node2" x="752" y="438" width="148" height="150" rx="14"/><text x="774" y="472" class="step">提交预约</text><text x="774" y="496" class="sub">截止规则校验</text><text x="774" y="517" class="sub">库存扣减</text><text x="774" y="545" class="tag">生成预约号</text></g>
+  <path class="line" d="M230 513H278"/><path class="line" d="M480 513H528"/><path class="line" d="M704 513H752"/>
+  <g><rect x="62" y="610" width="838" height="28" rx="10" fill="#eaf8f1"/><text x="81" y="630" class="sub">提交时固化：日期、场次、分类/项目、实际参与人数、游客表单字段名称 / 类型 / 选项 / 填写值</text></g>
+
+  <g filter="url(#shadow)"><rect x="958" y="374" width="446" height="280" rx="20" fill="#fff" stroke="#dcebe4"/></g>
+  <text x="984" y="408" class="lane">03　权限与活动可见范围</text>
+  <g><rect class="node3" x="984" y="438" width="184" height="150" rx="14"/><text x="1006" y="472" class="step">景区管理</text><text x="1006" y="496" class="sub">创建两个固定角色</text><text x="1006" y="517" class="sub">管理员 / 运营人员</text><text x="1006" y="545" class="tag">角色可跨多个活动</text></g>
+  <g><rect class="node" x="1212" y="438" width="164" height="150" rx="14"/><text x="1234" y="472" class="step">活动人员绑定</text><text x="1234" y="496" class="sub">按角色勾选人员</text><text x="1234" y="517" class="sub">仅查看已绑定活动</text><text x="1234" y="545" class="tag">菜单按角色固定</text></g>
+  <path class="line" d="M1168 513H1212"/>
+
+  <g filter="url(#shadow)"><rect x="36" y="682" width="1368" height="194" rx="20" fill="#fff" stroke="#dcebe4"/></g>
+  <text x="62" y="716" class="lane">04　运营处理与数据沉淀</text>
+  <g><rect class="node" x="62" y="746" width="220" height="94" rx="14"/><text x="84" y="779" class="step">全部预约 / 场次名单</text><text x="84" y="804" class="sub">查询、查看、修改、取消</text><text x="84" y="825" class="sub">历史有效预约可继续查看</text></g>
+  <g><rect class="node2" x="340" y="746" width="212" height="94" rx="14"/><text x="362" y="779" class="step">修改或取消预约</text><text x="362" y="804" class="sub">修改按差额处理名额</text><text x="362" y="825" class="sub">取消返还场次 / 项目库存</text></g>
+  <g><rect class="node" x="610" y="746" width="244" height="94" rx="14"/><text x="632" y="779" class="step">我的预约</text><text x="632" y="804" class="sub">按游玩日期 + 场次倒序</text><text x="632" y="825" class="sub">查看、修改或取消本人预约</text></g>
+  <g><rect class="node3" x="912" y="746" width="224" height="94" rx="14"/><text x="934" y="779" class="step">数据导出</text><text x="934" y="804" class="sub">预约记录 / 场次名单</text><text x="934" y="825" class="sub">生成后由记录下载</text></g>
+  <g><rect class="node" x="1194" y="746" width="182" height="94" rx="14"/><text x="1216" y="779" class="step">运营数据与流水</text><text x="1216" y="804" class="sub">状态、名额、操作记录</text><text x="1216" y="825" class="sub">均基于预约快照追溯</text></g>
+  <path class="line" d="M282 793H340"/><path class="dash" d="M552 793H610"/><path class="line" d="M854 793H912"/><path class="line" d="M1136 793H1194"/>
+</svg>

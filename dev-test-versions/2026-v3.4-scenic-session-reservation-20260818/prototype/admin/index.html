@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>景区预约管理端原型</title>
-  <link rel="stylesheet" href="./styles.css">
-  <link rel="stylesheet" href="./operations.css?v=20260819-o02review2">
+  <link rel="stylesheet" href="./styles.css?v=20260820-sharecard2">
+  <link rel="stylesheet" href="./operations.css?v=20260820-sharecard2">
   <link rel="stylesheet" href="./config.css?v=20260819-c06fix1">
 </head>
 <body>
@@ -91,10 +91,6 @@
 
         <section class="page" data-page="records">
           <div class="page-scroll records-scroll">
-            <article class="record-context">
-              <div><span>当前预约活动</span><h2 id="recordActivityName">呀诺达溪降体验预约</h2></div>
-              <div class="record-today"><span>今日预约人数</span><b id="recordPeopleTotal">10000 人</b></div>
-            </article>
             <div class="record-tabs" id="recordTabs"><button class="active" data-record-status="active">已预约</button><button data-record-status="cancelled">已取消</button></div>
             <div class="record-tools">
               <label class="search-box"><span>⌕</span><input id="recordSearch" placeholder="预约号、姓名或手机号"></label>
@@ -181,7 +177,7 @@
             <section class="export-hero"><span>当前预约活动</span><h2>呀诺达溪降体验预约</h2><p>按导出类型和数据范围生成 Excel 文件</p></section>
             <section class="export-card"><div class="export-card-title"><i>1</i><h3>选择导出内容</h3></div><div class="export-type"><label><input type="radio" name="exportType" value="records" checked><b>预约记录</b><span>导出预约单、预约内容及游客填写资料</span></label><label><input type="radio" name="exportType" value="roster"><b>场次名单</b><span>按预约日期和场次导出有效预约名单</span></label></div></section>
             <section class="export-card"><div class="export-card-title"><i>2</i><h3>设置数据范围</h3></div><label class="export-field export-date-field"><span>预约游玩日期</span><div class="export-date-range"><input type="date" id="exportStart" value="2026-08-14" aria-label="开始日期"><i>至</i><input type="date" id="exportEnd" value="2026-08-31" aria-label="结束日期"></div></label><label class="export-field" id="exportStatusField"><span>预约状态</span><select id="exportStatus"><option>全部</option><option>已预约</option><option>已取消</option></select></label><button class="export-button" id="generateExport">生成导出文件</button></section>
-            <section class="export-card export-history-card"><div class="export-card-title"><i>3</i><h3>导出记录</h3></div><div class="export-history" id="exportHistory"><div><span>预约记录_20260814.xlsx</span><small>2026-08-14 10:36 · 已生成</small><button>下载</button></div></div></section>
+            <section class="export-card export-history-card"><div class="export-card-title"><i>3</i><h3>导出记录</h3></div><div class="export-history" id="exportHistory"><div><span>预约记录_20260814.xlsx</span><small>导出时间 2026-08-14 10:36</small><button data-download-export>下载</button></div></div></section>
           </div>
         </section>
 
@@ -235,6 +231,23 @@
           </section>
         </div>
 
+        <div class="poster-layer" id="posterLayer" aria-hidden="true">
+          <button class="mask" data-close="poster" aria-label="关闭分享卡"></button>
+          <section class="poster-dialog" role="dialog" aria-modal="true" aria-labelledby="posterActivityName">
+            <button class="poster-close" data-close="poster" aria-label="关闭">×</button>
+            <div class="poster-art">
+              <div class="poster-heading"><div><b>活动分享</b><small>SCENIC RESERVATION</small></div></div>
+              <div class="poster-cover" id="posterCover" aria-hidden="true"></div>
+              <div class="poster-inner-card">
+                <h2 id="posterActivityName">呀诺达溪降体验预约</h2>
+                <div class="poster-qr" aria-label="活动小程序码"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><b>呀</b></div>
+                <p>长按图片扫描二维码立刻参与</p>
+              </div>
+            </div>
+            <button class="poster-save" id="posterSave">保存图片</button>
+          </section>
+        </div>
+
         <div class="sheet-layer" id="configSheetLayer" aria-hidden="true">
           <button class="mask" data-close="configSheet"></button>
           <section class="config-sheet" id="configSheet"></section>
@@ -253,6 +266,6 @@
       </div>
     </div>
   </main>
-  <script src="./app.js?v=20260819-o02final"></script><script src="./operations.js?v=20260819-o02final"></script><script src="./config.js?v=20260819-o02final"></script>
+  <script src="./app.js?v=20260820-sharecard2"></script><script src="./operations.js?v=20260820-o07export3"></script><script src="./config.js?v=20260819-o02final"></script>
 </body>
 </html>

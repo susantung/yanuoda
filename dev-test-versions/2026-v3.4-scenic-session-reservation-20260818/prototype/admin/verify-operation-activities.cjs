@@ -24,14 +24,24 @@ const path = require('path');
         metric: getComputedStyle(metricItems[0]).fontSize,
         number: getComputedStyle(metricItems[0].querySelector('b')).fontSize
       } : {};
-      const divider = first?.querySelector('.operation-metric-divider')?.getBoundingClientRect();
-      const left = metricItems[0]?.getBoundingClientRect();
-      const right = metricItems[1]?.getBoundingClientRect();
-      const dividerBalance = divider && left && right ? Math.abs((divider.left-left.right)-(right.left-divider.right)) <= 2 : false;
-      return { active, cardCount: cards.length, publishedOnly, overflow, sizes, dividerBalance };
+      const dividerAbsent = !first?.querySelector('.operation-metric-divider');
+      const metricRects=metricItems.map(item=>item.getBoundingClientRect());
+      const metricsOverlap=metricRects.length>1&&metricRects[0].right>metricRects[1].left;
+      const metricGap=metricRects.length>1?Math.round(metricRects[1].left-metricRects[0].right):0;
+      const allMetricGaps=cards.map(card=>{const items=[...card.querySelectorAll('.operation-metric-item')].map(item=>item.getBoundingClientRect());return items.length>1?Math.round(items[1].left-items[0].right):0;});
+      const status=first?.querySelector('.status')?.getBoundingClientRect();
+      const title=first?.querySelector('.operation-activity-title b')?.getBoundingClientRect();
+      const statusTitleOverlap=Boolean(status&&title&&status.left<title.right&&status.bottom>title.top);
+      const longTitles=cards.map(card=>{const node=card.querySelector('.operation-activity-title b'),style=getComputedStyle(node),rect=node.getBoundingClientRect();return {lines:Math.round(rect.height/parseFloat(style.lineHeight)),clamp:style.webkitLineClamp};});
+      const enter=first?.querySelector('.operation-activity-enter')?.getBoundingClientRect();
+      const metrics=first?.querySelector('.operation-activity-metrics')?.getBoundingClientRect();
+      const enterMetricsOverlap=Boolean(enter&&metrics&&enter.left<metrics.right&&enter.bottom>metrics.top&&enter.top<metrics.bottom);
+      return { active, cardCount: cards.length, publishedOnly, overflow, sizes, dividerAbsent,metricsOverlap,metricGap,allMetricGaps,statusTitleOverlap,longTitles,enterMetricsOverlap };
     });
-    if (result.active !== 'published' || !result.cardCount || !result.publishedOnly || result.overflow || !result.dividerBalance) errors.push(`${width}: ${JSON.stringify(result)}`);
-    if (result.sizes.meta !== '12px' || result.sizes.metric !== '12px' || result.sizes.number !== '14px') errors.push(`${width}: font ${JSON.stringify(result.sizes)}`);
+    const expectedMetricGap=width<=340?6:16;
+    if (result.active !== 'published' || !result.cardCount || !result.publishedOnly || result.overflow || !result.dividerAbsent || result.metricsOverlap || result.allMetricGaps.some(gap=>gap!==expectedMetricGap) || result.statusTitleOverlap || result.longTitles.some(item=>item.lines>2||item.clamp!=='2') || result.enterMetricsOverlap) errors.push(`${width}: ${JSON.stringify(result)}`);
+    const expectedMetricSize=width<=340?'11px':'12px',expectedNumberSize=width<=340?'13px':'14px';
+    if (result.sizes.meta !== '12px' || result.sizes.metric !== expectedMetricSize || result.sizes.number !== expectedNumberSize) errors.push(`${width}: font ${JSON.stringify(result.sizes)}`);
     if (width === 375) {
       const publishedNames = await page.locator('.operation-activity-title b').allTextContents();
       if (publishedNames.length !== 3 || !publishedNames[0].includes('呀诺达溪降体验预约')) errors.push(`published order: ${JSON.stringify(publishedNames)}`);
@@ -55,7 +65,7 @@ const path = require('path');
       if (await longCard.count() !== 1) errors.push('long activity name sample missing');
 
       await page.click('[data-operation-activity-status="published"]');
-      await page.locator('.operation-activity-card').first().click();
+      await page.locator('.operation-activity-open').first().click();
       if (!(await page.locator('[data-page="operations"]').evaluate(el => el.classList.contains('active')))) errors.push('activity card did not enter O01');
       await page.click('#backButton');
       if (!(await page.locator('[data-page="operationActivities"]').evaluate(el => el.classList.contains('active')))) errors.push('back from O01 did not return to O00');
@@ -68,6 +78,7 @@ const path = require('path');
         cards: document.querySelectorAll('.operation-activity-card').length
       }));
       if (reentry.active !== 'published' || reentry.keyword !== '' || reentry.cards !== 3) errors.push(`reentry reset: ${JSON.stringify(reentry)}`);
+
     }
     await page.close();
   }
