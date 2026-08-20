@@ -392,18 +392,27 @@ function renderSuccess() { $('#successSummary').innerHTML = detailRows(); }
 
 const recordData = [
   { id: 'active', status: 'active', number: '023', activity: '峡谷漂流场次预约', date: '2026-08-15', session: '10:00-11:30', project: '梦幻谷漂流 A 线', people: 2, created: '08-13 14:32' },
-  { id: 'cancelled', status: 'cancelled', number: '007', activity: '雨林观景场次预约', date: '2026-08-09', session: '14:00-16:00', project: '峡谷观景栈道', people: 1, created: '08-05 09:18' }
+  { id: 'cancelled', status: 'cancelled', number: '007', activity: '雨林观景场次预约', date: '2026-08-09', session: '14:00-16:00', project: '峡谷观景栈道', people: 1, created: '08-05 09:18' },
+  { id: 'active-late', status: 'active', number: '012', activity: '雨林观景场次预约', date: '2026-08-15', session: '15:30-16:30', project: '峡谷观景栈道', people: 1, created: '08-14 11:06' },
+  { id: 'cancelled-late', status: 'cancelled', number: '031', activity: '峡谷漂流场次预约', date: '2026-08-20', session: '09:30-10:30', project: '梦幻谷漂流 B 线', people: 2, created: '08-18 16:20' }
 ];
+
+const recordVisitTimestamp = record => {
+  const start = String(record.session || '').match(/\d{1,2}:\d{2}/)?.[0] || '00:00';
+  const timestamp = Date.parse(`${record.date}T${start}:00`);
+  return Number.isFinite(timestamp) ? timestamp : 0;
+};
+const sortRecordsByVisitDesc = records => [...records].sort((a,b) => recordVisitTimestamp(b) - recordVisitTimestamp(a));
 
 function renderRecords(filter) {
   $$('#recordTabs button').forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
-  const records = recordData.filter(r => filter === 'all' || r.status === filter);
+  const records = sortRecordsByVisitDesc(recordData.filter(r => filter === 'all' || r.status === filter));
   $('#recordList').innerHTML = records.length ? records.map(r => `<button class="record-card" data-record="${r.id}"><div class="record-head"><strong>${r.activity}</strong><span class="status-chip ${r.status}">${r.status === 'active' ? '已约/报名' : '已取消'}</span></div><div class="record-number">游客预约号 ${r.number}</div><div class="record-body"><div><span>预约游玩日期</span><b>${r.date}</b></div><div><span>预约场次</span><b>${r.session}</b></div><div><span>体验线路</span><b>${r.project}</b></div><div><span>实际参与人数</span><b>${r.people} 人</b></div></div><div class="record-foot"><span>提交 ${r.created}</span><span>查看详情 ›</span></div></button>`).join('') : '<div class="empty-state"><div class="empty-icon">▦</div><h3>暂无预约记录</h3><p>完成预约后，记录会显示在这里</p></div>';
 }
 
 function renderDetail() {
-  const cancelled = state.currentRecord === 'cancelled';
   const current = recordData.find(record => record.id === state.currentRecord) || recordData[0];
+  const cancelled = current.status === 'cancelled';
   $('#detailBanner').classList.toggle('cancelled', cancelled);
   $('#detailBanner').innerHTML = `<span class="status-symbol">${cancelled ? '×' : '✓'}</span><div><h2>${cancelled ? '预约已取消' : '预约成功'}</h2><p>${cancelled ? '名额已释放，如需参与请重新预约' : '请按预约场次提前到达'}</p></div>`;
   $('#detailBookingRows').innerHTML = detailRows();

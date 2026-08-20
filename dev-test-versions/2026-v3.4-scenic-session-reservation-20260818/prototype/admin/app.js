@@ -1,14 +1,16 @@
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+const adminVisitorBase = /\/prototype\/admin\//.test(location.pathname) ? '../visitor' : '../../scenic-reservation/preview';
+window.adminVisitorBase = adminVisitorBase;
 const resolveAdminAsset = value => {
   if (!value || typeof value !== 'string' || /^(data:|blob:|https?:|\/)/.test(value)) return value;
   const file = value.match(/(?:scenic-reservation\/preview|visitor)\/assets\/([^?#]+)/)?.[1];
-  return file ? new URL(`../visitor/assets/${file}`, document.baseURI).href : value;
+  return file ? new URL(`${adminVisitorBase}/assets/${file}`, document.baseURI).href : value;
 };
 window.resolveAdminAsset = resolveAdminAsset;
 
 const activities = [
-  { id: 1, name: '呀诺达溪降体验预约', status: 'published', image:'../visitor/assets/activity-hero.jpg', coverImage:'../visitor/assets/activity-hero.jpg', heroBadge:'无需验票 · 免费预约', heroSubtitle:'门票已包含溪降体验，请提前预约心仪时段。', contactName:'溪降接待处', contactPhone:'0898-8388 3333', totalPeople: 128600, todayPeople: 10000, created: '2026-08-11 16:28', updated: '2026-08-14 09:42', creator: '景区管理员-苏珊', updater: '苏珊' },
+  { id: 1, name: '呀诺达溪降体验预约', status: 'published', image:'../../scenic-reservation/preview/assets/activity-hero.jpg', coverImage:'../../scenic-reservation/preview/assets/activity-hero.jpg', heroBadge:'无需验票 · 免费预约', heroSubtitle:'门票已包含溪降体验，请提前预约心仪时段。', contactName:'溪降接待处', contactPhone:'0898-8388 3333', totalPeople: 128600, todayPeople: 10000, created: '2026-08-11 16:28', updated: '2026-08-14 09:42', creator: '景区管理员-苏珊', updater: '苏珊' },
   { id: 2, name: '雨林观景线路预约', status: 'published', image:null, totalPeople: 96, todayPeople: 18, created: '2026-08-02 10:16', updated: '2026-08-13 18:05', creator: '运营管理员-林晓', updater: '林晓' },
   { id: 4, name: '呀诺达热带雨林高空滑索亲子探险体验项目预约活动暑期特别专场季', status: 'published', image:null, totalPeople: 735, todayPeople: 9, created: '2026-07-30 11:08', updated: '2026-08-12 16:45', creator: '景区管理员-陈晨', updater: '陈晨' },
   { id: 3, name: 'VIP 私家团场次预约', status: 'offline', image:null, totalPeople: 42, todayPeople: 0, created: '2026-07-28 14:09', updated: '2026-08-12 11:30', creator: '景区管理员-苏珊', updater: '苏珊' },
@@ -39,9 +41,20 @@ let recordStatus = 'active';
 let recordView = 'compact';
 const bookings = [
   { id:1, activityId:1, status:'active', number:'023', name:'苏珊', phone:'13800138000', date:'2026-08-19', session:'09:30-10:30', sessionName:'溪降上午体验场', category:'常规溪降', project:'常规溪降 A 线', people:2, created:'08-19 09:56', singleChoice:'需要教练陪同', multiChoice:'儿童护具、成人防滑鞋、防水储物袋', customNumber:'3', customDate:'2026-08-19', singleText:'从游客中心集合', multiText:'同行人员包含儿童，请提前准备儿童安全装备并安排靠前位置。' },
-  { id:2, activityId:1, status:'active', number:'024', name:'陈晓宇', phone:'13600136000', date:'2026-08-19', session:'10:30-11:30', sessionName:'溪降中午体验场', category:'常规溪降', project:'常规溪降 B 线', people:1, created:'08-19 10:08', singleChoice:'无需教练陪同', multiChoice:'成人防滑鞋', customNumber:'1', customDate:'2026-08-20', singleText:'酒店接驳点集合', multiText:'无其他特殊说明。' },
+  { id:2, activityId:1, status:'active', number:'024', name:'陈晓宇', phone:'13600136000', date:'2026-08-19', session:'10:30-11:30', sessionName:'溪降中午体验场', category:'', project:'', people:1, created:'08-19 10:08', singleChoice:'无需教练陪同', multiChoice:'成人防滑鞋', customNumber:'1', customDate:'2026-08-20', singleText:'酒店接驳点集合', multiText:'无其他特殊说明。' },
   { id:3, activityId:1, status:'active', number:'025', name:'林悦', phone:'13900139000', date:'2026-08-19', session:'11:30-12:30', sessionName:'VIP私家团体验场', category:'VIP私家团', project:'VIP 私家团 A 线', people:2, created:'08-19 10:21', singleChoice:'需要教练陪同', multiChoice:'儿童护具、防水储物袋', customNumber:'2', customDate:'2026-08-21', singleText:'景区正门集合', multiText:'希望安排熟悉亲子接待的教练。' },
-  { id:4, activityId:1, status:'cancelled', number:'018', name:'周宁', phone:'13500135000', date:'2026-08-19', session:'12:30-13:30', sessionName:'溪降下午体验场', category:'常规溪降', project:'常规溪降 A 线', people:1, created:'08-18 16:40', singleChoice:'无需教练陪同', multiChoice:'成人防滑鞋', customNumber:'1', customDate:'2026-08-19', singleText:'自行到场', multiText:'临时行程变化。' }
+  { id:4, activityId:1, status:'cancelled', number:'018', name:'周宁', phone:'13500135000', date:'2026-08-19', session:'12:30-13:30', sessionName:'溪降下午体验场', category:'常规溪降', project:'常规溪降 A 线', people:1, created:'08-18 16:40', singleChoice:'无需教练陪同', multiChoice:'成人防滑鞋', customNumber:'1', customDate:'2026-08-19', singleText:'自行到场', multiText:'临时行程变化。' },
+  { id:5, activityId:1, status:'active', number:'026', name:'许安然', phone:'13700137000', date:'2026-08-20', session:'12:30-13:30', sessionName:'溪降4场', category:'常规溪降', project:'常规溪降 A 线', people:2, created:'08-20 09:18', singleChoice:'需要教练陪同', multiChoice:'儿童护具、防水储物袋', customNumber:'2', customDate:'2026-08-20', singleText:'游客中心集合', multiText:'同行有一名儿童，请协助准备儿童护具。' },
+  { id:6, activityId:1, status:'active', number:'027', name:'顾晨', phone:'13400134000', date:'2026-08-20', session:'12:30-13:30', sessionName:'溪降4场', category:'常规溪降', project:'常规溪降 B 线', people:1, created:'08-20 09:32', singleChoice:'无需教练陪同', multiChoice:'成人防滑鞋', customNumber:'1', customDate:'2026-08-20', singleText:'景区正门集合', multiText:'无其他特殊说明。' },
+  { id:7, activityId:1, status:'active', number:'028', name:'唐一诺', phone:'13300133000', date:'2026-08-20', session:'14:30', sessionName:'VIP不限额场', category:'VIP私家团', project:'VIP 私家团 A 线', people:2, created:'08-20 10:05', singleChoice:'需要教练陪同', multiChoice:'防水储物袋', customNumber:'2', customDate:'2026-08-20', singleText:'贵宾接待处集合', multiText:'希望由亲子接待教练带队。' },
+  { id:8, activityId:1, status:'active', number:'029', name:'宋妍', phone:'13200132001', date:'2026-08-20', session:'09:30-10:30', sessionName:'溪降1场', category:'常规溪降', project:'常规溪降 A 线', people:2, created:'08-19 14:08', singleChoice:'需要教练陪同', multiChoice:'儿童护具', customNumber:'2', customDate:'2026-08-20', singleText:'游客中心集合', multiText:'同行有儿童。' },
+  { id:9, activityId:1, status:'active', number:'030', name:'陆川', phone:'13200132002', date:'2026-08-20', session:'09:30-10:30', sessionName:'溪降1场', category:'常规溪降', project:'常规溪降 B 线', people:1, created:'08-19 14:22', singleChoice:'无需教练陪同', multiChoice:'成人防滑鞋', customNumber:'1', customDate:'2026-08-20', singleText:'景区正门集合', multiText:'无。' },
+  { id:10, activityId:1, status:'active', number:'031', name:'方宁', phone:'13200132003', date:'2026-08-20', session:'09:30-10:30', sessionName:'溪降1场', category:'常规溪降', project:'常规溪降 A 线', people:2, created:'08-19 14:35', singleChoice:'需要教练陪同', multiChoice:'儿童护具、防水储物袋', customNumber:'2', customDate:'2026-08-20', singleText:'游客中心集合', multiText:'请安排亲子教练。' },
+  { id:11, activityId:1, status:'active', number:'032', name:'魏嘉', phone:'13200132004', date:'2026-08-20', session:'09:30-10:30', sessionName:'溪降1场', category:'常规溪降', project:'常规溪降 B 线', people:1, created:'08-19 14:49', singleChoice:'无需教练陪同', multiChoice:'成人防滑鞋', customNumber:'1', customDate:'2026-08-20', singleText:'酒店接驳点集合', multiText:'无。' },
+  { id:12, activityId:1, status:'active', number:'033', name:'叶晴', phone:'13200132005', date:'2026-08-20', session:'09:30-10:30', sessionName:'溪降1场', category:'常规溪降', project:'常规溪降 A 线', people:2, created:'08-19 15:03', singleChoice:'需要教练陪同', multiChoice:'儿童护具', customNumber:'2', customDate:'2026-08-20', singleText:'游客中心集合', multiText:'同行有儿童。' },
+  { id:13, activityId:1, status:'active', number:'034', name:'韩峰', phone:'13200132006', date:'2026-08-20', session:'09:30-10:30', sessionName:'溪降1场', category:'常规溪降', project:'常规溪降 B 线', people:1, created:'08-19 15:17', singleChoice:'无需教练陪同', multiChoice:'防水储物袋', customNumber:'1', customDate:'2026-08-20', singleText:'景区正门集合', multiText:'无。' },
+  { id:14, activityId:1, status:'active', number:'035', name:'杜一凡', phone:'13200132007', date:'2026-08-20', session:'09:30-10:30', sessionName:'溪降1场', category:'常规溪降', project:'常规溪降 A 线', people:2, created:'08-19 15:31', singleChoice:'需要教练陪同', multiChoice:'成人防滑鞋、防水储物袋', customNumber:'2', customDate:'2026-08-20', singleText:'游客中心集合', multiText:'需要教练讲解安全事项。' },
+  { id:15, activityId:1, status:'active', number:'036', name:'蒋文', phone:'13200132008', date:'2026-08-20', session:'09:30-10:30', sessionName:'溪降1场', category:'常规溪降', project:'常规溪降 B 线', people:1, created:'08-19 15:45', singleChoice:'无需教练陪同', multiChoice:'成人防滑鞋', customNumber:'1', customDate:'2026-08-20', singleText:'酒店接驳点集合', multiText:'无。' }
 ];
 
 function showToast(message) {
@@ -98,12 +111,12 @@ function renderBookings() {
   container.innerHTML = list.map(item => recordView === 'compact' ? `
     <button class="booking-row" data-booking="${item.id}">
       <div class="booking-row-head"><b>预约号 ${item.number}</b><span class="booking-status ${item.status}">${item.status === 'active' ? '已预约' : '已取消'}</span></div>
-      <div class="booking-person"><strong>${item.name}</strong><span>${item.phone}</span><em>${item.people} 人</em></div>
+      <div class="booking-person"><strong>${item.name}</strong><span class="phone-link" data-phone-call="${item.phone}">${item.phone}</span><em>${item.people} 人</em></div>
       <div class="booking-visit"><span>${item.date}</span><span>${item.session}</span><i>›</i></div>
     </button>` : `
     <button class="booking-card" data-booking="${item.id}">
       <div class="booking-row-head"><b>预约号 ${item.number}</b><span class="booking-status ${item.status}">${item.status === 'active' ? '已预约' : '已取消'}</span></div>
-      <div class="booking-detail-grid"><div><span>游客姓名</span><strong>${item.name}</strong></div><div><span>手机号</span><strong>${item.phone}</strong></div><div><span>预约游玩日期</span><strong>${item.date}</strong></div><div><span>预约场次</span><strong>${item.session}</strong></div><div><span>分类</span><strong>${item.category}</strong></div><div><span>项目</span><strong>${item.project}</strong></div><div><span>实际参与人数</span><strong>${item.people} 人</strong></div><div><span>提交时间</span><strong>${item.created}</strong></div></div>
+      <div class="booking-detail-grid"><div><span>游客姓名</span><strong>${item.name}</strong></div><div><span>手机号</span><strong><span class="phone-link" data-phone-call="${item.phone}">${item.phone}</span></strong></div><div><span>预约游玩日期</span><strong>${item.date}</strong></div><div><span>预约场次</span><strong>${item.session}</strong></div>${item.category?`<div><span>分类</span><strong>${item.category}</strong></div>`:''}${item.project?`<div><span>项目</span><strong>${item.project}</strong></div>`:''}<div><span>实际参与人数</span><strong>${item.people} 人</strong></div><div><span>提交时间</span><strong>${item.created}</strong></div></div>
       <div class="booking-enter">查看预约详情 ›</div>
     </button>`).join('');
 }
@@ -189,6 +202,8 @@ document.addEventListener('click', event => {
     $$('[data-record-view]').forEach(item => item.classList.toggle('active',item.dataset.recordView==='compact'));
     navigate('records'); return;
   }
+  const phoneCall = event.target.closest('[data-phone-call]');
+  if (phoneCall) { event.stopPropagation(); window.location.href = `tel:${phoneCall.dataset.phoneCall}`; return; }
   const booking = event.target.closest('[data-booking]');
   if (booking) { openAdminBooking(Number(booking.dataset.booking)); return; }
   const close = event.target.closest('[data-close]');
@@ -208,7 +223,7 @@ document.addEventListener('click', event => {
 });
 
 $('#backButton').addEventListener('click', () => {
-  const backMap = { activities:'workbench', operationActivities:'workbench', config:(window.configReturnPage || 'activities'), operations:'operationActivities', records:'operations', bookingDetail:'records', sessions:'operations', roster:'sessions', export:'operations' };
+  const backMap = { activities:'workbench', operationActivities:'workbench', config:(window.configReturnPage || 'activities'), operations:'operationActivities', records:'operations', bookingDetail:(window.bookingDetailReturnPage || 'records'), sessions:'operations', roster:'sessions', export:'operations' };
   const leave=()=>navigate(backMap[currentPage] || 'workbench');
   if(currentPage==='config'&&window.requestConfigLeave){window.requestConfigLeave(leave);return;}
   leave();

@@ -158,8 +158,8 @@
 
         <section class="page" data-page="sessions">
           <div class="page-scroll session-manage-scroll">
-            <div class="session-filter-grid"><select id="sessionFilterDate"><option>2026-08-14</option><option>2026-08-15</option></select><select><option>全部分类</option><option>常规溪降</option><option>VIP私家团</option></select><select><option>全部项目</option><option>常规溪降 A 线</option><option>常规溪降 B 线</option></select><select><option>全部状态</option><option>开放中</option><option>已过期</option></select></div>
-            <div class="session-result"><span>8月14日 周五</span><b>共 5 个场次</b></div>
+            <div class="session-filter-grid"><input id="sessionFilterDate" type="date" value="2026-08-20" aria-label="预约日期"><select><option>全部分类</option><option>常规溪降</option><option>VIP私家团</option></select><select><option>全部项目</option><option>常规溪降 A 线</option><option>常规溪降 B 线</option></select><select><option>全部状态</option><option>开放中</option><option>已暂停</option><option>已过期</option></select></div>
+            <div class="session-result"><span id="sessionResultDate">8月20日 周四</span><b>共 5 个场次</b></div>
             <div class="session-progress-list" id="sessionProgressList"></div>
           </div>
         </section>
@@ -167,17 +167,21 @@
         <section class="page" data-page="roster">
           <div class="page-scroll roster-scroll">
             <article class="roster-summary" id="rosterSummary"></article>
-            <div class="record-tools"><label class="search-box"><span>⌕</span><input id="rosterSearch" placeholder="预约号、姓名或手机号"></label><div class="view-switch"><button class="active" data-roster-view="compact">简要</button><button data-roster-view="detail">详情</button></div></div>
-            <div class="record-summary"><span id="rosterCount">2 条记录 · 3 人</span><select id="rosterSort"><option value="created">提交时间升序</option><option value="number">预约号升序</option></select></div>
-            <div class="roster-list" id="rosterList"></div>
+            <section class="roster-query-card">
+              <div class="record-tools roster-tools"><label class="search-box"><span>⌕</span><input id="rosterSearch" placeholder="预约号、姓名或手机号"></label><button class="record-filter-toggle" id="rosterFilterToggle" aria-expanded="false"><span>筛选</span><i>⌄</i></button><div class="view-switch"><button class="active" data-roster-view="compact">简要</button><button data-roster-view="detail">详情</button></div></div>
+              <div class="roster-filter-panel" id="rosterFilterPanel" hidden><label><span>关联项目</span><select id="rosterProjectFilter" aria-label="项目筛选"><option value="">全部项目</option></select></label></div>
+              <div class="record-summary roster-result-bar"><span id="rosterCount">2 条记录 · 3 人</span><div><select id="rosterSort"><option value="created-desc">提交时间倒序</option><option value="created-asc">提交时间正序</option></select><button id="rosterFieldSetting">卡片字段</button></div></div>
+            </section>
+            <div class="booking-list compact roster-list" id="rosterList"></div>
           </div>
         </section>
 
         <section class="page" data-page="export">
           <div class="page-scroll export-scroll">
-            <section class="export-card"><h3>导出内容</h3><div class="export-type"><label><input type="radio" name="exportType" value="records" checked><b>预约记录</b><span>导出全部预约单及游客资料</span></label><label><input type="radio" name="exportType" value="roster"><b>场次名单</b><span>按预约日期和场次导出名单</span></label></div></section>
-            <section class="export-card"><h3>数据范围</h3><label class="export-field"><span>预约游玩日期</span><input type="date" id="exportStart" value="2026-08-14"><i>至</i><input type="date" id="exportEnd" value="2026-08-31"></label><label class="export-field" id="exportStatusField"><span>预约状态</span><select id="exportStatus"><option>全部</option><option>已预约</option><option>已取消</option></select></label><button class="export-button" id="generateExport">生成导出文件</button></section>
-            <section class="export-card"><h3>导出记录</h3><div class="export-history" id="exportHistory"><div><span>预约记录_20260814.xlsx</span><small>2026-08-14 10:36 · 已生成</small><button>下载</button></div></div></section>
+            <section class="export-hero"><span>当前预约活动</span><h2>呀诺达溪降体验预约</h2><p>按导出类型和数据范围生成 Excel 文件</p></section>
+            <section class="export-card"><div class="export-card-title"><i>1</i><h3>选择导出内容</h3></div><div class="export-type"><label><input type="radio" name="exportType" value="records" checked><b>预约记录</b><span>导出预约单、预约内容及游客填写资料</span></label><label><input type="radio" name="exportType" value="roster"><b>场次名单</b><span>按预约日期和场次导出有效预约名单</span></label></div></section>
+            <section class="export-card"><div class="export-card-title"><i>2</i><h3>设置数据范围</h3></div><label class="export-field export-date-field"><span>预约游玩日期</span><div class="export-date-range"><input type="date" id="exportStart" value="2026-08-14" aria-label="开始日期"><i>至</i><input type="date" id="exportEnd" value="2026-08-31" aria-label="结束日期"></div></label><label class="export-field" id="exportStatusField"><span>预约状态</span><select id="exportStatus"><option>全部</option><option>已预约</option><option>已取消</option></select></label><button class="export-button" id="generateExport">生成导出文件</button></section>
+            <section class="export-card export-history-card"><div class="export-card-title"><i>3</i><h3>导出记录</h3></div><div class="export-history" id="exportHistory"><div><span>预约记录_20260814.xlsx</span><small>2026-08-14 10:36 · 已生成</small><button>下载</button></div></div></section>
           </div>
         </section>
 
@@ -242,7 +246,7 @@
         </div>
 
         <section class="config-preview-layer original-visitor-preview" id="configPreviewLayer" aria-hidden="true">
-          <div class="original-preview-shell"><iframe id="configPreviewFrame" title="原游客端配置效果" src="../visitor/index.html"></iframe></div>
+          <div class="original-preview-shell"><iframe id="configPreviewFrame" title="原游客端配置效果" src="about:blank"></iframe></div>
         </section>
 
         <div class="toast" id="toast"></div>
