@@ -37,6 +37,8 @@
 .compact-actions .poster-entry{min-width:48px}
 .compact-actions .poster-icon{width:17px;height:17px}
 .compact-actions .poster-entry span{font-size:12px}
+.compact-actions .activity-delete-entry{color:var(--danger)}.compact-actions .activity-delete-entry i{font-size:18px;line-height:16px;font-style:normal}.compact-actions .activity-delete-entry.is-disabled{color:#b7bcc1}.compact-actions .activity-delete-entry[aria-disabled="true"]{cursor:not-allowed}
+.compact-actions .activity-offline-entry{color:#d97706}.compact-actions .activity-offline-entry i{font-size:16px;line-height:16px;font-style:normal;font-weight:700}
 .info-icon{display:grid;place-items:center;width:17px;height:17px;border:1.6px solid currentColor;border-radius:50%;font-size:11px;font-style:normal;font-family:Georgia,serif;font-weight:700}
 .activity-card>.activity-compact-row,.activity-card>.card-footer{display:none}
 

@@ -25,15 +25,27 @@
       {id:2,name:'常规溪降 B 线',category:'常规溪降',image:false,description:'适合亲友同行，路线节奏舒缓。',enabled:true,booked:0},
       {id:3,name:'VIP 私家团 A 线',category:'VIP私家团',image:false,description:'专属教练带队，提供更灵活的体验安排。',enabled:false,booked:3}
     ],
-    categories:['常规溪降','VIP私家团'],
+    categories:['常规溪降','VIP私家团'], categoryStates:{'常规溪降':true,'VIP私家团':true},
     fields:[
-      {name:'预约人姓名',type:'姓名',required:true,autoFill:true,badge:''},
-      {name:'手机号码',type:'手机号',required:true,autoFill:true,badge:''},
-      {name:'身份证号',type:'身份证号',required:false,badge:''},
-      {name:'实际参与人数',type:'多人/团体',required:true,minPeople:1,maxPeople:6,badge:'group'}
+      {id:'name',name:'预约人姓名',type:'姓名',required:true,autoFill:true,badge:''},
+      {id:'phone',name:'手机号码',type:'手机号',required:true,autoFill:true,badge:''},
+      {id:'idNumber',name:'身份证号',type:'身份证号',required:false,badge:''},
+      {id:'people',name:'实际参与人数',type:'多人/团体',required:true,minPeople:1,maxPeople:6,badge:'group'},
+      {id:'singleChoice',name:'是否需要教练陪同',type:'单选',required:true,options:['需要教练陪同','无需教练陪同'],badge:''},
+      {id:'multiChoice',name:'需要准备的装备',type:'多选',required:true,options:['儿童护具','成人防滑鞋','防水储物袋'],minSelect:2,maxSelect:3,badge:''},
+      {id:'customNumber',name:'同行儿童人数',type:'数字',required:false,maxDigits:15,badge:''},
+      {id:'customDate',name:'预计到达日期',type:'日期',required:false,format:'ymd',badge:''},
+      {id:'singleText',name:'集合地点',type:'单行文本',required:false,maxLength:50,badge:''},
+      {id:'multiText',name:'其他需求说明',type:'多行文本',required:false,maxLength:200,badge:''}
     ]
   };
+  const fieldIdFor = (field,index=0) => field.id || ({'姓名':'name','手机号':'phone','身份证号':'idNumber','多人/团体':'people'}[field.type] || `custom-${field.type}-${index}`);
+  window.getCurrentReservationFieldConfig = () => config.fields.map((field,index)=>({...field,id:fieldIdFor(field,index),options:field.options?[...field.options]:undefined}));
   config.sessionsByDate={
+    '2026-08-16':[
+      {name:'历史上午场',time:'10:00-11:00',limit:15,booked:8,projectIds:[1,2],separateProjectQuota:false},
+      {name:'历史中午场',time:'11:00-12:00',limit:15,booked:15,projectIds:[1,2],separateProjectQuota:false}
+    ],
     '2026-08-22':config.sessions.map(item=>({...item})),
     '2026-08-24':config.sessions.map(item=>({...item,booked:0})),
     '2026-08-25':[
@@ -48,6 +60,11 @@
   const activityHasBookings = () => Object.values(config.dateBookedCounts).some(Number)||config.projects.some(item=>item.booked>0);
   let savedConfigSnapshot = JSON.stringify(config);
   let savedActivitySnapshot = '';
+  function restoreActivityDraft(target,saved){
+    if(!target||!saved)return;
+    const operationalStats={totalPeople:target.totalPeople,todayPeople:target.todayPeople};
+    Object.assign(target,saved,operationalStats);
+  }
   function captureSavedState(){savedConfigSnapshot=JSON.stringify(config);savedActivitySnapshot=JSON.stringify(currentActivity||{});}
   function restoreSavedState(){const restored=JSON.parse(savedConfigSnapshot);Object.keys(config).forEach(key=>delete config[key]);Object.assign(config,restored);if(savedActivitySnapshot&&currentActivity)Object.assign(currentActivity,JSON.parse(savedActivitySnapshot));stepDirty=false;q('#configSaveState').textContent='配置已保存';}
   function requestLeave(action){
@@ -73,11 +90,14 @@
     }).join('');
     return `<div class="calendar-month"><button data-calendar-month-shift="-1">‹ 上月</button><b>${year}年${month}月</b><button data-calendar-month-shift="1">下月 ›</button></div><div class="calendar-grid"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>${blanks}${days}</div>`;
   };
-  const enabledProjects = () => config.projectModuleEnabled?config.projects.filter(item=>item.enabled):[];
+  const categoryIsEnabled = name => config.categoryStates?.[name]!==false;
+  const enabledProjects = () => config.projectModuleEnabled?config.projects.filter(item=>item.enabled&&(!item.category||categoryIsEnabled(item.category))):[];
   const displayInitial = name => (String(name||'项').trim().charAt(0)||'项').toUpperCase();
+  const assetUrl = value => window.resolveAdminAsset?.(value)||value;
+  const normalizeRichAssetPaths = html => String(html||'').replace(/(?:\.\.\/)+scenic-reservation\/preview\/assets\/([^"']+)/g,'../visitor/assets/$1').replace(/\.\.\/visitor\/assets\/([^"']+)/g,'../visitor/assets/$1');
   const dragHandle = kind => `<button class="sort-drag-handle" data-sort-handle="${kind}" aria-label="按住拖动排序"><i></i><i></i><i></i></button>`;
-  const projectRows = () => config.projects.map((item,index)=>`<article class="project-summary project-manage-card" data-sort-item="project" data-sort-id="${item.id}">${dragHandle('project')}<div class="project-card-body"><div class="project-card-summary">${item.image?`<img src="${typeof item.image==='string'?item.image:'../visitor/assets/activity-hero.jpg'}" alt="项目图片">`:`<span class="project-placeholder project-initial">${displayInitial(item.name)}</span>`}<div class="project-main"><div class="project-title-row"><b title="${item.name}">${item.name}</b><i class="project-status ${item.enabled?'visible':''}">${item.enabled?'展示中':'已隐藏'}</i></div>${item.description?`<span class="project-description">${item.description}</span>`:'<span class="project-description empty">未填写简介</span>'}</div></div><div class="project-row-actions"><button class="project-state-action ${item.enabled?'is-on':''}" data-toggle-project="${index}">${item.enabled?'禁用':'启用'}</button><button data-edit-project="${index}">编辑</button>${item.booked?'<small>有预约不可删除</small>':`<button class="danger-link" data-delete-project="${index}">删除</button>`}</div></div></article>`).join('');
-  const categoryRows = () => config.categories.map((name,index)=>{const count=config.projects.filter(item=>item.category===name).length;return `<div class="category-row" data-sort-item="category" data-sort-id="${encodeURIComponent(name)}">${dragHandle('category')}<div><b>${name}</b><span>${count}个项目</span></div><div class="category-actions"><button data-category-edit="${index}">编辑</button><button class="danger-link" data-category-delete="${index}">删除</button></div></div>`;}).join('');
+  const projectRows = () => config.projects.map((item,index)=>`<article class="project-summary project-manage-card" data-sort-item="project" data-sort-id="${item.id}">${dragHandle('project')}<div class="project-card-body"><div class="project-card-summary">${item.image?`<img src="${typeof item.image==='string'?assetUrl(item.image):assetUrl('../visitor/assets/activity-hero.jpg')}" alt="项目图片">`:`<span class="project-placeholder project-initial">${displayInitial(item.name)}</span>`}<div class="project-main"><div class="project-title-row"><b title="${item.name}">${item.name}</b><i class="project-status ${item.enabled?'visible':''}">${item.enabled?'展示中':'已隐藏'}</i></div>${item.description?`<span class="project-description">${item.description}</span>`:'<span class="project-description empty">未填写简介</span>'}</div></div><div class="project-row-actions"><button class="project-state-action ${item.enabled?'is-on':''}" data-toggle-project="${index}">${item.enabled?'禁用':'启用'}</button><button data-edit-project="${index}">编辑</button>${item.booked?'<small>有预约不可删除</small>':`<button class="danger-link" data-delete-project="${index}">删除</button>`}</div></div></article>`).join('');
+  const categoryRows = () => config.categories.map((name,index)=>{const count=config.projects.filter(item=>item.category===name).length;const enabled=categoryIsEnabled(name);return `<div class="category-row ${enabled?'':'is-disabled'}" data-sort-item="category" data-sort-id="${encodeURIComponent(name)}">${dragHandle('category')}<div><div class="category-name-line"><b>${name}</b><i class="project-status ${enabled?'visible':''}">${enabled?'启用中':'已禁用'}</i></div><span>${count}个项目${enabled?'':' · 该分类项目不对游客展示'}</span></div><div class="category-actions"><button class="project-state-action ${enabled?'is-on':''}" data-toggle-category="${index}">${enabled?'禁用':'启用'}</button><button data-category-edit="${index}">编辑</button><button class="danger-link" data-category-delete="${index}">删除</button></div></div>`;}).join('');
   const normalizedCategoryName = name => String(name||'').trim().replace(/\s+/g,'').toLocaleLowerCase();
   const categoryNameExists = (name,ignoreIndex=-1) => config.categories.some((item,index)=>index!==ignoreIndex&&normalizedCategoryName(item)===normalizedCategoryName(name));
   const sessionStartMinutes = session => {const start=String(session?.time||'').split('-')[0];const [hour,minute]=start.split(':').map(Number);return Number.isFinite(hour)&&Number.isFinite(minute)?hour*60+minute:Number.MAX_SAFE_INTEGER;};
@@ -110,7 +130,7 @@
     });
     return cloned;
   };
-  const sessionProjectItems = session => config.projectModuleEnabled?config.projects.filter(item=>item.enabled&&(session?.projectIds||[]).includes(item.id)):[];
+  const sessionProjectItems = session => enabledProjects().filter(item=>(session?.projectIds||[]).includes(item.id));
   const sessionProjectRows = (date,sessionIndex,session) => {
     const projects=sessionProjectItems(session);ensureSessionIds(date,config.sessionsByDate[date]||[]);
     if(!projects.length)return '';
@@ -194,8 +214,7 @@
   const publishChecks = () => {
     const futureDates=config.selectedDates.filter(date=>date>='2026-08-18');
     const configuredDates=futureDates.filter(date=>(config.sessionsByDate[date]||[]).length);
-    const overallProjects=config.projects.filter(item=>item.enabled);
-    const requiredTypes=new Set(config.fields.filter(field=>field.required).map(field=>field.type));
+    const overallProjects=enabledProjects();
     const projectSessions=config.projectModuleEnabled?configuredDates.flatMap(date=>(config.sessionsByDate[date]||[]).map(session=>({date,session}))):[];
     const projectSessionReady=overallProjects.length>0;
     const quotaSafe=projectSessions.every(({date,session})=>!session.separateProjectQuota||(session.projectIds||[]).every(projectId=>{const key=sessionProjectKey(date,session,projectId);const quota=config.projectSessionQuotas[key],booked=config.projectSessionBooked[key]||0;return Number.isFinite(quota)&&quota>0&&quota>=booked;}));
@@ -206,7 +225,8 @@
       ['场次时间',configuredDates.every(date=>(config.sessionsByDate[date]||[]).every(session=>/^\d{2}:\d{2}/.test(session.time))), '所有场次均有开始时间'],
       ['项目配置',!config.projectModuleEnabled||overallProjects.length>0,config.projectModuleEnabled?`总体启用 ${overallProjects.length} 个项目`:'项目模块已关闭'],
       ['场次项目',!config.projectModuleEnabled||(projectSessionReady&&quotaSafe),!config.projectModuleEnabled?'仅使用场次库存':projectSessionReady&&quotaSafe?'关联项目与库存模式有效':'请检查项目关联和项目名额'],
-      ['游客资料',requiredTypes.has('姓名')&&requiredTypes.has('手机号'),'姓名、手机号均为必填'],
+      ['游客资料',config.fields.length>=1,config.fields.length?`已配置 ${config.fields.length} 个填写项`:'至少配置 1 个游客填写项'],
+      ['唯一资料类型',['姓名','手机号','身份证号'].every(type=>config.fields.filter(field=>field.type===type).length<=1),['姓名','手机号','身份证号'].every(type=>config.fields.filter(field=>field.type===type).length<=1)?'姓名、手机号、身份证号各不超过1份':'姓名、手机号、身份证号类型不能重复'],
       ['人数统计',config.fields.filter(field=>field.type==='多人/团体').length<=1,config.fields.some(field=>field.type==='多人/团体')?'多人统计模式，最少 1 人':'单人统计模式'],
       ['开放与取消规则',config.bookingCutoffMode!=='advance'||config.bookingCutoffValue>0,config.bookingCutoffMode==='advance'?`预约提前 ${config.bookingCutoffValue} 分钟截止`:`预约截止：${config.bookingCutoffMode==='unlimited'?'不限制':'到场次开始时间'}`],
       ['游客取消规则',!config.visitorCancel||config.visitorCancelMode!=='advance'||config.visitorCancelValue>0,!config.visitorCancel?'游客不可自行取消':config.visitorCancelMode==='advance'?`场次开始前 ${config.visitorCancelValue} 分钟截止取消`:`取消截止：${config.visitorCancelMode==='unlimited'?'不限制':'到场次开始时间'}`]
@@ -247,7 +267,7 @@
       <section class="config-card session-config-card"><div class="session-config-title"><div><h3>各日期场次</h3><p>本月 ${config.selectedDates.filter(date=>date.startsWith(config.sessionMonth)&&date>='2026-08-17').length} 个可约日期</p></div></div><div class="month-list-head"><button data-session-month-shift="-1">‹ 上月</button><b>${Number(config.sessionMonth.slice(0,4))}年${Number(config.sessionMonth.slice(5))}月</b><button data-session-month-shift="1">下月 ›</button></div><div class="date-session-list">${config.selectedDates.filter(date=>date.startsWith(config.sessionMonth)&&date>='2026-08-17').map(date=>{const day=Number(date.slice(-2));const month=Number(date.slice(5,7));const sessions=config.sessionsByDate[date]||[];const mode=sessions.length?{count:sessions.length,time:sessionTimeSummary(sessions)}:null;const booked=config.dateBookedCounts[date]||0;const paused=config.pausedDates.includes(date);const status=paused?'已暂停':booked?'已有预约':'已配置';const statusClass=paused?'paused-tag':booked?'locked-tag':'configured-tag';return `<button class="date-session-row ${paused?'paused-row':booked?'locked-row':''}" data-session-date="${date}"><span class="date-badge"><b>${day}</b><small>${month}月</small></span><span class="date-session-main">${mode?`<b>${mode.count}个场次 <i class="${statusClass}">${status}</i></b><small>${mode.time}${booked?` · ${booked}笔预约`:''}</small>`:'<b>未配置场次 <i class="empty-tag">待配置</i></b><small>点击进入配置，或复用其他日期</small>'}</span><span class="row-chevron">›</span></button>`;}).join('')||'<div class="month-empty">本月暂无已选可约日期</div>'}</div><p class="config-hint">先配置任意一天；其他日期相同时，从该日期复制到目标范围。复制后各日期独立维护。</p></section>`,
 
     () => `${heading(4,'控制游客端剩余名额以及已截止日期、场次的展示方式。')}
-      <section class="config-card"><h3>游客端场次展示</h3>${switchRow('showQuota','向游客展示剩余名额','开启后显示“剩余 X 名”或“名额不限”；关闭后仅显示“可预约”')}${switchRow('hideExpired','隐藏已截止日期和场次','开启后隐藏已截止场次；当天全部场次截止后，当天日期一并隐藏')}<p class="selection-rule-tip"><i>i</i>每次预约固定选择 1 个场次</p></section>`,
+      <section class="config-card"><h3>游客端场次展示</h3>${switchRow('showQuota','向游客展示剩余名额','开启后日期、场次和项目显示“剩余 X 名”或“不限额”；关闭后仅显示“可预约”')}${switchRow('hideExpired','隐藏已截止日期和场次','开启后隐藏已截止场次；当天全部场次截止后，当天日期一并隐藏')}<p class="selection-rule-tip"><i>i</i>每次预约固定选择 1 个场次</p></section>`,
 
     () => `${heading(2,'先配置项目资料和分类，再进入日期与场次设置。')}
       <section class="config-card project-overview-card"><h3>项目模块</h3><div class="switch-row"><div><b>启用项目模块</b><span>${activityHasBookings()?'当前活动已有预约，项目模块状态不可修改':'活动产生预约后，项目模块状态将锁定，不能再切换'}</span></div><button class="mini-switch ${config.projectModuleEnabled?'on':''} ${activityHasBookings()?'is-locked':''}" data-switch="projectModuleEnabled" ${activityHasBookings()?'disabled':''} aria-label="启用项目模块"></button></div>${config.projectModuleEnabled?`<label class="config-field project-theme-field"><span>模块名称 <small><b class="required">*</b> 游客端标题</small></span><input id="projectThemeInput" type="text" value="${config.projectTheme}"></label><p class="selection-rule-tip"><i>i</i>场次可关联一个或多个项目；未关联项目时仍使用场次库存</p>`:`<p class="selection-rule-tip"><i>i</i>游客端不展示项目选择，所有场次只使用场次库存</p>`}</section>
@@ -256,7 +276,7 @@
       `:''}`,
 
     () => `${heading(5,'配置游客填写项、人员统计方式、预约开放截止和取消规则。')}
-      <section class="config-card"><h3>游客填写项 <small>拖动排序</small></h3>${config.fields.map((field,index)=>`<div class="field-row" data-sort-item="field" data-sort-id="${index}">${dragHandle('field')}<div class="field-main"><div class="field-title-line"><b title="${field.name}">${field.name}</b><i class="field-badge ${field.badge}">${field.type}</i></div><span title="${fieldRuleSummary(field)}">${fieldRuleSummary(field)}</span></div><div class="row-actions"><button data-field-edit="${index}">编辑</button></div></div>`).join('')}<button class="config-outline-button" style="width:100%;margin-top:10px" data-config-action="addField">＋ 添加填写项</button><p class="config-hint">添加“多人/团体”控件即进入多人统计模式，按填写人数扣减库存；不添加时一笔预约固定统计1人。</p></section>
+      <section class="config-card"><h3>游客填写项 <small>拖动排序</small></h3>${config.fields.map((field,index)=>`<div class="field-row" data-sort-item="field" data-sort-id="${index}">${dragHandle('field')}<div class="field-main"><div class="field-title-line"><b title="${field.name}">${field.name}</b><i class="field-badge ${field.badge}">${field.type}</i></div><span title="${fieldRuleSummary(field)}">${fieldRuleSummary(field)}</span></div><div class="row-actions"><button data-field-edit="${index}">编辑</button><button class="danger-link" data-field-delete="${index}">删除</button></div></div>`).join('')}<button class="config-outline-button" style="width:100%;margin-top:10px" data-config-action="addField">＋ 添加填写项</button><p class="config-hint">姓名、手机号、身份证号类型各最多配置 1 份。添加“多人/团体”控件即进入多人统计模式，按填写人数扣减库存；不添加时一笔预约固定统计1人。所有填写项均可删除，发布前至少保留 1 项。</p></section>
       <section class="config-card"><h3>预约开放与截止</h3><div class="fixed-setting-row"><span>开放规则</span><b>立即开放</b></div><label class="config-field"><span>预约截止</span><select id="bookingCutoffMode"><option value="unlimited" ${config.bookingCutoffMode==='unlimited'?'selected':''}>不限制</option><option value="start" ${config.bookingCutoffMode==='start'?'selected':''}>到场次开始时间截止</option><option value="advance" ${config.bookingCutoffMode==='advance'?'selected':''}>场次开始前 N 分钟截止</option></select></label><div id="bookingCutoffAdvance" ${config.bookingCutoffMode==='advance'?'':'hidden'}><label class="config-field"><span>提前分钟数</span><input id="bookingCutoffValue" type="number" min="1" inputmode="numeric" value="${config.bookingCutoffValue}" placeholder="请输入分钟数"></label></div><p class="config-hint">游客与管理员均可修改预约资料；日期、场次、分类和项目不可修改，选错需取消后重新预约。</p></section>
       <section class="config-card"><h3>游客取消规则</h3>${switchRow('visitorCancel','允许游客取消预约','管理员始终可以取消预约',true)}${config.visitorCancel?`<label class="config-field" style="margin-top:10px"><span>游客取消截止</span><select id="visitorCancelMode"><option value="unlimited" ${config.visitorCancelMode==='unlimited'?'selected':''}>不限制</option><option value="start" ${config.visitorCancelMode==='start'?'selected':''}>到场次开始时间截止</option><option value="advance" ${config.visitorCancelMode==='advance'?'selected':''}>场次开始前 N 分钟截止</option></select></label><div id="visitorCancelAdvance" ${config.visitorCancelMode==='advance'?'':'hidden'}><label class="config-field"><span>提前分钟数</span><input id="visitorCancelValue" type="number" min="1" inputmode="numeric" value="${config.visitorCancelValue}" placeholder="请输入分钟数"></label></div>`:''}<p class="config-hint">修改实际参与人数时重新校验库存；取消成功后返还场次及项目名额。</p></section>`,
 
@@ -343,6 +363,18 @@
     content.scrollTop = preserveScroll?previousScroll:0;
   }
   const defaultActivityConfigSnapshot=JSON.stringify(config);
+  const buildNewActivityConfig = () => {
+    const fresh=JSON.parse(defaultActivityConfigSnapshot);
+    Object.assign(fresh,{
+      noticeEnabled:false,noticeScope:'special',noticeTitle:'预约必读须知',noticeSeconds:3,noticeHtml:'',detailHtml:'',
+      projectModuleEnabled:false,categoryEnabled:true,projectTheme:'选择项目',projects:[],categories:[],categoryStates:{},
+      selectedDates:[],dateBookedCounts:{},pausedDates:[],pendingRemovalDates:[],calendarMonth:'2026-08',sessionMonth:'2026-08',
+      sessions:[],sessionsByDate:{},sessionModes:{},sessionOperationLogs:[],sessionTemplates:[],projectSessionQuotas:{},projectSessionBooked:{},
+      draftLogo:null,draftCover:null,
+      fields:fresh.fields.filter(field=>field.type!=='多人/团体').map(field=>({...field}))
+    });
+    return fresh;
+  };
   window.openConfig = (activity=activities[0], isNew=false, returnPage='activities') => {
     currentActivity = activity || activities[0]; isNewActivity = isNew; window.configReturnPage = returnPage; stepIndex = 0;
     if(isNewActivity&&!currentActivity.id){
@@ -352,11 +384,13 @@
       Object.assign(currentActivity,{image:null,coverImage:null,totalPeople:0,todayPeople:0,created:now,updated:now,creator:'当前管理员',updater:'当前管理员'});
     }
     const saved=currentActivity.id?readActivityDrafts()[currentActivity.id]:null;
-    const restored=JSON.parse(saved?.config?JSON.stringify(saved.config):defaultActivityConfigSnapshot);
+    const restored=saved?.config?JSON.parse(JSON.stringify(saved.config)):(isNewActivity?buildNewActivityConfig():JSON.parse(defaultActivityConfigSnapshot));
+    restored.categoryStates=Object.fromEntries((restored.categories||[]).map(name=>[name,restored.categoryStates?.[name]!==false]));
     Object.keys(config).forEach(key=>delete config[key]);Object.assign(config,restored);
     Object.entries(config.sessionsByDate||{}).forEach(([date,sessions])=>ensureSessionIds(date,sessions));
-    if(saved?.currentActivity&&saved.currentActivity.id===currentActivity.id)Object.assign(currentActivity,saved.currentActivity);
+    if(saved?.currentActivity&&saved.currentActivity.id===currentActivity.id)restoreActivityDraft(currentActivity,saved.currentActivity);
     stepDirty=false;
+    currentActivity.image=assetUrl(currentActivity.image)||null;currentActivity.coverImage=assetUrl(currentActivity.coverImage)||null;config.detailHtml=normalizeRichAssetPaths(config.detailHtml);config.projects.forEach(item=>{item.image=assetUrl(item.image)||null;});
     config.draftLogo=currentActivity.image||null;config.draftCover=currentActivity.coverImage||null;
     q('#configMode').textContent = isNew ? '新建预约活动' : '编辑预约活动'; q('#configActivityName').textContent = currentActivity.name;
     q('#configSaveState').textContent = isNew ? '尚未发布' : '配置已保存';captureSavedState();navigate('config'); renderConfig();
@@ -381,16 +415,17 @@
   function openSheet(html) { const sheet=q('#configSheet');sheet.classList.remove('session-date-sheet');sheet.innerHTML = `<div class="sheet-handle"></div>${html}`;enhanceMiniPickers(sheet);openLayer('configSheet'); }
   function openDialog(html) { q('#configDialog').innerHTML = html; openLayer('configDialog'); }
   function projectLogoEditorHtml(name,image){
-    const source=typeof image==='string'?image:'../visitor/assets/activity-hero.jpg';
+    const source=typeof image==='string'?assetUrl(image):assetUrl('../visitor/assets/activity-hero.jpg');
     return image?`<div class="project-logo-preview"><img src="${source}" alt="项目LOGO预览"></div><div class="date-toolbar project-logo-actions"><button type="button" data-project-image-action="replace">更换LOGO</button><button type="button" data-project-image-action="remove">删除LOGO</button></div>`:`<div class="logo-empty-wrap project-logo-empty-wrap"><button type="button" class="upload-cover logo-upload logo-empty project-logo-upload-empty" data-project-image-action="replace"><i id="projectLogoInitial">${displayInitial(name)}</i><b>上传项目LOGO</b></button><small class="logo-empty-note">未上传时，项目列表以主题色底＋项目名称首字展示</small></div>`;
   }
   function updateProjectLogoEditor(){const wrap=q('#projectLogoEditor');if(wrap)wrap.innerHTML=projectLogoEditorHtml(q('#sheetProjectName')?.value,window.projectDraftImage);}
   function openProjectEditor(index=null){
-    const item=index===null?{name:'',category:config.categories[0]||'',image:false,description:'',enabled:true,booked:0}:config.projects[index];
+    const firstEnabledCategory=config.categories.find(categoryIsEnabled)||config.categories[0]||'';
+    const item=index===null?{name:'',category:firstEnabledCategory,image:false,description:'',enabled:true,booked:0}:config.projects[index];
     window.editingProjectIndex=index;window.projectDraftImage=item.image||false;
     openSheet(`<h2>${index===null?'添加项目':'编辑项目'}</h2>
       <label class="config-field"><span>项目名称 <small><b class="required">*</b> 30字内</small></span><input id="sheetProjectName" type="text" maxlength="30" value="${item.name}" placeholder="请输入项目名称"></label>
-      <label class="config-field"><span>所属分类 <small>${config.categoryEnabled?'<b class="required">*</b> 必选':'分类未启用'}</small></span><select id="sheetProjectCategory" ${config.categoryEnabled?'':'disabled'}>${config.categories.map((name,categoryIndex)=>`<option ${name===item.category||(!config.categories.includes(item.category)&&categoryIndex===0)?'selected':''}>${name}</option>`).join('')}</select></label>
+      <label class="config-field"><span>所属分类 <small>${config.categoryEnabled?'<b class="required">*</b> 必选':'分类功能已关闭'}</small></span><select id="sheetProjectCategory" ${config.categoryEnabled?'':'disabled'}>${config.categories.map((name,categoryIndex)=>`<option value="${name}" ${name===item.category||(!config.categories.includes(item.category)&&categoryIndex===0)?'selected':''} ${!categoryIsEnabled(name)&&name!==item.category?'disabled':''}>${name}${categoryIsEnabled(name)?'（启用中）':'（已禁用）'}</option>`).join('')}</select></label>
       <div class="config-field"><span>项目LOGO <small>选填 · 建议400×400px</small></span><div id="projectLogoEditor">${projectLogoEditorHtml(item.name,item.image)}</div></div>
       <label class="config-field"><span>项目简介 <small>选填 · 60字内</small></span><textarea id="sheetProjectDescription" maxlength="60" placeholder="简要说明项目特色、适用人群等">${item.description||''}</textarea></label>
       ${item.booked?'<p class="config-hint warn">该项目已有预约，不能删除；禁用后仅影响后续新预约，历史预约继续有效并占用原库存。</p>':''}
@@ -402,7 +437,7 @@
     const sessions=config.sessionsByDate[selectedDate]||[];
     const safeIndex=Math.min(Math.max(0,Number(sessionIndex)||0),Math.max(0,sessions.length-1));
     const session=sessions[safeIndex];
-    const projects=config.projects.filter(item=>item.enabled);
+    const projects=enabledProjects();
     openSheet(`<h2>按日期和场次配置项目名额</h2>
       <label class="config-field"><span>预约日期</span><select id="projectStockDate" data-project-stock-date>${dates.map(item=>`<option value="${item}" ${item===selectedDate?'selected':''}>${item}</option>`).join('')}</select></label>
       <label class="config-field"><span>预约场次</span><select id="projectStockSession" data-project-stock-session>${sessions.map((item,index)=>`<option value="${index}" ${index===safeIndex?'selected':''}>${item.time}${item.name?` · ${item.name}`:''}</option>`).join('')}</select></label>
@@ -411,7 +446,7 @@
       <div class="config-sheet-actions"><button class="secondary" data-close="configSheet">取消</button><button class="primary" data-save-project-session-stock data-date="${selectedDate}" data-session="${safeIndex}">保存名额</button></div>`);
   }
   function openBatchProjectSessionInventory(){
-    const projects=config.projects.filter(item=>item.enabled);
+    const projects=enabledProjects();
     openSheet(`<h2>批量配置项目名额</h2>
       <div class="choice-grid"><label class="choice-card"><input type="radio" name="batchProjectStockScope" value="all" checked><b>全部未来已配置日期</b><span>应用到今天及以后所有已有场次的日期</span></label><label class="choice-card"><input type="radio" name="batchProjectStockScope" value="range"><b>指定日期范围</b><span>仅应用到范围内已经配置的日期和场次</span></label></div>
       <div class="batch-stock-range" id="batchProjectStockRange" hidden><div class="two-fields"><label class="config-field"><span>开始日期</span><input id="batchProjectStockStart" type="date" min="2026-08-18"></label><label class="config-field"><span>截止日期</span><input id="batchProjectStockEnd" type="date" min="2026-08-18"></label></div></div>
@@ -506,7 +541,7 @@
       const firstProject=enabledProjects()[0];
       container.innerHTML=`<div class="preview-source-note">以下字段来自“C06 游客预约配置”的当前配置，仅展示页面效果，不提交预约</div><section class="visitor-section"><div class="visitor-section-title"><h3>本次预约</h3><span>日期和场次不可修改</span></div><div class="visitor-summary"><div><span>预约日期</span><b>2026-08-15</b></div><div><span>预约场次</span><b>${config.sessions[0]?.time||'09:30-10:30'}</b></div>${firstProject?`<div><span>分类</span><b>${firstProject.category||''}</b></div><div><span>项目</span><b>${firstProject.name}</b></div>`:''}</div></section><section class="visitor-section"><div class="visitor-section-title"><h3>预约人信息</h3><span>${config.fields.some(f=>f.type==='多人/团体')?'多人统计模式':'单人统计模式'}</span></div>${config.fields.map(previewField).join('')}</section><div class="preview-bottom"><button disabled>仅查看展示效果</button></div>`; return;
     }
-    const visibleProjects=config.categoryEnabled?enabledProjects().filter(item=>config.categories.includes(item.category)):enabledProjects();
+    const visibleProjects=config.categoryEnabled?enabledProjects().filter(item=>config.categories.includes(item.category)&&categoryIsEnabled(item.category)):enabledProjects();
     const previewDate=config.selectedDates.find(date=>(config.sessionsByDate[date]||[]).length)||'2026-08-22';
     const previewDateSessions=config.sessionsByDate[previewDate]||config.sessions;
     const previewSession=previewDateSessions[0]||{limit:null,booked:0};
@@ -519,7 +554,7 @@
   }
   function buildVisitorConfig() {
     const enabledProjectItems=enabledProjects();
-    const visibleProjects=config.categoryEnabled?enabledProjectItems.filter(item=>config.categories.includes(item.category)):enabledProjectItems;
+    const visibleProjects=config.categoryEnabled?enabledProjectItems.filter(item=>config.categories.includes(item.category)&&categoryIsEnabled(item.category)):enabledProjectItems;
     const visibleCategoryNames=[...new Set(visibleProjects.map(item=>item.category).filter(Boolean))];
     const categories=config.categoryEnabled?visibleCategoryNames.map((name,index)=>({id:`category-${index}`,name})):[{id:'all',name:''}];
     const categoryId=name=>config.categoryEnabled?`category-${Math.max(0,visibleCategoryNames.indexOf(name||''))}`:'all';
@@ -553,7 +588,7 @@
       sessions:visitorSessions(config.sessions),
       sessionsByDate:Object.fromEntries(visibleDates.map(date=>[date,visitorSessions(config.sessionsByDate[date]||[],date)])),
       projects:visibleProjects.map(item=>({id:`project-${item.id}`,name:item.name,categoryId:categoryId(item.category),desc:item.description||'',image:item.image,state:'open',unlimited:true,quota:0,showQuota:config.showQuota,inventoryMode:'project-session'})),projectsBySession,
-      fields:config.fields.map(field=>({...field,options:field.options?[...field.options]:undefined}))
+      fields:config.fields.map((field,index)=>({...field,id:fieldIdFor(field,index),options:field.options?[...field.options]:undefined}))
     };
     return previewConfig;
   }
@@ -621,22 +656,24 @@
     const saveSession=event.target.closest('[data-save-session]'); if(saveSession){const date=window.editingSessionDate;const item=config.sessionsByDate[date][Number(saveSession.dataset.saveSession)];item.name=q('#sheetSessionName').value.trim().slice(0,10);markDirty();renderConfig(true);openSessionDateEditor(date);return;}
     const toggleSessionProject=event.target.closest('[data-session-project-toggle]');if(toggleSessionProject){const key=sessionProjectKey(toggleSessionProject.dataset.date,toggleSessionProject.dataset.session,toggleSessionProject.dataset.project);const next=config.projectSessionEnabled[key]===false;config.projectSessionEnabled[key]=next;toggleSessionProject.classList.toggle('on',next);toggleSessionProject.setAttribute('aria-label',toggleSessionProject.getAttribute('aria-label').replace(next?'已禁用':'已启用',next?'已启用':'已禁用'));const row=toggleSessionProject.closest('.session-project-row');row?.classList.toggle('is-disabled',!next);const quota=row?.querySelector('[data-session-project-quota]');if(quota)quota.disabled=!next;markDirty();return;}
     const editProject=event.target.closest('[data-edit-project]');if(editProject){openProjectEditor(Number(editProject.dataset.editProject));return;}
-    const toggleProject=event.target.closest('[data-toggle-project]');if(toggleProject){const item=config.projects[Number(toggleProject.dataset.toggleProject)];item.enabled=!item.enabled;markDirty();renderConfig(true);showToast(item.enabled?'项目已启用，保存后游客端展示':'项目已禁用，历史预约不受影响');return;}
+    const toggleCategory=event.target.closest('[data-toggle-category]');if(toggleCategory){const index=Number(toggleCategory.dataset.toggleCategory);const name=config.categories[index];const next=!categoryIsEnabled(name);if(!next){const projectIds=config.projects.filter(item=>item.category===name).map(item=>item.id);const bookedFuture=[];Object.entries(config.sessionsByDate).forEach(([date,sessions])=>{if(date<'2026-08-18')return;(sessions||[]).forEach(session=>{if(session.booked>0&&(session.projectIds||[]).some(id=>projectIds.includes(id)))bookedFuture.push(`${date} ${session.time}`);});});if(bookedFuture.length){showToast('该分类下项目仍被有预约的未来场次使用，不能禁用');return;}Object.entries(config.sessionsByDate).forEach(([date,sessions])=>{if(date<'2026-08-18')return;(sessions||[]).forEach(session=>{const removed=(session.projectIds||[]).filter(id=>projectIds.includes(id));if(!removed.length)return;session.projectIds=session.projectIds.filter(id=>!projectIds.includes(id));removed.forEach(projectId=>{delete config.projectSessionQuotas[sessionProjectKey(date,session,projectId)];delete config.projectSessionBooked[sessionProjectKey(date,session,projectId)];});if(session.separateProjectQuota&&session.projectIds.length){session.limit=session.projectIds.reduce((sum,projectId)=>sum+(config.projectSessionQuotas[sessionProjectKey(date,session,projectId)]||0),0);}else if(!session.projectIds.length){session.separateProjectQuota=false;}});});}config.categoryStates=config.categoryStates||{};config.categoryStates[name]=next;markDirty();renderConfig(true);showToast(next?'分类已启用，分类下启用项目可重新关联场次':'分类已禁用，分类下项目不再对游客展示');return;}
     const deleteProject=event.target.closest('[data-delete-project]');if(deleteProject){const index=Number(deleteProject.dataset.deleteProject);const item=config.projects[index];if(item.booked){showToast('项目已有预约，不能删除');return;}openDialog(`<h2>确认删除项目？</h2><p>“${item.name}”尚无预约记录，删除后不可恢复。</p><div class="dialog-actions"><button class="secondary" data-close="configDialog">取消</button><button class="primary" data-confirm-delete-project="${index}">确认删除</button></div>`);return;}
     const confirmDeleteProject=event.target.closest('[data-confirm-delete-project]');if(confirmDeleteProject){config.projects.splice(Number(confirmDeleteProject.dataset.confirmDeleteProject),1);closeLayer('configDialog');markDirty();renderConfig(true);showToast('项目已删除，请保存当前步骤');return;}
     const projectImageAction=event.target.closest('[data-project-image-action]');if(projectImageAction){if(projectImageAction.dataset.projectImageAction==='remove'){window.projectDraftImage=false;updateProjectLogoEditor();return;}const input=document.createElement('input');input.type='file';input.accept='image/*';input.addEventListener('change',()=>{const file=input.files?.[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{window.projectDraftImage=reader.result;updateProjectLogoEditor();};reader.readAsDataURL(file);});input.click();return;}
-    const saveProject=event.target.closest('[data-save-project]');if(saveProject){const name=q('#sheetProjectName').value.trim();if(!name){showToast('请输入项目名称');return;}const category=config.categoryEnabled?q('#sheetProjectCategory').value:'';if(config.categoryEnabled&&!category){showToast('请选择项目分类');return;}const original=saveProject.dataset.saveProject==='new'?null:config.projects[Number(saveProject.dataset.saveProject)];const next={id:original?.id||Date.now(),name:name.slice(0,30),category,image:window.projectDraftImage||false,description:q('#sheetProjectDescription').value.trim().slice(0,60),enabled:original?.enabled??true,booked:original?.booked||0};if(original)Object.assign(original,next);else config.projects.push(next);closeLayer('configSheet');markDirty();renderConfig(true);showToast(original?'项目已更新，请保存当前步骤':'项目已添加并默认启用，请保存当前步骤');return;}
+    const saveProject=event.target.closest('[data-save-project]');if(saveProject){const name=q('#sheetProjectName').value.trim();if(!name){showToast('请输入项目名称');return;}const category=q('#sheetProjectCategory')?.value||'';if(config.categoryEnabled&&!category){showToast('请选择项目分类');return;}if(config.categoryEnabled&&!categoryIsEnabled(category)){showToast('所选分类已禁用，请选择启用中的分类');return;}const original=saveProject.dataset.saveProject==='new'?null:config.projects[Number(saveProject.dataset.saveProject)];const next={id:original?.id||Date.now(),name:name.slice(0,30),category,image:window.projectDraftImage||false,description:q('#sheetProjectDescription').value.trim().slice(0,60),enabled:original?.enabled??true,booked:original?.booked||0};if(original)Object.assign(original,next);else config.projects.push(next);closeLayer('configSheet');markDirty();renderConfig(true);showToast(original?'项目已更新，请保存当前步骤':'项目已添加并默认启用，请保存当前步骤');return;}
     const editCategory=event.target.closest('[data-category-edit]');if(editCategory){const index=Number(editCategory.dataset.categoryEdit);openSheet(`<h2>编辑分类</h2><label class="config-field"><span>分类名称 <small><b class="required">*</b></small></span><input id="sheetCategoryName" type="text" maxlength="20" value="${config.categories[index]}"></label><div class="config-sheet-actions"><button class="secondary" data-close="configSheet">取消</button><button class="primary" data-save-category="${index}">保存分类</button></div>`);return;}
     const deleteCategory=event.target.closest('[data-category-delete]');if(deleteCategory){const index=Number(deleteCategory.dataset.categoryDelete);const name=config.categories[index];const count=config.projects.filter(item=>item.category===name).length;if(count){showToast(`“${name}”下还有 ${count} 个项目，请先将项目移至其他分类`);return;}openDialog(`<h2>确认删除分类？</h2><p>“${name}”下没有项目，删除后不可恢复。</p><div class="dialog-actions"><button class="secondary" data-close="configDialog">取消</button><button class="primary" data-confirm-delete-category="${index}">确认删除</button></div>`);return;}
-    const confirmDeleteCategory=event.target.closest('[data-confirm-delete-category]');if(confirmDeleteCategory){config.categories.splice(Number(confirmDeleteCategory.dataset.confirmDeleteCategory),1);closeLayer('configDialog');markDirty();renderConfig(true);showToast('分类已删除，请保存当前步骤');return;}
-    const saveCategory=event.target.closest('[data-save-category]');if(saveCategory){const index=Number(saveCategory.dataset.saveCategory);const oldName=config.categories[index];const name=q('#sheetCategoryName').value.trim();if(!name){showToast('请输入分类名称');return;}if(categoryNameExists(name,index)){showToast('分类名称已存在，请更换');return;}config.categories[index]=name;config.projects.forEach(item=>{if(item.category===oldName)item.category=name;});closeLayer('configSheet');markDirty();renderConfig(true);showToast('分类已更新，请保存当前步骤');return;}
-    const saveNewCategory=event.target.closest('[data-save-new-category]');if(saveNewCategory){const name=q('#sheetCategoryName').value.trim();if(!name){showToast('请输入分类名称');return;}if(categoryNameExists(name)){showToast('分类名称已存在，请更换');return;}config.categories.push(name);closeLayer('configSheet');markDirty();renderConfig(true);showToast('分类已添加，请保存当前步骤');return;}
+    const confirmDeleteCategory=event.target.closest('[data-confirm-delete-category]');if(confirmDeleteCategory){const index=Number(confirmDeleteCategory.dataset.confirmDeleteCategory);const name=config.categories[index];config.categories.splice(index,1);if(config.categoryStates)delete config.categoryStates[name];closeLayer('configDialog');markDirty();renderConfig(true);showToast('分类已删除，请保存当前步骤');return;}
+    const saveCategory=event.target.closest('[data-save-category]');if(saveCategory){const index=Number(saveCategory.dataset.saveCategory);const oldName=config.categories[index];const name=q('#sheetCategoryName').value.trim();if(!name){showToast('请输入分类名称');return;}if(categoryNameExists(name,index)){showToast('分类名称已存在，请更换');return;}config.categories[index]=name;config.categoryStates=config.categoryStates||{};config.categoryStates[name]=categoryIsEnabled(oldName);if(name!==oldName)delete config.categoryStates[oldName];config.projects.forEach(item=>{if(item.category===oldName)item.category=name;});closeLayer('configSheet');markDirty();renderConfig(true);showToast('分类已更新，请保存当前步骤');return;}
+    const saveNewCategory=event.target.closest('[data-save-new-category]');if(saveNewCategory){const name=q('#sheetCategoryName').value.trim();if(!name){showToast('请输入分类名称');return;}if(categoryNameExists(name)){showToast('分类名称已存在，请更换');return;}config.categories.push(name);config.categoryStates=config.categoryStates||{};config.categoryStates[name]=true;closeLayer('configSheet');markDirty();renderConfig(true);showToast('分类已添加并启用，请保存当前步骤');return;}
     const saveProjectStock=event.target.closest('[data-save-project-session-stock]');if(saveProjectStock){const date=saveProjectStock.dataset.date;const sessionIndex=Number(saveProjectStock.dataset.session);qa('[data-project-stock-id]',q('#configSheet')).forEach(input=>{const key=sessionProjectKey(date,sessionIndex,input.dataset.projectStockId);if(input.value==='')delete config.projectSessionQuotas[key];else config.projectSessionQuotas[key]=Math.max(1,Number(input.value)||1);});closeLayer('configSheet');markDirty();renderConfig(true);showToast('当前日期和场次的项目名额已保存');return;}
     const saveBatchProjectStock=event.target.closest('[data-save-batch-project-stock]');if(saveBatchProjectStock){const scope=q('input[name="batchProjectStockScope"]:checked')?.value||'all';const start=q('#batchProjectStockStart')?.value,end=q('#batchProjectStockEnd')?.value;if(scope==='range'&&(!start||!end||start>end)){showToast('请选择正确的开始和截止日期');return;}const dates=config.selectedDates.filter(date=>date>='2026-08-18'&&(config.sessionsByDate[date]||[]).length&&(scope==='all'||(date>=start&&date<=end)));if(!dates.length){showToast('所选范围内没有已配置场次的日期');return;}const values={};qa('[data-batch-project-stock-id]',q('#configSheet')).forEach(input=>values[input.dataset.batchProjectStockId]=input.value===''?null:Math.max(1,Number(input.value)||1));const blocked=[];dates.forEach(date=>(config.sessionsByDate[date]||[]).forEach(session=>Object.entries(values).forEach(([projectId,quota])=>{const key=sessionProjectKey(date,session,projectId);const booked=config.projectSessionBooked[key]||0;if(quota!==null&&quota<booked)blocked.push(`${date} ${session.time}`);})));if(blocked.length){showToast(`有 ${blocked.length} 个项目场次名额低于已预约人数，请单独调整`);return;}let sessionCount=0;dates.forEach(date=>(config.sessionsByDate[date]||[]).forEach(session=>{sessionCount++;Object.entries(values).forEach(([projectId,quota])=>{const key=sessionProjectKey(date,session,projectId);if(quota===null)delete config.projectSessionQuotas[key];else config.projectSessionQuotas[key]=quota;});}));closeLayer('configSheet');markDirty();renderConfig(true);showToast(`已应用到 ${dates.length} 个日期、${sessionCount} 个场次`);return;}
     const editField=event.target.closest('[data-field-edit]');if(editField){openFieldEditor(Number(editField.dataset.fieldEdit));return;}
+    const deleteField=event.target.closest('[data-field-delete]');if(deleteField){const index=Number(deleteField.dataset.fieldDelete);const field=config.fields[index];openDialog(`<h2>确认删除填写项？</h2><p>将删除“${field.name}”。历史预约仍保留提交时的字段内容。</p><div class="dialog-actions"><button class="secondary" data-close="configDialog">取消</button><button class="primary danger" data-confirm-delete-field="${index}">确认删除</button></div>`);return;}
+    const confirmDeleteField=event.target.closest('[data-confirm-delete-field]');if(confirmDeleteField){config.fields.splice(Number(confirmDeleteField.dataset.confirmDeleteField),1);closeLayer('configDialog');markDirty();renderConfig(true);showToast(config.fields.length?'填写项已删除，请保存当前步骤':'填写项已全部删除；保存后仍需至少添加 1 项才能发布');return;}
     const addFieldOption=event.target.closest('[data-add-field-option]');if(addFieldOption){syncFieldDraftFromSheet();window.fieldDraft.options=[...(window.fieldDraft.options||[]),`选项${(window.fieldDraft.options||[]).length+1}`];openFieldEditor(window.editingFieldIndex,window.fieldDraft.type,window.fieldDraft);return;}
     const removeFieldOption=event.target.closest('[data-remove-field-option]');if(removeFieldOption){syncFieldDraftFromSheet();if(window.fieldDraft.options.length<=2){showToast('单选、多选至少保留2个选项');return;}window.fieldDraft.options.splice(Number(removeFieldOption.dataset.removeFieldOption),1);openFieldEditor(window.editingFieldIndex,window.fieldDraft.type,window.fieldDraft);return;}
-    const saveFieldEditor=event.target.closest('[data-save-field-editor]');if(saveFieldEditor){syncFieldDraftFromSheet();const draft=window.fieldDraft;draft.name=String(draft.name||'').trim();if(!draft.name){showToast('请输入填写项名称');return;}if(['单选','多选'].includes(draft.type)){draft.options=(draft.options||[]).map(item=>item.trim()).filter(Boolean);if(draft.options.length<2){showToast('请至少配置2个有效选项');return;}if(new Set(draft.options).size!==draft.options.length){showToast('选项名称不能重复');return;}}if(draft.type==='多选'){draft.minSelect=draft.required?Math.max(2,draft.minSelect||2):Math.max(0,draft.minSelect||0);draft.maxSelect=Math.min(draft.options.length,Math.max(1,draft.maxSelect||draft.options.length));if(draft.minSelect>draft.maxSelect){showToast('最少选择数量不能大于最多选择数量');return;}}if(draft.type==='多人/团体'){draft.required=true;draft.minPeople=1;draft.maxPeople=Math.max(1,draft.maxPeople||1);if(window.editingFieldIndex===null&&config.fields.some(field=>field.type==='多人/团体')){showToast('一个活动最多添加1个多人/团体控件');return;}}if(window.editingFieldIndex===null)config.fields.push(draft);else config.fields[window.editingFieldIndex]=draft;closeLayer('configSheet');window.fieldDraft=null;window.editingFieldIndex=null;markDirty();renderConfig(true);showToast('填写项已更新，请保存当前步骤');return;}
+    const saveFieldEditor=event.target.closest('[data-save-field-editor]');if(saveFieldEditor){syncFieldDraftFromSheet();const draft=window.fieldDraft;draft.name=String(draft.name||'').trim();if(!draft.name){showToast('请输入填写项名称');return;}if(['单选','多选'].includes(draft.type)){draft.options=(draft.options||[]).map(item=>item.trim()).filter(Boolean);if(draft.options.length<2){showToast('请至少配置2个有效选项');return;}if(new Set(draft.options).size!==draft.options.length){showToast('选项名称不能重复');return;}}if(draft.type==='多选'){draft.minSelect=draft.required?Math.max(2,draft.minSelect||2):Math.max(0,draft.minSelect||0);draft.maxSelect=Math.min(draft.options.length,Math.max(1,draft.maxSelect||draft.options.length));if(draft.minSelect>draft.maxSelect){showToast('最少选择数量不能大于最多选择数量');return;}}if(draft.type==='多人/团体'){draft.required=true;draft.minPeople=1;draft.maxPeople=Math.max(1,draft.maxPeople||1);if(window.editingFieldIndex===null&&config.fields.some(field=>field.type==='多人/团体')){showToast('一个活动最多添加1个多人/团体控件');return;}}if(window.editingFieldIndex===null){draft.id=fieldIdFor(draft,Date.now());config.fields.push(draft);}else{draft.id=config.fields[window.editingFieldIndex].id||fieldIdFor(draft,window.editingFieldIndex);config.fields[window.editingFieldIndex]=draft;}closeLayer('configSheet');window.fieldDraft=null;window.editingFieldIndex=null;markDirty();renderConfig(true);showToast('填写项已更新，请保存当前步骤');return;}
     const action=event.target.closest('[data-config-action]'); if(!action) return; const type=action.dataset.configAction;
     if(type==='replaceLogo'){
       const input=document.createElement('input');input.type='file';input.accept='image/*';
@@ -706,14 +743,15 @@
   }
   document.addEventListener('input',event=>{if(['batchSessionStart','batchSessionEnd'].includes(event.target.id))updateBatchSessionResult();if(event.target.id==='sheetProjectName'&&!window.projectDraftImage){const initial=q('#projectLogoInitial');if(initial)initial.textContent=displayInitial(event.target.value);}});
   document.addEventListener('change',event=>{if(['batchSessionStart','batchSessionEnd','batchSessionInterval'].includes(event.target.id))updateBatchSessionResult();});
-  document.addEventListener('click',event=>{const add=event.target.closest('[data-add-field-type]');if(add){openFieldEditor(null,add.dataset.addFieldType);return;}const confirm=event.target.closest('[data-confirm-config]');if(confirm){closeLayer('configSheet');markDirty();showToast(`${confirm.dataset.confirmConfig}，请保存当前步骤`);}});
+  document.addEventListener('click',event=>{const add=event.target.closest('[data-add-field-type]');if(add){const type=add.dataset.addFieldType;if(['姓名','手机号','身份证号'].includes(type)&&config.fields.some(field=>field.type===type)){showToast(`${type}类型最多配置1份`);return;}openFieldEditor(null,type);return;}const confirm=event.target.closest('[data-confirm-config]');if(confirm){closeLayer('configSheet');markDirty();showToast(`${confirm.dataset.confirmConfig}，请保存当前步骤`);}});
+  document.addEventListener('click',event=>{if(!event.target.closest('[data-config-action="addField"]'))return;queueMicrotask(()=>['姓名','手机号','身份证号'].forEach(type=>{if(!config.fields.some(field=>field.type===type))return;const button=q(`[data-add-field-type="${type}"]`,q('#configSheet'));if(!button)return;button.disabled=true;const note=q('span',button);if(note)note.textContent='已添加，仅可配置一份';}));});
   q('#configPrev').addEventListener('click',()=>{requestLeave(()=>{if(stepIndex===0){navigate(window.configReturnPage||'activities');return;}stepIndex--;renderConfig();});});
   q('#configSave').addEventListener('click',()=>{saveCurrent();});
   q('#configNext').addEventListener('click',()=>{requestLeave(()=>{if(stepIndex<steps.length-1){stepIndex++;renderConfig();}});});
   q('#configContent').addEventListener('input',()=>markDirty());
   q('#configContent').addEventListener('change',()=>markDirty());
-  document.addEventListener('click',event=>{if(event.target.id==='publishConfig'){if(stepDirty){showToast('请先保存当前配置，再进行发布');return;}const failed=publishChecks().filter(item=>!item[1]);if(failed.length){showToast(`还有 ${failed.length} 项发布检查未通过`);q('.publish-check .missing')?.scrollIntoView({behavior:'smooth',block:'center'});return;}const wasPublished=currentActivity.status==='published';localStorage.setItem('scenicPublishedConfig',JSON.stringify(buildVisitorConfig()));currentActivity.status='published';isNewActivity=false;saveActivityDraft();q('#configMode').textContent='编辑预约活动';q('#configSaveState').textContent='已上架 · 刚刚更新';renderConfig(true);renderActivities();showToast(wasPublished?'发布更新成功，线上版本已更新':'发布成功，活动已上架');}});
-  document.addEventListener('click',event=>{if(event.target.id==='offlineConfig'){openDialog('<h2>确认下架活动？</h2><p>下架后停止接受新预约；历史预约仍可查看、修改和取消。已保存配置继续保留，之后可重新发布。</p><div class="dialog-actions"><button class="secondary" data-close="configDialog">暂不下架</button><button class="danger" id="confirmOfflineConfig">确认下架</button></div>');return;}if(event.target.id==='confirmOfflineConfig'){currentActivity.status='offline';saveActivityDraft();closeLayer('configDialog');q('#configSaveState').textContent='已下架 · 配置已保存';renderConfig(true);renderActivities();showToast('活动已下架，停止接受新预约');}});
+  document.addEventListener('click',event=>{if(event.target.id==='publishConfig'){if(stepDirty){showToast('请先保存当前配置，再进行发布');return;}const failed=publishChecks().filter(item=>!item[1]);if(failed.length){showToast(`还有 ${failed.length} 项发布检查未通过`);q('.publish-check .missing')?.scrollIntoView({behavior:'smooth',block:'center'});return;}const wasPublished=currentActivity.status==='published';const visitorConfig=buildVisitorConfig();localStorage.setItem('scenicPublishedConfig',JSON.stringify(visitorConfig));const publishedMap=JSON.parse(localStorage.getItem('scenicPublishedActivitiesV34')||'{}');publishedMap[String(currentActivity.id)]={activityId:String(currentActivity.id),publishedAt:new Date().toISOString(),config:visitorConfig};localStorage.setItem('scenicPublishedActivitiesV34',JSON.stringify(publishedMap));currentActivity.status='published';isNewActivity=false;saveActivityDraft();window.syncVisitorActivityCatalog?.(currentActivity.id);q('#configMode').textContent='编辑预约活动';q('#configSaveState').textContent='已上架 · 刚刚更新';renderConfig(true);renderActivities();showToast(wasPublished?'发布更新成功，线上版本已更新':'发布成功，活动已上架');}});
+  document.addEventListener('click',event=>{if(event.target.id==='offlineConfig'){openDialog('<h2>确认下架活动？</h2><p>下架后停止接受新预约；历史预约仍可查看、修改和取消。已保存配置继续保留，之后可重新发布。</p><div class="dialog-actions"><button class="secondary" data-close="configDialog">暂不下架</button><button class="danger" id="confirmOfflineConfig">确认下架</button></div>');return;}if(event.target.id==='confirmOfflineConfig'){currentActivity.status='offline';const publishedMap=JSON.parse(localStorage.getItem('scenicPublishedActivitiesV34')||'{}');delete publishedMap[String(currentActivity.id)];localStorage.setItem('scenicPublishedActivitiesV34',JSON.stringify(publishedMap));saveActivityDraft();window.syncVisitorActivityCatalog?.(null,currentActivity.id);closeLayer('configDialog');q('#configSaveState').textContent='已下架 · 配置已保存';renderConfig(true);renderActivities();showToast('活动已下架，停止接受新预约');}});
   q('#configPreviewOpen').addEventListener('click',()=>{previewTab=stepIndex===5?'form':stepIndex===1?'notice':'select';openPreview();});
   window.requestConfigLeave=requestLeave;
   q('#configPreviewTabs')?.addEventListener('click',event=>{const button=event.target.closest('[data-preview-tab]');if(!button)return;previewTab=button.dataset.previewTab;renderPreview();});
@@ -746,17 +784,19 @@
   function readActivityDrafts(){try{return JSON.parse(localStorage.getItem(draftStorageKey)||'{}')||{};}catch(error){localStorage.removeItem(draftStorageKey);return {};}}
   function saveActivityDraft(){if(!currentActivity?.id)return;const drafts=readActivityDrafts();drafts[currentActivity.id]={config,currentActivity:{...currentActivity}};localStorage.setItem(draftStorageKey,JSON.stringify(drafts));localStorage.removeItem('scenicDraftConfigV34');}
   const storedActivityDrafts=readActivityDrafts();
-  activities.forEach(activity=>{const savedActivity=storedActivityDrafts[activity.id]?.currentActivity;if(savedActivity?.id===activity.id)Object.assign(activity,savedActivity);});
+  activities.forEach(activity=>{const savedActivity=storedActivityDrafts[activity.id]?.currentActivity;if(savedActivity?.id===activity.id)restoreActivityDraft(activity,savedActivity);});
   currentActivity = currentActivity || activities[0];
   try{
     const drafts=readActivityDrafts();
     const saved=drafts[currentActivity.id];
     if(saved?.config){Object.assign(config,saved.config);Object.entries(config.sessionsByDate||{}).forEach(([date,sessions])=>ensureSessionIds(date,sessions));}
-    if(saved?.currentActivity&&saved.currentActivity.id===currentActivity.id)Object.assign(currentActivity,saved.currentActivity);
+    if(saved?.currentActivity&&saved.currentActivity.id===currentActivity.id)restoreActivityDraft(currentActivity,saved.currentActivity);
     const legacy=JSON.parse(localStorage.getItem('scenicDraftConfigV34')||'null');
-    if(legacy?.currentActivity?.id){const matched=activities.find(item=>item.id===legacy.currentActivity.id);if(matched)Object.assign(matched,legacy.currentActivity);localStorage.removeItem('scenicDraftConfigV34');}
+    if(legacy?.currentActivity?.id){const matched=activities.find(item=>item.id===legacy.currentActivity.id);if(matched)restoreActivityDraft(matched,legacy.currentActivity);localStorage.removeItem('scenicDraftConfigV34');}
   }catch(error){localStorage.removeItem('scenicDraftConfigV34');}
-  if(config.categoryEnabled){const fallbackCategory=config.categories[0]||'';config.projects.forEach(item=>{if(!config.categories.includes(item.category))item.category=fallbackCategory;});}
+  config.categoryStates=Object.fromEntries((config.categories||[]).map(name=>[name,config.categoryStates?.[name]!==false]));
+  if(config.categoryEnabled){const fallbackCategory=config.categories.find(categoryIsEnabled)||config.categories[0]||'';config.projects.forEach(item=>{if(!config.categories.includes(item.category))item.category=fallbackCategory;});}
+  currentActivity.image=assetUrl(currentActivity.image)||null;currentActivity.coverImage=assetUrl(currentActivity.coverImage)||null;config.detailHtml=normalizeRichAssetPaths(config.detailHtml);config.projects.forEach(item=>{item.image=assetUrl(item.image)||null;});
   config.draftLogo=currentActivity.image||null;config.draftCover=currentActivity.coverImage||null;
   q('#configActivityName').textContent = currentActivity.name;
   captureSavedState();

@@ -1,23 +1,47 @@
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+const resolveAdminAsset = value => {
+  if (!value || typeof value !== 'string' || /^(data:|blob:|https?:|\/)/.test(value)) return value;
+  const file = value.match(/(?:scenic-reservation\/preview|visitor)\/assets\/([^?#]+)/)?.[1];
+  return file ? new URL(`../visitor/assets/${file}`, document.baseURI).href : value;
+};
+window.resolveAdminAsset = resolveAdminAsset;
 
 const activities = [
-  { id: 1, name: '呀诺达溪降体验预约', status: 'published', image:'../visitor/assets/activity-hero.jpg', coverImage:'../visitor/assets/activity-hero.jpg', heroBadge:'无需验票 · 免费预约', heroSubtitle:'门票已包含溪降体验，请提前预约心仪时段。', contactName:'溪降接待处', contactPhone:'0898-8388 3333', totalPeople: 1286, todayPeople: 32, created: '2026-08-11 16:28', updated: '2026-08-14 09:42', creator: '景区管理员-苏珊', updater: '苏珊' },
+  { id: 1, name: '呀诺达溪降体验预约', status: 'published', image:'../visitor/assets/activity-hero.jpg', coverImage:'../visitor/assets/activity-hero.jpg', heroBadge:'无需验票 · 免费预约', heroSubtitle:'门票已包含溪降体验，请提前预约心仪时段。', contactName:'溪降接待处', contactPhone:'0898-8388 3333', totalPeople: 128600, todayPeople: 10000, created: '2026-08-11 16:28', updated: '2026-08-14 09:42', creator: '景区管理员-苏珊', updater: '苏珊' },
   { id: 2, name: '雨林观景线路预约', status: 'published', image:null, totalPeople: 96, todayPeople: 18, created: '2026-08-02 10:16', updated: '2026-08-13 18:05', creator: '运营管理员-林晓', updater: '林晓' },
   { id: 4, name: '呀诺达热带雨林高空滑索亲子探险体验项目预约活动暑期特别专场季', status: 'published', image:null, totalPeople: 735, todayPeople: 9, created: '2026-07-30 11:08', updated: '2026-08-12 16:45', creator: '景区管理员-陈晨', updater: '陈晨' },
-  { id: 3, name: 'VIP 私家团场次预约', status: 'offline', image:null, totalPeople: 42, todayPeople: 0, created: '2026-07-28 14:09', updated: '2026-08-12 11:30', creator: '景区管理员-苏珊', updater: '苏珊' }
+  { id: 3, name: 'VIP 私家团场次预约', status: 'offline', image:null, totalPeople: 42, todayPeople: 0, created: '2026-07-28 14:09', updated: '2026-08-12 11:30', creator: '景区管理员-苏珊', updater: '苏珊' },
+  { id: 5, name: '测试活动｜已下架且无预约可删除', status: 'offline', image:null, totalPeople: 0, todayPeople: 0, created: '2026-08-19 15:20', updated: '2026-08-19 15:20', creator: '当前管理员', updater: '当前管理员' }
 ];
+function syncVisitorActivityCatalog(publishId=null,removeId=null){
+  let catalog=[];
+  try{catalog=JSON.parse(localStorage.getItem('scenicPublishedActivityCatalogV34')||'[]');}catch(error){catalog=[];}
+  if(!Array.isArray(catalog)||!catalog.length){
+    catalog=activities.filter(item=>item.status==='published').map(item=>({id:String(item.id),name:item.name,status:'published',image:resolveAdminAsset(item.image)||'',coverImage:resolveAdminAsset(item.coverImage)||'',heroBadge:item.heroBadge||'',heroSubtitle:item.heroSubtitle||'',updated:item.updated||''}));
+  }
+  if(removeId!==null){catalog=catalog.filter(item=>String(item.id)!==String(removeId));}
+  if(publishId!==null){
+    const source=activities.find(item=>String(item.id)===String(publishId));
+    if(source){
+      const snapshot={id:String(source.id),name:source.name,status:'published',image:resolveAdminAsset(source.image)||'',coverImage:resolveAdminAsset(source.coverImage)||'',heroBadge:source.heroBadge||'',heroSubtitle:source.heroSubtitle||'',updated:source.updated||''};
+      catalog=[snapshot,...catalog.filter(item=>String(item.id)!==String(source.id))];
+    }
+  }
+  localStorage.setItem('scenicPublishedActivityCatalogV34',JSON.stringify(catalog));
+}
+window.syncVisitorActivityCatalog=syncVisitorActivityCatalog;
 let currentPage = 'workbench';
 let currentActivity = null;
 let activityStatus = 'published';
-let operationActivityStatus = 'all';
+let operationActivityStatus = 'published';
 let recordStatus = 'active';
 let recordView = 'compact';
 const bookings = [
-  { id:1, activityId:1, status:'active', number:'023', name:'苏珊', phone:'13800138000', date:'2026-08-14', session:'12:30-13:30', category:'常规溪降', project:'常规溪降 A 线', people:2, created:'08-14 09:56' },
-  { id:2, activityId:1, status:'active', number:'024', name:'陈晓宇', phone:'13600136000', date:'2026-08-14', session:'13:30-14:30', category:'常规溪降', project:'常规溪降 B 线', people:1, created:'08-14 10:08' },
-  { id:3, activityId:1, status:'active', number:'025', name:'林悦', phone:'13900139000', date:'2026-08-15', session:'10:30-11:30', category:'VIP私家团', project:'VIP 私家团 A 线', people:2, created:'08-14 10:21' },
-  { id:4, activityId:1, status:'cancelled', number:'018', name:'周宁', phone:'13500135000', date:'2026-08-14', session:'11:30-12:30', category:'常规溪降', project:'常规溪降 A 线', people:1, created:'08-13 16:40' }
+  { id:1, activityId:1, status:'active', number:'023', name:'苏珊', phone:'13800138000', date:'2026-08-19', session:'09:30-10:30', sessionName:'溪降上午体验场', category:'常规溪降', project:'常规溪降 A 线', people:2, created:'08-19 09:56', singleChoice:'需要教练陪同', multiChoice:'儿童护具、成人防滑鞋、防水储物袋', customNumber:'3', customDate:'2026-08-19', singleText:'从游客中心集合', multiText:'同行人员包含儿童，请提前准备儿童安全装备并安排靠前位置。' },
+  { id:2, activityId:1, status:'active', number:'024', name:'陈晓宇', phone:'13600136000', date:'2026-08-19', session:'10:30-11:30', sessionName:'溪降中午体验场', category:'常规溪降', project:'常规溪降 B 线', people:1, created:'08-19 10:08', singleChoice:'无需教练陪同', multiChoice:'成人防滑鞋', customNumber:'1', customDate:'2026-08-20', singleText:'酒店接驳点集合', multiText:'无其他特殊说明。' },
+  { id:3, activityId:1, status:'active', number:'025', name:'林悦', phone:'13900139000', date:'2026-08-19', session:'11:30-12:30', sessionName:'VIP私家团体验场', category:'VIP私家团', project:'VIP 私家团 A 线', people:2, created:'08-19 10:21', singleChoice:'需要教练陪同', multiChoice:'儿童护具、防水储物袋', customNumber:'2', customDate:'2026-08-21', singleText:'景区正门集合', multiText:'希望安排熟悉亲子接待的教练。' },
+  { id:4, activityId:1, status:'cancelled', number:'018', name:'周宁', phone:'13500135000', date:'2026-08-19', session:'12:30-13:30', sessionName:'溪降下午体验场', category:'常规溪降', project:'常规溪降 A 线', people:1, created:'08-18 16:40', singleChoice:'无需教练陪同', multiChoice:'成人防滑鞋', customNumber:'1', customDate:'2026-08-19', singleText:'自行到场', multiText:'临时行程变化。' }
 ];
 
 function showToast(message) {
@@ -43,17 +67,21 @@ function renderOperationActivities() {
   const list = activities
     .filter(item => (operationActivityStatus === 'all' || item.status === operationActivityStatus) && item.name.toLowerCase().includes(keyword))
     .sort((a,b) => b.updated.localeCompare(a.updated));
-  $('#operationActivitySummary').textContent = `共 ${list.length} 个预约活动`;
+  const statusName=operationActivityStatus==='published'?'已发布':operationActivityStatus==='offline'?'已下架':'';
+  $('#operationActivitySummary').textContent = `共 ${list.length} 个${statusName}活动`;
   $('#operationActivityEmpty').hidden = list.length > 0;
   $('#operationActivityList').innerHTML = list.map(item => `
     <button class="operation-activity-card" data-operation-activity="${item.id}">
-      ${item.image ? `<img src="${item.image}" alt="活动图片">` : `<span class="operation-activity-cover">${item.name.slice(0,1)}</span>`}
+      ${item.image ? `<img src="${resolveAdminAsset(item.image)}" alt="活动图片">` : `<span class="operation-activity-cover">${item.name.slice(0,1)}</span>`}
       <span class="operation-activity-main">
-        <span class="operation-activity-title"><b>${item.name}</b><i class="status ${item.status}">${item.status === 'published' ? '已发布' : '已下架'}</i></span>
+        <span class="operation-activity-title"><b>${item.name}</b></span>
         <span>更新于 ${item.updated.slice(5,16)} · ${item.updater}</span>
-        <span class="operation-activity-metrics"><span>总参与<b>${item.totalPeople}</b></span><span>今日预约<b>${item.todayPeople}</b></span></span>
+        <span class="operation-activity-metrics">
+          <span class="operation-metric-item"><svg class="operation-metric-icon people" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.25"></circle><path d="M6.5 19c.45-3.65 2.3-5.5 5.5-5.5s5.05 1.85 5.5 5.5"></path></svg><em>总参与</em><b>${item.totalPeople}</b></span>
+          <span class="operation-metric-item"><svg class="operation-metric-icon today" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="5.5" width="15" height="14" rx="2.5"></rect><path d="M8 3.8v3.4M16 3.8v3.4M4.5 10h15M12 13v4M10 15h4"></path></svg><em>今日预约</em><b>${item.todayPeople}</b></span>
+        </span>
       </span>
-      <i class="operation-activity-enter">›</i>
+      <span class="operation-activity-side"><i class="status ${item.status}">${item.status === 'published' ? '已发布' : '已下架'}</i><i class="operation-activity-enter">›</i></span>
     </button>`).join('');
 }
 
@@ -81,6 +109,7 @@ function renderBookings() {
 }
 
 function renderActivities() {
+  syncVisitorActivityCatalog();
   const keyword = $('#activitySearch').value.trim().toLowerCase();
   const list = activities
     .filter(item => item.status === activityStatus && item.name.toLowerCase().includes(keyword))
@@ -92,7 +121,7 @@ function renderActivities() {
     <article class="activity-card" data-id="${item.id}">
       <button class="activity-main" data-edit="${item.id}">
         <div class="activity-header">
-          ${item.image ? `<img class="activity-cover" src="${item.image}" alt="活动图片">` : `<span class="activity-cover activity-cover-fallback" aria-label="未上传活动图片，使用系统占位图">${item.name.slice(0,1)}</span>`}
+          ${item.image ? `<img class="activity-cover" src="${resolveAdminAsset(item.image)}" alt="活动图片">` : `<span class="activity-cover activity-cover-fallback" aria-label="未上传活动图片，使用系统占位图">${item.name.slice(0,1)}</span>`}
           <div class="activity-copy">
             <div class="activity-title-row"><h2>${item.name}</h2><span class="status ${item.status}">${item.status === 'published' ? '已发布' : '已下架'}</span></div>
             <div class="activity-meta-row"><span class="activity-meta">更新于 ${item.updated.slice(5,16)} · ${item.updater}</span><span class="activity-edit-hint">编辑 ›</span></div>
@@ -107,6 +136,8 @@ function renderActivities() {
         <div class="compact-actions">
           <button class="poster-entry" data-poster="${item.id}"><i class="poster-icon"><u></u></i><span>海报</span></button>
           <button class="expand-button" data-expand="${item.id}"><i class="info-icon">i</i><span>信息</span></button>
+          ${item.status==='published'?`<button class="activity-offline-entry" data-offline-activity="${item.id}"><i>↓</i><span>下架</span></button>`:''}
+          ${item.status==='offline'?`<button class="activity-delete-entry ${Number(item.totalPeople||0)>0?'is-disabled':''}" data-delete-activity="${item.id}" aria-disabled="${Number(item.totalPeople||0)>0}"><i>×</i><span>删除</span></button>`:''}
         </div>
       </div>
       <div class="activity-detail"><div><span>创建时间</span><b>${item.created}</b></div><div><span>创建人</span><b>${item.creator}</b></div></div>
@@ -134,9 +165,26 @@ document.addEventListener('click', event => {
   }
   const poster = event.target.closest('[data-poster]');
   if (poster) { showToast('下一批补充海报预览与保存'); return; }
+  const offlineActivity=event.target.closest('[data-offline-activity]');
+  if(offlineActivity){
+    currentActivity=activities.find(item=>item.id===Number(offlineActivity.dataset.offlineActivity));if(!currentActivity)return;
+    $('#offlineActivityName').textContent=currentActivity.name;
+    $('#offlineActivityLayer').classList.add('open');$('#offlineActivityLayer').setAttribute('aria-hidden','false');return;
+  }
+  const deleteActivity = event.target.closest('[data-delete-activity]');
+  if(deleteActivity){
+    currentActivity=activities.find(item=>item.id===Number(deleteActivity.dataset.deleteActivity));
+    if(!currentActivity)return;
+    if(currentActivity.status!=='offline'){showToast('已上架活动不能删除，请先下架');return;}
+    if(Number(currentActivity.totalPeople||0)>0){showToast('该活动已有预约数据，只能保持下架，不允许删除');return;}
+    $('#deleteActivityName').textContent=currentActivity.name;
+    $('#deleteLayer').classList.add('open');$('#deleteLayer').setAttribute('aria-hidden','false');return;
+  }
   const records = event.target.closest('[data-records]');
   if (records) {
     currentActivity = activities.find(item => item.id === Number(records.dataset.records)); recordStatus = 'active'; recordView = 'compact'; $('#recordSearch').value = '';
+    $('#filterDateMode').value = 'single'; $('#filterSingleDate').value = '2026-08-19'; $('#filterSingleDateWrap').hidden = false; $('#filterSession').value = ''; $('#filterCategory').value = ''; $('#filterProject').value = ''; $('#recordSort').value = 'created-desc';
+    $('#recordFilterPanel').hidden = true; $('#recordFilterToggle').setAttribute('aria-expanded','false'); $('#recordFilterToggle i').textContent = '⌄';
     $$('[data-record-status]').forEach(item => item.classList.toggle('active',item.dataset.recordStatus==='active'));
     $$('[data-record-view]').forEach(item => item.classList.toggle('active',item.dataset.recordView==='compact'));
     navigate('records'); return;
@@ -149,7 +197,10 @@ document.addEventListener('click', event => {
   if (!action) return;
   const type = action.dataset.action;
   if (type === 'delete') {
-    closeLayer('action'); $('#impactOrders').textContent = '全部预约记录'; $('#impactPeople').textContent = `${currentActivity.totalPeople} 人`;
+    closeLayer('action');
+    if(currentActivity.status!=='offline'){showToast('已上架活动不能删除，请先下架');return;}
+    if(Number(currentActivity.totalPeople||0)>0){showToast('该活动已有预约数据，只能保持下架，不允许删除');return;}
+    $('#deleteActivityName').textContent=currentActivity.name;
     $('#deleteLayer').classList.add('open'); $('#deleteLayer').setAttribute('aria-hidden','false'); return;
   }
   if (type === 'edit') { closeLayer('action'); openConfig(currentActivity, false, currentPage === 'operations' ? 'operations' : 'activities'); return; }
@@ -163,7 +214,7 @@ $('#backButton').addEventListener('click', () => {
   leave();
 });
 $('#specialDateEntry').addEventListener('click', () => showToast('特殊提示日期管理内页待业务确认'));
-$('#operationsEntry').addEventListener('click', () => { operationActivityStatus='all'; $('#operationActivitySearch').value=''; $$('[data-operation-activity-status]').forEach(item=>item.classList.toggle('active',item.dataset.operationActivityStatus==='all')); navigate('operationActivities'); });
+$('#operationsEntry').addEventListener('click', () => { operationActivityStatus='published'; $('#operationActivitySearch').value=''; $$('[data-operation-activity-status]').forEach(item=>item.classList.toggle('active',item.dataset.operationActivityStatus==='published')); navigate('operationActivities'); });
 $('#createActivity').addEventListener('click', () => openConfig({ name:'未命名预约活动', status:'offline' }, true, 'activities'));
 $('#activitySearch').addEventListener('input', renderActivities);
 $('#operationActivitySearch').addEventListener('input', renderOperationActivities);
@@ -180,9 +231,22 @@ $('#activityTabs').addEventListener('click', event => {
   $$('[data-activity-status]').forEach(item => item.classList.toggle('active', item === button));
   renderActivities();
 });
-$('#recordSearch').addEventListener('input', renderBookings);
-$('#recordTabs').addEventListener('click', event => { const button = event.target.closest('[data-record-status]'); if (!button) return; recordStatus = button.dataset.recordStatus; $$('[data-record-status]').forEach(item => item.classList.toggle('active',item===button)); renderBookings(); });
-$$('[data-record-view]').forEach(button => button.addEventListener('click', () => { recordView = button.dataset.recordView; $$('[data-record-view]').forEach(item => item.classList.toggle('active',item===button)); renderBookings(); }));
+$('#recordSearch').addEventListener('input', () => window.renderBookings());
+$('#recordTabs').addEventListener('click', event => { const button = event.target.closest('[data-record-status]'); if (!button) return; recordStatus = button.dataset.recordStatus; $$('[data-record-status]').forEach(item => item.classList.toggle('active',item===button)); window.renderBookings(); });
+$$('[data-record-view]').forEach(button => button.addEventListener('click', () => { recordView = button.dataset.recordView; $$('[data-record-view]').forEach(item => item.classList.toggle('active',item===button)); window.renderBookings(); }));
 $('#recordFieldSetting').addEventListener('click', () => openLayer('field'));
-$('#confirmDelete').addEventListener('click', () => { closeLayer('delete'); showToast('原型演示：活动数据未实际删除'); });
+$('#confirmDelete').addEventListener('click', () => {
+  if(!currentActivity||currentActivity.status!=='offline'||Number(currentActivity.totalPeople||0)>0){closeLayer('delete');showToast('当前活动不满足删除条件');return;}
+  const index=activities.findIndex(item=>item.id===currentActivity.id);if(index>=0)activities.splice(index,1);
+  try{const publishedMap=JSON.parse(localStorage.getItem('scenicPublishedActivitiesV34')||'{}');delete publishedMap[String(currentActivity.id)];localStorage.setItem('scenicPublishedActivitiesV34',JSON.stringify(publishedMap));}catch(error){}
+  try{const drafts=JSON.parse(localStorage.getItem('scenicActivityDraftsV34')||'{}');delete drafts[String(currentActivity.id)];localStorage.setItem('scenicActivityDraftsV34',JSON.stringify(drafts));}catch(error){}
+  syncVisitorActivityCatalog(null,currentActivity.id);closeLayer('delete');currentActivity=null;renderActivities();showToast('活动已删除');
+});
+$('#confirmOfflineActivity').addEventListener('click',()=>{
+  if(!currentActivity||currentActivity.status!=='published'){closeLayer('offlineActivity');showToast('当前活动状态已变化');return;}
+  currentActivity.status='offline';currentActivity.updated=new Date().toISOString().slice(0,16).replace('T',' ');
+  try{const publishedMap=JSON.parse(localStorage.getItem('scenicPublishedActivitiesV34')||'{}');delete publishedMap[String(currentActivity.id)];localStorage.setItem('scenicPublishedActivitiesV34',JSON.stringify(publishedMap));}catch(error){}
+  try{const drafts=JSON.parse(localStorage.getItem('scenicActivityDraftsV34')||'{}');if(drafts[String(currentActivity.id)]?.currentActivity)drafts[String(currentActivity.id)].currentActivity.status='offline';localStorage.setItem('scenicActivityDraftsV34',JSON.stringify(drafts));}catch(error){}
+  syncVisitorActivityCatalog(null,currentActivity.id);closeLayer('offlineActivity');activityStatus='published';renderActivities();showToast('活动已下架，历史预约继续保留');
+});
 renderActivities();

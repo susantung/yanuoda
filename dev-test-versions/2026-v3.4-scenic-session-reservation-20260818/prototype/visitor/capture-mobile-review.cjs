@@ -29,7 +29,6 @@ const fs = require('fs');
   await page.locator('#nameInput').fill('苏珊');
   await page.locator('#phoneInput').fill('13800138000');
   await page.locator('#sizeInput').selectOption({ label: '成人 M' });
-  await page.locator('#agreement').check();
   await page.locator('#submitButton').tap();
   await page.waitForTimeout(1000);
   await page.screenshot({ path: path.join(outputDir, '03-预约结果页-750px.png') });

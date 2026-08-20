@@ -163,7 +163,6 @@ const path = require('path');
   await desktop.locator('#nameInput').fill('苏珊');
   await desktop.locator('#phoneInput').fill('13800138000');
   await desktop.locator('#sizeInput').selectOption({ label: '成人 M' });
-  await desktop.locator('#agreement').check();
   await desktop.locator('#submitButton').click();
   await desktop.waitForTimeout(1000);
   const participantWraps = await desktop.locator('#successSummary .participant-row').evaluate(row => {

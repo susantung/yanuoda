@@ -22,6 +22,22 @@ const activity = {
 
 const weekdayNames = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
 let externalPreviewConfig = null;
+const fallbackActivityCatalog=[
+  {id:'1',name:'呀诺达溪降体验预约',status:'published',coverImage:'./assets/activity-hero.jpg',heroSubtitle:'门票已包含溪降体验，请提前预约心仪时段。',updated:'2026-08-14 09:42'},
+  {id:'2',name:'雨林观景线路预约',status:'published',coverImage:'',heroSubtitle:'请选择预约日期和场次。',updated:'2026-08-13 18:05'},
+  {id:'4',name:'呀诺达热带雨林高空滑索亲子探险体验项目预约活动暑期特别专场季',status:'published',coverImage:'',heroSubtitle:'请选择预约日期和场次。',updated:'2026-08-12 16:45'}
+];
+function readPublishedActivityData(){
+  let catalog=fallbackActivityCatalog,published={};
+  try{const stored=JSON.parse(localStorage.getItem('scenicPublishedActivityCatalogV34')||'null');if(Array.isArray(stored))catalog=stored;}catch(error){}
+  try{published=JSON.parse(localStorage.getItem('scenicPublishedActivitiesV34')||'{}')||{};}catch(error){}
+  return {catalog:catalog.filter(item=>item.status==='published'),published};
+}
+function renderVisitorActivities(){
+  const {catalog}=readPublishedActivityData();const list=$('#visitorActivityList');const empty=$('#visitorActivityEmpty');
+  list.innerHTML=catalog.sort((a,b)=>String(b.updated||'').localeCompare(String(a.updated||''))).map(item=>`<button class="visitor-activity-card" data-visitor-activity="${item.id}">${item.coverImage||item.image?`<img class="visitor-activity-cover" src="${item.coverImage||item.image}" alt="${item.name}">`:`<span class="visitor-activity-fallback">${String(item.name||'预').slice(0,1)}</span>`}<span class="visitor-activity-body"><span class="visitor-activity-copy"><b>${item.name}</b><span>${item.heroSubtitle||'点击查看可预约日期与场次'}</span></span><em class="visitor-activity-enter">去预约 ›</em></span></button>`).join('');
+  empty.hidden=catalog.length>0;
+}
 const todayDateKey = '2026-08-18';
 const fullDateKeys = ['2026-08-19', '2026-09-12', '2026-10-24', '2026-11-21', '2026-12-06', '2027-01-16', '2027-02-07'];
 const dateData = Array.from({ length: 200 }, (_, index) => {
@@ -129,14 +145,14 @@ function positionSessionRail(sessions, previousScroll, previousKey) {
 }
 
 const state = {
-  page: 'select', previousPage: null, date: todayDateKey, pendingDate: null, session: null,
+  page: 'activities', previousPage: null, date: todayDateKey, pendingDate: null, session: null,
   category: 'regular', project: null, people: 1, editPeople: 1,
   noticeReadDates: new Set(), calendarMonth: 7, currentRecord: 'active',
   dateStyle: 'strip', dateMonth: 8, sessionStyle: 'grid-named', sessionData: 'regular',
   timeDisplay: 'range', projectStyle: 'detail', projectsEnabled: true, participantMode: 'group'
 };
 
-const titleMap = { select: '场次预约', form: '填写预约信息', success: '预约结果', records: '我的预约', detail: '预约详情', edit: '修改预约' };
+const titleMap = { activities:'活动效果浏览', select: '场次预约', form: '填写预约信息', success: '预约结果', records: '我的预约', detail: '预约详情', edit: '修改预约' };
 const dateStrip = $('#dateStrip');
 const sessionList = $('#sessionList');
 const categoryTabs = $('#categoryTabs');
@@ -211,12 +227,14 @@ function navigate(page, addHistory = true) {
 function renderDates() {
   dateStrip.className = `date-strip style-${state.dateStyle}`;
   $('#openCalendar').hidden = state.dateStyle === 'month';
+  const showDateQuota = !externalPreviewConfig || externalPreviewConfig.showSessionQuota !== false;
+  const dateStatusText = d => d.expired ? '已截止' : d.paused ? '暂停预约' : d.full ? '已满额' : !showDateQuota ? '可预约' : d.unlimited ? '不限额' : `剩${d.quota}名`;
   if (state.dateStyle === 'month') {
     const monthDates = dateData.filter(d => d.month === state.dateMonth);
     const months = [...new Set(dateData.map(d => d.month))];
-    dateStrip.innerHTML = `<div class="month-tabs">${months.map(month => `<button class="month-tab ${state.dateMonth === month ? 'active' : ''}" data-date-month="${month}">${month === 1 ? '2027年1月' : `${month}月`}</button>`).join('')}</div><div class="month-date-rail">${monthDates.map(d => `<button class="schedule-date-card state-${d.expired ? 'expired' : d.paused ? 'paused' : d.full ? 'full' : d.unlimited ? 'unlimited' : 'available'} ${d.paused ? 'paused' : ''} ${d.expired ? 'expired' : ''} ${d.unlimited ? 'unlimited' : ''} ${state.date === d.key ? 'selected' : ''}" data-date="${d.key}" ${d.paused || d.expired || d.full ? 'disabled' : ''}>${d.special ? '<span class="schedule-tag">特别提示</span>' : ''}${d.unlimited ? '<span class="schedule-tag unlimited-tag">不限名额</span>' : ''}<b>${String(d.month).padStart(2, '0')}.${String(d.day).padStart(2, '0')}</b><small>${d.weekday}</small><em class="date-status">${d.expired ? '已截止' : d.paused ? '暂停预约' : d.full ? '已满额' : d.unlimited ? '不限名额' : `剩 ${d.quota} 名额`}</em></button>`).join('')}</div>`;
+    dateStrip.innerHTML = `<div class="month-tabs">${months.map(month => `<button class="month-tab ${state.dateMonth === month ? 'active' : ''}" data-date-month="${month}">${month === 1 ? '2027年1月' : `${month}月`}</button>`).join('')}</div><div class="month-date-rail">${monthDates.map(d => `<button class="schedule-date-card state-${d.expired ? 'expired' : d.paused ? 'paused' : d.full ? 'full' : d.unlimited ? 'unlimited' : 'available'} ${d.paused ? 'paused' : ''} ${d.expired ? 'expired' : ''} ${d.unlimited ? 'unlimited' : ''} ${state.date === d.key ? 'selected' : ''}" data-date="${d.key}" ${d.paused || d.expired || d.full ? 'disabled' : ''}>${d.special ? '<span class="schedule-tag">特别提示</span>' : ''}${showDateQuota && d.unlimited ? '<span class="schedule-tag unlimited-tag">不限额</span>' : ''}<b>${String(d.month).padStart(2, '0')}.${String(d.day).padStart(2, '0')}</b><small>${d.weekday}</small><em class="date-status">${dateStatusText(d)}</em></button>`).join('')}</div>`;
   } else {
-    dateStrip.innerHTML = dateData.map(d => `<button class="date-card state-${d.expired ? 'expired' : d.paused ? 'paused' : d.full ? 'full' : d.unlimited ? 'unlimited' : 'available'} ${d.special ? 'special' : ''} ${d.unlimited ? 'unlimited' : ''} ${d.paused ? 'paused' : ''} ${d.expired ? 'expired' : ''} ${state.date === d.key ? 'selected' : ''}" data-date="${d.key}" ${d.paused || d.expired || d.full ? 'disabled' : ''}><small>${d.weekday}</small><b>${d.short}</b><em class="date-status">${d.expired ? '已截止' : d.paused ? '暂停预约' : d.full ? '已满额' : d.unlimited ? '不限额' : `剩${d.quota}名`}</em></button>`).join('');
+    dateStrip.innerHTML = dateData.map(d => `<button class="date-card state-${d.expired ? 'expired' : d.paused ? 'paused' : d.full ? 'full' : d.unlimited ? 'unlimited' : 'available'} ${d.special ? 'special' : ''} ${d.unlimited ? 'unlimited' : ''} ${d.paused ? 'paused' : ''} ${d.expired ? 'expired' : ''} ${state.date === d.key ? 'selected' : ''}" data-date="${d.key}" ${d.paused || d.expired || d.full ? 'disabled' : ''}><small>${d.weekday}</small><b>${d.short}</b><em class="date-status">${dateStatusText(d)}</em></button>`).join('');
   }
   bindCurrentHorizontalRails();
   $('.month-tab.active', dateStrip)?.scrollIntoView({ inline: 'center', block: 'nearest' });
@@ -359,7 +377,6 @@ function validateForm() {
     field.classList.toggle('error', !ok); $('.field-error', field).textContent = ok ? '' : message;
     if (!ok) valid = false;
   });
-  if (!$('#agreement').checked) { showToast('请先同意活动预约规则'); valid = false; }
   if (!valid) $('.field.error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   return valid;
 }
@@ -478,7 +495,8 @@ function closeDetailImagePreview(){ $('#detailImagePreview').classList.remove('o
 $('#closeDetailImage').addEventListener('click',closeDetailImagePreview);$('#closeDetailImageButton').addEventListener('click',closeDetailImagePreview);
 $('#backButton').addEventListener('click', () => {
   if (state.page === 'select' && window.self !== window.top) { window.parent.postMessage({ type:'SCENIC_PREVIEW_CLOSE' }, '*'); return; }
-  if (state.page === 'select') { showToast('已在预约活动首页'); return; }
+  if (state.page === 'activities') { showToast('已在预约活动列表'); return; }
+  if (state.page === 'select') { navigate('activities',false);return; }
   const fallback = state.page === 'form' ? 'select' : state.page === 'detail' ? 'records' : state.page === 'edit' ? 'detail' : 'select';
   navigate(fallback, false);
 });
@@ -541,6 +559,8 @@ $$('[data-test]').forEach(button => button.addEventListener('click', () => {
 }));
 
 function renderAll() { renderDates(); renderSessions(); renderProjects(); updateProgress(); renderCalendar(); }
+
+$('#visitorActivityList').addEventListener('click',event=>{const card=event.target.closest('[data-visitor-activity]');if(!card)return;const url=new URL(location.href);url.searchParams.set('activity',card.dataset.visitorActivity);url.searchParams.delete('configPreview');location.href=url.href;});
 
 function renderExternalFields(fields) {
   if (!Array.isArray(fields)) return;
@@ -609,5 +629,37 @@ window.addEventListener('message', event => {
   if (event.data?.type === 'SCENIC_CONFIG_PREVIEW') applyExternalPreview(event.data.payload);
 });
 let publishedPreviewConfig=null;
-try{const hashPayload=new URLSearchParams(location.hash.slice(1)).get('published');publishedPreviewConfig=hashPayload?JSON.parse(hashPayload):JSON.parse(localStorage.getItem('scenicPublishedConfig')||'null');}catch(error){publishedPreviewConfig=null;}
-if(publishedPreviewConfig?.schemaVersion===2)applyExternalPreview(publishedPreviewConfig);else{if(publishedPreviewConfig)localStorage.removeItem('scenicPublishedConfig');renderAll();}
+const pageQuery=new URLSearchParams(location.search);
+const selectedActivityId=pageQuery.get('activity');
+const isConfigPreview=pageQuery.has('configPreview');
+try{
+  const hashPayload=new URLSearchParams(location.hash.slice(1)).get('published');
+  const usePublishedData=pageQuery.get('mode')==='published';
+  publishedPreviewConfig=hashPayload?JSON.parse(hashPayload):usePublishedData?JSON.parse(localStorage.getItem('scenicPublishedConfig')||'null'):null;
+}catch(error){publishedPreviewConfig=null;}
+
+renderVisitorActivities();
+if(selectedActivityId){
+  const {catalog,published}=readPublishedActivityData();
+  const snapshot=published?.[String(selectedActivityId)]?.config;
+  const catalogItem=catalog.find(item=>String(item.id)===String(selectedActivityId));
+  if(snapshot?.schemaVersion===2){
+    applyExternalPreview(snapshot);
+  }else{
+    if(catalogItem){
+      activity.name=catalogItem.name||activity.name;
+      $('.hero-content h2').textContent=activity.name;
+      $('.activity-info h3').textContent=activity.name;
+      const heroSubtitle=$('#activityHeroSubtitle');heroSubtitle.textContent=catalogItem.heroSubtitle||'';heroSubtitle.hidden=!catalogItem.heroSubtitle;
+      const cover=$('#activityCover');if(catalogItem.coverImage||catalogItem.image){cover.src=catalogItem.coverImage||catalogItem.image;cover.hidden=false;}
+    }
+    renderAll();navigate('select',false);
+  }
+}else if(publishedPreviewConfig?.schemaVersion===2){
+  applyExternalPreview(publishedPreviewConfig);
+}else if(isConfigPreview){
+  renderAll();navigate('select',false);
+}else{
+  if(publishedPreviewConfig)localStorage.removeItem('scenicPublishedConfig');
+  renderAll();
+}

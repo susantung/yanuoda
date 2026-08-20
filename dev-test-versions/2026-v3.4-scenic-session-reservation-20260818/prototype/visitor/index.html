@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#00A862">
   <title>景区场次预约｜游客端原型</title>
-  <link rel="stylesheet" href="./styles.css?v=20260818-c03sync2">
+  <link rel="stylesheet" href="./styles.css?v=20260819-activitylist1">
 </head>
 <body data-theme="forest">
   <aside class="prototype-panel" aria-label="原型控制台">
@@ -102,13 +102,21 @@
           <button class="nav-icon" aria-label="返回" id="backButton">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
           </button>
-          <div class="nav-title" id="navTitle">场次预约</div>
+          <div class="nav-title" id="navTitle">活动效果浏览</div>
           <div class="wx-capsule" aria-label="微信小程序胶囊">
             <span class="capsule-more">•••</span><span class="capsule-line"></span><span class="capsule-ring"></span>
           </div>
         </header>
 
-        <section class="page active" data-page="select" aria-label="预约内容选择">
+        <section class="page active" data-page="activities" aria-label="预约活动列表">
+          <div class="page-scroll visitor-activity-scroll">
+          <div class="visitor-activity-head"><h2>预约活动效果浏览</h2><p>原型辅助页 · 用于逐个查看已上架活动</p></div>
+            <div class="visitor-activity-list" id="visitorActivityList"></div>
+            <div class="visitor-activity-empty" id="visitorActivityEmpty" hidden><span>暂无</span><h3>暂无可预约活动</h3><p>活动发布上架后将在这里展示</p></div>
+          </div>
+        </section>
+
+        <section class="page" data-page="select" aria-label="预约内容选择">
           <div class="page-scroll select-scroll">
             <article class="hero-card">
               <img id="activityCover" src="./assets/activity-hero.jpg" alt="活动封面">
@@ -196,7 +204,6 @@
               <div><h3>实际参与人数</h3><p>本活动已开启多人预约，按填写人数占用名额。</p></div>
               <div class="counter"><button id="minusPeople" aria-label="减少人数">−</button><strong id="peopleCount">1</strong><button id="addPeople" aria-label="增加人数">＋</button></div>
             </section>
-            <label class="agree-row"><input type="checkbox" id="agreement"><span>我已阅读并同意本活动预约规则</span></label>
           </div>
           <footer class="bottom-bar single-action"><button class="primary-button" id="submitButton">确认预约</button></footer>
         </section>
@@ -303,6 +310,6 @@
       </div>
     </div>
   </main>
-  <script src="./app.js?v=20260818-c03sync2"></script>
+  <script src="./app.js?v=20260819-activitylist1"></script>
 </body>
 </html>
