@@ -294,11 +294,15 @@ function renderSessions() {
 
 function renderProjects() {
   const previousCategoryScroll = categoryTabs.scrollLeft;
-  $('#projectSection').hidden = !state.projectsEnabled;
-  if (!state.projectsEnabled) { projectList.innerHTML = ''; return; }
-  $('#projectSection h3').textContent = externalPreviewConfig?.projectTheme || '选择体验线路';
   const sessionRules=externalPreviewConfig?.projectsBySession?.[state.date]?.[state.session]||null;
-  const availableCategories=activity.categories.filter(category=>(activity.projects[category.id]||[]).some(project=>!sessionRules||sessionRules[project.id]?.enabled!==false));
+  // 预览配置里只会下发该场次实际关联的项目。空对象代表该场次明确未关联项目，不能退回展示全部项目。
+  const hasSessionRules=sessionRules!==null;
+  const isSessionProject=project=>!hasSessionRules||Object.prototype.hasOwnProperty.call(sessionRules,project.id)&&sessionRules[project.id]?.enabled!==false;
+  const hasAvailableProject=!hasSessionRules||Object.keys(sessionRules).some(projectId=>sessionRules[projectId]?.enabled!==false);
+  $('#projectSection').hidden = !state.projectsEnabled || !hasAvailableProject;
+  if (!state.projectsEnabled || !hasAvailableProject) { projectList.innerHTML = ''; categoryTabs.innerHTML=''; return; }
+  $('#projectSection h3').textContent = externalPreviewConfig?.projectTheme || '选择体验线路';
+  const availableCategories=activity.categories.filter(category=>(activity.projects[category.id]||[]).some(isSessionProject));
   if(availableCategories.length&&!availableCategories.some(category=>category.id===state.category))state.category=availableCategories[0].id;
   categoryTabs.hidden = !!externalPreviewConfig && !externalPreviewConfig.categoryEnabled;
   categoryTabs.innerHTML = externalPreviewConfig && !externalPreviewConfig.categoryEnabled ? '' : availableCategories.map(c => `<button class="category-tab ${state.category === c.id ? 'active' : ''}" data-category="${c.id}">${c.name}</button>`).join('');
@@ -314,7 +318,7 @@ function renderProjects() {
   });
   if (!state.session) { projectList.innerHTML = '<div class="empty-project">选择场次后查看可预约线路</div>'; return; }
   // 后台隐藏的项目不下发给游客端，等同于当前组合下不存在。
-  const list = (activity.projects[state.category] || []).filter(project=>!sessionRules||sessionRules[project.id]?.enabled!==false).map(project=>({...project,...(sessionRules?.[project.id]||{})}));
+  const list = (activity.projects[state.category] || []).filter(isSessionProject).map(project=>({...project,...(sessionRules?.[project.id]||{})}));
   projectList.className = `project-list style-${state.projectStyle}`;
   projectList.innerHTML = list.map(p => {
     const disabled = p.state !== 'open';
