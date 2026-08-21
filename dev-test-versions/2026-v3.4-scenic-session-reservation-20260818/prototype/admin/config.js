@@ -131,7 +131,8 @@
     });
     return cloned;
   };
-  const sessionProjectItems = session => enabledProjects().filter(item=>(session?.projectIds||[]).includes(item.id));
+  // 历史场次必须按当时保存的关联关系回显；项目后来被禁用时仍在配置中留痕，不能因保存操作被误删。
+  const sessionProjectItems = session => config.projects.filter(item=>(session?.projectIds||[]).includes(item.id));
   const sessionProjectRows = (date,sessionIndex,session) => {
     const projects=sessionProjectItems(session);ensureSessionIds(date,config.sessionsByDate[date]||[]);
     if(!projects.length)return '';
@@ -140,12 +141,17 @@
   };
   const projectSetupFields = (prefix,session=null) => {
     if(!config.projectModuleEnabled)return '';
-    const projects=enabledProjects();if(!projects.length)return '<p class="config-hint warn">请先在项目配置中启用至少一个项目</p>';
-    const associated=session?[...(session.projectIds||[])]:projects.map(item=>item.id);
+    const activeProjects=enabledProjects();
+    const associated=session?[...(session.projectIds||[])]:activeProjects.map(item=>item.id);
+    // 编辑已有场次时：当前启用项目可供新增关联，历史已关联项目即使现在禁用也必须显示并保留勾选。
+    // 新建场次时：只列出当前启用项目，并默认勾选；取消全部后，游客端不展示项目选择。
+    const projects=session?config.projects.filter(item=>activeProjects.includes(item)||associated.includes(item.id)):activeProjects;
+    if(!projects.length)return '<p class="config-hint warn">请先在项目配置中启用至少一个项目</p>';
     const locked=Boolean(session?.booked);
-    const rows=projects.map(project=>{const checked=associated.includes(project.id);const key=session?sessionProjectKey(window.editingSessionDate,session,project.id):'';const booked=key?(config.projectSessionBooked[key]||0):0;const quota=key?config.projectSessionQuotas[key]:undefined;return `<div class="session-project-select-row"><label title="${project.name}"><input type="checkbox" data-project-association="${prefix}" value="${project.id}" ${checked?'checked':''} ${locked?'disabled':''}><b>${project.name}</b></label><small>${booked?`已预约 ${booked} 人`:'暂无预约'}</small><input class="project-setup-quota" data-project-setup-quota="${project.id}" type="number" min="${Math.max(1,booked)}" inputmode="numeric" value="${quota??''}" placeholder="必填名额"></div>`;}).join('');
+    const rows=projects.map(project=>{const checked=associated.includes(project.id);const key=session?sessionProjectKey(window.editingSessionDate,session,project.id):'';const booked=key?(config.projectSessionBooked[key]||0):0;const quota=key?config.projectSessionQuotas[key]:undefined;const historicalDisabled=!activeProjects.includes(project)&&checked;const disabled=locked||historicalDisabled;const state=historicalDisabled?'已禁用，保留历史关联':booked?`已预约 ${booked} 人`:'暂无预约';return `<div class="session-project-select-row"><label title="${project.name}"><input type="checkbox" data-project-association="${prefix}" value="${project.id}" ${checked?'checked':''} ${disabled?'disabled':''}><b>${project.name}</b></label><small>${state}</small><input class="project-setup-quota" data-project-setup-quota="${project.id}" type="number" min="${Math.max(1,booked)}" inputmode="numeric" value="${quota??''}" placeholder="必填名额" ${disabled?'disabled':''}></div>`;}).join('');
     const shared=!session?.separateProjectQuota;
-    return `<section class="session-project-setup ${shared?'':'is-separate'}"><label class="separate-project-quota inventory-mode-first"><span><b>已选项目共用场次库存</b><small>默认勾选；取消后分别设置各项目名额</small></span><input id="${prefix}ShareProjectInventory" type="checkbox" ${shared?'checked':''} ${locked?'disabled':''}></label><div class="session-project-setup-head"><b>关联项目</b><span>${locked?'已有预约，关联项目和库存方式已锁定':'默认选择全部已启用项目'}</span></div><div class="session-project-select-list">${rows}</div><div id="${prefix}ProjectQuotaPanel" class="quick-project-quota-panel" ${shared?'hidden':''}><div class="project-quota-total"><span>场次总名额</span><b id="${prefix}ProjectQuotaTotal">0 名</b><small id="${prefix}ProjectQuotaPending"></small></div></div></section>`;
+    const hint=locked?'已有预约，关联项目和库存方式已锁定':session?'已按该场次历史保存的关联项目回显；之后启用的新项目默认不关联':'新建场次默认勾选当前全部启用项目；可取消勾选';
+    return `<section class="session-project-setup ${shared?'':'is-separate'}"><label class="separate-project-quota inventory-mode-first"><span><b>已选项目共用场次库存</b><small>默认勾选；取消后分别设置各项目名额</small></span><input id="${prefix}ShareProjectInventory" type="checkbox" ${shared?'checked':''} ${locked?'disabled':''}></label><div class="session-project-setup-head"><b>关联项目</b><span>${hint}</span></div><div class="session-project-select-list">${rows}</div><div id="${prefix}ProjectQuotaPanel" class="quick-project-quota-panel" ${shared?'hidden':''}><div class="project-quota-total"><span>场次总名额</span><b id="${prefix}ProjectQuotaTotal">0 名</b><small id="${prefix}ProjectQuotaPending"></small></div></div></section>`;
   };
   const readProjectSetup = (prefix,session=null) => {
     if(!config.projectModuleEnabled)return {projectIds:[],separateProjectQuota:false,quotas:{}};
