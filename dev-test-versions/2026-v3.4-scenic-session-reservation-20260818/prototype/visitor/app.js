@@ -244,6 +244,10 @@ function requestDate(key, revealAfterSelect = false) {
   const date = dateData.find(d => d.key === key);
   if (!date || date.paused || date.expired || date.full) return;
   if (date.special && !state.noticeReadDates.has(key)) {
+    const notice = date.notice || state.defaultNotice;
+    if (notice?.title) $('#noticeTitle').textContent = notice.title;
+    if (notice?.html !== undefined) $('#noticeContent').innerHTML = notice.html;
+    state.pendingNoticeSeconds = notice?.seconds;
     state.pendingDate = key;
     state.pendingDateReveal = revealAfterSelect;
     startNoticeCountdown();
@@ -446,7 +450,7 @@ function renderCalendar() {
 }
 
 function startNoticeCountdown() {
-  const button = $('#noticeConfirm'); let seconds = Math.max(0, Number(externalPreviewConfig?.noticeSeconds ?? 3));
+  const button = $('#noticeConfirm'); let seconds = Math.max(0, Number(state.pendingNoticeSeconds ?? externalPreviewConfig?.noticeSeconds ?? 3));
   button.disabled = true; button.textContent = `已读并确认以上内容 (${seconds})`;
   if (seconds <= 0) { button.textContent = '已读并确认以上内容'; button.disabled = false; return; }
   clearInterval(startNoticeCountdown.timer);
@@ -470,7 +474,7 @@ $('#openCalendar').addEventListener('click', () => { renderCalendar(); openModal
 $('#calendarGrid').addEventListener('click', e => { const button = e.target.closest('[data-calendar-date]'); if (button && !button.disabled) requestDate(button.dataset.calendarDate, true); });
 $('#prevMonth').addEventListener('click', () => { if (state.calendarMonth > 7) state.calendarMonth -= 1; renderCalendar(); });
 $('#nextMonth').addEventListener('click', () => { if (state.calendarMonth < 11) state.calendarMonth += 1; renderCalendar(); });
-$('#noticeConfirm').addEventListener('click', () => { const key = state.pendingDate; const reveal = state.pendingDateReveal; if (!key) { closeModal('notice'); return; } state.noticeReadDates.add(key); state.pendingDate = null; state.pendingDateReveal = false; closeModal('notice'); commitDate(key, reveal); });
+$('#noticeConfirm').addEventListener('click', () => { const key = state.pendingDate; const reveal = state.pendingDateReveal; if (!key) { closeModal('notice'); return; } state.noticeReadDates.add(key); state.pendingDate = null; state.pendingDateReveal = false; state.pendingNoticeSeconds = null; closeModal('notice'); commitDate(key, reveal); });
 
 $$('[data-close]').forEach(button => button.addEventListener('click', () => closeModal(button.dataset.close)));
 $$('[data-go]').forEach(button => button.addEventListener('click', () => navigate(button.dataset.go)));
@@ -591,6 +595,24 @@ function renderExternalFields(fields) {
   }).join('')}`;
 }
 
+function readSpecialDateNoticeStore() {
+  try { return JSON.parse(localStorage.getItem('scenicSpecialDateNoticeV34') || 'null') || {}; } catch (error) { return {}; }
+}
+function resolveExternalDateNotice(payload, dateKey, fallbackNotice) {
+  if (!payload.noticeEnabled) return null;
+  const stored = readSpecialDateNoticeStore();
+  const templateId = stored.rules?.[String(payload.activityId || '')]?.[dateKey];
+  const template = templateId && stored.templates?.[templateId];
+  if (template?.title && template?.content) {
+    const source = String(template.content).trim();
+    const html = /<[^>]+>/.test(source) ? source : '<p>' + source.replace(/[&<>]/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[char])).replace(/\n/g, '<br>') + '</p>';
+    return { source:'special', templateId, title:template.title, html, seconds:Math.max(0, Number(template.seconds) || 0) };
+  }
+  if (fallbackNotice?.source === 'special') return fallbackNotice;
+  const hasGlobal = String(payload.noticeTitle || '').trim() && String(payload.noticeHtml || '').replace(/<[^>]*>/g, '').trim();
+  return hasGlobal ? { source:'global', title:payload.noticeTitle, html:payload.noticeHtml } : null;
+}
+
 function applyExternalPreview(payload) {
   if (!payload) return;
   externalPreviewConfig = payload;
@@ -611,7 +633,8 @@ function applyExternalPreview(payload) {
   if (payload.dates?.length) {
     dateData.splice(0, dateData.length, ...payload.dates.map((item,index) => {
       const value = new Date(`${item.key}T12:00:00`); const month=value.getMonth()+1; const day=value.getDate();
-      return { key:item.key,month,day,weekday:item.key===todayDateKey?'今天':weekdayNames[value.getDay()],label:`${month}月${day}日`,short:`${String(month).padStart(2,'0')}/${String(day).padStart(2,'0')}`,special:!!item.special,paused:!!item.paused,expired:!!item.expired,full:item.full===true,unlimited:!!item.unlimited,quota:item.quota||0 };
+      const notice=resolveExternalDateNotice(payload,item.key,item.notice||null);
+      return { key:item.key,month,day,weekday:item.key===todayDateKey?'今天':weekdayNames[value.getDay()],label:`${month}月${day}日`,short:`${String(month).padStart(2,'0')}/${String(day).padStart(2,'0')}`,special:!!notice,notice,paused:!!item.paused,expired:!!item.expired,full:item.full===true,unlimited:!!item.unlimited,quota:item.quota||0 };
     }));
   }
   state.dateStyle = 'strip'; state.sessionStyle = 'grid-named'; state.projectsEnabled = !!payload.projectsEnabled;
@@ -620,9 +643,10 @@ function applyExternalPreview(payload) {
   const preferredPreviewDate=payload.previewOnly&&payload.previewDate?dateData.find(item=>item.key===payload.previewDate&&!item.paused&&!item.expired&&!item.full):null;
   const firstBookableDate = preferredPreviewDate || dateData.find(item => !item.paused && !item.expired && !item.full) || dateData[0];
   state.date = firstBookableDate?.key || todayDateKey; state.dateMonth = firstBookableDate?.month || 8; state.session = payload.previewOnly&&payload.previewSessionId?payload.previewSessionId:null;
-  $('#noticeTitle').textContent = payload.noticeTitle || '溪降预约必读须知';
-  if(payload.noticeHtml!==undefined)$('#noticeContent').innerHTML=payload.noticeHtml||'';
-  if (!payload.noticeEnabled) dateData.forEach(item => { item.special=false; });
+  state.defaultNotice={title:payload.noticeTitle||'溪降预约必读须知',html:payload.noticeHtml||'',seconds:Math.max(0, Number(payload.noticeSeconds) || 0)};
+  $('#noticeTitle').textContent = state.defaultNotice.title;
+  if(payload.noticeHtml!==undefined)$('#noticeContent').innerHTML=state.defaultNotice.html;
+  if (!payload.noticeEnabled) dateData.forEach(item => { item.special=false; item.notice=null; });
   renderExternalFields(payload.fields); renderParticipantMode(); renderAll();
   if (payload.previewPage === 'form') {
     const firstSession=getSessions(state.date).find(item=>item.state==='open');

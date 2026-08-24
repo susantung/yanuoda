@@ -11,7 +11,7 @@
   const markDirty = (label='当前步骤未保存') => { stepDirty=true; q('#configSaveState').textContent=label; };
   window.configReturnPage = 'activities';
   const config = {
-    noticeEnabled:true, noticeScope:'special', noticeTitle:'溪降预约必读须知', noticeSeconds:3, dateMode:'custom', projectModuleEnabled:true, categoryEnabled:true, visitorCancel:true, bookingCutoffMode:'start', bookingCutoffValue:30, visitorCancelMode:'unlimited', visitorCancelValue:30,
+    noticeEnabled:true, noticeScope:'combined', noticeTitle:'溪降预约必读须知', noticeSeconds:3, dateMode:'custom', projectModuleEnabled:true, categoryEnabled:true, visitorCancel:true, bookingCutoffMode:'start', bookingCutoffValue:30, visitorCancelMode:'unlimited', visitorCancelValue:30,
     selectedDates:['2026-08-14','2026-08-15','2026-08-16','2026-08-22','2026-08-24','2026-08-25','2026-08-26','2026-08-27','2026-08-28','2026-08-29','2026-08-30','2026-08-31','2026-09-01','2026-09-02','2026-09-03','2026-09-04','2026-09-05'], dateBookedCounts:{'2026-08-22':2}, pausedDates:[], pendingRemovalDates:[], calendarMonth:'2026-08', sessionMonth:'2026-08', sessionOperationLogs:[], sessionTemplates:[{name:'溪降每日7场',sessions:[{name:'溪降1场',time:'09:30-10:30',limit:15,booked:0},{name:'溪降2场',time:'10:30-11:30',limit:15,booked:0},{name:'溪降3场',time:'11:30-12:30',limit:15,booked:0}]}], sessionModes:{'2026-08-22':{type:'configured',count:3,time:'09:30—12:30'},'2026-08-24':{type:'configured',count:3,time:'09:30—12:30'},'2026-08-25':{type:'configured',count:2,time:'10:00—12:00'},'2026-09-03':{type:'configured',count:2,time:'10:00—12:00'}}, showQuota:true, hideExpired:true,
     projectTheme:'选择体验线路', projectSessionQuotas:{}, projectSessionBooked:{},
     detailHtml:'<p>尊敬的游客，该门票包含“溪降”体验项目。为确保安全与体验质量，请提前选择预约时段，并仔细阅读预约说明。</p><img src="../../scenic-reservation/preview/assets/activity-source.jpg" alt="溪降项目环境示例图">', noticeHtml:'<p>当日部分区域有安全提示，请根据同行人员情况谨慎选择是否预约。</p><p>预约成功后请提前15分钟到达溪降接待处。</p>', draftLogo:null, draftCover:null,
@@ -228,7 +228,7 @@
     const quotaSafe=projectSessions.every(({date,session})=>!session.separateProjectQuota||(session.projectIds||[]).every(projectId=>{const key=sessionProjectKey(date,session,projectId);const quota=config.projectSessionQuotas[key],booked=config.projectSessionBooked[key]||0;return Number.isFinite(quota)&&quota>0&&quota>=booked;}));
     return [
       ['基础资料',!!String(currentActivity?.name||'').trim(),'活动名称已填写'],
-      ['必读须知',!config.noticeEnabled||Boolean(config.noticeTitle.trim()&&config.noticeHtml.trim()),config.noticeEnabled?'标题和内容完整':'未启用，无需检查'],
+      (()=>{const title=String(config.noticeTitle||'').trim();const content=String(config.noticeHtml||'').replace(/<[^>]*>/g,'').trim();const complete=Boolean(title)===Boolean(content);return ['必读须知',!config.noticeEnabled||complete,!config.noticeEnabled?'未启用，无需检查':title&&content?'已配置默认全局提示；特殊日期可另行配置':'未配置默认全局提示；仅命中特殊日期时展示'];})(),
       ['开放日期',configuredDates.length>0,configuredDates.length?`已配置 ${configuredDates.length} 个未来日期`:'至少配置 1 个未来日期及场次'],
       ['场次时间',configuredDates.every(date=>(config.sessionsByDate[date]||[]).every(session=>/^\d{2}:\d{2}/.test(session.time))), '所有场次均有开始时间'],
       ['项目配置',!config.projectModuleEnabled||overallProjects.length>0,config.projectModuleEnabled?`总体启用 ${overallProjects.length} 个项目`:'项目模块已关闭'],
@@ -262,12 +262,11 @@
       </section>
       <section class="config-card"><h3>联系方式</h3><div class="two-fields"><label class="config-field"><span>联系人</span><input id="cfgContactName" type="text" value="${currentActivity?.contactName||''}"></label><label class="config-field"><span>联系电话</span><input id="cfgContactPhone" type="tel" value="${currentActivity?.contactPhone||''}"></label></div><p class="config-hint">联系方式将展示在游客端活动详情中，便于游客咨询。</p></section>`,
 
-    () => `${heading(1,'每个活动只配置一份须知，可全局展示或由特殊提示日期触发。')}
-      <section class="config-card"><h3>展示规则</h3>${switchRow('noticeEnabled','展示必读须知','关闭后游客选择日期时不展示须知')}
-        ${config.noticeEnabled?`<div class="choice-grid two" style="margin-top:10px">${choice('noticeScope','global','全局展示','每次进入活动首次选择日期时展示',config.noticeScope==='global')}${choice('noticeScope','special','按特殊提示展示','仅所选日期参数为“是”时展示',config.noticeScope==='special')}</div>`:''}
-        ${config.noticeScope==='special'?'<p class="config-hint warn">具体日期由工作台“特殊提示日期管理”批量维护。</p>':''}
+    () => `${heading(1,'配置默认全局提示；特殊日期提示由工作台“特殊提示日期管理”维护。')}
+      <section class="config-card"><h3>展示规则</h3>${switchRow('noticeEnabled','展示必读须知','关闭后游客选择日期时不展示任何必读提示')}
+        ${config.noticeEnabled?`<p class="config-hint notice-rule-hint"><b>展示优先级</b>：命中特殊日期时优先展示该日期模板；未命中时再展示下方默认全局提示。特殊日期由工作台“特殊提示日期管理”单独维护。</p>`:''}
       </section>
-      ${config.noticeEnabled?`<section class="config-card"><h3>须知内容</h3><label class="config-field"><span>弹窗标题 <small><b class="required">*</b></small></span><input id="cfgNoticeTitle" type="text" value="${config.noticeTitle}"></label><div class="config-field"><span>须知内容 <small><b class="required">*</b> 图文内容</small></span><div class="rich-tools" role="toolbar" aria-label="必读须知编辑工具"><select class="rich-size" data-rich-size aria-label="字体大小"><option value="11">11px</option><option value="12">12px</option><option value="14">14px</option><option value="16" selected>16px</option><option value="18">18px</option><option value="24">24px</option></select><label class="rich-color" title="文字颜色"><input type="color" data-rich-color value="#1f2329"><span>A</span></label><button type="button" data-rich-command="bold" aria-label="加粗"><b>B</b></button><button type="button" data-rich-action="image" class="rich-tool-wide">插入图片</button><button type="button" data-rich-action="link" class="rich-tool-wide">插入链接</button></div><div id="cfgNoticeEditor" class="rich-editor rich-editor-content" contenteditable="true" data-placeholder="请输入须知内容，可设置文字大小、颜色并插入图片和链接">${config.noticeHtml}</div></div><label class="config-field"><span>阅读时长 <small>游客需等待后确认</small></span><div class="two-fields"><input id="cfgNoticeSeconds" type="number" min="0" value="${config.noticeSeconds}"><select disabled><option>秒</option></select></div></label><p class="config-hint">游客按钮统一显示“已读并确认以上内容（${config.noticeSeconds}）”，倒计时结束后可点击；允许点击遮罩关闭。</p></section>`:''}`,
+      ${config.noticeEnabled?`<section class="config-card"><h3>默认全局提示 <small>选填</small></h3><p class="config-hint">标题和内容均填写后，游客选择任意可预约日期时展示；两个字段同时留空时，不配置默认全局提示。</p><label class="config-field"><span>弹窗标题 <small>选填</small></span><input id="cfgNoticeTitle" type="text" value="${config.noticeTitle}"></label><div class="config-field"><span>须知内容 <small>选填 · 图文内容</small></span><div class="rich-tools" role="toolbar" aria-label="必读须知编辑工具"><select class="rich-size" data-rich-size aria-label="字体大小"><option value="11">11px</option><option value="12">12px</option><option value="14">14px</option><option value="16" selected>16px</option><option value="18">18px</option><option value="24">24px</option></select><label class="rich-color" title="文字颜色"><input type="color" data-rich-color value="#1f2329"><span>A</span></label><button type="button" data-rich-command="bold" aria-label="加粗"><b>B</b></button><button type="button" data-rich-action="image" class="rich-tool-wide">插入图片</button><button type="button" data-rich-action="link" class="rich-tool-wide">插入链接</button></div><div id="cfgNoticeEditor" class="rich-editor rich-editor-content" contenteditable="true" data-placeholder="请输入全局提示内容，可设置文字大小、颜色并插入图片和链接">${config.noticeHtml}</div></div><label class="config-field"><span>阅读时长 <small>游客需等待后确认</small></span><div class="two-fields"><input id="cfgNoticeSeconds" type="number" min="0" value="${config.noticeSeconds}"><select disabled><option>秒</option></select></div></label><p class="config-hint">游客按钮统一显示“已读并确认以上内容（${config.noticeSeconds}）”，倒计时结束后可点击；允许点击遮罩关闭。</p></section>`:''}`,
 
     () => `${heading(3,'在同一页配置开放日期、各日期场次及场次项目名额。')}
       <section class="config-card"><h3>日期模式</h3><div class="choice-grid">${choice('dateMode','custom','自选可约日期','月历单点选择不连续日期，或批量选择连续范围',true)}${choice('dateMode','weekly','每周规律循环-敬请期待','后续版本开放',false,true)}</div></section>
@@ -374,7 +373,7 @@
   const buildNewActivityConfig = () => {
     const fresh=JSON.parse(defaultActivityConfigSnapshot);
     Object.assign(fresh,{
-      noticeEnabled:false,noticeScope:'special',noticeTitle:'预约必读须知',noticeSeconds:3,noticeHtml:'',detailHtml:'',
+      noticeEnabled:false,noticeScope:'combined',noticeTitle:'预约必读须知',noticeSeconds:3,noticeHtml:'',detailHtml:'',
       projectModuleEnabled:false,categoryEnabled:true,projectTheme:'选择项目',projects:[],categories:[],categoryStates:{},
       selectedDates:[],dateBookedCounts:{},pausedDates:[],pendingRemovalDates:[],calendarMonth:'2026-08',sessionMonth:'2026-08',
       sessions:[],sessionsByDate:{},sessionModes:{},sessionOperationLogs:[],sessionTemplates:[],projectSessionQuotas:{},projectSessionBooked:{},
@@ -405,7 +404,7 @@
   };
   function saveCurrent(silent=false) {
     const name = q('#cfgActivityName')?.value.trim(); if (name) { currentActivity.name = name; q('#configActivityName').textContent = name; }
-    const detail = q('#cfgDetailEditor'); if (detail) config.detailHtml = detail.innerHTML.trim(); const notice=q('#cfgNoticeEditor');if(notice)config.noticeHtml=notice.innerHTML.trim();const noticeTitle=q('#cfgNoticeTitle');if(noticeTitle)config.noticeTitle=noticeTitle.value.trim();const noticeSeconds=q('#cfgNoticeSeconds');if(noticeSeconds)config.noticeSeconds=Math.max(0,Number(noticeSeconds.value)||0);
+    const detail = q('#cfgDetailEditor'); if (detail) config.detailHtml = detail.innerHTML.trim(); const notice=q('#cfgNoticeEditor');const noticeTitle=q('#cfgNoticeTitle');const noticeText=notice?String(notice.innerHTML||'').replace(/<[^>]*>/g,'').trim():String(config.noticeHtml||'').replace(/<[^>]*>/g,'').trim();const noticeTitleText=noticeTitle?noticeTitle.value.trim():String(config.noticeTitle||'').trim();if(stepIndex===1&&config.noticeEnabled&&Boolean(noticeTitleText)!==Boolean(noticeText)){if(!silent)showToast('默认全局提示请同时填写标题和内容，或全部留空');return false;}if(notice)config.noticeHtml=notice.innerHTML.trim();if(noticeTitle)config.noticeTitle=noticeTitleText;const noticeSeconds=q('#cfgNoticeSeconds');if(noticeSeconds)config.noticeSeconds=Math.max(0,Number(noticeSeconds.value)||0);
     if(stepIndex===0){currentActivity.image=config.draftLogo;currentActivity.coverImage=config.draftCover;}
     const contactName=q('#cfgContactName');if(contactName)currentActivity.contactName=contactName.value.trim();
     const contactPhone=q('#cfgContactPhone');if(contactPhone)currentActivity.contactPhone=contactPhone.value.trim();
@@ -543,7 +542,7 @@
     const container=q('#configPreviewContent');
     qa('[data-preview-tab]').forEach(button=>button.classList.toggle('active',button.dataset.previewTab===previewTab));
     if(previewTab==='notice') {
-      container.innerHTML=config.noticeEnabled?`<div class="preview-source-note">当前规则：${config.noticeScope==='global'?'全局展示':'按特殊提示日期展示'}</div><div class="notice-preview"><article class="notice-preview-card"><i>!</i><h2>${config.noticeTitle}</h2><div class="notice-rich-preview">${config.noticeHtml}</div><button>已读并确认以上内容（${config.noticeSeconds}）</button></article></div>`:`<div class="notice-off"><b>必读须知未启用</b><span>游客选择日期时不会出现须知弹窗</span></div>`; return;
+      const title=String(config.noticeTitle||'').trim();const content=String(config.noticeHtml||'').replace(/<[^>]*>/g,'').trim();const hasDefault=title&&content;container.innerHTML=!config.noticeEnabled?`<div class="notice-off"><b>必读须知未启用</b><span>游客选择日期时不会出现必读提示</span></div>`:hasDefault?`<div class="preview-source-note">默认全局提示预览：特殊日期命中时将优先展示对应模板</div><div class="notice-preview"><article class="notice-preview-card"><i>!</i><h2>${config.noticeTitle}</h2><div class="notice-rich-preview">${config.noticeHtml}</div><button>已读并确认以上内容（${config.noticeSeconds}）</button></article></div>`:`<div class="notice-off"><b>未配置默认全局提示</b><span>仅命中特殊日期配置时，游客才会看到对应提示</span></div>`; return;
     }
     if(previewTab==='form') {
       const firstProject=enabledProjects()[0];
@@ -568,6 +567,9 @@
     const categoryId=name=>config.categoryEnabled?`category-${Math.max(0,visibleCategoryNames.indexOf(name||''))}`:'all';
     const visitorSessions=(items,dateKey='default')=>sortSessions([...(items||[])]).map((item,index)=>{const [start,end]=item.time.split('-');return {id:item.id||`${dateKey}-${index}`,time:start,endTime:end||'',name:item.name||'',state:item.limit!==null&&item.booked>=item.limit?'full':'open',unlimited:item.limit===null,quota:item.limit===null?0:Math.max(0,item.limit-item.booked)};});
     const visitorToday='2026-08-18';
+    const globalNotice={title:config.noticeTitle,html:config.noticeHtml};
+    const hasGlobalNotice=String(globalNotice.title||'').trim()&&String(globalNotice.html||'').replace(/<[^>]*>/g,'').trim();
+    const effectiveNoticeFor=date=>window.resolveSpecialDateNotice?.({activityId:currentActivity?.id,date,noticeEnabled:config.noticeEnabled,globalNotice})||(config.noticeEnabled&&hasGlobalNotice?{source:'global',title:globalNotice.title,html:globalNotice.html}:null);
     const configuredDates=config.selectedDates.filter(date=>(config.sessionsByDate[date]||[]).length>0);
     const visibleDates=configuredDates.filter(date=>!(config.hideExpired&&date<visitorToday));
     const projectsBySession=Object.fromEntries(visibleDates.map(date=>{
@@ -582,6 +584,7 @@
     }));
     const previewConfig={
       schemaVersion:2,
+      activityId:String(currentActivity?.id||''),
       activityName:currentActivity?.name||'呀诺达溪降体验预约',
       coverImage:currentActivity?.coverImage||'', detailHtml:config.detailHtml,
       heroBadge:currentActivity?.heroBadge||'', heroSubtitle:currentActivity?.heroSubtitle||'',
@@ -592,7 +595,7 @@
       noticeEnabled:config.noticeEnabled, noticeScope:config.noticeScope, noticeTitle:config.noticeTitle, noticeHtml:config.noticeHtml, noticeSeconds:config.noticeSeconds, categories,
       bookingCutoffMode:config.bookingCutoffMode, bookingCutoffMinutes:config.bookingCutoffMode==='advance'?config.bookingCutoffValue:0,
       visitorCancel:config.visitorCancel, visitorCancelMode:config.visitorCancelMode, visitorCancelMinutes:config.visitorCancelMode==='advance'?config.visitorCancelValue:0,
-      dates:visibleDates.map((date,index)=>{const items=config.sessionsByDate[date]||[];const expired=date<visitorToday;const unlimited=items.some(item=>item.limit===null);const full=!unlimited&&items.every(item=>item.limit!==null&&item.booked>=item.limit);return {key:date,special:config.noticeEnabled&&(config.noticeScope==='global'||index===1),paused:config.pausedDates.includes(date),expired,full,unlimited,quota:items.reduce((sum,item)=>sum+(item.limit===null?0:Math.max(0,item.limit-item.booked)),0)};}),
+      dates:visibleDates.map(date=>{const items=config.sessionsByDate[date]||[];const expired=date<visitorToday;const unlimited=items.some(item=>item.limit===null);const full=!unlimited&&items.every(item=>item.limit!==null&&item.booked>=item.limit);const notice=effectiveNoticeFor(date);return {key:date,special:!!notice,notice,paused:config.pausedDates.includes(date),expired,full,unlimited,quota:items.reduce((sum,item)=>sum+(item.limit===null?0:Math.max(0,item.limit-item.booked)),0)};}),
       sessions:visitorSessions(config.sessions),
       sessionsByDate:Object.fromEntries(visibleDates.map(date=>[date,visitorSessions(config.sessionsByDate[date]||[],date)])),
       projects:visibleProjects.map(item=>({id:`project-${item.id}`,name:item.name,categoryId:categoryId(item.category),desc:item.description||'',image:item.image,state:'open',unlimited:true,quota:0,showQuota:config.showQuota,inventoryMode:'project-session'})),projectsBySession,

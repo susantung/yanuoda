@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./styles.css?v=20260820-sharecard2">
   <link rel="stylesheet" href="./operations.css?v=20260820-sharecard2">
   <link rel="stylesheet" href="./config.css?v=20260819-c06fix1">
+  <link rel="stylesheet" href="./special-dates.css?v=20260824-templatedelete2">
 </head>
 <body>
   <aside class="prototype-panel">
@@ -127,6 +128,27 @@
           </div>
         </section>
 
+
+        <section class="page" data-page="specialDateActivities">
+          <div class="page-scroll special-date-scroll">
+            <label class="search-box"><span>⌕</span><input id="specialDateSearch" placeholder="查询活动名称"></label>
+            <div class="activity-tabs" id="specialDateStatusTabs"><button data-special-date-status="all">全部</button><button class="active" data-special-date-status="published">已发布</button><button data-special-date-status="offline">已下架</button></div>
+            <div class="operation-activity-summary" id="specialDateSummary">共 3 个已发布活动</div>
+            <div class="special-date-list" id="specialDateList"></div>
+          </div>
+        </section>
+        <section class="page" data-page="specialDateDetail">
+          <div class="page-scroll special-date-scroll special-date-detail-scroll">
+            <section class="special-date-context"><span class="special-date-cover" id="specialDateActivityCover">呀</span><span><small>当前活动</small><b id="specialDateActivityName"></b></span></section>
+            <section class="special-template-card"><h2>选择提示模板</h2><p>选择模板后，可批量维护今天起至未来两个月内的特殊日期</p><button class="special-template-picker is-empty" id="specialDatePicker"><i>!</i><span><b id="specialDatePickerName">请选择模板</b><small id="specialDatePickerInfo">选择模板后可批量维护日期</small></span><em>›</em></button></section>
+            <section class="special-date-calendar-card" id="specialDateCalendarPanel"><h2>选择配置日期</h2><div class="calendar-month special-date-month"><button id="specialDateMonthPrev" aria-label="上月">‹ 上月</button><b id="specialDateMonthLabel">2026年8月</b><button id="specialDateMonthNext" aria-label="下月">下月 ›</button></div><div class="calendar-grid special-date-calendar" id="specialDateCalendar"></div><div class="special-date-legend"><span><i class="current"></i>当前模板已关联日期</span></div><div class="special-date-selection"><span>当前模板已选择</span><b id="specialDateSelectionCount"></b></div><div class="special-template-readonly"><div class="special-template-label"><span>弹窗标题</span><button id="specialDateManageLink">管理模板</button></div><div class="special-template-value" id="specialDateTemplateTitle"></div><div class="special-template-label"><span>须知内容</span><span>只读</span></div><div class="special-template-editor"><div class="special-template-toolbar"><span>16px</span><b>A</b><b>B</b><span>图文内容</span></div><div class="special-template-body" id="specialDateTemplateContent"></div></div></div><div class="special-date-tip"><i>i</i><span>保存后，所选日期都关联当前模板；取消勾选当前模板原有关联日期后，保存即解除关联。</span></div></section>
+          </div>
+          <footer class="special-date-actions"><button class="reset" id="specialDateReset">重置选择</button><button class="save" id="specialDateSave">保存日期设置</button></footer>
+          <div class="special-template-layer" id="specialDateTemplateLayer"><section class="special-template-sheet"><div class="special-template-handle"></div><h2>选择提示模板</h2><p>选择后可批量维护未来两个月内的关联日期</p><div class="special-template-options" id="specialDateTemplateOptions"></div><div class="special-template-sheet-actions"><button class="manage" id="specialDateTemplateManage">管理模板</button><button class="cancel" id="specialDateTemplateCancel">取消</button></div></section></div>
+        </section>
+        <section class="page" data-page="specialDateTemplates"><div class="page-scroll special-date-scroll"><div class="special-template-library-head"><h2>活动提示模板</h2><button id="specialDateTemplateCreate">＋ 新建</button></div><div class="special-template-list" id="specialDateTemplateList"></div></div></section>
+        <section class="page" data-page="specialDateTemplateEditor"><div class="page-scroll special-date-scroll special-template-form"><h2 id="specialDateTemplateEditorHeading">新建活动提示模板</h2><section class="config-card"><label class="config-field"><span>模板名称 <small><b class="required">*</b> 20字内</small></span><input id="specialDateTemplateEditorName" type="text" maxlength="20" placeholder="请输入模板名称"></label><label class="config-field"><span>弹窗标题 <small><b class="required">*</b></small></span><input id="specialDateTemplateEditorTitle" type="text" maxlength="30" placeholder="请输入弹窗标题"></label><div class="config-field"><span>须知内容 <small><b class="required">*</b> 图文内容</small></span><div class="rich-tools" id="specialDateTemplateEditorTools" role="toolbar" aria-label="活动提示编辑工具"><select class="rich-size" id="specialDateTemplateEditorSize" aria-label="字体大小"><option value="11">11px</option><option value="12">12px</option><option value="14">14px</option><option value="16" selected>16px</option><option value="18">18px</option><option value="24">24px</option></select><label class="rich-color" title="文字颜色"><input type="color" id="specialDateTemplateEditorColor" value="#1f2329"><span>A</span></label><button type="button" data-template-rich-command="bold" aria-label="加粗"><b>B</b></button><button type="button" data-template-rich-action="image" class="rich-tool-wide">插入图片</button><button type="button" data-template-rich-action="link" class="rich-tool-wide">插入链接</button></div><div id="specialDateTemplateEditorContent" class="rich-editor rich-editor-content" contenteditable="true" data-placeholder="请输入提示内容，可设置文字大小、颜色并插入图片和链接"></div></div><label class="config-field"><span>阅读时长 <small>游客需等待后确认</small></span><div class="two-fields"><input id="specialDateTemplateEditorSeconds" type="number" min="0" value="3"><select disabled><option>秒</option></select></div></label><p class="config-hint" id="specialDateTemplateEditorHint">游客按钮统一显示“已读并确认以上内容（3）”，倒计时结束后可点击；允许点击遮罩关闭。</p></section></div><footer class="special-date-actions special-template-editor-actions"><button class="delete" id="specialDateTemplateDelete" hidden>删除模板</button><button class="save" id="specialDateTemplateEditorSave">保存模板</button></footer></section>
+
         <section class="page" data-page="operations">
           <div class="page-scroll operations-scroll">
             <article class="operation-hero"><div><span class="status published">已发布</span><h2 id="operationActivityName">呀诺达溪降体验预约</h2><p>更新时间 2026-08-14 09:42 · 苏珊</p></div></article>
@@ -221,6 +243,8 @@
           </section>
         </div>
 
+        <div class="dialog-layer" id="templateDeleteLayer" aria-hidden="true"><button class="mask" data-close="templateDelete"></button><section class="dialog"><span class="danger-icon">!</span><h2>确认删除该模板？</h2><p><b id="templateDeleteName">当前模板</b><span id="templateDeleteImpact">删除后将解除当前活动未来日期关联，该操作不可恢复。</span></p><div class="dialog-actions"><button class="secondary" data-close="templateDelete">暂不删除</button><button class="danger" id="confirmTemplateDelete">确认删除</button></div></section></div>
+
         <div class="dialog-layer" id="offlineActivityLayer" aria-hidden="true">
           <button class="mask" data-close="offlineActivity"></button>
           <section class="dialog">
@@ -266,6 +290,6 @@
       </div>
     </div>
   </main>
-  <script src="./app.js?v=20260820-sharecard2"></script><script src="./operations.js?v=20260820-o07export3"></script><script src="./config.js?v=20260819-o02final"></script>
+  <script src="./app.js?v=20260824-specialdates"></script><script src="./operations.js?v=20260820-o07export3"></script><script src="./config.js?v=20260824-specialnotice"></script><script src="./special-dates.js?v=20260824-templatedelete2"></script>
 </body>
 </html>

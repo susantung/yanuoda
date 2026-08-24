@@ -65,12 +65,16 @@ function showToast(message) {
 function navigate(page) {
   currentPage = page;
   $$('.page').forEach(node => node.classList.toggle('active', node.dataset.page === page));
-  const pageTitles = { workbench:'工作台', activities:'预约活动管理', config:'活动配置', operationActivities:'运营管理', operations:'活动运营', records:'全部预约', bookingDetail:'预约详情', sessions:'场次名单', roster:'名单详情', export:'数据导出' };
+  const pageTitles = { workbench:'工作台', activities:'预约活动管理', config:'活动配置', operationActivities:'运营管理', specialDateActivities:'特殊日期管理', specialDateDetail:'特殊日期提示', specialDateTemplates:'活动提示模板', specialDateTemplateEditor:'活动提示模板', operations:'活动运营', records:'全部预约', bookingDetail:'预约详情', sessions:'场次名单', roster:'名单详情', export:'数据导出' };
   $('#navTitle').textContent = pageTitles[page] || '预约管理';
   $('#backButton').style.display = page === 'workbench' ? 'none' : 'grid';
   $$('[data-panel-go]').forEach(button => button.classList.toggle('active', button.dataset.panelGo === page));
   if (page === 'activities') renderActivities();
   if (page === 'operationActivities') renderOperationActivities();
+  if (page === 'specialDateActivities') window.renderSpecialDateActivities?.();
+  if (page === 'specialDateDetail') window.renderSpecialDateDetail?.();
+  if (page === 'specialDateTemplates') window.renderSpecialDateTemplates?.();
+  if (page === 'specialDateTemplateEditor') window.renderSpecialDateTemplateEditor?.();
   if (page === 'operations') renderOperationHome();
   if (page === 'records') renderBookings();
 }
@@ -239,12 +243,12 @@ document.addEventListener('click', event => {
 });
 
 $('#backButton').addEventListener('click', () => {
-  const backMap = { activities:'workbench', operationActivities:'workbench', config:(window.configReturnPage || 'activities'), operations:'operationActivities', records:'operations', bookingDetail:(window.bookingDetailReturnPage || 'records'), sessions:'operations', roster:'sessions', export:'operations' };
+  const backMap = { activities:'workbench', operationActivities:'workbench', config:(window.configReturnPage || 'activities'), operations:'operationActivities', records:'operations', bookingDetail:(window.bookingDetailReturnPage || 'records'), specialDateActivities:'workbench', specialDateDetail:'specialDateActivities', specialDateTemplates:'specialDateDetail', specialDateTemplateEditor:'specialDateTemplates', sessions:'operations', roster:'sessions', export:'operations' };
   const leave=()=>navigate(backMap[currentPage] || 'workbench');
   if(currentPage==='config'&&window.requestConfigLeave){window.requestConfigLeave(leave);return;}
   leave();
 });
-$('#specialDateEntry').addEventListener('click', () => showToast('特殊提示日期管理内页待业务确认'));
+$('#specialDateEntry').addEventListener('click', () => { navigate('specialDateActivities'); });
 $('#operationsEntry').addEventListener('click', () => { operationActivityStatus='published'; $('#operationActivitySearch').value=''; $$('[data-operation-activity-status]').forEach(item=>item.classList.toggle('active',item.dataset.operationActivityStatus==='published')); navigate('operationActivities'); });
 $('#createActivity').addEventListener('click', () => openConfig({ name:'未命名预约活动', status:'offline' }, true, 'activities'));
 $('#activitySearch').addEventListener('input', renderActivities);
