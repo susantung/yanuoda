@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>我怎么和 AI 一起做需求｜部门分享</title>
+  <style>
+    :root {
+      --paper: #f6f3ec;
+      --ink: #172126;
+      --muted: #647077;
+      --line: #d8d6ce;
+      --green: #0d7a68;
+      --green-soft: #dcefe9;
+      --orange: #df673b;
+      --orange-soft: #f7e3d8;
+      --blue: #3856a6;
+      --blue-soft: #e2e8f7;
+      --white: #fffefa;
+      --shadow: 0 28px 80px rgba(34, 39, 42, .14);
+    }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+    body {
+      background: #232a2e;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    }
+    button { font: inherit; }
+    .shell { position: fixed; inset: 0; display: grid; place-items: center; }
+    .deck {
+      position: relative;
+      width: min(100vw, calc(100vh * 16 / 9));
+      height: min(100vh, calc(100vw * 9 / 16));
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      padding: 6.2% 7.2% 5.4%;
+      background:
+        radial-gradient(circle at 92% 6%, rgba(13,122,104,.08), transparent 27%),
+        var(--paper);
+    }
+    .slide.active { display: block; animation: enter .28s ease both; }
+    @keyframes enter { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
+    .kicker {
+      margin: 0 0 1.4%;
+      color: var(--green);
+      font-size: clamp(12px, 1.25vw, 22px);
+      font-weight: 750;
+      letter-spacing: .12em;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(44px, 5.8vw, 96px); line-height: 1.05; letter-spacing: -.045em; margin-bottom: 2.3%; }
+    h2 { font-size: clamp(30px, 3.65vw, 62px); line-height: 1.12; letter-spacing: -.035em; margin-bottom: 3.5%; }
+    h3 { font-size: clamp(18px, 2vw, 34px); line-height: 1.25; }
+    p, li { font-size: clamp(14px, 1.48vw, 26px); line-height: 1.65; }
+    .lead { max-width: 78%; color: var(--muted); font-size: clamp(18px, 2.05vw, 34px); line-height: 1.5; }
+    .accent { color: var(--green); }
+    .orange { color: var(--orange); }
+    .blue { color: var(--blue); }
+    .eyebrow { font-size: clamp(11px, 1.05vw, 18px); color: var(--muted); letter-spacing: .08em; }
+    .big-quote { font-size: clamp(24px, 3.25vw, 56px); line-height: 1.34; font-weight: 800; letter-spacing: -.025em; }
+    .number { font-variant-numeric: tabular-nums; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5.2%; align-items: center; }
+    .grid-2.wide-right { grid-template-columns: .86fr 1.14fr; }
+    .grid-2.wide-left { grid-template-columns: 1.12fr .88fr; }
+    .bottom-line { position: absolute; left: 7.2%; right: 7.2%; bottom: 4.2%; height: 1px; background: var(--line); }
+    .slide-label { display: none; }
+    .slide[data-scene]::after {
+      content: attr(data-scene);
+      position: absolute;
+      right: 7.2%;
+      top: 5.1%;
+      padding: .7% 1.25%;
+      color: #fff;
+      background: var(--green);
+      font-size: clamp(11px, 1vw, 17px);
+      font-weight: 760;
+      letter-spacing: .04em;
+    }
+    .slide[data-scene^="场景二"]::after { background: var(--orange); }
+    .slide[data-scene^="场景三"]::after { background: var(--blue); }
+    .slide[data-scene="总览"]::after, .slide[data-scene="总结"]::after { background: var(--ink); }
+
+    /* title */
+    .title-slide { align-content: center; }
+    .title-slide.active { display: grid; }
+    .title-slide .mark { width: 11%; height: 8px; background: var(--green); margin-bottom: 4%; }
+    .title-slide .lead { max-width: 66%; }
+    .title-orbit { position: absolute; right: 7.5%; top: 19%; width: 24%; aspect-ratio: 1; }
+    .title-orbit::before, .title-orbit::after { content: ""; position: absolute; border-radius: 50%; }
+    .title-orbit::before { inset: 0; border: 2px solid rgba(13,122,104,.28); }
+    .title-orbit::after { width: 43%; height: 43%; right: -2%; bottom: 4%; background: var(--orange-soft); }
+    .orbit-dot { position: absolute; width: 24%; aspect-ratio: 1; border-radius: 50%; background: var(--green); left: 2%; top: 9%; }
+
+    /* overview */
+    .scenario-line { margin-top: 5%; display: grid; grid-template-columns: repeat(3,1fr); position: relative; gap: 4%; }
+    .scenario-line::before { content: ""; position: absolute; top: 23%; left: 7%; right: 7%; height: 3px; background: var(--line); }
+    .scenario { position: relative; padding-top: 10%; }
+    .scenario .dot { position: absolute; top: 14%; left: 0; width: 18px; aspect-ratio: 1; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 8px var(--paper); }
+    .scenario:nth-child(2) .dot { background: var(--orange); }
+    .scenario:nth-child(3) .dot { background: var(--blue); }
+    .scenario h3 { margin-bottom: 4%; }
+    .scenario p { color: var(--muted); margin: 0; }
+    .scenario strong { display: block; margin-top: 5%; color: var(--ink); font-size: clamp(13px, 1.3vw, 22px); }
+
+    /* screenshot */
+    .shot-frame { position: relative; background: var(--white); border: 1px solid var(--line); box-shadow: 0 20px 48px rgba(32,40,42,.12); overflow: hidden; }
+    .shot-frame.desktop { border-radius: 14px; padding: 1.4%; transform: rotate(1.3deg); }
+    .shot-frame.desktop img { display: block; width: 100%; border-radius: 8px; }
+    .caption { margin-top: 3%; color: var(--muted); font-size: clamp(11px, 1.1vw, 19px); }
+    .simple-flow { display: flex; align-items: center; gap: 3%; margin: 7% 0 0; flex-wrap: wrap; }
+    .simple-flow span { font-size: clamp(13px, 1.2vw, 21px); font-weight: 700; }
+    .simple-flow i { font-style: normal; color: var(--green); font-size: clamp(18px, 1.8vw, 30px); }
+
+    /* finance problem */
+    .tangle { position: relative; min-height: 350px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 1fr); gap: 7% 8%; align-items: center; }
+    .tangle-word { position: relative; z-index: 2; padding: 6% 7%; border-left: 5px solid; font-size: clamp(16px, 1.65vw, 28px); font-weight: 750; background: rgba(255,254,250,.92); }
+    .tangle-word:nth-of-type(4) { border-color: var(--green); }
+    .tangle-word:nth-of-type(5) { border-color: var(--orange); }
+    .tangle-word:nth-of-type(6) { border-color: var(--blue); }
+    .tangle-word:nth-of-type(7) { border-color: var(--green); }
+    .tangle-word:nth-of-type(8) { border-color: var(--orange); grid-column: 1 / 3; width: 64%; justify-self: center; }
+    .tangle-line { position: absolute; height: 2px; background: #aab1b3; transform-origin: left center; opacity: .65; }
+    .tangle-line.a { width: 56%; left: 18%; top: 25%; transform: rotate(18deg); }
+    .tangle-line.b { width: 48%; left: 31%; top: 44%; transform: rotate(-17deg); }
+    .tangle-line.c { width: 55%; left: 13%; top: 70%; transform: rotate(8deg); }
+    .problem-callout { margin-top: 5%; border-top: 2px solid var(--ink); padding-top: 3.2%; font-size: clamp(16px, 1.65vw, 28px); font-weight: 760; }
+
+    /* simulator */
+    .loop { position: relative; min-height: 370px; display: grid; grid-template-columns: repeat(3,1fr); grid-template-rows: repeat(2,1fr); gap: 5%; align-items: center; }
+    .loop-step { font-size: clamp(15px, 1.45vw, 25px); font-weight: 760; padding: 8% 7%; background: var(--white); border-top: 5px solid var(--green); min-height: 46%; display: grid; align-content: center; }
+    .loop-step:nth-child(2), .loop-step:nth-child(5) { border-color: var(--orange); }
+    .loop-step:nth-child(3), .loop-step:nth-child(6) { border-color: var(--blue); }
+    .loop-arrow { position: absolute; font-size: clamp(21px, 2.2vw, 38px); color: #889093; }
+    .loop-arrow.a { left: 30.5%; top: 20%; }
+    .loop-arrow.b { left: 64.5%; top: 20%; }
+    .loop-arrow.c { right: 14.5%; top: 47%; transform: rotate(90deg); }
+    .loop-arrow.d { left: 64.5%; bottom: 20%; transform: rotate(180deg); }
+    .loop-arrow.e { left: 30.5%; bottom: 20%; transform: rotate(180deg); }
+    .loop-arrow.f { left: 14.5%; top: 47%; transform: rotate(-90deg); }
+    .chain { border-left: 3px solid var(--line); padding-left: 8%; }
+    .chain div { position: relative; padding: 0 0 8% 6%; font-size: clamp(14px, 1.25vw, 22px); font-weight: 700; }
+    .chain div::before { content:""; position:absolute; left:-10.8%; top:.48em; width:12px; aspect-ratio:1; border-radius:50%; background:var(--green); box-shadow:0 0 0 5px var(--paper); }
+    .chain div:last-child { padding-bottom: 0; }
+    .chain-note { margin-top: 8%; color: var(--orange); font-weight: 780; font-size: clamp(14px, 1.35vw, 23px); }
+
+    /* comparison */
+    .compare { display: grid; grid-template-columns: 1fr auto 1fr; gap: 4%; align-items: stretch; margin-top: 3%; }
+    .compare-panel { padding: 5.5%; border-top: 7px solid var(--orange); background: var(--white); min-height: 290px; }
+    .compare-panel:last-child { border-color: var(--blue); }
+    .compare-panel h3 { margin-bottom: 8%; }
+    .compare-panel p { color: var(--muted); }
+    .compare-vs { align-self: center; color: #949b9e; font-size: clamp(17px, 1.7vw, 30px); font-weight: 800; }
+    .compare-path { margin-top: 8%; font-weight: 760; font-size: clamp(15px, 1.45vw, 25px); line-height: 1.7; }
+
+    /* competitor */
+    .phone-pair { display: flex; gap: 7%; justify-content: center; align-items: center; }
+    .phone { width: 35%; max-height: 470px; aspect-ratio: 9/17.5; border: 7px solid #1e262a; border-radius: 28px; overflow: hidden; background: #fff; box-shadow: 0 22px 45px rgba(25,30,32,.18); position: relative; }
+    .phone img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: top; }
+    .phone-label { position: absolute; left: 50%; transform: translateX(-50%); bottom: -10%; white-space: nowrap; font-size: clamp(11px, 1vw, 18px); color: var(--muted); }
+    .evidence-flow { display: grid; gap: 5%; }
+    .evidence-step { padding-left: 6%; border-left: 5px solid var(--line); }
+    .evidence-step strong { display: block; margin-bottom: 1%; font-size: clamp(16px, 1.65vw, 28px); }
+    .evidence-step span { color: var(--muted); font-size: clamp(13px, 1.2vw, 21px); line-height: 1.55; }
+    .evidence-step:nth-child(1) { border-color: var(--blue); }
+    .evidence-step:nth-child(2) { border-color: var(--orange); }
+    .evidence-step:nth-child(3) { border-color: var(--green); }
+    .evidence-step:nth-child(4) { border-color: var(--ink); }
+
+    /* final */
+    .workflow-stack { display: grid; gap: 4%; margin-top: 4%; }
+    .workflow-row { display: grid; grid-template-columns: 17% 25% 1fr; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 3.2%; }
+    .workflow-row:last-child { border-bottom: 0; }
+    .workflow-row .idx { color: var(--green); font-size: clamp(19px, 2.15vw, 38px); font-weight: 850; }
+    .workflow-row:nth-child(2) .idx { color: var(--orange); }
+    .workflow-row:nth-child(3) .idx { color: var(--blue); }
+    .workflow-row strong { font-size: clamp(17px, 1.75vw, 30px); }
+    .workflow-row span { color: var(--muted); font-size: clamp(14px, 1.3vw, 22px); }
+    .closing { position: absolute; left: 7.2%; right: 7.2%; bottom: 5%; padding-top: 2.5%; border-top: 2px solid var(--ink); font-size: clamp(16px, 1.55vw, 27px); font-weight: 780; }
+    .steps { display: grid; gap: 3%; margin-top: 3%; }
+    .step { display: grid; grid-template-columns: 9% 27% 1fr; gap: 3%; align-items: baseline; padding: 2.3% 0; border-bottom: 1px solid var(--line); }
+    .step:last-child { border-bottom: 0; }
+    .step b { font-size: clamp(18px, 1.9vw, 32px); color: var(--green); }
+    .step strong { font-size: clamp(15px, 1.5vw, 25px); }
+    .step span { color: var(--muted); font-size: clamp(13px, 1.2vw, 21px); line-height: 1.55; }
+    .step.orange-step b { color: var(--orange); }
+    .step.blue-step b { color: var(--blue); }
+    .check-list { display: grid; grid-template-columns: 1fr 1fr; gap: 4% 7%; margin-top: 5%; }
+    .check-item { padding: 4% 0 4% 9%; border-top: 3px solid var(--green); position: relative; font-size: clamp(14px, 1.35vw, 23px); font-weight: 720; }
+    .check-item::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 900; }
+    .truth-box { padding: 5%; background: var(--white); border-left: 7px solid var(--orange); }
+    .truth-box strong { display: block; font-size: clamp(18px, 1.8vw, 30px); margin-bottom: 4%; }
+    .truth-box p { margin-bottom: 0; color: var(--muted); }
+    .mini-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 2.2%; margin-top: 5%; }
+    .mini-flow span { padding: 1.5% 2.2%; background: var(--white); border-bottom: 4px solid var(--green); font-size: clamp(12px, 1.12vw, 19px); font-weight: 720; }
+    .mini-flow i { font-style: normal; color: #8a9296; }
+    .failure { display: grid; grid-template-columns: 1fr auto 1.22fr; gap: 4%; align-items: center; margin-top: 4%; }
+    .failure-side { padding: 5%; min-height: 250px; background: var(--white); }
+    .failure-side.bad { border-top: 7px solid var(--orange); }
+    .failure-side.good { border-top: 7px solid var(--green); }
+    .failure-side h3 { margin-bottom: 6%; }
+    .failure-side p { color: var(--muted); margin-bottom: 4%; }
+    .failure-arrow { font-size: clamp(24px, 2.5vw, 42px); color: var(--green); }
+
+    /* chrome */
+    .chrome { position: fixed; inset: 0; pointer-events: none; color: #f6f6f2; z-index: 20; }
+    .top-controls { position: absolute; top: 14px; left: 18px; display: flex; gap: 10px; pointer-events: auto; }
+    .icon-btn { border: 1px solid rgba(255,255,255,.22); background: rgba(23,29,32,.68); color: #fff; border-radius: 9px; padding: 8px 11px; cursor: pointer; backdrop-filter: blur(8px); }
+    .nav-controls { position: absolute; right: 20px; bottom: 17px; display: flex; align-items: center; gap: 9px; pointer-events: auto; }
+    .page-chip { padding: 8px 12px; border-radius: 9px; background: rgba(23,29,32,.7); font-variant-numeric: tabular-nums; }
+    .progress { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(255,255,255,.12); }
+    .progress > span { display: block; height: 100%; background: #5fd0b7; transition: width .25s ease; }
+    .drawer { position: fixed; z-index: 40; top: 0; bottom: 0; width: min(420px, 88vw); background: #182125; color: #f8f8f5; padding: 34px; transform: translateX(-102%); transition: transform .25s ease; box-shadow: 20px 0 70px rgba(0,0,0,.25); }
+    .drawer.open { transform: none; }
+    .drawer.right { left: auto; right: 0; transform: translateX(102%); }
+    .drawer.right.open { transform: none; }
+    .drawer h3 { margin: 0 0 24px; }
+    .toc { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+    .toc button { width: 100%; border: 0; background: transparent; color: #cbd2d4; text-align: left; padding: 11px 10px; border-left: 3px solid transparent; cursor: pointer; }
+    .toc button.current { color: #fff; border-color: #5fd0b7; background: rgba(255,255,255,.06); }
+    .drawer-close { position: absolute; top: 18px; right: 18px; }
+    .note-copy { white-space: pre-line; color: #dce2e3; font-size: 16px; line-height: 1.8; }
+    .note-time { color: #5fd0b7; font-weight: 800; margin-bottom: 18px; }
+    .backdrop { position: fixed; inset: 0; z-index: 35; background: rgba(0,0,0,.35); opacity: 0; pointer-events: none; transition: opacity .25s ease; }
+    .backdrop.show { opacity: 1; pointer-events: auto; }
+    @media (max-width: 760px) {
+      .slide { padding: 7% 6.5% 7%; }
+      .slide-label { display: none; }
+      .nav-controls { right: 10px; bottom: 9px; }
+      .top-controls { left: 9px; top: 9px; }
+      .icon-btn { padding: 6px 8px; font-size: 12px; }
+    }
+
+    /* V3｜Bold editorial / Swiss grid。只重排内容区，交互与文案保持原样。 */
+    :root {
+      --paper: #f2eee5;
+      --ink: #101820;
+      --green: #17b890;
+      --orange: #ff6b35;
+      --blue: #526cff;
+      --white: #fffaf0;
+    }
+    .slide {
+      --accent: var(--green);
+      --bg: var(--paper);
+      --fg: var(--ink);
+      --muted-v3: #5c6870;
+      --surface: rgba(255,255,255,.52);
+      padding: 5.4% 6.4% 5.8%;
+      overflow: hidden;
+      isolation: isolate;
+      color: var(--fg);
+      background:
+        linear-gradient(rgba(16,24,32,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16,24,32,.055) 1px, transparent 1px),
+        var(--bg);
+      background-size: 7.15% 11.1%, 7.15% 11.1%, auto;
+    }
+    .slide.active { display: flex; flex-direction: column; justify-content: center; animation: enter .3s cubic-bezier(.2,.75,.25,1) both; }
+    .slide::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 42%;
+      aspect-ratio: 1;
+      right: -17%;
+      bottom: -35%;
+      border-radius: 50%;
+      border: clamp(18px, 3.2vw, 50px) solid color-mix(in srgb, var(--accent) 14%, transparent);
+    }
+    .slide[data-scene^="场景二"] { --accent: var(--orange); }
+    .slide[data-scene^="场景三"] { --accent: var(--blue); }
+    .slide[data-scene="总览"], .slide[data-scene="总结"] { --accent: #17b890; }
+    .slide:nth-child(1), .slide:nth-child(5), .slide:nth-child(7), .slide:nth-child(9),
+    .slide:nth-child(11), .slide:nth-child(14), .slide:nth-child(16), .slide:nth-child(18),
+    .slide:nth-child(20), .slide:nth-child(22), .slide:nth-child(23) {
+      --bg: #101820;
+      --fg: #fffaf0;
+      --muted-v3: #b5bec2;
+      --surface: rgba(255,255,255,.075);
+      background:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+        radial-gradient(circle at 86% 18%, color-mix(in srgb, var(--accent) 27%, transparent), transparent 29%),
+        var(--bg);
+      background-size: 7.15% 11.1%, 7.15% 11.1%, auto, auto;
+    }
+    .slide:nth-child(3) { --bg: #b9f1da; --fg: #0d2824; --muted-v3: #35594f; --surface: rgba(255,255,255,.4); }
+    .slide:nth-child(6) { --bg: #ff7442; --fg: #1d1714; --muted-v3: #59392c; --surface: rgba(255,250,240,.34); }
+    .slide:nth-child(13) { --bg: #6178ff; --fg: #fffaf0; --muted-v3: #e0e5ff; --surface: rgba(255,255,255,.13); }
+    .slide:nth-child(3)::before, .slide:nth-child(6)::before, .slide:nth-child(13)::before { width: 55%; right: -14%; bottom: -62%; border-color: rgba(255,255,255,.18); }
+
+    .slide[data-scene]::after {
+      content: attr(data-scene);
+      right: 6.4%; top: 4.4%;
+      padding: 0;
+      color: var(--accent);
+      background: transparent !important;
+      border: 0;
+      font-size: clamp(10px, .92vw, 16px);
+      font-weight: 850;
+      letter-spacing: .075em;
+    }
+    .slide:nth-child(3)::after, .slide:nth-child(6)::after, .slide:nth-child(13)::after { color: var(--fg); }
+    .slide-label { display: none; }
+    .kicker {
+      margin: 0 0 1.25%;
+      color: var(--accent);
+      font-size: clamp(11px, 1.05vw, 18px);
+      font-weight: 850;
+      letter-spacing: .08em;
+    }
+    .slide:nth-child(3) .kicker, .slide:nth-child(6) .kicker, .slide:nth-child(13) .kicker { color: var(--fg); }
+    h1, h2, h3, p { color: inherit; }
+    h1 { font-size: clamp(48px, 6.2vw, 102px); line-height: .98; letter-spacing: -.065em; margin-bottom: 2.3%; }
+    h2 { max-width: 94%; font-size: clamp(32px, 3.85vw, 64px); line-height: 1.04; letter-spacing: -.052em; margin-bottom: 3.2%; }
+    h3 { font-size: clamp(18px, 1.95vw, 32px); line-height: 1.18; }
+    p, li { font-size: clamp(13px, 1.32vw, 22px); line-height: 1.48; }
+    .lead { color: var(--muted-v3); font-size: clamp(19px, 2vw, 33px); }
+    .accent, .orange, .blue { color: var(--accent); }
+    .eyebrow { color: var(--accent); font-size: clamp(10px, .92vw, 16px); font-weight: 850; letter-spacing: .09em; }
+    .big-quote { font-size: clamp(23px, 2.75vw, 46px); line-height: 1.25; letter-spacing: -.035em; }
+    .grid-2 { width: 100%; gap: 4.5%; align-items: center; }
+    .grid-2.wide-left { grid-template-columns: 1.02fr .98fr; }
+    .grid-2.wide-right { grid-template-columns: .84fr 1.16fr; }
+    .bottom-line { left: 6.4%; right: 6.4%; bottom: 4.2%; background: color-mix(in srgb, var(--fg) 20%, transparent); }
+    .closing {
+      left: 6.4%; right: 6.4%; bottom: 4.2%;
+      padding: 1.65% 2%;
+      border: 0;
+      background: var(--accent);
+      color: #101820;
+      font-size: clamp(13px, 1.3vw, 22px);
+      font-weight: 820;
+      line-height: 1.38;
+    }
+    .closing .accent { color: #101820; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+    /* 封面：满版海报构图 */
+    .title-slide { padding: 0; display: none; grid-template-columns: 62% 38%; align-items: stretch; background: #0d151b; }
+    .title-slide.active { display: grid; }
+    .title-slide::before { inset: auto -12% -42% auto; width: 55%; border: 0; background: var(--orange); opacity: 1; }
+    .title-slide .mark { position: absolute; left: 7%; top: 11%; width: 7%; height: 9px; margin: 0; background: var(--green); }
+    .title-slide .kicker { position: absolute; left: 7%; top: 17%; color: #fffaf0; }
+    .title-slide h1 { align-self: center; margin: 8% 0 0 11.3%; color: #fffaf0; font-size: clamp(54px, 6.8vw, 112px); }
+    .title-slide .lead { position: absolute; left: 7%; bottom: 13%; color: #c7d0d3; }
+    .title-orbit { right: 6%; top: 18%; width: 27%; }
+    .title-orbit::before { inset: 0; border: 0; border-radius: 0; background: var(--blue); transform: rotate(9deg); box-shadow: 0 34px 70px rgba(0,0,0,.24); }
+    .title-orbit::after { width: 47%; height: 47%; right: -9%; bottom: -13%; border-radius: 50%; background: var(--orange); }
+    .orbit-dot { width: 22%; left: -11%; top: -10%; background: var(--green); }
+    .title-slide .bottom-line { display: none; }
+
+    /* 组件：取消小卡片感，改成满版网格 */
+    .scenario-line { width: 100%; min-height: 44%; margin-top: 2.3%; gap: 0; border: 2px solid var(--ink); }
+    .scenario-line::before { display: none; }
+    .scenario { display: flex; flex-direction: column; justify-content: center; padding: 4.5%; border-right: 2px solid var(--ink); background: rgba(255,255,255,.28); }
+    .scenario:last-child { border-right: 0; }
+    .scenario .dot { position: static; width: 15px; margin-bottom: 9%; box-shadow: none; }
+    .scenario h3 { margin-bottom: 6%; }
+    .scenario p { color: var(--muted-v3); }
+    .scenario strong { margin-top: auto; padding-top: 7%; border-top: 1px solid rgba(16,24,32,.22); font-size: clamp(13px, 1.25vw, 21px); }
+
+    .compare { width: 100%; min-height: 42%; margin-top: 1%; gap: 0; grid-template-columns: 1fr 72px 1fr; }
+    .compare-panel { display: flex; flex-direction: column; justify-content: center; min-height: 0; padding: 5%; border: 0; border-top: 9px solid var(--orange); background: var(--surface); }
+    .compare-panel:last-child { border-top-color: var(--blue); }
+    .compare-panel h3 { margin-bottom: 5%; }
+    .compare-panel p { color: var(--muted-v3); }
+    .compare-vs { align-self: stretch; display: grid; place-items: center; background: var(--fg); color: var(--bg); font-size: clamp(18px, 2vw, 33px); }
+    .compare-path { margin-top: auto; padding-top: 5%; border-top: 1px solid color-mix(in srgb, var(--fg) 24%, transparent); font-size: clamp(14px, 1.35vw, 23px); line-height: 1.45; }
+    .steps { width: 100%; margin-top: 0; gap: 0; border-top: 2px solid var(--fg); }
+    .step { min-height: 64px; grid-template-columns: 8% 27% 1fr; gap: 2%; padding: 2% 1.2%; border-bottom: 1px solid color-mix(in srgb, var(--fg) 24%, transparent); }
+    .step:nth-child(even) { background: var(--surface); }
+    .step b, .step > span:first-child { color: var(--accent); font-size: clamp(18px, 1.9vw, 32px); font-weight: 900; }
+    .step strong { font-size: clamp(15px, 1.5vw, 25px); }
+    .step span, .step p { margin: 0; color: var(--muted-v3); font-size: clamp(12px, 1.18vw, 20px); line-height: 1.38; }
+    .check-list { width: 100%; margin-top: 1%; gap: 0; border: 1px solid color-mix(in srgb, var(--fg) 30%, transparent); }
+    .check-item { display: flex; align-items: center; min-height: 58px; padding: 3% 4% 3% 12%; border: 0; border-right: 1px solid color-mix(in srgb, var(--fg) 24%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--fg) 24%, transparent); font-size: clamp(13px, 1.32vw, 22px); }
+    .check-item:nth-child(even) { border-right: 0; }
+    .check-item:nth-last-child(-n+2) { border-bottom: 0; }
+    .check-item::before { left: 5%; color: var(--accent); font-size: 1.25em; }
+    .truth-box { display: flex; flex-direction: column; justify-content: center; min-height: 128px; padding: 4.7%; border: 0; border-left: 8px solid var(--accent); background: var(--surface); }
+    .truth-box strong { margin-bottom: 3%; font-size: clamp(16px, 1.62vw, 27px); }
+    .truth-box p { margin: 0; color: var(--muted-v3); line-height: 1.42; }
+    .problem-callout { margin-top: 3.3%; padding: 2.4% 3%; border: 0; background: var(--accent); color: #101820; font-size: clamp(14px, 1.38vw, 23px); line-height: 1.4; }
+    .mini-flow { width: 100%; flex-wrap: nowrap; justify-content: stretch; gap: 0; margin-top: 3%; border: 1px solid color-mix(in srgb, var(--fg) 32%, transparent); }
+    .mini-flow span { flex: 1; display: grid; place-items: center; min-height: 72px; padding: 1.3%; border: 0; border-right: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); background: var(--surface); font-size: clamp(11px, 1.08vw, 18px); text-align: center; }
+    .mini-flow i { display: grid; place-items: center; width: 28px; margin-left: -28px; z-index: 2; color: var(--accent); font-weight: 900; }
+
+    .shot-frame { border: 0; background: #fff; box-shadow: 0 28px 70px rgba(0,0,0,.33); }
+    .shot-frame.desktop { padding: 1.4%; border-radius: 0; transform: rotate(1deg); }
+    .caption { margin-top: 3%; padding: 2.5%; border-left: 6px solid var(--accent); background: var(--surface); color: var(--muted-v3); font-size: clamp(11px, 1.08vw, 18px); line-height: 1.42; }
+    .phone-pair { justify-content: flex-end; gap: 7%; min-height: 440px; }
+    .phone { width: 38%; max-height: 455px; border: 7px solid #05080a; border-radius: 28px; box-shadow: 0 28px 60px rgba(0,0,0,.35); }
+    .phone-label { bottom: -9%; color: var(--fg); font-weight: 800; }
+    .evidence-flow { gap: 0; border-top: 1px solid rgba(255,255,255,.25); }
+    .evidence-step { padding: 3.5% 0 3.5% 5%; border-left: 7px solid var(--line); border-bottom: 1px solid rgba(255,255,255,.18); }
+    .evidence-step strong { font-size: clamp(15px, 1.5vw, 25px); }
+    .evidence-step span { color: var(--muted-v3); font-size: clamp(12px, 1.13vw, 19px); }
+
+    .tangle { min-height: 390px; gap: 5% 6%; }
+    .tangle-word { padding: 6%; border-left: 8px solid; background: rgba(255,255,255,.09); color: var(--fg); font-size: clamp(14px, 1.45vw, 24px); }
+    .tangle-line { background: var(--orange); opacity: .7; }
+    .loop { min-height: 385px; gap: 4%; }
+    .loop-step { min-height: 49%; padding: 7%; border: 0; border-top: 8px solid var(--green); background: var(--surface); font-size: clamp(14px, 1.4vw, 23px); text-align: center; }
+    .loop-arrow { color: var(--orange); font-size: clamp(22px, 2.3vw, 38px); }
+    .chain { padding-left: 7%; border-left: 3px solid color-mix(in srgb, var(--fg) 28%, transparent); }
+    .chain div { padding: 0 0 5.7% 5%; font-size: clamp(13px, 1.28vw, 21px); }
+    .chain div::before { left: -9.7%; width: 12px; background: var(--accent); box-shadow: 0 0 0 6px var(--bg); }
+    .chain-note { margin-top: 5%; color: var(--accent); font-size: clamp(13px, 1.28vw, 21px); }
+
+    .failure { width: 100%; min-height: 45%; margin-top: 1%; gap: 0; grid-template-columns: 1fr 84px 1fr; }
+    .failure-side { display: flex; flex-direction: column; justify-content: center; min-height: 0; padding: 5%; background: var(--surface); }
+    .failure-side.bad { border: 0; border-top: 9px solid var(--orange); }
+    .failure-side p { color: var(--muted-v3); line-height: 1.35; }
+    .failure-arrow { align-self: stretch; display: grid; place-items: center; background: var(--orange); color: #101820; }
+    .workflow-stack { width: 100%; margin-top: 1.5%; gap: 0; border-top: 1px solid rgba(255,255,255,.25); }
+    .workflow-row { grid-template-columns: 11% 24% 1fr; min-height: 105px; padding: 2.5% 1.5%; border-bottom: 1px solid rgba(255,255,255,.2); align-items: center; }
+    .workflow-row:nth-child(2) { background: rgba(255,255,255,.07); }
+    .workflow-row .idx { font-size: clamp(22px, 2.5vw, 42px); }
+    .workflow-row strong { font-size: clamp(17px, 1.72vw, 29px); }
+    .workflow-row span { color: var(--muted-v3); font-size: clamp(13px, 1.28vw, 21px); line-height: 1.4; }
+
+    /* 各页专属重心：让内容真正占满画布 */
+    .slide:nth-child(2) { justify-content: flex-start; padding-top: 5.7%; padding-bottom: 11%; }
+    .slide:nth-child(2) .scenario-line { flex: 1; }
+    .slide:nth-child(3) .compare { min-height: 48%; }
+    .slide:nth-child(4) .steps { min-height: 52%; }
+    .slide:nth-child(5) .grid-2 { min-height: 58%; }
+    .slide:nth-child(6) .check-list { min-height: 43%; border-color: rgba(16,24,32,.34); }
+    .slide:nth-child(7) .grid-2 { min-height: 61%; }
+    .slide:nth-child(8) .grid-2 { min-height: 57%; }
+    .slide:nth-child(8) .truth-box { min-height: 285px; }
+    .slide:nth-child(9) { align-items: stretch; padding-bottom: 12%; }
+    .slide:nth-child(9) .mini-flow { min-height: 25%; }
+    .slide:nth-child(10) .grid-2 { min-height: 58%; }
+    .slide:nth-child(11) .grid-2 { min-height: 60%; }
+    .slide:nth-child(12) { padding-bottom: 12%; }
+    .slide:nth-child(12) .check-list { min-height: 43%; }
+    .slide:nth-child(13) .check-list { min-height: 43%; border-color: rgba(255,255,255,.35); }
+    .slide:nth-child(14) .compare { min-height: 53%; }
+    .slide:nth-child(15) .check-list { min-height: 48%; }
+    .slide:nth-child(16) .grid-2 { min-height: 64%; grid-template-columns: .92fr 1.08fr; }
+    .slide:nth-child(17) .steps { min-height: 54%; }
+    .slide:nth-child(18) .failure { min-height: 52%; }
+    .slide:nth-child(19) .mini-flow { margin-top: 1%; }
+    .slide:nth-child(19) .check-list { min-height: 37%; margin-top: 2.7% !important; }
+    .slide:nth-child(20) .check-list { min-height: 50%; }
+    .slide:nth-child(21) .compare { min-height: 52%; }
+    .slide:nth-child(22) { padding-bottom: 12%; }
+    .slide:nth-child(22) .mini-flow { margin-top: 1.5%; }
+    .slide:nth-child(22) .check-list { min-height: 29%; margin-top: 2.3% !important; }
+    .slide:nth-child(23) { padding-bottom: 12%; }
+    .slide:nth-child(23) .workflow-stack { min-height: 46%; }
+
+    /* 在整页色块上，强调字要使用实色高对比，避免同色字融进背景 */
+    .slide:nth-child(3) .accent,
+    .slide:nth-child(6) .orange,
+    .slide:nth-child(13) .blue { color: #fffaf0; text-shadow: 0 2px 0 rgba(16,24,32,.12); }
+
+    @media (max-width: 760px) {
+      .slide { padding: 5.8% 5.7% 6.5%; }
+      .slide[data-scene]::after { right: 5.7%; }
+      .closing { left: 5.7%; right: 5.7%; }
+      .mini-flow span { min-height: 58px; }
+    }
+
+    /* 统一深色版｜仅统一色系，不修改任何内容、布局和交互。 */
+    :root {
+      --paper: #101820;
+      --ink: #fffaf0;
+      --muted: #b5bec2;
+      --line: rgba(255,255,255,.22);
+      --green: #526cff;
+      --green-soft: rgba(82,108,255,.16);
+      --orange: #ff6b35;
+      --orange-soft: rgba(255,107,53,.16);
+      --blue: #526cff;
+      --blue-soft: rgba(82,108,255,.16);
+      --white: #fffaf0;
+    }
+    section.slide,
+    section.slide[data-scene],
+    section.slide[data-scene^="场景一"],
+    section.slide[data-scene^="场景二"],
+    section.slide[data-scene^="场景三"],
+    section.slide[data-scene="总览"],
+    section.slide[data-scene="总结"] {
+      --accent: #526cff;
+      --bg: #101820;
+      --fg: #fffaf0;
+      --muted-v3: #b5bec2;
+      --surface: rgba(255,255,255,.075);
+      color: var(--fg);
+      background:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+        radial-gradient(circle at 86% 18%, rgba(82,108,255,.27), transparent 29%),
+        var(--bg);
+      background-size: 7.15% 11.1%, 7.15% 11.1%, auto, auto;
+    }
+    section.slide::before {
+      border-color: rgba(82,108,255,.14);
+    }
+    section.slide[data-scene]::after,
+    section.slide .kicker,
+    section.slide .eyebrow,
+    section.slide .accent,
+    section.slide .orange,
+    section.slide .blue,
+    section.slide .chain-note,
+    section.slide .workflow-row .idx {
+      color: #526cff;
+      text-shadow: none;
+    }
+    section.slide .scenario .dot,
+    section.slide .scenario:nth-child(2) .dot,
+    section.slide .scenario:nth-child(3) .dot,
+    section.slide .chain div::before {
+      background: #526cff;
+    }
+    section.slide .truth-box,
+    section.slide .loop-step,
+    section.slide .evidence-step,
+    section.slide .tangle-word,
+    section.slide .check-item {
+      border-color: #526cff;
+    }
+    section.slide .problem-callout,
+    section.slide .closing {
+      background: #526cff;
+      color: #fffaf0;
+    }
+    section.slide .closing .accent { color: #fffaf0; }
+    section.slide .scenario,
+    section.slide .compare-panel,
+    section.slide .truth-box,
+    section.slide .mini-flow span,
+    section.slide .loop-step,
+    section.slide .failure-side,
+    section.slide .caption {
+      background: var(--surface);
+    }
+    section.slide .scenario-line,
+    section.slide .steps,
+    section.slide .check-list,
+    section.slide .mini-flow,
+    section.slide .workflow-stack {
+      border-color: rgba(255,255,255,.24);
+    }
+    section.slide .scenario { border-color: rgba(255,255,255,.24); }
+    section.slide .scenario p,
+    section.slide .compare-panel p,
+    section.slide .truth-box p,
+    section.slide .step span,
+    section.slide .step p,
+    section.slide .failure-side p,
+    section.slide .workflow-row span,
+    section.slide .caption,
+    section.slide .lead {
+      color: #b5bec2;
+    }
+    section.slide .compare-panel:first-child,
+    section.slide .failure-side.bad:first-child {
+      border-top-color: #ff6b35;
+    }
+    section.slide .compare-panel:last-child,
+    section.slide .failure-side.bad:last-child {
+      border-top-color: #526cff;
+    }
+    section.slide .compare-vs { background: #fffaf0; color: #101820; }
+    section.slide .failure-arrow { background: #ff6b35; color: #101820; }
+
+    /* 封面也使用同一深蓝黑底；几何图形只保留蓝、橙、米白。 */
+    section.slide.title-slide[data-scene="总览"] {
+      --accent: #526cff;
+      --bg: #101820;
+      --fg: #fffaf0;
+      color: #fffaf0;
+      background:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+        radial-gradient(circle at 86% 18%, rgba(82,108,255,.27), transparent 29%),
+        #101820;
+      background-size: 7.15% 11.1%, 7.15% 11.1%, auto, auto;
+    }
+    .title-slide .mark,
+    .title-slide .orbit-dot { background: #526cff; }
+    .title-orbit::before { background: #526cff; }
+    .title-orbit::after,
+    .title-slide::before { background: #ff6b35; }
+    .title-slide .kicker,
+    .title-slide h1 { color: #fffaf0; }
+    .title-slide .lead { color: #b5bec2; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <main class="deck" aria-live="polite">
+      <section class="slide title-slide active" data-scene="总览" data-title="我怎么和 AI 一起做需求" data-time="15秒" data-note="我今天不讲AI有什么功能，直接讲我最近真实做票务需求时，三类不同需求分别怎么和AI配合。最后会落成三套可以复用的工作流。">
+        <div class="mark"></div>
+        <p class="kicker">部门内 AI 应用分享</p>
+        <h1>我怎么和 AI<br />一起做需求</h1>
+        <p class="lead">三类票务需求，三种不同的协作方式</p>
+        <div class="title-orbit"><span class="orbit-dot"></span></div>
+        <div class="bottom-line"></div>
+      </section>
+
+      <section class="slide" data-scene="总览" data-title="先判断手里有什么，再决定怎样和AI协作" data-time="30秒" data-note="三种方法不是简单按照需求大小划分，而是看开始做需求时，我们手里已经有什么。小需求里，我熟悉系统，也知道大致怎么改，AI负责补完整；定制化大需求没有成熟答案，需要通过原型和真实操作逐步推演；有竞品的大需求已经有通用业务逻辑可参考，可以先把竞品变成需求底稿，再逐步形成自己的方案。">
+        <span class="slide-label">01 / 三类场景</span>
+        <p class="kicker">先判断：开始做需求时，我们手里已经有什么</p>
+        <h2>已有信息不同，<br /><span class="accent">和AI协作的方法也不同</span></h2>
+        <div class="scenario-line">
+          <div class="scenario"><span class="dot"></span><h3>方向基本明确</h3><p>我熟悉系统，也知道为什么改、准备怎么改。</p><strong>我定方向，AI补完整</strong></div>
+          <div class="scenario"><span class="dot"></span><h3>没有成熟答案</h3><p>逻辑多、关联深，字段和规则无法一次想全。</p><strong>用原型和实操推演</strong></div>
+          <div class="scenario"><span class="dot"></span><h3>已有成熟竞品</h3><p>有经过真实使用验证的通用流程和业务逻辑。</p><strong>竞品作底稿，逐步共创</strong></div>
+        </div>
+        <div class="closing">关键不是“要不要用AI”，而是先判断AI应该补全、推演，还是帮助参考和取舍。</div>
+      </section>
+
+      <section class="slide" data-scene="场景一｜日常迭代小需求" data-title="小需求里，我负责方向，AI负责展开" data-time="20秒" data-note="场景一是范围小、改法相对明确的日常迭代。我熟悉现有系统，因此不需要AI从零设计；我负责给出方向和边界，AI负责把容易忽略的规则、异常和验收细节展开。完整方法放在场景最后总结。">
+        <p class="kicker">场景一｜适用：范围小、改法相对明确</p>
+        <h2>我定方向，AI把需求<span class="accent">补完整</span></h2>
+        <div class="compare">
+          <div class="compare-panel"><p class="eyebrow">我更清楚</p><h3>为什么改、改哪里</h3><p>现有系统、问题背景、修改方向和本期边界。</p></div>
+          <div class="compare-vs">+</div>
+          <div class="compare-panel"><p class="eyebrow">AI更适合展开</p><h3>规则有没有补全</h3><p>异常分支、提示、按钮状态、局部原型和验收条件。</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景一｜日常迭代小需求" data-title="小需求：我先把方向说清楚" data-time="25秒" data-note="小需求里我最清楚现有系统，所以不需要AI从头设计。我会把为什么做、当前规则、具体改哪里、本期不改什么先说清楚；如果有Wiki和原页面，也让AI先读。">
+        <span class="slide-label">02 / 场景一</span>
+        <p class="kicker">日常迭代</p>
+        <h2>我先把<span class="accent">方向和边界</span>说清楚</h2>
+        <div class="steps">
+          <div class="step"><b>01</b><strong>为什么做</strong><span>现在有什么问题，要解决谁的什么操作困难</span></div>
+          <div class="step"><b>02</b><strong>当前是什么</strong><span>提供现有需求、Wiki、页面截图或原型</span></div>
+          <div class="step"><b>03</b><strong>准备怎么改</strong><span>我熟悉系统，直接告诉AI修改方向</span></div>
+          <div class="step"><b>04</b><strong>本期边界</strong><span>哪些要改、哪些旧逻辑保留、哪些不在本期</span></div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景一｜日常迭代小需求" data-title="场景一方法总结：我定方向，AI补完整" data-time="30秒" data-note="AI把正常、异常、提示、按钮状态和能不能提交补齐，再在现有页面上做局部HTML，最后同步方案和验收标准。场景一的方法可以总结为：说明问题、提供现状、明确改法和边界、AI补规则与异常、局部原型、验收标准。">
+        <span class="slide-label">03 / 场景一</span>
+        <div class="grid-2 wide-left">
+          <div>
+            <p class="kicker">步骤2｜补全细节，并总结方法</p>
+            <h2>AI把一个改动，<br />补成<span class="accent">完整需求</span></h2>
+            <div class="check-list">
+              <div class="check-item">展示条件</div><div class="check-item">异常分支</div>
+              <div class="check-item">提示文案</div><div class="check-item">按钮状态</div>
+              <div class="check-item">是否允许提交</div><div class="check-item">验收标准</div>
+            </div>
+          </div>
+          <div><div class="shot-frame desktop"><img src="assets/small-demand-refund.png" alt="退款小需求HTML原型" /></div><p class="caption">方法总结：说明问题与现状 → 明确改法和边界 → AI补规则与异常 → 局部原型 → 验收标准</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景二｜定制化复杂大需求" data-title="没有成熟答案时，用原型帮助思考" data-time="25秒" data-note="场景二适合逻辑多、跨模块、关联关系复杂，而且外面没有成熟答案的大需求。字段和规则无法预先一次想全，所以不强求先写完完整PRD，而是把原型当成业务模拟环境，边操作边发现问题。完整方法会在场景最后一页总结。">
+        <p class="kicker">场景二｜适用：逻辑多、跨模块、没有成熟答案</p>
+        <h2>先让业务在原型里<span class="orange">跑起来</span>，<br />再沉淀完整方案</h2>
+        <div class="check-list" style="margin-top:3%">
+          <div class="truth-box"><strong>为什么不先写完整方案</strong><p>细节多、关联深，单靠脑内推演很难一次列全。</p></div>
+          <div class="truth-box"><strong>原型承担什么作用</strong><p>把抽象逻辑变成真实操作，让遗漏和冲突更早出现。</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景二｜定制化复杂大需求" data-title="财务大需求：先写完方案反而更难" data-time="35秒" data-note="散客合作伙伴这个需求跨档案、账户、充值、售票、订单、退款、流水和报表。一开始我们连哪些字段合适都不确定。要先在脑中把所有记账逻辑想完再出页面，头会想爆，也一定会漏；而且真正做页面时，很可能发现操作不成立，导致方案大改。">
+        <span class="slide-label">04 / 场景二</span>
+        <div class="grid-2 wide-left">
+          <div>
+            <p class="kicker">定制化复杂大需求</p>
+            <h2>先把方案全想完，<br /><span class="orange">反而更难</span></h2>
+            <p class="big-quote">“字段还没定，记账逻辑已经跨了八九个页面。”</p>
+            <p class="problem-callout">靠脑内推演，很难一次列全；写完再画页面，往往还要大改。</p>
+          </div>
+          <div class="tangle" aria-label="跨模块关联示意">
+            <div class="tangle-line a"></div><div class="tangle-line b"></div><div class="tangle-line c"></div>
+            <div class="tangle-word">合作伙伴档案</div>
+            <div class="tangle-word">预付款 / 挂账账户</div>
+            <div class="tangle-word">售票与订单</div>
+            <div class="tangle-word">充值 / 回款 / 退款</div>
+            <div class="tangle-word">资金流水与报表</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景二｜定制化复杂大需求" data-title="先圈定范围，让AI学习现有系统" data-time="35秒" data-note="我会先明确告诉AI要查看现有系统中的哪些板块，给它一个清晰范围。要求它学习这些板块的结构框架、业务术语、业务逻辑、板块和功能之间的关联关系，以及关键详细规则。学习的目的是建立系统上下文和找到架构参考，不是照搬原有功能。">
+        <span class="slide-label">05 / 场景二</span>
+        <p class="kicker">步骤1｜先建立系统上下文</p>
+        <h2>我来圈定范围，<br />让AI<span class="orange">学习现有系统</span></h2>
+        <div class="grid-2 wide-left">
+          <div class="truth-box"><strong>我明确告诉AI去看哪些板块</strong><p>例如团队管理、分销管理、售票窗口、订单详情等。范围由我来圈定，避免AI无目标地理解整个系统。</p></div>
+          <div>
+            <div class="check-list" style="margin-top:0"><div class="check-item">结构框架</div><div class="check-item">业务术语</div><div class="check-item">业务逻辑</div><div class="check-item">板块关联</div><div class="check-item">功能关系</div><div class="check-item">详细规则</div></div>
+            <p class="problem-callout">目的是让AI建立系统上下文、理解可参考架构；是学习，不是照搬。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景二｜定制化复杂大需求" data-title="先定真实用户操作主线" data-time="25秒" data-note="AI建立系统上下文以后，我们先确定真实用户操作的主线：从建档、建账户、充值、售票到订单、回款、退款和对账。这里先确定大的环节，不要求一次定完每个页面的全部字段和规则。">
+        <p class="kicker">步骤2｜先搭业务骨架</p>
+        <h2>先定<span class="orange">真实用户操作主线</span>，<br />不急着列完所有字段</h2>
+        <div class="mini-flow"><span>建档</span><i>→</i><span>建账户</span><i>→</i><span>充值</span><i>→</i><span>售票</span><i>→</i><span>订单</span><i>→</i><span>回款</span><i>→</i><span>退款</span><i>→</i><span>对账</span></div>
+        <div class="closing">先知道用户会经过哪些环节；字段、状态和异常，留到对应页面中逐步确认。</div>
+      </section>
+
+      <section class="slide" data-scene="场景二｜定制化复杂大需求" data-title="一个页面一个页面把业务跑起来" data-time="40秒" data-note="然后按真实用户操作顺序，一个环节、一个页面推进。当前是谁操作、从哪里进入、要完成什么，先讨论清楚；AI做可操作页面并放入样例，我自己点击、填写、切换。操作不对就先改原型，跑通后再把字段、状态和规则写回方案，然后进入下一个页面。">
+        <span class="slide-label">06 / 场景二</span>
+        <p class="kicker">步骤3｜逐模块制作可操作原型</p>
+        <h2>一个页面一个页面，<br />把业务<span class="accent">跑起来</span></h2>
+        <div class="grid-2 wide-left">
+          <div class="loop">
+            <div class="loop-step">做一个页面</div><div class="loop-step">加入样例数据</div><div class="loop-step">自己实际操作</div>
+            <div class="loop-step">规则写回方案</div><div class="loop-step">重新跑通</div><div class="loop-step">发现缺口，改原型</div>
+            <span class="loop-arrow a">→</span><span class="loop-arrow b">→</span><span class="loop-arrow c">→</span>
+            <span class="loop-arrow d">→</span><span class="loop-arrow e">→</span><span class="loop-arrow f">→</span>
+          </div>
+          <div>
+            <div class="truth-box"><strong>每页固定确认</strong><p>谁操作？从哪进？要完成什么？字段够不够？不同状态怎么变？会影响哪些下游页面？</p></div>
+            <p class="chain-note">原型不是最后的展示图，而是用来发现需求的业务模拟器。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景二｜定制化复杂大需求" data-title="在原型上实操，才能暴露遗漏细节" data-time="45秒" data-note="步骤4是在原型上亲自操作。不是看页面像不像，而是加入样例数据，完整执行一次操作，再顺着数据检查相关页面和结果。真实操作会暴露字段缺失、状态不一致、数据没有联动等脑内推演难以发现的问题。下面只用一次充值作为例子说明。">
+        <span class="slide-label">07 / 场景二</span>
+        <p class="kicker">步骤4｜在原型上实操，暴露遗漏细节</p>
+        <h2>不只看页面，<br />要自己<span class="orange">完整操作一遍</span></h2>
+        <div class="grid-2 wide-left">
+          <div class="chain">
+            <div><strong>举例：做一笔充值</strong></div>
+            <div>充值弹窗是否成功？</div>
+            <div>账户余额是否变化？</div>
+            <div>充值 / 其他收入记录是否生成？</div>
+            <div>后台资金流水能否查询？</div>
+            <div>售票窗口报表是否统计？</div>
+          </div>
+          <div>
+            <div class="truth-box"><strong>实操重点检查</strong><p>输入是否够用、状态是否正确、数据是否流转、关联页面是否同步、结果能否继续查询。</p></div>
+            <p class="chain-note">例子说明：一个操作真正跑通，才能确认这条业务链已经闭环。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景二｜定制化复杂大需求" data-title="场景二方法总结：用操作结果反推方案" data-time="45秒" data-note="步骤5是把原型实操和案例数据暴露的问题反向写回方案。页面操作变化会推动交互方案调整，字段变化会推动数据与规则调整，状态变化会推动流程和异常分支调整，联动变化会推动模块范围和验收标准调整。最终形成一套从学习现状到原型验证再回写方案的方法。">
+        <span class="slide-label">08 / 场景二</span>
+        <p class="kicker">步骤5｜原型、实操和样例数据反推方案调整</p>
+        <h2>原型暴露的变化，<br />会<span class="accent">反向推动方案修改</span></h2>
+        <div class="check-list" style="margin-top:3%">
+          <div class="truth-box"><strong>页面操作发生变化</strong><p>推动入口、布局、操作顺序和交互方案调整。</p></div>
+          <div class="truth-box"><strong>字段和数据发生变化</strong><p>推动数据结构、业务规则和记录内容调整。</p></div>
+          <div class="truth-box"><strong>状态与判断发生变化</strong><p>推动主流程、异常分支和提示规则调整。</p></div>
+          <div class="truth-box"><strong>上下游联动发生变化</strong><p>推动模块范围、关联关系和验收标准调整。</p></div>
+        </div>
+        <div class="closing">方法总结：学习现状 → 确定操作主线 → 逐模块做原型 → 加样例实操 → 将验证结果写回方案。</div>
+      </section>
+
+      <section class="slide" data-scene="场景三｜有竞品的复杂大需求" data-title="成熟竞品可以作为需求思考的起点" data-time="25秒" data-note="场景三同样是复杂大需求，但市场上已经有成熟竞品。我们不必完全从零想一套通用逻辑，可以先把竞品作为需求思考的起点；但最终仍需结合自己的系统和业务做取舍。完整方法放在场景最后总结。">
+        <p class="kicker">场景三｜适用：复杂大需求，但已有成熟竞品</p>
+        <h2>把竞品变成<span class="blue">需求底稿</span>，<br />再逐步共创自己的方案</h2>
+        <div class="check-list" style="margin-top:3%">
+          <div class="truth-box"><strong>竞品能提供什么</strong><p>经过实际使用验证的通用流程、功能结构和常见规则。</p></div>
+          <div class="truth-box"><strong>我们仍要决定什么</strong><p>哪些适合自己的业务，哪些需要调整、删减或重新设计。</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景三｜有竞品的复杂大需求" data-title="场景三与场景二的相同和不同" data-time="30秒" data-note="场景三和场景二本质上都是复杂需求：业务链路长、参与角色多、状态和规则相互影响，都无法一次想清全部细节，也都需要逐步讨论和验证。区别只在于，场景三已有成熟竞品，可以先借它建立通用业务认知。">
+        <span class="slide-label">09 / 场景三</span>
+        <p class="kicker">为什么采用另一条起步路径</p>
+        <h2>复杂度没有降低，<br />只是<span class="blue">不用从零构建业务骨架</span></h2>
+        <div class="compare">
+          <div class="compare-panel">
+            <p class="eyebrow">共同点</p><h3>都不可能一次想全</h3>
+            <p>业务链路长、参与角色多、状态与规则相互影响，都需要逐步讨论和验证。</p>
+            <div class="compare-path orange">复杂需求的共性<br />边讨论、边验证、边补全</div>
+          </div>
+          <div class="compare-vs">+</div>
+          <div class="compare-panel">
+            <p class="eyebrow">场景三的优势</p><h3>已有成熟产品可参考</h3>
+            <p>通用流程和行业逻辑已经真实运行过，可以先借来建立完整认知。</p>
+            <div class="compare-path blue">竞品是起点和依据<br />不是照搬的最终答案</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景三｜有竞品的复杂大需求" data-title="先让AI给出竞品资料采集建议" data-time="30秒" data-note="第一步不是直接把截图丢给AI，而是先说明我有哪些竞品和分析目标，让AI先给出资料采集建议和检查清单。然后再根据建议决定视频与截图怎样配合、需要覆盖哪些使用端，以及哪些弹窗和关键状态不能漏。">
+        <span class="slide-label">10 / 场景三</span>
+        <p class="kicker">第一步：先确定怎样沟通</p>
+        <h2>先让AI<span class="accent">给采集建议</span>，<br />再按建议准备竞品资料</h2>
+        <div class="check-list" style="margin-top:3%">
+          <div class="truth-box"><strong>1. AI先给建议</strong><p>根据分析目标，先列出采集方式、所需范围和防遗漏检查清单。</p></div>
+          <div class="truth-box"><strong>视频还是截图？</strong><p>视频帮助理解连续操作；截图便于逐字段、逐状态分析和引用。</p></div>
+          <div class="truth-box"><strong>采集哪些端？</strong><p>管理端配置与游客端结果必须成对采集，不能只看其中一端。</p></div>
+          <div class="truth-box"><strong>哪些细节不能漏？</strong><p>弹窗、展开项、错误提示、空状态、成功结果和修改取消过程。</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景三｜有竞品的复杂大需求" data-title="把零散截图整理成可追溯证据库" data-time="30秒" data-note="资料采集后，AI逐图识别，把随机文件名改成中文业务名称，按端、模块和流程分类，并记录每张图证明了什么。这样以后聊某个功能或字段时，都能立刻找到相应竞品页面，而不是靠记忆翻图片。">
+        <span class="slide-label">11 / 场景三</span>
+        <div class="grid-2">
+          <div>
+            <p class="kicker">第二步：整理竞品证据</p>
+            <h2>从“一堆截图”变成<br /><span class="blue">可查询、可追溯的资料库</span></h2>
+            <div class="evidence-flow">
+              <div class="evidence-step"><strong>逐图识别与中文改名</strong><span>看到文件名就知道属于哪个端、哪个功能</span></div>
+              <div class="evidence-step"><strong>按模块与流程分类</strong><span>把分散页面串成连续业务过程</span></div>
+              <div class="evidence-step"><strong>记录“这张图证明什么”</strong><span>以后每个功能、字段和结论都有证据可回看</span></div>
+            </div>
+          </div>
+          <div class="shot-frame desktop" style="transform:none">
+            <img src="assets/competitor-evidence-folder.png" alt="按业务流程整理并命名的竞品截图资料目录" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景三｜有竞品的复杂大需求" data-title="先还原完整业务，而不是先画我们的页面" data-time="35秒" data-note="此时不急着设计我们的页面。先让AI依据所有证据还原竞品的完整业务流程、管理端与游客端映射、能力全集，以及仍待确认的地方。竞品在这里相当于一份真实运行过的需求底稿，让我们先知道一个完整产品通常要解决哪些问题。">
+        <span class="slide-label">12 / 场景三</span>
+        <p class="kicker">第三步：恢复竞品背后的业务</p>
+        <h2>先看懂它<span class="blue">为什么这样做</span>，<br />再讨论我们要不要这样做</h2>
+        <div class="steps">
+          <div class="step"><span>01</span><strong>完整用户流程</strong><p>创建活动 → 配置日期场次 → 游客预约 → 修改取消 → 名单管理。</p></div>
+          <div class="step"><span>02</span><strong>前后台映射</strong><p>管理端每一项配置，会怎样影响游客端展示、限制和结果。</p></div>
+          <div class="step"><span>03</span><strong>能力全集</strong><p>日期、库存、填写项、开放截止、凭证、异常状态等完整能力版图。</p></div>
+          <div class="step"><span>04</span><strong>证据与未知项</strong><p>区分截图已证明、多图推断，以及仍需继续验证的内容。</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景三｜有竞品的复杂大需求" data-title="第一次做法为什么会失败" data-time="35秒" data-note="我们最初其实已经有很多截图，也讨论了不少细节，但做着做着发现不行。因为没有先建立完整计划和推进顺序，AI看到什么就跟着聊什么：某些局部越聊越细，另外一些功能却没覆盖；管理端配置和游客端表现也没有一一对应，甚至不知道整体做到哪里。">
+        <span class="slide-label">13 / 场景三</span>
+        <p class="kicker">一次真正影响方法的踩坑</p>
+        <h2>资料很多，不等于<span class="accent">需求不会漏</span></h2>
+        <div class="failure">
+          <div class="failure-side bad"><h3>当时的做法</h3><p>看到一张截图就聊一张</p><p>想到一个问题就插入讨论</p><p>局部页面越来越细</p><p>没有统一的推进顺序</p></div>
+          <div class="failure-arrow">→</div>
+          <div class="failure-side bad"><h3>暴露的问题</h3><p>完整功能和状态容易遗漏</p><p>前后台关系没有串起来</p><p>讨论内容重复或跳跃</p><p>不知道整体进度和下一步</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景三｜有竞品的复杂大需求" data-title="纠偏：先建立方案推进顺序" data-time="40秒" data-note="后来我们把顺序重新定下来：先完成竞品流程，再拆功能版图；然后结合票务系统确定我们的范围和总体方案，并建立方案确认清单，按模块逐项讨论。这里的清单不是HTML页面清单，它解决的是需求有没有想全、有没有确认。整体方案全部确认后，才进入原型阶段。">
+        <span class="slide-label">14 / 场景三工作流</span>
+        <p class="kicker">第四步：先把需求讨论变成一个有顺序的项目</p>
+        <h2>先用<span class="accent">方案确认清单</span>防止遗漏，<br />不是马上开始画页面</h2>
+        <div class="mini-flow"><span>竞品完整流程</span><i>→</i><span>功能版图</span><i>→</i><span>我们的范围与总体方案</span><i>→</i><span>方案确认清单</span><i>→</i><span>按模块逐项确认</span></div>
+        <div class="check-list" style="margin-top:3%">
+          <div class="truth-box"><strong>先定全局</strong><p>知道有哪些模块、相互怎样关联，以及哪些内容本期要做。</p></div>
+          <div class="truth-box"><strong>再按顺序推进</strong><p>每次只讨论清单中的一个模块，完成后留下明确结论。</p></div>
+          <div class="truth-box"><strong>随时知道进度</strong><p>已确认、待确认、需补证据的问题都能看见。</p></div>
+          <div class="truth-box"><strong>先方案，后原型</strong><p>方案确认清单与后面的HTML页面制作清单是两件事。</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景三｜有竞品的复杂大需求" data-title="每聊一个模块，都把竞品证据摆出来" data-time="40秒" data-note="逐模块讨论时，我们要求AI必须同时列出对应竞品页面。先看竞品为什么这样设计，再一起判断哪些保留、哪些调整、哪些不做、放在我们系统哪里；同时确认管理端配置如何影响游客端，以及正常、异常和空状态。聊到具体字段，也要把对应截图摆出来，而不是只靠文字描述。">
+        <span class="slide-label">15 / 场景三</span>
+        <p class="kicker">第五步：固定每次讨论的确认模板</p>
+        <h2>每个功能都要<span class="blue">对着竞品证据</span>，<br />再做我们自己的判断</h2>
+        <div class="check-list" style="margin-top:3%">
+          <div class="truth-box"><strong>竞品对应页面</strong><p>本模块涉及哪些截图；细到字段时，也展示字段所在页面。</p></div>
+          <div class="truth-box"><strong>理解设计原因</strong><p>它解决了什么真实操作问题，前后步骤怎样衔接。</p></div>
+          <div class="truth-box"><strong>做明确取舍</strong><p>哪些保留、哪些调整、哪些不做，以及放到我们系统的哪里。</p></div>
+          <div class="truth-box"><strong>确认完整规则</strong><p>前后台映射、正常状态、异常状态、空状态和最终结论。</p></div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景三｜有竞品的复杂大需求" data-title="整体方案确认后，再列HTML原型清单" data-time="35秒" data-note="所有模块方案聊完以后，再根据已经确认的流程，单独列一套HTML原型页面清单和制作顺序。此时才是一页一页画：每做一页，继续确认布局、字段、状态和交互，再进入下一页。这样原型是在验证已形成的整体方案，而不是用零散页面代替整体规划。">
+        <span class="slide-label">16 / 场景三</span>
+        <p class="kicker">第六步：从方案阶段进入原型阶段</p>
+        <h2>先定整体方案，<br />再<span class="accent">另列原型清单逐页制作</span></h2>
+        <div class="compare">
+          <div class="compare-panel"><p class="eyebrow">前半段</p><h3>方案确认清单</h3><p>保证业务模块、逻辑、关联关系和范围不漏。</p><div class="compare-path orange">产出：完整方案<br />以及清晰的功能结论</div></div>
+          <div class="compare-vs">→</div>
+          <div class="compare-panel"><p class="eyebrow">后半段</p><h3>HTML原型清单</h3><p>按真实用户流程确定要做哪些页面，以及制作先后顺序。</p><div class="compare-path blue">产出：可操作页面<br />以及被验证过的细节</div></div>
+        </div>
+      </section>
+
+      <section class="slide" data-scene="场景三｜有竞品的复杂大需求" data-title="场景三方法总结：竞品作底稿，逐步共创" data-time="45秒" data-note="场景三最后总结成一套完整方法：先让AI给采集建议，建立竞品证据库；再还原完整流程和功能版图；通过方案确认清单逐模块做取舍；整体方案确认后另列HTML原型清单，逐页制作并验证自己的实现。竞品是需求底稿，不是照搬的答案。">
+        <span class="slide-label">17 / 场景三</span>
+        <p class="kicker">最后一步｜原型验证，并总结完整方法</p>
+        <h2>竞品作<span class="blue">需求底稿</span>，<br />逐模块共创自己的方案</h2>
+        <div class="mini-flow"><span>AI给采集建议</span><i>→</i><span>竞品证据库</span><i>→</i><span>还原流程与功能版图</span><i>→</i><span>方案清单逐项取舍</span><i>→</i><span>确认整体方案</span><i>→</i><span>原型清单逐页验证</span></div>
+        <div class="check-list" style="margin-top:3%">
+          <div class="truth-box"><strong>竞品的作用</strong><p>提供真实运行过的业务骨架，帮助我们避免从零遗漏通用逻辑。</p></div>
+          <div class="truth-box"><strong>原型的作用</strong><p>加入样例并实际操作，验证这些逻辑落到自己的系统后是否真正可用。</p></div>
+        </div>
+        <div class="closing">结论：参考竞品，但不复刻竞品；完整方案仍由自己的业务判断形成。</div>
+      </section>
+
+      <section class="slide" data-scene="总结" data-title="最终沉淀成三套工作流" data-time="25秒" data-note="最后就是三套工作流。小需求是方案补全；定制化大需求是原型推演；有竞品的大需求是先把竞品变成需求底稿，再按方案确认清单逐模块共创，最后进入原型清单逐页验证。AI并没有替我做产品判断，它主要帮我展开、连接、模拟和检查，让问题更早暴露。">
+        <span class="slide-label">总结 / 三套工作流</span>
+        <p class="kicker">可以直接复用</p>
+        <h2>最终沉淀成<span class="accent">三套工作流</span></h2>
+        <div class="workflow-stack">
+          <div class="workflow-row"><span class="idx">01</span><strong>小需求补全</strong><span>问题与改动明确 → AI补规则、异常、原型和验收</span></div>
+          <div class="workflow-row"><span class="idx">02</span><strong>原型推演</strong><span>按真实操作做页面 → 加样例跑通 → 规则写回方案</span></div>
+          <div class="workflow-row"><span class="idx">03</span><strong>竞品底稿共创</strong><span>还原竞品 → 方案清单逐项取舍 → 整体方案 → 原型清单逐页验证</span></div>
+        </div>
+        <div class="closing">产品经理负责<span class="accent">判断</span>，AI负责<span class="accent">展开、连接、模拟和检查</span>。</div>
+      </section>
+    </main>
+  </div>
+
+  <div class="chrome">
+    <div class="top-controls">
+      <button class="icon-btn" id="tocOpen" title="目录（M）">目录</button>
+      <button class="icon-btn" id="notesOpen" title="讲述提示（N）">讲述提示</button>
+      <button class="icon-btn" id="fullscreen" title="全屏（F）">全屏</button>
+    </div>
+    <div class="nav-controls">
+      <button class="icon-btn" id="prev" aria-label="上一页">← 上一页</button>
+      <span class="page-chip"><span id="current">1</span> / <span id="total">23</span></span>
+      <button class="icon-btn" id="next" aria-label="下一页">下一页 →</button>
+    </div>
+    <div class="progress"><span id="progressBar"></span></div>
+  </div>
+
+  <div class="backdrop" id="backdrop"></div>
+  <aside class="drawer" id="tocDrawer" aria-label="目录">
+    <button class="icon-btn drawer-close" data-close>关闭</button>
+    <h3>目录</h3>
+    <ol class="toc" id="toc"></ol>
+  </aside>
+  <aside class="drawer right" id="notesDrawer" aria-label="讲述提示">
+    <button class="icon-btn drawer-close" data-close>关闭</button>
+    <h3>本页讲述提示</h3>
+    <div class="note-time" id="noteTime"></div>
+    <div class="note-copy" id="noteCopy"></div>
+  </aside>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const currentEl = document.getElementById('current');
+    const totalEl = document.getElementById('total');
+    const progressBar = document.getElementById('progressBar');
+    const toc = document.getElementById('toc');
+    const tocDrawer = document.getElementById('tocDrawer');
+    const notesDrawer = document.getElementById('notesDrawer');
+    const backdrop = document.getElementById('backdrop');
+    const noteTime = document.getElementById('noteTime');
+    const noteCopy = document.getElementById('noteCopy');
+    let index = 0;
+
+    totalEl.textContent = slides.length;
+    slides.forEach((slide, i) => {
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.textContent = `${String(i + 1).padStart(2,'0')}  ${slide.dataset.title}`;
+      btn.addEventListener('click', () => { show(i); closeDrawers(); });
+      li.appendChild(btn); toc.appendChild(li);
+    });
+
+    function show(next) {
+      index = Math.max(0, Math.min(slides.length - 1, next));
+      slides.forEach((s, i) => s.classList.toggle('active', i === index));
+      [...toc.querySelectorAll('button')].forEach((b, i) => b.classList.toggle('current', i === index));
+      currentEl.textContent = index + 1;
+      progressBar.style.width = `${((index + 1) / slides.length) * 100}%`;
+      noteTime.textContent = `建议用时：${slides[index].dataset.time}`;
+      noteCopy.textContent = slides[index].dataset.note;
+      document.title = `${index + 1}/${slides.length}｜${slides[index].dataset.title}`;
+      history.replaceState(null, '', `#${index + 1}`);
+    }
+    function openDrawer(drawer) { closeDrawers(); drawer.classList.add('open'); backdrop.classList.add('show'); }
+    function closeDrawers() { tocDrawer.classList.remove('open'); notesDrawer.classList.remove('open'); backdrop.classList.remove('show'); }
+    document.getElementById('prev').onclick = () => show(index - 1);
+    document.getElementById('next').onclick = () => show(index + 1);
+    document.getElementById('tocOpen').onclick = () => openDrawer(tocDrawer);
+    document.getElementById('notesOpen').onclick = () => openDrawer(notesDrawer);
+    document.getElementById('fullscreen').onclick = async () => {
+      if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
+      else await document.exitFullscreen();
+    };
+    backdrop.onclick = closeDrawers;
+    document.querySelectorAll('[data-close]').forEach(btn => btn.onclick = closeDrawers);
+    window.addEventListener('keydown', (e) => {
+      if (['ArrowRight','PageDown',' '].includes(e.key)) { e.preventDefault(); show(index + 1); }
+      if (['ArrowLeft','PageUp'].includes(e.key)) { e.preventDefault(); show(index - 1); }
+      if (e.key === 'Home') show(0);
+      if (e.key === 'End') show(slides.length - 1);
+      if (e.key.toLowerCase() === 'm') openDrawer(tocDrawer);
+      if (e.key.toLowerCase() === 'n') openDrawer(notesDrawer);
+      if (e.key.toLowerCase() === 'f') document.getElementById('fullscreen').click();
+      if (e.key === 'Escape') closeDrawers();
+    });
+    const hashIndex = Math.max(0, Math.min(slides.length - 1, Number(location.hash.slice(1) || 1) - 1));
+    show(hashIndex);
+  </script>
+</body>
+</html>
