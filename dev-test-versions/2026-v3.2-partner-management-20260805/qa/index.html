@@ -36,13 +36,13 @@
 
   <section class="section">
     <div class="metrics">
-      <div class="metric"><strong>31</strong><span>已复现问题总数</span></div>
+      <div class="metric"><strong>30</strong><span>已复现问题总数</span></div>
       <div class="metric danger"><strong>9</strong><span>P0 · 阻断或数据口径错误</span></div>
-      <div class="metric warning"><strong>22</strong><span>P1 · 页面与方案不一致</span></div>
+      <div class="metric warning"><strong>21</strong><span>P1 · 页面与方案不一致</span></div>
       <div class="metric"><strong>6</strong><span>涉及业务模块</span></div>
     </div>
-    <div class="callout"><strong>当前主要阻断：</strong>公共临时客户售票无法进入支付确认，导致未回款退款、回款、迁移及迁移后详情链路无法继续造新数据；批量导入入口位置错误，文件校验需在入口修复后继续。</div>
-    <div class="callout" style="margin-top:12px;background:#eff6ff;border-left-color:#3b82f6;color:#1e3a8a"><strong>复核修正：</strong>原 BUG-014“预付款账户操作列完全为空”为误报，已从缺陷清单撤销；当前预付款管理的额度限制、充值记录、资金流水入口均存在，两个账户标签额外出现的“查看”入口统一并入 BUG-013。</div>
+    <div class="callout"><strong>当前主要阻断：</strong>公共临时客户售票无法进入支付确认，导致未回款退款、回款、迁移及迁移后详情链路无法继续造新数据。批量导入入口位置已复核通过，模板与文件校验仍待执行。</div>
+    <div class="callout" style="margin-top:12px;background:#eff6ff;border-left-color:#3b82f6;color:#1e3a8a"><strong>复核修正：</strong>原 BUG-014 为误报；BUG-031“批量导入充值入口放错页面”经当前环境复核无法复现，已撤销。两个账户标签额外出现的“查看”入口仍并入 BUG-013。</div>
   </section>
 
   <section class="section">
@@ -62,7 +62,7 @@
   </button><button class="module-card" type="button" data-module-filter="档案与账户">
     <span>档案与账户</span><strong>8</strong><small>2 个 P0</small>
   </button><button class="module-card" type="button" data-module-filter="后台充值与导入">
-    <span>后台充值与导入</span><strong>7</strong><small>2 个 P0</small>
+    <span>后台充值与导入</span><strong>6</strong><small>2 个 P0</small>
   </button><button class="module-card" type="button" data-module-filter="合作伙伴对帐单">
     <span>合作伙伴对帐单</span><strong>4</strong><small>均为 P1</small>
   </button><button class="module-card" type="button" data-module-filter="售票窗口充值">
@@ -70,7 +70,7 @@
   </button><button class="module-card" type="button" data-module-filter="订单、退款与临客">
     <span>订单、退款与临客</span><strong>3</strong><small>3 个 P0</small>
   </button></div>
-    <div class="filter-bar"><input id="issue-search" type="search" placeholder="搜索缺陷号、标题、流程、入口或影响"><select id="severity-filter"><option value="all">全部级别</option><option value="P0">仅 P0</option><option value="P1">仅 P1</option></select><select id="category-filter"><option value="all">全部模块</option><option value="资金流水">资金流水</option><option value="档案与账户">档案与账户</option><option value="后台充值与导入">后台充值与导入</option><option value="合作伙伴对帐单">合作伙伴对帐单</option><option value="售票窗口充值">售票窗口充值</option><option value="订单、退款与临客">订单、退款与临客</option></select><button class="btn" id="reset-filter" type="button">重置</button><span class="filter-count" id="filter-count">显示 31 / 31 项</span></div>
+    <div class="filter-bar"><input id="issue-search" type="search" placeholder="搜索缺陷号、标题、流程、入口或影响"><select id="severity-filter"><option value="all">全部级别</option><option value="P0">仅 P0</option><option value="P1">仅 P1</option></select><select id="category-filter"><option value="all">全部模块</option><option value="资金流水">资金流水</option><option value="档案与账户">档案与账户</option><option value="后台充值与导入">后台充值与导入</option><option value="合作伙伴对帐单">合作伙伴对帐单</option><option value="售票窗口充值">售票窗口充值</option><option value="订单、退款与临客">订单、退款与临客</option></select><button class="btn" id="reset-filter" type="button">重置</button><span class="filter-count" id="filter-count">显示 30 / 30 项</span></div>
     <div id="issue-list">
   <details class="issue-card" data-severity="P1" data-category="资金流水" data-search="bug-001 资金流水缺少“调账”标签 fl-13 资金流水与详情 pc后台 → 合作伙伴管理 → 资金流水 无法按调账独立查询人工调账、调账-往来及退款调账，验收与财务追溯入口缺失。">
     <summary>
@@ -113,6 +113,7 @@
 </ul>
 </div>
   </details>
+
 
   <details class="issue-card" data-severity="P1" data-category="资金流水" data-search="bug-003 资金流水出现不属于本页的业务按钮 fl-13 资金流水与详情 pc后台 → 合作伙伴管理 → 资金流水 页面职责和入口层级错误，可能产生重复入口及不同规则实现。">
     <summary>
@@ -670,24 +671,6 @@
 </div>
   </details>
 
-  <details class="issue-card" data-severity="P1" data-category="后台充值与导入" data-search="bug-031 批量导入充值入口放错页面 fl-05 后台批量导入充值  功能可发现性和权限归属错误，财务人员会在充值申请页找不到导入入口；资金流水页承担了不属于该页的资金写入动作。">
-    <summary>
-      <span class="issue-id">BUG-031</span>
-      <span class="issue-title">批量导入充值入口放错页面</span>
-      <span class="chip category-chip">后台充值与导入</span>
-      <span class="chip severity p1">P1</span>
-      <span class="chevron" aria-hidden="true">⌄</span>
-    </summary>
-    <div class="issue-body markdown-body"><ul>
-<li>所属流程：FL-05 后台批量导入充值</li>
-<li>方案/原型预期：“批量导入”位于充值申请→账户充值操作区，与充值、导出、配置列并列；资金流水仅提供导出、配置列。</li>
-<li>QA实际：充值申请页没有“批量导入”，资金流水页却出现该按钮；点击后打开“批量导入充值”弹窗。</li>
-<li>影响：功能可发现性和权限归属错误，财务人员会在充值申请页找不到导入入口；资金流水页承担了不属于该页的资金写入动作。</li>
-<li>严重级别：P1</li>
-<li>状态：已复现</li>
-</ul>
-</div>
-  </details>
 
   <details class="issue-card" data-severity="P0" data-category="订单、退款与临客" data-search="bug-032 公共临时客户售票无法进入支付确认且无错误提示 fl-06 售票窗口选客、fl-11 公共临时客户订单迁移前置 售票窗口 → 售票 → 临时/长期合作伙伴 → 临时客户 公共临时客户无法完成挂帐售票，后续未回款、回款、迁移及退款链路均被阻断。">
     <summary>
@@ -1394,7 +1377,7 @@
 <td>下载导入模板，核对首列及填写说明。</td>
 <td>首列为线下充值流水号；说明唯一性、从第6行开始、最多50行。</td>
 <td>未测</td>
-<td></td>
+<td>已复核“批量导入”入口位于充值申请→账户充值，资金流水页无该入口；模板内容仍待执行。</td>
 </tr>
 <tr>
 <td>R-09</td>
@@ -2604,7 +2587,7 @@
 <td>下载导入模板，核对首列及填写说明。</td>
 <td>首列为线下充值流水号；说明唯一性、从第6行开始、最多50行。</td>
 <td>未测</td>
-<td></td>
+<td>已复核“批量导入”入口位于充值申请→账户充值，资金流水页无该入口；模板内容仍待执行。</td>
 </tr>
 <tr>
 <td>R-09</td>
