@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
   <meta name="theme-color" content="#00A862">
   <title>景区场次预约｜游客端原型</title>
-  <link rel="stylesheet" href="./styles.css?v=20260819-activitylist1">
+  <link rel="stylesheet" href="./styles.css?v=20260825-activity-status4">
 </head>
 <body data-theme="forest">
   <aside class="prototype-panel" aria-label="原型控制台">
@@ -128,6 +128,11 @@
               </div>
             </article>
 
+            <article class="offline-activity-notice" id="offlineActivityNotice" hidden>
+              <span class="offline-notice-icon" aria-hidden="true">!</span>
+              <div><strong>该活动已下架</strong><p>暂不支持新的预约；如需了解活动详情，请联系景区。</p></div>
+            </article>
+
             <article class="info-card activity-info">
               <div class="card-heading-row">
                 <div>
@@ -150,6 +155,7 @@
               <div class="contact-row" id="activityContact"><span class="contact-icon">☎</span><span id="activityContactName">咨询电话</span><a id="activityContactPhone" href="tel:0898-12345678">0898-12345678</a></div>
             </article>
 
+            <div id="bookingFlow">
             <section class="booking-card">
               <div class="section-title-row">
                 <div>
@@ -179,8 +185,9 @@
             </section>
 
             <div class="service-note"><span>i</span> 本页面仅办理场次预约，不校验购票信息。</div>
+            </div>
           </div>
-          <footer class="bottom-bar">
+          <footer class="bottom-bar" id="selectionFooter">
             <div class="selection-summary" id="selectionSummary">请选择预约日期</div>
               <button class="primary-button" id="nextButton" disabled>立即预约</button>
           </footer>
@@ -310,6 +317,16 @@
       </div>
     </div>
   </main>
-  <script src="./app.js?v=20260824-templatefinal1"></script>
+  <script>
+    (() => {
+      const version = '20260825-status-4';
+      if (localStorage.getItem('scenicVisitorActivityStateVersionV34') !== version) {
+        localStorage.removeItem('scenicPublishedActivityCatalogV34');
+        localStorage.removeItem('scenicPublishedActivityCatalogVersionV34');
+        localStorage.setItem('scenicVisitorActivityStateVersionV34', version);
+      }
+    })();
+  </script>
+  <script src="./app.js?v=20260825-activity-status4"></script>
 </body>
 </html>

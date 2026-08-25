@@ -762,7 +762,7 @@
   q('#configContent').addEventListener('input',()=>markDirty());
   q('#configContent').addEventListener('change',()=>markDirty());
   document.addEventListener('click',event=>{if(event.target.id==='publishConfig'){if(stepDirty){showToast('请先保存当前配置，再进行发布');return;}const failed=publishChecks().filter(item=>!item[1]);if(failed.length){showToast(`还有 ${failed.length} 项发布检查未通过`);q('.publish-check .missing')?.scrollIntoView({behavior:'smooth',block:'center'});return;}const wasPublished=currentActivity.status==='published';const visitorConfig=buildVisitorConfig();localStorage.setItem('scenicPublishedConfig',JSON.stringify(visitorConfig));const publishedMap=JSON.parse(localStorage.getItem('scenicPublishedActivitiesV34')||'{}');publishedMap[String(currentActivity.id)]={activityId:String(currentActivity.id),publishedAt:new Date().toISOString(),config:visitorConfig};localStorage.setItem('scenicPublishedActivitiesV34',JSON.stringify(publishedMap));currentActivity.status='published';isNewActivity=false;saveActivityDraft();window.syncVisitorActivityCatalog?.(currentActivity.id);q('#configMode').textContent='编辑预约活动';q('#configSaveState').textContent='已上架 · 刚刚更新';renderConfig(true);renderActivities();showToast(wasPublished?'发布更新成功，线上版本已更新':'发布成功，活动已上架');}});
-  document.addEventListener('click',event=>{if(event.target.id==='offlineConfig'){openDialog('<h2>确认下架活动？</h2><p>下架后停止接受新预约；历史预约仍可查看、修改和取消。已保存配置继续保留，之后可重新发布。</p><div class="dialog-actions"><button class="secondary" data-close="configDialog">暂不下架</button><button class="danger" id="confirmOfflineConfig">确认下架</button></div>');return;}if(event.target.id==='confirmOfflineConfig'){currentActivity.status='offline';const publishedMap=JSON.parse(localStorage.getItem('scenicPublishedActivitiesV34')||'{}');delete publishedMap[String(currentActivity.id)];localStorage.setItem('scenicPublishedActivitiesV34',JSON.stringify(publishedMap));saveActivityDraft();window.syncVisitorActivityCatalog?.(null,currentActivity.id);closeLayer('configDialog');q('#configSaveState').textContent='已下架 · 配置已保存';renderConfig(true);renderActivities();showToast('活动已下架，停止接受新预约');}});
+  document.addEventListener('click',event=>{if(event.target.id==='offlineConfig'){openDialog('<h2>确认下架活动？</h2><p>下架后停止接受新预约；历史预约仍可查看、修改和取消。已保存配置继续保留，之后可重新发布。</p><div class="dialog-actions"><button class="secondary" data-close="configDialog">暂不下架</button><button class="danger" id="confirmOfflineConfig">确认下架</button></div>');return;}if(event.target.id==='confirmOfflineConfig'){currentActivity.status='offline';saveActivityDraft();window.syncVisitorActivityCatalog?.(null,currentActivity.id);closeLayer('configDialog');q('#configSaveState').textContent='已下架 · 配置已保存';renderConfig(true);renderActivities();showToast('活动已下架，停止接受新预约');}});
   q('#configPreviewOpen').addEventListener('click',()=>{previewTab=stepIndex===5?'form':stepIndex===1?'notice':'select';openPreview();});
   window.requestConfigLeave=requestLeave;
   q('#configPreviewTabs')?.addEventListener('click',event=>{const button=event.target.closest('[data-preview-tab]');if(!button)return;previewTab=button.dataset.previewTab;renderPreview();});
@@ -811,6 +811,8 @@
   config.draftLogo=currentActivity.image||null;config.draftCover=currentActivity.coverImage||null;
   q('#configActivityName').textContent = currentActivity.name;
   captureSavedState();
+  // 草稿恢复可能改变活动上下架状态；恢复后立即刷新游客端状态目录。
+  window.syncVisitorActivityCatalog?.();
   enableRailScrolling();
   enableItemSorting();
   renderConfig();

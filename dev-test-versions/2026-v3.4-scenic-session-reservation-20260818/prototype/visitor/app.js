@@ -22,20 +22,22 @@ const activity = {
 
 const weekdayNames = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
 let externalPreviewConfig = null;
+const visitorCatalogVersion = '20260825-status-4';
 const fallbackActivityCatalog=[
   {id:'1',name:'呀诺达溪降体验预约',status:'published',coverImage:'./assets/activity-hero.jpg',heroSubtitle:'门票已包含溪降体验，请提前预约心仪时段。',updated:'2026-08-14 09:42'},
   {id:'2',name:'雨林观景线路预约',status:'published',coverImage:'',heroSubtitle:'请选择预约日期和场次。',updated:'2026-08-13 18:05'},
+  {id:'3',name:'VIP 私家团场次预约',status:'offline',coverImage:'',heroSubtitle:'该活动目前暂不支持新的预约。',updated:'2026-08-12 11:30'},
   {id:'4',name:'呀诺达热带雨林高空滑索亲子探险体验项目预约活动暑期特别专场季',status:'published',coverImage:'',heroSubtitle:'请选择预约日期和场次。',updated:'2026-08-12 16:45'}
 ];
 function readPublishedActivityData(){
   let catalog=fallbackActivityCatalog,published={};
-  try{const stored=JSON.parse(localStorage.getItem('scenicPublishedActivityCatalogV34')||'null');if(Array.isArray(stored))catalog=stored;}catch(error){}
+  try{const stored=JSON.parse(localStorage.getItem('scenicPublishedActivityCatalogV34')||'null');const version=localStorage.getItem('scenicPublishedActivityCatalogVersionV34');if(version===visitorCatalogVersion&&Array.isArray(stored))catalog=stored;}catch(error){}
   try{published=JSON.parse(localStorage.getItem('scenicPublishedActivitiesV34')||'{}')||{};}catch(error){}
-  return {catalog:catalog.filter(item=>item.status==='published'),published};
+  return {catalog,published};
 }
 function renderVisitorActivities(){
   const {catalog}=readPublishedActivityData();const list=$('#visitorActivityList');const empty=$('#visitorActivityEmpty');
-  list.innerHTML=catalog.sort((a,b)=>String(b.updated||'').localeCompare(String(a.updated||''))).map(item=>`<button class="visitor-activity-card" data-visitor-activity="${item.id}">${item.coverImage||item.image?`<img class="visitor-activity-cover" src="${item.coverImage||item.image}" alt="${item.name}">`:`<span class="visitor-activity-fallback">${String(item.name||'预').slice(0,1)}</span>`}<span class="visitor-activity-body"><span class="visitor-activity-copy"><b>${item.name}</b><span>${item.heroSubtitle||'点击查看可预约日期与场次'}</span></span><em class="visitor-activity-enter">去预约 ›</em></span></button>`).join('');
+  list.innerHTML=catalog.sort((a,b)=>String(b.updated||'').localeCompare(String(a.updated||''))).map(item=>`<button class="visitor-activity-card" data-visitor-activity="${item.id}">${item.coverImage||item.image?`<img class="visitor-activity-cover" src="${item.coverImage||item.image}" alt="${item.name}">`:`<span class="visitor-activity-fallback">${String(item.name||'预').slice(0,1)}</span>`}<span class="visitor-activity-body"><span class="visitor-activity-copy"><span class="visitor-activity-title-line"><b>${item.name}</b><i class="visitor-activity-status ${item.status==='offline'?'offline':'published'}">${item.status==='offline'?'已下架':'已发布'}</i></span><span>${item.heroSubtitle||'点击查看可预约日期与场次'}</span></span><em class="visitor-activity-enter">${item.status==='offline'?'查看详情 ›':'去预约 ›'}</em></span></button>`).join('');
   empty.hidden=catalog.length>0;
 }
 const todayDateKey = '2026-08-18';
@@ -615,6 +617,7 @@ function resolveExternalDateNotice(payload, dateKey, fallbackNotice) {
 
 function applyExternalPreview(payload) {
   if (!payload) return;
+  clearOfflineActivityState();
   externalPreviewConfig = payload;
   document.body.dataset.previewOnly = payload.previewOnly ? 'true' : 'false';
   document.body.dataset.theme = 'forest';
@@ -662,6 +665,34 @@ function applyExternalPreview(payload) {
   }
 }
 
+function clearOfflineActivityState(){
+  $('#offlineActivityNotice').hidden=true;
+  $('#bookingFlow').hidden=false;
+  $('#selectionFooter').hidden=false;
+}
+
+function applyActivityPresentation(payload={}){
+  activity.name=payload.activityName||payload.name||activity.name;
+  $('.hero-content h2').textContent=activity.name;
+  $('.activity-info h3').textContent=activity.name;
+  const heroBadge=$('#activityHeroBadge');heroBadge.textContent=payload.heroBadge||'';heroBadge.hidden=!payload.heroBadge;
+  const heroSubtitle=$('#activityHeroSubtitle');heroSubtitle.textContent=payload.heroSubtitle||'';heroSubtitle.hidden=!payload.heroSubtitle;
+  const cover=$('#activityCover');if(payload.coverImage||payload.image){cover.src=payload.coverImage||payload.image;cover.hidden=false;}else{cover.hidden=true;}
+  if(payload.detailHtml!==undefined)$('#activityCopy').innerHTML=payload.detailHtml||'';
+  const contact=$('#activityContact');const contactPhone=$('#activityContactPhone');const hasContact=!!(payload.contactName||payload.contactPhone);
+  contact.hidden=!hasContact;$('#activityContactName').textContent=payload.contactName||'咨询电话';contactPhone.textContent=payload.contactPhone||'';contactPhone.href=payload.contactPhone?`tel:${payload.contactPhone.replace(/\s/g,'')}`:'#';
+}
+
+function applyOfflineActivity(catalogItem,snapshot){
+  externalPreviewConfig=null;
+  document.body.dataset.previewOnly='false';
+  applyActivityPresentation({...catalogItem,...snapshot});
+  $('#offlineActivityNotice').hidden=false;
+  $('#bookingFlow').hidden=true;
+  $('#selectionFooter').hidden=true;
+  renderAll();navigate('select',false);
+}
+
 window.addEventListener('message', event => {
   if (event.data?.type === 'SCENIC_CONFIG_PREVIEW') applyExternalPreview(event.data.payload);
 });
@@ -680,9 +711,12 @@ if(selectedActivityId){
   const {catalog,published}=readPublishedActivityData();
   const snapshot=published?.[String(selectedActivityId)]?.config;
   const catalogItem=catalog.find(item=>String(item.id)===String(selectedActivityId));
-  if(snapshot?.schemaVersion===2){
+  if(catalogItem?.status==='offline'){
+    applyOfflineActivity(catalogItem,snapshot);
+  }else if(snapshot?.schemaVersion===2){
     applyExternalPreview(snapshot);
   }else{
+    clearOfflineActivityState();
     if(catalogItem){
       activity.name=catalogItem.name||activity.name;
       $('.hero-content h2').textContent=activity.name;

@@ -9,6 +9,7 @@ const resolveAdminAsset = value => {
 };
 window.resolveAdminAsset = resolveAdminAsset;
 
+const visitorCatalogVersion = '20260825-status-4';
 const activities = [
   { id: 1, name: '呀诺达溪降体验预约', status: 'published', image:'../../scenic-reservation/preview/assets/activity-hero.jpg', coverImage:'../../scenic-reservation/preview/assets/activity-hero.jpg', heroBadge:'无需验票 · 免费预约', heroSubtitle:'门票已包含溪降体验，请提前预约心仪时段。', contactName:'溪降接待处', contactPhone:'0898-8388 3333', totalPeople: 128600, todayPeople: 10000, created: '2026-08-11 16:28', updated: '2026-08-14 09:42', creator: '景区管理员-苏珊', updater: '苏珊' },
   { id: 2, name: '雨林观景线路预约', status: 'published', image:null, totalPeople: 96, todayPeople: 18, created: '2026-08-02 10:16', updated: '2026-08-13 18:05', creator: '运营管理员-林晓', updater: '林晓' },
@@ -16,21 +17,13 @@ const activities = [
   { id: 3, name: 'VIP 私家团场次预约', status: 'offline', image:null, totalPeople: 42, todayPeople: 0, created: '2026-07-28 14:09', updated: '2026-08-12 11:30', creator: '景区管理员-苏珊', updater: '苏珊' },
   { id: 5, name: '测试活动｜已下架且无预约可删除', status: 'offline', image:null, totalPeople: 0, todayPeople: 0, created: '2026-08-19 15:20', updated: '2026-08-19 15:20', creator: '当前管理员', updater: '当前管理员' }
 ];
-function syncVisitorActivityCatalog(publishId=null,removeId=null){
-  let catalog=[];
-  try{catalog=JSON.parse(localStorage.getItem('scenicPublishedActivityCatalogV34')||'[]');}catch(error){catalog=[];}
-  if(!Array.isArray(catalog)||!catalog.length){
-    catalog=activities.filter(item=>item.status==='published').map(item=>({id:String(item.id),name:item.name,status:'published',image:resolveAdminAsset(item.image)||'',coverImage:resolveAdminAsset(item.coverImage)||'',heroBadge:item.heroBadge||'',heroSubtitle:item.heroSubtitle||'',updated:item.updated||''}));
-  }
-  if(removeId!==null){catalog=catalog.filter(item=>String(item.id)!==String(removeId));}
-  if(publishId!==null){
-    const source=activities.find(item=>String(item.id)===String(publishId));
-    if(source){
-      const snapshot={id:String(source.id),name:source.name,status:'published',image:resolveAdminAsset(source.image)||'',coverImage:resolveAdminAsset(source.coverImage)||'',heroBadge:source.heroBadge||'',heroSubtitle:source.heroSubtitle||'',updated:source.updated||''};
-      catalog=[snapshot,...catalog.filter(item=>String(item.id)!==String(source.id))];
-    }
-  }
+function visitorCatalogItem(source){return {id:String(source.id),name:source.name,status:source.status==='published'?'published':'offline',image:resolveAdminAsset(source.image)||'',coverImage:resolveAdminAsset(source.coverImage)||'',heroBadge:source.heroBadge||'',heroSubtitle:source.heroSubtitle||'',updated:source.updated||''};}
+function syncVisitorActivityCatalog(){
+  // 管理端活动列表是原型内唯一状态来源：每次进入列表均按当前活动状态重建目录，
+  // 避免浏览器旧缓存把已发布活动误显示为下架。
+  const catalog=activities.map(visitorCatalogItem);
   localStorage.setItem('scenicPublishedActivityCatalogV34',JSON.stringify(catalog));
+  localStorage.setItem('scenicPublishedActivityCatalogVersionV34',visitorCatalogVersion);
 }
 window.syncVisitorActivityCatalog=syncVisitorActivityCatalog;
 let currentPage = 'workbench';
@@ -281,7 +274,6 @@ $('#confirmDelete').addEventListener('click', () => {
 $('#confirmOfflineActivity').addEventListener('click',()=>{
   if(!currentActivity||currentActivity.status!=='published'){closeLayer('offlineActivity');showToast('当前活动状态已变化');return;}
   currentActivity.status='offline';currentActivity.updated=new Date().toISOString().slice(0,16).replace('T',' ');
-  try{const publishedMap=JSON.parse(localStorage.getItem('scenicPublishedActivitiesV34')||'{}');delete publishedMap[String(currentActivity.id)];localStorage.setItem('scenicPublishedActivitiesV34',JSON.stringify(publishedMap));}catch(error){}
   try{const drafts=JSON.parse(localStorage.getItem('scenicActivityDraftsV34')||'{}');if(drafts[String(currentActivity.id)]?.currentActivity)drafts[String(currentActivity.id)].currentActivity.status='offline';localStorage.setItem('scenicActivityDraftsV34',JSON.stringify(drafts));}catch(error){}
   syncVisitorActivityCatalog(null,currentActivity.id);closeLayer('offlineActivity');activityStatus='published';renderActivities();showToast('活动已下架，历史预约继续保留');
 });
