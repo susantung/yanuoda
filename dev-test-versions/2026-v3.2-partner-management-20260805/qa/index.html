@@ -1,0 +1,3035 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>V3.2 散客合作伙伴管理｜QA 测试总览</title>
+<style>
+:root{--ink:#201a2c;--muted:#71697d;--purple:#7c3aed;--purple2:#4c1d95;--soft:#f5f3ff;--line:#e8e2f1;--side:272px;--shadow:0 8px 30px rgba(58,35,91,.09);--danger:#dc2626;--danger-soft:#fef2f2;--warning:#d97706;--warning-soft:#fff7ed;--success:#059669;--success-soft:#ecfdf5;--blue:#2563eb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f3f0f7;color:var(--ink);line-height:1.72}.sidebar{position:fixed;right:0;top:0;width:var(--side);height:100vh;overflow:auto;padding:26px 0;background:linear-gradient(180deg,#1e1b4b,#312e81 58%,#4c1d95);z-index:20}.sidebar h2{padding:0 22px;margin:0 0 5px;color:#fff;font-size:16px}.sidebar .sub{padding:0 22px 16px;color:#c4b5fd;font-size:12px}.sidebar a{display:block;padding:8px 22px;color:#c4b5fd;text-decoration:none;font-size:13px;border-left:3px solid transparent}.sidebar a:hover,.sidebar a.current{color:#fff;background:#ffffff14;border-left-color:#a78bfa}.sidebar .group{margin:15px 22px 5px;color:#a5b4fc;font-size:11px;letter-spacing:1px}.main{width:calc(100% - var(--side));min-width:0;overflow:hidden;margin-right:var(--side);padding:28px clamp(20px,2.4vw,44px) 80px;max-width:none}.hero{padding:40px 44px;margin-bottom:24px;border-radius:20px;color:#fff;background:linear-gradient(135deg,#1e1b4b,#4c1d95 62%,#7c3aed);box-shadow:0 16px 50px #6d28d933}.eyebrow{font-size:12px;letter-spacing:2px;color:#ded7ff;margin-bottom:8px}.hero h1{margin:0 0 10px;font-size:31px;line-height:1.35}.hero p{margin:0;max-width:820px;color:#f1efff}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 15px;border-radius:9px;border:1px solid #d8d0e7;background:#fff;color:#4c1d95;text-decoration:none;font-size:13px;font-weight:700;cursor:pointer}.hero .btn{border-color:#fff}.btn:hover{background:#ede9fe}.section{min-width:0;margin:0 0 34px;scroll-margin-top:18px}.section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:14px}.section h2{font-size:23px;margin:0;color:#211a49}.section-title p{margin:0;color:var(--muted);font-size:13px}.card{min-width:0;background:#fff;padding:24px 28px;margin:0 0 18px;border-radius:15px;border-left:4px solid var(--purple);box-shadow:var(--shadow)}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.metric{background:#fff;padding:20px;border-radius:14px;box-shadow:var(--shadow);border-top:3px solid var(--purple)}.metric strong{display:block;font-size:30px;line-height:1.1;color:var(--purple)}.metric span{display:block;margin-top:7px;color:var(--muted);font-size:13px}.metric.danger{border-top-color:var(--danger)}.metric.danger strong{color:var(--danger)}.metric.warning{border-top-color:var(--warning)}.metric.warning strong{color:var(--warning)}.callout{margin-top:16px;padding:15px 18px;border-radius:12px;background:var(--warning-soft);border-left:4px solid var(--warning);color:#7c2d12}.callout strong{color:#9a3412}.reading-path{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.path-step{position:relative;padding:18px 18px 18px 52px;background:#fff;border:1px solid var(--line);border-radius:13px}.path-step b{position:absolute;left:16px;top:17px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#ede9fe;color:#5b21b6}.path-step strong{display:block;color:#35205f}.path-step span{font-size:13px;color:var(--muted)}.module-grid{min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.module-card{min-width:0;appearance:none;text-align:left;border:1px solid var(--line);background:#fff;border-radius:12px;padding:16px;cursor:pointer;color:var(--ink);box-shadow:0 5px 18px rgba(58,35,91,.05)}.module-card:hover{border-color:#a78bfa;transform:translateY(-1px)}.module-card span{display:block;font-weight:700;color:#35205f}.module-card strong{display:block;overflow-wrap:anywhere;margin:5px 0 1px;font-size:25px;line-height:1.35;color:var(--purple)}.module-card small{color:var(--muted)}.filter-bar{position:sticky;top:0;z-index:10;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px;margin-bottom:12px;background:#ffffffed;backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 20px rgba(58,35,91,.06)}.filter-bar input,.filter-bar select{height:36px;border:1px solid #d9d2e4;border-radius:8px;background:#fff;padding:0 11px;color:var(--ink);font:inherit;font-size:13px}.filter-bar input{flex:1;min-width:220px}.filter-count{margin-left:auto;color:var(--muted);font-size:13px}.issue-card{min-width:0;background:#fff;margin-bottom:10px;border:1px solid var(--line);border-radius:12px;box-shadow:0 4px 16px rgba(58,35,91,.04);overflow:hidden}.issue-card[open]{border-color:#c4b5fd;box-shadow:var(--shadow)}.issue-card>summary{list-style:none;display:grid;grid-template-columns:78px minmax(240px,1fr) auto auto 22px;gap:10px;align-items:center;padding:14px 16px;cursor:pointer}.issue-card>summary::-webkit-details-marker{display:none}.issue-card[data-severity="P0"]>summary{border-left:4px solid var(--danger)}.issue-card[data-severity="P1"]>summary{border-left:4px solid var(--warning)}.issue-id{font:700 12px SFMono-Regular,Consolas,monospace;color:#5b21b6}.issue-title{font-weight:650;color:#2f2740}.chip{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:3px 9px;font-size:11px;white-space:nowrap}.category-chip{background:#f3f0f7;color:#5b5365}.severity{font-weight:800}.severity.p0{background:var(--danger-soft);color:var(--danger)}.severity.p1{background:var(--warning-soft);color:var(--warning)}.chevron{color:#8b8197;font-size:17px;transition:.2s}.issue-card[open] .chevron{transform:rotate(180deg)}.issue-body{padding:2px 24px 22px;border-top:1px solid var(--line);background:#fefeff}.issue-body ul{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;padding-left:20px}.issue-body li{break-inside:avoid}.empty-results{display:none;padding:28px;text-align:center;color:var(--muted);background:#fff;border:1px dashed #cfc5dc;border-radius:12px}.plan-block{min-width:0;background:#fff;margin:0 0 12px;border:1px solid var(--line);border-radius:12px;overflow:hidden}.plan-block>summary{display:flex;justify-content:space-between;gap:16px;padding:15px 18px;font-weight:700;color:#35205f;cursor:pointer;list-style:none}.plan-block>summary span{font-size:12px;font-weight:400;color:var(--muted)}.plan-block[open]>summary{background:#f8f6fc;border-bottom:1px solid var(--line)}.plan-block>.markdown-body{padding:4px 20px 22px}.markdown-body{max-width:100%}.markdown-body h1{display:none}.markdown-body h2{font-size:21px;margin:30px 0 12px;color:#211a49}.markdown-body h3{font-size:18px;margin:24px 0 9px;color:#4c1d95}.markdown-body h4{font-size:15px;margin:19px 0 7px;color:#6d28d9}.markdown-body p{margin:9px 0}.markdown-body ul,.markdown-body ol{padding-left:24px}.markdown-body li{margin:5px 0}.markdown-body code{padding:2px 5px;border-radius:5px;background:#f2eff8;font-family:SFMono-Regular,Consolas,monospace;font-size:.91em}.markdown-body pre{padding:16px;background:#1f1930;color:#e9d5ff;border-radius:10px;overflow:auto}.markdown-body pre code{padding:0;background:transparent}.markdown-body blockquote{margin:12px 0;padding:10px 16px;background:#faf5ff;border-left:3px solid #a78bfa}.markdown-body table{width:100%;border-collapse:collapse;background:#fff;font-size:13px;min-width:720px}.markdown-body table{display:table}.markdown-body th{background:#ede9fe;color:#4c1d95;text-align:left;white-space:nowrap}.markdown-body th,.markdown-body td{padding:10px 12px;border:1px solid var(--line);vertical-align:top}.markdown-body tr:nth-child(even) td{background:#fcfbfe}.table-scroll,.markdown-body{overflow-x:auto}.markdown-body>table{margin:14px 0 20px}.source-links{display:flex;gap:10px;flex-wrap:wrap}.source-links .btn{font-weight:600}.status-columns{min-width:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}.status-card{min-width:0;background:#fff;border-radius:13px;padding:20px 22px;box-shadow:var(--shadow)}.status-card.success{border-top:4px solid var(--success)}.status-card.blocked{border-top:4px solid var(--warning)}.status-card h3{margin:0 0 10px;font-size:17px}.quick{position:fixed;right:calc(var(--side) + 26px);bottom:24px;width:42px;height:42px;border:0;border-radius:12px;background:var(--purple);color:#fff;cursor:pointer;box-shadow:var(--shadow)}.footer{padding:18px 0 0;color:var(--muted);font-size:12px;text-align:center}.hidden{display:none!important}
+@media(max-width:1100px){.metrics{grid-template-columns:repeat(2,1fr)}.module-grid{grid-template-columns:repeat(2,1fr)}.issue-body ul{grid-template-columns:1fr}.status-columns{grid-template-columns:1fr}}
+@media(max-width:950px){:root{--side:220px}.main{padding:24px 20px}.hero{padding:30px}.issue-card>summary{grid-template-columns:70px 1fr auto 22px}.category-chip{display:none}}
+@media(max-width:720px){.sidebar{display:none}.main{width:100%;margin-right:0;padding:18px}.hero h1{font-size:25px}.metrics,.reading-path,.module-grid{grid-template-columns:1fr}.issue-card>summary{grid-template-columns:64px 1fr auto 18px;padding:12px 10px}.issue-title{font-size:13px}.quick{right:18px}.filter-count{width:100%;margin-left:0}.card{padding:20px}.section-title{align-items:flex-start;flex-direction:column}}
+@media print{.sidebar,.filter-bar,.quick,.hero-actions,.reading-path{display:none!important}.main{width:100%;margin:0;padding:0}.hero{color:#111;background:#fff;box-shadow:none;border:1px solid #ddd}.hero p,.eyebrow{color:#555}.issue-card{break-inside:avoid}.issue-card:not([open]) .issue-body{display:block}.issue-card>summary{border-bottom:1px solid #ddd}.section{break-before:auto}}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <h2>V3.2 QA 测试总览</h2><div class="sub">散客合作伙伴管理 · 2026-08-25</div>
+  <div class="group">方案入口</div>
+  <a href="../index.html">← 返回方案总览</a>
+  <div class="group">先看结论</div>
+  <a href="#overview" class="current">执行结论</a><a href="#p0">P0 严重问题</a><a href="#issues">全部问题</a>
+  <div class="group">执行与证据</div>
+  <a href="#coverage">全链路覆盖</a><a href="#samples">样例数据</a><a href="#test-plan">测试用例</a><a href="#status">通过与阻塞</a>
+  <div class="group">原始文件</div>
+  <a href="V3.2散客合作伙伴管理_QA测试结果与问题清单.md">问题清单 Markdown ↗</a>
+  <a href="V3.2散客合作伙伴管理_QA测试用例与缺陷台账.md">测试台账 Markdown ↗</a>
+</aside>
+<main class="main">
+  <header class="hero" id="overview">
+    <div class="eyebrow">QA EXECUTION REPORT</div>
+    <h1>V3.2 散客合作伙伴管理｜QA 测试总览</h1>
+    <p>将“测试结果”和“测试用例”合并为一个阅读入口：先判断当前风险，再定位缺陷，最后查看场景、测试步骤和完整证据。</p>
+    <div class="hero-actions"><a class="btn" href="#p0">先看 P0 问题</a><a class="btn" href="#test-plan">查看测试方案</a><button class="btn" type="button" onclick="window.print()">打印 / 导出 PDF</button></div>
+  </header>
+
+  <section class="section">
+    <div class="metrics">
+      <div class="metric"><strong>31</strong><span>已复现问题总数</span></div>
+      <div class="metric danger"><strong>9</strong><span>P0 · 阻断或数据口径错误</span></div>
+      <div class="metric warning"><strong>22</strong><span>P1 · 页面与方案不一致</span></div>
+      <div class="metric"><strong>6</strong><span>涉及业务模块</span></div>
+    </div>
+    <div class="callout"><strong>当前主要阻断：</strong>公共临时客户售票无法进入支付确认，导致未回款退款、回款、迁移及迁移后详情链路无法继续造新数据；批量导入入口位置错误，文件校验需在入口修复后继续。</div>
+    <div class="callout" style="margin-top:12px;background:#eff6ff;border-left-color:#3b82f6;color:#1e3a8a"><strong>复核修正：</strong>原 BUG-014“预付款账户操作列完全为空”为误报，已从缺陷清单撤销；当前预付款管理的额度限制、充值记录、资金流水入口均存在，两个账户标签额外出现的“查看”入口统一并入 BUG-013。</div>
+  </section>
+
+  <section class="section">
+    <div class="section-title"><h2>建议阅读顺序</h2><p>不用从头读到尾</p></div>
+    <div class="reading-path"><div class="path-step"><b>1</b><strong>先看 P0</strong><span>确认当前不能放过的业务与数据问题。</span></div><div class="path-step"><b>2</b><strong>再按模块筛选</strong><span>分给对应开发并展开查看复现证据。</span></div><div class="path-step"><b>3</b><strong>最后看测试台账</strong><span>按样例和顺序继续执行、复测与退出。</span></div></div>
+  </section>
+
+  <section class="section" id="p0">
+    <div class="section-title"><h2>P0 严重问题</h2><p>9 项，建议优先确认</p></div>
+    <div class="module-grid"><button class="module-card" type="button" data-jump-issue="BUG-004"><span>BUG-004</span><strong>部分消费/退款流水关键归属字段为空</strong><small>资金流水</small></button><button class="module-card" type="button" data-jump-issue="BUG-008"><span>BUG-008</span><strong>合作伙伴“更新人”保存为IP地址</strong><small>档案与账户</small></button><button class="module-card" type="button" data-jump-issue="BUG-012"><span>BUG-012</span><strong>账户列表“账户类型”字段语义错误</strong><small>档案与账户</small></button><button class="module-card" type="button" data-jump-issue="BUG-018"><span>BUG-018</span><strong>调账类记录错误展示支付时间</strong><small>后台充值与导入</small></button><button class="module-card" type="button" data-jump-issue="BUG-019"><span>BUG-019</span><strong>后台充值详情不是确认的完整弹窗</strong><small>后台充值与导入</small></button><button class="module-card" type="button" data-jump-issue="BUG-026"><span>BUG-026</span><strong>同一合作伙伴的挂帐额度状态在后台与售票窗口不一致</strong><small>订单、退款与临客</small></button><button class="module-card" type="button" data-jump-issue="BUG-027"><span>BUG-027</span><strong>售票窗口成功充值/其他收入记录的状态与完成时间为空</strong><small>售票窗口充值</small></button><button class="module-card" type="button" data-jump-issue="BUG-030"><span>BUG-030</span><strong>挂帐订单消费与退款流水的支付方式错误显示为现金</strong><small>订单、退款与临客</small></button><button class="module-card" type="button" data-jump-issue="BUG-032"><span>BUG-032</span><strong>公共临时客户售票无法进入支付确认且无错误提示</strong><small>订单、退款与临客</small></button></div>
+  </section>
+
+  <section class="section" id="issues">
+    <div class="section-title"><h2>全部问题</h2><p>按模块、级别或关键词快速定位</p></div>
+    <div class="module-grid" style="margin-bottom:14px"><button class="module-card" type="button" data-module-filter="资金流水">
+    <span>资金流水</span><strong>5</strong><small>1 个 P0</small>
+  </button><button class="module-card" type="button" data-module-filter="档案与账户">
+    <span>档案与账户</span><strong>8</strong><small>2 个 P0</small>
+  </button><button class="module-card" type="button" data-module-filter="后台充值与导入">
+    <span>后台充值与导入</span><strong>7</strong><small>2 个 P0</small>
+  </button><button class="module-card" type="button" data-module-filter="合作伙伴对帐单">
+    <span>合作伙伴对帐单</span><strong>4</strong><small>均为 P1</small>
+  </button><button class="module-card" type="button" data-module-filter="售票窗口充值">
+    <span>售票窗口充值</span><strong>4</strong><small>1 个 P0</small>
+  </button><button class="module-card" type="button" data-module-filter="订单、退款与临客">
+    <span>订单、退款与临客</span><strong>3</strong><small>3 个 P0</small>
+  </button></div>
+    <div class="filter-bar"><input id="issue-search" type="search" placeholder="搜索缺陷号、标题、流程、入口或影响"><select id="severity-filter"><option value="all">全部级别</option><option value="P0">仅 P0</option><option value="P1">仅 P1</option></select><select id="category-filter"><option value="all">全部模块</option><option value="资金流水">资金流水</option><option value="档案与账户">档案与账户</option><option value="后台充值与导入">后台充值与导入</option><option value="合作伙伴对帐单">合作伙伴对帐单</option><option value="售票窗口充值">售票窗口充值</option><option value="订单、退款与临客">订单、退款与临客</option></select><button class="btn" id="reset-filter" type="button">重置</button><span class="filter-count" id="filter-count">显示 31 / 31 项</span></div>
+    <div id="issue-list">
+  <details class="issue-card" data-severity="P1" data-category="资金流水" data-search="bug-001 资金流水缺少“调账”标签 fl-13 资金流水与详情 pc后台 → 合作伙伴管理 → 资金流水 无法按调账独立查询人工调账、调账-往来及退款调账，验收与财务追溯入口缺失。">
+    <summary>
+      <span class="issue-id">BUG-001</span>
+      <span class="issue-title">资金流水缺少“调账”标签</span>
+      <span class="chip category-chip">资金流水</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-13 资金流水与详情</li>
+<li>QA入口：PC后台 → 合作伙伴管理 → 资金流水</li>
+<li>复现步骤：打开资金流水页面，检查业务标签。</li>
+<li>方案/原型预期：标签依次覆盖“全部、充值、消费、退款、其他收入、调账”。</li>
+<li>QA实际：仅有“全部、充值、消费、退款、其他收入”，没有“调账”。</li>
+<li>影响：无法按调账独立查询人工调账、调账-往来及退款调账，验收与财务追溯入口缺失。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="资金流水" data-search="bug-002 资金流水筛选区布局和展开逻辑不一致 fl-13 资金流水与详情 pc后台 → 合作伙伴管理 → 资金流水 核心时间查询被隐藏，常用/高级条件排序与确认方案相反。">
+    <summary>
+      <span class="issue-id">BUG-002</span>
+      <span class="issue-title">资金流水筛选区布局和展开逻辑不一致</span>
+      <span class="chip category-chip">资金流水</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-13 资金流水与详情</li>
+<li>QA入口：PC后台 → 合作伙伴管理 → 资金流水</li>
+<li>复现步骤：首次进入页面记录默认筛选；点击“展开”再次记录字段。</li>
+<li>方案/原型预期：第一行“合作类型、合作伙伴、账户号”；第二行“账户类型、发生时间、查询、重置、展开”；展开后再显示“负责人、单据编号”。</li>
+<li>QA实际：默认直接展示“合作类型、合作伙伴、账户号、账户类型、负责人、单据编号”，发生时间被折叠到展开区。</li>
+<li>影响：核心时间查询被隐藏，常用/高级条件排序与确认方案相反。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="资金流水" data-search="bug-003 资金流水出现不属于本页的业务按钮 fl-13 资金流水与详情 pc后台 → 合作伙伴管理 → 资金流水 页面职责和入口层级错误，可能产生重复入口及不同规则实现。">
+    <summary>
+      <span class="issue-id">BUG-003</span>
+      <span class="issue-title">资金流水出现不属于本页的业务按钮</span>
+      <span class="chip category-chip">资金流水</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-13 资金流水与详情</li>
+<li>QA入口：PC后台 → 合作伙伴管理 → 资金流水</li>
+<li>复现步骤：查看筛选区下方操作按钮。</li>
+<li>方案/原型预期：标签行右侧提供“导出”和“配置列”；批量导入属于充值申请，调账等资金操作通过既定充值/调账入口处理。</li>
+<li>QA实际：资金流水页额外出现“批量导入”“资金操作”。</li>
+<li>影响：页面职责和入口层级错误，可能产生重复入口及不同规则实现。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P0" data-category="资金流水" data-search="bug-004 部分消费/退款流水关键归属字段为空 fl-13 资金流水与详情 pc后台 → 合作伙伴管理 → 资金流水 → 全部 无法判断资金归属的账户和业务类型，财务流水不可可靠追溯，且可能反映底层流水数据缺失。">
+    <summary>
+      <span class="issue-id">BUG-004</span>
+      <span class="issue-title">部分消费/退款流水关键归属字段为空</span>
+      <span class="chip category-chip">资金流水</span>
+      <span class="chip severity p0">P0</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-13 资金流水与详情</li>
+<li>QA入口：PC后台 → 合作伙伴管理 → 资金流水 → 全部</li>
+<li>前置数据：合作伙伴 <code>QA2-SMK-012-9328091</code> 的既有消费/退款流水。</li>
+<li>复现步骤：查看2026-08-25 15:41至16:55期间的消费及退款记录。</li>
+<li>方案/原型预期：每条流水均明确展示处理操作（消费/退款）、账户号和账户类型（挂帐/预付款）；只有无账户的其他收入使用“－”。</li>
+<li>QA实际：多条记录的“账户号”为“-”；部分记录“处理操作”为空，部分“账户类型”为空。例如16:55:59的+99.00记录处理操作为空、账户号为“-”；15:52:33的退款记录账户号和账户类型为空。</li>
+<li>影响：无法判断资金归属的账户和业务类型，财务流水不可可靠追溯，且可能反映底层流水数据缺失。</li>
+<li>严重级别：P0</li>
+<li>关联单据：<code>3499638291833094144</code>、<code>3499572905250979840</code>、<code>3499571943178305537</code> 等</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="资金流水" data-search="bug-005 资金流水表头多出“业务单号”列 fl-13 资金流水与详情 pc后台 → 合作伙伴管理 → 资金流水 表头结构与原型不一致；单据链接/复制逻辑也被拆成两列，需统一最终方案。">
+    <summary>
+      <span class="issue-id">BUG-005</span>
+      <span class="issue-title">资金流水表头多出“业务单号”列</span>
+      <span class="chip category-chip">资金流水</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-13 资金流水与详情</li>
+<li>QA入口：PC后台 → 合作伙伴管理 → 资金流水</li>
+<li>复现步骤：核对表头字段及顺序。</li>
+<li>方案/原型预期：合作伙伴类型、合作伙伴名称、账户号、处理操作、账户类型、金额、单据编号、对接负责人、发生时间、支付方式、柜台号/POS编号、消费回款、备注、操作。</li>
+<li>QA实际：在“单据编号”和“对接负责人”之间额外增加“业务单号”。</li>
+<li>影响：表头结构与原型不一致；单据链接/复制逻辑也被拆成两列，需统一最终方案。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="档案与账户" data-search="bug-006 合作伙伴档案筛选字段和展开布局不一致 fl-01 档案与账户初始化 pc后台 → 合作伙伴管理 → 合作伙伴档案 页面结构、常用筛选范围和确认方案不一致。">
+    <summary>
+      <span class="issue-id">BUG-006</span>
+      <span class="issue-title">合作伙伴档案筛选字段和展开布局不一致</span>
+      <span class="chip category-chip">档案与账户</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-01 档案与账户初始化</li>
+<li>QA入口：PC后台 → 合作伙伴管理 → 合作伙伴档案</li>
+<li>方案/原型预期：筛选条件为合作类型、合作伙伴名称、账户支付方式、对接负责人、状态；不包含账户号、联系人/电话。</li>
+<li>QA实际：额外展示“账户号”“联系人/电话”；页面默认同时铺开全部字段，并出现展开按钮，字段顺序也与原型不同。</li>
+<li>影响：页面结构、常用筛选范围和确认方案不一致。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="档案与账户" data-search="bug-007 合作伙伴列表操作列缺少“删除” fl-01 档案与账户初始化 pc后台 → 合作伙伴管理 → 合作伙伴档案 无资金记录的合作伙伴无法按方案删除，也无法验证有资金记录时的拦截提示。">
+    <summary>
+      <span class="issue-id">BUG-007</span>
+      <span class="issue-title">合作伙伴列表操作列缺少“删除”</span>
+      <span class="chip category-chip">档案与账户</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-01 档案与账户初始化</li>
+<li>QA入口：PC后台 → 合作伙伴管理 → 合作伙伴档案</li>
+<li>方案/原型预期：单行依次展示“查看、编辑、启用/禁用、账户、删除”；有资金记录时点击删除再按规则拦截。</li>
+<li>QA实际：单行只有“查看、编辑、禁用/启用、账户”，没有删除入口。</li>
+<li>影响：无资金记录的合作伙伴无法按方案删除，也无法验证有资金记录时的拦截提示。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P0" data-category="档案与账户" data-search="bug-008 合作伙伴“更新人”保存为ip地址 fl-01 档案与账户初始化 pc后台 → 合作伙伴管理 → 合作伙伴档案 审计责任人错误，无法确定档案最后操作人员。">
+    <summary>
+      <span class="issue-id">BUG-008</span>
+      <span class="issue-title">合作伙伴“更新人”保存为IP地址</span>
+      <span class="chip category-chip">档案与账户</span>
+      <span class="chip severity p0">P0</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-01 档案与账户初始化</li>
+<li>QA入口：PC后台 → 合作伙伴管理 → 合作伙伴档案</li>
+<li>前置数据：<code>企业合作伙伴003</code> 等既有记录。</li>
+<li>方案/原型预期：更新人展示最后一次新增或编辑操作的员工名。</li>
+<li>QA实际：多条记录显示 <code>10.180.117.6</code>、<code>10.175.103.140</code> 等IP地址；部分记录才显示“西瓜”。</li>
+<li>影响：审计责任人错误，无法确定档案最后操作人员。</li>
+<li>严重级别：P0</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="档案与账户" data-search="bug-009 “查看合作伙伴”弹窗未按原型实现 fl-01 档案与账户初始化 合作伙伴档案 → 任一记录 → 查看 容器、标题、字段集合、顺序和操作方式均与确认原型不同。">
+    <summary>
+      <span class="issue-id">BUG-009</span>
+      <span class="issue-title">“查看合作伙伴”弹窗未按原型实现</span>
+      <span class="chip category-chip">档案与账户</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-01 档案与账户初始化</li>
+<li>QA入口：合作伙伴档案 → 任一记录 → 查看</li>
+<li>方案/原型预期：标题“查看合作伙伴”；600px轻量维护弹窗；字段顺序与新增/编辑一致且全部只读；底部仅“关闭”。</li>
+<li>QA实际：标题为“合作伙伴详情”，使用描述表格并增加“合作伙伴编号、是否发生资金业务、子账户表”等内容；电话被掩码；没有底部“关闭”按钮。</li>
+<li>影响：容器、标题、字段集合、顺序和操作方式均与确认原型不同。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="档案与账户" data-search="bug-010 新增企业/个人表单缺“账户号”和“状态” fl-01 档案与账户初始化 合作伙伴档案 → 新增合作伙伴 新增、查看、编辑字段顺序无法保持一致，用户无法确认默认状态与账户号生成规则。">
+    <summary>
+      <span class="issue-id">BUG-010</span>
+      <span class="issue-title">新增企业/个人表单缺“账户号”和“状态”</span>
+      <span class="chip category-chip">档案与账户</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-01 档案与账户初始化</li>
+<li>QA入口：合作伙伴档案 → 新增合作伙伴</li>
+<li>方案/原型预期：企业/个人新增时账户号展示“—”，创建成功后只读展示真实值；状态字段默认启用。</li>
+<li>QA实际：企业/个人新增弹窗仅有合作类型、名称、联系人、电话、负责人、账户支付方式、备注，没有账户号和状态。</li>
+<li>影响：新增、查看、编辑字段顺序无法保持一致，用户无法确认默认状态与账户号生成规则。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="档案与账户" data-search="bug-011 账户管理筛选缺少“状态” fl-01 档案与账户初始化 合作伙伴账户 → 挂帐管理/预付款管理 无法按启用/禁用伙伴查询账户，禁用伙伴的后台财务处理难以验收。">
+    <summary>
+      <span class="issue-id">BUG-011</span>
+      <span class="issue-title">账户管理筛选缺少“状态”</span>
+      <span class="chip category-chip">档案与账户</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-01 档案与账户初始化</li>
+<li>QA入口：合作伙伴账户 → 挂帐管理/预付款管理</li>
+<li>方案/原型预期：两类账户筛选均包含账户类型、伙伴名称、账户号、状态、额度限制和金额区间。</li>
+<li>QA实际：两类标签均没有“状态”筛选。</li>
+<li>影响：无法按启用/禁用伙伴查询账户，禁用伙伴的后台财务处理难以验收。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P0" data-category="档案与账户" data-search="bug-012 账户列表“账户类型”字段语义错误 fl-01 档案与账户初始化 合作伙伴账户 → 挂帐管理/预付款管理 无法识别账户主体类型，也无法确认公共临时客户只进入挂帐管理。">
+    <summary>
+      <span class="issue-id">BUG-012</span>
+      <span class="issue-title">账户列表“账户类型”字段语义错误</span>
+      <span class="chip category-chip">档案与账户</span>
+      <span class="chip severity p0">P0</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-01 档案与账户初始化</li>
+<li>QA入口：合作伙伴账户 → 挂帐管理/预付款管理</li>
+<li>方案/原型预期：“账户类型”展示合作伙伴类型：企业、个人、临时客户；所在标签已表达子账户为挂帐或预付款。</li>
+<li>QA实际：挂帐管理该列全部显示“挂帐”，预付款管理全部显示“预付款”。</li>
+<li>影响：无法识别账户主体类型，也无法确认公共临时客户只进入挂帐管理。</li>
+<li>严重级别：P0</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="档案与账户" data-search="bug-013 挂帐/预付款账户操作列多出“查看” fl-01 档案与账户初始化 合作伙伴账户 → 挂帐管理、预付款管理 页面与方案入口不一致；该入口展示内容需确认是否重复档案查看或账户详情。">
+    <summary>
+      <span class="issue-id">BUG-013</span>
+      <span class="issue-title">挂帐/预付款账户操作列多出“查看”</span>
+      <span class="chip category-chip">档案与账户</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-01 档案与账户初始化</li>
+<li>QA入口：合作伙伴账户 → 挂帐管理、预付款管理</li>
+<li>方案/原型预期：挂帐管理提供启用/禁用额度限制、调整额度、额度记录、充值记录、资金流水；预付款管理提供启用/禁用额度限制、充值记录、资金流水。</li>
+<li>QA实际：两个标签的方案操作均已展示，但操作列最前方都额外增加“查看”。</li>
+<li>影响：页面与方案入口不一致；该入口展示内容需确认是否重复档案查看或账户详情。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="后台充值与导入" data-search="bug-015 账户充值筛选区未按两行/展开规则实现 fl-02～fl-05 合作伙伴管理 → 充值申请 → 账户充值 无法按关键财务字段查询，页面结构与原型显著不一致。">
+    <summary>
+      <span class="issue-id">BUG-015</span>
+      <span class="issue-title">账户充值筛选区未按两行/展开规则实现</span>
+      <span class="chip category-chip">后台充值与导入</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-02～FL-05</li>
+<li>QA入口：合作伙伴管理 → 充值申请 → 账户充值</li>
+<li>方案/原型预期：第一行伙伴名称、账户号、充值记录单号；第二行充值类型、充值状态、查询/重置/展开；展开后负责人、申请人、支付时间、支付方式、柜台/POS。</li>
+<li>QA实际：默认展示伙伴、账户号、账户类型、记录单号、回款时间范围、负责人；没有展开/收起，缺充值状态、申请人、支付方式、柜台/POS等筛选。</li>
+<li>影响：无法按关键财务字段查询，页面结构与原型显著不一致。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="后台充值与导入" data-search="bug-016 账户充值列表字段错误和缺失 fl-02～fl-05 充值申请 → 账户充值 列表不能完整核对售票窗口充值信息，主体类型和子账户类型混淆。">
+    <summary>
+      <span class="issue-id">BUG-016</span>
+      <span class="issue-title">账户充值列表字段错误和缺失</span>
+      <span class="chip category-chip">后台充值与导入</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-02～FL-05</li>
+<li>QA入口：充值申请 → 账户充值</li>
+<li>方案/原型预期：记录单号、账户类型（企业/个人/临时客户）、伙伴、账户号、充值类型、金额、申请人、负责人、支付方式、柜台/POS、支付时间、申请时间、状态、完成时间、操作。</li>
+<li>QA实际：“账户类型”列显示挂帐/预付款；使用“操作类型”“回款时间”；缺柜台/POS、申请时间；额外展示付款人且顺序不符。</li>
+<li>影响：列表不能完整核对售票窗口充值信息，主体类型和子账户类型混淆。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="后台充值与导入" data-search="bug-017 充值/其他收入错误使用“回款时间”和近一月范围 fl-02～fl-05 充值申请 → 账户充值/其他收入 时间业务含义错误，筛选口径与方案不一致。">
+    <summary>
+      <span class="issue-id">BUG-017</span>
+      <span class="issue-title">充值/其他收入错误使用“回款时间”和近一月范围</span>
+      <span class="chip category-chip">后台充值与导入</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-02～FL-05</li>
+<li>QA入口：充值申请 → 账户充值/其他收入</li>
+<li>方案/原型预期：字段名“支付时间”；后台筛选使用单个日期精确匹配，不以日期范围表达回款区间。</li>
+<li>QA实际：筛选和列表均命名“回款时间”，默认加载2026-07-25至2026-08-25的日期范围。</li>
+<li>影响：时间业务含义错误，筛选口径与方案不一致。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P0" data-category="后台充值与导入" data-search="bug-018 调账类记录错误展示支付时间 fl-03 后台调账、fl-11 临客迁移 充值申请 → 账户充值列表 写入了无业务含义的时间，1970值会污染查询、对帐单和导出。">
+    <summary>
+      <span class="issue-id">BUG-018</span>
+      <span class="issue-title">调账类记录错误展示支付时间</span>
+      <span class="chip category-chip">后台充值与导入</span>
+      <span class="chip severity p0">P0</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-03 后台调账、FL-11 临客迁移</li>
+<li>QA入口：充值申请 → 账户充值列表</li>
+<li>方案/原型预期：调账、调账-往来不展示、不保存支付时间；发生时间取处理成功时间。</li>
+<li>QA实际：人工调账列表在“回款时间”显示调账成功时间；多条调账-往来显示 <code>1970-01-01 00:00:00</code>。</li>
+<li>影响：写入了无业务含义的时间，1970值会污染查询、对帐单和导出。</li>
+<li>严重级别：P0</li>
+<li>关联单据：<code>F3498041869668909057</code>、<code>F3497965591049666565</code> 等</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P0" data-category="后台充值与导入" data-search="bug-019 后台充值详情不是确认的完整弹窗 fl-02～fl-05 充值申请 → 账户充值 → 查看 大量关键字段及关联订单、售后、调账结果不可追溯；容器形态也与原型不一致。">
+    <summary>
+      <span class="issue-id">BUG-019</span>
+      <span class="issue-title">后台充值详情不是确认的完整弹窗</span>
+      <span class="chip category-chip">后台充值与导入</span>
+      <span class="chip severity p0">P0</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-02～FL-05</li>
+<li>QA入口：充值申请 → 账户充值 → 查看</li>
+<li>方案/原型预期：居中完整“充值详情”弹窗，展示伙伴、账户、类型、金额、支付/申请/完成时间、付款人、支付方式、柜台/POS、申请人、负责人、状态、售票员、窗口、备注、附件，并按回款/退款调账/迁移显示专属结果区块。</li>
+<li>QA实际：右侧抽屉，仅展示关联号、客户/付款人、附件和记录号/操作类型/金额/支付方式/回款时间简表。</li>
+<li>影响：大量关键字段及关联订单、售后、调账结果不可追溯；容器形态也与原型不一致。</li>
+<li>严重级别：P0</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="后台充值与导入" data-search="bug-020 其他收入筛选和列表缺少关键字段 fl-04 后台其他收入 充值申请 → 其他收入 售票窗口产生的其他收入无法在后台核对柜台/pos及提交时间。">
+    <summary>
+      <span class="issue-id">BUG-020</span>
+      <span class="issue-title">其他收入筛选和列表缺少关键字段</span>
+      <span class="chip category-chip">后台充值与导入</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-04 后台其他收入</li>
+<li>QA入口：充值申请 → 其他收入</li>
+<li>方案/原型预期：列表包含柜台号/POS编号、支付时间、申请时间；不展示账户号。筛选按伙伴、记录单号及支付、负责人、申请人等字段组织。</li>
+<li>QA实际：筛选多出账户号；列表缺柜台/POS和申请时间，仍使用“操作类型、回款时间”，字段顺序不符。</li>
+<li>影响：售票窗口产生的其他收入无法在后台核对柜台/POS及提交时间。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="合作伙伴对帐单" data-search="bug-021 合作伙伴对帐单放错菜单并沿用错误导航 fl-14 合作伙伴对帐单 pc后台 → 报表中心 → 合作伙伴对帐单 产品入口和页面整体结构错误，无法在合作伙伴管理内连续切换。">
+    <summary>
+      <span class="issue-id">BUG-021</span>
+      <span class="issue-title">合作伙伴对帐单放错菜单并沿用错误导航</span>
+      <span class="chip category-chip">合作伙伴对帐单</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-14 合作伙伴对帐单</li>
+<li>QA入口：PC后台 → 报表中心 → 合作伙伴对帐单</li>
+<li>方案/原型预期：位于“合作伙伴管理”菜单下，沿用合作伙伴管理左侧菜单、页签和面包屑，不展示其他报表菜单。</li>
+<li>QA实际：位于“报表中心”，左侧展开销售、收银、OTA、旅行社、团队等整套报表菜单，面包屑也为“报表中心”。</li>
+<li>影响：产品入口和页面整体结构错误，无法在合作伙伴管理内连续切换。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="合作伙伴对帐单" data-search="bug-022 对帐单主标题未带合作伙伴名称 fl-14 合作伙伴对帐单  打印或导出后无法从标题识别对帐主体。">
+    <summary>
+      <span class="issue-id">BUG-022</span>
+      <span class="issue-title">对帐单主标题未带合作伙伴名称</span>
+      <span class="chip category-chip">合作伙伴对帐单</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-14 合作伙伴对帐单</li>
+<li>前置数据：选择 <code>QA2-SMK-026-0812501</code> 并成功查询。</li>
+<li>方案/原型预期：标题为“合作伙伴-QA2-SMK-026-0812501对帐单”。</li>
+<li>QA实际：仍为固定“合作伙伴对帐单”。</li>
+<li>影响：打印或导出后无法从标题识别对帐主体。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="合作伙伴对帐单" data-search="bug-023 未选伙伴空态多出制单/打印区及打印按钮 fl-14 合作伙伴对帐单  空态结构和功能范围超出最终方案，且容易误认为已完成制单。">
+    <summary>
+      <span class="issue-id">BUG-023</span>
+      <span class="issue-title">未选伙伴空态多出制单/打印区及打印按钮</span>
+      <span class="chip category-chip">合作伙伴对帐单</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-14 合作伙伴对帐单</li>
+<li>复现步骤：打开页面，不选择合作伙伴，点击查询。</li>
+<li>方案/原型预期：只保留报表标题、统计日期和表头，不生成打印时间；最终方案未定义独立打印按钮。</li>
+<li>QA实际：页面持续展示“制单人：西瓜”“打印时间：-”以及禁用的“打印”按钮；成功查询后打印按钮变为可用。</li>
+<li>影响：空态结构和功能范围超出最终方案，且容易误认为已完成制单。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="合作伙伴对帐单" data-search="bug-024 0余额未按“－”展示 fl-14 合作伙伴对帐单  无法直观看出当前实际使用账户，且与确认展示规则不一致。">
+    <summary>
+      <span class="issue-id">BUG-024</span>
+      <span class="issue-title">0余额未按“－”展示</span>
+      <span class="chip category-chip">合作伙伴对帐单</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-14 合作伙伴对帐单</li>
+<li>前置数据：<code>QA2-SMK-026-0812501</code> 当前预付款余额0.00、挂帐金额-0.01。</li>
+<li>方案/原型预期：为0的账户列不展示金额，显示“－”；非0列展示当前值。</li>
+<li>QA实际：合计行当前预付款余额显示 <code>0.00</code>，挂帐金额正确显示 <code>-0.01</code>。</li>
+<li>影响：无法直观看出当前实际使用账户，且与确认展示规则不一致。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="售票窗口充值" data-search="bug-025 售票窗口选择合作伙伴列表未展示负责人/联系人电话 fl-06 售票窗口选择固定合作伙伴 售票窗口 → 售票 → 临时/长期合作伙伴 → 选择合作伙伴 遇到同名联系人或负责人时无法确认主体，容易选错合作伙伴。">
+    <summary>
+      <span class="issue-id">BUG-025</span>
+      <span class="issue-title">售票窗口选择合作伙伴列表未展示负责人/联系人电话</span>
+      <span class="chip category-chip">售票窗口充值</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-06 售票窗口选择固定合作伙伴</li>
+<li>QA入口：售票窗口 → 售票 → 临时/长期合作伙伴 → 选择合作伙伴</li>
+<li>方案/原型预期：筛选项及表格按“联系人/电话、负责人/电话”展示，行内同时提供姓名与电话，便于同名人员核对。</li>
+<li>QA实际：表头仍为“对接负责人、联系人”，数据行只显示“郑二、张三”等姓名，没有电话号码。</li>
+<li>影响：遇到同名联系人或负责人时无法确认主体，容易选错合作伙伴。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P0" data-category="订单、退款与临客" data-search="bug-026 同一合作伙伴的挂帐额度状态在后台与售票窗口不一致 fl-01 档案与账户初始化、fl-06 售票窗口选伙伴  出票前额度校验依据不明确，可能错误放行或拦截挂帐订单，属于资金风险。">
+    <summary>
+      <span class="issue-id">BUG-026</span>
+      <span class="issue-title">同一合作伙伴的挂帐额度状态在后台与售票窗口不一致</span>
+      <span class="chip category-chip">订单、退款与临客</span>
+      <span class="chip severity p0">P0</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-01 档案与账户初始化、FL-06 售票窗口选伙伴</li>
+<li>前置数据：合作伙伴 <code>企业合作伙伴003</code>，账户号 <code>A3497967686993707009</code>。</li>
+<li>复现步骤：后台“合作伙伴账户→挂帐管理”查看该账户，再到售票窗口选择同一伙伴。</li>
+<li>方案/原型预期：账户额度开关、挂帐额度、可用金额必须跨端使用同一账户数据；限额时显示额度和可用金额，不限额时可用额度显示“无限额”。</li>
+<li>QA实际：后台列表显示挂帐额度 <code>10.00</code>、可用金额 <code>20.01</code>；售票页同一伙伴显示“可用挂帐额度：无限额”。伙伴选择列表又显示挂帐额度 <code>10.00</code>。同一售票页面内外也相互矛盾。</li>
+<li>影响：出票前额度校验依据不明确，可能错误放行或拦截挂帐订单，属于资金风险。</li>
+<li>严重级别：P0</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P0" data-category="售票窗口充值" data-search="bug-027 售票窗口成功充值/其他收入记录的状态与完成时间为空 fl-07 售票页充值、fl-08 工作区充值、fl-09 记录回写 售票窗口 → 合作伙伴 → 账户充值记录/其他收入记录 成功记录在列表无法确认处理状态，导出/核对易被误判为处理中或失败。">
+    <summary>
+      <span class="issue-id">BUG-027</span>
+      <span class="issue-title">售票窗口成功充值/其他收入记录的状态与完成时间为空</span>
+      <span class="chip category-chip">售票窗口充值</span>
+      <span class="chip severity p0">P0</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-07 售票页充值、FL-08 工作区充值、FL-09 记录回写</li>
+<li>QA入口：售票窗口 → 合作伙伴 → 账户充值记录/其他收入记录</li>
+<li>前置数据：<ul>
+<li>扫码付充值 <code>F3499766264678645761</code>，柜台号 <code>QA-GT-20260825-01</code>；</li>
+<li>现金其他收入 <code>F3499767518809096194</code>。</li>
+</ul>
+</li>
+<li>方案/原型预期：提交成功后列表展示“充值成功”和完成时间，且与详情中的完成时间一致。</li>
+<li>QA实际：两条记录均已成功更新账户/报表，支付时间存在，但列表“充值状态、完成时间”两列为空。</li>
+<li>影响：成功记录在列表无法确认处理状态，导出/核对易被误判为处理中或失败。</li>
+<li>严重级别：P0</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="售票窗口充值" data-search="bug-028 售票窗口账户充值详情字段不完整 fl-07～fl-09 售票窗口 → 合作伙伴 → 账户充值记录 → 查看 售票窗口不能按最终方案完整追溯充值主体、操作人与处理状态；与原型详情结构明显不一致。">
+    <summary>
+      <span class="issue-id">BUG-028</span>
+      <span class="issue-title">售票窗口账户充值详情字段不完整</span>
+      <span class="chip category-chip">售票窗口充值</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-07～FL-09</li>
+<li>QA入口：售票窗口 → 合作伙伴 → 账户充值记录 → 查看</li>
+<li>关联单据：<code>F3499766264678645761</code></li>
+<li>方案/原型预期：完整弹窗展示充值记录单号、账户类型、伙伴名称、账户号、充值类型、金额、支付时间、客户/付款人、支付方式、柜台/POS、申请人、负责人、申请时间、完成时间、状态、售票员、售票窗口、备注及资料。</li>
+<li>QA实际：只展示记录单号、关联号、伙伴、账户号、操作类型、金额、申请人、负责人、支付方式、柜台/POS、支付/完成时间、备注和资料；缺账户类型、伙伴类型/合作类型、客户/付款人、申请时间、充值状态、售票员、售票窗口等。</li>
+<li>影响：售票窗口不能按最终方案完整追溯充值主体、操作人与处理状态；与原型详情结构明显不一致。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="售票窗口充值" data-search="bug-029 其他收入详情错误复用充值详情字段 fl-08 工作区联合收款、fl-09 其他收入记录 售票窗口 → 合作伙伴 → 其他收入记录 → 查看 财务人员会把其他收入误认成账户充值，页面字段与实际资金处理不一致。">
+    <summary>
+      <span class="issue-id">BUG-029</span>
+      <span class="issue-title">其他收入详情错误复用充值详情字段</span>
+      <span class="chip category-chip">售票窗口充值</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-08 工作区联合收款、FL-09 其他收入记录</li>
+<li>QA入口：售票窗口 → 合作伙伴 → 其他收入记录 → 查看</li>
+<li>关联单据：<code>F3499767518809096194</code></li>
+<li>方案/原型预期：详情语义为其他收入，展示其他收入金额及通用收款信息；其他收入不变更账户，不应出现账户号字段。</li>
+<li>QA实际：弹窗标题仍为“充值详情”，金额标签为“充值金额”，并展示“账户号：-”；其余字段仍沿用不完整的充值详情结构。</li>
+<li>影响：财务人员会把其他收入误认成账户充值，页面字段与实际资金处理不一致。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P0" data-category="订单、退款与临客" data-search="bug-030 挂帐订单消费与退款流水的支付方式错误显示为现金 fl-10 固定合作伙伴下单与退款  资金流水支付渠道和付款人快照错误，会直接污染财务核对、筛选和导出。">
+    <summary>
+      <span class="issue-id">BUG-030</span>
+      <span class="issue-title">挂帐订单消费与退款流水的支付方式错误显示为现金</span>
+      <span class="chip category-chip">订单、退款与临客</span>
+      <span class="chip severity p0">P0</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-10 固定合作伙伴下单与退款</li>
+<li>前置数据：订单 <code>DD260825190724001001s</code>，售后单 <code>LYAS3499777087922651136</code>，账户支付方式为挂帐。</li>
+<li>复现步骤：售票窗口以固定伙伴挂帐出票0.01，再正常退票；后台查看对应消费、退款资金流水和消费详情。</li>
+<li>方案/原型预期：消费取订单实际支付方式，退款取原订单支付方式，因此两条均应显示“挂帐”。</li>
+<li>QA实际：订单列表和订单详情均确认支付类型为挂帐，但消费、退款流水的支付方式均显示“现金”；消费流水详情也显示“付款人：P0负向付款人、支付方式：现金”，与本次订单无关。</li>
+<li>影响：资金流水支付渠道和付款人快照错误，会直接污染财务核对、筛选和导出。</li>
+<li>严重级别：P0</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P1" data-category="后台充值与导入" data-search="bug-031 批量导入充值入口放错页面 fl-05 后台批量导入充值  功能可发现性和权限归属错误，财务人员会在充值申请页找不到导入入口；资金流水页承担了不属于该页的资金写入动作。">
+    <summary>
+      <span class="issue-id">BUG-031</span>
+      <span class="issue-title">批量导入充值入口放错页面</span>
+      <span class="chip category-chip">后台充值与导入</span>
+      <span class="chip severity p1">P1</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-05 后台批量导入充值</li>
+<li>方案/原型预期：“批量导入”位于充值申请→账户充值操作区，与充值、导出、配置列并列；资金流水仅提供导出、配置列。</li>
+<li>QA实际：充值申请页没有“批量导入”，资金流水页却出现该按钮；点击后打开“批量导入充值”弹窗。</li>
+<li>影响：功能可发现性和权限归属错误，财务人员会在充值申请页找不到导入入口；资金流水页承担了不属于该页的资金写入动作。</li>
+<li>严重级别：P1</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details>
+
+  <details class="issue-card" data-severity="P0" data-category="订单、退款与临客" data-search="bug-032 公共临时客户售票无法进入支付确认且无错误提示 fl-06 售票窗口选客、fl-11 公共临时客户订单迁移前置 售票窗口 → 售票 → 临时/长期合作伙伴 → 临时客户 公共临时客户无法完成挂帐售票，后续未回款、回款、迁移及退款链路均被阻断。">
+    <summary>
+      <span class="issue-id">BUG-032</span>
+      <span class="issue-title">公共临时客户售票无法进入支付确认且无错误提示</span>
+      <span class="chip category-chip">订单、退款与临客</span>
+      <span class="chip severity p0">P0</span>
+      <span class="chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="issue-body markdown-body"><ul>
+<li>所属流程：FL-06 售票窗口选客、FL-11 公共临时客户订单迁移前置</li>
+<li>QA入口：售票窗口 → 售票 → 临时/长期合作伙伴 → 临时客户</li>
+<li>前置数据：公共临时客户；负责人“管理员 17200000000”；客户名称“QA临客测试”；0.01非实名票1张；支付方式锁定挂帐。</li>
+<li>复现步骤：填写上述字段后点击“确认下单”。</li>
+<li>方案/原型预期：打开“支付订单确认”弹窗；如存在未满足校验，应在对应字段或全局消息明确提示。</li>
+<li>QA实际：按钮可点击但页面无任何响应，不出现支付确认弹窗，也没有字段错误或消息提示。固定伙伴同票型、同金额可正常进入确认并出票。</li>
+<li>影响：公共临时客户无法完成挂帐售票，后续未回款、回款、迁移及退款链路均被阻断。</li>
+<li>严重级别：P0</li>
+<li>状态：已复现</li>
+</ul>
+</div>
+  </details></div><div class="empty-results" id="empty-results">没有符合当前条件的问题。</div>
+  </section>
+
+  <section class="section" id="coverage">
+    <div class="section-title"><h2>全链路覆盖地图</h2><p>对应完整业务流程的 15 组验证链路</p></div>
+    <div class="card markdown-body"><p>本矩阵以完整需求页“开发辅助：全功能流程图 / 查看 Mermaid 全图”为唯一业务主线。执行时不得跳过判断节点；每个“是/否”“一致/不一致”“成功/失败”分支都要有独立样例、独立单据号和独立结果记录。</p>
+<table>
+<thead>
+<tr>
+<th>流程组</th>
+<th>Mermaid 节点与判断分支</th>
+<th>样例与执行重点</th>
+<th>字段/界面核验</th>
+<th>数据闭环与核验页面</th>
+<th>对应用例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FL-01 档案与账户初始化</td>
+<td>A→B→C/D→E/F</td>
+<td>企业、个人、公共临客各建一条；公共临客重复创建；企业/个人切换账户支付方式时分别准备源账户为0、非0</td>
+<td>合作类型、名称、联系人、电话、负责人、账户支付方式、状态、备注、账户号；公共临客隐藏联系人/负责人/支付方式/状态/账户号并固定挂帐、启用</td>
+<td>档案、挂帐账户、预付款账户、账户跳转、额度记录；不得产生充值或资金流水</td>
+<td>B-01～B-08</td>
+</tr>
+<tr>
+<td>FL-02 后台普通充值</td>
+<td>G→H→I→I1</td>
+<td>企业/个人分别以挂帐、预付款充值；禁用伙伴仍可后台处理；金额0、0.01</td>
+<td>充值表单字段、必填、下拉可选项；支付时间只选日期并保存00:00:00；后台仅现金/银行转账；柜台/POS不展示</td>
+<td>当前子账户增加、充值记录、充值详情、充值流水、对帐单到款</td>
+<td>R-01～R-04、F-02～F-03、S-05</td>
+</tr>
+<tr>
+<td>FL-03 后台调账</td>
+<td>I→I2、J→J1</td>
+<td>企业/个人/公共临客各做+0.02、-0.01、0</td>
+<td>调账不展示/不保存支付时间、付款人、支付方式、柜台/POS；金额可正可负但不可为0；备注/附件规则</td>
+<td>当前账户变化、调账充值记录、调账流水；对帐单正数入到款、负数入消费</td>
+<td>R-05～R-06、F-01、S-05</td>
+</tr>
+<tr>
+<td>FL-04 后台其他收入</td>
+<td>I→I3</td>
+<td>企业/个人各做0、0.03；禁用伙伴处理一次</td>
+<td>独立“其他收入”标签；账户号/账户类型显示“－”；支付时间、付款人、支付方式及详情字段按类型显示</td>
+<td>不改账户；生成其他收入记录和流水；不计合作伙伴对帐单到款</td>
+<td>R-07、F-06、S-05</td>
+</tr>
+<tr>
+<td>FL-05 公共临客挂帐回款</td>
+<td>J2→J3→J4→J6→J5→J7→J9→J10/J11</td>
+<td>非候选订单；单笔；多笔快照一致；多笔快照不一致选择“返回修改”及“继续平账”；金额小于、等于、大于应回款</td>
+<td>待选订单全部字段、动态应回款；二次确认按钮/文案；人工确认标记、确认人、确认时间；剩余金额只能其他收入</td>
+<td>等额：充值记录及订单/消费流水改已回款；超额：另建其他收入；不足：全部不写；充值详情可追溯订单/售后</td>
+<td>SC-04、O-06、F-04</td>
+</tr>
+<tr>
+<td>FL-06 售票窗口选择对象</td>
+<td>K→L→M/N</td>
+<td>企业、个人、公共临客；启用与禁用伙伴；更换伙伴但保留已选票/游客/金额</td>
+<td>选择弹窗字段、模糊筛选、状态；固定伙伴加载负责人/联系人/当前账户信息；公共临客填写订单客户名称、订单负责人；支付方式锁定</td>
+<td>只刷新右侧伙伴信息，不生成订单、记录或流水</td>
+<td>W-01、O-01</td>
+</tr>
+<tr>
+<td>FL-07 售票页固定伙伴充值</td>
+<td>M→O→O1→O2→O3/O4</td>
+<td>在售票主页面分别执行现金、扫码付、银行卡、微信、支付宝；0+0、仅充值、仅其他收入、两项都有；取消；制造失败回滚</td>
+<td>完整充值弹窗；现金实收/找零；扫码付仅柜台号；银行卡仅POS编号；微信/支付宝对应字段为“－”；前后账户金额提示</td>
+<td>成功后账户/充值记录/其他收入/流水/报表五点一致，仅局部刷新；失败和取消均零写入</td>
+<td>3.1、W-02～W-08</td>
+</tr>
+<tr>
+<td>FL-08 合作伙伴工作区充值</td>
+<td>M→O1→O2→O3/O4（第二入口）</td>
+<td>在“合作伙伴→合作伙伴充值”行内充值，重复 FL-07 的五种支付方式和金额组合</td>
+<td>弹窗结构、字段、条件显示、校验、提示必须与售票页完全一致</td>
+<td>同步进入售票窗口两类记录、后台充值/其他收入、资金流水和充值报表</td>
+<td>W-04～W-09</td>
+</tr>
+<tr>
+<td>FL-09 确认出票与状态复核</td>
+<td>P→Q→R→S→T→U/V/W/X→Y/Z→AA</td>
+<td>打开确认后取消；伙伴禁用；账户禁用；临客缺客户名/负责人；挂帐额度足/不足；预付款余额足/不足；不启用额度允许负数</td>
+<td>支付确认弹窗票表、总数、票人规则、按钮；支付方式锁定；所有拦截文案；确认前无资金变化</td>
+<td>成功同事务创建订单、出票、扣账户、消费流水；任一步失败整体回滚</td>
+<td>O-01～O-04、B-05～B-06</td>
+</tr>
+<tr>
+<td>FL-10 订单归属与详情</td>
+<td>AA→AB→AC/AD</td>
+<td>固定伙伴订单、公共临客未回款订单、公共临客已回款订单</td>
+<td>订单基础信息、支付信息、合作伙伴信息完整字段；只有公共临客订单展示客户/负责人快照和回款状态</td>
+<td>订单、账户、消费流水、订单详情数据一致</td>
+<td>O-02、SC-04、SC-06</td>
+</tr>
+<tr>
+<td>FL-11 临客转长期伙伴</td>
+<td>AC→AE→AF→AG/AI→AH→AJ/AK→AL→AM～AQ→AR→AS/AT</td>
+<td>非候选订单；多单快照一致/不一致；不一致分别返回/继续；迁往新建伙伴、已有伙伴；制造事务失败</td>
+<td>两步页/弹窗结构；候选表字段；目标伙伴字段；确认文案；迁移结果；订单详情仅在“合作伙伴信息”下增加4字段变更记录</td>
+<td>订单/售后改归属；临客原流水保留；目标重建消费/退款流水；临客生成调账-往来；失败全回滚</td>
+<td>T-01～T-06、F-05</td>
+</tr>
+<tr>
+<td>FL-12 三类退款</td>
+<td>BA→BB→BC/BD/BE</td>
+<td>固定或已迁移订单退款；公共临客未回款退款；公共临客已回款退款；跨天退款</td>
+<td>售后详情按当前归属展示；退款金额、成功时间、原支付方式、关联订单/售后/转移单号</td>
+<td>固定/迁移：当前账户增加+退款流水；临客未回款：账户增加且应回款减少；临客已回款：退款正数+等额负数退款调账</td>
+<td>O-03～O-05、F-04</td>
+</tr>
+<tr>
+<td>FL-13 资金流水与详情</td>
+<td>I1/I2/I3/J1/J10/BC/BD/BE/AN/AO/AP→CA→CB</td>
+<td>为充值、消费、退款、其他收入、调账各准备至少一条；分别点关联单据与“查看”</td>
+<td>标签、筛选两行/展开、列顺序、金额正负、账户类型、发生时间、支付方式、柜台/POS、回款、备注；详情容器与完整字段</td>
+<td>关联单据可复制/跳转；详情反查原业务；导出使用当前标签和条件且含全部命中数据</td>
+<td>F-01～F-06、R-02～R-06</td>
+</tr>
+<tr>
+<td>FL-14 合作伙伴对帐单</td>
+<td>CB→CC→CD→CE</td>
+<td>按日默认当天、按月默认当月；未选伙伴；启用/禁用/公共临客；无数据/有数据；账户支付方式期间切换</td>
+<td>菜单、页签、面包屑；伙伴模糊下拉含禁用；标题带伙伴名；统计范围；日期/人数/消费/到款/当前预付款/当前挂帐；调账行、合计、制单人、查询时打印时间、0显示“－”</td>
+<td>人数、跨天退款、普通充值、其他收入排除、正负调账、当前余额与原始订单/充值/流水逐笔勾稽；打印仅在成功查询后验证</td>
+<td>S-01～S-07</td>
+</tr>
+<tr>
+<td>FL-15 售票窗口充值报表</td>
+<td>O4→CA→报表</td>
+<td>两入口分别产生现金、微信、支付宝、银行卡不同POS、扫码付不同柜台的充值/其他收入；跨负责人快照</td>
+<td>默认当天；仅当前售票员；标题、日期、分组/合并行、小计/总计；支付方式表头居中；银行卡按POS、扫码付按柜台拆列；制单人与查询时间</td>
+<td>报表各列金额与两类记录逐笔相加一致，后台人员充值不得进入</td>
+<td>W-09、SC-01～SC-03</td>
+</tr>
+</tbody></table>
+</div>
+  </section>
+
+  <section class="section" id="samples">
+    <div class="section-title"><h2>样例数据与操作顺序</h2><p>按业务场景造数和回查</p></div>
+    <div class="card markdown-body"><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>伙伴/账户</th>
+<th>单据</th>
+<th>金额与结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>售票窗口扫码付充值</td>
+<td>企业合作伙伴003 / A3497967686993707009</td>
+<td>F3499766264678645761</td>
+<td>+0.01；柜台 QA-GT-20260825-01</td>
+</tr>
+<tr>
+<td>售票窗口银行卡充值</td>
+<td>同上</td>
+<td>F3499654853226987521</td>
+<td>+0.01；POS QA-POS-20260825-01</td>
+</tr>
+<tr>
+<td>售票窗口联合收款</td>
+<td>同上</td>
+<td>F3499767518809096193 / F3499767518809096194</td>
+<td>充值+0.01、其他收入+0.01，账户仅增加0.01</td>
+</tr>
+<tr>
+<td>后台现金充值</td>
+<td>同上</td>
+<td>F3499770576825810945</td>
+<td>+0.01；支付日00:00:00</td>
+</tr>
+<tr>
+<td>后台负数调账</td>
+<td>同上</td>
+<td>F3499771126581624833</td>
+<td>-0.01；资金流水为余额调账</td>
+</tr>
+<tr>
+<td>后台其他收入</td>
+<td>同上</td>
+<td>F3499771607617961985</td>
+<td>+0.01；账户不变</td>
+</tr>
+<tr>
+<td>固定伙伴挂帐订单及退款</td>
+<td>同上</td>
+<td>DD260825190724001001s / LYAS3499777087922651136</td>
+<td>消费-0.01、退款+0.01；账户恢复</td>
+</tr>
+</tbody></table>
+</div>
+    <details class="plan-block"><summary>展开 6 套完整场景和售票窗口充值处理逻辑<span>SC-01 ～ SC-06</span></summary><div class="markdown-body"><p>所有金融写入场景均使用独立前缀，按“创建 → 操作 → 五点核验 → 回查/异常”执行；每步记录单据号，避免串数据。</p>
+<h3>SC-01 固定伙伴银行卡充值（已执行，作为基准样例）</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>操作</th>
+<th>必须记录/验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>选用企业合作伙伴003，记录充值前挂帐金额。</td>
+<td>伙伴、账户号、负责人、充值前余额。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>售票窗口合作伙伴工作区行内充值；银行卡；金额0.01；POS <code>QA-POS-20260825-01</code>。</td>
+<td>成功提示及充值记录号。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>查售票窗口账户充值记录并打开详情。</td>
+<td>POS、支付时间、申请人、状态、完成时间、详情字段/容器。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>查后台充值申请并打开详情。</td>
+<td>列表与详情完整字段、容器一致性。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>查资金流水。</td>
+<td>+0.01、银行卡、POS、售票员/窗口备注。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>查售票窗口充值报表。</td>
+<td>银行卡下按 POS 拆列，金额0.01。</td>
+</tr>
+<tr>
+<td>7</td>
+<td>查伙伴对帐单。</td>
+<td>到款、当前挂帐金额、打印时间、标题。</td>
+</tr>
+</tbody></table>
+<h3>3.1 售票窗口充值处理逻辑（必须按此顺序验证）</h3>
+<p>适用入口有且仅有两个，二者必须复用同一笔业务处理：</p>
+<ol>
+<li><strong>售票页 → 临时/长期合作伙伴 → 已选择企业/个人伙伴 → 底部“充值”</strong>；</li>
+<li><strong>售票窗口 → 合作伙伴 → 合作伙伴充值列表 → 行内“充值”</strong>。</li>
+</ol>
+<h4>A. 进入与对象校验</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>处理规则</th>
+<th>测试验证点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A1</td>
+<td>仅企业、个人伙伴可打开固定伙伴充值；公共临时客户不显示该入口。</td>
+<td>两个入口均分别验证。</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>弹窗回填合作类型、伙伴、联系人/电话、负责人/电话、账户号、当前账户金额、账户支付方式。</td>
+<td>不允许手工改账户号和账户支付方式。</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>当前账户支付方式为挂帐时，充值类型固定挂帐；为预付款时固定预付款。</td>
+<td>不得在弹窗中切换到另一账户。</td>
+</tr>
+</tbody></table>
+<h4>B. 金额与收款方式</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>处理规则</th>
+<th>测试验证点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B1</td>
+<td>可分别输入“充值金额”“计入其他收入”；至少一项必须大于0，均保留两位小数。</td>
+<td>0+0拦截；0.01+0、0+0.01、0.01+0.02均验证。</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>收款方式必选：现金、扫码付、银行卡、微信、支付宝。</td>
+<td>每一种方式均在两个入口至少覆盖一次；保存值须一致。</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>现金：显示现金实收、现金找零；实收不得小于两项金额合计。</td>
+<td>合计=0.03、实收0.02拦截；实收0.05，找零0.02。</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>扫码付：仅显示“柜台号”文本输入，样式与现金实收输入区一致；不显示找零。</td>
+<td>空柜台号能否提交按原型/规则确认；填写后入库为柜台号/POS编号。</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>银行卡：仅显示“POS编号”文本输入，样式与现金实收输入区一致；不显示找零。</td>
+<td>已执行 POS <code>QA-POS-20260825-01</code>；仍需核对两个入口。</td>
+</tr>
+<tr>
+<td>B6</td>
+<td>微信、支付宝：不显示现金实收、找零、柜台号/POS。</td>
+<td>保存值为“－”。</td>
+</tr>
+</tbody></table>
+<h4>C. 提交事务与局部刷新</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>处理规则</th>
+<th>测试验证点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C1</td>
+<td>点击确认前只做表单校验，不写账户、不生成任何记录。</td>
+<td>取消后核对账户、记录、流水均不变。</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>充值金额大于0时：账户增加该金额，并生成一条账户充值记录、一条充值资金流水。</td>
+<td>记录/流水的伙伴、账户、类型、金额、支付方式、柜台/POS、申请人、时间一致。</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>其他收入大于0时：生成一条独立其他收入记录和流水，不改变账户。</td>
+<td>与充值记录不得合并；账户号/账户类型展示按各页面规则。</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>两项均大于0时：C2、C3 在同一业务事务中全部成功或全部回滚。</td>
+<td>人为制造一个失败条件后，检查不遗留半条记录或半次账户变更。</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>成功后关闭弹窗，显示充值前后金额和其他收入提示；仅刷新当前伙伴账户信息。</td>
+<td>已选票、数量、游客、订单金额均不得被重置。</td>
+</tr>
+</tbody></table>
+<h4>D. 提交后的五点核验（每一笔必做）</h4>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>必查页面</th>
+<th>核对内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D1</td>
+<td>当前售票页或工作区</td>
+<td>账户金额、可用额度/预付款余额变化；局部刷新范围。</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>售票窗口“账户充值记录”/“其他收入记录”</td>
+<td>默认当天与当前售票员；列表、筛选、详情字段、状态、完成时间。</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>后台“充值申请”/“其他收入”</td>
+<td>同一记录存在；完整列表字段和<strong>完整弹窗详情</strong>与原型一致。</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>后台“资金流水”</td>
+<td>金额方向、支付方式、柜台/POS、售票员/窗口备注、关联单据。</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>售票窗口“充值报表”及后台“合作伙伴对帐单”</td>
+<td>POS/柜台拆列；充值/其他收入/调账分别按各自报表口径统计。</td>
+</tr>
+</tbody></table>
+<h3>SC-02 固定伙伴“充值＋其他收入”混合收款</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>操作</th>
+<th>必须验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>新建测试伙伴 <code>QA-MIX-日期-序号</code>，账户支付方式分别准备挂帐与预付款两类。</td>
+<td>双账户初始金额0。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>售票窗口充值：充值金额0.01、其他收入0.02、扫码付、柜台号 <code>QA-COUNTER-01</code>。</td>
+<td>仅当前账户增加0.01；总收款0.03。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>售票窗口两类记录页。</td>
+<td>一条账户充值、一条其他收入；均含扫码付与柜台号。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>后台充值申请、其他收入、资金流水。</td>
+<td>两条独立记录/流水；其他收入账户号/账户类型为“－”。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>对帐单与充值报表。</td>
+<td>对帐单本月到款仅0.01；充值报表按柜台号统计充值与其他收入的口径按方案核实。</td>
+</tr>
+</tbody></table>
+<h3>SC-03 后台普通充值、调账、其他收入</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>操作</th>
+<th>必须验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>为测试伙伴后台普通充值0.01，选择支付日期。</td>
+<td>支付时间为所选日00:00:00；账户/记录/流水同步。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>后台调账+0.02、-0.01。</td>
+<td>仅调账可正负；不出现付款人/支付方式/支付时间；发生时间取成功时间。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>后台其他收入0.03。</td>
+<td>不影响账户；独立记录和流水。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>打开三类“查看”。</td>
+<td>均为原型规定的完整详情弹窗；字段按类型显示/隐藏正确。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>对帐单。</td>
+<td>普通充值计到款；正调账单列到款、负调账单列消费；其他收入不计。</td>
+</tr>
+</tbody></table>
+<h3>SC-04 公共临时客户挂帐、回款与退款</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>操作</th>
+<th>必须验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>临时客户模式下开0.01挂帐订单。</td>
+<td>订单为未回款；公共临客消费流水显示未回款。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>后台挂帐回款，勾选订单且金额等于应回款。</td>
+<td>订单/消费流水改已回款；充值详情能回溯订单。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>对已回款订单退款。</td>
+<td>退款正数流水＋等额负数退款调账；订单、售后、调账互相可追溯。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>再开未回款临客订单并退款。</td>
+<td>不生成退款调账；应回款动态减少。</td>
+</tr>
+</tbody></table>
+<h3>SC-05 临时客户转长期合作伙伴</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>操作</th>
+<th>必须验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>准备未回款临客订单及对应售后状态；记录公共临客原流水。</td>
+<td>迁移前候选符合资格。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>入口选择订单；分别覆盖快照一致和快照不一致的多单场景。</td>
+<td>不一致必须二次确认并保留确认痕迹。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>选择已有长期伙伴；再用新建长期伙伴各执行一次。</td>
+<td>订单/售后归属目标，目标账户按净额扣减。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>查公共临客、目标伙伴资金流水及调账-往来详情。</td>
+<td>原流水保留；目标重建流水；调账-往来正数且可回溯。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>查已迁移订单/售后详情。</td>
+<td>只增加合作伙伴变更记录区块，字段和原型一致。</td>
+</tr>
+</tbody></table>
+<h3>SC-06 固定伙伴下单与退款</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>操作</th>
+<th>必须验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>选择0.01票型和固定挂帐伙伴，先打开支付确认不提交。</td>
+<td>打开确认不创建订单、不扣账户；支付方式锁定。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>确认出票。</td>
+<td>订单、账户负数消费、消费流水同事务。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>后台订单详情、资金流水、对帐单查询。</td>
+<td>伙伴字段、消费金额、人数、日期口径一致。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>完成退款。</td>
+<td>原账户正数退款、售后详情、跨天退款口径正确。</td>
+</tr>
+</tbody></table>
+</div></details>
+  </section>
+
+  <section class="section" id="test-plan">
+    <div class="section-title"><h2>完整测试用例</h2><p>按模块展开，逐条执行和复测</p></div>
+    <details class="plan-block"><summary>后台：合作伙伴档案与账户<span>展开测试用例</span></summary><div class="markdown-body"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B-01</td>
+<td>新增企业合作伙伴，填写必填档案字段。</td>
+<td>同事务生成档案、账户号、挂帐/预付款子账户；默认启用。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>B-02</td>
+<td>新增个人合作伙伴。</td>
+<td>与企业同账户结构；名称唯一校验生效。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>B-03</td>
+<td>新增公共临时客户。</td>
+<td>全系统仅一条；仅建立挂帐账户，固定启用。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>B-04</td>
+<td>禁用已有企业伙伴后查看后台账户、充值、流水入口。</td>
+<td>售票窗口不可选；后台财务处理和历史查询仍可用。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>B-05</td>
+<td>挂帐账户启用额度限制，设置额度；再以超额金额下单。</td>
+<td>可用额度按“额度＋当前挂帐金额”计算；超额下单拦截。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>B-06</td>
+<td>预付款额度限制启用/关闭后，对余额为0或负数的伙伴下单。</td>
+<td>开启时余额到0拦截；关闭时允许扣减至负数。</td>
+<td>未测</td>
+<td>已复核预付款管理存在“启用/禁用额度限制、充值记录、资金流水”入口；原“操作列为空”记录已撤销，额度行为仍待执行。</td>
+</tr>
+<tr>
+<td>B-07</td>
+<td>账户支付方式由挂帐切至预付款；源账户非0。</td>
+<td>拦截且不生成资金记录。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>B-08</td>
+<td>源账户为0时切换账户支付方式。</td>
+<td>保存成功；仅影响后续售票/普通充值，不回写历史。</td>
+<td>未测</td>
+<td></td>
+</tr>
+</tbody></table>
+</div></details>
+<details class="plan-block"><summary>后台：充值申请、其他收入、详情与批量导入<span>展开测试用例</span></summary><div class="markdown-body"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>R-01</td>
+<td>打开“账户充值”，核对两行默认筛选；点击展开/收起。</td>
+<td>默认：伙伴、账户号、记录单号、充值类型、状态；展开：负责人、申请人、支付时间、支付方式、柜台号/POS。</td>
+<td><strong>失败</strong></td>
+<td>页面无展开/收起；字段顺序和字段集不符。</td>
+</tr>
+<tr>
+<td>R-02</td>
+<td>查询售票窗口银行卡充值 <code>F3499654853226987521</code>。</td>
+<td>列表展示支付方式、柜台号/POS、支付时间、申请/完成时间、状态。</td>
+<td><strong>失败</strong></td>
+<td>列表缺“柜台号/POS编号”列，无法在后台核对该值。</td>
+</tr>
+<tr>
+<td>R-03</td>
+<td>查看 R-02 的后台充值详情。</td>
+<td>展示完整通用字段及柜台/POS、申请人、负责人、申请/完成时间、状态、售票员、窗口、备注、附件。</td>
+<td><strong>失败</strong></td>
+<td>QA 右侧抽屉仅展示关联号/付款人/附件及简表；缺大量追溯字段。</td>
+</tr>
+<tr>
+<td>R-04</td>
+<td>后台人工普通充值（挂帐/预付款）。</td>
+<td>金额必须大于0；支付时间为选定日 00:00:00；成功生成充值记录和流水。</td>
+<td>部分通过</td>
+<td>挂帐充值0.01通过，记录 <code>F3499770576825810945</code>；预付款待复测。</td>
+</tr>
+<tr>
+<td>R-05</td>
+<td>后台人工调账录入正数、负数、0。</td>
+<td>正负可提交，0拦截；不展示/保存付款人、支付方式、支付时间。</td>
+<td><strong>失败</strong></td>
+<td>-0.01调账成功且付款人/支付方式为“-”，但列表仍错误展示处理时间为支付时间，见BUG-018。</td>
+</tr>
+<tr>
+<td>R-06</td>
+<td>查询系统“调账-往来”记录详情和列表。</td>
+<td>不保存、不展示支付时间；发生时间取迁移成功时间。</td>
+<td><strong>失败</strong></td>
+<td>充值列表显示 <code>1970-01-01 00:00:00</code>。</td>
+</tr>
+<tr>
+<td>R-07</td>
+<td>新增其他收入。</td>
+<td>金额大于0；不改变任一账户；生成独立其他收入记录和流水。</td>
+<td>通过</td>
+<td>后台其他收入0.01生成记录 <code>F3499771607617961985</code> 和对应流水，账户不变。</td>
+</tr>
+<tr>
+<td>R-08</td>
+<td>下载导入模板，核对首列及填写说明。</td>
+<td>首列为线下充值流水号；说明唯一性、从第6行开始、最多50行。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>R-09</td>
+<td>导入1条合法记录；核对账户、充值记录、资金流水。</td>
+<td>单行全部同步成功，支付时间/账户路由正确。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>R-10</td>
+<td>同一线下充值流水号再次导入。</td>
+<td>重复行逐条失败；其他合法行不回滚。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>R-11</td>
+<td>导入51条非空数据行。</td>
+<td>文件级拒绝并提示单次最多50条。</td>
+<td>未测</td>
+<td></td>
+</tr>
+</tbody></table>
+</div></details>
+<details class="plan-block"><summary>后台：资金流水<span>展开测试用例</span></summary><div class="markdown-body"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>F-01</td>
+<td>核对标签。</td>
+<td>全部、充值、消费、退款、其他收入、调账。</td>
+<td><strong>失败</strong></td>
+<td>缺“调账”标签。</td>
+</tr>
+<tr>
+<td>F-02</td>
+<td>核对默认筛选与展开。</td>
+<td>第一行：类型、伙伴、账户号；第二行：账户类型、发生时间、查询/重置/展开；展开后：负责人、单据编号。</td>
+<td><strong>失败</strong></td>
+<td>实际将负责人、单据编号前置，发生时间被折叠。</td>
+</tr>
+<tr>
+<td>F-03</td>
+<td>查询测试充值 <code>F3499654853226987521</code>。</td>
+<td>充值流水金额 +0.01、银行卡、POS、售票员和售票窗口备注一致。</td>
+<td><strong>通过</strong></td>
+<td>流水已显示 <code>QA-POS-20260825-01</code>，备注含售票员/窗口。</td>
+</tr>
+<tr>
+<td>F-04</td>
+<td>查询公共临客已回款订单退款。</td>
+<td>同时存在退款正数流水与负数退款调账；仅消费流水显示已回款。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>F-05</td>
+<td>查询临客迁移流水。</td>
+<td>原流水保留；目标伙伴重建消费/退款流水；公共临客生成调账-往来并可追溯。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>F-06</td>
+<td>切换其他收入标签。</td>
+<td>隐藏账户号、账户类型；筛选恢复默认时间。</td>
+<td>未测</td>
+<td></td>
+</tr>
+</tbody></table>
+</div></details>
+<details class="plan-block"><summary>后台：临时客户转合作伙伴与订单详情<span>展开测试用例</span></summary><div class="markdown-body"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T-01</td>
+<td>打开“临时客户转合作伙伴”。</td>
+<td>入口在充值按钮左侧；候选仅公共临客、挂帐、未回款、应回款大于0订单。</td>
+<td><strong>通过</strong></td>
+<td>已见候选订单及“仅可选择公共临时客户未回款订单”提示。</td>
+</tr>
+<tr>
+<td>T-02</td>
+<td>选择不同客户/负责人快照的多笔订单。</td>
+<td>必须二次确认并记录确认信息。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>T-03</td>
+<td>迁移到已有启用企业/个人伙伴。</td>
+<td>已迁移订单、售后单归属目标；目标账户按净额扣减；生成调账-往来。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>T-04</td>
+<td>迁移至新建长期伙伴。</td>
+<td>新建档案、账户和迁移在同一事务；任一失败整体回滚。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>T-05</td>
+<td>打开已迁移订单详情。</td>
+<td>合作伙伴信息为目标伙伴；下方仅增加“合作伙伴变更记录”：原伙伴、现伙伴、操作人、变更时间。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>T-06</td>
+<td>打开已迁移售后单详情。</td>
+<td>按当前目标伙伴归属展示，并可通过转移单号回溯。</td>
+<td>未测</td>
+<td></td>
+</tr>
+</tbody></table>
+</div></details>
+<details class="plan-block"><summary>后台：合作伙伴对帐单<span>展开测试用例</span></summary><div class="markdown-body"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S-01</td>
+<td>打开报表入口。</td>
+<td>位于合作伙伴管理菜单，沿用合作伙伴管理侧栏/面包屑/页签，不展示其他报表菜单。</td>
+<td><strong>失败</strong></td>
+<td>实际位于报表中心并展示整套其他报表侧栏。</td>
+</tr>
+<tr>
+<td>S-02</td>
+<td>按日、按月切换。</td>
+<td>按日默认当天日期范围；按月默认当月月份范围。</td>
+<td>通过</td>
+<td>按日默认2026-08-25，按月默认2026-08。</td>
+</tr>
+<tr>
+<td>S-03</td>
+<td>不选择合作伙伴点击查询。</td>
+<td>保留标题、统计范围、表头和空态；不生成打印时间。</td>
+<td>通过</td>
+<td>已验证。</td>
+</tr>
+<tr>
+<td>S-04</td>
+<td>选择伙伴后查询。</td>
+<td>标题为“合作伙伴-{名称}对帐单”。</td>
+<td><strong>失败</strong></td>
+<td>仍显示“合作伙伴对帐单”。</td>
+</tr>
+<tr>
+<td>S-05</td>
+<td>核对日消费、到款、调账独立行。</td>
+<td>消费按成功支付/退款日期；到款不含其他收入和调账；调账正入到款、负入消费。</td>
+<td>通过</td>
+<td>企业合作伙伴003：到款10.04不含两笔其他收入；负调账0.01单列在本月消费；同日0.01消费+0.01退款净消费0。</td>
+</tr>
+<tr>
+<td>S-06</td>
+<td>当前账户余额为0。</td>
+<td>合计行对应账户列显示“－”，不显示 <code>0.00</code>。</td>
+<td><strong>失败</strong></td>
+<td>合计行显示预付款 <code>0.00</code>。</td>
+</tr>
+<tr>
+<td>S-07</td>
+<td>点击打印并核对浏览器打印预览/导出内容。</td>
+<td>制单人取当前登录用户名；打印时间取最后一次成功查询时间；打印版表头、数据、合计、边框完整。</td>
+<td><strong>未测</strong></td>
+<td>当前仅确认按钮存在，未验证是否真正调用浏览器打印及其输出。</td>
+</tr>
+</tbody></table>
+</div></details>
+<details class="plan-block"><summary>售票窗口：固定伙伴充值、记录与报表<span>展开测试用例</span></summary><div class="markdown-body"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>W-01</td>
+<td>售票页“临时/长期合作伙伴”选择固定伙伴。</td>
+<td>回填伙伴、负责人、联系人、账户信息；支付方式锁定为账户支付方式。</td>
+<td>通过</td>
+<td>企业合作伙伴003已验证，挂帐支付锁定。</td>
+</tr>
+<tr>
+<td>W-02</td>
+<td>售票页充值弹窗选择扫码付。</td>
+<td>显示柜台号输入框；不展示现金找零。</td>
+<td>通过</td>
+<td>已验证。</td>
+</tr>
+<tr>
+<td>W-03</td>
+<td>售票页充值弹窗选择银行卡。</td>
+<td>显示POS编号输入框；不展示现金找零。</td>
+<td>通过</td>
+<td>已验证。</td>
+</tr>
+<tr>
+<td>W-04</td>
+<td>合作伙伴列表行内“充值”选择银行卡并提交。</td>
+<td>账户、充值记录、流水原子更新；成功提示前后余额。</td>
+<td>通过</td>
+<td>测试记录 <code>F3499654853226987521</code>，余额 10.00→10.01。</td>
+</tr>
+<tr>
+<td>W-05</td>
+<td>W-04 后查账户充值记录。</td>
+<td>默认当天、申请人为当前售票员；列表展示状态和完成时间。</td>
+<td><strong>失败</strong></td>
+<td>默认日期/申请人正确，但“充值状态、完成时间”列表为空。</td>
+</tr>
+<tr>
+<td>W-06</td>
+<td>查看 W-04 售票窗口充值详情。</td>
+<td>柜台/POS紧随支付方式；完整字段与后台详情字段一致。</td>
+<td><strong>失败</strong></td>
+<td>柜台/POS正确，但缺账户类型、付款人、申请时间、状态、售票员、窗口等字段，见BUG-028。</td>
+</tr>
+<tr>
+<td>W-07</td>
+<td>同时填充值和其他收入并提交。</td>
+<td>生成独立充值、其他收入记录与流水；账户仅按充值额变化。</td>
+<td>通过</td>
+<td>充值0.01＋其他收入0.01，账户10.02→10.03；两条记录和流水均生成。</td>
+</tr>
+<tr>
+<td>W-08</td>
+<td>查询其他收入记录。</td>
+<td>默认当天；包含支付方式、柜台/POS、状态、完成时间和详情。</td>
+<td><strong>失败</strong></td>
+<td>记录已生成，但列表状态/完成时间为空，详情错误复用充值字段，见BUG-027、029。</td>
+</tr>
+<tr>
+<td>W-09</td>
+<td>查询充值报表。</td>
+<td>当前售票员范围；按伙伴/负责人/类型汇总；银行卡按POS、扫码付按柜台号拆列。</td>
+<td>通过</td>
+<td>POS <code>QA-POS-20260825-01</code>、柜台 <code>QA-GT-20260825-01</code> 均拆列；当前售票员总计0.04，后台新增未进入。</td>
+</tr>
+</tbody></table>
+</div></details>
+<details class="plan-block"><summary>售票窗口：下单、退款与公共临客<span>展开测试用例</span></summary><div class="markdown-body"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>O-01</td>
+<td>固定伙伴选择0.01票型，打开支付确认。</td>
+<td>未确认出票前不创建订单、不变更账户。</td>
+<td>通过</td>
+<td>支付确认弹窗打开前账户不变；弹窗支付方式锁定挂帐。</td>
+</tr>
+<tr>
+<td>O-02</td>
+<td>确认固定伙伴挂帐出票。</td>
+<td>订单、负数消费流水、账户扣减同事务；支付方式不可切换。</td>
+<td>部分通过</td>
+<td>订单 <code>DD260825190724001001s</code> 成功，账户及-0.01流水正确；流水支付方式错误为现金，见BUG-030。</td>
+</tr>
+<tr>
+<td>O-03</td>
+<td>对 O-02 正常退款。</td>
+<td>原账户增加退款金额，生成正数退款流水。</td>
+<td>部分通过</td>
+<td>售后 <code>LYAS3499777087922651136</code> 成功，+0.01及余额恢复正确；支付方式错误为现金。</td>
+</tr>
+<tr>
+<td>O-04</td>
+<td>公共临客挂帐出票后未回款退款。</td>
+<td>退款增加挂帐，动态减少应回款金额；不生成退款调账。</td>
+<td>阻塞</td>
+<td>公共临客订单无法创建，见BUG-032。</td>
+</tr>
+<tr>
+<td>O-05</td>
+<td>公共临客已回款订单退款。</td>
+<td>正数退款流水＋等额负数退款调账；可追溯订单/售后。</td>
+<td>阻塞</td>
+<td>公共临客订单无法创建，见BUG-032。</td>
+</tr>
+<tr>
+<td>O-06</td>
+<td>公共临客挂帐回款金额小于已选订单应回款。</td>
+<td>拦截并提示；不产生任何记录。</td>
+<td>阻塞</td>
+<td>公共临客填写负责人、客户名和票后，“确认下单”无响应且无提示，无法创建迁移/回款前置订单，见BUG-032。</td>
+</tr>
+</tbody></table>
+</div></details>
+    <details class="plan-block"><summary>查看原始测试台账全文<span>包含基线、对照规则与退出标准</span></summary><div class="markdown-body"><h1>V3.2 散客合作伙伴管理｜QA 测试用例与缺陷台账</h1>
+<h2>1. 测试基线与执行规则</h2>
+<ul>
+<li><strong>需求基线</strong>：<code>/Users/susan/Documents/AI文稿/上传更新/dev-test-versions/2026-v3.2-partner-management-20260805/PRD｜散客合作伙伴管理_V3.2_20260805.md</code></li>
+<li><strong>原型基线</strong>：<code>https://susantung.github.io/yanuoda/dev-test-versions/2026-v3.2-partner-management-20260805/prototype/index.html</code></li>
+<li><strong>被测环境</strong>：QA 后台、QA 售票窗口。</li>
+<li><strong>判定原则</strong>：页面字段、业务校验、数据落库、跨端查询、详情追溯、报表口径须同时满足；“页面能打开”不算通过。</li>
+<li><strong>执行状态</strong>：未测 / 通过 / 失败 / 阻塞。失败必须记录实际值、复现路径和关联单据号。</li>
+</ul>
+<h2>2. 原型逐页对照规则（执行前必须完成）</h2>
+<p>每一个原型入口均执行一次“<strong>页面外形 → 页面结构 → 字段 → 行为 → 数据结果</strong>”的对照；不以“功能可打开”或“列表有相近字段”作为通过依据。</p>
+<h3>2.1 固定对照维度</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>必须逐项核对</th>
+<th>判定示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>页面容器</td>
+<td>独立页/普通弹窗/抽屉、宽度、标题、关闭/返回、遮罩、底部按钮</td>
+<td>原型为 900px 居中“充值详情”弹窗，QA 改为右侧抽屉，即为失败。</td>
+</tr>
+<tr>
+<td>导航结构</td>
+<td>顶部导航、左侧菜单、页签、面包屑、入口层级</td>
+<td>原型要求合作伙伴管理菜单，QA 放到报表中心，即为失败。</td>
+</tr>
+<tr>
+<td>筛选区</td>
+<td>字段名称、顺序、默认值、折叠规则、控件类型、按钮位置</td>
+<td>原型/方案要求日期默认当日、展开后才出现负责人，任一不一致即失败。</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>列名称、顺序、合并行、固定列、空态、金额对齐、操作入口</td>
+<td>缺少柜台号/POS列、把“充值类型”写为“操作类型”均要记录。</td>
+</tr>
+<tr>
+<td>查看/详情</td>
+<td>弹窗或抽屉形态、所有字段、字段顺序、链接/复制/附件、特殊类型区块</td>
+<td>后台充值详情缺账户、伙伴、POS、状态等字段，属于P0。</td>
+</tr>
+<tr>
+<td>新增/编辑/充值表单</td>
+<td>字段、必填/禁用、默认值、联动、校验、提交/取消文案</td>
+<td>现金/扫码付/银行卡不同输入区和找零逻辑均需分别验证。</td>
+</tr>
+<tr>
+<td>数据闭环</td>
+<td>写入后账户、记录、详情、流水、订单/售后、报表变化</td>
+<td>仅账户余额改变但充值记录或报表未变化，即失败。</td>
+</tr>
+</tbody></table>
+<h3>2.2 原型页面总清单与对照顺序</h3>
+<table>
+<thead>
+<tr>
+<th>原型编号</th>
+<th>原型页面</th>
+<th>QA 对应入口</th>
+<th>必测弹窗/详情</th>
+<th>对照状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P-01</td>
+<td><code>prototype/index.html#/partner</code> 后台管理总入口</td>
+<td>合作伙伴管理/合作伙伴档案</td>
+<td>新增、查看、编辑、启停、账户跳转</td>
+<td>未开始</td>
+</tr>
+<tr>
+<td>P-02</td>
+<td><code>prototype/partner-management.html</code> 合作伙伴档案</td>
+<td>合作伙伴档案</td>
+<td>新增、编辑、删除/禁用确认</td>
+<td>未开始</td>
+</tr>
+<tr>
+<td>P-03</td>
+<td><code>prototype/index.html#/partner-account</code>、<code>partner-accounts.html</code> 合作伙伴账户</td>
+<td>合作伙伴账户</td>
+<td>额度维护、额度记录、充值记录、资金流水跳转</td>
+<td>未开始</td>
+</tr>
+<tr>
+<td>P-04</td>
+<td><code>prototype/index.html#/recharge?tab=account</code>、<code>recharge-application.html</code> 充值申请</td>
+<td>充值申请/账户充值</td>
+<td>充值表单、待回款订单、充值详情、导入</td>
+<td><strong>进行中</strong></td>
+</tr>
+<tr>
+<td>P-05</td>
+<td><code>prototype/index.html#/recharge?tab=income</code> 其他收入</td>
+<td>充值申请/其他收入</td>
+<td>其他收入详情</td>
+<td>未开始</td>
+</tr>
+<tr>
+<td>P-06</td>
+<td><code>prototype/index.html#/flow?tab=all</code>、<code>capital-stream.html</code> 资金流水</td>
+<td>资金流水</td>
+<td>各处理操作的查看详情、展开筛选</td>
+<td><strong>进行中</strong></td>
+</tr>
+<tr>
+<td>P-07</td>
+<td><code>prototype/partner-statement.html</code> 合作伙伴对帐单</td>
+<td>合作伙伴对帐单</td>
+<td>合作伙伴模糊下拉、按日/月、真实打印</td>
+<td><strong>进行中</strong></td>
+</tr>
+<tr>
+<td>P-08</td>
+<td><code>prototype/ticket-window.html</code> 售票窗口</td>
+<td>售票/临时长期合作伙伴</td>
+<td>选择伙伴、临时客户、两种充值弹窗、支付订单确认</td>
+<td><strong>进行中</strong></td>
+</tr>
+<tr>
+<td>P-09</td>
+<td><code>prototype/partner-workspace.html</code> 合作伙伴工作区</td>
+<td>售票窗口/合作伙伴</td>
+<td>新增/查看/编辑/启停/充值、记录详情、报表</td>
+<td><strong>进行中</strong></td>
+</tr>
+<tr>
+<td>P-10</td>
+<td><code>prototype/index.html#/order-detail?...</code>、<code>order-detail.html</code> 散客订单详情</td>
+<td>订单中心/散客订单详情</td>
+<td>企业、个人、公共临客未回款/已回款详情</td>
+<td>未开始</td>
+</tr>
+<tr>
+<td>P-11</td>
+<td><code>prototype/partner-order-change.html</code> 变更订单详情</td>
+<td>已迁移订单详情</td>
+<td>合作伙伴变更记录区块</td>
+<td>未开始</td>
+</tr>
+</tbody></table>
+<h3>2.3 已发现的“原型结构不一致”问题</h3>
+<table>
+<thead>
+<tr>
+<th>缺陷号</th>
+<th>分类</th>
+<th>原型要求</th>
+<th>QA 实际</th>
+<th>优先级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UI-R-01</td>
+<td>详情容器与字段</td>
+<td>后台充值详情为居中完整弹窗，包含完整通用字段及特殊处理区块。</td>
+<td>点击“查看”打开右侧抽屉，仅含关联号、付款人、附件和5列表格。</td>
+<td><strong>P0</strong></td>
+</tr>
+<tr>
+<td>UI-R-02</td>
+<td>后台充值详情字段</td>
+<td>必须有账户类型、伙伴、账户号、充值类型、金额、支付时间、付款人、支付方式、柜台/POS、申请人、负责人、申请/完成时间、状态、售票员、窗口、备注、附件。</td>
+<td>缺账户类型、伙伴、账户号、充值类型、柜台/POS、申请人、负责人、申请/完成时间、状态、售票员、窗口、备注等。</td>
+<td><strong>P0</strong></td>
+</tr>
+<tr>
+<td>UI-R-03</td>
+<td>后台充值字段口径</td>
+<td>字段名为“支付时间”。</td>
+<td>QA 列表和详情简表使用“回款时间”。</td>
+<td><strong>P1</strong></td>
+</tr>
+<tr>
+<td>UI-R-04</td>
+<td>资金流水导航</td>
+<td>存在独立“调账”标签。</td>
+<td>QA 缺“调账”标签。</td>
+<td><strong>P1</strong></td>
+</tr>
+<tr>
+<td>UI-R-05</td>
+<td>对帐单导航</td>
+<td>使用合作伙伴管理菜单、页签、面包屑。</td>
+<td>QA 位于报表中心并展示其他报表菜单。</td>
+<td><strong>P1</strong></td>
+</tr>
+<tr>
+<td>UI-R-06</td>
+<td>对帐单标题/金额</td>
+<td>查询后标题带伙伴名；0余额显示“－”。</td>
+<td>标题不带伙伴名；合计显示0.00。</td>
+<td><strong>P1</strong></td>
+</tr>
+<tr>
+<td>UI-R-07</td>
+<td>售票窗口充值记录</td>
+<td>列表有充值状态、完成时间并展示其值。</td>
+<td>本次售票窗口测试记录的两列为空。</td>
+<td><strong>P1</strong></td>
+</tr>
+</tbody></table>
+<h3>2.4 全功能流程图覆盖矩阵（执行总纲）</h3>
+<p>本矩阵以完整需求页“开发辅助：全功能流程图 / 查看 Mermaid 全图”为唯一业务主线。执行时不得跳过判断节点；每个“是/否”“一致/不一致”“成功/失败”分支都要有独立样例、独立单据号和独立结果记录。</p>
+<table>
+<thead>
+<tr>
+<th>流程组</th>
+<th>Mermaid 节点与判断分支</th>
+<th>样例与执行重点</th>
+<th>字段/界面核验</th>
+<th>数据闭环与核验页面</th>
+<th>对应用例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FL-01 档案与账户初始化</td>
+<td>A→B→C/D→E/F</td>
+<td>企业、个人、公共临客各建一条；公共临客重复创建；企业/个人切换账户支付方式时分别准备源账户为0、非0</td>
+<td>合作类型、名称、联系人、电话、负责人、账户支付方式、状态、备注、账户号；公共临客隐藏联系人/负责人/支付方式/状态/账户号并固定挂帐、启用</td>
+<td>档案、挂帐账户、预付款账户、账户跳转、额度记录；不得产生充值或资金流水</td>
+<td>B-01～B-08</td>
+</tr>
+<tr>
+<td>FL-02 后台普通充值</td>
+<td>G→H→I→I1</td>
+<td>企业/个人分别以挂帐、预付款充值；禁用伙伴仍可后台处理；金额0、0.01</td>
+<td>充值表单字段、必填、下拉可选项；支付时间只选日期并保存00:00:00；后台仅现金/银行转账；柜台/POS不展示</td>
+<td>当前子账户增加、充值记录、充值详情、充值流水、对帐单到款</td>
+<td>R-01～R-04、F-02～F-03、S-05</td>
+</tr>
+<tr>
+<td>FL-03 后台调账</td>
+<td>I→I2、J→J1</td>
+<td>企业/个人/公共临客各做+0.02、-0.01、0</td>
+<td>调账不展示/不保存支付时间、付款人、支付方式、柜台/POS；金额可正可负但不可为0；备注/附件规则</td>
+<td>当前账户变化、调账充值记录、调账流水；对帐单正数入到款、负数入消费</td>
+<td>R-05～R-06、F-01、S-05</td>
+</tr>
+<tr>
+<td>FL-04 后台其他收入</td>
+<td>I→I3</td>
+<td>企业/个人各做0、0.03；禁用伙伴处理一次</td>
+<td>独立“其他收入”标签；账户号/账户类型显示“－”；支付时间、付款人、支付方式及详情字段按类型显示</td>
+<td>不改账户；生成其他收入记录和流水；不计合作伙伴对帐单到款</td>
+<td>R-07、F-06、S-05</td>
+</tr>
+<tr>
+<td>FL-05 公共临客挂帐回款</td>
+<td>J2→J3→J4→J6→J5→J7→J9→J10/J11</td>
+<td>非候选订单；单笔；多笔快照一致；多笔快照不一致选择“返回修改”及“继续平账”；金额小于、等于、大于应回款</td>
+<td>待选订单全部字段、动态应回款；二次确认按钮/文案；人工确认标记、确认人、确认时间；剩余金额只能其他收入</td>
+<td>等额：充值记录及订单/消费流水改已回款；超额：另建其他收入；不足：全部不写；充值详情可追溯订单/售后</td>
+<td>SC-04、O-06、F-04</td>
+</tr>
+<tr>
+<td>FL-06 售票窗口选择对象</td>
+<td>K→L→M/N</td>
+<td>企业、个人、公共临客；启用与禁用伙伴；更换伙伴但保留已选票/游客/金额</td>
+<td>选择弹窗字段、模糊筛选、状态；固定伙伴加载负责人/联系人/当前账户信息；公共临客填写订单客户名称、订单负责人；支付方式锁定</td>
+<td>只刷新右侧伙伴信息，不生成订单、记录或流水</td>
+<td>W-01、O-01</td>
+</tr>
+<tr>
+<td>FL-07 售票页固定伙伴充值</td>
+<td>M→O→O1→O2→O3/O4</td>
+<td>在售票主页面分别执行现金、扫码付、银行卡、微信、支付宝；0+0、仅充值、仅其他收入、两项都有；取消；制造失败回滚</td>
+<td>完整充值弹窗；现金实收/找零；扫码付仅柜台号；银行卡仅POS编号；微信/支付宝对应字段为“－”；前后账户金额提示</td>
+<td>成功后账户/充值记录/其他收入/流水/报表五点一致，仅局部刷新；失败和取消均零写入</td>
+<td>3.1、W-02～W-08</td>
+</tr>
+<tr>
+<td>FL-08 合作伙伴工作区充值</td>
+<td>M→O1→O2→O3/O4（第二入口）</td>
+<td>在“合作伙伴→合作伙伴充值”行内充值，重复 FL-07 的五种支付方式和金额组合</td>
+<td>弹窗结构、字段、条件显示、校验、提示必须与售票页完全一致</td>
+<td>同步进入售票窗口两类记录、后台充值/其他收入、资金流水和充值报表</td>
+<td>W-04～W-09</td>
+</tr>
+<tr>
+<td>FL-09 确认出票与状态复核</td>
+<td>P→Q→R→S→T→U/V/W/X→Y/Z→AA</td>
+<td>打开确认后取消；伙伴禁用；账户禁用；临客缺客户名/负责人；挂帐额度足/不足；预付款余额足/不足；不启用额度允许负数</td>
+<td>支付确认弹窗票表、总数、票人规则、按钮；支付方式锁定；所有拦截文案；确认前无资金变化</td>
+<td>成功同事务创建订单、出票、扣账户、消费流水；任一步失败整体回滚</td>
+<td>O-01～O-04、B-05～B-06</td>
+</tr>
+<tr>
+<td>FL-10 订单归属与详情</td>
+<td>AA→AB→AC/AD</td>
+<td>固定伙伴订单、公共临客未回款订单、公共临客已回款订单</td>
+<td>订单基础信息、支付信息、合作伙伴信息完整字段；只有公共临客订单展示客户/负责人快照和回款状态</td>
+<td>订单、账户、消费流水、订单详情数据一致</td>
+<td>O-02、SC-04、SC-06</td>
+</tr>
+<tr>
+<td>FL-11 临客转长期伙伴</td>
+<td>AC→AE→AF→AG/AI→AH→AJ/AK→AL→AM～AQ→AR→AS/AT</td>
+<td>非候选订单；多单快照一致/不一致；不一致分别返回/继续；迁往新建伙伴、已有伙伴；制造事务失败</td>
+<td>两步页/弹窗结构；候选表字段；目标伙伴字段；确认文案；迁移结果；订单详情仅在“合作伙伴信息”下增加4字段变更记录</td>
+<td>订单/售后改归属；临客原流水保留；目标重建消费/退款流水；临客生成调账-往来；失败全回滚</td>
+<td>T-01～T-06、F-05</td>
+</tr>
+<tr>
+<td>FL-12 三类退款</td>
+<td>BA→BB→BC/BD/BE</td>
+<td>固定或已迁移订单退款；公共临客未回款退款；公共临客已回款退款；跨天退款</td>
+<td>售后详情按当前归属展示；退款金额、成功时间、原支付方式、关联订单/售后/转移单号</td>
+<td>固定/迁移：当前账户增加+退款流水；临客未回款：账户增加且应回款减少；临客已回款：退款正数+等额负数退款调账</td>
+<td>O-03～O-05、F-04</td>
+</tr>
+<tr>
+<td>FL-13 资金流水与详情</td>
+<td>I1/I2/I3/J1/J10/BC/BD/BE/AN/AO/AP→CA→CB</td>
+<td>为充值、消费、退款、其他收入、调账各准备至少一条；分别点关联单据与“查看”</td>
+<td>标签、筛选两行/展开、列顺序、金额正负、账户类型、发生时间、支付方式、柜台/POS、回款、备注；详情容器与完整字段</td>
+<td>关联单据可复制/跳转；详情反查原业务；导出使用当前标签和条件且含全部命中数据</td>
+<td>F-01～F-06、R-02～R-06</td>
+</tr>
+<tr>
+<td>FL-14 合作伙伴对帐单</td>
+<td>CB→CC→CD→CE</td>
+<td>按日默认当天、按月默认当月；未选伙伴；启用/禁用/公共临客；无数据/有数据；账户支付方式期间切换</td>
+<td>菜单、页签、面包屑；伙伴模糊下拉含禁用；标题带伙伴名；统计范围；日期/人数/消费/到款/当前预付款/当前挂帐；调账行、合计、制单人、查询时打印时间、0显示“－”</td>
+<td>人数、跨天退款、普通充值、其他收入排除、正负调账、当前余额与原始订单/充值/流水逐笔勾稽；打印仅在成功查询后验证</td>
+<td>S-01～S-07</td>
+</tr>
+<tr>
+<td>FL-15 售票窗口充值报表</td>
+<td>O4→CA→报表</td>
+<td>两入口分别产生现金、微信、支付宝、银行卡不同POS、扫码付不同柜台的充值/其他收入；跨负责人快照</td>
+<td>默认当天；仅当前售票员；标题、日期、分组/合并行、小计/总计；支付方式表头居中；银行卡按POS、扫码付按柜台拆列；制单人与查询时间</td>
+<td>报表各列金额与两类记录逐笔相加一致，后台人员充值不得进入</td>
+<td>W-09、SC-01～SC-03</td>
+</tr>
+</tbody></table>
+<h3>2.5 字段显示逻辑的执行方法</h3>
+<p>每个涉及页面、弹窗、抽屉或详情的用例，必须附一份字段核对结果，不能只记录“功能通过”。核对结果至少包括：</p>
+<ol>
+<li><strong>存在性</strong>：方案/原型中的字段、列、按钮、标签是否全部存在，是否有 QA 多出的字段或入口。</li>
+<li><strong>顺序与容器</strong>：字段顺序、分组标题、弹窗/抽屉/独立页形态、宽度、底部按钮、关闭方式是否一致。</li>
+<li><strong>显示条件</strong>：合作类型、账户支付方式、充值类型、支付方式、回款状态、迁移状态变化后，字段应显示、隐藏、只读或显示“－”。</li>
+<li><strong>默认与格式</strong>：默认日期、默认申请人、金额两位小数、时间精确到秒、空值“－”、手机号/账户号/单据号展示及复制规则。</li>
+<li><strong>保存与回显</strong>：提交前页面值、提交后的列表值、详情值、资金流水值、导出值和报表值必须逐字段一致。</li>
+<li><strong>失败态</strong>：校验失败、接口失败、取消、关闭后，字段值和已选业务数据是否保留，且不得生成半条记录。</li>
+</ol>
+<p>字段核验记录统一使用以下模板：</p>
+<table>
+<thead>
+<tr>
+<th>页面/弹窗</th>
+<th>字段或控件</th>
+<th>方案/原型规则</th>
+<th>QA实际</th>
+<th>是否一致</th>
+<th>证据/缺陷号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>例：后台充值详情</td>
+<td>柜台号/POS编号</td>
+<td>紧随支付方式；非扫码付/银行卡显示“－”</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>3. 场景样例数据与完整操作顺序</h2>
+<p>所有金融写入场景均使用独立前缀，按“创建 → 操作 → 五点核验 → 回查/异常”执行；每步记录单据号，避免串数据。</p>
+<h3>SC-01 固定伙伴银行卡充值（已执行，作为基准样例）</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>操作</th>
+<th>必须记录/验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>选用企业合作伙伴003，记录充值前挂帐金额。</td>
+<td>伙伴、账户号、负责人、充值前余额。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>售票窗口合作伙伴工作区行内充值；银行卡；金额0.01；POS <code>QA-POS-20260825-01</code>。</td>
+<td>成功提示及充值记录号。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>查售票窗口账户充值记录并打开详情。</td>
+<td>POS、支付时间、申请人、状态、完成时间、详情字段/容器。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>查后台充值申请并打开详情。</td>
+<td>列表与详情完整字段、容器一致性。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>查资金流水。</td>
+<td>+0.01、银行卡、POS、售票员/窗口备注。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>查售票窗口充值报表。</td>
+<td>银行卡下按 POS 拆列，金额0.01。</td>
+</tr>
+<tr>
+<td>7</td>
+<td>查伙伴对帐单。</td>
+<td>到款、当前挂帐金额、打印时间、标题。</td>
+</tr>
+</tbody></table>
+<h3>3.1 售票窗口充值处理逻辑（必须按此顺序验证）</h3>
+<p>适用入口有且仅有两个，二者必须复用同一笔业务处理：</p>
+<ol>
+<li><strong>售票页 → 临时/长期合作伙伴 → 已选择企业/个人伙伴 → 底部“充值”</strong>；</li>
+<li><strong>售票窗口 → 合作伙伴 → 合作伙伴充值列表 → 行内“充值”</strong>。</li>
+</ol>
+<h4>A. 进入与对象校验</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>处理规则</th>
+<th>测试验证点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A1</td>
+<td>仅企业、个人伙伴可打开固定伙伴充值；公共临时客户不显示该入口。</td>
+<td>两个入口均分别验证。</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>弹窗回填合作类型、伙伴、联系人/电话、负责人/电话、账户号、当前账户金额、账户支付方式。</td>
+<td>不允许手工改账户号和账户支付方式。</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>当前账户支付方式为挂帐时，充值类型固定挂帐；为预付款时固定预付款。</td>
+<td>不得在弹窗中切换到另一账户。</td>
+</tr>
+</tbody></table>
+<h4>B. 金额与收款方式</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>处理规则</th>
+<th>测试验证点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B1</td>
+<td>可分别输入“充值金额”“计入其他收入”；至少一项必须大于0，均保留两位小数。</td>
+<td>0+0拦截；0.01+0、0+0.01、0.01+0.02均验证。</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>收款方式必选：现金、扫码付、银行卡、微信、支付宝。</td>
+<td>每一种方式均在两个入口至少覆盖一次；保存值须一致。</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>现金：显示现金实收、现金找零；实收不得小于两项金额合计。</td>
+<td>合计=0.03、实收0.02拦截；实收0.05，找零0.02。</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>扫码付：仅显示“柜台号”文本输入，样式与现金实收输入区一致；不显示找零。</td>
+<td>空柜台号能否提交按原型/规则确认；填写后入库为柜台号/POS编号。</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>银行卡：仅显示“POS编号”文本输入，样式与现金实收输入区一致；不显示找零。</td>
+<td>已执行 POS <code>QA-POS-20260825-01</code>；仍需核对两个入口。</td>
+</tr>
+<tr>
+<td>B6</td>
+<td>微信、支付宝：不显示现金实收、找零、柜台号/POS。</td>
+<td>保存值为“－”。</td>
+</tr>
+</tbody></table>
+<h4>C. 提交事务与局部刷新</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>处理规则</th>
+<th>测试验证点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C1</td>
+<td>点击确认前只做表单校验，不写账户、不生成任何记录。</td>
+<td>取消后核对账户、记录、流水均不变。</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>充值金额大于0时：账户增加该金额，并生成一条账户充值记录、一条充值资金流水。</td>
+<td>记录/流水的伙伴、账户、类型、金额、支付方式、柜台/POS、申请人、时间一致。</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>其他收入大于0时：生成一条独立其他收入记录和流水，不改变账户。</td>
+<td>与充值记录不得合并；账户号/账户类型展示按各页面规则。</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>两项均大于0时：C2、C3 在同一业务事务中全部成功或全部回滚。</td>
+<td>人为制造一个失败条件后，检查不遗留半条记录或半次账户变更。</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>成功后关闭弹窗，显示充值前后金额和其他收入提示；仅刷新当前伙伴账户信息。</td>
+<td>已选票、数量、游客、订单金额均不得被重置。</td>
+</tr>
+</tbody></table>
+<h4>D. 提交后的五点核验（每一笔必做）</h4>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>必查页面</th>
+<th>核对内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D1</td>
+<td>当前售票页或工作区</td>
+<td>账户金额、可用额度/预付款余额变化；局部刷新范围。</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>售票窗口“账户充值记录”/“其他收入记录”</td>
+<td>默认当天与当前售票员；列表、筛选、详情字段、状态、完成时间。</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>后台“充值申请”/“其他收入”</td>
+<td>同一记录存在；完整列表字段和<strong>完整弹窗详情</strong>与原型一致。</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>后台“资金流水”</td>
+<td>金额方向、支付方式、柜台/POS、售票员/窗口备注、关联单据。</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>售票窗口“充值报表”及后台“合作伙伴对帐单”</td>
+<td>POS/柜台拆列；充值/其他收入/调账分别按各自报表口径统计。</td>
+</tr>
+</tbody></table>
+<h3>SC-02 固定伙伴“充值＋其他收入”混合收款</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>操作</th>
+<th>必须验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>新建测试伙伴 <code>QA-MIX-日期-序号</code>，账户支付方式分别准备挂帐与预付款两类。</td>
+<td>双账户初始金额0。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>售票窗口充值：充值金额0.01、其他收入0.02、扫码付、柜台号 <code>QA-COUNTER-01</code>。</td>
+<td>仅当前账户增加0.01；总收款0.03。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>售票窗口两类记录页。</td>
+<td>一条账户充值、一条其他收入；均含扫码付与柜台号。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>后台充值申请、其他收入、资金流水。</td>
+<td>两条独立记录/流水；其他收入账户号/账户类型为“－”。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>对帐单与充值报表。</td>
+<td>对帐单本月到款仅0.01；充值报表按柜台号统计充值与其他收入的口径按方案核实。</td>
+</tr>
+</tbody></table>
+<h3>SC-03 后台普通充值、调账、其他收入</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>操作</th>
+<th>必须验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>为测试伙伴后台普通充值0.01，选择支付日期。</td>
+<td>支付时间为所选日00:00:00；账户/记录/流水同步。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>后台调账+0.02、-0.01。</td>
+<td>仅调账可正负；不出现付款人/支付方式/支付时间；发生时间取成功时间。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>后台其他收入0.03。</td>
+<td>不影响账户；独立记录和流水。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>打开三类“查看”。</td>
+<td>均为原型规定的完整详情弹窗；字段按类型显示/隐藏正确。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>对帐单。</td>
+<td>普通充值计到款；正调账单列到款、负调账单列消费；其他收入不计。</td>
+</tr>
+</tbody></table>
+<h3>SC-04 公共临时客户挂帐、回款与退款</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>操作</th>
+<th>必须验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>临时客户模式下开0.01挂帐订单。</td>
+<td>订单为未回款；公共临客消费流水显示未回款。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>后台挂帐回款，勾选订单且金额等于应回款。</td>
+<td>订单/消费流水改已回款；充值详情能回溯订单。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>对已回款订单退款。</td>
+<td>退款正数流水＋等额负数退款调账；订单、售后、调账互相可追溯。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>再开未回款临客订单并退款。</td>
+<td>不生成退款调账；应回款动态减少。</td>
+</tr>
+</tbody></table>
+<h3>SC-05 临时客户转长期合作伙伴</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>操作</th>
+<th>必须验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>准备未回款临客订单及对应售后状态；记录公共临客原流水。</td>
+<td>迁移前候选符合资格。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>入口选择订单；分别覆盖快照一致和快照不一致的多单场景。</td>
+<td>不一致必须二次确认并保留确认痕迹。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>选择已有长期伙伴；再用新建长期伙伴各执行一次。</td>
+<td>订单/售后归属目标，目标账户按净额扣减。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>查公共临客、目标伙伴资金流水及调账-往来详情。</td>
+<td>原流水保留；目标重建流水；调账-往来正数且可回溯。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>查已迁移订单/售后详情。</td>
+<td>只增加合作伙伴变更记录区块，字段和原型一致。</td>
+</tr>
+</tbody></table>
+<h3>SC-06 固定伙伴下单与退款</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>操作</th>
+<th>必须验证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>选择0.01票型和固定挂帐伙伴，先打开支付确认不提交。</td>
+<td>打开确认不创建订单、不扣账户；支付方式锁定。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>确认出票。</td>
+<td>订单、账户负数消费、消费流水同事务。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>后台订单详情、资金流水、对帐单查询。</td>
+<td>伙伴字段、消费金额、人数、日期口径一致。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>完成退款。</td>
+<td>原账户正数退款、售后详情、跨天退款口径正确。</td>
+</tr>
+</tbody></table>
+<h2>4. 公共测试数据与清理标识</h2>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>数据标识</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>售票窗口银行卡充值</td>
+<td>企业合作伙伴003；POS <code>QA-POS-20260825-01</code>；充值记录 <code>F3499654853226987521</code></td>
+<td>2026-08-25 创建，金额 0.01 元；用于跨端柜台/POS链路核验。</td>
+</tr>
+<tr>
+<td>后续下单测试</td>
+<td><code>QA-ORDER-YYYYMMDD-序号</code></td>
+<td>只使用 0.01 元可售票型；提交前记录订单号。</td>
+</tr>
+<tr>
+<td>后续临客迁移测试</td>
+<td><code>QA-TRANSFER-YYYYMMDD-序号</code></td>
+<td>仅使用未回款公共临时客户订单；迁移前后记录订单、售后、转移单号。</td>
+</tr>
+<tr>
+<td>批量导入测试</td>
+<td><code>QA-IMPORT-YYYYMMDD-序号</code></td>
+<td>线下充值流水号全局唯一；重复导入必须逐行失败。</td>
+</tr>
+</tbody></table>
+<h2>5. 后台：合作伙伴档案与账户</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B-01</td>
+<td>新增企业合作伙伴，填写必填档案字段。</td>
+<td>同事务生成档案、账户号、挂帐/预付款子账户；默认启用。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>B-02</td>
+<td>新增个人合作伙伴。</td>
+<td>与企业同账户结构；名称唯一校验生效。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>B-03</td>
+<td>新增公共临时客户。</td>
+<td>全系统仅一条；仅建立挂帐账户，固定启用。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>B-04</td>
+<td>禁用已有企业伙伴后查看后台账户、充值、流水入口。</td>
+<td>售票窗口不可选；后台财务处理和历史查询仍可用。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>B-05</td>
+<td>挂帐账户启用额度限制，设置额度；再以超额金额下单。</td>
+<td>可用额度按“额度＋当前挂帐金额”计算；超额下单拦截。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>B-06</td>
+<td>预付款额度限制启用/关闭后，对余额为0或负数的伙伴下单。</td>
+<td>开启时余额到0拦截；关闭时允许扣减至负数。</td>
+<td>未测</td>
+<td>已复核预付款管理存在“启用/禁用额度限制、充值记录、资金流水”入口；原“操作列为空”记录已撤销，额度行为仍待执行。</td>
+</tr>
+<tr>
+<td>B-07</td>
+<td>账户支付方式由挂帐切至预付款；源账户非0。</td>
+<td>拦截且不生成资金记录。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>B-08</td>
+<td>源账户为0时切换账户支付方式。</td>
+<td>保存成功；仅影响后续售票/普通充值，不回写历史。</td>
+<td>未测</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>6. 后台：充值申请、其他收入、详情与批量导入</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>R-01</td>
+<td>打开“账户充值”，核对两行默认筛选；点击展开/收起。</td>
+<td>默认：伙伴、账户号、记录单号、充值类型、状态；展开：负责人、申请人、支付时间、支付方式、柜台号/POS。</td>
+<td><strong>失败</strong></td>
+<td>页面无展开/收起；字段顺序和字段集不符。</td>
+</tr>
+<tr>
+<td>R-02</td>
+<td>查询售票窗口银行卡充值 <code>F3499654853226987521</code>。</td>
+<td>列表展示支付方式、柜台号/POS、支付时间、申请/完成时间、状态。</td>
+<td><strong>失败</strong></td>
+<td>列表缺“柜台号/POS编号”列，无法在后台核对该值。</td>
+</tr>
+<tr>
+<td>R-03</td>
+<td>查看 R-02 的后台充值详情。</td>
+<td>展示完整通用字段及柜台/POS、申请人、负责人、申请/完成时间、状态、售票员、窗口、备注、附件。</td>
+<td><strong>失败</strong></td>
+<td>QA 右侧抽屉仅展示关联号/付款人/附件及简表；缺大量追溯字段。</td>
+</tr>
+<tr>
+<td>R-04</td>
+<td>后台人工普通充值（挂帐/预付款）。</td>
+<td>金额必须大于0；支付时间为选定日 00:00:00；成功生成充值记录和流水。</td>
+<td>部分通过</td>
+<td>挂帐充值0.01通过，记录 <code>F3499770576825810945</code>；预付款待复测。</td>
+</tr>
+<tr>
+<td>R-05</td>
+<td>后台人工调账录入正数、负数、0。</td>
+<td>正负可提交，0拦截；不展示/保存付款人、支付方式、支付时间。</td>
+<td><strong>失败</strong></td>
+<td>-0.01调账成功且付款人/支付方式为“-”，但列表仍错误展示处理时间为支付时间，见BUG-018。</td>
+</tr>
+<tr>
+<td>R-06</td>
+<td>查询系统“调账-往来”记录详情和列表。</td>
+<td>不保存、不展示支付时间；发生时间取迁移成功时间。</td>
+<td><strong>失败</strong></td>
+<td>充值列表显示 <code>1970-01-01 00:00:00</code>。</td>
+</tr>
+<tr>
+<td>R-07</td>
+<td>新增其他收入。</td>
+<td>金额大于0；不改变任一账户；生成独立其他收入记录和流水。</td>
+<td>通过</td>
+<td>后台其他收入0.01生成记录 <code>F3499771607617961985</code> 和对应流水，账户不变。</td>
+</tr>
+<tr>
+<td>R-08</td>
+<td>下载导入模板，核对首列及填写说明。</td>
+<td>首列为线下充值流水号；说明唯一性、从第6行开始、最多50行。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>R-09</td>
+<td>导入1条合法记录；核对账户、充值记录、资金流水。</td>
+<td>单行全部同步成功，支付时间/账户路由正确。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>R-10</td>
+<td>同一线下充值流水号再次导入。</td>
+<td>重复行逐条失败；其他合法行不回滚。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>R-11</td>
+<td>导入51条非空数据行。</td>
+<td>文件级拒绝并提示单次最多50条。</td>
+<td>未测</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>7. 后台：资金流水</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>F-01</td>
+<td>核对标签。</td>
+<td>全部、充值、消费、退款、其他收入、调账。</td>
+<td><strong>失败</strong></td>
+<td>缺“调账”标签。</td>
+</tr>
+<tr>
+<td>F-02</td>
+<td>核对默认筛选与展开。</td>
+<td>第一行：类型、伙伴、账户号；第二行：账户类型、发生时间、查询/重置/展开；展开后：负责人、单据编号。</td>
+<td><strong>失败</strong></td>
+<td>实际将负责人、单据编号前置，发生时间被折叠。</td>
+</tr>
+<tr>
+<td>F-03</td>
+<td>查询测试充值 <code>F3499654853226987521</code>。</td>
+<td>充值流水金额 +0.01、银行卡、POS、售票员和售票窗口备注一致。</td>
+<td><strong>通过</strong></td>
+<td>流水已显示 <code>QA-POS-20260825-01</code>，备注含售票员/窗口。</td>
+</tr>
+<tr>
+<td>F-04</td>
+<td>查询公共临客已回款订单退款。</td>
+<td>同时存在退款正数流水与负数退款调账；仅消费流水显示已回款。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>F-05</td>
+<td>查询临客迁移流水。</td>
+<td>原流水保留；目标伙伴重建消费/退款流水；公共临客生成调账-往来并可追溯。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>F-06</td>
+<td>切换其他收入标签。</td>
+<td>隐藏账户号、账户类型；筛选恢复默认时间。</td>
+<td>未测</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>8. 后台：临时客户转合作伙伴与订单详情</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T-01</td>
+<td>打开“临时客户转合作伙伴”。</td>
+<td>入口在充值按钮左侧；候选仅公共临客、挂帐、未回款、应回款大于0订单。</td>
+<td><strong>通过</strong></td>
+<td>已见候选订单及“仅可选择公共临时客户未回款订单”提示。</td>
+</tr>
+<tr>
+<td>T-02</td>
+<td>选择不同客户/负责人快照的多笔订单。</td>
+<td>必须二次确认并记录确认信息。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>T-03</td>
+<td>迁移到已有启用企业/个人伙伴。</td>
+<td>已迁移订单、售后单归属目标；目标账户按净额扣减；生成调账-往来。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>T-04</td>
+<td>迁移至新建长期伙伴。</td>
+<td>新建档案、账户和迁移在同一事务；任一失败整体回滚。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>T-05</td>
+<td>打开已迁移订单详情。</td>
+<td>合作伙伴信息为目标伙伴；下方仅增加“合作伙伴变更记录”：原伙伴、现伙伴、操作人、变更时间。</td>
+<td>未测</td>
+<td></td>
+</tr>
+<tr>
+<td>T-06</td>
+<td>打开已迁移售后单详情。</td>
+<td>按当前目标伙伴归属展示，并可通过转移单号回溯。</td>
+<td>未测</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>9. 后台：合作伙伴对帐单</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S-01</td>
+<td>打开报表入口。</td>
+<td>位于合作伙伴管理菜单，沿用合作伙伴管理侧栏/面包屑/页签，不展示其他报表菜单。</td>
+<td><strong>失败</strong></td>
+<td>实际位于报表中心并展示整套其他报表侧栏。</td>
+</tr>
+<tr>
+<td>S-02</td>
+<td>按日、按月切换。</td>
+<td>按日默认当天日期范围；按月默认当月月份范围。</td>
+<td>通过</td>
+<td>按日默认2026-08-25，按月默认2026-08。</td>
+</tr>
+<tr>
+<td>S-03</td>
+<td>不选择合作伙伴点击查询。</td>
+<td>保留标题、统计范围、表头和空态；不生成打印时间。</td>
+<td>通过</td>
+<td>已验证。</td>
+</tr>
+<tr>
+<td>S-04</td>
+<td>选择伙伴后查询。</td>
+<td>标题为“合作伙伴-{名称}对帐单”。</td>
+<td><strong>失败</strong></td>
+<td>仍显示“合作伙伴对帐单”。</td>
+</tr>
+<tr>
+<td>S-05</td>
+<td>核对日消费、到款、调账独立行。</td>
+<td>消费按成功支付/退款日期；到款不含其他收入和调账；调账正入到款、负入消费。</td>
+<td>通过</td>
+<td>企业合作伙伴003：到款10.04不含两笔其他收入；负调账0.01单列在本月消费；同日0.01消费+0.01退款净消费0。</td>
+</tr>
+<tr>
+<td>S-06</td>
+<td>当前账户余额为0。</td>
+<td>合计行对应账户列显示“－”，不显示 <code>0.00</code>。</td>
+<td><strong>失败</strong></td>
+<td>合计行显示预付款 <code>0.00</code>。</td>
+</tr>
+<tr>
+<td>S-07</td>
+<td>点击打印并核对浏览器打印预览/导出内容。</td>
+<td>制单人取当前登录用户名；打印时间取最后一次成功查询时间；打印版表头、数据、合计、边框完整。</td>
+<td><strong>未测</strong></td>
+<td>当前仅确认按钮存在，未验证是否真正调用浏览器打印及其输出。</td>
+</tr>
+</tbody></table>
+<h2>10. 售票窗口：固定伙伴充值、记录与报表</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>W-01</td>
+<td>售票页“临时/长期合作伙伴”选择固定伙伴。</td>
+<td>回填伙伴、负责人、联系人、账户信息；支付方式锁定为账户支付方式。</td>
+<td>通过</td>
+<td>企业合作伙伴003已验证，挂帐支付锁定。</td>
+</tr>
+<tr>
+<td>W-02</td>
+<td>售票页充值弹窗选择扫码付。</td>
+<td>显示柜台号输入框；不展示现金找零。</td>
+<td>通过</td>
+<td>已验证。</td>
+</tr>
+<tr>
+<td>W-03</td>
+<td>售票页充值弹窗选择银行卡。</td>
+<td>显示POS编号输入框；不展示现金找零。</td>
+<td>通过</td>
+<td>已验证。</td>
+</tr>
+<tr>
+<td>W-04</td>
+<td>合作伙伴列表行内“充值”选择银行卡并提交。</td>
+<td>账户、充值记录、流水原子更新；成功提示前后余额。</td>
+<td>通过</td>
+<td>测试记录 <code>F3499654853226987521</code>，余额 10.00→10.01。</td>
+</tr>
+<tr>
+<td>W-05</td>
+<td>W-04 后查账户充值记录。</td>
+<td>默认当天、申请人为当前售票员；列表展示状态和完成时间。</td>
+<td><strong>失败</strong></td>
+<td>默认日期/申请人正确，但“充值状态、完成时间”列表为空。</td>
+</tr>
+<tr>
+<td>W-06</td>
+<td>查看 W-04 售票窗口充值详情。</td>
+<td>柜台/POS紧随支付方式；完整字段与后台详情字段一致。</td>
+<td><strong>失败</strong></td>
+<td>柜台/POS正确，但缺账户类型、付款人、申请时间、状态、售票员、窗口等字段，见BUG-028。</td>
+</tr>
+<tr>
+<td>W-07</td>
+<td>同时填充值和其他收入并提交。</td>
+<td>生成独立充值、其他收入记录与流水；账户仅按充值额变化。</td>
+<td>通过</td>
+<td>充值0.01＋其他收入0.01，账户10.02→10.03；两条记录和流水均生成。</td>
+</tr>
+<tr>
+<td>W-08</td>
+<td>查询其他收入记录。</td>
+<td>默认当天；包含支付方式、柜台/POS、状态、完成时间和详情。</td>
+<td><strong>失败</strong></td>
+<td>记录已生成，但列表状态/完成时间为空，详情错误复用充值字段，见BUG-027、029。</td>
+</tr>
+<tr>
+<td>W-09</td>
+<td>查询充值报表。</td>
+<td>当前售票员范围；按伙伴/负责人/类型汇总；银行卡按POS、扫码付按柜台号拆列。</td>
+<td>通过</td>
+<td>POS <code>QA-POS-20260825-01</code>、柜台 <code>QA-GT-20260825-01</code> 均拆列；当前售票员总计0.04，后台新增未进入。</td>
+</tr>
+</tbody></table>
+<h2>11. 售票窗口：下单、退款与公共临客</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>场景与步骤</th>
+<th>预期结果</th>
+<th>状态</th>
+<th>实际/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>O-01</td>
+<td>固定伙伴选择0.01票型，打开支付确认。</td>
+<td>未确认出票前不创建订单、不变更账户。</td>
+<td>通过</td>
+<td>支付确认弹窗打开前账户不变；弹窗支付方式锁定挂帐。</td>
+</tr>
+<tr>
+<td>O-02</td>
+<td>确认固定伙伴挂帐出票。</td>
+<td>订单、负数消费流水、账户扣减同事务；支付方式不可切换。</td>
+<td>部分通过</td>
+<td>订单 <code>DD260825190724001001s</code> 成功，账户及-0.01流水正确；流水支付方式错误为现金，见BUG-030。</td>
+</tr>
+<tr>
+<td>O-03</td>
+<td>对 O-02 正常退款。</td>
+<td>原账户增加退款金额，生成正数退款流水。</td>
+<td>部分通过</td>
+<td>售后 <code>LYAS3499777087922651136</code> 成功，+0.01及余额恢复正确；支付方式错误为现金。</td>
+</tr>
+<tr>
+<td>O-04</td>
+<td>公共临客挂帐出票后未回款退款。</td>
+<td>退款增加挂帐，动态减少应回款金额；不生成退款调账。</td>
+<td>阻塞</td>
+<td>公共临客订单无法创建，见BUG-032。</td>
+</tr>
+<tr>
+<td>O-05</td>
+<td>公共临客已回款订单退款。</td>
+<td>正数退款流水＋等额负数退款调账；可追溯订单/售后。</td>
+<td>阻塞</td>
+<td>公共临客订单无法创建，见BUG-032。</td>
+</tr>
+<tr>
+<td>O-06</td>
+<td>公共临客挂帐回款金额小于已选订单应回款。</td>
+<td>拦截并提示；不产生任何记录。</td>
+<td>阻塞</td>
+<td>公共临客填写负责人、客户名和票后，“确认下单”无响应且无提示，无法创建迁移/回款前置订单，见BUG-032。</td>
+</tr>
+</tbody></table>
+<h2>12. 缺陷优先级与复测退出标准</h2>
+<ul>
+<li><strong>P0</strong>：资金归属、金额、状态、支付时间、柜台/POS、订单/售后追溯错误；上线阻断。</li>
+<li><strong>P1</strong>：菜单入口、字段缺失、筛选/列表/详情/报表与确认方案不一致；需在验收前修复。</li>
+<li><strong>P2</strong>：文案、布局、非关键显示问题；在上线前集中修复。</li>
+<li>退出条件：P0=0，P1=0；所有“未测/待授权执行”用例执行完毕；每个资金写入场景完成“账户 → 充值/其他收入记录 → 资金流水 → 详情 → 报表”的五点核验。</li>
+</ul>
+</div></details>
+  </section>
+
+  <section class="section" id="status">
+    <div class="section-title"><h2>已通过与仍阻塞</h2><p>区分“验证一致”与“暂时不能执行”</p></div>
+    <div class="status-columns"><div class="status-card success"><h3>已验证一致项</h3><div class="markdown-body"><p>只登记完成完整字段、行为及数据闭环核验的项目；页面能打开不计入。</p>
+<table>
+<thead>
+<tr>
+<th>流程/用例</th>
+<th>已验证结果</th>
+<th>关联数据/证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FL-07/FL-08 支付方式条件字段</td>
+<td>扫码付显示柜台号、银行卡显示POS编号，均无现金找零；微信不显示柜台/POS。</td>
+<td>两个充值入口弹窗结构一致。</td>
+</tr>
+<tr>
+<td>FL-08 联合收款原子结果</td>
+<td>充值0.01与其他收入0.01同时成功；账户只增加0.01；成功提示明确。</td>
+<td>伙伴 <code>企业合作伙伴003</code>，充值前10.02、充值后10.03。</td>
+</tr>
+<tr>
+<td>FL-09/FL-15 记录与报表</td>
+<td>扫码付柜台号、银行卡POS均入库；报表按 <code>QA-GT-20260825-01</code>、<code>QA-POS-20260825-01</code> 拆列，账户充值0.03、其他收入0.01、总计0.04。</td>
+<td>查询时间2026-08-25 19:02:03，制单人YST售票窗口。</td>
+</tr>
+<tr>
+<td>FL-02 后台普通充值</td>
+<td>后台现金充值0.01成功；支付时间按所选日期保存为00:00:00，申请/完成动作更新账户和列表。</td>
+<td><code>F3499770576825810945</code>。</td>
+</tr>
+<tr>
+<td>FL-03 后台负数调账</td>
+<td>-0.01调账成功，资金流水处理操作为余额调账、支付方式为“－”、备注可追溯。</td>
+<td><code>F3499771126581624833</code>。</td>
+</tr>
+<tr>
+<td>FL-04 后台其他收入</td>
+<td>0.01其他收入成功生成独立记录和资金流水，不进入账户余额。</td>
+<td><code>F3499771607617961985</code>。</td>
+</tr>
+<tr>
+<td>FL-10 固定伙伴出票/退款账户闭环</td>
+<td>挂帐出票生成-0.01消费流水、账户10.03→10.02；退款生成+0.01流水并恢复账户。</td>
+<td>订单 <code>DD260825190724001001s</code>、售后 <code>LYAS3499777087922651136</code>；但支付方式字段见BUG-030。</td>
+</tr>
+</tbody></table>
+</div></div><div class="status-card blocked"><h3>阻塞与未执行项</h3><div class="markdown-body"><table>
+<thead>
+<tr>
+<th>流程/用例</th>
+<th>阻塞原因</th>
+<th>需要条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FL-05 批量导入：合法行、重复流水号、51行上限</td>
+<td>实际入口被放在资金流水页；当前浏览器测试通道无法把本地 xlsx 注入页面文件控件。</td>
+<td>开发先把入口移回充值申请；随后使用标准模板执行1行、重复行、混合合法/非法、51行四组文件。</td>
+</tr>
+<tr>
+<td>FL-11 公共临客未回款退款、回款、迁移</td>
+<td>公共临客下单点击“确认下单”无响应，见BUG-032。</td>
+<td>修复临客售票后，从新订单依次验证未回款退款、部分回款拦截、全额回款、剩余转预付/其他收入。</td>
+</tr>
+<tr>
+<td>FL-11 迁移后订单/售后详情与调账-往来</td>
+<td>无法生成本轮新的待迁移订单。</td>
+<td>BUG-032修复后迁移至已有伙伴和新建伙伴各1组，再核对变更记录与六类流水。</td>
+</tr>
+<tr>
+<td>FL-01 预付款限额开关与账户支付方式切换</td>
+<td>操作入口已复核存在；额度开关行为、0/负余额下单以及账户支付方式切换规则尚未执行。</td>
+<td>直接按 B-06～B-08 验证0余额拦截、负余额放行、源账户非0拦截及源账户0切换。</td>
+</tr>
+<tr>
+<td>FL-14 打印输出</td>
+<td>最终方案未定义独立打印按钮，但QA额外实现；当前需先确认该功能是否删除。</td>
+<td>若保留打印，补充打印预览、分页、横向宽表及制单/查询时间专项验收；若不保留则删除按钮。</td>
+</tr>
+</tbody></table>
+</div></div></div>
+  </section>
+
+  <section class="section"><div class="card"><div class="section-title"><h2>原始文件</h2><p>HTML 为阅读版，Markdown 仍保留作为原始记录</p></div><div class="source-links"><a class="btn" href="V3.2散客合作伙伴管理_QA测试结果与问题清单.md">打开问题清单</a><a class="btn" href="V3.2散客合作伙伴管理_QA测试用例与缺陷台账.md">打开测试台账</a></div></div></section>
+  <div class="footer">V3.2 散客合作伙伴管理 · QA 测试总览 · 数据来源于两份现有 Markdown 文件</div>
+</main>
+<button class="quick" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
+<script>
+const cards=[...document.querySelectorAll('.issue-card')];const search=document.getElementById('issue-search');const severity=document.getElementById('severity-filter');const category=document.getElementById('category-filter');const count=document.getElementById('filter-count');const empty=document.getElementById('empty-results');
+function applyFilters(){const q=search.value.trim().toLowerCase();let visible=0;cards.forEach(card=>{const show=(!q||card.dataset.search.includes(q))&&(severity.value==='all'||card.dataset.severity===severity.value)&&(category.value==='all'||card.dataset.category===category.value);card.classList.toggle('hidden',!show);if(show)visible+=1});count.textContent='显示 '+visible+' / '+cards.length+' 项';empty.style.display=visible?'none':'block'}
+search.addEventListener('input',applyFilters);severity.addEventListener('change',applyFilters);category.addEventListener('change',applyFilters);document.getElementById('reset-filter').addEventListener('click',()=>{search.value='';severity.value='all';category.value='all';applyFilters()});
+document.querySelectorAll('[data-module-filter]').forEach(button=>button.addEventListener('click',()=>{category.value=button.dataset.moduleFilter;severity.value='all';search.value='';applyFilters();document.getElementById('issues').scrollIntoView({behavior:'smooth'})}));
+document.querySelectorAll('[data-jump-issue]').forEach(button=>button.addEventListener('click',()=>{const id=button.dataset.jumpIssue;search.value=id;severity.value='all';category.value='all';applyFilters();document.getElementById('issues').scrollIntoView({behavior:'smooth'});setTimeout(()=>{const target=cards.find(card=>card.querySelector('.issue-id').textContent===id);if(target){target.open=true;target.scrollIntoView({behavior:'smooth',block:'center'})}},350)}));
+const navLinks=[...document.querySelectorAll('.sidebar a[href^="#"]')];const sections=[...document.querySelectorAll('main [id]')];const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(link=>link.classList.toggle('current',link.getAttribute('href')==='#'+entry.target.id))}})},{rootMargin:'-15% 0px -75%'});sections.forEach(section=>observer.observe(section));
+</script>
+</body></html>
