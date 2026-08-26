@@ -39,7 +39,7 @@
         <tbody>
           <tr><th>合作类型</th><td id="chargeType" class="readonly">-</td><th>合作伙伴</th><td id="chargePartner" class="readonly">-</td></tr>
           <tr><th>联系人</th><td id="chargeContact" class="readonly">-</td><th>联系电话</th><td id="chargePhone" class="readonly">-</td></tr>
-          <tr><th>对接负责人</th><td id="chargeOwner" class="readonly">-</td><th>账户支付方式</th><td id="chargePayType" class="readonly">-</td></tr>
+          <tr><th>对接负责人</th><td id="chargeOwner" class="readonly">-</td><th>账户类型</th><td id="chargePayType" class="readonly">-</td></tr>
           <tr><th>客户/付款人</th><td colspan="3" class="form-cell"><input id="chargePayer" maxlength="50" placeholder="请输入客户/付款人（选填）"></td></tr>
           <tr><th>充值账号</th><td id="chargeAccount" class="readonly">-</td><th id="chargeBalanceLabel">挂帐金额</th><td id="chargeBalance" class="readonly">-</td></tr>
           <tr><th><span style="color:#f5222d">*</span> 充值金额</th><td class="form-cell"><div class="amount-cell"><input id="chargeAmount" inputmode="decimal" value="0.00" oninput="updateChargeTotal()"><span>元</span></div></td><th class="no-wrap">计入其他收入</th><td class="form-cell"><div class="amount-cell"><input id="incomeAmount" inputmode="decimal" value="0.00" oninput="updateChargeTotal()"><span>元</span></div></td></tr>
@@ -170,11 +170,11 @@ function confirmRecharge(){
   const base={type:current.type,name:current.name,accountNo:current.account,applicant:cashier,cashier,cashierId:'CASHIER-YND-001',ticketWindow,ticketWindowId:'WINDOW-YND-001',owner:current.owner,payer,paymentMethod,terminalNo,repaymentTime:paidAt,applyTime:paidAt,finishTime:paidAt,status:'success',attachments:[]};
   if(amount>0){
     const recordNo='RGW'+sequence;
-    records.unshift({...base,key:'rw'+sequence,kind:'account',recordNo,rechargeType:payLabel(),amount,remark,settleAmount:0,surplus:0,surplusTarget:'-',orders:[],flow:{key:'fw'+sequence,type:current.type,name:current.name,accountNo:current.account,operation:'充值',accountType:payLabel(),amount,documentType:'充值记录单号',documentNo:recordNo,owner:current.owner,time:paidAt,category:'recharge',paymentMethod,terminalNo,repaymentStatus:'-',remark:'售票员：'+cashier+'，售票窗口：'+ticketWindow}});
+    records.unshift({...base,key:'rw'+sequence,kind:'account',recordNo,rechargeType:'充值',operation:'充值',accountType:payLabel(),amount,remark,settleAmount:0,surplus:0,surplusTarget:'-',orders:[],flow:{key:'fw'+sequence,type:current.type,name:current.name,accountNo:current.account,operation:'充值',accountType:payLabel(),amount,documentType:'充值记录单号',documentNo:recordNo,owner:current.owner,time:paidAt,category:'recharge',paymentMethod,terminalNo,repaymentStatus:'-',remark:'售票员：'+cashier+'，售票窗口：'+ticketWindow}});
   }
   if(income>0){
     const recordNo='RGIW'+sequence;
-    records.unshift({...base,key:'riw'+sequence,kind:'income',recordNo,rechargeType:'其他收入',amount:income,remark,flow:{key:'fiw'+sequence,type:current.type,name:current.name,accountNo:'-',operation:'其他收入',accountType:'-',amount:income,documentType:'充值记录单号',documentNo:recordNo,owner:current.owner,time:paidAt,category:'income',paymentMethod,terminalNo,repaymentStatus:'-',remark:'售票员：'+cashier+'，售票窗口：'+ticketWindow}});
+    records.unshift({...base,key:'riw'+sequence,kind:'income',recordNo,rechargeType:'其他收入',operation:'其他收入',accountType:'-',amount:income,remark,flow:{key:'fiw'+sequence,type:current.type,name:current.name,accountNo:'-',operation:'其他收入',accountType:'-',amount:income,documentType:'充值记录单号',documentNo:recordNo,owner:current.owner,time:paidAt,category:'income',paymentMethod,terminalNo,repaymentStatus:'-',remark:'售票员：'+cashier+'，售票窗口：'+ticketWindow}});
   }
   accountStates[current.account]=currentPay==='credit'?{creditAmount:current.balance,available:current.available}:{prepayBalance:current.balance};
   localStorage.setItem('v32-window-recharge-records',JSON.stringify(records));

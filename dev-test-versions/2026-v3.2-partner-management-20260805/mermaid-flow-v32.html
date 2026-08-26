@@ -1,17 +1,17 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>散客合作伙伴管理 V3.2｜全局详细业务流程</title><style>body{margin:0;background:#f7f4fb;color:#312e81;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.top{padding:20px 28px 14px;background:#fff;border-bottom:1px solid #e8e2f1}h1{margin:0 0 7px;font-size:24px}.hint{margin:0;color:#71697d;font-size:13px}.toolbar{position:fixed;right:24px;top:20px;z-index:5;display:flex;gap:9px}.btn{padding:8px 12px;border-radius:8px;background:#7c3aed;color:#fff;text-decoration:none;border:0;cursor:pointer;font-size:13px}.stage{height:calc(100vh - 90px);overflow:hidden;background:#fff;cursor:grab;touch-action:none}.stage.dragging{cursor:grabbing}.diagram{display:block;transform-origin:0 0;user-select:none;pointer-events:none;background:#fff}details{margin:16px 28px;border:1px solid #e8e2f1;border-radius:10px;overflow:hidden;background:#fff}summary{padding:12px 16px;color:#6d28d9;font-weight:600;cursor:pointer}pre{margin:0;padding:18px;background:#1f1930;color:#e9d5ff;white-space:pre-wrap;line-height:1.65;overflow:auto}</style><body><div class="top"><h1>散客合作伙伴管理 V3.2｜全局详细业务流程</h1><p class="hint">滚轮缩放，按住鼠标左键拖拽查看；双击可恢复适应窗口大小。</p></div><div class="toolbar"><a class="btn" href="assets/overall-flow-v32.svg" download="散客合作伙伴管理V3.2-全功能流程图.svg">下载 SVG 图片</a><button class="btn" onclick="navigator.clipboard.writeText(document.querySelector('pre').textContent).then(()=>this.textContent='已复制')">复制 Mermaid 代码</button></div><div id="stage" class="stage"><img id="diagram" class="diagram" src="assets/overall-flow-v32.svg" alt="散客合作伙伴管理 V3.2 全局详细业务流程图"></div><details><summary>开发辅助：展开 Mermaid 源码</summary><pre>flowchart TD
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>散客合作伙伴管理 V3.2｜全局详细业务流程</title><style>body{margin:0;background:#f7f4fb;color:#312e81;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.top{padding:20px 28px 14px;background:#fff;border-bottom:1px solid #e8e2f1}h1{margin:0 0 7px;font-size:24px}.hint{margin:0;color:#71697d;font-size:13px}.toolbar{position:fixed;right:24px;top:20px;z-index:5;display:flex;gap:9px}.btn{padding:8px 12px;border-radius:8px;background:#7c3aed;color:#fff;text-decoration:none;border:0;cursor:pointer;font-size:13px}.stage{height:calc(100vh - 90px);overflow:hidden;background:#fff;cursor:grab;touch-action:none}.stage.dragging{cursor:grabbing}.diagram{display:block;transform-origin:0 0;user-select:none;pointer-events:none;background:#fff}details{margin:16px 28px;border:1px solid #e8e2f1;border-radius:10px;overflow:hidden;background:#fff}summary{padding:12px 16px;color:#6d28d9;font-weight:600;cursor:pointer}pre{margin:0;padding:18px;background:#1f1930;color:#e9d5ff;white-space:pre-wrap;line-height:1.65;overflow:auto}</style><body><div class="top"><h1>散客合作伙伴管理 V3.2｜全局详细业务流程</h1><p class="hint">滚轮缩放，按住鼠标左键拖拽查看；双击可恢复适应窗口大小。</p></div><div class="toolbar"><button class="btn" onclick="navigator.clipboard.writeText(document.querySelector('pre').textContent).then(()=>this.textContent='已复制')">复制 Mermaid 代码</button></div><div id="stage" class="stage"><img id="diagram" class="diagram" src="assets/overall-flow-v32.svg" alt="散客合作伙伴管理 V3.2 全局详细业务流程图"></div><details><summary>开发辅助：展开 Mermaid 源码</summary><pre>flowchart TD
     A["后台维护合作伙伴档案"] --> B{"合作类型"}
-    B -->|"企业 / 个人"| C["同一事务建立挂帐、预付款两个子账户"]
-    B -->|"公共临时客户"| D["系统唯一公共临时客户\n仅建立挂帐子账户、固定启用"]
-    C --> E["配置账户支付方式、账户状态及额度限制"]
-    D --> F["配置挂帐额度限制\n公共临时客户支付方式固定为挂帐"]
+    B -->|"企业 / 个人"| C["同一账户号建立挂帐、预付款两类账户"]
+    B -->|"公共临时客户"| D["系统唯一公共临时客户\n仅建立挂帐账户、固定启用"]
+    C --> E["配置默认账户类型、账户状态及额度限制"]
+    D --> F["配置挂帐额度限制\n公共临时客户默认账户类型固定为挂帐"]
 
     E --> G["后台充值申请"]
     F --> G
     G --> H{"充值对象"}
-    H -->|"企业 / 个人"| I{"充值类型"}
-    I -->|"挂帐 / 预付款"| I1["金额大于 0\n写入当前账户支付方式对应子账户\n生成充值记录和充值流水"]
-    I -->|"调账"| I2["金额可正可负且不为 0\n不填写支付时间和支付方式\n写入当前配置子账户及调账流水"]
-    I -->|"其他收入"| I3["金额大于 0\n不改变任何账户\n生成独立其他收入记录和流水"]
+    H -->|"企业 / 个人"| I{"处理操作"}
+    I -->|"充值"| I1["金额大于 0\n账户类型只读带出当前默认值\n生成充值记录和充值流水"]
+    I -->|"调账"| I2["金额可正可负且不为 0\n账户类型只读带出当前默认值\n不填写支付时间和支付方式"]
+    G --> I3["其他收入为独立系统处理\n不改变任何账户\n生成其他收入记录和流水"]
     H -->|"公共临时客户"| J{"挂帐回款或调账"}
     J -->|"调账"| J1["金额可正可负且不为 0\n写入挂帐账户及调账流水"]
     J -->|"挂帐回款"| J2["填写充值金额后选择待回款订单"]
@@ -31,17 +31,18 @@
     C --> K["售票窗口：临时 / 长期合作伙伴模式"]
     D --> K
     K --> L{"选择对象"}
-    L -->|"企业 / 个人"| M["选择启用的固定合作伙伴\n加载负责人、联系人及账户支付方式"]
+    L -->|"企业 / 个人"| M["选择启用的固定合作伙伴\n加载负责人、联系人及默认账户类型"]
     L -->|"公共临时客户"| N["快捷选择公共临时客户\n填写订单客户名称和订单负责人快照"]
     M --> O{"是否在窗口先充值"}
     O -->|"是"| O1["固定合作伙伴充值\n充值金额和计入其他收入至少一项大于 0"]
-    O1 --> O2{"充值事务是否成功"}
+    O1 --> O1A["处理操作固定为充值\n账户类型只读带出当前默认值"]
+    O1A --> O2{"充值事务是否成功"}
     O2 -->|"否"| O3["整体回滚并提示充值失败"]
     O2 -->|"是"| O4["生成账户充值 / 其他收入及流水\n仅刷新右侧账户信息，不刷新已选门票"]
     O4 --> P["选择散客票并确认下单"]
     O -->|"否"| P
     N --> P
-    P --> Q["打开支付订单确认弹窗\n支付方式为合作伙伴账户支付方式，锁定不可切换"]
+    P --> Q["打开支付订单确认弹窗\n账户类型为当前默认账户类型，锁定不可切换"]
     Q --> R["确认出票时重新读取合作伙伴和账户最新状态"]
     R --> S{"是否通过通用状态校验"}
     S -->|"否：伙伴或账户已禁用"| S1["拦截出票"]
@@ -49,7 +50,7 @@
     T -->|"公共临时客户"| U{"客户名称和订单负责人是否均已填写"}
     U -->|"否"| U1["拦截出票并提示补充必填信息"]
     U -->|"是"| V{"挂帐额度限制启用且可用额度不足"}
-    T -->|"企业 / 个人"| W{"账户支付方式"}
+    T -->|"企业 / 个人"| W{"确认出票时实际账户类型"}
     W -->|"挂帐"| V
     W -->|"预付款"| X{"预付款额度限制启用且余额不足"}
     V -->|"是"| V1["拦截出票\n提示充值或调整额度"]
@@ -70,14 +71,14 @@
     AG -->|"不一致"| AI{"人工二次确认是否继续"}
     AI -->|"返回修改"| AF
     AI -->|"确认继续"| AH
-    AH -->|"新建企业 / 个人"| AJ["创建长期合作伙伴及双子账户"]
+    AH -->|"新建企业 / 个人"| AJ["创建长期合作伙伴及两类账户\n设置默认账户类型"]
     AH -->|"选择已有伙伴"| AK["仅可选择启用的企业 / 个人"]
     AJ --> AL["同一事务迁移"]
     AK --> AL
     AL --> AM["订单和关联售后单改为目标伙伴当前归属"]
     AL --> AN["公共临时客户原消费、退款流水保留不改"]
-    AL --> AO["目标伙伴按当前账户支付方式重建消费负数、退款正数流水"]
-    AL --> AP["公共临时客户生成正数调账-往来充值及调账流水\n金额为订单总额减关联退款总额"]
+    AL --> AO["目标伙伴按迁移时默认账户类型\n重建消费负数、退款正数流水并保存实际账户类型"]
+    AL --> AP["公共临时客户生成正数记录与流水\n处理操作调账-往来、账户类型挂帐\n金额为订单总额减关联退款总额"]
     AL --> AQ["已迁移订单详情在合作伙伴信息下增加变更记录\n原伙伴、现伙伴、操作人、变更时间"]
     AL --> AR{"迁移事务是否成功"}
     AR -->|"否"| AS["整体回滚：不创建伙伴、不迁移订单、不生成流水"]
@@ -87,7 +88,7 @@
     AC --> BA
     AT --> BA
     BA --> BB{"订单当前归属及回款状态"}
-    BB -->|"企业 / 个人或已迁移订单"| BC["按当前订单支付账户增加退款金额\n生成退款正数流水"]
+    BB -->|"企业 / 个人或已迁移订单"| BC["按订单保存的实际账户类型增加退款金额\n生成退款正数流水，不受后续默认值变更影响"]
     BB -->|"公共临时客户，未回款"| BD["增加挂帐账户\n生成退款流水并动态减少订单应回款金额"]
     BB -->|"公共临时客户，已回款"| BE["先生成退款正数流水\n再生成同额负数已回款订单退款调账"]
 
@@ -102,7 +103,7 @@
     AN --> CA
     AO --> CA
     AP --> CA
-    CA --> CB["资金流水按充值、消费、退款、其他收入、调账展示\n按发生时间、单据和快照追溯"]
+    CA --> CB["资金流水按充值、消费、退款、其他收入、调账展示\n调账-往来显示原处理操作并归入调账标签\n按账户类型、时间、单据和快照追溯"]
     CB --> CC["合作伙伴对帐单"]
     CC --> CD["按日默认当天 / 按月默认当月\n必须选择合作伙伴，候选含启用、禁用、公共临时客户"]
     CD --> CE["按日期统计人数、消费、到款\n范围内调账单列；合计行展示查询时当前预付款余额和挂帐金额"]</pre></details><script>const stage=document.getElementById('stage'),img=document.getElementById('diagram');let scale=1,x=18,y=18,drag=false,sx=0,sy=0;function fit(){scale=Math.min((stage.clientWidth-36)/3788,(stage.clientHeight-36)/8198);x=(stage.clientWidth-3788*scale)/2;y=18;paint()}function paint(){img.style.transform='translate('+x+'px,'+y+'px) scale('+scale+')'}img.addEventListener('load',fit);stage.addEventListener('wheel',e=>{e.preventDefault();const r=stage.getBoundingClientRect(),px=e.clientX-r.left,py=e.clientY-r.top,next=Math.max(.04,Math.min(2.5,scale*(e.deltaY<0?1.12:.89)));x=px-(px-x)*(next/scale);y=py-(py-y)*(next/scale);scale=next;paint()},{passive:false});stage.addEventListener('pointerdown',e=>{drag=true;sx=e.clientX-x;sy=e.clientY-y;stage.classList.add('dragging');stage.setPointerCapture(e.pointerId)});stage.addEventListener('pointermove',e=>{if(!drag)return;x=e.clientX-sx;y=e.clientY-sy;paint()});stage.addEventListener('pointerup',e=>{drag=false;stage.classList.remove('dragging');stage.releasePointerCapture(e.pointerId)});stage.addEventListener('dblclick',fit);window.addEventListener('resize',fit);</script></body></html>
