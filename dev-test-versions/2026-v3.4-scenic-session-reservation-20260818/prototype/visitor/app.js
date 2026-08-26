@@ -402,9 +402,9 @@ function renderSuccess() { $('#successSummary').innerHTML = detailRows(); }
 
 const recordData = [
   { id: 'active', status: 'active', number: '023', activity: '峡谷漂流场次预约', date: '2026-08-15', session: '10:00-11:30', project: '梦幻谷漂流 A 线', people: 2, created: '08-13 14:32' },
-  { id: 'cancelled', status: 'cancelled', number: '007', activity: '雨林观景场次预约', date: '2026-08-09', session: '14:00-16:00', project: '峡谷观景栈道', people: 1, created: '08-05 09:18' },
+  { id: 'cancelled', status: 'cancelled', number: '007', activity: '雨林观景场次预约', date: '2026-08-09', session: '14:00-16:00', project: '峡谷观景栈道', people: 1, created: '08-05 09:18', cancelTime: '2026-08-08 17:36', cancelMethod: '游客取消', cancelReason: '临时调整行程，无法按时参与。' },
   { id: 'active-late', status: 'active', number: '012', activity: '雨林观景场次预约', date: '2026-08-15', session: '15:30-16:30', project: '峡谷观景栈道', people: 1, created: '08-14 11:06' },
-  { id: 'cancelled-late', status: 'cancelled', number: '031', activity: '峡谷漂流场次预约', date: '2026-08-20', session: '09:30-10:30', project: '梦幻谷漂流 B 线', people: 2, created: '08-18 16:20' }
+  { id: 'cancelled-late', status: 'cancelled', number: '031', activity: '峡谷漂流场次预约', date: '2026-08-20', session: '09:30-10:30', project: '梦幻谷漂流 B 线', people: 2, created: '08-18 16:20', cancelTime: '2026-08-19 07:10', cancelMethod: '管理员取消', cancelReason: '受当日天气影响，场次临时取消。' }
 ];
 
 const recordVisitTimestamp = record => {
@@ -425,7 +425,8 @@ function renderDetail() {
   const cancelled = current.status === 'cancelled';
   $('#detailBanner').classList.toggle('cancelled', cancelled);
   $('#detailBanner').innerHTML = `<span class="status-symbol">${cancelled ? '×' : '✓'}</span><div><h2>${cancelled ? '预约已取消' : '预约成功'}</h2><p>${cancelled ? '名额已释放，如需参与请重新预约' : '请按预约场次提前到达'}</p></div>`;
-  $('#detailBookingRows').innerHTML = detailRows();
+  const cancellationInfo = cancelled ? `<div class="detail-subsection cancellation-info"><h4>取消信息</h4><div class="detail-row"><span>取消时间</span><strong>${current.cancelTime || '未记录'}</strong></div><div class="detail-row"><span>取消方式</span><strong>${current.cancelMethod || '未记录'}</strong></div><div class="detail-row cancellation-reason-row"><span>取消原因</span><strong>${current.cancelReason || '未填写'}</strong></div></div>` : '';
+  $('#detailBookingRows').innerHTML = detailRows() + cancellationInfo;
   $('#detailReservationNumber').textContent = current.number;
   $('#detailNumberCard').classList.toggle('cancelled', cancelled);
   $('#detailPersonRows').innerHTML = `<div class="detail-row"><span>姓名</span><strong>${cancelled ? '林晓' : ($('#nameInput').value || '苏珊')}</strong></div><div class="detail-row"><span>手机号</span><strong>${cancelled ? '13600136000' : ($('#phoneInput').value || '13800138000')}</strong></div><div class="detail-row"><span>身份证号</span><strong>${cancelled ? '440106199006082014' : ($('#idInput').value || '440106199208136521')}</strong></div><div class="detail-row"><span>漂流装备尺码</span><strong>${$('#sizeInput').value || '成人 M'}</strong></div>`;
@@ -505,7 +506,7 @@ $('#submitButton').addEventListener('click', () => {
 $('#recordTabs').addEventListener('click', e => { const button = e.target.closest('[data-filter]'); if (button) renderRecords(button.dataset.filter); });
 $('#recordList').addEventListener('click', e => { const card = e.target.closest('[data-record]'); if (!card) return; state.currentRecord = card.dataset.record; navigate('detail'); });
 $('#cancelEntry').addEventListener('click', () => openModal('cancel'));
-$('#confirmCancel').addEventListener('click', () => { state.currentRecord = 'cancelled'; closeModal('cancel'); renderDetail(); showToast('预约已取消，名额已释放'); });
+$('#confirmCancel').addEventListener('click', () => { const current = recordData.find(record => record.id === state.currentRecord); if (!current) return; current.status = 'cancelled'; current.cancelTime = '2026-08-20 13:18'; current.cancelMethod = '游客取消'; current.cancelReason = $('#cancelReason').value.trim(); closeModal('cancel'); renderDetail(); showToast('预约已取消，名额已释放'); });
 $('#saveEdit').addEventListener('click', () => { state.people = state.editPeople; showToast('修改已保存'); setTimeout(() => navigate('detail'), 550); });
 
 $('#expandActivity').addEventListener('click', () => { const copy = $('#activityCopy'); copy.classList.toggle('clamp'); $('#expandActivity').textContent = copy.classList.contains('clamp') ? '展开详情' : '收起详情'; });
