@@ -223,6 +223,7 @@
     const futureDates=config.selectedDates.filter(date=>date>='2026-08-18');
     const configuredDates=futureDates.filter(date=>(config.sessionsByDate[date]||[]).length);
     const overallProjects=enabledProjects();
+    const categoryConfigured=!config.projectModuleEnabled||!config.categoryEnabled||config.categories.length>0;
     const projectSessions=config.projectModuleEnabled?configuredDates.flatMap(date=>(config.sessionsByDate[date]||[]).map(session=>({date,session}))):[];
     const projectSessionReady=overallProjects.length>0;
     const quotaSafe=projectSessions.every(({date,session})=>!session.separateProjectQuota||(session.projectIds||[]).every(projectId=>{const key=sessionProjectKey(date,session,projectId);const quota=config.projectSessionQuotas[key],booked=config.projectSessionBooked[key]||0;return Number.isFinite(quota)&&quota>0&&quota>=booked;}));
@@ -231,7 +232,7 @@
       (()=>{const title=String(config.noticeTitle||'').trim();const content=String(config.noticeHtml||'').replace(/<[^>]*>/g,'').trim();const complete=Boolean(title)===Boolean(content);return ['必读须知',!config.noticeEnabled||complete,!config.noticeEnabled?'未启用，无需检查':title&&content?'已配置默认全局提示；特殊日期可另行配置':'未配置默认全局提示；仅命中特殊日期时展示'];})(),
       ['开放日期',configuredDates.length>0,configuredDates.length?`已配置 ${configuredDates.length} 个未来日期`:'至少配置 1 个未来日期及场次'],
       ['场次时间',configuredDates.every(date=>(config.sessionsByDate[date]||[]).every(session=>/^\d{2}:\d{2}/.test(session.time))), '所有场次均有开始时间'],
-      ['项目配置',!config.projectModuleEnabled||overallProjects.length>0,config.projectModuleEnabled?`总体启用 ${overallProjects.length} 个项目`:'项目模块已关闭'],
+      ['项目配置',!config.projectModuleEnabled||(overallProjects.length>0&&categoryConfigured),!config.projectModuleEnabled?'项目模块已关闭':!categoryConfigured?'已开启项目分类，请至少新增 1 个项目分类':overallProjects.length?`总体启用 ${overallProjects.length} 个项目`:'请先新增或启用项目'],
       ['场次项目',!config.projectModuleEnabled||(projectSessionReady&&quotaSafe),!config.projectModuleEnabled?'仅使用场次库存':projectSessionReady&&quotaSafe?'关联项目与库存模式有效':'请检查项目关联和项目名额'],
       ['游客资料',config.fields.some(field=>field.type==='姓名'&&field.required),config.fields.some(field=>field.type==='姓名'&&field.required)?'已配置必填姓名字段':'必须配置 1 个必填的姓名类型字段'],
       ['唯一资料类型',['姓名','手机号','身份证号'].every(type=>config.fields.filter(field=>field.type===type).length<=1),['姓名','手机号','身份证号'].every(type=>config.fields.filter(field=>field.type===type).length<=1)?'姓名、手机号、身份证号各不超过1份':'姓名、手机号、身份证号类型不能重复'],
@@ -404,7 +405,7 @@
   };
   function saveCurrent(silent=false) {
     const name = q('#cfgActivityName')?.value.trim(); if (name) { currentActivity.name = name; q('#configActivityName').textContent = name; }
-    const detail = q('#cfgDetailEditor'); if (detail) config.detailHtml = detail.innerHTML.trim(); const notice=q('#cfgNoticeEditor');const noticeTitle=q('#cfgNoticeTitle');const noticeText=notice?String(notice.innerHTML||'').replace(/<[^>]*>/g,'').trim():String(config.noticeHtml||'').replace(/<[^>]*>/g,'').trim();const noticeTitleText=noticeTitle?noticeTitle.value.trim():String(config.noticeTitle||'').trim();if(stepIndex===1&&config.noticeEnabled&&Boolean(noticeTitleText)!==Boolean(noticeText)){if(!silent)showToast('默认全局提示请同时填写标题和内容，或全部留空');return false;}if(notice)config.noticeHtml=notice.innerHTML.trim();if(noticeTitle)config.noticeTitle=noticeTitleText;const noticeSeconds=q('#cfgNoticeSeconds');if(noticeSeconds)config.noticeSeconds=Math.max(0,Number(noticeSeconds.value)||0);
+    const detail = q('#cfgDetailEditor'); if (detail) config.detailHtml = detail.innerHTML.trim(); const notice=q('#cfgNoticeEditor');const noticeTitle=q('#cfgNoticeTitle');const noticeText=notice?String(notice.innerHTML||'').replace(/<[^>]*>/g,'').trim():String(config.noticeHtml||'').replace(/<[^>]*>/g,'').trim();const noticeTitleText=noticeTitle?noticeTitle.value.trim():String(config.noticeTitle||'').trim();if(stepIndex===1&&config.noticeEnabled&&Boolean(noticeTitleText)!==Boolean(noticeText)){if(!silent)showToast('默认全局提示请同时填写标题和内容，或全部留空');return false;}if(stepIndex===2&&config.projectModuleEnabled&&config.categoryEnabled&&config.categories.length===0){if(!silent)showToast('已开启项目分类，请至少新增 1 个项目分类后再保存');return false;}if(notice)config.noticeHtml=notice.innerHTML.trim();if(noticeTitle)config.noticeTitle=noticeTitleText;const noticeSeconds=q('#cfgNoticeSeconds');if(noticeSeconds)config.noticeSeconds=Math.max(0,Number(noticeSeconds.value)||0);
     if(stepIndex===0){currentActivity.image=config.draftLogo;currentActivity.coverImage=config.draftCover;}
     const contactName=q('#cfgContactName');if(contactName)currentActivity.contactName=contactName.value.trim();
     const contactPhone=q('#cfgContactPhone');if(contactPhone)currentActivity.contactPhone=contactPhone.value.trim();
@@ -432,7 +433,7 @@
     window.editingProjectIndex=index;window.projectDraftImage=item.image||false;
     openSheet(`<h2>${index===null?'添加项目':'编辑项目'}</h2>
       <label class="config-field"><span>项目名称 <small><b class="required">*</b> 30字内</small></span><input id="sheetProjectName" type="text" maxlength="30" value="${item.name}" placeholder="请输入项目名称"></label>
-      <label class="config-field"><span>所属分类 <small>${config.categoryEnabled?'<b class="required">*</b> 必选':'分类功能已关闭'}</small></span><select id="sheetProjectCategory" ${config.categoryEnabled?'':'disabled'}>${config.categories.map((name,categoryIndex)=>`<option value="${name}" ${name===item.category||(!config.categories.includes(item.category)&&categoryIndex===0)?'selected':''} ${!categoryIsEnabled(name)&&name!==item.category?'disabled':''}>${name}${categoryIsEnabled(name)?'（启用中）':'（已禁用）'}</option>`).join('')}</select></label>
+      <label class="config-field"><span>所属分类 <small>${config.categoryEnabled?'<b class="required">*</b> 必选':'选填 · 游客端不展示分类'}</small></span><select id="sheetProjectCategory">${config.categoryEnabled?'':`<option value="" ${!item.category?'selected':''}>不设置分类</option>`}${config.categories.map((name,categoryIndex)=>`<option value="${name}" ${name===item.category||(config.categoryEnabled&&!config.categories.includes(item.category)&&categoryIndex===0)?'selected':''} ${!categoryIsEnabled(name)&&name!==item.category?'disabled':''}>${name}${categoryIsEnabled(name)?'（启用中）':'（已禁用）'}</option>`).join('')}</select></label>
       <div class="config-field"><span>项目LOGO <small>选填 · 建议400×400px</small></span><div id="projectLogoEditor">${projectLogoEditorHtml(item.name,item.image)}</div></div>
       <label class="config-field"><span>项目简介 <small>选填 · 60字内</small></span><textarea id="sheetProjectDescription" maxlength="60" placeholder="简要说明项目特色、适用人群等">${item.description||''}</textarea></label>
       ${item.booked?'<p class="config-hint warn">该项目已有预约，不能删除；禁用后仅影响后续新预约，历史预约继续有效并占用原库存。</p>':''}
