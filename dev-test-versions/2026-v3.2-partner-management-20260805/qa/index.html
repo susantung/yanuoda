@@ -12,14 +12,21 @@
 @media(max-width:720px){.sidebar{display:none}.main{width:100%;margin-right:0;padding:18px}.hero h1{font-size:25px}.metrics,.reading-path,.module-grid{grid-template-columns:1fr}.issue-card>summary{grid-template-columns:64px 1fr auto 18px;padding:12px 10px}.issue-title{font-size:13px}.quick{right:18px}.filter-count{width:100%;margin-left:0}.card{padding:20px}.section-title{align-items:flex-start;flex-direction:column}}
 @media print{.sidebar,.filter-bar,.quick,.hero-actions,.reading-path{display:none!important}.main{width:100%;margin:0;padding:0}.hero{color:#111;background:#fff;box-shadow:none;border:1px solid #ddd}.hero p,.eyebrow{color:#555}.issue-card{break-inside:avoid}.issue-card:not([open]) .issue-body{display:block}.issue-card>summary{border-bottom:1px solid #ddd}.section{break-before:auto}}
 </style>
+<style>
+/* 当前状态为回归结论，不改变首轮问题正文，便于在同一清单中筛选追溯。 */
+.issue-card>summary{grid-template-columns:78px minmax(240px,1fr) auto auto auto 22px}
+.status-chip{font-weight:700}.status-fixed{background:#eaf8ef;color:#15803d}.status-active{background:#fff0f1;color:#dc2626}.status-pending{background:#fff7e6;color:#b45309}.status-baseline{background:#eef2ff;color:#4f46e5}.status-withdrawn{background:#f3f4f6;color:#6b7280}
+@media(max-width:950px){.issue-card>summary{grid-template-columns:70px 1fr auto auto 22px}}
+@media(max-width:720px){.issue-card>summary{grid-template-columns:64px 1fr auto 18px}.status-chip{display:none}}
+</style>
 </head>
 <body>
 <aside class="sidebar">
-  <h2>V3.2 QA 测试总览</h2><div class="sub">散客合作伙伴管理 · 2026-08-25</div>
+  <h2>V3.2 QA 测试总览</h2><div class="sub">首轮 2026-08-25 · 回归 2026-08-29</div>
   <div class="group">方案入口</div>
-  <a href="../index.html">← 返回方案总览</a>
+  <a href="../../方案与需求/2026-v3.2-partner-management-20260805/index.html">← 返回方案总览</a>
   <div class="group">先看结论</div>
-  <a href="#overview" class="current">执行结论</a><a href="#p0">P0 严重问题</a><a href="#issues">全部问题</a>
+  <a href="#overview" class="current">本轮回归结论</a><a href="#regression-20260829">本轮执行场景</a><a href="#p0">当前问题</a><a href="#issues">首轮问题档案</a>
   <div class="group">执行与证据</div>
   <a href="#coverage">全链路覆盖</a><a href="#samples">样例数据</a><a href="#test-plan">测试用例</a><a href="#status">通过与阻塞</a>
   <div class="group">原始文件</div>
@@ -35,15 +42,20 @@
   </header>
 
   <section class="section">
+    <div class="section-title"><h2>2026-08-29 本轮回归结果</h2><p>完整用例共 54 条；以下是当前可用于判断“是否验收完成”的唯一口径</p></div>
     <div class="metrics">
-      <div class="metric"><strong>30</strong><span>已复现问题总数</span></div>
-      <div class="metric danger"><strong>9</strong><span>P0 · 阻断或数据口径错误</span></div>
-      <div class="metric warning"><strong>21</strong><span>P1 · 页面与方案不一致</span></div>
-      <div class="metric"><strong>6</strong><span>涉及业务模块</span></div>
+      <div class="metric"><strong>28</strong><span>通过 · 已跑且无问题</span></div>
+      <div class="metric danger"><strong>3</strong><span>有问题 · BUG-021、023、033</span></div>
+      <div class="metric warning"><strong>20</strong><span>未跑 · 暂无结论</span></div>
+      <div class="metric danger"><strong>3</strong><span>阻塞 · 公共临客链路待重跑</span></div>
     </div>
-    <div class="callout"><strong>当前主要阻断：</strong>公共临时客户售票无法进入支付确认，导致未回款退款、回款、迁移及迁移后详情链路无法继续造新数据。批量导入入口位置已复核通过，模板与文件校验仍待执行。</div>
-    <div class="callout" style="margin-top:12px;background:#eff6ff;border-left-color:#3b82f6;color:#1e3a8a"><strong>复核修正：</strong>原 BUG-014 为误报；BUG-031“批量导入充值入口放错页面”经当前环境复核无法复现，已撤销。两个账户标签额外出现的“查看”入口仍并入 BUG-013。</div>
+    <div class="callout"><strong>当前结论：验收尚未完成，不能说“系统没问题”。</strong>已确认的问题是 3 个 P1：BUG-021（对帐单入口）、BUG-023（不应出现打印按钮）、BUG-033（充值报表首次进入不自动加载）。另有 20 条未跑，3 条公共临客场景因前置订单无法完成而阻塞，需在 BUG-032 前置链路具备后继续执行。</div>
+    <div class="callout" style="margin-top:12px;background:#ecfdf5;border-left-color:#059669;color:#065f46"><strong>历史问题追溯：</strong>31 条历史问题中，已验证修复 26 条、基线关闭 1 条；该统计仅用于追溯旧问题，不作为“完整用例已全部通过”的依据。</div>
+    <div class="callout"><strong>2026-08-29 全新数据回归结论：</strong>仅采信本轮通过浏览器页面亲自创建的伙伴、充值、调账、订单和退款数据。当前确认缺陷为 BUG-021（对帐单仍在报表中心）、BUG-023（成功查询后仍出现方案未定义的打印按钮）、BUG-033（充值报表默认当天但不自动加载），均为 P1；P0 为 0。</div>
+    <div class="callout" style="margin-top:12px;background:#ecfdf5;border-left-color:#059669;color:#065f46"><strong>本轮验证修复：</strong>BUG-004、008、018、022、024、026、029、030。BUG-032 公共临客完整链路、批量导入重复流水号/51 行上限仍待新数据继续执行，不计入当前缺陷。</div>
   </section>
+
+  <section class="section" id="regression-20260829"><div class="section-title"><h2>2026-08-29 全新数据回归</h2><p>所有数据通过浏览器界面实际录入与点击产生</p></div><div class="card"><div class="markdown-body"><table><thead><tr><th>本轮场景</th><th>单据/结果</th><th>核对结论</th></tr></thead><tbody><tr><td>后台充值与调账</td><td>挂帐 +10.00、预付款 +20.00、挂帐调账 -2.00</td><td>充值申请、详情、资金流水字段一致；调账不保存支付时间，符合规则。</td></tr><tr><td>窗口充值与其他收入</td><td>扫码付 +3.00（柜台号）、银行卡充值 +4.00（POS）、其他收入 +1.00</td><td>前后台记录、详情与报表一致；报表按柜台/POS拆分正确。</td></tr><tr><td>挂帐订单与退款</td><td>订单 DD260829171113001001s，退款 LYAS3505595686276988928</td><td>消费/退款流水的伙伴、账户号、账户类型、支付方式“挂帐”完整正确。</td></tr><tr><td>合作伙伴对帐单</td><td>到款 17.00、负调账消费 2.00、当前挂帐 15.00</td><td>金额勾稽正确；标题带伙伴名、0余额显示“－”。</td></tr></tbody></table><p><strong>说明：</strong>下方“历史问题档案”保留首轮复现细节以便追溯，不参与当前缺陷统计。</p></div></div></section>
 
   <section class="section">
     <div class="section-title"><h2>建议阅读顺序</h2><p>不用从头读到尾</p></div>
@@ -51,12 +63,21 @@
   </section>
 
   <section class="section" id="p0">
-    <div class="section-title"><h2>P0 严重问题</h2><p>9 项，建议优先确认</p></div>
-    <div class="module-grid"><button class="module-card" type="button" data-jump-issue="BUG-004"><span>BUG-004</span><strong>部分消费/退款流水关键归属字段为空</strong><small>资金流水</small></button><button class="module-card" type="button" data-jump-issue="BUG-008"><span>BUG-008</span><strong>合作伙伴“更新人”保存为IP地址</strong><small>档案与账户</small></button><button class="module-card" type="button" data-jump-issue="BUG-012"><span>BUG-012</span><strong>账户列表“账户类型”字段语义错误</strong><small>档案与账户</small></button><button class="module-card" type="button" data-jump-issue="BUG-018"><span>BUG-018</span><strong>调账类记录错误展示支付时间</strong><small>后台充值与导入</small></button><button class="module-card" type="button" data-jump-issue="BUG-019"><span>BUG-019</span><strong>后台充值详情不是确认的完整弹窗</strong><small>后台充值与导入</small></button><button class="module-card" type="button" data-jump-issue="BUG-026"><span>BUG-026</span><strong>同一合作伙伴的挂帐额度状态在后台与售票窗口不一致</strong><small>订单、退款与临客</small></button><button class="module-card" type="button" data-jump-issue="BUG-027"><span>BUG-027</span><strong>售票窗口成功充值/其他收入记录的状态与完成时间为空</strong><small>售票窗口充值</small></button><button class="module-card" type="button" data-jump-issue="BUG-030"><span>BUG-030</span><strong>挂帐订单消费与退款流水的支付方式错误显示为现金</strong><small>订单、退款与临客</small></button><button class="module-card" type="button" data-jump-issue="BUG-032"><span>BUG-032</span><strong>公共临时客户售票无法进入支付确认且无错误提示</strong><small>订单、退款与临客</small></button></div>
+    <div class="section-title"><h2>当前确认问题</h2><p>均由本轮浏览器实际操作复现</p></div>
+    <div class="module-grid">
+      <button class="module-card" type="button" data-jump-issue="BUG-021"><span>BUG-021 · P1</span><strong>合作伙伴对帐单仍在报表中心</strong><small>导航结构与数据无关，持续存在</small></button>
+      <button class="module-card" type="button" data-jump-issue="BUG-023"><span>BUG-023 · P1</span><strong>成功查询后仍出现打印按钮</strong><small>最终方案未定义独立打印按钮</small></button>
+      <button class="module-card" type="button" onclick="document.getElementById('bug-033').scrollIntoView({behavior:'smooth'})"><span>BUG-033 · P1</span><strong>充值报表默认当天但不自动加载</strong><small>必须再次点击查询才出现当天新数据</small></button>
+    </div>
+    <details class="issue-card" id="bug-033" data-severity="P1" data-category="售票窗口充值" open>
+      <summary><span class="issue-id">BUG-033</span><span class="issue-title">售票窗口充值报表默认当天但不自动加载</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p1">P1</span><span class="chevron" aria-hidden="true">⌄</span></summary>
+      <div class="issue-body markdown-body"><ul><li>前置数据：本轮窗口扫码付充值 <code>RG3505575757704495106</code> 已成功写入。</li><li>复现步骤：进入“合作伙伴 → 充值报表”，日期默认 2026-08-29，不修改任何条件。</li><li>QA实际：首次显示“暂无数据、制单人：-、打印时间：-”；点击“查询”后立即显示本轮 3.00 元扫码付及柜台号。</li><li>方案预期：默认加载当天数据，无需二次点击查询。</li><li>严重级别：P1。</li><li>状态：本轮浏览器实际复现。</li></ul></div>
+    </details>
+    <div class="callout" style="margin-top:14px"><strong>待继续而非缺陷：</strong>BUG-032 公共临时客户出票、回款和迁移需要另建新数据继续完成；批量导入的成功、重复流水号与 51 行上限也待执行。</div>
   </section>
 
   <section class="section" id="issues">
-    <div class="section-title"><h2>全部问题</h2><p>按模块、级别或关键词快速定位</p></div>
+    <div class="section-title"><h2>2026-08-25 首轮问题档案</h2><p>首次复现 30 条问题：P0 9 条、P1 21 条；保留历史细节，不参与本轮缺陷统计</p></div>
     <div class="module-grid" style="margin-bottom:14px"><button class="module-card" type="button" data-module-filter="资金流水">
     <span>资金流水</span><strong>5</strong><small>1 个 P0</small>
   </button><button class="module-card" type="button" data-module-filter="档案与账户">
@@ -70,7 +91,7 @@
   </button><button class="module-card" type="button" data-module-filter="订单、退款与临客">
     <span>订单、退款与临客</span><strong>3</strong><small>3 个 P0</small>
   </button></div>
-    <div class="filter-bar"><input id="issue-search" type="search" placeholder="搜索缺陷号、标题、流程、入口或影响"><select id="severity-filter"><option value="all">全部级别</option><option value="P0">仅 P0</option><option value="P1">仅 P1</option></select><select id="category-filter"><option value="all">全部模块</option><option value="资金流水">资金流水</option><option value="档案与账户">档案与账户</option><option value="后台充值与导入">后台充值与导入</option><option value="合作伙伴对帐单">合作伙伴对帐单</option><option value="售票窗口充值">售票窗口充值</option><option value="订单、退款与临客">订单、退款与临客</option></select><button class="btn" id="reset-filter" type="button">重置</button><span class="filter-count" id="filter-count">显示 30 / 30 项</span></div>
+    <div class="filter-bar"><input id="issue-search" type="search" placeholder="搜索缺陷号、标题、流程、入口或影响"><select id="severity-filter"><option value="all">全部级别</option><option value="P0">仅 P0</option><option value="P1">仅 P1</option></select><select id="category-filter"><option value="all">全部模块</option><option value="资金流水">资金流水</option><option value="档案与账户">档案与账户</option><option value="后台充值与导入">后台充值与导入</option><option value="合作伙伴对帐单">合作伙伴对帐单</option><option value="售票窗口充值">售票窗口充值</option><option value="订单、退款与临客">订单、退款与临客</option></select><select id="status-filter"><option value="all">全部状态</option><option value="active">当前缺陷</option><option value="fixed">已验证修复</option><option value="pending">待继续执行</option><option value="baseline">基线关闭</option></select><button class="btn" id="reset-filter" type="button">重置</button><span class="filter-count" id="filter-count">显示 31 / 31 项</span></div>
     <div id="issue-list">
   <details class="issue-card" data-severity="P1" data-category="资金流水" data-search="bug-001 资金流水缺少“调账”标签 fl-13 资金流水与详情 pc后台 → 合作伙伴管理 → 资金流水 无法按调账独立查询人工调账、调账-往来及退款调账，验收与财务追溯入口缺失。">
     <summary>
@@ -505,19 +526,20 @@
   <details class="issue-card" data-severity="P1" data-category="合作伙伴对帐单" data-search="bug-023 未选伙伴空态多出制单/打印区及打印按钮 fl-14 合作伙伴对帐单  空态结构和功能范围超出最终方案，且容易误认为已完成制单。">
     <summary>
       <span class="issue-id">BUG-023</span>
-      <span class="issue-title">未选伙伴空态多出制单/打印区及打印按钮</span>
+      <span class="issue-title">成功查询后仍出现方案未定义的打印按钮</span>
       <span class="chip category-chip">合作伙伴对帐单</span>
       <span class="chip severity p1">P1</span>
       <span class="chevron" aria-hidden="true">⌄</span>
     </summary>
     <div class="issue-body markdown-body"><ul>
 <li>所属流程：FL-14 合作伙伴对帐单</li>
-<li>复现步骤：打开页面，不选择合作伙伴，点击查询。</li>
-<li>方案/原型预期：只保留报表标题、统计日期和表头，不生成打印时间；最终方案未定义独立打印按钮。</li>
-<li>QA实际：页面持续展示“制单人：西瓜”“打印时间：-”以及禁用的“打印”按钮；成功查询后打印按钮变为可用。</li>
-<li>影响：空态结构和功能范围超出最终方案，且容易误认为已完成制单。</li>
+<li>前置数据：本轮伙伴 <code>QA-RG-600608-GZ</code> 已完成充值、调账、挂帐订单及退款。</li>
+<li>复现步骤：选择该伙伴并点击查询。</li>
+<li>方案/原型预期：最终方案未定义独立打印按钮。</li>
+<li>QA实际：对帐单金额和标题均正确后，页底仍出现可点击“打印”按钮。</li>
+<li>影响：页面功能范围超出最终方案。</li>
 <li>严重级别：P1</li>
-<li>状态：已复现</li>
+<li>状态：本轮浏览器实际复现，P1。</li>
 </ul>
 </div>
   </details>
@@ -3008,11 +3030,16 @@
 </main>
 <button class="quick" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
 <script>
-const cards=[...document.querySelectorAll('.issue-card')];const search=document.getElementById('issue-search');const severity=document.getElementById('severity-filter');const category=document.getElementById('category-filter');const count=document.getElementById('filter-count');const empty=document.getElementById('empty-results');
-function applyFilters(){const q=search.value.trim().toLowerCase();let visible=0;cards.forEach(card=>{const show=(!q||card.dataset.search.includes(q))&&(severity.value==='all'||card.dataset.severity===severity.value)&&(category.value==='all'||card.dataset.category===category.value);card.classList.toggle('hidden',!show);if(show)visible+=1});count.textContent='显示 '+visible+' / '+cards.length+' 项';empty.style.display=visible?'none':'block'}
-search.addEventListener('input',applyFilters);severity.addEventListener('change',applyFilters);category.addEventListener('change',applyFilters);document.getElementById('reset-filter').addEventListener('click',()=>{search.value='';severity.value='all';category.value='all';applyFilters()});
-document.querySelectorAll('[data-module-filter]').forEach(button=>button.addEventListener('click',()=>{category.value=button.dataset.moduleFilter;severity.value='all';search.value='';applyFilters();document.getElementById('issues').scrollIntoView({behavior:'smooth'})}));
-document.querySelectorAll('[data-jump-issue]').forEach(button=>button.addEventListener('click',()=>{const id=button.dataset.jumpIssue;search.value=id;severity.value='all';category.value='all';applyFilters();document.getElementById('issues').scrollIntoView({behavior:'smooth'});setTimeout(()=>{const target=cards.find(card=>card.querySelector('.issue-id').textContent===id);if(target){target.open=true;target.scrollIntoView({behavior:'smooth',block:'center'})}},350)}));
+const cards=[...document.querySelectorAll('.issue-card')];const search=document.getElementById('issue-search');const severity=document.getElementById('severity-filter');const category=document.getElementById('category-filter');const status=document.getElementById('status-filter');const count=document.getElementById('filter-count');const empty=document.getElementById('empty-results');
+const statusMap={active:'当前缺陷',fixed:'已验证修复',pending:'待继续执行',baseline:'基线关闭',withdrawn:'已撤销'};
+const fixedIds=new Set(['BUG-001','BUG-002','BUG-003','BUG-004','BUG-005','BUG-006','BUG-007','BUG-008','BUG-009','BUG-010','BUG-011','BUG-013','BUG-015','BUG-016','BUG-017','BUG-018','BUG-019','BUG-020','BUG-022','BUG-024','BUG-025','BUG-026','BUG-027','BUG-028','BUG-029','BUG-030']);
+const activeIds=new Set(['BUG-021','BUG-023','BUG-033']);const pendingIds=new Set(['BUG-032']);const baselineIds=new Set(['BUG-012']);
+cards.forEach(card=>{const id=card.querySelector('.issue-id')?.textContent.trim();const state=activeIds.has(id)?'active':pendingIds.has(id)?'pending':baselineIds.has(id)?'baseline':fixedIds.has(id)?'fixed':'withdrawn';card.dataset.status=state;const badge=document.createElement('span');badge.className='chip status-chip status-'+state;badge.textContent=statusMap[state];card.querySelector('summary .severity')?.insertAdjacentElement('afterend',badge)});
+function applyFilters(){const q=search.value.trim().toLowerCase();let visible=0;cards.forEach(card=>{const source=(card.dataset.search||card.textContent).toLowerCase();const show=(!q||source.includes(q))&&(severity.value==='all'||card.dataset.severity===severity.value)&&(category.value==='all'||card.dataset.category===category.value)&&(status.value==='all'||card.dataset.status===status.value);card.classList.toggle('hidden',!show);if(show)visible+=1});count.textContent='显示 '+visible+' / '+cards.length+' 项';empty.style.display=visible?'none':'block'}
+search.addEventListener('input',applyFilters);severity.addEventListener('change',applyFilters);category.addEventListener('change',applyFilters);status.addEventListener('change',applyFilters);document.getElementById('reset-filter').addEventListener('click',()=>{search.value='';severity.value='all';category.value='all';status.value='all';applyFilters()});
+document.querySelectorAll('[data-module-filter]').forEach(button=>button.addEventListener('click',()=>{category.value=button.dataset.moduleFilter;severity.value='all';status.value='all';search.value='';applyFilters();document.getElementById('issues').scrollIntoView({behavior:'smooth'})}));
+document.querySelectorAll('[data-jump-issue]').forEach(button=>button.addEventListener('click',()=>{const id=button.dataset.jumpIssue;search.value=id;severity.value='all';category.value='all';status.value='all';applyFilters();document.getElementById('issues').scrollIntoView({behavior:'smooth'});setTimeout(()=>{const target=cards.find(card=>card.querySelector('.issue-id').textContent===id);if(target){target.open=true;target.scrollIntoView({behavior:'smooth',block:'center'})}},350)}));
+applyFilters();
 const navLinks=[...document.querySelectorAll('.sidebar a[href^="#"]')];const sections=[...document.querySelectorAll('main [id]')];const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(link=>link.classList.toggle('current',link.getAttribute('href')==='#'+entry.target.id))}})},{rootMargin:'-15% 0px -75%'});sections.forEach(section=>observer.observe(section));
 </script>
 </body></html>
