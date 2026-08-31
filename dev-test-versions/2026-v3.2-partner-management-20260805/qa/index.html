@@ -42,18 +42,18 @@
   </header>
 
   <section class="section">
-    <div class="section-title"><h2>2026-08-29 本轮回归结果</h2><p>完整用例共 54 条；以下是当前可用于判断“是否验收完成”的唯一口径</p></div>
+    <div class="section-title"><h2>2026-08-31 本轮回归结果</h2><p>完整用例共 54 条；以下是当前可用于判断“是否验收完成”的唯一口径</p></div>
     <div class="metrics">
-      <div class="metric"><strong>28</strong><span>通过 · 已跑且无问题</span></div>
-      <div class="metric danger"><strong>3</strong><span>有问题 · BUG-021、023、033</span></div>
-      <div class="metric warning"><strong>20</strong><span>未跑 · 暂无结论</span></div>
-      <div class="metric danger"><strong>3</strong><span>阻塞 · 公共临客链路待重跑</span></div>
+      <div class="metric"><strong>45</strong><span>通过 · 已跑且无问题</span></div>
+      <div class="metric danger"><strong>5</strong><span>有问题 · 含 2 个 P0</span></div>
+      <div class="metric warning"><strong>1</strong><span>未跑 · 暂无结论</span></div>
+      <div class="metric danger"><strong>3</strong><span>阻塞 · 受 BUG-037 影响</span></div>
     </div>
-    <div class="callout"><strong>当前结论：验收尚未完成，不能说“系统没问题”。</strong>已确认的问题是 3 个 P1：BUG-021（对帐单入口）、BUG-023（不应出现打印按钮）、BUG-033（充值报表首次进入不自动加载）。另有 20 条未跑，3 条公共临客场景因前置订单无法完成而阻塞，需在 BUG-032 前置链路具备后继续执行。</div>
-    <div class="callout" style="margin-top:12px;background:#ecfdf5;border-left-color:#059669;color:#065f46"><strong>历史问题追溯：</strong>31 条历史问题中，已验证修复 26 条、基线关闭 1 条；该统计仅用于追溯旧问题，不作为“完整用例已全部通过”的依据。</div>
-    <div class="callout"><strong>2026-08-29 全新数据回归结论：</strong>仅采信本轮通过浏览器页面亲自创建的伙伴、充值、调账、订单和退款数据。当前确认缺陷为 BUG-021（对帐单仍在报表中心）、BUG-023（成功查询后仍出现方案未定义的打印按钮）、BUG-033（充值报表默认当天但不自动加载），均为 P1；P0 为 0。</div>
-    <div class="callout" style="margin-top:12px;background:#ecfdf5;border-left-color:#059669;color:#065f46"><strong>本轮验证修复：</strong>BUG-004、008、018、022、024、026、029、030。BUG-032 公共临客完整链路、批量导入重复流水号/51 行上限仍待新数据继续执行，不计入当前缺陷。</div>
+    <div class="callout"><strong>当前结论：验收尚未完成。</strong>当前有 4 个缺陷，影响 5 条用例：P0 BUG-034（迁移后退款归属错误）、BUG-037（新公共临客订单未进入待回款候选）；P1 BUG-021、BUG-033。另有 1 条未跑、3 条受 BUG-037 阻塞。</div>
+    <div class="callout" style="margin-top:12px;background:#ecfdf5;border-left-color:#059669;color:#065f46"><strong>本轮已验证：</strong>公共临客可以下单并完成未回款退款，BUG-032 已修复；对帐单成功查询后不再出现独立打印按钮，BUG-023 已修复。批量导入合法行及重复流水号校验已通过。</div>
   </section>
+
+  <section class="section" id="regression-20260831"><div class="section-title"><h2>2026-08-31 浏览器全链路补测</h2><p>只采信本轮通过 QA 页面实际录入、提交和跨端回查的新数据</p></div><div class="card"><div class="markdown-body"><table><thead><tr><th>范围</th><th>已完成验证</th><th>当前有问题 / 未跑 / 阻塞</th></tr></thead><tbody><tr><td>档案、账户与售票校验</td><td>B-01～B-08 全部通过：建档、唯一临客、禁用、额度限制、默认账户切换均已实测。</td><td>—</td></tr><tr><td>后台充值与导入</td><td>R-08～R-11 通过；合法导入生成 <code>RG3508249769984294913</code>，重复流水号被拒绝，51 行导入被拦截并提示“导入非空数据超过五十行”。</td><td>—</td></tr><tr><td>资金流水与迁移</td><td>公共临客新订单 <code>DD260831125029001001s</code> 退款后生成正数退款流水、未见退款调账；F-06 其他收入账户号、账户类型显示“—”，符合方案。</td><td>有问题：F-05 / BUG-034；阻塞：F-04 / BUG-037。</td></tr><tr><td>对帐单与窗口</td><td>按日/按月默认值、标题、到款口径、窗口充值/其他收入记录及点击查询后的充值报表均已回查；BUG-023、BUG-032 修复。</td><td>有问题：S-01 / BUG-021、W-10 / BUG-033、O-05/O-06 / BUG-037；阻塞：T-03、T-06 / BUG-037；未跑：仅 T-02。</td></tr></tbody></table></div></div></section>
 
   <section class="section" id="regression-20260829"><div class="section-title"><h2>2026-08-29 全新数据回归</h2><p>所有数据通过浏览器界面实际录入与点击产生</p></div><div class="card"><div class="markdown-body"><table><thead><tr><th>本轮场景</th><th>单据/结果</th><th>核对结论</th></tr></thead><tbody><tr><td>后台充值与调账</td><td>挂帐 +10.00、预付款 +20.00、挂帐调账 -2.00</td><td>充值申请、详情、资金流水字段一致；调账不保存支付时间，符合规则。</td></tr><tr><td>窗口充值与其他收入</td><td>扫码付 +3.00（柜台号）、银行卡充值 +4.00（POS）、其他收入 +1.00</td><td>前后台记录、详情与报表一致；报表按柜台/POS拆分正确。</td></tr><tr><td>挂帐订单与退款</td><td>订单 DD260829171113001001s，退款 LYAS3505595686276988928</td><td>消费/退款流水的伙伴、账户号、账户类型、支付方式“挂帐”完整正确。</td></tr><tr><td>合作伙伴对帐单</td><td>到款 17.00、负调账消费 2.00、当前挂帐 15.00</td><td>金额勾稽正确；标题带伙伴名、0余额显示“－”。</td></tr></tbody></table><p><strong>说明：</strong>下方“历史问题档案”保留首轮复现细节以便追溯，不参与当前缺陷统计。</p></div></div></section>
 
@@ -66,14 +66,11 @@
     <div class="section-title"><h2>当前确认问题</h2><p>均由本轮浏览器实际操作复现</p></div>
     <div class="module-grid">
       <button class="module-card" type="button" data-jump-issue="BUG-021"><span>BUG-021 · P1</span><strong>合作伙伴对帐单仍在报表中心</strong><small>导航结构与数据无关，持续存在</small></button>
-      <button class="module-card" type="button" data-jump-issue="BUG-023"><span>BUG-023 · P1</span><strong>成功查询后仍出现打印按钮</strong><small>最终方案未定义独立打印按钮</small></button>
       <button class="module-card" type="button" onclick="document.getElementById('bug-033').scrollIntoView({behavior:'smooth'})"><span>BUG-033 · P1</span><strong>充值报表默认当天但不自动加载</strong><small>必须再次点击查询才出现当天新数据</small></button>
+      <button class="module-card" type="button" onclick="document.getElementById('bug-034').scrollIntoView({behavior:'smooth'})"><span>BUG-034 · P0</span><strong>迁移后退款仍回原挂帐账户</strong><small>目标预付款账户未收到退款</small></button>
+      <button class="module-card" type="button" onclick="document.getElementById('bug-037').scrollIntoView({behavior:'smooth'})"><span>BUG-037 · P0</span><strong>公共临客新订单未进入待回款候选</strong><small>阻断回款、已回款退款与迁移</small></button>
     </div>
-    <details class="issue-card" id="bug-033" data-severity="P1" data-category="售票窗口充值" open>
-      <summary><span class="issue-id">BUG-033</span><span class="issue-title">售票窗口充值报表默认当天但不自动加载</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p1">P1</span><span class="chevron" aria-hidden="true">⌄</span></summary>
-      <div class="issue-body markdown-body"><ul><li>前置数据：本轮窗口扫码付充值 <code>RG3505575757704495106</code> 已成功写入。</li><li>复现步骤：进入“合作伙伴 → 充值报表”，日期默认 2026-08-29，不修改任何条件。</li><li>QA实际：首次显示“暂无数据、制单人：-、打印时间：-”；点击“查询”后立即显示本轮 3.00 元扫码付及柜台号。</li><li>方案预期：默认加载当天数据，无需二次点击查询。</li><li>严重级别：P1。</li><li>状态：本轮浏览器实际复现。</li></ul></div>
-    </details>
-    <div class="callout" style="margin-top:14px"><strong>待继续而非缺陷：</strong>BUG-032 公共临时客户出票、回款和迁移需要另建新数据继续完成；批量导入的成功、重复流水号与 51 行上限也待执行。</div>
+    <div class="callout" style="margin-top:14px"><strong>当前未完成项：</strong>未跑仅 T-02；F-04、T-03、T-06 受 BUG-037 阻塞。BUG-023、BUG-032 已验证修复，不在当前问题区。</div>
   </section>
 
   <section class="section" id="issues">
@@ -91,8 +88,18 @@
   </button><button class="module-card" type="button" data-module-filter="订单、退款与临客">
     <span>订单、退款与临客</span><strong>3</strong><small>3 个 P0</small>
   </button></div>
-    <div class="filter-bar"><input id="issue-search" type="search" placeholder="搜索缺陷号、标题、流程、入口或影响"><select id="severity-filter"><option value="all">全部级别</option><option value="P0">仅 P0</option><option value="P1">仅 P1</option></select><select id="category-filter"><option value="all">全部模块</option><option value="资金流水">资金流水</option><option value="档案与账户">档案与账户</option><option value="后台充值与导入">后台充值与导入</option><option value="合作伙伴对帐单">合作伙伴对帐单</option><option value="售票窗口充值">售票窗口充值</option><option value="订单、退款与临客">订单、退款与临客</option></select><select id="status-filter"><option value="all">全部状态</option><option value="active">当前缺陷</option><option value="fixed">已验证修复</option><option value="pending">待继续执行</option><option value="baseline">基线关闭</option></select><button class="btn" id="reset-filter" type="button">重置</button><span class="filter-count" id="filter-count">显示 31 / 31 项</span></div>
+    <div class="filter-bar"><input id="issue-search" type="search" placeholder="搜索缺陷号、标题、流程、入口或影响"><select id="severity-filter"><option value="all">全部级别</option><option value="P0">仅 P0</option><option value="P1">仅 P1</option></select><select id="category-filter"><option value="all">全部模块</option><option value="资金流水">资金流水</option><option value="档案与账户">档案与账户</option><option value="后台充值与导入">后台充值与导入</option><option value="合作伙伴对帐单">合作伙伴对帐单</option><option value="售票窗口充值">售票窗口充值</option><option value="订单、退款与临客">订单、退款与临客</option></select><select id="status-filter"><option value="all">全部状态</option><option value="active">当前缺陷</option><option value="fixed">已验证修复</option><option value="baseline">方案调整后关闭</option></select><button class="btn" id="reset-filter" type="button">重置</button><span class="filter-count" id="filter-count">显示 33 / 33 项</span></div>
     <div id="issue-list">
+  <details class="issue-card" id="bug-033" data-severity="P1" data-category="售票窗口充值" data-search="bug-033 售票窗口充值报表默认当天但不自动加载 充值报表 首次进入 默认当天 查询">
+    <summary><span class="issue-id">BUG-033</span><span class="issue-title">售票窗口充值报表默认当天但不自动加载</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p1">P1</span><span class="chevron" aria-hidden="true">⌄</span></summary>
+    <div class="issue-body markdown-body"><ul><li>前置数据：本轮窗口扫码付充值 <code>RG3505575757704495106</code> 已成功写入。</li><li>复现步骤：进入“合作伙伴 → 充值报表”，日期默认 2026-08-29，不修改任何条件。</li><li>QA实际：首次显示“暂无数据、制单人：-、打印时间：-”；点击“查询”后立即显示本轮 3.00 元扫码付及柜台号。</li><li>方案预期：默认加载当天数据，无需二次点击查询。</li><li>状态：2026-08-31 浏览器实际复现。</li></ul></div>
+  </details>
+  <details class="issue-card" id="bug-034" data-severity="P0" data-category="订单、退款与临客" data-search="bug-034 公共临客订单迁移后退款仍回原挂帐账户 迁移 退款 预付款">
+    <summary><span class="issue-id">BUG-034</span><span class="issue-title">公共临客订单迁移后退款仍回原挂帐账户</span><span class="chip category-chip">订单、退款与临客</span><span class="chip severity p0">P0</span><span class="chevron" aria-hidden="true">⌄</span></summary><div class="issue-body markdown-body"><ul><li>本轮数据：公共临客订单迁移至预付款伙伴 <code>QA迁移0831</code> 后发起退款。</li><li>实际：退款流水及金额回到公共临客挂帐；目标预付款账户未收到对应退款。</li><li>预期：迁移后退款按当前目标伙伴、目标账户归属处理，并可追溯迁移关系。</li><li>影响：退款资金归属与账户余额错误。</li><li>状态：2026-08-31 浏览器实测复现。</li></ul></div>
+  </details>
+  <details class="issue-card" id="bug-037" data-severity="P0" data-category="订单、退款与临客" data-search="bug-037 公共临客新订单未进入待回款候选 回款 退款 迁移">
+    <summary><span class="issue-id">BUG-037</span><span class="issue-title">公共临客新订单未进入待回款候选</span><span class="chip category-chip">订单、退款与临客</span><span class="chip severity p0">P0</span><span class="chevron" aria-hidden="true">⌄</span></summary><div class="issue-body markdown-body"><ul><li>本轮新单：<code>DD260831145706001001s</code>，公共临时客户、挂帐支付。</li><li>实际：后台发起挂帐回款，点击“选择待回款订单”后没有该新单；点击“刷新”仍未出现。</li><li>影响：已回款退款、部分回款校验及迁移至已有伙伴均无法继续。</li><li>状态：2026-08-31 浏览器实测复现。</li></ul></div>
+  </details>
   <details class="issue-card" data-severity="P1" data-category="资金流水" data-search="bug-001 资金流水缺少“调账”标签 fl-13 资金流水与详情 pc后台 → 合作伙伴管理 → 资金流水 无法按调账独立查询人工调账、调账-往来及退款调账，验收与财务追溯入口缺失。">
     <summary>
       <span class="issue-id">BUG-001</span>
@@ -1266,7 +1273,7 @@
   </section>
 
   <section class="section" id="test-plan">
-    <div class="section-title"><h2>完整测试用例</h2><p>按模块展开，逐条执行和复测</p></div>
+    <div class="section-title"><h2>完整测试用例</h2><p>最右两列为 2026-08-31 当前唯一口径；历史轮次不作为当前状态</p></div>
     <details class="plan-block"><summary>后台：合作伙伴档案与账户<span>展开测试用例</span></summary><div class="markdown-body"><table>
 <thead>
 <tr>
@@ -1665,6 +1672,13 @@
 <td>当前售票员范围；按伙伴/负责人/类型汇总；银行卡按POS、扫码付按柜台号拆列。</td>
 <td>通过</td>
 <td>POS <code>QA-POS-20260825-01</code>、柜台 <code>QA-GT-20260825-01</code> 均拆列；当前售票员总计0.04，后台新增未进入。</td>
+</tr>
+<tr>
+<td>W-10</td>
+<td>首次进入充值报表，不点击查询。</td>
+<td>默认当天日期后应自动加载当天当前售票员的统计数据。</td>
+<td>有问题</td>
+<td>首次进入为空，必须再次点击“查询”才出现当天数据，BUG-033。</td>
 </tr>
 </tbody></table>
 </div></details>
@@ -3031,14 +3045,24 @@
 <button class="quick" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
 <script>
 const cards=[...document.querySelectorAll('.issue-card')];const search=document.getElementById('issue-search');const severity=document.getElementById('severity-filter');const category=document.getElementById('category-filter');const status=document.getElementById('status-filter');const count=document.getElementById('filter-count');const empty=document.getElementById('empty-results');
-const statusMap={active:'当前缺陷',fixed:'已验证修复',pending:'待继续执行',baseline:'基线关闭',withdrawn:'已撤销'};
-const fixedIds=new Set(['BUG-001','BUG-002','BUG-003','BUG-004','BUG-005','BUG-006','BUG-007','BUG-008','BUG-009','BUG-010','BUG-011','BUG-013','BUG-015','BUG-016','BUG-017','BUG-018','BUG-019','BUG-020','BUG-022','BUG-024','BUG-025','BUG-026','BUG-027','BUG-028','BUG-029','BUG-030']);
-const activeIds=new Set(['BUG-021','BUG-023','BUG-033']);const pendingIds=new Set(['BUG-032']);const baselineIds=new Set(['BUG-012']);
-cards.forEach(card=>{const id=card.querySelector('.issue-id')?.textContent.trim();const state=activeIds.has(id)?'active':pendingIds.has(id)?'pending':baselineIds.has(id)?'baseline':fixedIds.has(id)?'fixed':'withdrawn';card.dataset.status=state;const badge=document.createElement('span');badge.className='chip status-chip status-'+state;badge.textContent=statusMap[state];card.querySelector('summary .severity')?.insertAdjacentElement('afterend',badge)});
+const statusMap={active:'当前缺陷',fixed:'已验证修复',baseline:'方案调整后关闭'};
+const fixedIds=new Set(['BUG-001','BUG-002','BUG-003','BUG-004','BUG-005','BUG-006','BUG-007','BUG-008','BUG-009','BUG-010','BUG-011','BUG-013','BUG-015','BUG-016','BUG-017','BUG-018','BUG-019','BUG-020','BUG-022','BUG-023','BUG-024','BUG-025','BUG-026','BUG-027','BUG-028','BUG-029','BUG-030','BUG-032']);
+const activeIds=new Set(['BUG-021','BUG-033','BUG-034','BUG-037']);const baselineIds=new Set(['BUG-012']);
+ cards.forEach(card=>{const id=card.querySelector('.issue-id')?.textContent.trim();const state=activeIds.has(id)?'active':baselineIds.has(id)?'baseline':'fixed';card.dataset.status=state;const badge=document.createElement('span');badge.className='chip status-chip status-'+state;badge.textContent=statusMap[state];card.querySelector('summary .severity')?.insertAdjacentElement('afterend',badge)});
 function applyFilters(){const q=search.value.trim().toLowerCase();let visible=0;cards.forEach(card=>{const source=(card.dataset.search||card.textContent).toLowerCase();const show=(!q||source.includes(q))&&(severity.value==='all'||card.dataset.severity===severity.value)&&(category.value==='all'||card.dataset.category===category.value)&&(status.value==='all'||card.dataset.status===status.value);card.classList.toggle('hidden',!show);if(show)visible+=1});count.textContent='显示 '+visible+' / '+cards.length+' 项';empty.style.display=visible?'none':'block'}
 search.addEventListener('input',applyFilters);severity.addEventListener('change',applyFilters);category.addEventListener('change',applyFilters);status.addEventListener('change',applyFilters);document.getElementById('reset-filter').addEventListener('click',()=>{search.value='';severity.value='all';category.value='all';status.value='all';applyFilters()});
 document.querySelectorAll('[data-module-filter]').forEach(button=>button.addEventListener('click',()=>{category.value=button.dataset.moduleFilter;severity.value='all';status.value='all';search.value='';applyFilters();document.getElementById('issues').scrollIntoView({behavior:'smooth'})}));
 document.querySelectorAll('[data-jump-issue]').forEach(button=>button.addEventListener('click',()=>{const id=button.dataset.jumpIssue;search.value=id;severity.value='all';category.value='all';status.value='all';applyFilters();document.getElementById('issues').scrollIntoView({behavior:'smooth'});setTimeout(()=>{const target=cards.find(card=>card.querySelector('.issue-id').textContent===id);if(target){target.open=true;target.scrollIntoView({behavior:'smooth',block:'center'})}},350)}));
+const currentCases={
+ 'B-01':['通过','新建 <code>QA企业0831</code>，档案及挂帐/预付款账户均生成。'],'B-02':['通过','新建 <code>QA个人0831</code>，账户结构及名称唯一校验正确。'],'B-03':['通过','重复新建被提示公共临时客户已存在。'],'B-04':['通过','禁用后售票窗口不可选，后台财务查询仍可用；已恢复启用。'],'B-05':['通过','挂帐可用额度不足时出票被明确拦截。'],'B-06':['通过','预付款限额开启时 0 余额拦截；关闭后可出票并生成消费流水。'],'B-07':['通过','源账户余额非 0 时切换被拦截，未产生资金记录。'],'B-08':['通过','源账户清零后，默认账户类型切换成功。'],
+ 'R-01':['通过','筛选展开/收起及字段集已回归，原 BUG-015 已修复。'],'R-02':['通过','售票窗口充值的支付方式、柜台/POS、时间、状态均可回查。'],'R-03':['通过','后台详情字段完整，原 BUG-019 已修复。'],'R-04':['通过','浏览器实际新增挂帐 +10.00、预付款 +20.00；记录与流水一致。'],'R-05':['通过','新增挂帐调账 -2.00；未保存支付时间、付款人、支付方式。'],'R-06':['通过','调账-往来不再展示错误支付时间，原 BUG-018 已修复。'],'R-07':['通过','其他收入生成独立记录与流水，账户余额未变。'],'R-08':['通过','已核对模板首列、填写说明、第 6 行起及 50 行上限。'],'R-09':['通过','<code>QA-IMP-20260831-001</code> 导入成功，生成 <code>RG3508249769984294913</code> 并回查流水。'],'R-10':['通过','重复导入成功 0、失败 1，提示“线下流水号已使用”。'],'R-11':['通过','51 行文件被拦截并提示“导入非空数据超过五十行”。'],
+ 'F-01':['通过','标签及调账筛选已符合方案，原 BUG-001 已修复。'],'F-02':['通过','默认筛选与展开逻辑已符合方案，原 BUG-002 已修复。'],'F-03':['通过','充值流水的金额、支付方式、POS、售票员/窗口备注已核对。'],'F-04':['阻塞','受 BUG-037 阻塞：新建公共临客订单未进入待回款候选，无法完成已回款退款前置。'],'F-05':['有问题','BUG-034：迁移至预付款伙伴后退款仍归公共临客挂帐。'],'F-06':['通过','其他收入筛选隐藏账户号/账户类型，列表两列显示“—”，符合方案。'],
+ 'T-01':['通过','候选订单入口及提示已核对。'],'T-02':['未跑','不同客户/负责人快照的多笔订单二次确认尚未用本轮新数据验证。'],'T-03':['阻塞','受 BUG-037 阻塞：新订单未进入待迁移候选。'],'T-04':['通过','迁移至新建 <code>QA迁移0831</code> 成功，档案和账户已生成。'],'T-05':['通过','订单详情展示目标伙伴及合作伙伴变更记录。'],'T-06':['阻塞','受 BUG-037 阻塞：无法建立迁移至已有伙伴的前置订单。'],
+ 'S-01':['有问题','BUG-021：入口仍在报表中心，未进入合作伙伴管理菜单。'],'S-02':['通过','按日、按月默认范围均已回归核对。'],'S-03':['通过','未选伙伴查询时的标题、空态与打印时间逻辑已验证。'],'S-04':['通过','查询标题已带合作伙伴名称，原 BUG-022 已修复。'],'S-05':['通过','日消费、到款、调账口径均已核对。'],'S-06':['通过','0 余额显示“－”，原 BUG-024 已修复。'],'S-07':['通过','成功查询后未再出现独立打印按钮，BUG-023 已修复。'],
+ 'W-01':['通过','固定伙伴回填及账户支付方式锁定已验证。'],'W-02':['通过','扫码付显示柜台号，不显示现金找零。'],'W-03':['通过','银行卡显示 POS 编号，不显示现金找零。'],'W-04':['通过','充值写入与账户变更闭环已回查。'],'W-05':['通过','记录默认日期、申请人、状态及完成时间已回归。'],'W-06':['通过','详情完整字段及柜台/POS位置已回归。'],'W-07':['通过','充值与其他收入独立生成，账户仅按充值额变更。'],'W-08':['通过','其他收入记录、详情、状态和完成时间已回归。'],'W-09':['通过','报表按 POS/柜台拆列，金额勾稽正确。'],'W-10':['有问题','BUG-033：首次进入报表为空，需再次点击查询才加载当天数据。'],
+ 'O-01':['通过','支付确认前不创建订单、不变更账户。'],'O-02':['通过','固定伙伴挂帐订单、消费流水及账户扣减闭环已回归。'],'O-03':['通过','正常退款流水与账户回补已回归。'],'O-04':['通过','公共临客可下单并完成未回款退款；未生成退款调账，BUG-032 已修复。'],'O-05':['有问题','BUG-037：新订单未进入待回款候选，无法完成已回款退款。'],'O-06':['有问题','BUG-037：无法选择新订单，无法继续验证部分回款拦截。']
+};
+document.querySelectorAll('#test-plan .plan-block > .markdown-body > table tbody tr').forEach(row=>{const id=row.cells[0]?.textContent.trim();const result=currentCases[id];if(!result)return;row.cells[3].textContent=result[0];row.cells[4].innerHTML=result[1];row.dataset.currentStatus=result[0]});
 applyFilters();
 const navLinks=[...document.querySelectorAll('.sidebar a[href^="#"]')];const sections=[...document.querySelectorAll('main [id]')];const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(link=>link.classList.toggle('current',link.getAttribute('href')==='#'+entry.target.id))}})},{rootMargin:'-15% 0px -75%'});sections.forEach(section=>observer.observe(section));
 </script>
