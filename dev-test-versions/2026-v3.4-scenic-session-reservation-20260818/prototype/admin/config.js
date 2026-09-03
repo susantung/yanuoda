@@ -62,7 +62,7 @@
   let savedActivitySnapshot = '';
   function restoreActivityDraft(target,saved){
     if(!target||!saved)return;
-    const operationalStats={totalPeople:target.totalPeople,todayPeople:target.todayPeople};
+    const operationalStats={totalPeople:target.totalPeople};
     Object.assign(target,saved,operationalStats);
   }
   function captureSavedState(){savedConfigSnapshot=JSON.stringify(config);savedActivitySnapshot=JSON.stringify(currentActivity||{});}
@@ -389,7 +389,7 @@
       const time=new Date(),pad=value=>String(value).padStart(2,'0');
       const now=`${time.getFullYear()}-${pad(time.getMonth()+1)}-${pad(time.getDate())} ${pad(time.getHours())}:${pad(time.getMinutes())}`;
       currentActivity.id=Math.max(0,...activities.map(item=>Number(item.id)||0))+1;
-      Object.assign(currentActivity,{image:null,coverImage:null,totalPeople:0,todayPeople:0,created:now,updated:now,creator:'当前管理员',updater:'当前管理员'});
+      Object.assign(currentActivity,{image:null,coverImage:null,totalPeople:0,created:now,updated:now,creator:'当前管理员',updater:'当前管理员'});
     }
     const saved=currentActivity.id?readActivityDrafts()[currentActivity.id]:null;
     const restored=saved?.config?JSON.parse(JSON.stringify(saved.config)):(isNewActivity?buildNewActivityConfig():JSON.parse(defaultActivityConfigSnapshot));

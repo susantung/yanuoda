@@ -11,11 +11,11 @@ window.resolveAdminAsset = resolveAdminAsset;
 
 const visitorCatalogVersion = '20260825-status-4';
 const activities = [
-  { id: 1, name: '呀诺达溪降体验预约', status: 'published', image:'../../scenic-reservation/preview/assets/activity-hero.jpg', coverImage:'../../scenic-reservation/preview/assets/activity-hero.jpg', heroBadge:'无需验票 · 免费预约', heroSubtitle:'门票已包含溪降体验，请提前预约心仪时段。', contactName:'溪降接待处', contactPhone:'0898-8388 3333', totalPeople: 128600, todayPeople: 10000, created: '2026-08-11 16:28', updated: '2026-08-14 09:42', creator: '景区管理员-苏珊', updater: '苏珊' },
-  { id: 2, name: '雨林观景线路预约', status: 'published', image:null, totalPeople: 96, todayPeople: 18, created: '2026-08-02 10:16', updated: '2026-08-13 18:05', creator: '运营管理员-林晓', updater: '林晓' },
-  { id: 4, name: '呀诺达热带雨林高空滑索亲子探险体验项目预约活动暑期特别专场季', status: 'published', image:null, totalPeople: 735, todayPeople: 9, created: '2026-07-30 11:08', updated: '2026-08-12 16:45', creator: '景区管理员-陈晨', updater: '陈晨' },
-  { id: 3, name: 'VIP 私家团场次预约', status: 'offline', image:null, totalPeople: 42, todayPeople: 0, created: '2026-07-28 14:09', updated: '2026-08-12 11:30', creator: '景区管理员-苏珊', updater: '苏珊' },
-  { id: 5, name: '测试活动｜已下架且无预约可删除', status: 'offline', image:null, totalPeople: 0, todayPeople: 0, created: '2026-08-19 15:20', updated: '2026-08-19 15:20', creator: '当前管理员', updater: '当前管理员' }
+  { id: 1, name: '呀诺达溪降体验预约', status: 'published', image:'../../scenic-reservation/preview/assets/activity-hero.jpg', coverImage:'../../scenic-reservation/preview/assets/activity-hero.jpg', heroBadge:'无需验票 · 免费预约', heroSubtitle:'门票已包含溪降体验，请提前预约心仪时段。', contactName:'溪降接待处', contactPhone:'0898-8388 3333', totalPeople: 128600, created: '2026-08-11 16:28', updated: '2026-08-14 09:42', creator: '景区管理员-苏珊', updater: '苏珊' },
+  { id: 2, name: '雨林观景线路预约', status: 'published', image:null, totalPeople: 96, created: '2026-08-02 10:16', updated: '2026-08-13 18:05', creator: '运营管理员-林晓', updater: '林晓' },
+  { id: 4, name: '呀诺达热带雨林高空滑索亲子探险体验项目预约活动暑期特别专场季', status: 'published', image:null, totalPeople: 735, created: '2026-07-30 11:08', updated: '2026-08-12 16:45', creator: '景区管理员-陈晨', updater: '陈晨' },
+  { id: 3, name: 'VIP 私家团场次预约', status: 'offline', image:null, totalPeople: 42, created: '2026-07-28 14:09', updated: '2026-08-12 11:30', creator: '景区管理员-苏珊', updater: '苏珊' },
+  { id: 5, name: '测试活动｜已下架且无预约可删除', status: 'offline', image:null, totalPeople: 0, created: '2026-08-19 15:20', updated: '2026-08-19 15:20', creator: '当前管理员', updater: '当前管理员' }
 ];
 function visitorCatalogItem(source){return {id:String(source.id),name:source.name,status:source.status==='published'?'published':'offline',image:resolveAdminAsset(source.image)||'',coverImage:resolveAdminAsset(source.coverImage)||'',heroBadge:source.heroBadge||'',heroSubtitle:source.heroSubtitle||'',updated:source.updated||''};}
 function syncVisitorActivityCatalog(){
@@ -49,6 +49,19 @@ const bookings = [
   { id:14, activityId:1, status:'active', number:'035', name:'杜一凡', phone:'13200132007', date:'2026-08-20', session:'09:30-10:30', sessionName:'溪降1场', category:'常规溪降', project:'常规溪降 A 线', people:2, created:'08-19 15:31', singleChoice:'需要教练陪同', multiChoice:'成人防滑鞋、防水储物袋', customNumber:'2', customDate:'2026-08-20', singleText:'游客中心集合', multiText:'需要教练讲解安全事项。' },
   { id:15, activityId:1, status:'active', number:'036', name:'蒋文', phone:'13200132008', date:'2026-08-20', session:'09:30-10:30', sessionName:'溪降1场', category:'常规溪降', project:'常规溪降 B 线', people:1, created:'08-19 15:45', singleChoice:'无需教练陪同', multiChoice:'成人防滑鞋', customNumber:'1', customDate:'2026-08-20', singleText:'酒店接驳点集合', multiText:'无。' }
 ];
+
+// 原型固定在 2026-08-19 这个业务日演示。今日预约只按预约游玩日期取数：
+// 同日、当前有效的预约实际参与人数之和；不按创建/提交日期取数。
+const prototypeBusinessDate = '2026-08-19';
+function refreshTodayPeople() {
+  activities.forEach(activity => {
+    activity.todayPeople = bookings
+      .filter(item => item.activityId === activity.id && item.status === 'active' && item.date === prototypeBusinessDate)
+      .reduce((sum, item) => sum + Number(item.people || 0), 0);
+  });
+}
+window.refreshTodayPeople = refreshTodayPeople;
+refreshTodayPeople();
 
 function showToast(message) {
   const toast = $('#toast'); toast.textContent = message; toast.classList.add('show');
@@ -209,7 +222,7 @@ document.addEventListener('click', event => {
   const records = event.target.closest('[data-records]');
   if (records) {
     currentActivity = activities.find(item => item.id === Number(records.dataset.records)); recordStatus = 'active'; recordView = 'compact'; $('#recordSearch').value = '';
-    $('#filterDateMode').value = 'single'; $('#filterSingleDate').value = '2026-08-19'; $('#filterSingleDateWrap').hidden = false; $('#filterSession').value = ''; $('#filterCategory').value = ''; $('#filterProject').value = ''; $('#recordSort').value = 'created-desc';
+    $('#filterDateMode').value = 'single'; $('#filterSingleDate').value = '2026-08-19'; $('#filterSingleDateWrap').hidden = false; $('#filterSessionWrap').hidden = false; $('#filterSession').value = ''; $('#filterCategory').value = ''; $('#filterProject').value = ''; $('#recordSort').value = 'created-desc';
     $('#recordFilterPanel').hidden = true; $('#recordFilterToggle').setAttribute('aria-expanded','false'); $('#recordFilterToggle i').textContent = '⌄';
     $$('[data-record-status]').forEach(item => item.classList.toggle('active',item.dataset.recordStatus==='active'));
     $$('[data-record-view]').forEach(item => item.classList.toggle('active',item.dataset.recordView==='compact'));
