@@ -1,9 +1,13 @@
 const activities=[
-  {id:'ACT000001',name:'呀诺达溪降体验预约',status:'已发布',total:128600,today:32,updated:'2026-08-19 18:23:00',updater:'苏珊',created:'2026-08-18 09:30:12',creator:'苏珊'},
-  {id:'ACT000002',name:'雨林观景线路预约',status:'已发布',total:96,today:18,updated:'2026-08-13 18:05:00',updater:'林晓',created:'2026-08-11 10:16:30',creator:'林晓'},
-  {id:'ACT000003',name:'VIP 私家团场次预约',status:'已发布',total:42,today:0,updated:'2026-08-12 11:30:00',updater:'苏珊',created:'2026-08-10 14:21:08',creator:'苏珊'},
-  {id:'ACT000004',name:'测试活动｜已下架且无预约',status:'已下架',total:0,today:0,updated:'2026-08-19 15:20:00',updater:'当前管理员',created:'2026-08-19 14:05:11',creator:'当前管理员'}
+  {id:'ACT000001',name:'呀诺达溪降体验预约',status:'已发布',total:128600,updated:'2026-08-19 18:23:00',updater:'苏珊',created:'2026-08-18 09:30:12',creator:'苏珊'},
+  {id:'ACT000002',name:'雨林观景线路预约',status:'已发布',total:96,updated:'2026-08-13 18:05:00',updater:'林晓',created:'2026-08-11 10:16:30',creator:'林晓'},
+  {id:'ACT000003',name:'VIP 私家团场次预约',status:'已发布',total:42,updated:'2026-08-12 11:30:00',updater:'苏珊',created:'2026-08-10 14:21:08',creator:'苏珊'},
+  {id:'ACT000004',name:'测试活动｜已下架且无预约',status:'已下架',total:0,updated:'2026-08-19 15:20:00',updater:'当前管理员',created:'2026-08-19 14:05:11',creator:'当前管理员'}
 ];
+// PC 原型与移动管理端使用同一口径：仅累计预约游玩日期为原型业务日且当前有效的实际参与人数。
+const prototypeBusinessDate='2026-08-19';
+const validPlayDatePeople={ACT000001:{'2026-08-19':5},ACT000002:{},ACT000003:{},ACT000004:{}};
+activities.forEach(activity=>{activity.today=Number(validPlayDatePeople[activity.id]?.[prototypeBusinessDate]||0);});
 const rolePools={
   管理员:[{id:'AD001',name:'苏珊',phone:'15677523123',date:'2026-08-18 09:12:20',status:'启用'},{id:'AD002',name:'王绘明',phone:'18380435205',date:'2026-08-19 11:26:10',status:'启用'},{id:'AD003',name:'赵敏',phone:'13988668866',date:'2026-08-20 08:40:25',status:'禁用'}],
   运营人员:[{id:'OP001',name:'林晓',phone:'13800135608',date:'2026-08-18 10:20:16',status:'启用'},{id:'OP002',name:'陈晨',phone:'18612343142',date:'2026-08-19 09:08:32',status:'启用'},{id:'OP003',name:'李青',phone:'13555667788',date:'2026-08-20 09:05:16',status:'启用'}]
