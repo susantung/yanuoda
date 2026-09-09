@@ -16,12 +16,16 @@ const activityBindings={管理员:{ACT000001:['AD001','AD002'],ACT000002:['AD002
 const bindingDates={ACT000001:{OP001:'2026-08-18 10:28:06',OP002:'2026-08-19 09:12:44'},ACT000002:{OP001:'2026-08-18 11:05:30'},ACT000003:{OP002:'2026-08-19 09:20:12'}};
 let currentActivity=activities[0];
 let currentRole='管理员';
+let smsShortLinkGenerated=false;
+let smsShortLinkExpiry=null;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 function toast(text){const el=$('#toast');el.textContent=text;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1600)}
+function renderSmsShortLinkExpiry(){const yyyy=smsShortLinkExpiry.getFullYear(),mm=String(smsShortLinkExpiry.getMonth()+1).padStart(2,'0'),dd=String(smsShortLinkExpiry.getDate()).padStart(2,'0');$('#smsShortLinkExpiry').textContent=`短链接有效期：${yyyy}-${mm}-${dd}`;$('#smsShortLinkExpiry').classList.remove('hidden')}
 function renderActivities(list=activities){$('#activityRows').innerHTML=list.map(a=>`<tr><td>${a.id}</td><td title="${a.name}">${a.name}</td><td><span class="status ${a.status==='已发布'?'published':'offline'}">${a.status}</span></td><td>${a.total}</td><td>${a.today}</td><td>${a.updated}</td><td>${a.updater}</td><td>${a.created}</td><td>${a.creator}</td><td class="operation"><button class="link-btn" data-promo="${a.id}">推广</button><button class="link-btn" data-operator="${a.id}">运营管理</button></td></tr>`).join('');$('#totalText').textContent=`共 ${list.length} 条`}
 function openModal(id){$(id).classList.add('open');$(id).setAttribute('aria-hidden','false')}
 function closeModal(el){const modal=el.closest('.modal');modal.classList.remove('open');modal.setAttribute('aria-hidden','true')}
-function setPromotion(a){currentActivity=a;$('#miniPath').value=`/pages/scenicReservation/index?activityId=${a.id}`;$('#h5Path').value=`https://promotion.elong.com/jingqu/scenic-h5/prod/index.html#/h5JumpMiniprogram?business=scenicReservation&activityId=${a.id}`}
+function resetSmsShortLink(){smsShortLinkGenerated=false;smsShortLinkExpiry=null;$('#smsShortLink').value='';$('#copySmsShortLink').disabled=true;$('#generateSmsShortLink').textContent='生成';$('#smsShortLinkExpiry').textContent='';$('#smsShortLinkExpiry').classList.add('hidden')}
+function setPromotion(a){currentActivity=a;$('#miniPath').value=`/pages/scenicReservation/index?activityId=${a.id}`;$('#h5Path').value=`https://promotion.elong.com/jingqu/scenic-h5/prod/index.html#/h5JumpMiniprogram?business=scenicReservation&activityId=${a.id}`;resetSmsShortLink()}
 function currentPool(){return rolePools[currentRole]}
 function boundOperators(){return (activityBindings[currentRole][currentActivity.id]||[]).map(id=>currentPool().find(x=>x.id===id)).filter(Boolean)}
 function renderOperators(list=boundOperators()){$('#operatorRows').innerHTML=list.length?list.map(o=>`<tr><td>${o.name}</td><td>${o.phone}</td><td>${bindingDates[currentActivity.id]?.[o.id]||'2026-08-20 10:00:00'}</td><td><span class="status ${o.status==='启用'?'published':'offline'}">${o.status}</span></td></tr>`).join(''):`<tr><td colspan="4" style="text-align:center;color:#909399">暂无已配置人员</td></tr>`;$('#operatorTotal').textContent=`共 ${list.length} 条`}
@@ -34,6 +38,10 @@ document.addEventListener('click',e=>{
   if(e.target.matches('[data-close]'))closeModal(e.target);if(e.target.classList.contains('modal')){e.target.classList.remove('open');e.target.setAttribute('aria-hidden','true')}
   const tab=e.target.closest('[data-promo-tab]');if(tab){$$('[data-promo-tab]').forEach(x=>x.classList.toggle('active',x===tab));$$('[data-promo-panel]').forEach(x=>x.classList.toggle('hidden',x.dataset.promoPanel!==tab.dataset.promoTab))}
   const cp=e.target.closest('[data-copy]');if(cp){navigator.clipboard?.writeText($('#'+cp.dataset.copy).value);toast('已复制')}
+  if(e.target.id==='generateSmsShortLink'){
+    if(!smsShortLinkGenerated){$('#smsShortLink').value=`https://s.17u.cn/ar/${currentActivity.id.slice(-6)}`;smsShortLinkExpiry=new Date();smsShortLinkExpiry.setFullYear(smsShortLinkExpiry.getFullYear()+1);renderSmsShortLinkExpiry();$('#copySmsShortLink').disabled=false;$('#generateSmsShortLink').textContent='续期';smsShortLinkGenerated=true;toast('短信短链接已生成')}
+    else{smsShortLinkExpiry.setFullYear(smsShortLinkExpiry.getFullYear()+1);renderSmsShortLinkExpiry();toast('短信短链接已续期')}
+  }
   if(e.target.matches('[data-action="downloadQr"]'))toast('已按当前尺寸生成下载文件');if(e.target.matches('[data-action="refreshQr"]'))toast('小程序码已刷新');
   if(e.target.id==='addOperator'){renderBindRows();openModal('#bindOperatorModal')}
   if(e.target.id==='saveBindings'){activityBindings[currentRole][currentActivity.id]=$$('[data-bind-id]:checked').map(x=>x.dataset.bindId);renderOperators();$('#bindOperatorModal').classList.remove('open');toast(`活动/场次${currentRole}已更新`)}
