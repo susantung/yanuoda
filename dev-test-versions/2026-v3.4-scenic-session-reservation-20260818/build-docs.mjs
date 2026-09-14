@@ -16,7 +16,7 @@ const headings = [...markdown.matchAll(/^##\s+(.+)$/gm)].map((match) => ({
   id: match[1].replace(/[^\w\u4e00-\u9fa5]+/g, '-').replace(/^-|-$/g, '')
 }));
 
-const css = `${fs.readFileSync(path.join(here, 'document-style.css'), 'utf8')}\n.doc .change-sms,.doc .change-cancel{margin:14px 0;padding:12px 15px;border-left:4px solid #dc2626;background:#fff1f2;color:#b42318}.doc .change-sms :is(h3,h4,strong,code),.doc .change-cancel :is(h3,h4,strong,code){color:#b42318}.doc .change-sms code,.doc .change-cancel code{background:#ffe4e6}`;
+const css = `${fs.readFileSync(path.join(here, 'document-style.css'), 'utf8')}\n.doc .change-sms,.doc .change-cancel,.doc .change-subscribe{margin:14px 0;padding:12px 15px;border-left:4px solid #dc2626;background:#fff1f2;color:#b42318}.doc .change-sms :is(h3,h4,strong,code),.doc .change-cancel :is(h3,h4,strong,code),.doc .change-subscribe :is(h3,h4,strong,code){color:#b42318}.doc .change-sms code,.doc .change-cancel code,.doc .change-subscribe code{background:#ffe4e6}`;
 
 const head = (title) => `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title><style>${css}</style></head>`;
 const external = 'target="_blank" rel="noopener noreferrer"';
