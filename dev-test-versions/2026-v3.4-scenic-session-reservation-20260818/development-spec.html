@@ -1,5 +1,6 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V3.4 景区场次预约管理｜完整 PRD</title><style>:root{--ink:#201a2c;--muted:#71697d;--purple:#7c3aed;--purple2:#4c1d95;--soft:#f5f3ff;--line:#e8e2f1;--side:272px;--shadow:0 8px 30px rgba(58,35,91,.09)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f3f0f7;color:var(--ink);line-height:1.75}.sidebar{position:fixed;right:0;top:0;width:var(--side);height:100vh;overflow:auto;padding:26px 0;background:linear-gradient(180deg,#1e1b4b,#312e81 58%,#4c1d95);z-index:20}.sidebar h2{padding:0 22px;margin:0 0 16px;color:#e9d5ff;font-size:15px;letter-spacing:1px}.sidebar a{display:block;padding:9px 22px;color:#c4b5fd;text-decoration:none;font-size:14px;border-left:3px solid transparent}.sidebar a:hover,.sidebar a.current{color:#fff;background:#ffffff14;border-left-color:#a78bfa}.sidebar .group{margin:13px 22px 5px;color:#a5b4fc;font-size:11px;letter-spacing:1px}.main{width:calc(100% - var(--side));margin-right:var(--side);padding:28px clamp(20px,2.4vw,44px) 70px;max-width:none}.hero{padding:42px 46px;margin-bottom:28px;border-radius:20px;color:#fff;background:linear-gradient(135deg,#1e1b4b,#4c1d95 62%,#7c3aed);box-shadow:0 16px 50px #6d28d933}.hero h1{margin:0 0 8px;font-size:31px;line-height:1.35;color:#fff}.hero p{margin:0;color:#f1efff}.eyebrow{font-size:12px;letter-spacing:2px;color:#ded7ff;margin-bottom:10px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.hero .btn{display:inline-block;padding:8px 15px;border-radius:9px;background:#fff;border:1px solid #fff;color:#4c1d95!important;text-decoration:none;font-size:13px;font-weight:700}.hero .btn:hover{background:#ede9fe;border-color:#ede9fe}.hero .btn.secondary{background:#ffffff14;border-color:#ffffff66;color:#fff!important}.section{margin:0 0 34px;scroll-margin-top:20px}.section h2{font-size:23px;margin:0 0 14px;color:#211a49}.card{background:#fff;padding:25px 29px;margin:0 0 18px;border-radius:15px;border-left:4px solid var(--purple);box-shadow:var(--shadow)}.lead{font-size:16px;color:#534b60}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.metric{text-align:center;background:#fff;padding:20px;border-radius:14px;box-shadow:var(--shadow)}.metric strong{display:block;font-size:29px;color:var(--purple)}.entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.entry{display:block;padding:22px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--ink);text-decoration:none;box-shadow:var(--shadow)}.entry:hover{border-color:#a78bfa}.entry b{display:block;margin-bottom:4px;color:#4c1d95;font-size:17px}.entry span{color:var(--muted);font-size:13px}.doc{padding:25px 29px}.doc h1{display:none}.doc h2{margin:42px 0 16px;padding-top:10px;border-top:1px solid var(--line);font-size:25px;color:#211a49;scroll-margin-top:20px}.doc h3{font-size:19px;color:#4c1d95;margin:29px 0 10px}.doc h4{font-size:16px;color:#6d28d9;margin:21px 0 8px}.doc p{margin:10px 0}.doc strong{color:#35205f}.doc code{padding:2px 5px;border-radius:5px;background:#f2eff8;font-family:SFMono-Regular,Consolas,monospace;font-size:.92em}.doc pre code{padding:0;border-radius:0;background:transparent;color:inherit;font-size:inherit}.doc pre{padding:16px;background:#1f1930;color:#e9d5ff;border-radius:10px;overflow:auto;line-height:1.6}.doc blockquote{margin:12px 0;padding:10px 16px;background:#faf5ff;border-left:3px solid #a78bfa}.doc img{max-width:100%;height:auto}.doc table,table{width:100%;border-collapse:collapse;background:#fff;font-size:13px}.doc table{display:block;max-width:100%;overflow:auto}.doc th,th{background:#ede9fe;color:#4c1d95;text-align:left;white-space:nowrap}.doc th,.doc td,th,td{padding:10px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top}.doc tr:nth-child(even) td,tr:nth-child(even) td{background:#fcfbfe}.top{position:fixed;right:calc(var(--side) + 26px);bottom:24px;width:42px;height:42px;border:0;border-radius:12px;background:var(--purple);color:#fff;cursor:pointer;box-shadow:var(--shadow)}a{color:#6d28d9}@media(max-width:950px){:root{--side:220px}.main{padding:24px 20px}.grid{grid-template-columns:1fr 1fr}.hero{padding:30px}}@media(max-width:720px){.sidebar{display:none}.main{width:100%;margin-right:0;padding:18px}.grid,.entry-grid{grid-template-columns:1fr}.top{right:18px}.hero h1{font-size:26px}}
-</style></head><body><aside class="sidebar"><h2>景区场次预约 V3.4</h2><div class="group">版本迭代需求</div><a href="../index.html">← 返回版本列表</a><a class="" href="index.html">版本总览</a><a class="current" href="development-spec.html">完整 PRD</a><a href="prototype-center.html">原型中心</a><div class="group">原型入口</div><a href="prototype/admin/index.html" target="_blank" rel="noopener noreferrer">小程序管理端原型 ↗</a><a href="prototype/visitor/index.html" target="_blank" rel="noopener noreferrer">游客端完整原型 ↗</a><a href="prototype/pc/index.html" target="_blank" rel="noopener noreferrer">PC 后台原型 ↗</a><div class="group">PRD 目录</div><a href="development-spec.html#1-文档维护规则">1. 文档维护规则</a><a href="development-spec.html#2-项目背景">2. 项目背景</a><a href="development-spec.html#3-产品目标">3. 产品目标</a><a href="development-spec.html#4-用户-入口与景区上下文">4. 用户、入口与景区上下文</a><a href="development-spec.html#5-核心业务流程">5. 核心业务流程</a><a href="development-spec.html#6-总体信息架构与页面清单">6. 总体信息架构与页面清单</a><a href="development-spec.html#7-核心概念与数据对象">7. 核心概念与数据对象</a><a href="development-spec.html#8-通用业务规则">8. 通用业务规则</a><a href="development-spec.html#9-管理端页面详细设计">9. 管理端页面详细设计</a><a href="development-spec.html#9-1-A01-工作台预约入口">9.1 A01 工作台预约入口</a><a href="development-spec.html#9-2-A02-预约活动管理-工作台独立菜单">9.2 A02 预约活动管理（工作台独立菜单）</a><a href="development-spec.html#9-3-C01-基础信息">9.3 C01 基础信息</a><a href="development-spec.html#9-4-C02-必读须知">9.4 C02 必读须知</a><a href="development-spec.html#9-5-C03-项目配置">9.5 C03 项目配置</a><a href="development-spec.html#9-6-C04-日期与场次">9.6 C04 日期与场次</a><a href="development-spec.html#9-7-C05-展示设置">9.7 C05 展示设置</a><a href="development-spec.html#9-8-C06-游客预约配置">9.8 C06 游客预约配置</a><a href="development-spec.html#9-9-C07-活动发布">9.9 C07 活动发布</a><a href="development-spec.html#10-游客端页面功能">10. 游客端页面功能</a><a href="development-spec.html#10-1-V01-预约首页-活动详情">10.1 V01 预约首页/活动详情</a><a href="development-spec.html#10-2-V02-日期月历弹窗">10.2 V02 日期月历弹窗</a><a href="development-spec.html#10-3-V03-日期与场次选择">10.3 V03 日期与场次选择</a><a href="development-spec.html#10-4-V04-分类与项目选择">10.4 V04 分类与项目选择</a><a href="development-spec.html#10-5-V05-必读须知">10.5 V05 必读须知</a><a href="development-spec.html#10-6-V06-游客信息填写">10.6 V06 游客信息填写</a><a href="development-spec.html#10-7-V07-提交与预约结果">10.7 V07 提交与预约结果</a><a href="development-spec.html#10-8-V08-我的预约列表">10.8 V08 我的预约列表</a><a href="development-spec.html#10-9-V09-游客预约详情">10.9 V09 游客预约详情</a><a href="development-spec.html#10-10-V10-游客修改与取消">10.10 V10 游客修改与取消</a><a href="development-spec.html#11-特殊日期管理-工作台独立菜单">11. 特殊日期管理（工作台独立菜单）</a><a href="development-spec.html#12-运营管理页面功能-工作台独立菜单">12. 运营管理页面功能（工作台独立菜单）</a><a href="development-spec.html#12-1-O00-运营活动选择">12.1 O00 运营活动选择</a><a href="development-spec.html#12-2-O01-活动运营首页">12.2 O01 活动运营首页</a><a href="development-spec.html#12-3-O02-预约订单列表">12.3 O02 预约订单列表</a><a href="development-spec.html#12-4-O03-详情卡片字段设置">12.4 O03 详情卡片字段设置</a><a href="development-spec.html#12-5-O04-管理端预约详情">12.5 O04 管理端预约详情</a><a href="development-spec.html#12-6-O05-日期-场次名单">12.6 O05 日期/场次名单</a><a href="development-spec.html#12-7-O06-场次名单详情">12.7 O06 场次名单详情</a><a href="development-spec.html#12-8-O07-数据导出">12.8 O07 数据导出</a><a href="development-spec.html#12-9-O08-管理端修改与取消">12.9 O08 管理端修改与取消</a><a href="development-spec.html#13-PC-后台活动预约管理">13. PC 后台活动预约管理</a><a href="development-spec.html#14-页面与功能关系矩阵">14. 页面与功能关系矩阵</a><a href="development-spec.html#15-状态-统计与数据一致性">15. 状态、统计与数据一致性</a><a href="development-spec.html#16-小程序视觉与适配要求">16. 小程序视觉与适配要求</a><a href="development-spec.html#17-全局验收标准">17. 全局验收标准</a><a href="development-spec.html#18-版本范围与下期待办">18. 版本范围与下期待办</a><div class="group">配套规范</div><a href="docs/HTML原型页面样式清单V3.4.md" target="_blank" rel="noopener noreferrer">页面样式规范 ↗</a><a href="PRD｜景区场次预约管理_V3.4_20260818.md" target="_blank" rel="noopener noreferrer">原始 Markdown ↗</a></aside><main class="main"><header class="hero"><div class="eyebrow">完整产品需求文档</div><h1>景区场次预约管理功能 PRD</h1><p>当前页面由同目录 Markdown 生成，便于开发和测试直接阅读、检索与跳转。</p><div class="actions"><a class="btn" href="prototype-center.html">打开原型中心</a><a class="btn secondary" href="PRD｜景区场次预约管理_V3.4_20260818.md" target="_blank" rel="noopener noreferrer">打开原始 Markdown ↗</a></div></header><article class="card doc"><h1 id="场景活动预约管理功能-PRD">场景活动预约管理功能 PRD</h1><blockquote>
+
+.doc .change-sms,.doc .change-cancel{margin:14px 0;padding:12px 15px;border-left:4px solid #dc2626;background:#fff1f2;color:#b42318}.doc .change-sms :is(h3,h4,strong,code),.doc .change-cancel :is(h3,h4,strong,code){color:#b42318}.doc .change-sms code,.doc .change-cancel code{background:#ffe4e6}</style></head><body><aside class="sidebar"><h2>景区场次预约 V3.4</h2><div class="group">版本迭代需求</div><a href="../index.html">← 返回版本列表</a><a class="" href="index.html">版本总览</a><a class="current" href="development-spec.html">完整 PRD</a><a href="prototype-center.html">原型中心</a><div class="group">原型入口</div><a href="prototype/admin/index.html" target="_blank" rel="noopener noreferrer">小程序管理端原型 ↗</a><a href="prototype/visitor/index.html" target="_blank" rel="noopener noreferrer">游客端完整原型 ↗</a><a href="prototype/pc/index.html" target="_blank" rel="noopener noreferrer">PC 后台原型 ↗</a><div class="group">PRD 目录</div><a href="development-spec.html#1-文档维护规则">1. 文档维护规则</a><a href="development-spec.html#2-项目背景">2. 项目背景</a><a href="development-spec.html#3-产品目标">3. 产品目标</a><a href="development-spec.html#4-用户-入口与景区上下文">4. 用户、入口与景区上下文</a><a href="development-spec.html#5-核心业务流程">5. 核心业务流程</a><a href="development-spec.html#6-总体信息架构与页面清单">6. 总体信息架构与页面清单</a><a href="development-spec.html#7-核心概念与数据对象">7. 核心概念与数据对象</a><a href="development-spec.html#8-通用业务规则">8. 通用业务规则</a><a href="development-spec.html#9-管理端页面详细设计">9. 管理端页面详细设计</a><a href="development-spec.html#9-1-A01-工作台预约入口">9.1 A01 工作台预约入口</a><a href="development-spec.html#9-2-A02-预约活动管理-工作台独立菜单">9.2 A02 预约活动管理（工作台独立菜单）</a><a href="development-spec.html#9-3-C01-基础信息">9.3 C01 基础信息</a><a href="development-spec.html#9-4-C02-必读须知">9.4 C02 必读须知</a><a href="development-spec.html#9-5-C03-项目配置">9.5 C03 项目配置</a><a href="development-spec.html#9-6-C04-日期与场次">9.6 C04 日期与场次</a><a href="development-spec.html#9-7-C05-展示设置">9.7 C05 展示设置</a><a href="development-spec.html#9-8-C06-游客预约配置">9.8 C06 游客预约配置</a><a href="development-spec.html#9-9-C07-活动发布">9.9 C07 活动发布</a><a href="development-spec.html#10-游客端页面功能">10. 游客端页面功能</a><a href="development-spec.html#10-1-V01-预约首页-活动详情">10.1 V01 预约首页/活动详情</a><a href="development-spec.html#10-2-V02-日期月历弹窗">10.2 V02 日期月历弹窗</a><a href="development-spec.html#10-3-V03-日期与场次选择">10.3 V03 日期与场次选择</a><a href="development-spec.html#10-4-V04-分类与项目选择">10.4 V04 分类与项目选择</a><a href="development-spec.html#10-5-V05-必读须知">10.5 V05 必读须知</a><a href="development-spec.html#10-6-V06-游客信息填写">10.6 V06 游客信息填写</a><a href="development-spec.html#10-7-V07-提交与预约结果">10.7 V07 提交与预约结果</a><a href="development-spec.html#10-8-V08-我的预约列表">10.8 V08 我的预约列表</a><a href="development-spec.html#10-9-V09-游客预约详情">10.9 V09 游客预约详情</a><a href="development-spec.html#10-10-V10-游客修改与取消">10.10 V10 游客修改与取消</a><a href="development-spec.html#11-特殊日期管理-工作台独立菜单">11. 特殊日期管理（工作台独立菜单）</a><a href="development-spec.html#12-运营管理页面功能-工作台独立菜单">12. 运营管理页面功能（工作台独立菜单）</a><a href="development-spec.html#12-1-O00-运营活动选择">12.1 O00 运营活动选择</a><a href="development-spec.html#12-2-O01-活动运营首页">12.2 O01 活动运营首页</a><a href="development-spec.html#12-3-O02-预约订单列表">12.3 O02 预约订单列表</a><a href="development-spec.html#12-4-O03-详情卡片字段设置">12.4 O03 详情卡片字段设置</a><a href="development-spec.html#12-5-O04-管理端预约详情">12.5 O04 管理端预约详情</a><a href="development-spec.html#12-6-O05-日期-场次名单">12.6 O05 日期/场次名单</a><a href="development-spec.html#12-7-O06-场次名单详情">12.7 O06 场次名单详情</a><a href="development-spec.html#12-8-O07-数据导出">12.8 O07 数据导出</a><a href="development-spec.html#12-9-O08-管理端修改与取消">12.9 O08 管理端修改与取消</a><a href="development-spec.html#13-PC-后台活动预约管理">13. PC 后台活动预约管理</a><a href="development-spec.html#14-页面与功能关系矩阵">14. 页面与功能关系矩阵</a><a href="development-spec.html#15-状态-统计与数据一致性">15. 状态、统计与数据一致性</a><a href="development-spec.html#16-小程序视觉与适配要求">16. 小程序视觉与适配要求</a><a href="development-spec.html#17-全局验收标准">17. 全局验收标准</a><a href="development-spec.html#18-版本范围与下期待办">18. 版本范围与下期待办</a><div class="group">配套规范</div><a href="docs/HTML原型页面样式清单V3.4.md" target="_blank" rel="noopener noreferrer">页面样式规范 ↗</a><a href="PRD｜景区场次预约管理_V3.4_20260818.md" target="_blank" rel="noopener noreferrer">原始 Markdown ↗</a></aside><main class="main"><header class="hero"><div class="eyebrow">完整产品需求文档</div><h1>景区场次预约管理功能 PRD</h1><p>当前页面由同目录 Markdown 生成，便于开发和测试直接阅读、检索与跳转。</p><div class="actions"><a class="btn" href="prototype-center.html">打开原型中心</a><a class="btn secondary" href="PRD｜景区场次预约管理_V3.4_20260818.md" target="_blank" rel="noopener noreferrer">打开原始 Markdown ↗</a></div></header><article class="card doc"><h1 id="场景活动预约管理功能-PRD">场景活动预约管理功能 PRD</h1><blockquote>
 <p>文档定位：本文件是景区场次预约功能唯一的正式产品方案与后续交付基线。<br>当前版本：V3.4，更新日期：2026-08-24。<br>文档状态：本期正式基线。文档仅保留已确认业务规则、本期范围、下期范围与验收口径。<br>当前配置顺序：<code>C01 基础信息 → C02 必读须知 → C03 项目配置 → C04 日期与场次 → C05 展示设置 → C06 游客预约配置 → C07 活动发布</code>。<br>样式与业务分离：本 PRD 只写业务逻辑和验收口径；页面字体、颜色、间距、组件样式与响应式规范见《HTML 原型页面样式清单 V3.4》。</p>
 </blockquote>
 <p>配套导航：</p>
@@ -598,6 +599,19 @@
 <li>取消状态和库存返还作为一个事务，同一预约只能成功取消一次。</li>
 <li>取消不可撤销，需要参与时重新预约。</li>
 </ul>
+<div class="change-sms">
+
+<h4 id="上线后迭代-管理员取消短信通知">【上线后迭代｜管理员取消短信通知】</h4><ul>
+<li>仅活动/场次管理员或活动/场次运营人员取消<strong>有效预约</strong>时触发短信通知；包含 O04 预约详情、O06 场次名单内的单笔取消，以及 C04 对某日全部有效预约的批量取消。O08 为上述操作的规则汇总，不新增独立入口。</li>
+<li>游客自行取消、暂停/恢复日期、活动下架、无预约活动删除均不触发本短信。</li>
+<li>管理员确认取消前，必须在取消原因输入框下展示只读短信预览，并实时代入已输入的取消原因、该预约的预约游玩日期和当前活动名称；原因为空时以“取消原因将显示在此处”占位，且不得确认取消。</li>
+<li>短信正文固定为：<code>尊敬的游客，您好！{取消原因}，{预约游玩日期}“{活动名称}”暂停营业，给您带来不便敬请谅解，祝您生活愉快！</code>。</li>
+<li>单笔取消向该预约当前有效手机号发送 1 条；按日期批量取消向每一条受影响有效预约分别发送 1 条，取消原因和日期相同，手机号、预约游玩日期和活动名称按各预约记录取值。</li>
+<li>取消事务内必须同时写入取消快照和短信通知待发送记录；实际调用短信平台异步执行。短信平台异常不得回滚已成功的取消和库存返还，但通知记录必须保留待重试状态。</li>
+<li>每条通知保存取消时生成的完整短信正文快照、接收手机号、发送状态（待发送/已发送/发送失败）、失败原因和发送时间；重试、重复点击或网络重放不得向同一预约重复发送。</li>
+</ul>
+</div>
+
 <h3 id="8-9-历史数据保护">8.9 历史数据保护</h3><ul>
 <li>已有预约的日期不可直接移除。</li>
 <li>已有预约的场次不可删除或修改时间。</li>
@@ -1118,7 +1132,8 @@
 <li>暂停或恢复该日期新预约。</li>
 <li>取消该日期全部有效预约。</li>
 </ul>
-<p>批量取消必须展示受影响预约单数和实际参与人数，管理员填写取消原因并二次确认。取消成功后返还场次和项目库存；预约不可恢复。全部有效预约取消后，该日期才允许移除。历史日期不执行上述日期配置操作。</p>
+<p class="change-sms">批量取消必须展示受影响预约单数和实际参与人数，管理员填写取消原因并二次确认。取消原因下展示短信预览，并提示“确认后将向该日期 X 条有效预约对应的游客分别发送短信通知”。取消成功后返还场次和项目库存，为每条受影响预约写入取消快照和短信通知待发送记录；预约不可恢复。全部有效预约取消后，该日期才允许移除。历史日期不执行上述日期配置操作。</p>
+
 <p>暂停规则：</p>
 <ul>
 <li>暂停只关闭该日期的新预约，不删除日期、场次、分类、项目或库存配置。</li>
@@ -1356,6 +1371,7 @@
 </ul>
 <h2 id="10-9-V09-游客预约详情">10.9 V09 游客预约详情</h2><ul>
 <li>顶部显示预约成功或已取消，并突出游客预约号。</li>
+<li><span class="change-cancel">【上线后迭代｜已取消状态图标】已取消状态沿用“状态圆形图标 + 标题 + 说明”的横向布局；圆形内使用“预约日历加斜杠”图形，不使用 <code>×</code>、关闭或返回箭头。该图形仅表达预约已取消，不提供点击返回或关闭功能；预约成功状态继续使用对勾图形。</span></li>
 <li>展示预约内容和全部填写资料。</li>
 <li>手机号和身份证号第一期不脱敏。</li>
 <li>填写信息较多时可折叠展开。</li>
@@ -1553,11 +1569,18 @@
 <li>操作记录读取同一预约对象的创建、修改和取消记录；没有发生的操作不生成虚假记录。</li>
 <li>支持复制预约号、手机号和身份证号。</li>
 <li>有效预约可修改允许字段或取消；管理员取消原因必填。</li>
-<li>已取消预约在“预约信息”末尾展示“取消信息”子区，取消原因读取取消快照；游客未填写或历史记录无值时显示“未填写”。O02、O06 列表和名单详情不展示取消原因。</li>
-<li>操作记录只显示已经实际发生的事件，按发生时间正序展示。记录头固定为“操作名称”，第二行固定为“时间 · 操作人”，第三行为操作结果说明。游客执行时操作人统一记录为“游客”，不读取游客姓名，也不显示“游客端”；管理员执行时记录实际登录管理员姓名。</li>
-<li>操作记录覆盖以下事件：游客创建预约、游客修改预约资料、管理员修改预约资料、游客修改实际参与人数、管理员修改实际参与人数、游客取消预约、管理员取消预约。创建、修改、取消以外的页面浏览行为不记入操作记录。</li>
-<li>不展示系统内部 ID 和本单库存占用字段。</li>
 </ul>
+<div class="change-sms">
+
+<ul>
+<li>管理员取消确认层在原因输入框下展示本条预约的短信预览，并提示确认后将向游客发送；预览固定使用取消原因、预约游玩日期和活动名称三项动态值。</li>
+<li>已取消预约在“预约信息”末尾展示“取消信息”子区，取消原因读取取消快照；管理员取消时追加“短信通知”状态，读取通知记录的待发送、已发送或发送失败状态。游客未填写或历史记录无值时显示“未填写”。O02、O06 列表和名单详情不展示取消原因或短信发送状态。</li>
+</ul>
+</div>
+- 操作记录只显示已经实际发生的事件，按发生时间正序展示。记录头固定为“操作名称”，第二行固定为“时间 · 操作人”，第三行为操作结果说明。游客执行时操作人统一记录为“游客”，不读取游客姓名，也不显示“游客端”；管理员执行时记录实际登录管理员姓名。
+- 操作记录覆盖以下事件：游客创建预约、游客修改预约资料、管理员修改预约资料、游客修改实际参与人数、管理员修改实际参与人数、游客取消预约、管理员取消预约。创建、修改、取消以外的页面浏览行为不记入操作记录。
+- 不展示系统内部 ID 和本单库存占用字段。
+
 <h3 id="12-5-1-O04-页面文案与取值来源">12.5.1 O04 页面文案与取值来源</h3><table>
 <thead>
 <tr>
@@ -1688,9 +1711,16 @@
 <li>增减人数执行库存差额校验、扣减和返还。</li>
 <li>管理员单笔取消原因必填。</li>
 <li>日期或场次批量取消展示受影响预约单数和实际参与人数，并要求二次确认。</li>
-<li>单笔或批量取消成功时，对每一条受影响预约分别写入取消时间、取消方式、取消原因快照；管理员取消原因不得为空。</li>
-<li>取消后立即返还场次和项目库存并记录操作。</li>
 </ul>
+<div class="change-sms">
+
+<ul>
+<li>单笔或批量取消的确认层均展示短信预览；取消原因为空时禁止提交。批量取消明确展示发送对象为受影响的全部有效预约。</li>
+<li>单笔或批量取消成功时，对每一条受影响预约分别写入取消时间、取消方式、取消原因快照及一条短信通知待发送记录；管理员取消原因不得为空。</li>
+<li>取消后立即返还场次和项目库存并记录操作。短信异步发送，失败保留可重试状态，不回滚取消、库存或取消快照。</li>
+</ul>
+</div>
+
 <hr>
 <h2 id="13-PC-后台活动预约管理">13. PC 后台活动预约管理</h2><h3 id="13-1-PC01-菜单与页面范围">13.1 PC01 菜单与页面范围</h3><ul>
 <li>在全域景区后台新增一级菜单“活动预约管理”，下设二级菜单“活动管理”；点击二级菜单进入 PC01 活动列表。</li>
@@ -1874,9 +1904,15 @@
 <ul>
 <li>创建预约与场次/项目库存扣减。</li>
 <li>修改实际参与人数与库存差额变化。</li>
-<li>取消预约与库存返还。</li>
-<li>日期或场次批量取消。</li>
 </ul>
+<div class="change-sms">
+
+<ul>
+<li>取消预约与库存返还、取消快照及短信通知待发送记录写入。</li>
+<li>日期或场次批量取消，以及每条受影响预约的库存返还、取消快照及短信通知待发送记录写入。</li>
+</ul>
+</div>
+
 <p>每次请求使用唯一标识，避免重复创建、重复扣减和重复返还。</p>
 <hr>
 <h2 id="16-小程序视觉与适配要求">16. 小程序视觉与适配要求</h2><p>全局视觉、主题、字号、间距、安全区、响应式底线及各页面特有样式统一见《HTML 原型页面样式清单 V3.4》。本 PRD 不重复维护视觉数值，仅保留直接影响业务可用性的结构约束。</p>
@@ -1901,10 +1937,12 @@
 <li>配置更新不改变历史预约快照。</li>
 <li>取消后正确返还场次和项目库存。</li>
 <li>游客取消和管理员取消均保存取消时间、取消方式、取消原因快照；V09 和 O04 显示对应值，游客未填写原因显示“未填写”。</li>
-<li>V08、O02、O06 不展示取消原因；O07 预约记录导出按取消快照输出取消时间、取消方式、取消原因。</li>
-<li>人数修改只处理差额，失败不改变原数据。</li>
-<li>导出字段与预约提交时表单一致。</li>
 </ul>
+<p class="change-sms">管理员取消的短信通知正文、接收手机号、发送状态、失败原因和发送时间均按取消时快照保存；后续活动改名、日期配置调整或短信重试不得改写已生成短信正文。</p>
+- V08、O02、O06 不展示取消原因；O07 预约记录导出按取消快照输出取消时间、取消方式、取消原因。
+- 人数修改只处理差额，失败不改变原数据。
+- 导出字段与预约提交时表单一致。
+
 <h3 id="17-4-页面适配">17.4 页面适配</h3><ul>
 <li>五档手机宽度无横向溢出、遮挡和不可点击区域。</li>
 <li>长活动名、长项目名、四位数以上人数和动态字段正常展示。</li>
