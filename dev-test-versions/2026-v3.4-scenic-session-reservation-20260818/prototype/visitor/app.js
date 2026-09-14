@@ -280,7 +280,8 @@ function commitDate(key, revealAfterSelect = false) {
 }
 
 function renderSessions() {
-  const list = getSessions(state.date);
+  const allSessions = getSessions(state.date);
+  const list = externalPreviewConfig?.hideExpired ? allSessions.filter(item => item.state !== 'closed') : allSessions;
   const previousScroll = sessionList.scrollLeft;
   const previousKey = sessionList.dataset.railKey;
   sessionList.className = `session-list style-${state.sessionStyle}`;
@@ -424,7 +425,10 @@ function renderDetail() {
   const current = recordData.find(record => record.id === state.currentRecord) || recordData[0];
   const cancelled = current.status === 'cancelled';
   $('#detailBanner').classList.toggle('cancelled', cancelled);
-  $('#detailBanner').innerHTML = `<span class="status-symbol">${cancelled ? '×' : '✓'}</span><div><h2>${cancelled ? '预约已取消' : '预约成功'}</h2><p>${cancelled ? '名额已释放，如需参与请重新预约' : '请按预约场次提前到达'}</p></div>`;
+  const statusSymbol = cancelled
+    ? '<span class="status-symbol cancelled" aria-label="预约已取消"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="5.5" width="15" height="14" rx="2"></rect><path d="M8 3.5v4M16 3.5v4M4.5 10h15M7 17l10-10"></path></svg></span>'
+    : '<span class="status-symbol" aria-label="预约成功">✓</span>';
+  $('#detailBanner').innerHTML = `${statusSymbol}<div><h2>${cancelled ? '预约已取消' : '预约成功'}</h2><p>${cancelled ? '名额已释放，如需参与请重新预约' : '请按预约场次提前到达'}</p></div>`;
   const cancellationInfo = cancelled ? `<div class="detail-subsection cancellation-info"><h4>取消信息</h4><div class="detail-row"><span>取消时间</span><strong>${current.cancelTime || '未记录'}</strong></div><div class="detail-row"><span>取消方式</span><strong>${current.cancelMethod || '未记录'}</strong></div><div class="detail-row cancellation-reason-row"><span>取消原因</span><strong>${current.cancelReason || '未填写'}</strong></div></div>` : '';
   $('#detailBookingRows').innerHTML = detailRows() + cancellationInfo;
   $('#detailReservationNumber').textContent = current.number;
@@ -643,9 +647,8 @@ function applyExternalPreview(payload) {
   }
   state.dateStyle = 'strip'; state.sessionStyle = 'grid-named'; state.projectsEnabled = !!payload.projectsEnabled;
   state.participantMode = payload.participantMode === 'group' ? 'group' : 'single'; state.category = categories[0].id; state.project = null;
-  if (payload.hideExpired) dateData.forEach(item => { const items=getSessions(item.key);if(items.length&&items.every(session=>session.state==='closed'))item.expired=true; });
-  const preferredPreviewDate=payload.previewOnly&&payload.previewDate?dateData.find(item=>item.key===payload.previewDate&&!item.paused&&!item.expired&&!item.full):null;
-  const firstBookableDate = preferredPreviewDate || dateData.find(item => !item.paused && !item.expired && !item.full) || dateData[0];
+  const preferredPreviewDate=payload.previewOnly&&payload.previewDate?dateData.find(item=>item.key===payload.previewDate&&!item.paused&&!item.full):null;
+  const firstBookableDate = preferredPreviewDate || dateData.find(item => !item.paused && !item.full && getSessions(item.key).some(session=>session.state==='open')) || dateData[0];
   state.date = firstBookableDate?.key || todayDateKey; state.dateMonth = firstBookableDate?.month || 8; state.session = payload.previewOnly&&payload.previewSessionId?payload.previewSessionId:null;
   state.defaultNotice={title:payload.noticeTitle||'溪降预约必读须知',html:payload.noticeHtml||'',seconds:Math.max(0, Number(payload.noticeSeconds) || 0)};
   $('#noticeTitle').textContent = state.defaultNotice.title;
