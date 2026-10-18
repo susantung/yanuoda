@@ -85,7 +85,7 @@
         <section id="page-paymentResources" class="page-container hidden">
           <div class="page-head"><div><div class="page-title">支付资源管理</div><div class="subtle">当前景区：呀诺达雨林</div></div></div>
           <div class="filter"><div class="filter-row"><div class="form-item"><span class="label">资源名称：</span><input class="input" placeholder="请输入资源名称" /></div><div class="form-item"><span class="label">资源类型：</span><select class="select"><option>全部</option><option>扫码付柜台</option><option>银行卡 POS</option></select></div><div class="filter-actions"><button class="btn primary">查 询</button><button class="btn">重 置</button></div></div></div>
-          <div class="actions"><button class="btn primary" id="addPaymentResource">＋ 新增支付资源</button></div>
+          <div class="actions" style="justify-content:flex-end"><button class="btn primary" id="addPaymentResource">＋ 新增支付资源</button></div>
           <div class="table-wrap"><table class="table"><thead><tr><th style="width:260px">资源名称</th><th style="width:200px">资源类型</th><th style="width:280px">柜台编码/POS编号</th><th style="width:140px">启用状态</th><th class="sticky-right" style="width:150px">操作</th></tr></thead><tbody id="paymentResourceRows"></tbody></table></div>
           <div class="table-footer"><span id="paymentResourceTotal">共 0 条</span><span class="pager">‹</span><span class="pager active">1</span><span class="pager">›</span><span class="pager">10 条/页⌄</span></div>
         </section>
@@ -308,6 +308,9 @@
   renderPayments();
   renderShellTabs();
   persistPreview();
+  // 方案链接只切换预览页面，不提交业务数据。
+  const requestedPage=new URLSearchParams(location.search).get('page');
+  if(requestedPage&&meta[requestedPage])showPage(requestedPage);
 </script>
 <link rel="stylesheet" href="order-detail.css">
 <script src="vendor/react.production.min.js"></script>

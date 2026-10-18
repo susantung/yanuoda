@@ -199,6 +199,7 @@
 <li>最终提交时复核当前配置和有效绑定，失败保留业务内容。</li>
 </ul>
 <h2 id="3-B01-支付配置列表">3. B01｜支付配置列表</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=payment">打开原型：支付配置</a></p>
 <h3 id="3-1-入口与结构">3.1 入口与结构</h3>
 <p>配置中心 → 支付配置。统一展示全部九种支付方式，不按散客、团队拆标签，不设支付查询、配置状态或当前景区副标题。</p>
 <div class="table-wrap"><table>
@@ -351,6 +352,7 @@
 </tbody></table></div>
 <p>收款处理、对接方式均是支付方式对应的固定值，不属于“默认选中但允许更换”的配置。所有方式保留配置入口。</p>
 <h2 id="4-B02-配置支付方式弹窗">4. B02｜配置支付方式弹窗</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=payment">打开原型：支付配置 → 配置</a></p>
 <h3 id="4-1-公共字段">4.1 公共字段</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -492,6 +494,7 @@
 <li>取消、关闭不保存；保存失败保留草稿供修正或重试。支付确认以后的处理仍完全沿用原逻辑。</li>
 </ol>
 <h2 id="5-B03-支付资源管理列表">5. B03｜支付资源管理列表</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=paymentResources">打开原型：支付资源管理</a></p>
 <p>入口：配置中心 → 支付资源管理。管理资源主数据，不在此绑定账号或设备。</p>
 <p>筛选沿用原型已有资源名称、资源类型条件，查询及重置只改变列表条件，不改变资源；启用状态在表格开关中维护，不另加筛选。当前景区通过上下文隔离，不再加选择景区字段。</p>
 <div class="table-wrap"><table>
@@ -523,12 +526,13 @@
 </tr>
 <tr>
 <td>新增支付资源</td>
-<td>打开B04新增态</td>
+<td>位于表格上方右侧，打开B04新增态</td>
 </tr>
 </tbody></table></div>
 <p>停用时检查全部账号与设备绑定，包括当前资源归属暂未启用的一方保留的绑定。有引用则阻止，显示引用账号/设备；启用不恢复任何已经取消的绑定。不能因为资源所在支付方式被停用，就允许绕过引用检查。</p>
 <p>删除进入B05。空列表显示暂无支付资源；后续绑定下拉同样为空，不再生成虚构的柜台/POS。加载失败不当作空列表允许覆盖保存。</p>
 <h2 id="6-B04-新增-编辑支付资源">6. B04｜新增/编辑支付资源</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=paymentResources">打开原型：资源列表 → 新增 / 编辑</a></p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -566,6 +570,7 @@
 <p>保存后保持资源ID不变，所有当前绑定按ID读取新名称与编号。新建未绑定的资源只进入资源库，不自动分配给账号/设备。取消不生成或修改记录。</p>
 <p>编号按文本保存，去前后空格、保留前导零；长度、字符范围及唯一性由开发对接现有字段约束，不因合并名称改变原编码含义。</p>
 <h2 id="7-B05-删除资源确认">7. B05｜删除资源确认</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=paymentResources">打开原型：资源列表 → 删除</a></p>
 <ol>
 <li>点删除先查引用；存在引用直接拦截并指出主体，不打开可确认删除状态。</li>
 <li>无引用打开“确认删除‘{资源名称}’？”；取消不处理。</li>
@@ -574,6 +579,7 @@
 </ol>
 <p>有历史交易、无当前绑定不等于可以物理清空交易外键；使用逻辑删除或等效保留机制，历史展示以快照为准。</p>
 <h2 id="8-B06-设备管理列表">8. B06｜设备管理列表</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=device">打开原型：设备管理</a></p>
 <p>入口：基础信息 → 设备管理。完整复用现有筛选、列、分页、列配置、查看/编辑/删除、批量启停和导出，不重做简化列表。</p>
 <p>筛选保留所属景点/站点/通道、设备名称、设备类型、设备ID、设备状态、启用状态；控件样式和位置按现网页面，不用原生下拉替代。新增、启用、禁用、导出及配置列在现有右侧操作区。</p>
 <p>表格保留勾选、设备名称、所属景点、所属站点、所属通道、设备IP、设备类型、设备状态及现有其他可配置列。宽表在表格内部横向滚动；操作列固定右侧、独立白底与边界阴影，不覆盖状态文字。侧栏折叠、页签图标和关闭效果沿用线上基座。</p>
@@ -603,6 +609,7 @@
 </tbody></table></div>
 <p>删除文字不单独改红。设备状态/启用状态继续沿用现有含义，不把资源配置当成设备启用条件。设备删除或变更类型的关联处理应复用现有设备约束，并清理/失效其当前绑定引用，不能留下可被运行时命中的孤立设备绑定；历史交易不变。</p>
 <h2 id="9-B07-设备收款配置">9. B07｜设备收款配置</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=device">打开原型：设备管理 → 收款配置</a></p>
 <p>入口：窗口售票机行 → 收款配置。标题“设备收款配置”。</p>
 <div class="table-wrap"><table>
 <thead>
@@ -689,6 +696,7 @@
 <p>保存逐区校验：至少选一个 → 固定恰好一个/多资源默认在范围内 → 类型与景区匹配 → 全部仍启用有效 → 原子保存该设备绑定。固定时直接把唯一选择写成默认，不再重复选默认。</p>
 <p>资源列表为空时显示“暂无可用资源，请先维护支付资源”，提供路径提示，不允许自由手填编码。其他隐藏归属的已有绑定保持不变，不因本次保存误清空。</p>
 <h2 id="10-B08-系统角色列表">10. B08｜系统角色列表</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=systemRole">打开原型：系统角色</a></p>
 <p>入口：员工管理 → 系统角色。这里维护现有收银账号，不新建RBAC角色页。</p>
 <ul>
 <li>原有账号查询、重置、新增、绑定日志、配置列、分页完整保留。</li>
@@ -698,11 +706,13 @@
 <li>账号停用/删除由现有登录和权限控制拦截；删除后的绑定不再供新交易使用，历史收银人快照保留。不能以改用户名破坏资源引用。</li>
 </ul>
 <h2 id="11-B09-账号收款配置">11. B09｜账号收款配置</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=systemRole">打开原型：系统角色 → 收款配置</a></p>
 <p>入口：账号行 → 收款配置。标题“账号收款配置”。灰色展示“账号/用户名”“绑定窗口”，未绑定展示“未绑定”。</p>
 <p>资源字段、控件、默认、保存及取消规则与B07相同，区别仅为归属主体：仅显示B02当前配置为“跟收银账号”的扫码付/银行卡区，按账号稳定ID保存。无对应项显示空态，不把设备绑定复制过来。</p>
 <p>只读信息取所点账号行：账号/用户名、原绑定窗口；无窗口显示“未绑定”。所选资源和默认读取该账号自己的绑定，不从绑定窗口推导。</p>
 <p>一个账号只有一套扫码付和银行卡绑定，跨其可用业务场景共用。账号是否可售团队/散客由既有权限控制，不因资源配置创建第二个业务账号或拆场景绑定。</p>
 <h2 id="12-W01-散客售票工作台">12. W01｜散客售票工作台</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html">打开原型：散客票</a></p>
 <p>原页面及下单操作不变；支付方式按散客场景配置过滤。</p>
 <p>主页面不显示资源、编号或资源错误；业务资料通过原校验后打开W04。</p>
 <ul>
@@ -712,6 +722,7 @@
 <li>缺账号/设备资源不在此处报错，进入W04后处理；原实名等业务校验不改。</li>
 </ul>
 <h2 id="13-W02-W03-团队售票及选择对象">13. W02、W03｜团队售票及选择对象</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=team">打开原型：团队票</a> · <a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=team">打开原型：团队票 → 旅行社 / 导游选择</a></p>
 <p>旅行社、导游、选票及账户逻辑沿用原功能。团队九种支付方式按启用状态及团队场景过滤，挂帐允许配置使用。</p>
 <p>主页面不显示资源/编号，确认下单进入W04；原选择弹窗不新增业务逻辑。</p>
 <ul>
@@ -721,6 +732,7 @@
 <li>扫码付/银行卡的账号或设备绑定与其他场景共用，不另配团队资源。</li>
 </ul>
 <h2 id="14-W04-散客-团队支付订单确认">14. W04｜散客/团队支付订单确认</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html">打开原型：散客 → 确认下单</a> · <a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=team">团队 → 确认下单</a></p>
 <h3 id="14-1-本期界面变化">14.1 本期界面变化</h3>
 <p>门票表格、金额、出票模式及确认/取消按钮沿用原页面。</p>
 <ol>
@@ -801,14 +813,18 @@
 <li>新增资源信息随原订单支付记录一并保存，不另建一次支付，不改变原成功/失败处理。</li>
 </ul>
 <h2 id="15-W05-W06-合作伙伴售票与选择对象">15. W05、W06｜合作伙伴售票与选择对象</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=partnerSale">打开原型：临时/长期合作伙伴售票</a> · <a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=partnerSale">打开原型：合作伙伴售票 → 选择对象</a></p>
 <p>原对象选择、选票及账户业务不变。长期伙伴仅按默认账户显示挂帐或预付款，并检查对应方式已启用且包含长期伙伴场景；不可用时提示，不自动改另一账户。</p>
 <p>临时伙伴固定挂帐、无充值入口。售票及确认弹窗不出现扫码付、银行卡或资源字段。</p>
 <p>长期伙伴原蓝色钱包“充值”按钮统一打开W09。</p>
 <h2 id="16-W07-合作伙伴支付订单确认">16. W07｜合作伙伴支付订单确认</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=partnerSale">打开原型：合作伙伴售票 → 确认下单</a></p>
 <p>仅显示对应挂帐或预付款，沿用原确认及支付处理。不新增资源/编号字段，不修改账户处理。</p>
 <h2 id="17-W08-合作伙伴充值列表">17. W08｜合作伙伴充值列表</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=partnerList">打开原型：合作伙伴充值列表</a></p>
 <p>保留现有页面，行内“充值”与W05充值按钮统一调用W09，传入当前伙伴及账户。其他操作不变。</p>
 <h2 id="18-W09-共用合作伙伴充值弹窗">18. W09｜共用合作伙伴充值弹窗</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=partnerSale">打开原型：售票页 → 充值</a> · <a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=partnerList">充值列表 → 行内充值</a></p>
 <h3 id="18-1-两入口共用">18.1 两入口共用</h3>
 <p>W05售票页充值、W08列表行充值使用同一弹窗、配置及资源逻辑。</p>
 <h3 id="18-2-本期界面变化">18.2 本期界面变化</h3>
@@ -847,9 +863,11 @@
 <p>确认充值沿用原充值/回款及其他收入处理，仅将扫码付/银行卡实际使用的资源及编号一并记录，展示见D02。</p>
 <p>不新定义入账、金额分拆或事务规则；成功/失败、账户刷新、购物车保留均沿用原逻辑。</p>
 <h2 id="19-W10-挂单恢复及配置刷新">19. W10｜挂单恢复及配置刷新</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html">打开原型：售票 → 挂单列表</a></p>
 <p>原挂单恢复逻辑不变。恢复后及最终提交前，按当前账号、实际设备和当前配置重新校验资源；不能直接用草稿中的旧编号。</p>
 <p>原型测试账号/设备切换仅供测试，不加入生产页面。</p>
 <h2 id="20-D01-订单详情中的-订单支付">20. D01｜订单详情中的“订单支付”</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=order">打开原型：订单详情</a></p>
 <p>在现有订单详情的“订单支付”信息中，扫码付、银行卡订单新增：</p>
 <div class="table-wrap"><table>
 <thead>
@@ -876,9 +894,11 @@
 <li>订单已有多条支付记录时，按原记录结构在对应扫码付/银行卡记录上展示，不因本期新增支付拆分方式。</li>
 </ul>
 <h2 id="21-D02-充值-回款详情">21. D02｜充值/回款详情</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=partnerList">打开关联入口：合作伙伴 → 账户充值记录</a>（历史充值详情尚未制作独立原型）</p>
 <p>在原支付信息中补充本次扫码付/银行卡的收款资源、柜台编码/POS编号，读取充值时保存的值，不按当前配置重算。</p>
 <p>其余字段、金额和状态均沿用原功能。</p>
 <h2 id="22-D03-其他收入详情">22. D03｜其他收入详情</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=partnerList">打开关联充值入口</a>（其他收入详情沿用原页，未制作独立原型）</p>
 <p>不单独改造。沿用原充值业务关联及展示，不新增收入字段、不改记账逻辑。</p>
 <h2 id="23-记录范围">23. 记录范围</h2>
 <p>本期仅补充扫码付/银行卡实际使用的资源及编号，历史值不回写。不新增财务统计口径、日交款、对账或报表功能。</p>
@@ -886,6 +906,7 @@
 <p>配置、绑定及编号记录复用现有权限和业务接口；现有景区上线前补齐所需资源和绑定，历史订单不补造编号。</p>
 <p>本文为开发要求，原型使用模拟数据，不代表真实交易已联调。原下单和支付逻辑不在本次重做。</p>
 <h2 id="25-W11-W12-内导售票与支付确认">25. W11、W12｜内导售票与支付确认</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=innerGuide">打开原型：内导 → 导游开单</a> · <a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=innerGuide">打开原型：内导 → 确认下单</a></p>
 <h3 id="25-1-主页面">25.1 主页面</h3>
 <p>内导 → 导游开单。原散客/团队、项目、内导、人数及业务操作不变；支付方式读取内导售票场景，散客六种、团队九种，再按配置过滤。</p>
 <p>不显示资源/编号。原资料校验通过即可打开W12，不因缺资源在主页面拦截。</p>

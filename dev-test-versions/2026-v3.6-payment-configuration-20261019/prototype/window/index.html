@@ -1141,6 +1141,11 @@ html,body{min-width:0}
   mountFooterControl();
   bridgeOrderControls();
   window.render();
+  // 从方案打开对应工作台；不自动创建订单或充值。
+  const requestedView=new URLSearchParams(location.search).get('view');
+  if(['team','partnerSale'].includes(requestedView))switchSaleScene(requestedView);
+  if(requestedView==='partnerList')showPartnerWorkspace(true);
+  if(requestedView==='innerGuide')routeInner('内导');
 })();
 </script>
 </body></html>
