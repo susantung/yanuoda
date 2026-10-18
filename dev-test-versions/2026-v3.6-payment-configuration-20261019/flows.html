@@ -1,0 +1,1968 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>支付配置化｜全程流程图</title><style>
+:root{--ink:#201a2c;--muted:#71697d;--purple:#7c3aed;--purple2:#4c1d95;--soft:#f5f3ff;--line:#e8e2f1;--side:272px;--shadow:0 8px 30px rgba(58,35,91,.09)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f3f0f7;color:var(--ink);line-height:1.75}.sidebar{position:fixed;right:0;top:0;width:var(--side);height:100vh;overflow:auto;padding:26px 0;background:linear-gradient(180deg,#1e1b4b,#312e81 58%,#4c1d95);z-index:20}.sidebar h2{padding:0 22px;margin:0 0 16px;color:#e9d5ff;font-size:15px;letter-spacing:1px}.sidebar a{display:block;padding:9px 22px;color:#c4b5fd;text-decoration:none;font-size:14px;border-left:3px solid transparent}.sidebar a:hover,.sidebar a.current{color:#fff;background:#ffffff14;border-left-color:#a78bfa}.sidebar .group{margin:13px 22px 5px;color:#a5b4fc;font-size:11px;letter-spacing:1px}.main{width:calc(100% - var(--side));margin-right:var(--side);padding:28px clamp(20px,2.4vw,44px) 70px;max-width:none}.hero{padding:42px 46px;margin-bottom:28px;border-radius:20px;color:#fff;background:linear-gradient(135deg,#1e1b4b,#4c1d95 62%,#7c3aed);box-shadow:0 16px 50px #6d28d933}.hero h1{margin:0 0 8px;font-size:31px;line-height:1.35;color:#fff}.hero p{margin:0;color:#f1efff}.eyebrow{font-size:12px;letter-spacing:2px;color:#ded7ff;margin-bottom:10px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.hero .btn{display:inline-block;padding:8px 15px;border-radius:9px;background:#fff;border:1px solid #fff;color:#4c1d95!important;text-decoration:none;font-size:13px;font-weight:700}.hero .btn:hover{background:#ede9fe;border-color:#ede9fe}.section{margin:0 0 34px;scroll-margin-top:20px}.section h2{font-size:23px;margin:0 0 14px;color:#211a49}.card{background:#fff;padding:25px 29px;margin:0 0 18px;border-radius:15px;border-left:4px solid var(--purple);box-shadow:var(--shadow)}.lead{font-size:16px;color:#534b60}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.metric{text-align:center;background:#fff;padding:20px;border-radius:14px;box-shadow:var(--shadow)}.metric strong{display:block;font-size:29px;color:var(--purple)}.doc h1{display:none}.doc h2{margin:42px 0 16px;padding-top:10px;border-top:1px solid var(--line);font-size:25px;color:#211a49;scroll-margin-top:20px}.doc h2 .prototype-link{display:inline-flex;vertical-align:middle;align-items:center;margin:0 0 2px 10px;padding:3px 9px;border-radius:999px;background:#7c3aed;color:#fff;text-decoration:none;font-size:12px;font-weight:600;line-height:1.5}.doc h2 .prototype-link:hover{background:#5b21b6;color:#fff}.doc h3{font-size:19px;color:#4c1d95;margin:29px 0 10px}.doc h4{font-size:16px;color:#6d28d9;margin:21px 0 8px}.doc p{margin:10px 0}.doc strong{color:#35205f}.doc code{padding:2px 5px;border-radius:5px;background:#f2eff8;font-family:SFMono-Regular,Consolas,monospace;font-size:.92em}.doc pre code{padding:0;border-radius:0;background:transparent;color:inherit;font-size:inherit}.table-wrap{overflow:auto;margin:15px 0 22px;border-radius:11px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;background:#fff;font-size:13px}th{background:#ede9fe;color:#4c1d95;text-align:left;white-space:nowrap}th,td{padding:10px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border-bottom:0}tr:nth-child(even) td{background:#fcfbfe}th:last-child,td:last-child{border-right:0}ul,ol{padding-left:24px;margin:10px 0 16px}li{margin:6px 0}pre{padding:16px;background:#1f1930;color:#e9d5ff;border-radius:10px;overflow:auto;line-height:1.6}blockquote{margin:12px 0;padding:10px 16px;background:#faf5ff;border-left:3px solid #a78bfa}.quick{position:fixed;right:calc(var(--side) + 26px);bottom:24px;width:42px;height:42px;border:0;border-radius:12px;background:var(--purple);color:#fff;cursor:pointer;box-shadow:var(--shadow)}a{color:#6d28d9}.tag{display:inline-block;padding:3px 9px;border-radius:999px;background:#ede9fe;color:#5b21b6;font-size:12px}.notice{padding:14px 17px;border-radius:10px;margin:14px 0;background:#eff6ff;border-left:3px solid #3b82f6}.footer-nav{position:sticky;bottom:0;background:#ffffffeb;backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:13px 20px;display:flex;gap:10px;justify-content:space-between;align-items:center}.footer-nav a{font-size:13px;text-decoration:none}@media(max-width:950px){:root{--side:220px}.main{padding:24px 20px}.grid{grid-template-columns:1fr 1fr}.hero{padding:30px}}@media(max-width:720px){.sidebar{display:none}.main{width:100%;margin-right:0;padding:18px}.grid{grid-template-columns:1fr}.quick{right:18px}.hero h1{font-size:26px}.doc h2 .prototype-link{margin:8px 0 0;font-size:11px}}
+
+.sidebar h2{line-height:1.5}.sidebar a{overflow-wrap:anywhere}.sidebar .group{margin-top:18px}.sidebar nav .toc-link{font-size:12px;padding-top:6px;padding-bottom:6px}.doc{min-width:0}.doc>h1{display:none}.doc img{max-width:100%;height:auto}.doc h2,.doc h3,.doc h4{scroll-margin-top:24px}.doc td{overflow-wrap:anywhere}.doc pre{white-space:pre-wrap;overflow-wrap:anywhere}.doc .table-wrap{max-width:100%}.doc table{min-width:560px}.doc td:first-child{min-width:78px}.doc th{white-space:normal}.doc h2:first-of-type{margin-top:20px}.doc ol,.doc ul{padding-left:26px}.muted{color:var(--muted);font-size:13px}.page-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.page-card{display:block;text-decoration:none;color:var(--ink);background:white;padding:23px 25px;border-radius:15px;border:1px solid var(--line);box-shadow:var(--shadow)}.page-card:hover{border-color:#a78bfa}.page-card h3{margin:0 0 8px;color:var(--purple2)}.page-card p{margin:0;color:var(--muted);font-size:14px}.flow-card{margin:20px 0 30px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}.flow-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding:10px 12px;background:#faf8ff;border-bottom:1px solid var(--line)}.flow-toolbar button,.flow-toolbar a{font:inherit;font-size:12px;line-height:1.5;cursor:pointer;background:#fff;color:#5b21b6;border:1px solid #ddd3f1;border-radius:6px;padding:5px 9px;text-decoration:none}.flow-toolbar .zoom-label{font-size:12px;color:var(--muted);margin-left:auto}.flow-stage{height:620px;max-height:72vh;min-height:320px;overflow:hidden;position:relative;cursor:grab;touch-action:none;background:#fff;background-image:radial-gradient(#ddd6ed 1px,transparent 1px);background-size:18px 18px}.flow-stage.dragging{cursor:grabbing}.flow-stage>svg{display:block;position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;user-select:none}.flow-stage text{font-family:'PingFang SC','Microsoft YaHei',sans-serif}.flow-source{border-top:1px solid var(--line)}.flow-source summary{padding:10px 14px;font-size:13px;color:var(--purple2);cursor:pointer}.flow-source pre{margin:0;border-radius:0;font-size:12px}.flow-caption{font-size:12px;padding:8px 14px;margin:0;color:var(--muted);border-top:1px solid var(--line)}.mobile-menu{display:none}.scope-line{font-size:13px;color:var(--muted)}.footer-nav{margin-top:30px;position:static}.hero .tag{background:#ffffff24;color:#f0eaff}.prototype-note{margin:14px 0;font-size:13px;color:var(--muted)}
+@media(max-width:1050px){:root{--side:230px}.hero{padding:28px}.main{padding:24px 20px}.card{padding:20px}.page-cards{grid-template-columns:1fr}}
+@media(max-width:720px){.main{width:100%;margin:0;padding:16px}.sidebar{display:none;width:min(85vw,300px)}body.menu-open .sidebar{display:block;box-shadow:-10px 0 40px #201a2c44}.mobile-menu{display:block;position:fixed;right:14px;top:12px;z-index:30;background:#5b21b6;color:#fff;border:1px solid #a78bfa;border-radius:8px;padding:7px 12px}.hero{padding:24px 20px}.hero h1{font-size:25px}.hero p{font-size:14px}.quick{bottom:14px;right:14px}.grid{grid-template-columns:1fr 1fr}.flow-stage{height:500px}.doc h2{font-size:22px}}
+@media print{.sidebar,.quick,.mobile-menu,.actions,.flow-toolbar,.footer-nav{display:none!important}.main{width:100%;margin:0;padding:0}.hero{background:#fff;color:#211a49;box-shadow:none;padding:12px 0}.hero h1,.hero p,.eyebrow{color:#211a49}.card{box-shadow:none;padding:12px}.table-wrap{overflow:visible}table{font-size:10px}.flow-stage{height:850px;max-height:none;page-break-inside:avoid}.section{break-inside:avoid}}
+</style></head><body><button class="mobile-menu" aria-label="打开或关闭目录">目录 ☰</button><aside class="sidebar"><h2>支付配置化专项</h2><div class="group">版本迭代需求</div><a href="../index.html">← 返回版本列表</a><div class="group">开发 / 测试共同方案</div><nav><a class="" href="index.html">方案总览</a><a class="" href="development-spec.html">完整需求方案</a><a class="" href="page-list.html">页面清单</a><a class="current" href="flows.html">全程流程图</a><a class="" href="acceptance.html">开发与验收</a><div class="group">本页目录</div><a class="toc-link" href="#一-全程总览">一、全程总览</a><a class="toc-link" href="#二-内导售票与支付确认">二、内导售票与支付确认</a><a class="toc-link" href="#三-管理员配置-绑定与后续变更">三、管理员配置、绑定与后续变更</a><a class="toc-link" href="#四-扫码付-银行卡公共资源解析">四、扫码付/银行卡公共资源解析</a><a class="toc-link" href="#五-散客-团队售票与订单支付记录">五、散客/团队售票与订单支付记录</a><a class="toc-link" href="#六-长期合作伙伴与临时客户售票">六、长期合作伙伴与临时客户售票</a><a class="toc-link" href="#七-两个充值入口共用资源与编号">七、两个充值入口共用资源与编号</a><a class="toc-link" href="#八-配置变化-挂单恢复与历史展示">八、配置变化、挂单恢复与历史展示</a><div class="group">原型入口</div><a href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口原型 ↗</a><div class="group">源文件</div><a href="PRD｜支付配置化_V3.6_20261019.md" target="_blank" rel="noopener noreferrer">打开完整 Markdown ↗</a></nav></aside><main class="main"><header class="hero"><div class="eyebrow">支付配置化专项 · V3.6 · 2026-10-19</div><h1>全程流程图</h1><p>配置与绑定、确认弹窗资源选择、每笔编号记录及订单支付展示。所有图可离线查看、缩放和拖动。</p><div class="actions"><a class="btn" href="development-spec.html">完整需求方案</a><a class="btn" href="flows.html">全程流程图</a><a class="btn" href="page-list.html">页面清单</a><a class="btn" href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a class="btn" href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口 ↗</a></div></header><article class="doc"><h1>支付配置化｜全程流程图</h1>
+<p>版本：V1.4｜2026-10-19。节点对应<a href="01-%E9%A1%B5%E9%9D%A2%E6%B8%85%E5%8D%95.md">页面清单</a>。仅展开本次新增/修改；原下单、支付和充值处理用一个节点表示，不重新定义。</p>
+<h2 id="一-全程总览">一、全程总览</h2>
+<p><img src="assets/payment-overview.svg" alt="支付配置化全程总览"></p>
+<figure class="flow-card"><div class="flow-toolbar"><button data-action="in" aria-label="放大流程图">＋ 放大</button><button data-action="out" aria-label="缩小流程图">－ 缩小</button><button data-action="fit">适应全图</button><button data-action="width">适应宽度</button><a href="assets/flow-01.svg" target="_blank" rel="noopener">独立查看 ↗</a><span class="zoom-label"></span></div><div class="flow-stage" aria-label="可缩放拖动的流程图" tabindex="0">
+
+<!-- Generated by graphviz version 14.1.3 (20260303.0454)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg width="958pt" height="1132pt"
+ viewBox="0.00 0.00 958.00 1132.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 1106.88)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-25.2,25.2 -25.2,-1106.88 933.08,-1106.88 933.08,25.2 -25.2,25.2"/>
+<!-- B01 -->
+<g id="node1" class="node">
+<title>B01</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M389.88,-842.6C389.88,-842.6 195,-842.6 195,-842.6 189,-842.6 183,-836.6 183,-830.6 183,-830.6 183,-800.84 183,-800.84 183,-794.84 189,-788.84 195,-788.84 195,-788.84 389.88,-788.84 389.88,-788.84 395.88,-788.84 401.88,-794.84 401.88,-800.84 401.88,-800.84 401.88,-830.6 401.88,-830.6 401.88,-836.6 395.88,-842.6 389.88,-842.6"/>
+<text xml:space="preserve" text-anchor="middle" x="292.44" y="-819.92" font-family="PingFang SC" font-size="14.00" fill="#2e214a">B01/B02 配置启用、场景</text>
+<text xml:space="preserve" text-anchor="middle" x="292.44" y="-803.12" font-family="PingFang SC" font-size="14.00" fill="#2e214a">及统一资源规则</text>
+</g>
+<!-- FILTER -->
+<g id="node2" class="node">
+<title>FILTER</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M387,-731.44C387,-731.44 197.88,-731.44 197.88,-731.44 191.88,-731.44 185.88,-725.44 185.88,-719.44 185.88,-719.44 185.88,-706.48 185.88,-706.48 185.88,-700.48 191.88,-694.48 197.88,-694.48 197.88,-694.48 387,-694.48 387,-694.48 393,-694.48 399,-700.48 399,-706.48 399,-706.48 399,-719.44 399,-719.44 399,-725.44 393,-731.44 387,-731.44"/>
+<text xml:space="preserve" text-anchor="middle" x="292.44" y="-708.76" font-family="PingFang SC" font-size="14.00" fill="#2e214a">K01 按场景过滤支付方式</text>
+</g>
+<!-- B01&#45;&gt;FILTER -->
+<g id="edge1" class="edge">
+<title>B01&#45;&gt;FILTER</title>
+<path fill="none" stroke="#8a77a6" d="M292.44,-788.51C292.44,-773.59 292.44,-754.97 292.44,-740.07"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="294.89,-740.3 292.44,-733.3 289.99,-740.3 294.89,-740.3"/>
+</g>
+<!-- W04 -->
+<g id="node8" class="node">
+<title>W04</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M374.76,-637.08C374.76,-637.08 210.12,-637.08 210.12,-637.08 204.12,-637.08 198.12,-631.08 198.12,-625.08 198.12,-625.08 198.12,-595.32 198.12,-595.32 198.12,-589.32 204.12,-583.32 210.12,-583.32 210.12,-583.32 374.76,-583.32 374.76,-583.32 380.76,-583.32 386.76,-589.32 386.76,-595.32 386.76,-595.32 386.76,-625.08 386.76,-625.08 386.76,-631.08 380.76,-637.08 374.76,-637.08"/>
+<text xml:space="preserve" text-anchor="middle" x="292.44" y="-614.4" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W01/W02 → W04 散</text>
+<text xml:space="preserve" text-anchor="middle" x="292.44" y="-597.6" font-family="PingFang SC" font-size="14.00" fill="#2e214a">客/团队确认</text>
+</g>
+<!-- FILTER&#45;&gt;W04 -->
+<g id="edge7" class="edge">
+<title>FILTER&#45;&gt;W04</title>
+<path fill="none" stroke="#8a77a6" d="M292.44,-694.41C292.44,-680.96 292.44,-662 292.44,-645.57"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="294.89,-645.76 292.44,-638.76 289.99,-645.76 294.89,-645.76"/>
+</g>
+<!-- W12 -->
+<g id="node9" class="node">
+<title>W12</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M850.44,-628.68C850.44,-628.68 676.44,-628.68 676.44,-628.68 670.44,-628.68 664.44,-622.68 664.44,-616.68 664.44,-616.68 664.44,-603.72 664.44,-603.72 664.44,-597.72 670.44,-591.72 676.44,-591.72 676.44,-591.72 850.44,-591.72 850.44,-591.72 856.44,-591.72 862.44,-597.72 862.44,-603.72 862.44,-603.72 862.44,-616.68 862.44,-616.68 862.44,-622.68 856.44,-628.68 850.44,-628.68"/>
+<text xml:space="preserve" text-anchor="middle" x="763.44" y="-606" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W11 → W12 内导确认</text>
+</g>
+<!-- FILTER&#45;&gt;W12 -->
+<g id="edge8" class="edge">
+<title>FILTER&#45;&gt;W12</title>
+<path fill="none" stroke="#8a77a6" d="M377.17,-693.99C397.99,-689.57 414.44,-686.08 414.44,-686.08 414.44,-686.08 648.44,-637.08 648.44,-637.08 648.44,-637.08 659.89,-634.5 675.57,-630.98"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="675.8,-633.43 682.09,-629.51 674.72,-628.65 675.8,-633.43"/>
+</g>
+<!-- W07 -->
+<g id="node10" class="node">
+<title>W07</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M316.76,-559.32C316.76,-559.32 152.12,-559.32 152.12,-559.32 146.12,-559.32 140.12,-553.32 140.12,-547.32 140.12,-547.32 140.12,-517.56 140.12,-517.56 140.12,-511.56 146.12,-505.56 152.12,-505.56 152.12,-505.56 316.76,-505.56 316.76,-505.56 322.76,-505.56 328.76,-511.56 328.76,-517.56 328.76,-517.56 328.76,-547.32 328.76,-547.32 328.76,-553.32 322.76,-559.32 316.76,-559.32"/>
+<text xml:space="preserve" text-anchor="middle" x="234.44" y="-536.64" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W05/W06 → W07 伙</text>
+<text xml:space="preserve" text-anchor="middle" x="234.44" y="-519.84" font-family="PingFang SC" font-size="14.00" fill="#2e214a">伴账户支付确认</text>
+</g>
+<!-- FILTER&#45;&gt;W07 -->
+<g id="edge9" class="edge">
+<title>FILTER&#45;&gt;W07</title>
+<path fill="none" stroke="#8a77a6" d="M266.09,-694.02C233.55,-671.87 182.44,-637.08 182.44,-637.08 182.44,-637.08 182.44,-583.32 182.44,-583.32 182.44,-583.32 190.97,-575.14 201.11,-565.41"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="202.77,-567.21 206.13,-560.6 199.38,-563.67 202.77,-567.21"/>
+</g>
+<!-- W09 -->
+<g id="node11" class="node">
+<title>W09</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M620,-637.08C620,-637.08 430.88,-637.08 430.88,-637.08 424.88,-637.08 418.88,-631.08 418.88,-625.08 418.88,-625.08 418.88,-595.32 418.88,-595.32 418.88,-589.32 424.88,-583.32 430.88,-583.32 430.88,-583.32 620,-583.32 620,-583.32 626,-583.32 632,-589.32 632,-595.32 632,-595.32 632,-625.08 632,-625.08 632,-631.08 626,-637.08 620,-637.08"/>
+<text xml:space="preserve" text-anchor="middle" x="525.44" y="-614.4" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W05充值 / W08行内充值</text>
+<text xml:space="preserve" text-anchor="middle" x="525.44" y="-597.6" font-family="PingFang SC" font-size="14.00" fill="#2e214a"> → W09共用弹窗</text>
+</g>
+<!-- FILTER&#45;&gt;W09 -->
+<g id="edge10" class="edge">
+<title>FILTER&#45;&gt;W09</title>
+<path fill="none" stroke="#8a77a6" d="M333.83,-694.06C368.05,-679.26 417.35,-657.94 457.37,-640.63"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="457.89,-643.08 463.34,-638.05 455.95,-638.58 457.89,-643.08"/>
+</g>
+<!-- B03 -->
+<g id="node3" class="node">
+<title>B03</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M774.56,-1081.68C774.56,-1081.68 570.32,-1081.68 570.32,-1081.68 564.32,-1081.68 558.32,-1075.68 558.32,-1069.68 558.32,-1069.68 558.32,-1039.92 558.32,-1039.92 558.32,-1033.92 564.32,-1027.92 570.32,-1027.92 570.32,-1027.92 774.56,-1027.92 774.56,-1027.92 780.56,-1027.92 786.56,-1033.92 786.56,-1039.92 786.56,-1039.92 786.56,-1069.68 786.56,-1069.68 786.56,-1075.68 780.56,-1081.68 774.56,-1081.68"/>
+<text xml:space="preserve" text-anchor="middle" x="672.44" y="-1059" font-family="PingFang SC" font-size="14.00" fill="#2e214a">B03/B04/B05 维护资</text>
+<text xml:space="preserve" text-anchor="middle" x="672.44" y="-1042.2" font-family="PingFang SC" font-size="14.00" fill="#2e214a">源名称及柜台编码/POS编号</text>
+</g>
+<!-- OWNER -->
+<g id="node4" class="node">
+<title>OWNER</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M661.12,-974.94C661.12,-974.94 578.64,-945.94 578.64,-945.94 572.98,-943.95 572.98,-939.97 578.64,-937.98 578.64,-937.98 661.12,-908.98 661.12,-908.98 666.78,-906.99 678.1,-906.99 683.76,-908.98 683.76,-908.98 766.24,-937.98 766.24,-937.98 771.9,-939.97 771.9,-943.95 766.24,-945.94 766.24,-945.94 683.76,-974.94 683.76,-974.94 678.1,-976.93 666.78,-976.93 661.12,-974.94"/>
+<text xml:space="preserve" text-anchor="middle" x="672.44" y="-937.76" font-family="PingFang SC" font-size="14.00" fill="#2e214a">资源跟谁走</text>
+</g>
+<!-- B03&#45;&gt;OWNER -->
+<g id="edge2" class="edge">
+<title>B03&#45;&gt;OWNER</title>
+<path fill="none" stroke="#8a77a6" d="M672.44,-1027.53C672.44,-1015.55 672.44,-1001.03 672.44,-987.42"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="674.89,-987.62 672.44,-980.62 669.99,-987.62 674.89,-987.62"/>
+</g>
+<!-- B07 -->
+<g id="node5" class="node">
+<title>B07</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M895.88,-842.6C895.88,-842.6 701,-842.6 701,-842.6 695,-842.6 689,-836.6 689,-830.6 689,-830.6 689,-800.84 689,-800.84 689,-794.84 695,-788.84 701,-788.84 701,-788.84 895.88,-788.84 895.88,-788.84 901.88,-788.84 907.88,-794.84 907.88,-800.84 907.88,-800.84 907.88,-830.6 907.88,-830.6 907.88,-836.6 901.88,-842.6 895.88,-842.6"/>
+<text xml:space="preserve" text-anchor="middle" x="798.44" y="-819.92" font-family="PingFang SC" font-size="14.00" fill="#2e214a">B06/B07 窗口售票机绑定</text>
+<text xml:space="preserve" text-anchor="middle" x="798.44" y="-803.12" font-family="PingFang SC" font-size="14.00" fill="#2e214a">资源</text>
+</g>
+<!-- OWNER&#45;&gt;B07 -->
+<g id="edge3" class="edge">
+<title>OWNER&#45;&gt;B07</title>
+<path fill="none" stroke="#8a77a6" d="M699.47,-914.31C718.95,-895.1 745.33,-869.09 765.96,-848.75"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="767.55,-850.62 770.81,-843.96 764.1,-847.14 767.55,-850.62"/>
+<text xml:space="preserve" text-anchor="middle" x="755.73" y="-870.2" font-family="PingFang SC" font-size="12.00" fill="#695385">设备</text>
+</g>
+<!-- B09 -->
+<g id="node6" class="node">
+<title>B09</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M644.88,-842.6C644.88,-842.6 450,-842.6 450,-842.6 444,-842.6 438,-836.6 438,-830.6 438,-830.6 438,-800.84 438,-800.84 438,-794.84 444,-788.84 450,-788.84 450,-788.84 644.88,-788.84 644.88,-788.84 650.88,-788.84 656.88,-794.84 656.88,-800.84 656.88,-800.84 656.88,-830.6 656.88,-830.6 656.88,-836.6 650.88,-842.6 644.88,-842.6"/>
+<text xml:space="preserve" text-anchor="middle" x="547.44" y="-819.92" font-family="PingFang SC" font-size="14.00" fill="#2e214a">B08/B09 收银账号绑定资</text>
+<text xml:space="preserve" text-anchor="middle" x="547.44" y="-803.12" font-family="PingFang SC" font-size="14.00" fill="#2e214a">源</text>
+</g>
+<!-- OWNER&#45;&gt;B09 -->
+<g id="edge4" class="edge">
+<title>OWNER&#45;&gt;B09</title>
+<path fill="none" stroke="#8a77a6" d="M645.62,-914.31C626.3,-895.1 600.13,-869.09 579.66,-848.75"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="581.55,-847.17 574.86,-843.97 578.09,-850.64 581.55,-847.17"/>
+<text xml:space="preserve" text-anchor="middle" x="618.94" y="-870.2" font-family="PingFang SC" font-size="12.00" fill="#695385">账号</text>
+</g>
+<!-- K02 -->
+<g id="node7" class="node">
+<title>K02</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M662.12,-739.84C662.12,-739.84 442.76,-739.84 442.76,-739.84 436.76,-739.84 430.76,-733.84 430.76,-727.84 430.76,-727.84 430.76,-698.08 430.76,-698.08 430.76,-692.08 436.76,-686.08 442.76,-686.08 442.76,-686.08 662.12,-686.08 662.12,-686.08 668.12,-686.08 674.12,-692.08 674.12,-698.08 674.12,-698.08 674.12,-727.84 674.12,-727.84 674.12,-733.84 668.12,-739.84 662.12,-739.84"/>
+<text xml:space="preserve" text-anchor="middle" x="552.44" y="-717.16" font-family="PingFang SC" font-size="14.00" fill="#2e214a">K02 确认弹窗按当前归属读取</text>
+<text xml:space="preserve" text-anchor="middle" x="552.44" y="-700.36" font-family="PingFang SC" font-size="14.00" fill="#2e214a">绑定</text>
+</g>
+<!-- B07&#45;&gt;K02 -->
+<g id="edge5" class="edge">
+<title>B07&#45;&gt;K02</title>
+<path fill="none" stroke="#8a77a6" d="M734.13,-788.38C700.51,-774.61 659.26,-757.71 624.56,-743.5"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="625.61,-741.28 618.2,-740.9 623.75,-745.82 625.61,-741.28"/>
+</g>
+<!-- B09&#45;&gt;K02 -->
+<g id="edge6" class="edge">
+<title>B09&#45;&gt;K02</title>
+<path fill="none" stroke="#8a77a6" d="M548.74,-788.51C549.35,-776.26 550.08,-761.52 550.73,-748.39"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="553.17,-748.66 551.07,-741.55 548.28,-748.42 553.17,-748.66"/>
+</g>
+<!-- K02&#45;&gt;W04 -->
+<g id="edge11" class="edge">
+<title>K02&#45;&gt;W04</title>
+<path fill="none" stroke="#8a77a6" d="M484.47,-685.62C448.79,-671.79 404.97,-654.81 368.2,-640.56"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="369.29,-638.35 361.88,-638.11 367.52,-642.92 369.29,-638.35"/>
+</g>
+<!-- K02&#45;&gt;W12 -->
+<g id="edge12" class="edge">
+<title>K02&#45;&gt;W12</title>
+<path fill="none" stroke="#8a77a6" d="M607.6,-685.62C642.08,-669.15 685.93,-648.22 718.32,-632.75"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="719.25,-635.02 724.52,-629.79 717.14,-630.59 719.25,-635.02"/>
+</g>
+<!-- K02&#45;&gt;W09 -->
+<g id="edge13" class="edge">
+<title>K02&#45;&gt;W09</title>
+<path fill="none" stroke="#8a77a6" d="M545.42,-685.75C542.1,-673.39 538.11,-658.48 534.57,-645.26"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="537,-644.87 532.82,-638.74 532.27,-646.14 537,-644.87"/>
+</g>
+<!-- CHECK -->
+<g id="node12" class="node">
+<title>CHECK</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M504,-481.56C504,-481.56 314.88,-481.56 314.88,-481.56 308.88,-481.56 302.88,-475.56 302.88,-469.56 302.88,-469.56 302.88,-456.6 302.88,-456.6 302.88,-450.6 308.88,-444.6 314.88,-444.6 314.88,-444.6 504,-444.6 504,-444.6 510,-444.6 516,-450.6 516,-456.6 516,-456.6 516,-469.56 516,-469.56 516,-475.56 510,-481.56 504,-481.56"/>
+<text xml:space="preserve" text-anchor="middle" x="409.44" y="-458.88" font-family="PingFang SC" font-size="14.00" fill="#2e214a">K03 本期配置及资源复核</text>
+</g>
+<!-- W04&#45;&gt;CHECK -->
+<g id="edge14" class="edge">
+<title>W04&#45;&gt;CHECK</title>
+<path fill="none" stroke="#8a77a6" d="M319.66,-583.09C332.24,-571.02 344.44,-559.32 344.44,-559.32 344.44,-559.32 373.29,-517.05 392.55,-488.83"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="394.44,-490.41 396.36,-483.24 390.39,-487.64 394.44,-490.41"/>
+</g>
+<!-- W12&#45;&gt;CHECK -->
+<g id="edge15" class="edge">
+<title>W12&#45;&gt;CHECK</title>
+<path fill="none" stroke="#8a77a6" d="M719.68,-591.26C654.13,-564.39 530.71,-513.8 460.93,-485.19"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="461.91,-482.94 454.5,-482.55 460.05,-487.48 461.91,-482.94"/>
+</g>
+<!-- ORIG -->
+<g id="node13" class="node">
+<title>ORIG</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M388,-395.6C388,-395.6 144.88,-395.6 144.88,-395.6 138.88,-395.6 132.88,-389.6 132.88,-383.6 132.88,-383.6 132.88,-353.84 132.88,-353.84 132.88,-347.84 138.88,-341.84 144.88,-341.84 144.88,-341.84 388,-341.84 388,-341.84 394,-341.84 400,-347.84 400,-353.84 400,-353.84 400,-383.6 400,-383.6 400,-389.6 394,-395.6 388,-395.6"/>
+<text xml:space="preserve" text-anchor="middle" x="266.44" y="-372.92" font-family="PingFang SC" font-size="14.00" fill="#2e214a">执行原下单、支付或充值处理；其</text>
+<text xml:space="preserve" text-anchor="middle" x="266.44" y="-356.12" font-family="PingFang SC" font-size="14.00" fill="#2e214a">他逻辑不变</text>
+</g>
+<!-- W07&#45;&gt;ORIG -->
+<g id="edge18" class="edge">
+<title>W07&#45;&gt;ORIG</title>
+<path fill="none" stroke="#8a77a6" d="M239.65,-505.1C245.09,-477.61 253.64,-434.39 259.62,-404.2"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="261.98,-404.88 260.94,-397.54 257.17,-403.93 261.98,-404.88"/>
+</g>
+<!-- W09&#45;&gt;CHECK -->
+<g id="edge16" class="edge">
+<title>W09&#45;&gt;CHECK</title>
+<path fill="none" stroke="#8a77a6" d="M504.43,-582.92C482.98,-556.08 449.93,-514.73 429.01,-488.56"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="430.94,-487.05 424.65,-483.11 427.11,-490.11 430.94,-487.05"/>
+</g>
+<!-- CHECK&#45;&gt;ORIG -->
+<g id="edge17" class="edge">
+<title>CHECK&#45;&gt;ORIG</title>
+<path fill="none" stroke="#8a77a6" d="M381.87,-444.27C362.67,-431.87 336.58,-415.02 314.05,-400.47"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="315.67,-398.6 308.46,-396.86 313.01,-402.72 315.67,-398.6"/>
+</g>
+<!-- RECORD -->
+<g id="node14" class="node">
+<title>RECORD</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M254.67,-290.51C254.67,-290.51 91.73,-258.21 91.73,-258.21 85.85,-257.05 85.85,-254.71 91.73,-253.55 91.73,-253.55 254.67,-221.25 254.67,-221.25 260.55,-220.09 272.33,-220.09 278.21,-221.25 278.21,-221.25 441.15,-253.55 441.15,-253.55 447.03,-254.71 447.03,-257.05 441.15,-258.21 441.15,-258.21 278.21,-290.51 278.21,-290.51 272.33,-291.67 260.55,-291.67 254.67,-290.51"/>
+<text xml:space="preserve" text-anchor="middle" x="266.44" y="-251.68" font-family="PingFang SC" font-size="14.00" fill="#2e214a">本次是否扫码付或银行卡</text>
+</g>
+<!-- ORIG&#45;&gt;RECORD -->
+<g id="edge19" class="edge">
+<title>ORIG&#45;&gt;RECORD</title>
+<path fill="none" stroke="#8a77a6" d="M266.44,-341.45C266.44,-329.47 266.44,-314.95 266.44,-301.34"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="268.89,-301.54 266.44,-294.54 263.99,-301.54 268.89,-301.54"/>
+</g>
+<!-- SNAP -->
+<g id="node15" class="node">
+<title>SNAP</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M242.88,-156.52C242.88,-156.52 12,-156.52 12,-156.52 6,-156.52 0,-150.52 0,-144.52 0,-144.52 0,-114.76 0,-114.76 0,-108.76 6,-102.76 12,-102.76 12,-102.76 242.88,-102.76 242.88,-102.76 248.88,-102.76 254.88,-108.76 254.88,-114.76 254.88,-114.76 254.88,-144.52 254.88,-144.52 254.88,-150.52 248.88,-156.52 242.88,-156.52"/>
+<text xml:space="preserve" text-anchor="middle" x="127.44" y="-133.84" font-family="PingFang SC" font-size="14.00" fill="#2e214a">每笔记录实际资源及柜台编码/P</text>
+<text xml:space="preserve" text-anchor="middle" x="127.44" y="-117.04" font-family="PingFang SC" font-size="14.00" fill="#2e214a">OS编号</text>
+</g>
+<!-- RECORD&#45;&gt;SNAP -->
+<g id="edge20" class="edge">
+<title>RECORD&#45;&gt;SNAP</title>
+<path fill="none" stroke="#8a77a6" d="M233.15,-225.12C211.95,-206.17 184.51,-181.65 162.91,-162.34"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="164.67,-160.63 157.82,-157.79 161.4,-164.28 164.67,-160.63"/>
+<text xml:space="preserve" text-anchor="middle" x="201.44" y="-184.12" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- UNCHANGED -->
+<g id="node16" class="node">
+<title>UNCHANGED</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M511.88,-148.12C511.88,-148.12 299,-148.12 299,-148.12 293,-148.12 287,-142.12 287,-136.12 287,-136.12 287,-123.16 287,-123.16 287,-117.16 293,-111.16 299,-111.16 299,-111.16 511.88,-111.16 511.88,-111.16 517.88,-111.16 523.88,-117.16 523.88,-123.16 523.88,-123.16 523.88,-136.12 523.88,-136.12 523.88,-142.12 517.88,-148.12 511.88,-148.12"/>
+<text xml:space="preserve" text-anchor="middle" x="405.44" y="-125.44" font-family="PingFang SC" font-size="14.00" fill="#2e214a">原支付记录，不附带本期资源</text>
+</g>
+<!-- RECORD&#45;&gt;UNCHANGED -->
+<g id="edge21" class="edge">
+<title>RECORD&#45;&gt;UNCHANGED</title>
+<path fill="none" stroke="#8a77a6" d="M299.73,-225.12C324.25,-203.2 357.12,-173.83 379.65,-153.69"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="381.01,-155.76 384.59,-149.27 377.74,-152.11 381.01,-155.76"/>
+<text xml:space="preserve" text-anchor="middle" x="352.89" y="-184.12" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- D01 -->
+<g id="node17" class="node">
+<title>D01</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M218.76,-53.76C218.76,-53.76 36.12,-53.76 36.12,-53.76 30.12,-53.76 24.12,-47.76 24.12,-41.76 24.12,-41.76 24.12,-12 24.12,-12 24.12,-6 30.12,0 36.12,0 36.12,0 218.76,0 218.76,0 224.76,0 230.76,-6 230.76,-12 230.76,-12 230.76,-41.76 230.76,-41.76 230.76,-47.76 224.76,-53.76 218.76,-53.76"/>
+<text xml:space="preserve" text-anchor="middle" x="127.44" y="-31.08" font-family="PingFang SC" font-size="14.00" fill="#2e214a">D01 订单支付 / D02充</text>
+<text xml:space="preserve" text-anchor="middle" x="127.44" y="-14.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">值支付信息展示</text>
+</g>
+<!-- SNAP&#45;&gt;D01 -->
+<g id="edge22" class="edge">
+<title>SNAP&#45;&gt;D01</title>
+<path fill="none" stroke="#8a77a6" d="M127.44,-102.43C127.44,-90.18 127.44,-75.44 127.44,-62.31"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="129.89,-62.47 127.44,-55.47 124.99,-62.47 129.89,-62.47"/>
+</g>
+</g>
+</svg>
+</div><figcaption class="flow-caption">默认适应宽度 · 滚轮缩放 · 按住拖动 · 双击适应全图</figcaption><details class="flow-source"><summary>查看可编辑流程源码</summary><pre><code>flowchart TB
+  B01[B01/B02 配置启用、场景及统一资源规则] --&gt; FILTER[K01 按场景过滤支付方式]
+  B03[B03/B04/B05 维护资源名称及柜台编码/POS编号] --&gt; OWNER{资源跟谁走}
+  OWNER --&gt;|设备| B07[B06/B07 窗口售票机绑定资源]
+  OWNER --&gt;|账号| B09[B08/B09 收银账号绑定资源]
+  B07 --&gt; K02[K02 确认弹窗按当前归属读取绑定]
+  B09 --&gt; K02
+  FILTER --&gt; W04[W01/W02 → W04 散客/团队确认]
+  FILTER --&gt; W12[W11 → W12 内导确认]
+  FILTER --&gt; W07[W05/W06 → W07 伙伴账户支付确认]
+  FILTER --&gt; W09[W05充值 / W08行内充值 → W09共用弹窗]
+  K02 --&gt; W04
+  K02 --&gt; W12
+  K02 --&gt; W09
+  W04 --&gt; CHECK[K03 本期配置及资源复核]
+  W12 --&gt; CHECK
+  W09 --&gt; CHECK
+  CHECK --&gt; ORIG[执行原下单、支付或充值处理；其他逻辑不变]
+  W07 --&gt; ORIG
+  ORIG --&gt; RECORD{本次是否扫码付或银行卡}
+  RECORD --&gt;|是| SNAP[每笔记录实际资源及柜台编码/POS编号]
+  RECORD --&gt;|否| UNCHANGED[原支付记录，不附带本期资源]
+  SNAP --&gt; D01[D01 订单支付 / D02充值支付信息展示]
+</code></pre></details></figure>
+<h2 id="二-内导售票与支付确认">二、内导售票与支付确认</h2>
+<figure class="flow-card"><div class="flow-toolbar"><button data-action="in" aria-label="放大流程图">＋ 放大</button><button data-action="out" aria-label="缩小流程图">－ 缩小</button><button data-action="fit">适应全图</button><button data-action="width">适应宽度</button><a href="assets/flow-02.svg" target="_blank" rel="noopener">独立查看 ↗</a><span class="zoom-label"></span></div><div class="flow-stage" aria-label="可缩放拖动的流程图" tabindex="0">
+
+<!-- Generated by graphviz version 14.1.3 (20260303.0454)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg width="697pt" height="1218pt"
+ viewBox="0.00 0.00 697.00 1218.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 1192.8)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-25.2,25.2 -25.2,-1192.8 671.32,-1192.8 671.32,25.2 -25.2,25.2"/>
+<!-- W11 -->
+<g id="node1" class="node">
+<title>W11</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M376.24,-1167.6C376.24,-1167.6 246.88,-1167.6 246.88,-1167.6 240.88,-1167.6 234.88,-1161.6 234.88,-1155.6 234.88,-1155.6 234.88,-1142.64 234.88,-1142.64 234.88,-1136.64 240.88,-1130.64 246.88,-1130.64 246.88,-1130.64 376.24,-1130.64 376.24,-1130.64 382.24,-1130.64 388.24,-1136.64 388.24,-1142.64 388.24,-1142.64 388.24,-1155.6 388.24,-1155.6 388.24,-1161.6 382.24,-1167.6 376.24,-1167.6"/>
+<text xml:space="preserve" text-anchor="middle" x="311.56" y="-1144.92" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W11 原内导开单</text>
+</g>
+<!-- KIND -->
+<g id="node2" class="node">
+<title>KIND</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M300.1,-1078.08C300.1,-1078.08 204.22,-1048.24 204.22,-1048.24 198.49,-1046.46 198.49,-1042.9 204.22,-1041.12 204.22,-1041.12 300.1,-1011.28 300.1,-1011.28 305.83,-1009.5 317.29,-1009.5 323.02,-1011.28 323.02,-1011.28 418.9,-1041.12 418.9,-1041.12 424.63,-1042.9 424.63,-1046.46 418.9,-1048.24 418.9,-1048.24 323.02,-1078.08 323.02,-1078.08 317.29,-1079.86 305.83,-1079.86 300.1,-1078.08"/>
+<text xml:space="preserve" text-anchor="middle" x="311.56" y="-1040.48" font-family="PingFang SC" font-size="14.00" fill="#2e214a">散客还是团队</text>
+</g>
+<!-- W11&#45;&gt;KIND -->
+<g id="edge1" class="edge">
+<title>W11&#45;&gt;KIND</title>
+<path fill="none" stroke="#8a77a6" d="M311.56,-1130.28C311.56,-1119.16 311.56,-1104.33 311.56,-1090.19"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="314.01,-1090.49 311.56,-1083.49 309.11,-1090.49 314.01,-1090.49"/>
+</g>
+<!-- SIX -->
+<g id="node3" class="node">
+<title>SIX</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M291.44,-945.32C291.44,-945.32 93.68,-945.32 93.68,-945.32 87.68,-945.32 81.68,-939.32 81.68,-933.32 81.68,-933.32 81.68,-920.36 81.68,-920.36 81.68,-914.36 87.68,-908.36 93.68,-908.36 93.68,-908.36 291.44,-908.36 291.44,-908.36 297.44,-908.36 303.44,-914.36 303.44,-920.36 303.44,-920.36 303.44,-933.32 303.44,-933.32 303.44,-939.32 297.44,-945.32 291.44,-945.32"/>
+<text xml:space="preserve" text-anchor="middle" x="192.56" y="-922.64" font-family="PingFang SC" font-size="14.00" fill="#2e214a">六种普通支付与配置取交集</text>
+</g>
+<!-- KIND&#45;&gt;SIX -->
+<g id="edge2" class="edge">
+<title>KIND&#45;&gt;SIX</title>
+<path fill="none" stroke="#8a77a6" d="M283.36,-1016.23C263.14,-996.55 236.18,-970.3 216.9,-951.54"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="218.74,-949.91 212.02,-946.78 215.32,-953.42 218.74,-949.91"/>
+<text xml:space="preserve" text-anchor="middle" x="257.49" y="-972.92" font-family="PingFang SC" font-size="12.00" fill="#695385">散客</text>
+</g>
+<!-- NINE -->
+<g id="node4" class="node">
+<title>NINE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M515.68,-945.32C515.68,-945.32 347.44,-945.32 347.44,-945.32 341.44,-945.32 335.44,-939.32 335.44,-933.32 335.44,-933.32 335.44,-920.36 335.44,-920.36 335.44,-914.36 341.44,-908.36 347.44,-908.36 347.44,-908.36 515.68,-908.36 515.68,-908.36 521.68,-908.36 527.68,-914.36 527.68,-920.36 527.68,-920.36 527.68,-933.32 527.68,-933.32 527.68,-939.32 521.68,-945.32 515.68,-945.32"/>
+<text xml:space="preserve" text-anchor="middle" x="431.56" y="-922.64" font-family="PingFang SC" font-size="14.00" fill="#2e214a">九种支付与配置取交集</text>
+</g>
+<!-- KIND&#45;&gt;NINE -->
+<g id="edge3" class="edge">
+<title>KIND&#45;&gt;NINE</title>
+<path fill="none" stroke="#8a77a6" d="M340,-1016.23C360.39,-996.55 387.57,-970.3 407.01,-951.54"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="408.61,-953.4 411.95,-946.77 405.21,-949.87 408.61,-953.4"/>
+<text xml:space="preserve" text-anchor="middle" x="394.84" y="-972.92" font-family="PingFang SC" font-size="12.00" fill="#695385">团队</text>
+</g>
+<!-- ORIGINAL -->
+<g id="node5" class="node">
+<title>ORIGINAL</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M373,-859.36C373,-859.36 250.12,-859.36 250.12,-859.36 244.12,-859.36 238.12,-853.36 238.12,-847.36 238.12,-847.36 238.12,-834.4 238.12,-834.4 238.12,-828.4 244.12,-822.4 250.12,-822.4 250.12,-822.4 373,-822.4 373,-822.4 379,-822.4 385,-828.4 385,-834.4 385,-834.4 385,-847.36 385,-847.36 385,-853.36 379,-859.36 373,-859.36"/>
+<text xml:space="preserve" text-anchor="middle" x="311.56" y="-836.68" font-family="PingFang SC" font-size="14.00" fill="#2e214a">原业务资料校验</text>
+</g>
+<!-- SIX&#45;&gt;ORIGINAL -->
+<g id="edge4" class="edge">
+<title>SIX&#45;&gt;ORIGINAL</title>
+<path fill="none" stroke="#8a77a6" d="M217.8,-908.03C235.78,-895.34 260.1,-878.18 279.47,-864.52"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="280.82,-866.57 285.12,-860.53 277.99,-862.57 280.82,-866.57"/>
+</g>
+<!-- NINE&#45;&gt;ORIGINAL -->
+<g id="edge5" class="edge">
+<title>NINE&#45;&gt;ORIGINAL</title>
+<path fill="none" stroke="#8a77a6" d="M406.11,-908.03C387.97,-895.34 363.45,-878.18 343.92,-864.52"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="345.35,-862.53 338.21,-860.53 342.54,-866.55 345.35,-862.53"/>
+</g>
+<!-- W12 -->
+<g id="node6" class="node">
+<title>W12</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M421.24,-773.4C421.24,-773.4 201.88,-773.4 201.88,-773.4 195.88,-773.4 189.88,-767.4 189.88,-761.4 189.88,-761.4 189.88,-731.64 189.88,-731.64 189.88,-725.64 195.88,-719.64 201.88,-719.64 201.88,-719.64 421.24,-719.64 421.24,-719.64 427.24,-719.64 433.24,-725.64 433.24,-731.64 433.24,-731.64 433.24,-761.4 433.24,-761.4 433.24,-767.4 427.24,-773.4 421.24,-773.4"/>
+<text xml:space="preserve" text-anchor="middle" x="311.56" y="-750.72" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W12 支付确认；此时才提示资</text>
+<text xml:space="preserve" text-anchor="middle" x="311.56" y="-733.92" font-family="PingFang SC" font-size="14.00" fill="#2e214a">源问题</text>
+</g>
+<!-- ORIGINAL&#45;&gt;W12 -->
+<g id="edge6" class="edge">
+<title>ORIGINAL&#45;&gt;W12</title>
+<path fill="none" stroke="#8a77a6" d="M311.56,-822.07C311.56,-810.7 311.56,-795.58 311.56,-781.93"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="314.01,-782.18 311.56,-775.18 309.11,-782.18 314.01,-782.18"/>
+</g>
+<!-- WAY -->
+<g id="node7" class="node">
+<title>WAY</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M300.43,-666.16C300.43,-666.16 230.89,-638.16 230.89,-638.16 225.33,-635.92 225.33,-631.44 230.89,-629.2 230.89,-629.2 300.43,-601.2 300.43,-601.2 305.99,-598.96 317.13,-598.96 322.69,-601.2 322.69,-601.2 392.23,-629.2 392.23,-629.2 397.79,-631.44 397.79,-635.92 392.23,-638.16 392.23,-638.16 322.69,-666.16 322.69,-666.16 317.13,-668.4 305.99,-668.4 300.43,-666.16"/>
+<text xml:space="preserve" text-anchor="middle" x="311.56" y="-629.48" font-family="PingFang SC" font-size="14.00" fill="#2e214a">所选方式</text>
+</g>
+<!-- W12&#45;&gt;WAY -->
+<g id="edge7" class="edge">
+<title>W12&#45;&gt;WAY</title>
+<path fill="none" stroke="#8a77a6" d="M311.56,-719.25C311.56,-707.27 311.56,-692.75 311.56,-679.14"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="314.01,-679.34 311.56,-672.34 309.11,-679.34 314.01,-679.34"/>
+</g>
+<!-- RESOURCE -->
+<g id="node8" class="node">
+<title>RESOURCE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M433.12,-534.32C433.12,-534.32 190,-534.32 190,-534.32 184,-534.32 178,-528.32 178,-522.32 178,-522.32 178,-492.56 178,-492.56 178,-486.56 184,-480.56 190,-480.56 190,-480.56 433.12,-480.56 433.12,-480.56 439.12,-480.56 445.12,-486.56 445.12,-492.56 445.12,-492.56 445.12,-522.32 445.12,-522.32 445.12,-528.32 439.12,-534.32 433.12,-534.32"/>
+<text xml:space="preserve" text-anchor="middle" x="311.56" y="-511.64" font-family="PingFang SC" font-size="14.00" fill="#2e214a">原打印按钮右侧显示资源及只读编</text>
+<text xml:space="preserve" text-anchor="middle" x="311.56" y="-494.84" font-family="PingFang SC" font-size="14.00" fill="#2e214a">号</text>
+</g>
+<!-- WAY&#45;&gt;RESOURCE -->
+<g id="edge8" class="edge">
+<title>WAY&#45;&gt;RESOURCE</title>
+<path fill="none" stroke="#8a77a6" d="M311.56,-596.41C311.56,-579.58 311.56,-559.66 311.56,-543.04"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="314.01,-543.19 311.56,-536.19 309.11,-543.19 314.01,-543.19"/>
+<text xml:space="preserve" text-anchor="middle" x="340.23" y="-561.92" font-family="PingFang SC" font-size="12.00" fill="#695385">扫码付/银行卡</text>
+</g>
+<!-- KEEP -->
+<g id="node9" class="node">
+<title>KEEP</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M634.12,-456.56C634.12,-456.56 391,-456.56 391,-456.56 385,-456.56 379,-450.56 379,-444.56 379,-444.56 379,-431.6 379,-431.6 379,-425.6 385,-419.6 391,-419.6 391,-419.6 634.12,-419.6 634.12,-419.6 640.12,-419.6 646.12,-425.6 646.12,-431.6 646.12,-431.6 646.12,-444.56 646.12,-444.56 646.12,-450.56 640.12,-456.56 634.12,-456.56"/>
+<text xml:space="preserve" text-anchor="middle" x="512.56" y="-433.88" font-family="PingFang SC" font-size="14.00" fill="#2e214a">原打印按钮右侧保留原现金等交互</text>
+</g>
+<!-- WAY&#45;&gt;KEEP -->
+<g id="edge9" class="edge">
+<title>WAY&#45;&gt;KEEP</title>
+<path fill="none" stroke="#8a77a6" d="M345.97,-610.11C390.26,-581.07 461.56,-534.32 461.56,-534.32 461.56,-534.32 484,-492.41 499.11,-464.19"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="501.11,-465.66 502.25,-458.33 496.79,-463.34 501.11,-465.66"/>
+<text xml:space="preserve" text-anchor="middle" x="432.62" y="-561.92" font-family="PingFang SC" font-size="12.00" fill="#695385">其他</text>
+</g>
+<!-- VALID -->
+<g id="node10" class="node">
+<title>VALID</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M299.87,-392.89C299.87,-392.89 163.77,-361.35 163.77,-361.35 157.93,-359.99 157.93,-357.29 163.77,-355.93 163.77,-355.93 299.87,-324.39 299.87,-324.39 305.71,-323.03 317.41,-323.03 323.25,-324.39 323.25,-324.39 459.35,-355.93 459.35,-355.93 465.19,-357.29 465.19,-359.99 459.35,-361.35 459.35,-361.35 323.25,-392.89 323.25,-392.89 317.41,-394.25 305.71,-394.25 299.87,-392.89"/>
+<text xml:space="preserve" text-anchor="middle" x="311.56" y="-354.44" font-family="PingFang SC" font-size="14.00" fill="#2e214a">本期配置及资源有效</text>
+</g>
+<!-- RESOURCE&#45;&gt;VALID -->
+<g id="edge10" class="edge">
+<title>RESOURCE&#45;&gt;VALID</title>
+<path fill="none" stroke="#8a77a6" d="M311.56,-480.2C311.56,-459.08 311.56,-428.93 311.56,-404.07"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="314.01,-404.37 311.56,-397.37 309.11,-404.37 314.01,-404.37"/>
+</g>
+<!-- SUBMIT -->
+<g id="node12" class="node">
+<title>SUBMIT</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M612.12,-259.28C612.12,-259.28 369,-259.28 369,-259.28 363,-259.28 357,-253.28 357,-247.28 357,-247.28 357,-217.52 357,-217.52 357,-211.52 363,-205.52 369,-205.52 369,-205.52 612.12,-205.52 612.12,-205.52 618.12,-205.52 624.12,-211.52 624.12,-217.52 624.12,-217.52 624.12,-247.28 624.12,-247.28 624.12,-253.28 618.12,-259.28 612.12,-259.28"/>
+<text xml:space="preserve" text-anchor="middle" x="490.56" y="-236.6" font-family="PingFang SC" font-size="14.00" fill="#2e214a">确认出票，沿用原内导下单和支付</text>
+<text xml:space="preserve" text-anchor="middle" x="490.56" y="-219.8" font-family="PingFang SC" font-size="14.00" fill="#2e214a">处理</text>
+</g>
+<!-- KEEP&#45;&gt;SUBMIT -->
+<g id="edge14" class="edge">
+<title>KEEP&#45;&gt;SUBMIT</title>
+<path fill="none" stroke="#8a77a6" d="M510.65,-419.36C507.01,-385.7 499.04,-311.95 494.31,-268.12"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="496.76,-267.97 493.57,-261.28 491.89,-268.5 496.76,-267.97"/>
+</g>
+<!-- ERR -->
+<g id="node11" class="node">
+<title>ERR</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M255.12,-259.28C255.12,-259.28 12,-259.28 12,-259.28 6,-259.28 0,-253.28 0,-247.28 0,-247.28 0,-217.52 0,-217.52 0,-211.52 6,-205.52 12,-205.52 12,-205.52 255.12,-205.52 255.12,-205.52 261.12,-205.52 267.12,-211.52 267.12,-217.52 267.12,-217.52 267.12,-247.28 267.12,-247.28 267.12,-253.28 261.12,-259.28 255.12,-259.28"/>
+<text xml:space="preserve" text-anchor="middle" x="133.56" y="-236.6" font-family="PingFang SC" font-size="14.00" fill="#2e214a">弹窗提示一次，阻止出票；可换方</text>
+<text xml:space="preserve" text-anchor="middle" x="133.56" y="-219.8" font-family="PingFang SC" font-size="14.00" fill="#2e214a">式或取消</text>
+</g>
+<!-- VALID&#45;&gt;ERR -->
+<g id="edge11" class="edge">
+<title>VALID&#45;&gt;ERR</title>
+<path fill="none" stroke="#8a77a6" d="M272.5,-330.38C244.64,-310.93 207.14,-284.76 178.12,-264.5"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="179.69,-262.61 172.55,-260.62 176.89,-266.63 179.69,-262.61"/>
+<text xml:space="preserve" text-anchor="middle" x="227.06" y="-286.88" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- VALID&#45;&gt;SUBMIT -->
+<g id="edge13" class="edge">
+<title>VALID&#45;&gt;SUBMIT</title>
+<path fill="none" stroke="#8a77a6" d="M350.84,-330.38C378.85,-310.93 416.57,-284.76 445.75,-264.5"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="447,-266.62 451.35,-260.61 444.21,-262.59 447,-266.62"/>
+<text xml:space="preserve" text-anchor="middle" x="421.59" y="-286.88" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- ERR&#45;&gt;WAY -->
+<g id="edge12" class="edge">
+<title>ERR&#45;&gt;WAY</title>
+<path fill="none" stroke="#8a77a6" d="M134.04,-259.46C134.89,-305.31 136.56,-395.6 136.56,-395.6 136.56,-395.6 161.56,-534.32 161.56,-534.32 161.56,-534.32 225.8,-576.45 270.2,-605.56"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="268.68,-607.49 275.88,-609.28 271.37,-603.4 268.68,-607.49"/>
+</g>
+<!-- SNAP -->
+<g id="node13" class="node">
+<title>SNAP</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M609.24,-156.52C609.24,-156.52 371.88,-156.52 371.88,-156.52 365.88,-156.52 359.88,-150.52 359.88,-144.52 359.88,-144.52 359.88,-114.76 359.88,-114.76 359.88,-108.76 365.88,-102.76 371.88,-102.76 371.88,-102.76 609.24,-102.76 609.24,-102.76 615.24,-102.76 621.24,-108.76 621.24,-114.76 621.24,-114.76 621.24,-144.52 621.24,-144.52 621.24,-150.52 615.24,-156.52 609.24,-156.52"/>
+<text xml:space="preserve" text-anchor="middle" x="490.56" y="-133.84" font-family="PingFang SC" font-size="14.00" fill="#2e214a">扫码付/银行卡每笔订单记录实际</text>
+<text xml:space="preserve" text-anchor="middle" x="490.56" y="-117.04" font-family="PingFang SC" font-size="14.00" fill="#2e214a">资源及编号</text>
+</g>
+<!-- SUBMIT&#45;&gt;SNAP -->
+<g id="edge15" class="edge">
+<title>SUBMIT&#45;&gt;SNAP</title>
+<path fill="none" stroke="#8a77a6" d="M490.56,-205.19C490.56,-192.94 490.56,-178.2 490.56,-165.07"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="493.01,-165.23 490.56,-158.23 488.11,-165.23 493.01,-165.23"/>
+</g>
+<!-- D01 -->
+<g id="node14" class="node">
+<title>D01</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M600.24,-53.76C600.24,-53.76 380.88,-53.76 380.88,-53.76 374.88,-53.76 368.88,-47.76 368.88,-41.76 368.88,-41.76 368.88,-12 368.88,-12 368.88,-6 374.88,0 380.88,0 380.88,0 600.24,0 600.24,0 606.24,0 612.24,-6 612.24,-12 612.24,-12 612.24,-41.76 612.24,-41.76 612.24,-47.76 606.24,-53.76 600.24,-53.76"/>
+<text xml:space="preserve" text-anchor="middle" x="490.56" y="-31.08" font-family="PingFang SC" font-size="14.00" fill="#2e214a">D01 订单支付展示，历史值不</text>
+<text xml:space="preserve" text-anchor="middle" x="490.56" y="-14.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">回写</text>
+</g>
+<!-- SNAP&#45;&gt;D01 -->
+<g id="edge16" class="edge">
+<title>SNAP&#45;&gt;D01</title>
+<path fill="none" stroke="#8a77a6" d="M490.56,-102.43C490.56,-90.18 490.56,-75.44 490.56,-62.31"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="493.01,-62.47 490.56,-55.47 488.11,-62.47 493.01,-62.47"/>
+</g>
+</g>
+</svg>
+</div><figcaption class="flow-caption">默认适应宽度 · 滚轮缩放 · 按住拖动 · 双击适应全图</figcaption><details class="flow-source"><summary>查看可编辑流程源码</summary><pre><code>flowchart TB
+  W11[W11 原内导开单] --&gt; KIND{散客还是团队}
+  KIND --&gt;|散客| SIX[六种普通支付与配置取交集]
+  KIND --&gt;|团队| NINE[九种支付与配置取交集]
+  SIX --&gt; ORIGINAL[原业务资料校验]
+  NINE --&gt; ORIGINAL
+  ORIGINAL --&gt; W12[W12 支付确认；此时才提示资源问题]
+  W12 --&gt; WAY{所选方式}
+  WAY --&gt;|扫码付/银行卡| RESOURCE[原打印按钮右侧显示资源及只读编号]
+  WAY --&gt;|其他| KEEP[原打印按钮右侧保留原现金等交互]
+  RESOURCE --&gt; VALID{本期配置及资源有效}
+  VALID --&gt;|否| ERR[弹窗提示一次，阻止出票；可换方式或取消]
+  ERR --&gt; WAY
+  VALID --&gt;|是| SUBMIT[确认出票，沿用原内导下单和支付处理]
+  KEEP --&gt; SUBMIT
+  SUBMIT --&gt; SNAP[扫码付/银行卡每笔订单记录实际资源及编号]
+  SNAP --&gt; D01[D01 订单支付展示，历史值不回写]
+</code></pre></details></figure>
+<h2 id="三-管理员配置-绑定与后续变更">三、管理员配置、绑定与后续变更</h2>
+<figure class="flow-card"><div class="flow-toolbar"><button data-action="in" aria-label="放大流程图">＋ 放大</button><button data-action="out" aria-label="缩小流程图">－ 缩小</button><button data-action="fit">适应全图</button><button data-action="width">适应宽度</button><a href="assets/flow-03.svg" target="_blank" rel="noopener">独立查看 ↗</a><span class="zoom-label"></span></div><div class="flow-stage" aria-label="可缩放拖动的流程图" tabindex="0">
+
+<!-- Generated by graphviz version 14.1.3 (20260303.0454)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg width="1190pt" height="1371pt"
+ viewBox="0.00 0.00 1190.00 1371.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 1345.92)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-25.2,25.2 -25.2,-1345.92 1165.24,-1345.92 1165.24,25.2 -25.2,25.2"/>
+<!-- A -->
+<g id="node1" class="node">
+<title>A</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M294.36,-1320.72C294.36,-1320.72 186.6,-1320.72 186.6,-1320.72 180.6,-1320.72 174.6,-1314.72 174.6,-1308.72 174.6,-1308.72 174.6,-1295.76 174.6,-1295.76 174.6,-1289.76 180.6,-1283.76 186.6,-1283.76 186.6,-1283.76 294.36,-1283.76 294.36,-1283.76 300.36,-1283.76 306.36,-1289.76 306.36,-1295.76 306.36,-1295.76 306.36,-1308.72 306.36,-1308.72 306.36,-1314.72 300.36,-1320.72 294.36,-1320.72"/>
+<text xml:space="preserve" text-anchor="middle" x="240.48" y="-1298.04" font-family="PingFang SC" font-size="14.00" fill="#2e214a">进入当前景区</text>
+</g>
+<!-- P -->
+<g id="node2" class="node">
+<title>P</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M330.36,-1216.28C330.36,-1216.28 150.6,-1216.28 150.6,-1216.28 144.6,-1216.28 138.6,-1210.28 138.6,-1204.28 138.6,-1204.28 138.6,-1191.32 138.6,-1191.32 138.6,-1185.32 144.6,-1179.32 150.6,-1179.32 150.6,-1179.32 330.36,-1179.32 330.36,-1179.32 336.36,-1179.32 342.36,-1185.32 342.36,-1191.32 342.36,-1191.32 342.36,-1204.28 342.36,-1204.28 342.36,-1210.28 336.36,-1216.28 330.36,-1216.28"/>
+<text xml:space="preserve" text-anchor="middle" x="240.48" y="-1193.6" font-family="PingFang SC" font-size="14.00" fill="#2e214a">B01/B02 配置支付方式</text>
+</g>
+<!-- A&#45;&gt;P -->
+<g id="edge1" class="edge">
+<title>A&#45;&gt;P</title>
+<path fill="none" stroke="#8a77a6" d="M240.48,-1283.4C240.48,-1267.24 240.48,-1243.23 240.48,-1224.91"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="242.93,-1224.95 240.48,-1217.95 238.03,-1224.95 242.93,-1224.95"/>
+</g>
+<!-- C -->
+<g id="node3" class="node">
+<title>C</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M228.77,-1095.82C228.77,-1095.82 11.71,-1047.3 11.71,-1047.3 5.86,-1045.99 5.86,-1043.37 11.71,-1042.06 11.71,-1042.06 228.77,-993.54 228.77,-993.54 234.62,-992.23 246.34,-992.23 252.19,-993.54 252.19,-993.54 469.25,-1042.06 469.25,-1042.06 475.1,-1043.37 475.1,-1045.99 469.25,-1047.3 469.25,-1047.3 252.19,-1095.82 252.19,-1095.82 246.34,-1097.13 234.62,-1097.13 228.77,-1095.82"/>
+<text xml:space="preserve" text-anchor="middle" x="240.48" y="-1048.88" font-family="PingFang SC" font-size="14.00" fill="#2e214a">合法场景非空、五场景及内导散客</text>
+<text xml:space="preserve" text-anchor="middle" x="240.48" y="-1032.08" font-family="PingFang SC" font-size="14.00" fill="#2e214a">均有可用方式?</text>
+</g>
+<!-- P&#45;&gt;C -->
+<g id="edge2" class="edge">
+<title>P&#45;&gt;C</title>
+<path fill="none" stroke="#8a77a6" d="M240.48,-1178.87C240.48,-1161.16 240.48,-1133.06 240.48,-1107.22"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="242.93,-1107.44 240.48,-1100.44 238.03,-1107.44 242.93,-1107.44"/>
+</g>
+<!-- E -->
+<g id="node4" class="node">
+<title>E</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M281.04,-905.96C281.04,-905.96 37.92,-905.96 37.92,-905.96 31.92,-905.96 25.92,-899.96 25.92,-893.96 25.92,-893.96 25.92,-864.2 25.92,-864.2 25.92,-858.2 31.92,-852.2 37.92,-852.2 37.92,-852.2 281.04,-852.2 281.04,-852.2 287.04,-852.2 293.04,-858.2 293.04,-864.2 293.04,-864.2 293.04,-893.96 293.04,-893.96 293.04,-899.96 287.04,-905.96 281.04,-905.96"/>
+<text xml:space="preserve" text-anchor="middle" x="159.48" y="-883.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">阻止保存，指出具体场景；保留草</text>
+<text xml:space="preserve" text-anchor="middle" x="159.48" y="-866.48" font-family="PingFang SC" font-size="14.00" fill="#2e214a">稿</text>
+</g>
+<!-- C&#45;&gt;E -->
+<g id="edge3" class="edge">
+<title>C&#45;&gt;E</title>
+<path fill="none" stroke="#8a77a6" d="M216.83,-995.92C203.77,-969.54 187.86,-937.41 176.12,-913.68"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="178.43,-912.84 173.13,-907.65 174.04,-915.01 178.43,-912.84"/>
+<text xml:space="preserve" text-anchor="middle" x="206.91" y="-944.84" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- SAVE -->
+<g id="node5" class="node">
+<title>SAVE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M444.36,-897.56C444.36,-897.56 336.6,-897.56 336.6,-897.56 330.6,-897.56 324.6,-891.56 324.6,-885.56 324.6,-885.56 324.6,-872.6 324.6,-872.6 324.6,-866.6 330.6,-860.6 336.6,-860.6 336.6,-860.6 444.36,-860.6 444.36,-860.6 450.36,-860.6 456.36,-866.6 456.36,-872.6 456.36,-872.6 456.36,-885.56 456.36,-885.56 456.36,-891.56 450.36,-897.56 444.36,-897.56"/>
+<text xml:space="preserve" text-anchor="middle" x="390.48" y="-874.88" font-family="PingFang SC" font-size="14.00" fill="#2e214a">保存统一规则</text>
+</g>
+<!-- C&#45;&gt;SAVE -->
+<g id="edge4" class="edge">
+<title>C&#45;&gt;SAVE</title>
+<path fill="none" stroke="#8a77a6" d="M280.68,-999.84C309,-968.95 345.82,-928.78 368.81,-903.72"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="370.39,-905.61 373.32,-898.8 366.78,-902.3 370.39,-905.61"/>
+<text xml:space="preserve" text-anchor="middle" x="346.46" y="-944.84" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- RES -->
+<g id="node6" class="node">
+<title>RES</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M487.92,-803.2C487.92,-803.2 293.04,-803.2 293.04,-803.2 287.04,-803.2 281.04,-797.2 281.04,-791.2 281.04,-791.2 281.04,-778.24 281.04,-778.24 281.04,-772.24 287.04,-766.24 293.04,-766.24 293.04,-766.24 487.92,-766.24 487.92,-766.24 493.92,-766.24 499.92,-772.24 499.92,-778.24 499.92,-778.24 499.92,-791.2 499.92,-791.2 499.92,-797.2 493.92,-803.2 487.92,-803.2"/>
+<text xml:space="preserve" text-anchor="middle" x="390.48" y="-780.52" font-family="PingFang SC" font-size="14.00" fill="#2e214a">B03/B04 维护同景区资源</text>
+</g>
+<!-- SAVE&#45;&gt;RES -->
+<g id="edge5" class="edge">
+<title>SAVE&#45;&gt;RES</title>
+<path fill="none" stroke="#8a77a6" d="M390.48,-860.27C390.48,-846.47 390.48,-827.15 390.48,-811.64"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="392.93,-811.99 390.48,-804.99 388.03,-811.99 392.93,-811.99"/>
+</g>
+<!-- BIND -->
+<g id="node7" class="node">
+<title>BIND</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M378.81,-714.44C378.81,-714.44 248.07,-683.08 248.07,-683.08 242.23,-681.68 242.23,-678.88 248.07,-677.48 248.07,-677.48 378.81,-646.12 378.81,-646.12 384.65,-644.72 396.31,-644.72 402.15,-646.12 402.15,-646.12 532.89,-677.48 532.89,-677.48 538.73,-678.88 538.73,-681.68 532.89,-683.08 532.89,-683.08 402.15,-714.44 402.15,-714.44 396.31,-715.84 384.65,-715.84 378.81,-714.44"/>
+<text xml:space="preserve" text-anchor="middle" x="390.48" y="-676.08" font-family="PingFang SC" font-size="14.00" fill="#2e214a">该支付方式跟谁走?</text>
+</g>
+<!-- RES&#45;&gt;BIND -->
+<g id="edge6" class="edge">
+<title>RES&#45;&gt;BIND</title>
+<path fill="none" stroke="#8a77a6" d="M390.48,-765.88C390.48,-754.76 390.48,-739.93 390.48,-725.79"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="392.93,-726.09 390.48,-719.09 388.03,-726.09 392.93,-726.09"/>
+</g>
+<!-- ACC -->
+<g id="node8" class="node">
+<title>ACC</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M362.92,-580.92C362.92,-580.92 168.04,-580.92 168.04,-580.92 162.04,-580.92 156.04,-574.92 156.04,-568.92 156.04,-568.92 156.04,-539.16 156.04,-539.16 156.04,-533.16 162.04,-527.16 168.04,-527.16 168.04,-527.16 362.92,-527.16 362.92,-527.16 368.92,-527.16 374.92,-533.16 374.92,-539.16 374.92,-539.16 374.92,-568.92 374.92,-568.92 374.92,-574.92 368.92,-580.92 362.92,-580.92"/>
+<text xml:space="preserve" text-anchor="middle" x="265.48" y="-558.24" font-family="PingFang SC" font-size="14.00" fill="#2e214a">B08/B09 选择账号，配置</text>
+<text xml:space="preserve" text-anchor="middle" x="265.48" y="-541.44" font-family="PingFang SC" font-size="14.00" fill="#2e214a">资源</text>
+</g>
+<!-- BIND&#45;&gt;ACC -->
+<g id="edge7" class="edge">
+<title>BIND&#45;&gt;ACC</title>
+<path fill="none" stroke="#8a77a6" d="M361.17,-650.15C342.08,-631.17 317.16,-606.4 297.54,-586.9"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="299.39,-585.29 292.7,-582.1 295.94,-588.77 299.39,-585.29"/>
+<text xml:space="preserve" text-anchor="middle" x="336.98" y="-608.52" font-family="PingFang SC" font-size="12.00" fill="#695385">账号</text>
+</g>
+<!-- DEV -->
+<g id="node9" class="node">
+<title>DEV</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M613.92,-580.92C613.92,-580.92 419.04,-580.92 419.04,-580.92 413.04,-580.92 407.04,-574.92 407.04,-568.92 407.04,-568.92 407.04,-539.16 407.04,-539.16 407.04,-533.16 413.04,-527.16 419.04,-527.16 419.04,-527.16 613.92,-527.16 613.92,-527.16 619.92,-527.16 625.92,-533.16 625.92,-539.16 625.92,-539.16 625.92,-568.92 625.92,-568.92 625.92,-574.92 619.92,-580.92 613.92,-580.92"/>
+<text xml:space="preserve" text-anchor="middle" x="516.48" y="-558.24" font-family="PingFang SC" font-size="14.00" fill="#2e214a">B06/B07 选择窗口售票机</text>
+<text xml:space="preserve" text-anchor="middle" x="516.48" y="-541.44" font-family="PingFang SC" font-size="14.00" fill="#2e214a">，配置资源</text>
+</g>
+<!-- BIND&#45;&gt;DEV -->
+<g id="edge8" class="edge">
+<title>BIND&#45;&gt;DEV</title>
+<path fill="none" stroke="#8a77a6" d="M420.02,-650.15C439.27,-631.17 464.39,-606.4 484.17,-586.9"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="485.78,-588.75 489.04,-582.09 482.34,-585.26 485.78,-588.75"/>
+<text xml:space="preserve" text-anchor="middle" x="473.77" y="-608.52" font-family="PingFang SC" font-size="12.00" fill="#695385">设备</text>
+</g>
+<!-- USE -->
+<g id="node10" class="node">
+<title>USE</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M378.96,-474.81C378.96,-474.81 274.92,-444.55 274.92,-444.55 269.16,-442.88 269.16,-439.52 274.92,-437.85 274.92,-437.85 378.96,-407.59 378.96,-407.59 384.72,-405.92 396.24,-405.92 402,-407.59 402,-407.59 506.04,-437.85 506.04,-437.85 511.8,-439.52 511.8,-442.88 506.04,-444.55 506.04,-444.55 402,-474.81 402,-474.81 396.24,-476.48 384.72,-476.48 378.96,-474.81"/>
+<text xml:space="preserve" text-anchor="middle" x="390.48" y="-437" font-family="PingFang SC" font-size="14.00" fill="#2e214a">固定还是多个?</text>
+</g>
+<!-- ACC&#45;&gt;USE -->
+<g id="edge9" class="edge">
+<title>ACC&#45;&gt;USE</title>
+<path fill="none" stroke="#8a77a6" d="M295.1,-526.77C312.62,-511.24 334.94,-491.44 353.59,-474.91"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="355.02,-476.92 358.63,-470.44 351.77,-473.25 355.02,-476.92"/>
+</g>
+<!-- DEV&#45;&gt;USE -->
+<g id="edge10" class="edge">
+<title>DEV&#45;&gt;USE</title>
+<path fill="none" stroke="#8a77a6" d="M486.62,-526.77C468.97,-511.24 446.46,-491.44 427.66,-474.91"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="429.45,-473.22 422.58,-470.44 426.22,-476.9 429.45,-473.22"/>
+</g>
+<!-- ONE -->
+<g id="node11" class="node">
+<title>ONE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M363.04,-333.44C363.04,-333.44 119.92,-333.44 119.92,-333.44 113.92,-333.44 107.92,-327.44 107.92,-321.44 107.92,-321.44 107.92,-308.48 107.92,-308.48 107.92,-302.48 113.92,-296.48 119.92,-296.48 119.92,-296.48 363.04,-296.48 363.04,-296.48 369.04,-296.48 375.04,-302.48 375.04,-308.48 375.04,-308.48 375.04,-321.44 375.04,-321.44 375.04,-327.44 369.04,-333.44 363.04,-333.44"/>
+<text xml:space="preserve" text-anchor="middle" x="241.48" y="-310.76" font-family="PingFang SC" font-size="14.00" fill="#2e214a">单选一个有效资源，自动成为默认</text>
+</g>
+<!-- USE&#45;&gt;ONE -->
+<g id="edge11" class="edge">
+<title>USE&#45;&gt;ONE</title>
+<path fill="none" stroke="#8a77a6" d="M358.15,-413.24C331.59,-391.1 294.38,-360.07 269.17,-339.05"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="270.83,-337.24 263.88,-334.64 267.69,-341.01 270.83,-337.24"/>
+<text xml:space="preserve" text-anchor="middle" x="324.98" y="-369.44" font-family="PingFang SC" font-size="12.00" fill="#695385">固定</text>
+</g>
+<!-- MANY -->
+<g id="node12" class="node">
+<title>MANY</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M662.04,-341.84C662.04,-341.84 418.92,-341.84 418.92,-341.84 412.92,-341.84 406.92,-335.84 406.92,-329.84 406.92,-329.84 406.92,-300.08 406.92,-300.08 406.92,-294.08 412.92,-288.08 418.92,-288.08 418.92,-288.08 662.04,-288.08 662.04,-288.08 668.04,-288.08 674.04,-294.08 674.04,-300.08 674.04,-300.08 674.04,-329.84 674.04,-329.84 674.04,-335.84 668.04,-341.84 662.04,-341.84"/>
+<text xml:space="preserve" text-anchor="middle" x="540.48" y="-319.16" font-family="PingFang SC" font-size="14.00" fill="#2e214a">多选有效资源；草稿预选或修改默</text>
+<text xml:space="preserve" text-anchor="middle" x="540.48" y="-302.36" font-family="PingFang SC" font-size="14.00" fill="#2e214a">认，保存后生效</text>
+</g>
+<!-- USE&#45;&gt;MANY -->
+<g id="edge12" class="edge">
+<title>USE&#45;&gt;MANY</title>
+<path fill="none" stroke="#8a77a6" d="M423.03,-413.24C446.36,-393.92 477.87,-367.82 502.38,-347.52"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="503.77,-349.54 507.6,-343.19 500.65,-345.77 503.77,-349.54"/>
+<text xml:space="preserve" text-anchor="middle" x="487.92" y="-369.44" font-family="PingFang SC" font-size="12.00" fill="#695385">多个</text>
+</g>
+<!-- V -->
+<g id="node13" class="node">
+<title>V</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M490.8,-239.08C490.8,-239.08 290.16,-239.08 290.16,-239.08 284.16,-239.08 278.16,-233.08 278.16,-227.08 278.16,-227.08 278.16,-197.32 278.16,-197.32 278.16,-191.32 284.16,-185.32 290.16,-185.32 290.16,-185.32 490.8,-185.32 490.8,-185.32 496.8,-185.32 502.8,-191.32 502.8,-197.32 502.8,-197.32 502.8,-227.08 502.8,-227.08 502.8,-233.08 496.8,-239.08 490.8,-239.08"/>
+<text xml:space="preserve" text-anchor="middle" x="390.48" y="-216.4" font-family="PingFang SC" font-size="14.00" fill="#2e214a">校验景区 / 类型 / 启用 </text>
+<text xml:space="preserve" text-anchor="middle" x="390.48" y="-199.6" font-family="PingFang SC" font-size="14.00" fill="#2e214a">/ 默认 / 数量</text>
+</g>
+<!-- ONE&#45;&gt;V -->
+<g id="edge13" class="edge">
+<title>ONE&#45;&gt;V</title>
+<path fill="none" stroke="#8a77a6" d="M267.78,-296.18C289,-281.82 319.39,-261.28 344.61,-244.22"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="345.89,-246.31 350.32,-240.36 343.15,-242.25 345.89,-246.31"/>
+</g>
+<!-- MANY&#45;&gt;V -->
+<g id="edge14" class="edge">
+<title>MANY&#45;&gt;V</title>
+<path fill="none" stroke="#8a77a6" d="M501.46,-287.75C481.57,-274.39 457.26,-258.06 436.47,-244.09"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="438,-242.17 430.82,-240.3 435.27,-246.24 438,-242.17"/>
+</g>
+<!-- ERR -->
+<g id="node14" class="node">
+<title>ERR</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M440.04,-122.92C440.04,-122.92 286.92,-122.92 286.92,-122.92 280.92,-122.92 274.92,-116.92 274.92,-110.92 274.92,-110.92 274.92,-97.96 274.92,-97.96 274.92,-91.96 280.92,-85.96 286.92,-85.96 286.92,-85.96 440.04,-85.96 440.04,-85.96 446.04,-85.96 452.04,-91.96 452.04,-97.96 452.04,-97.96 452.04,-110.92 452.04,-110.92 452.04,-116.92 446.04,-122.92 440.04,-122.92"/>
+<text xml:space="preserve" text-anchor="middle" x="363.48" y="-100.24" font-family="PingFang SC" font-size="14.00" fill="#2e214a">保留绑定草稿并提示</text>
+</g>
+<!-- V&#45;&gt;ERR -->
+<g id="edge15" class="edge">
+<title>V&#45;&gt;ERR</title>
+<path fill="none" stroke="#8a77a6" d="M383.81,-185.06C379.63,-168.7 374.27,-147.71 370.11,-131.39"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="372.53,-130.98 368.42,-124.8 367.78,-132.19 372.53,-130.98"/>
+<text xml:space="preserve" text-anchor="middle" x="385.98" y="-150.52" font-family="PingFang SC" font-size="12.00" fill="#695385">失败</text>
+</g>
+<!-- BS -->
+<g id="node15" class="node">
+<title>BS</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M708.92,-122.92C708.92,-122.92 496.04,-122.92 496.04,-122.92 490.04,-122.92 484.04,-116.92 484.04,-110.92 484.04,-110.92 484.04,-97.96 484.04,-97.96 484.04,-91.96 490.04,-85.96 496.04,-85.96 496.04,-85.96 708.92,-85.96 708.92,-85.96 714.92,-85.96 720.92,-91.96 720.92,-97.96 720.92,-97.96 720.92,-110.92 720.92,-110.92 720.92,-116.92 714.92,-122.92 708.92,-122.92"/>
+<text xml:space="preserve" text-anchor="middle" x="602.48" y="-100.24" font-family="PingFang SC" font-size="14.00" fill="#2e214a">保存绑定，全部适用场景共用</text>
+</g>
+<!-- V&#45;&gt;BS -->
+<g id="edge16" class="edge">
+<title>V&#45;&gt;BS</title>
+<path fill="none" stroke="#8a77a6" d="M443.16,-184.92C478.96,-167.06 525.73,-143.73 559.32,-126.97"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="560.18,-129.28 565.35,-123.96 557.99,-124.9 560.18,-129.28"/>
+<text xml:space="preserve" text-anchor="middle" x="524.47" y="-150.52" font-family="PingFang SC" font-size="12.00" fill="#695385">通过</text>
+</g>
+<!-- TEST -->
+<g id="node16" class="node">
+<title>TEST</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M724.04,-36.96C724.04,-36.96 480.92,-36.96 480.92,-36.96 474.92,-36.96 468.92,-30.96 468.92,-24.96 468.92,-24.96 468.92,-12 468.92,-12 468.92,-6 474.92,0 480.92,0 480.92,0 724.04,0 724.04,0 730.04,0 736.04,-6 736.04,-12 736.04,-12 736.04,-24.96 736.04,-24.96 736.04,-30.96 730.04,-36.96 724.04,-36.96"/>
+<text xml:space="preserve" text-anchor="middle" x="602.48" y="-14.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">用实际账号及设备检查窗口可用性</text>
+</g>
+<!-- BS&#45;&gt;TEST -->
+<g id="edge17" class="edge">
+<title>BS&#45;&gt;TEST</title>
+<path fill="none" stroke="#8a77a6" d="M602.48,-85.63C602.48,-73.95 602.48,-58.47 602.48,-45.42"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="604.93,-45.77 602.48,-38.77 600.03,-45.77 604.93,-45.77"/>
+</g>
+<!-- CHANGE -->
+<g id="node17" class="node">
+<title>CHANGE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M685.36,-1320.72C685.36,-1320.72 577.6,-1320.72 577.6,-1320.72 571.6,-1320.72 565.6,-1314.72 565.6,-1308.72 565.6,-1308.72 565.6,-1295.76 565.6,-1295.76 565.6,-1289.76 571.6,-1283.76 577.6,-1283.76 577.6,-1283.76 685.36,-1283.76 685.36,-1283.76 691.36,-1283.76 697.36,-1289.76 697.36,-1295.76 697.36,-1295.76 697.36,-1308.72 697.36,-1308.72 697.36,-1314.72 691.36,-1320.72 685.36,-1320.72"/>
+<text xml:space="preserve" text-anchor="middle" x="631.48" y="-1298.04" font-family="PingFang SC" font-size="14.00" fill="#2e214a">后续编辑资源</text>
+</g>
+<!-- TYPE -->
+<g id="node18" class="node">
+<title>TYPE</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M620.35,-1230.28C620.35,-1230.28 550.81,-1202.28 550.81,-1202.28 545.25,-1200.04 545.25,-1195.56 550.81,-1193.32 550.81,-1193.32 620.35,-1165.32 620.35,-1165.32 625.91,-1163.08 637.05,-1163.08 642.61,-1165.32 642.61,-1165.32 712.15,-1193.32 712.15,-1193.32 717.71,-1195.56 717.71,-1200.04 712.15,-1202.28 712.15,-1202.28 642.61,-1230.28 642.61,-1230.28 637.05,-1232.52 625.91,-1232.52 620.35,-1230.28"/>
+<text xml:space="preserve" text-anchor="middle" x="631.48" y="-1193.6" font-family="PingFang SC" font-size="14.00" fill="#2e214a">修改内容</text>
+</g>
+<!-- CHANGE&#45;&gt;TYPE -->
+<g id="edge18" class="edge">
+<title>CHANGE&#45;&gt;TYPE</title>
+<path fill="none" stroke="#8a77a6" d="M631.48,-1283.4C631.48,-1272.28 631.48,-1257.45 631.48,-1243.31"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="633.93,-1243.61 631.48,-1236.61 629.03,-1243.61 633.93,-1243.61"/>
+</g>
+<!-- EDIT -->
+<g id="node19" class="node">
+<title>EDIT</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M672.92,-966.92C672.92,-966.92 442.04,-966.92 442.04,-966.92 436.04,-966.92 430.04,-960.92 430.04,-954.92 430.04,-954.92 430.04,-941.96 430.04,-941.96 430.04,-935.96 436.04,-929.96 442.04,-929.96 442.04,-929.96 672.92,-929.96 672.92,-929.96 678.92,-929.96 684.92,-935.96 684.92,-941.96 684.92,-941.96 684.92,-954.92 684.92,-954.92 684.92,-960.92 678.92,-966.92 672.92,-966.92"/>
+<text xml:space="preserve" text-anchor="middle" x="557.48" y="-944.24" font-family="PingFang SC" font-size="14.00" fill="#2e214a">ID不变，当前引用同步新主数据</text>
+</g>
+<!-- TYPE&#45;&gt;EDIT -->
+<g id="edge19" class="edge">
+<title>TYPE&#45;&gt;EDIT</title>
+<path fill="none" stroke="#8a77a6" d="M618.51,-1165.68C606.5,-1136.86 590.48,-1098.44 590.48,-1098.44 590.48,-1098.44 572.76,-1018.44 563.29,-975.68"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="565.69,-975.2 561.79,-968.89 560.91,-976.25 565.69,-975.2"/>
+<text xml:space="preserve" text-anchor="middle" x="628.26" y="-1126.04" font-family="PingFang SC" font-size="12.00" fill="#695385">名称或编号</text>
+</g>
+<!-- REF -->
+<g id="node20" class="node">
+<title>REF</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M761.76,-1079.05C761.76,-1079.05 617.8,-1047.27 617.8,-1047.27 611.94,-1045.97 611.94,-1043.39 617.8,-1042.09 617.8,-1042.09 761.76,-1010.31 761.76,-1010.31 767.62,-1009.01 779.34,-1009.01 785.2,-1010.31 785.2,-1010.31 929.16,-1042.09 929.16,-1042.09 935.02,-1043.39 935.02,-1045.97 929.16,-1047.27 929.16,-1047.27 785.2,-1079.05 785.2,-1079.05 779.34,-1080.35 767.62,-1080.35 761.76,-1079.05"/>
+<text xml:space="preserve" text-anchor="middle" x="773.48" y="-1040.48" font-family="PingFang SC" font-size="14.00" fill="#2e214a">存在账号或设备绑定?</text>
+</g>
+<!-- TYPE&#45;&gt;REF -->
+<g id="edge20" class="edge">
+<title>TYPE&#45;&gt;REF</title>
+<path fill="none" stroke="#8a77a6" d="M656.21,-1170.48C679.26,-1145.95 713.83,-1109.16 739.47,-1081.87"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="741.08,-1083.73 744.09,-1076.96 737.51,-1080.38 741.08,-1083.73"/>
+<text xml:space="preserve" text-anchor="middle" x="720.72" y="-1126.04" font-family="PingFang SC" font-size="12.00" fill="#695385">停用或删除</text>
+</g>
+<!-- HIST -->
+<g id="node23" class="node">
+<title>HIST</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M879.6,-803.2C879.6,-803.2 711.36,-803.2 711.36,-803.2 705.36,-803.2 699.36,-797.2 699.36,-791.2 699.36,-791.2 699.36,-778.24 699.36,-778.24 699.36,-772.24 705.36,-766.24 711.36,-766.24 711.36,-766.24 879.6,-766.24 879.6,-766.24 885.6,-766.24 891.6,-772.24 891.6,-778.24 891.6,-778.24 891.6,-791.2 891.6,-791.2 891.6,-797.2 885.6,-803.2 879.6,-803.2"/>
+<text xml:space="preserve" text-anchor="middle" x="795.48" y="-780.52" font-family="PingFang SC" font-size="14.00" fill="#2e214a">已完成交易保留原快照</text>
+</g>
+<!-- EDIT&#45;&gt;HIST -->
+<g id="edge23" class="edge">
+<title>EDIT&#45;&gt;HIST</title>
+<path fill="none" stroke="#8a77a6" d="M563.69,-929.53C573.25,-901.94 590.48,-852.2 590.48,-852.2 590.48,-852.2 672.07,-825.74 732.3,-806.21"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="732.93,-808.58 738.83,-804.09 731.42,-803.92 732.93,-808.58"/>
+</g>
+<!-- BLOCK -->
+<g id="node21" class="node">
+<title>BLOCK</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M846.48,-897.56C846.48,-897.56 618.48,-897.56 618.48,-897.56 612.48,-897.56 606.48,-891.56 606.48,-885.56 606.48,-885.56 606.48,-872.6 606.48,-872.6 606.48,-866.6 612.48,-860.6 618.48,-860.6 618.48,-860.6 846.48,-860.6 846.48,-860.6 852.48,-860.6 858.48,-866.6 858.48,-872.6 858.48,-872.6 858.48,-885.56 858.48,-885.56 858.48,-891.56 852.48,-897.56 846.48,-897.56"/>
+<text xml:space="preserve" text-anchor="middle" x="732.48" y="-874.88" font-family="PingFang SC" font-size="14.00" fill="#2e214a">阻止，列出引用；先改绑后处理</text>
+</g>
+<!-- REF&#45;&gt;BLOCK -->
+<g id="edge21" class="edge">
+<title>REF&#45;&gt;BLOCK</title>
+<path fill="none" stroke="#8a77a6" d="M764.89,-1009.38C757.14,-978.48 745.92,-933.72 738.92,-905.79"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="741.34,-905.36 737.26,-899.17 736.59,-906.55 741.34,-905.36"/>
+<text xml:space="preserve" text-anchor="middle" x="758.71" y="-944.84" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- REMOVE -->
+<g id="node22" class="node">
+<title>REMOVE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M1128.04,-905.96C1128.04,-905.96 902.92,-905.96 902.92,-905.96 896.92,-905.96 890.92,-899.96 890.92,-893.96 890.92,-893.96 890.92,-864.2 890.92,-864.2 890.92,-858.2 896.92,-852.2 902.92,-852.2 902.92,-852.2 1128.04,-852.2 1128.04,-852.2 1134.04,-852.2 1140.04,-858.2 1140.04,-864.2 1140.04,-864.2 1140.04,-893.96 1140.04,-893.96 1140.04,-899.96 1134.04,-905.96 1128.04,-905.96"/>
+<text xml:space="preserve" text-anchor="middle" x="1015.48" y="-883.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">停用 / 删除二次确认；提交时</text>
+<text xml:space="preserve" text-anchor="middle" x="1015.48" y="-866.48" font-family="PingFang SC" font-size="14.00" fill="#2e214a">再验引用</text>
+</g>
+<!-- REF&#45;&gt;REMOVE -->
+<g id="edge22" class="edge">
+<title>REF&#45;&gt;REMOVE</title>
+<path fill="none" stroke="#8a77a6" d="M813.99,-1016.3C857.03,-987.2 924.94,-941.29 969.84,-910.93"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="971.16,-913 975.59,-907.05 968.42,-908.94 971.16,-913"/>
+<text xml:space="preserve" text-anchor="middle" x="941.7" y="-944.84" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- REMOVE&#45;&gt;HIST -->
+<g id="edge24" class="edge">
+<title>REMOVE&#45;&gt;HIST</title>
+<path fill="none" stroke="#8a77a6" d="M952.73,-851.74C918.75,-837.47 877.34,-820.09 845.55,-806.74"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="846.9,-804.65 839.49,-804.2 845,-809.17 846.9,-804.65"/>
+</g>
+</g>
+</svg>
+</div><figcaption class="flow-caption">默认适应宽度 · 滚轮缩放 · 按住拖动 · 双击适应全图</figcaption><details class="flow-source"><summary>查看可编辑流程源码</summary><pre><code>flowchart TB
+  A[进入当前景区] --&gt; P[B01/B02 配置支付方式]
+  P --&gt; C{合法场景非空、五场景及内导散客均有可用方式?}
+  C --&gt;|否| E[阻止保存，指出具体场景；保留草稿]
+  C --&gt;|是| SAVE[保存统一规则]
+  SAVE --&gt; RES[B03/B04 维护同景区资源]
+  RES --&gt; BIND{该支付方式跟谁走?}
+  BIND --&gt;|账号| ACC[B08/B09 选择账号，配置资源]
+  BIND --&gt;|设备| DEV[B06/B07 选择窗口售票机，配置资源]
+  ACC --&gt; USE{固定还是多个?}
+  DEV --&gt; USE
+  USE --&gt;|固定| ONE[单选一个有效资源，自动成为默认]
+  USE --&gt;|多个| MANY[多选有效资源；草稿预选或修改默认，保存后生效]
+  ONE --&gt; V[校验景区 / 类型 / 启用 / 默认 / 数量]
+  MANY --&gt; V
+  V --&gt;|失败| ERR[保留绑定草稿并提示]
+  V --&gt;|通过| BS[保存绑定，全部适用场景共用]
+  BS --&gt; TEST[用实际账号及设备检查窗口可用性]
+  CHANGE[后续编辑资源] --&gt; TYPE{修改内容}
+  TYPE --&gt;|名称或编号| EDIT[ID不变，当前引用同步新主数据]
+  TYPE --&gt;|停用或删除| REF{存在账号或设备绑定?}
+  REF --&gt;|是| BLOCK[阻止，列出引用；先改绑后处理]
+  REF --&gt;|否| REMOVE[停用 / 删除二次确认；提交时再验引用]
+  EDIT --&gt; HIST[已完成交易保留原快照]
+  REMOVE --&gt; HIST
+</code></pre></details></figure>
+<p>归属由账号切为设备不自动复制绑定。多个改固定后旧绑定不合格，须管理员明确重选；窗口不自动取第一项。</p>
+<h2 id="四-扫码付-银行卡公共资源解析">四、扫码付/银行卡公共资源解析</h2>
+<figure class="flow-card"><div class="flow-toolbar"><button data-action="in" aria-label="放大流程图">＋ 放大</button><button data-action="out" aria-label="缩小流程图">－ 缩小</button><button data-action="fit">适应全图</button><button data-action="width">适应宽度</button><a href="assets/flow-04.svg" target="_blank" rel="noopener">独立查看 ↗</a><span class="zoom-label"></span></div><div class="flow-stage" aria-label="可缩放拖动的流程图" tabindex="0">
+
+<!-- Generated by graphviz version 14.1.3 (20260303.0454)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg width="1432pt" height="1713pt"
+ viewBox="0.00 0.00 1432.00 1713.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 1688.12)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-25.2,25.2 -25.2,-1688.12 1406.68,-1688.12 1406.68,25.2 -25.2,25.2"/>
+<!-- START -->
+<g id="node1" class="node">
+<title>START</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M329.64,-1662.92C329.64,-1662.92 86.52,-1662.92 86.52,-1662.92 80.52,-1662.92 74.52,-1656.92 74.52,-1650.92 74.52,-1650.92 74.52,-1604.36 74.52,-1604.36 74.52,-1598.36 80.52,-1592.36 86.52,-1592.36 86.52,-1592.36 329.64,-1592.36 329.64,-1592.36 335.64,-1592.36 341.64,-1598.36 341.64,-1604.36 341.64,-1604.36 341.64,-1650.92 341.64,-1650.92 341.64,-1656.92 335.64,-1662.92 329.64,-1662.92"/>
+<text xml:space="preserve" text-anchor="middle" x="208.08" y="-1640.24" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W04 / W09 / W12</text>
+<text xml:space="preserve" text-anchor="middle" x="208.08" y="-1623.44" font-family="PingFang SC" font-size="14.00" fill="#2e214a">弹窗内；读取当前景区、场景、方</text>
+<text xml:space="preserve" text-anchor="middle" x="208.08" y="-1606.64" font-family="PingFang SC" font-size="14.00" fill="#2e214a">式、账号及实际设备</text>
+</g>
+<!-- PAY -->
+<g id="node2" class="node">
+<title>PAY</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M196.26,-1541.26C196.26,-1541.26 11.82,-1508.5 11.82,-1508.5 5.91,-1507.45 5.91,-1505.35 11.82,-1504.3 11.82,-1504.3 196.26,-1471.54 196.26,-1471.54 202.17,-1470.49 213.99,-1470.49 219.9,-1471.54 219.9,-1471.54 404.34,-1504.3 404.34,-1504.3 410.25,-1505.35 410.25,-1507.45 404.34,-1508.5 404.34,-1508.5 219.9,-1541.26 219.9,-1541.26 213.99,-1542.31 202.17,-1542.31 196.26,-1541.26"/>
+<text xml:space="preserve" text-anchor="middle" x="208.08" y="-1502.2" font-family="PingFang SC" font-size="14.00" fill="#2e214a">方式已启用且适用当前场景?</text>
+</g>
+<!-- START&#45;&gt;PAY -->
+<g id="edge1" class="edge">
+<title>START&#45;&gt;PAY</title>
+<path fill="none" stroke="#8a77a6" d="M208.08,-1592.15C208.08,-1579.51 208.08,-1565.01 208.08,-1551.63"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="210.53,-1551.99 208.08,-1544.99 205.63,-1551.99 210.53,-1551.99"/>
+</g>
+<!-- NO -->
+<g id="node3" class="node">
+<title>NO</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M269.2,-1388.56C269.2,-1388.56 100.96,-1388.56 100.96,-1388.56 94.96,-1388.56 88.96,-1382.56 88.96,-1376.56 88.96,-1376.56 88.96,-1363.6 88.96,-1363.6 88.96,-1357.6 94.96,-1351.6 100.96,-1351.6 100.96,-1351.6 269.2,-1351.6 269.2,-1351.6 275.2,-1351.6 281.2,-1357.6 281.2,-1363.6 281.2,-1363.6 281.2,-1376.56 281.2,-1376.56 281.2,-1382.56 275.2,-1388.56 269.2,-1388.56"/>
+<text xml:space="preserve" text-anchor="middle" x="185.08" y="-1365.88" font-family="PingFang SC" font-size="14.00" fill="#2e214a">提示重新选择支付方式</text>
+</g>
+<!-- PAY&#45;&gt;NO -->
+<g id="edge2" class="edge">
+<title>PAY&#45;&gt;NO</title>
+<path fill="none" stroke="#8a77a6" d="M202.04,-1470.11C198.12,-1447.26 193.11,-1418 189.56,-1397.22"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="191.98,-1396.86 188.38,-1390.37 187.15,-1397.69 191.98,-1396.86"/>
+<text xml:space="preserve" text-anchor="middle" x="201.77" y="-1434.64" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- NEED -->
+<g id="node4" class="node">
+<title>NEED</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M442.48,-1403.99C442.48,-1403.99 325.28,-1373.13 325.28,-1373.13 319.48,-1371.61 319.48,-1368.55 325.28,-1367.03 325.28,-1367.03 442.48,-1336.17 442.48,-1336.17 448.28,-1334.65 459.88,-1334.65 465.68,-1336.17 465.68,-1336.17 582.88,-1367.03 582.88,-1367.03 588.68,-1368.55 588.68,-1371.61 582.88,-1373.13 582.88,-1373.13 465.68,-1403.99 465.68,-1403.99 459.88,-1405.51 448.28,-1405.51 442.48,-1403.99"/>
+<text xml:space="preserve" text-anchor="middle" x="454.08" y="-1365.88" font-family="PingFang SC" font-size="14.00" fill="#2e214a">扫码付或银行卡?</text>
+</g>
+<!-- PAY&#45;&gt;NEED -->
+<g id="edge3" class="edge">
+<title>PAY&#45;&gt;NEED</title>
+<path fill="none" stroke="#8a77a6" d="M258.46,-1477.89C300.23,-1455.09 359.41,-1422.77 401.72,-1399.67"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="402.85,-1401.84 407.82,-1396.34 400.5,-1397.54 402.85,-1401.84"/>
+<text xml:space="preserve" text-anchor="middle" x="342.96" y="-1434.64" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- OTHER -->
+<g id="node5" class="node">
+<title>OTHER</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M479.64,-1260.64C479.64,-1260.64 272.52,-1260.64 272.52,-1260.64 266.52,-1260.64 260.52,-1254.64 260.52,-1248.64 260.52,-1248.64 260.52,-1218.88 260.52,-1218.88 260.52,-1212.88 266.52,-1206.88 272.52,-1206.88 272.52,-1206.88 479.64,-1206.88 479.64,-1206.88 485.64,-1206.88 491.64,-1212.88 491.64,-1218.88 491.64,-1218.88 491.64,-1248.64 491.64,-1248.64 491.64,-1254.64 485.64,-1260.64 479.64,-1260.64"/>
+<text xml:space="preserve" text-anchor="middle" x="376.08" y="-1237.96" font-family="PingFang SC" font-size="14.00" fill="#2e214a">走原线下 / 建行 / 账户流</text>
+<text xml:space="preserve" text-anchor="middle" x="376.08" y="-1221.16" font-family="PingFang SC" font-size="14.00" fill="#2e214a">程，不带本期资源</text>
+</g>
+<!-- NEED&#45;&gt;OTHER -->
+<g id="edge4" class="edge">
+<title>NEED&#45;&gt;OTHER</title>
+<path fill="none" stroke="#8a77a6" d="M435.79,-1337.59C423.71,-1316.78 407.89,-1289.53 395.57,-1268.32"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="397.76,-1267.22 392.13,-1262.39 393.52,-1269.68 397.76,-1267.22"/>
+<text xml:space="preserve" text-anchor="middle" x="421.92" y="-1298.32" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- OWNER -->
+<g id="node6" class="node">
+<title>OWNER</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M630.62,-1267.16C630.62,-1267.16 534.74,-1237.32 534.74,-1237.32 529.01,-1235.54 529.01,-1231.98 534.74,-1230.2 534.74,-1230.2 630.62,-1200.36 630.62,-1200.36 636.35,-1198.58 647.81,-1198.58 653.54,-1200.36 653.54,-1200.36 749.42,-1230.2 749.42,-1230.2 755.15,-1231.98 755.15,-1235.54 749.42,-1237.32 749.42,-1237.32 653.54,-1267.16 653.54,-1267.16 647.81,-1268.94 636.35,-1268.94 630.62,-1267.16"/>
+<text xml:space="preserve" text-anchor="middle" x="642.08" y="-1229.56" font-family="PingFang SC" font-size="14.00" fill="#2e214a">统一资源归属</text>
+</g>
+<!-- NEED&#45;&gt;OWNER -->
+<g id="edge5" class="edge">
+<title>NEED&#45;&gt;OWNER</title>
+<path fill="none" stroke="#8a77a6" d="M491.22,-1342.54C522.49,-1320.2 567.21,-1288.25 599.84,-1264.94"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="601.1,-1267.05 605.37,-1260.98 598.26,-1263.06 601.1,-1267.05"/>
+<text xml:space="preserve" text-anchor="middle" x="558.22" y="-1298.32" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- A -->
+<g id="node7" class="node">
+<title>A</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M587.96,-1134.4C587.96,-1134.4 372.2,-1134.4 372.2,-1134.4 366.2,-1134.4 360.2,-1128.4 360.2,-1122.4 360.2,-1122.4 360.2,-1109.44 360.2,-1109.44 360.2,-1103.44 366.2,-1097.44 372.2,-1097.44 372.2,-1097.44 587.96,-1097.44 587.96,-1097.44 593.96,-1097.44 599.96,-1103.44 599.96,-1109.44 599.96,-1109.44 599.96,-1122.4 599.96,-1122.4 599.96,-1128.4 593.96,-1134.4 587.96,-1134.4"/>
+<text xml:space="preserve" text-anchor="middle" x="480.08" y="-1111.72" font-family="PingFang SC" font-size="14.00" fill="#2e214a">只读取当前登录账号ID的绑定</text>
+</g>
+<!-- OWNER&#45;&gt;A -->
+<g id="edge6" class="edge">
+<title>OWNER&#45;&gt;A</title>
+<path fill="none" stroke="#8a77a6" d="M606.53,-1207.34C578.19,-1187.08 538.89,-1158.97 511.65,-1139.5"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="513.35,-1137.7 506.23,-1135.62 510.5,-1141.69 513.35,-1137.7"/>
+<text xml:space="preserve" text-anchor="middle" x="569.72" y="-1162" font-family="PingFang SC" font-size="12.00" fill="#695385">跟账号</text>
+</g>
+<!-- D -->
+<g id="node8" class="node">
+<title>D</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M859.96,-1134.4C859.96,-1134.4 644.2,-1134.4 644.2,-1134.4 638.2,-1134.4 632.2,-1128.4 632.2,-1122.4 632.2,-1122.4 632.2,-1109.44 632.2,-1109.44 632.2,-1103.44 638.2,-1097.44 644.2,-1097.44 644.2,-1097.44 859.96,-1097.44 859.96,-1097.44 865.96,-1097.44 871.96,-1103.44 871.96,-1109.44 871.96,-1109.44 871.96,-1122.4 871.96,-1122.4 871.96,-1128.4 865.96,-1134.4 859.96,-1134.4"/>
+<text xml:space="preserve" text-anchor="middle" x="752.08" y="-1111.72" font-family="PingFang SC" font-size="14.00" fill="#2e214a">只读取实际窗口设备ID的绑定</text>
+</g>
+<!-- OWNER&#45;&gt;D -->
+<g id="edge7" class="edge">
+<title>OWNER&#45;&gt;D</title>
+<path fill="none" stroke="#8a77a6" d="M668.71,-1204.72C687.33,-1185.11 711.93,-1159.2 729.57,-1140.62"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="731.19,-1142.48 734.23,-1135.72 727.63,-1139.11 731.19,-1142.48"/>
+<text xml:space="preserve" text-anchor="middle" x="723.67" y="-1162" font-family="PingFang SC" font-size="12.00" fill="#695385">跟设备</text>
+</g>
+<!-- EXIST -->
+<g id="node9" class="node">
+<title>EXIST</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M603.82,-1044.28C603.82,-1044.28 526.26,-1015.64 526.26,-1015.64 520.63,-1013.56 520.63,-1009.4 526.26,-1007.32 526.26,-1007.32 603.82,-978.68 603.82,-978.68 609.45,-976.6 620.71,-976.6 626.34,-978.68 626.34,-978.68 703.9,-1007.32 703.9,-1007.32 709.53,-1009.4 709.53,-1013.56 703.9,-1015.64 703.9,-1015.64 626.34,-1044.28 626.34,-1044.28 620.71,-1046.36 609.45,-1046.36 603.82,-1044.28"/>
+<text xml:space="preserve" text-anchor="middle" x="615.08" y="-1007.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">存在绑定?</text>
+</g>
+<!-- A&#45;&gt;EXIST -->
+<g id="edge8" class="edge">
+<title>A&#45;&gt;EXIST</title>
+<path fill="none" stroke="#8a77a6" d="M503.6,-1097.08C523.53,-1081.95 552.54,-1059.93 575.97,-1042.16"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="577.43,-1044.12 581.53,-1037.94 574.47,-1040.22 577.43,-1044.12"/>
+</g>
+<!-- D&#45;&gt;EXIST -->
+<g id="edge9" class="edge">
+<title>D&#45;&gt;EXIST</title>
+<path fill="none" stroke="#8a77a6" d="M728.22,-1097.08C707.82,-1081.83 678.09,-1059.59 654.21,-1041.74"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="655.94,-1039.97 648.86,-1037.74 653,-1043.89 655.94,-1039.97"/>
+</g>
+<!-- MISSING -->
+<g id="node10" class="node">
+<title>MISSING</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M708.64,-851.16C708.64,-851.16 465.52,-851.16 465.52,-851.16 459.52,-851.16 453.52,-845.16 453.52,-839.16 453.52,-839.16 453.52,-809.4 453.52,-809.4 453.52,-803.4 459.52,-797.4 465.52,-797.4 465.52,-797.4 708.64,-797.4 708.64,-797.4 714.64,-797.4 720.64,-803.4 720.64,-809.4 720.64,-809.4 720.64,-839.16 720.64,-839.16 720.64,-845.16 714.64,-851.16 708.64,-851.16"/>
+<text xml:space="preserve" text-anchor="middle" x="587.08" y="-828.48" font-family="PingFang SC" font-size="14.00" fill="#2e214a">弹窗内提示账号或窗口未配置；阻</text>
+<text xml:space="preserve" text-anchor="middle" x="587.08" y="-811.68" font-family="PingFang SC" font-size="14.00" fill="#2e214a">止最终提交，不跨主体兜底</text>
+</g>
+<!-- EXIST&#45;&gt;MISSING -->
+<g id="edge10" class="edge">
+<title>EXIST&#45;&gt;MISSING</title>
+<path fill="none" stroke="#8a77a6" d="M609.88,-976.08C604.85,-942.81 597.27,-892.68 592.25,-859.48"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="594.73,-859.48 591.26,-852.92 589.88,-860.21 594.73,-859.48"/>
+<text xml:space="preserve" text-anchor="middle" x="610.3" y="-939.72" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- FILTER -->
+<g id="node11" class="node">
+<title>FILTER</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M905.64,-912.12C905.64,-912.12 662.52,-912.12 662.52,-912.12 656.52,-912.12 650.52,-906.12 650.52,-900.12 650.52,-900.12 650.52,-887.16 650.52,-887.16 650.52,-881.16 656.52,-875.16 662.52,-875.16 662.52,-875.16 905.64,-875.16 905.64,-875.16 911.64,-875.16 917.64,-881.16 917.64,-887.16 917.64,-887.16 917.64,-900.12 917.64,-900.12 917.64,-906.12 911.64,-912.12 905.64,-912.12"/>
+<text xml:space="preserve" text-anchor="middle" x="784.08" y="-889.44" font-family="PingFang SC" font-size="14.00" fill="#2e214a">按景区、资源类型及启用状态过滤</text>
+</g>
+<!-- EXIST&#45;&gt;FILTER -->
+<g id="edge11" class="edge">
+<title>EXIST&#45;&gt;FILTER</title>
+<path fill="none" stroke="#8a77a6" d="M649.28,-987.04C679.01,-966.66 721.81,-937.32 751.16,-917.2"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="752.31,-919.39 756.7,-913.41 749.54,-915.34 752.31,-919.39"/>
+<text xml:space="preserve" text-anchor="middle" x="724.19" y="-939.72" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- KEEP -->
+<g id="node22" class="node">
+<title>KEEP</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M717.64,-362.04C717.64,-362.04 474.52,-362.04 474.52,-362.04 468.52,-362.04 462.52,-356.04 462.52,-350.04 462.52,-350.04 462.52,-320.28 462.52,-320.28 462.52,-314.28 468.52,-308.28 474.52,-308.28 474.52,-308.28 717.64,-308.28 717.64,-308.28 723.64,-308.28 729.64,-314.28 729.64,-320.28 729.64,-320.28 729.64,-350.04 729.64,-350.04 729.64,-356.04 723.64,-362.04 717.64,-362.04"/>
+<text xml:space="preserve" text-anchor="middle" x="596.08" y="-339.36" font-family="PingFang SC" font-size="14.00" fill="#2e214a">留在弹窗，保留业务；可换方式或</text>
+<text xml:space="preserve" text-anchor="middle" x="596.08" y="-322.56" font-family="PingFang SC" font-size="14.00" fill="#2e214a">取消，主页面不留资源错误</text>
+</g>
+<!-- MISSING&#45;&gt;KEEP -->
+<g id="edge24" class="edge">
+<title>MISSING&#45;&gt;KEEP</title>
+<path fill="none" stroke="#8a77a6" d="M580.8,-797.16C570.25,-753.22 550.08,-669.28 550.08,-669.28 550.08,-669.28 550.08,-669.28 550.08,-472.88 550.08,-472.88 570.88,-411.06 584.51,-370.56"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="586.82,-371.37 586.73,-363.96 582.17,-369.81 586.82,-371.37"/>
+</g>
+<!-- MODE -->
+<g id="node12" class="node">
+<title>MODE</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M795.62,-769.84C795.62,-769.84 699.74,-740 699.74,-740 694.01,-738.22 694.01,-734.66 699.74,-732.88 699.74,-732.88 795.62,-703.04 795.62,-703.04 801.35,-701.26 812.81,-701.26 818.54,-703.04 818.54,-703.04 914.42,-732.88 914.42,-732.88 920.15,-734.66 920.15,-738.22 914.42,-740 914.42,-740 818.54,-769.84 818.54,-769.84 812.81,-771.62 801.35,-771.62 795.62,-769.84"/>
+<text xml:space="preserve" text-anchor="middle" x="807.08" y="-732.24" font-family="PingFang SC" font-size="14.00" fill="#2e214a">资源使用方式</text>
+</g>
+<!-- FILTER&#45;&gt;MODE -->
+<g id="edge12" class="edge">
+<title>FILTER&#45;&gt;MODE</title>
+<path fill="none" stroke="#8a77a6" d="M786.72,-874.84C790.11,-851.96 796.11,-811.49 800.72,-780.38"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="803.09,-781.06 801.7,-773.78 798.25,-780.34 803.09,-781.06"/>
+</g>
+<!-- FIX -->
+<g id="node13" class="node">
+<title>FIX</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M1202.36,-634.49C1202.36,-634.49 1058.4,-602.71 1058.4,-602.71 1052.54,-601.41 1052.54,-598.83 1058.4,-597.53 1058.4,-597.53 1202.36,-565.75 1202.36,-565.75 1208.22,-564.45 1219.94,-564.45 1225.8,-565.75 1225.8,-565.75 1369.76,-597.53 1369.76,-597.53 1375.62,-598.83 1375.62,-601.41 1369.76,-602.71 1369.76,-602.71 1225.8,-634.49 1225.8,-634.49 1219.94,-635.79 1208.22,-635.79 1202.36,-634.49"/>
+<text xml:space="preserve" text-anchor="middle" x="1214.08" y="-595.92" font-family="PingFang SC" font-size="14.00" fill="#2e214a">恰好一个且默认有效?</text>
+</g>
+<!-- MODE&#45;&gt;FIX -->
+<g id="edge13" class="edge">
+<title>MODE&#45;&gt;FIX</title>
+<path fill="none" stroke="#8a77a6" d="M863.67,-716.76C935.79,-692.96 1060.6,-651.77 1140.17,-625.51"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="1140.88,-627.86 1146.76,-623.34 1139.35,-623.2 1140.88,-627.86"/>
+<text xml:space="preserve" text-anchor="middle" x="1031.78" y="-664.68" font-family="PingFang SC" font-size="12.00" fill="#695385">固定</text>
+</g>
+<!-- MULTI -->
+<g id="node14" class="node">
+<title>MULTI</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M795.26,-634.98C795.26,-634.98 610.82,-602.22 610.82,-602.22 604.91,-601.17 604.91,-599.07 610.82,-598.02 610.82,-598.02 795.26,-565.26 795.26,-565.26 801.17,-564.21 812.99,-564.21 818.9,-565.26 818.9,-565.26 1003.34,-598.02 1003.34,-598.02 1009.25,-599.07 1009.25,-601.17 1003.34,-602.22 1003.34,-602.22 818.9,-634.98 818.9,-634.98 812.99,-636.03 801.17,-636.03 795.26,-634.98"/>
+<text xml:space="preserve" text-anchor="middle" x="807.08" y="-595.92" font-family="PingFang SC" font-size="14.00" fill="#2e214a">默认属于已绑定的有效资源?</text>
+</g>
+<!-- MODE&#45;&gt;MULTI -->
+<g id="edge14" class="edge">
+<title>MODE&#45;&gt;MULTI</title>
+<path fill="none" stroke="#8a77a6" d="M807.08,-699.09C807.08,-682.67 807.08,-663.1 807.08,-645.79"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="809.53,-646.01 807.08,-639.01 804.63,-646.01 809.53,-646.01"/>
+<text xml:space="preserve" text-anchor="middle" x="816.08" y="-664.68" font-family="PingFang SC" font-size="12.00" fill="#695385">多个</text>
+</g>
+<!-- FAIL -->
+<g id="node15" class="node">
+<title>FAIL</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M854.64,-500.76C854.64,-500.76 611.52,-500.76 611.52,-500.76 605.52,-500.76 599.52,-494.76 599.52,-488.76 599.52,-488.76 599.52,-459 599.52,-459 599.52,-453 605.52,-447 611.52,-447 611.52,-447 854.64,-447 854.64,-447 860.64,-447 866.64,-453 866.64,-459 866.64,-459 866.64,-488.76 866.64,-488.76 866.64,-494.76 860.64,-500.76 854.64,-500.76"/>
+<text xml:space="preserve" text-anchor="middle" x="733.08" y="-478.08" font-family="PingFang SC" font-size="14.00" fill="#2e214a">弹窗内提示资源或默认失效；阻止</text>
+<text xml:space="preserve" text-anchor="middle" x="733.08" y="-461.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">最终提交</text>
+</g>
+<!-- FIX&#45;&gt;FAIL -->
+<g id="edge15" class="edge">
+<title>FIX&#45;&gt;FAIL</title>
+<path fill="none" stroke="#8a77a6" d="M1142.83,-578.51C1066.77,-556.5 957.08,-524.76 957.08,-524.76 957.08,-524.76 910.3,-514.34 859.49,-503.03"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="860.15,-500.67 852.79,-501.54 859.09,-505.45 860.15,-500.67"/>
+<text xml:space="preserve" text-anchor="middle" x="1010.74" y="-528.36" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- READ -->
+<g id="node16" class="node">
+<title>READ</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M1304.76,-423C1304.76,-423 1121.4,-423 1121.4,-423 1115.4,-423 1109.4,-417 1109.4,-411 1109.4,-411 1109.4,-398.04 1109.4,-398.04 1109.4,-392.04 1115.4,-386.04 1121.4,-386.04 1121.4,-386.04 1304.76,-386.04 1304.76,-386.04 1310.76,-386.04 1316.76,-392.04 1316.76,-398.04 1316.76,-398.04 1316.76,-411 1316.76,-411 1316.76,-417 1310.76,-423 1304.76,-423"/>
+<text xml:space="preserve" text-anchor="middle" x="1213.08" y="-400.32" font-family="PingFang SC" font-size="14.00" fill="#2e214a">名称置灰，带出只读编码</text>
+</g>
+<!-- FIX&#45;&gt;READ -->
+<g id="edge17" class="edge">
+<title>FIX&#45;&gt;READ</title>
+<path fill="none" stroke="#8a77a6" d="M1213.89,-562.71C1213.69,-524.5 1213.39,-465.39 1213.21,-431.6"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="1215.67,-431.68 1213.18,-424.69 1210.77,-431.7 1215.67,-431.68"/>
+<text xml:space="preserve" text-anchor="middle" x="1218.27" y="-528.36" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- MULTI&#45;&gt;FAIL -->
+<g id="edge16" class="edge">
+<title>MULTI&#45;&gt;FAIL</title>
+<path fill="none" stroke="#8a77a6" d="M787.44,-566.15C776.71,-548.13 763.45,-525.87 752.72,-507.85"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="755.05,-506.97 749.36,-502.21 750.84,-509.48 755.05,-506.97"/>
+<text xml:space="preserve" text-anchor="middle" x="774.58" y="-528.36" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- SELECT -->
+<g id="node17" class="node">
+<title>SELECT</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M1153.64,-500.76C1153.64,-500.76 910.52,-500.76 910.52,-500.76 904.52,-500.76 898.52,-494.76 898.52,-488.76 898.52,-488.76 898.52,-459 898.52,-459 898.52,-453 904.52,-447 910.52,-447 910.52,-447 1153.64,-447 1153.64,-447 1159.64,-447 1165.64,-453 1165.64,-459 1165.64,-459 1165.64,-488.76 1165.64,-488.76 1165.64,-494.76 1159.64,-500.76 1153.64,-500.76"/>
+<text xml:space="preserve" text-anchor="middle" x="1032.08" y="-478.08" font-family="PingFang SC" font-size="14.00" fill="#2e214a">带出默认；允许在有效绑定范围选</text>
+<text xml:space="preserve" text-anchor="middle" x="1032.08" y="-461.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">名称</text>
+</g>
+<!-- MULTI&#45;&gt;SELECT -->
+<g id="edge18" class="edge">
+<title>MULTI&#45;&gt;SELECT</title>
+<path fill="none" stroke="#8a77a6" d="M857.01,-571.55C892.7,-551.84 940.7,-525.34 977.41,-505.07"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="978.33,-507.36 983.27,-501.83 975.96,-503.07 978.33,-507.36"/>
+<text xml:space="preserve" text-anchor="middle" x="944.23" y="-528.36" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- FAIL&#45;&gt;KEEP -->
+<g id="edge25" class="edge">
+<title>FAIL&#45;&gt;KEEP</title>
+<path fill="none" stroke="#8a77a6" d="M706.67,-446.52C684.3,-424.2 652.16,-392.13 628.29,-368.31"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="630.17,-366.72 623.49,-363.51 626.71,-370.19 630.17,-366.72"/>
+</g>
+<!-- SUBMIT -->
+<g id="node19" class="node">
+<title>SUBMIT</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M1245.64,-259.28C1245.64,-259.28 1002.52,-259.28 1002.52,-259.28 996.52,-259.28 990.52,-253.28 990.52,-247.28 990.52,-247.28 990.52,-217.52 990.52,-217.52 990.52,-211.52 996.52,-205.52 1002.52,-205.52 1002.52,-205.52 1245.64,-205.52 1245.64,-205.52 1251.64,-205.52 1257.64,-211.52 1257.64,-217.52 1257.64,-217.52 1257.64,-247.28 1257.64,-247.28 1257.64,-253.28 1251.64,-259.28 1245.64,-259.28"/>
+<text xml:space="preserve" text-anchor="middle" x="1124.08" y="-236.6" font-family="PingFang SC" font-size="14.00" fill="#2e214a">最终提交再次校验归属、绑定及编</text>
+<text xml:space="preserve" text-anchor="middle" x="1124.08" y="-219.8" font-family="PingFang SC" font-size="14.00" fill="#2e214a">码</text>
+</g>
+<!-- READ&#45;&gt;SUBMIT -->
+<g id="edge20" class="edge">
+<title>READ&#45;&gt;SUBMIT</title>
+<path fill="none" stroke="#8a77a6" d="M1204.24,-385.61C1190.62,-358.02 1166.08,-308.28 1166.08,-308.28 1166.08,-308.28 1154.02,-286.79 1142.83,-266.83"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="1145.07,-265.82 1139.51,-260.91 1140.8,-268.21 1145.07,-265.82"/>
+</g>
+<!-- CODE -->
+<g id="node18" class="node">
+<title>CODE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M1137.96,-353.64C1137.96,-353.64 940.2,-353.64 940.2,-353.64 934.2,-353.64 928.2,-347.64 928.2,-341.64 928.2,-341.64 928.2,-328.68 928.2,-328.68 928.2,-322.68 934.2,-316.68 940.2,-316.68 940.2,-316.68 1137.96,-316.68 1137.96,-316.68 1143.96,-316.68 1149.96,-322.68 1149.96,-328.68 1149.96,-328.68 1149.96,-341.64 1149.96,-341.64 1149.96,-347.64 1143.96,-353.64 1137.96,-353.64"/>
+<text xml:space="preserve" text-anchor="middle" x="1039.08" y="-330.96" font-family="PingFang SC" font-size="14.00" fill="#2e214a">编码随选择自动带出且只读</text>
+</g>
+<!-- SELECT&#45;&gt;CODE -->
+<g id="edge19" class="edge">
+<title>SELECT&#45;&gt;CODE</title>
+<path fill="none" stroke="#8a77a6" d="M1033.43,-446.52C1034.68,-422.19 1036.51,-386.28 1037.75,-362.09"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="1040.19,-362.38 1038.1,-355.27 1035.3,-362.13 1040.19,-362.38"/>
+</g>
+<!-- CODE&#45;&gt;SUBMIT -->
+<g id="edge21" class="edge">
+<title>CODE&#45;&gt;SUBMIT</title>
+<path fill="none" stroke="#8a77a6" d="M1053.89,-316.61C1065.75,-302.55 1082.71,-282.44 1096.98,-265.52"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="1098.49,-267.53 1101.13,-260.6 1094.75,-264.37 1098.49,-267.53"/>
+</g>
+<!-- ORIGINAL -->
+<g id="node20" class="node">
+<title>ORIGINAL</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M1245.64,-156.52C1245.64,-156.52 1002.52,-156.52 1002.52,-156.52 996.52,-156.52 990.52,-150.52 990.52,-144.52 990.52,-144.52 990.52,-114.76 990.52,-114.76 990.52,-108.76 996.52,-102.76 1002.52,-102.76 1002.52,-102.76 1245.64,-102.76 1245.64,-102.76 1251.64,-102.76 1257.64,-108.76 1257.64,-114.76 1257.64,-114.76 1257.64,-144.52 1257.64,-144.52 1257.64,-150.52 1251.64,-156.52 1245.64,-156.52"/>
+<text xml:space="preserve" text-anchor="middle" x="1124.08" y="-133.84" font-family="PingFang SC" font-size="14.00" fill="#2e214a">执行原下单或充值处理，不新增支</text>
+<text xml:space="preserve" text-anchor="middle" x="1124.08" y="-117.04" font-family="PingFang SC" font-size="14.00" fill="#2e214a">付分支</text>
+</g>
+<!-- SUBMIT&#45;&gt;ORIGINAL -->
+<g id="edge22" class="edge">
+<title>SUBMIT&#45;&gt;ORIGINAL</title>
+<path fill="none" stroke="#8a77a6" d="M1124.08,-205.19C1124.08,-192.94 1124.08,-178.2 1124.08,-165.07"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="1126.53,-165.23 1124.08,-158.23 1121.63,-165.23 1126.53,-165.23"/>
+</g>
+<!-- SNAP -->
+<g id="node21" class="node">
+<title>SNAP</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M1239.52,-53.76C1239.52,-53.76 1008.64,-53.76 1008.64,-53.76 1002.64,-53.76 996.64,-47.76 996.64,-41.76 996.64,-41.76 996.64,-12 996.64,-12 996.64,-6 1002.64,0 1008.64,0 1008.64,0 1239.52,0 1239.52,0 1245.52,0 1251.52,-6 1251.52,-12 1251.52,-12 1251.52,-41.76 1251.52,-41.76 1251.52,-47.76 1245.52,-53.76 1239.52,-53.76"/>
+<text xml:space="preserve" text-anchor="middle" x="1124.08" y="-31.08" font-family="PingFang SC" font-size="14.00" fill="#2e214a">每笔记录实际资源及柜台编码/P</text>
+<text xml:space="preserve" text-anchor="middle" x="1124.08" y="-14.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">OS编号</text>
+</g>
+<!-- ORIGINAL&#45;&gt;SNAP -->
+<g id="edge23" class="edge">
+<title>ORIGINAL&#45;&gt;SNAP</title>
+<path fill="none" stroke="#8a77a6" d="M1124.08,-102.43C1124.08,-90.18 1124.08,-75.44 1124.08,-62.31"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="1126.53,-62.47 1124.08,-55.47 1121.63,-62.47 1126.53,-62.47"/>
+</g>
+</g>
+</svg>
+</div><figcaption class="flow-caption">默认适应宽度 · 滚轮缩放 · 按住拖动 · 双击适应全图</figcaption><details class="flow-source"><summary>查看可编辑流程源码</summary><pre><code>flowchart TB
+  START[W04 / W09 / W12弹窗内；读取当前景区、场景、方式、账号及实际设备] --&gt; PAY{方式已启用且适用当前场景?}
+  PAY --&gt;|否| NO[提示重新选择支付方式]
+  PAY --&gt;|是| NEED{扫码付或银行卡?}
+  NEED --&gt;|否| OTHER[走原线下 / 建行 / 账户流程，不带本期资源]
+  NEED --&gt;|是| OWNER{统一资源归属}
+  OWNER --&gt;|跟账号| A[只读取当前登录账号ID的绑定]
+  OWNER --&gt;|跟设备| D[只读取实际窗口设备ID的绑定]
+  A --&gt; EXIST{存在绑定?}
+  D --&gt; EXIST
+  EXIST --&gt;|否| MISSING[弹窗内提示账号或窗口未配置；阻止最终提交，不跨主体兜底]
+  EXIST --&gt;|是| FILTER[按景区、资源类型及启用状态过滤]
+  FILTER --&gt; MODE{资源使用方式}
+  MODE --&gt;|固定| FIX{恰好一个且默认有效?}
+  MODE --&gt;|多个| MULTI{默认属于已绑定的有效资源?}
+  FIX --&gt;|否| FAIL[弹窗内提示资源或默认失效；阻止最终提交]
+  MULTI --&gt;|否| FAIL
+  FIX --&gt;|是| READ[名称置灰，带出只读编码]
+  MULTI --&gt;|是| SELECT[带出默认；允许在有效绑定范围选名称]
+  SELECT --&gt; CODE[编码随选择自动带出且只读]
+  READ --&gt; SUBMIT[最终提交再次校验归属、绑定及编码]
+  CODE --&gt; SUBMIT
+  SUBMIT --&gt; ORIGINAL[执行原下单或充值处理，不新增支付分支]
+  ORIGINAL --&gt; SNAP[每笔记录实际资源及柜台编码/POS编号]
+  MISSING --&gt; KEEP[留在弹窗，保留业务；可换方式或取消，主页面不留资源错误]
+  FAIL --&gt; KEEP
+</code></pre></details></figure>
+<h2 id="五-散客-团队售票与订单支付记录">五、散客/团队售票与订单支付记录</h2>
+<figure class="flow-card"><div class="flow-toolbar"><button data-action="in" aria-label="放大流程图">＋ 放大</button><button data-action="out" aria-label="缩小流程图">－ 缩小</button><button data-action="fit">适应全图</button><button data-action="width">适应宽度</button><a href="assets/flow-05.svg" target="_blank" rel="noopener">独立查看 ↗</a><span class="zoom-label"></span></div><div class="flow-stage" aria-label="可缩放拖动的流程图" tabindex="0">
+
+<!-- Generated by graphviz version 14.1.3 (20260303.0454)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg width="788pt" height="1201pt"
+ viewBox="0.00 0.00 788.00 1201.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 1176)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-25.2,25.2 -25.2,-1176 762.64,-1176 762.64,25.2 -25.2,25.2"/>
+<!-- SCENE -->
+<g id="node1" class="node">
+<title>SCENE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M397.56,-1150.8C397.56,-1150.8 208.44,-1150.8 208.44,-1150.8 202.44,-1150.8 196.44,-1144.8 196.44,-1138.8 196.44,-1138.8 196.44,-1109.04 196.44,-1109.04 196.44,-1103.04 202.44,-1097.04 208.44,-1097.04 208.44,-1097.04 397.56,-1097.04 397.56,-1097.04 403.56,-1097.04 409.56,-1103.04 409.56,-1109.04 409.56,-1109.04 409.56,-1138.8 409.56,-1138.8 409.56,-1144.8 403.56,-1150.8 397.56,-1150.8"/>
+<text xml:space="preserve" text-anchor="middle" x="303" y="-1128.12" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W01散客 / W02团队；原</text>
+<text xml:space="preserve" text-anchor="middle" x="303" y="-1111.32" font-family="PingFang SC" font-size="14.00" fill="#2e214a">对象选择W03不变</text>
+</g>
+<!-- FILTER -->
+<g id="node2" class="node">
+<title>FILTER</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M424.56,-1048.04C424.56,-1048.04 181.44,-1048.04 181.44,-1048.04 175.44,-1048.04 169.44,-1042.04 169.44,-1036.04 169.44,-1036.04 169.44,-1006.28 169.44,-1006.28 169.44,-1000.28 175.44,-994.28 181.44,-994.28 181.44,-994.28 424.56,-994.28 424.56,-994.28 430.56,-994.28 436.56,-1000.28 436.56,-1006.28 436.56,-1006.28 436.56,-1036.04 436.56,-1036.04 436.56,-1042.04 430.56,-1048.04 424.56,-1048.04"/>
+<text xml:space="preserve" text-anchor="middle" x="303" y="-1025.36" font-family="PingFang SC" font-size="14.00" fill="#2e214a">按启用状态及当前场景显示支付方</text>
+<text xml:space="preserve" text-anchor="middle" x="303" y="-1008.56" font-family="PingFang SC" font-size="14.00" fill="#2e214a">式</text>
+</g>
+<!-- SCENE&#45;&gt;FILTER -->
+<g id="edge1" class="edge">
+<title>SCENE&#45;&gt;FILTER</title>
+<path fill="none" stroke="#8a77a6" d="M303,-1096.71C303,-1084.46 303,-1069.72 303,-1056.59"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="305.45,-1056.75 303,-1049.75 300.55,-1056.75 305.45,-1056.75"/>
+</g>
+<!-- ORIGINAL -->
+<g id="node3" class="node">
+<title>ORIGINAL</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M424.56,-945.28C424.56,-945.28 181.44,-945.28 181.44,-945.28 175.44,-945.28 169.44,-939.28 169.44,-933.28 169.44,-933.28 169.44,-920.32 169.44,-920.32 169.44,-914.32 175.44,-908.32 181.44,-908.32 181.44,-908.32 424.56,-908.32 424.56,-908.32 430.56,-908.32 436.56,-914.32 436.56,-920.32 436.56,-920.32 436.56,-933.28 436.56,-933.28 436.56,-939.28 430.56,-945.28 424.56,-945.28"/>
+<text xml:space="preserve" text-anchor="middle" x="303" y="-922.6" font-family="PingFang SC" font-size="14.00" fill="#2e214a">选票、资料及确认下单沿用原流程</text>
+</g>
+<!-- FILTER&#45;&gt;ORIGINAL -->
+<g id="edge2" class="edge">
+<title>FILTER&#45;&gt;ORIGINAL</title>
+<path fill="none" stroke="#8a77a6" d="M303,-993.94C303,-981.37 303,-966.37 303,-953.83"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="305.45,-954.11 303,-947.11 300.55,-954.11 305.45,-954.11"/>
+</g>
+<!-- W04 -->
+<g id="node4" class="node">
+<title>W04</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M374.88,-859.32C374.88,-859.32 231.12,-859.32 231.12,-859.32 225.12,-859.32 219.12,-853.32 219.12,-847.32 219.12,-847.32 219.12,-834.36 219.12,-834.36 219.12,-828.36 225.12,-822.36 231.12,-822.36 231.12,-822.36 374.88,-822.36 374.88,-822.36 380.88,-822.36 386.88,-828.36 386.88,-834.36 386.88,-834.36 386.88,-847.32 386.88,-847.32 386.88,-853.32 380.88,-859.32 374.88,-859.32"/>
+<text xml:space="preserve" text-anchor="middle" x="303" y="-836.64" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W04 支付订单确认</text>
+</g>
+<!-- ORIGINAL&#45;&gt;W04 -->
+<g id="edge3" class="edge">
+<title>ORIGINAL&#45;&gt;W04</title>
+<path fill="none" stroke="#8a77a6" d="M303,-907.99C303,-896.31 303,-880.83 303,-867.78"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="305.45,-868.13 303,-861.13 300.55,-868.13 305.45,-868.13"/>
+</g>
+<!-- WAY -->
+<g id="node5" class="node">
+<title>WAY</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M291.54,-769.8C291.54,-769.8 195.66,-739.96 195.66,-739.96 189.93,-738.18 189.93,-734.62 195.66,-732.84 195.66,-732.84 291.54,-703 291.54,-703 297.27,-701.22 308.73,-701.22 314.46,-703 314.46,-703 410.34,-732.84 410.34,-732.84 416.07,-734.62 416.07,-738.18 410.34,-739.96 410.34,-739.96 314.46,-769.8 314.46,-769.8 308.73,-771.58 297.27,-771.58 291.54,-769.8"/>
+<text xml:space="preserve" text-anchor="middle" x="303" y="-732.2" font-family="PingFang SC" font-size="14.00" fill="#2e214a">所选支付方式</text>
+</g>
+<!-- W04&#45;&gt;WAY -->
+<g id="edge4" class="edge">
+<title>W04&#45;&gt;WAY</title>
+<path fill="none" stroke="#8a77a6" d="M303,-822C303,-810.88 303,-796.05 303,-781.91"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="305.45,-782.21 303,-775.21 300.55,-782.21 305.45,-782.21"/>
+</g>
+<!-- RESOURCE -->
+<g id="node6" class="node">
+<title>RESOURCE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M417,-637.04C417,-637.04 189,-637.04 189,-637.04 183,-637.04 177,-631.04 177,-625.04 177,-625.04 177,-612.08 177,-612.08 177,-606.08 183,-600.08 189,-600.08 189,-600.08 417,-600.08 417,-600.08 423,-600.08 429,-606.08 429,-612.08 429,-612.08 429,-625.04 429,-625.04 429,-631.04 423,-637.04 417,-637.04"/>
+<text xml:space="preserve" text-anchor="middle" x="303" y="-614.36" font-family="PingFang SC" font-size="14.00" fill="#2e214a">一人一票右侧：资源及只读编号</text>
+</g>
+<!-- WAY&#45;&gt;RESOURCE -->
+<g id="edge5" class="edge">
+<title>WAY&#45;&gt;RESOURCE</title>
+<path fill="none" stroke="#8a77a6" d="M303,-699.07C303,-681.71 303,-661.34 303,-645.56"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="305.45,-645.83 303,-638.83 300.55,-645.83 305.45,-645.83"/>
+<text xml:space="preserve" text-anchor="middle" x="331.67" y="-664.64" font-family="PingFang SC" font-size="12.00" fill="#695385">扫码付/银行卡</text>
+</g>
+<!-- KEEP -->
+<g id="node7" class="node">
+<title>KEEP</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M586.12,-576.08C586.12,-576.08 417.88,-576.08 417.88,-576.08 411.88,-576.08 405.88,-570.08 405.88,-564.08 405.88,-564.08 405.88,-551.12 405.88,-551.12 405.88,-545.12 411.88,-539.12 417.88,-539.12 417.88,-539.12 586.12,-539.12 586.12,-539.12 592.12,-539.12 598.12,-545.12 598.12,-551.12 598.12,-551.12 598.12,-564.08 598.12,-564.08 598.12,-570.08 592.12,-576.08 586.12,-576.08"/>
+<text xml:space="preserve" text-anchor="middle" x="502" y="-553.4" font-family="PingFang SC" font-size="14.00" fill="#2e214a">原现金或其他方式交互</text>
+</g>
+<!-- WAY&#45;&gt;KEEP -->
+<g id="edge6" class="edge">
+<title>WAY&#45;&gt;KEEP</title>
+<path fill="none" stroke="#8a77a6" d="M339.2,-710.33C381.27,-681.18 445,-637.04 445,-637.04 445,-637.04 467.38,-606.24 484.09,-583.24"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="486.04,-584.73 488.18,-577.62 482.08,-581.85 486.04,-584.73"/>
+<text xml:space="preserve" text-anchor="middle" x="431.58" y="-664.64" font-family="PingFang SC" font-size="12.00" fill="#695385">现金及其他</text>
+</g>
+<!-- CHECK -->
+<g id="node8" class="node">
+<title>CHECK</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M291.31,-512.41C291.31,-512.41 155.21,-480.87 155.21,-480.87 149.37,-479.51 149.37,-476.81 155.21,-475.45 155.21,-475.45 291.31,-443.91 291.31,-443.91 297.15,-442.55 308.85,-442.55 314.69,-443.91 314.69,-443.91 450.79,-475.45 450.79,-475.45 456.63,-476.81 456.63,-479.51 450.79,-480.87 450.79,-480.87 314.69,-512.41 314.69,-512.41 308.85,-513.77 297.15,-513.77 291.31,-512.41"/>
+<text xml:space="preserve" text-anchor="middle" x="303" y="-473.96" font-family="PingFang SC" font-size="14.00" fill="#2e214a">本期配置与资源有效</text>
+</g>
+<!-- RESOURCE&#45;&gt;CHECK -->
+<g id="edge7" class="edge">
+<title>RESOURCE&#45;&gt;CHECK</title>
+<path fill="none" stroke="#8a77a6" d="M303,-599.75C303,-580.73 303,-549.84 303,-524.08"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="305.45,-524.09 303,-517.09 300.55,-524.09 305.45,-524.09"/>
+</g>
+<!-- SUBMIT -->
+<g id="node10" class="node">
+<title>SUBMIT</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M601.56,-378.8C601.56,-378.8 358.44,-378.8 358.44,-378.8 352.44,-378.8 346.44,-372.8 346.44,-366.8 346.44,-366.8 346.44,-353.84 346.44,-353.84 346.44,-347.84 352.44,-341.84 358.44,-341.84 358.44,-341.84 601.56,-341.84 601.56,-341.84 607.56,-341.84 613.56,-347.84 613.56,-353.84 613.56,-353.84 613.56,-366.8 613.56,-366.8 613.56,-372.8 607.56,-378.8 601.56,-378.8"/>
+<text xml:space="preserve" text-anchor="middle" x="480" y="-356.12" font-family="PingFang SC" font-size="14.00" fill="#2e214a">确认出票，执行原下单及支付处理</text>
+</g>
+<!-- KEEP&#45;&gt;SUBMIT -->
+<g id="edge11" class="edge">
+<title>KEEP&#45;&gt;SUBMIT</title>
+<path fill="none" stroke="#8a77a6" d="M500.01,-538.93C496.12,-504.38 487.48,-427.74 482.93,-387.37"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="485.39,-387.28 482.17,-380.6 480.52,-387.83 485.39,-387.28"/>
+</g>
+<!-- ERROR -->
+<g id="node9" class="node">
+<title>ERROR</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M240,-378.8C240,-378.8 12,-378.8 12,-378.8 6,-378.8 0,-372.8 0,-366.8 0,-366.8 0,-353.84 0,-353.84 0,-347.84 6,-341.84 12,-341.84 12,-341.84 240,-341.84 240,-341.84 246,-341.84 252,-347.84 252,-353.84 252,-353.84 252,-366.8 252,-366.8 252,-372.8 246,-378.8 240,-378.8"/>
+<text xml:space="preserve" text-anchor="middle" x="126" y="-356.12" font-family="PingFang SC" font-size="14.00" fill="#2e214a">弹窗提示，保留业务，可换方式</text>
+</g>
+<!-- CHECK&#45;&gt;ERROR -->
+<g id="edge8" class="edge">
+<title>CHECK&#45;&gt;ERROR</title>
+<path fill="none" stroke="#8a77a6" d="M261.95,-450.29C231.16,-430.14 189.5,-402.88 160.44,-383.86"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="161.81,-381.83 154.61,-380.04 159.12,-385.93 161.81,-381.83"/>
+<text xml:space="preserve" text-anchor="middle" x="213.69" y="-406.4" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- CHECK&#45;&gt;SUBMIT -->
+<g id="edge10" class="edge">
+<title>CHECK&#45;&gt;SUBMIT</title>
+<path fill="none" stroke="#8a77a6" d="M344.05,-450.29C374.84,-430.14 416.5,-402.88 445.56,-383.86"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="446.88,-385.93 451.39,-380.04 444.19,-381.83 446.88,-385.93"/>
+<text xml:space="preserve" text-anchor="middle" x="417.06" y="-406.4" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- ERROR&#45;&gt;WAY -->
+<g id="edge9" class="edge">
+<title>ERROR&#45;&gt;WAY</title>
+<path fill="none" stroke="#8a77a6" d="M126.23,-379.26C126.76,-419.83 128,-515.12 128,-515.12 128,-515.12 161,-637.04 161,-637.04 161,-637.04 218.18,-676.65 259.98,-705.6"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="258.41,-707.49 265.56,-709.46 261.2,-703.46 258.41,-707.49"/>
+</g>
+<!-- RECORD -->
+<g id="node11" class="node">
+<title>RECORD</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M468.33,-290.04C468.33,-290.04 337.59,-258.68 337.59,-258.68 331.75,-257.28 331.75,-254.48 337.59,-253.08 337.59,-253.08 468.33,-221.72 468.33,-221.72 474.17,-220.32 485.83,-220.32 491.67,-221.72 491.67,-221.72 622.41,-253.08 622.41,-253.08 628.25,-254.48 628.25,-257.28 622.41,-258.68 622.41,-258.68 491.67,-290.04 491.67,-290.04 485.83,-291.44 474.17,-291.44 468.33,-290.04"/>
+<text xml:space="preserve" text-anchor="middle" x="480" y="-251.68" font-family="PingFang SC" font-size="14.00" fill="#2e214a">是否扫码付/银行卡</text>
+</g>
+<!-- SUBMIT&#45;&gt;RECORD -->
+<g id="edge12" class="edge">
+<title>SUBMIT&#45;&gt;RECORD</title>
+<path fill="none" stroke="#8a77a6" d="M480,-341.48C480,-330.36 480,-315.53 480,-301.39"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="482.45,-301.69 480,-294.69 477.55,-301.69 482.45,-301.69"/>
+</g>
+<!-- SNAP -->
+<g id="node12" class="node">
+<title>SNAP</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M456.44,-156.52C456.44,-156.52 225.56,-156.52 225.56,-156.52 219.56,-156.52 213.56,-150.52 213.56,-144.52 213.56,-144.52 213.56,-114.76 213.56,-114.76 213.56,-108.76 219.56,-102.76 225.56,-102.76 225.56,-102.76 456.44,-102.76 456.44,-102.76 462.44,-102.76 468.44,-108.76 468.44,-114.76 468.44,-114.76 468.44,-144.52 468.44,-144.52 468.44,-150.52 462.44,-156.52 456.44,-156.52"/>
+<text xml:space="preserve" text-anchor="middle" x="341" y="-133.84" font-family="PingFang SC" font-size="14.00" fill="#2e214a">每笔订单支付记录保存资源ID、</text>
+<text xml:space="preserve" text-anchor="middle" x="341" y="-117.04" font-family="PingFang SC" font-size="14.00" fill="#2e214a">名称及编号快照</text>
+</g>
+<!-- RECORD&#45;&gt;SNAP -->
+<g id="edge13" class="edge">
+<title>RECORD&#45;&gt;SNAP</title>
+<path fill="none" stroke="#8a77a6" d="M448.11,-226.38C426.81,-207.34 398.76,-182.27 376.71,-162.56"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="378.35,-160.74 371.5,-157.9 375.08,-164.39 378.35,-160.74"/>
+<text xml:space="preserve" text-anchor="middle" x="415" y="-184.12" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- OLD -->
+<g id="node13" class="node">
+<title>OLD</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M725.44,-148.12C725.44,-148.12 512.56,-148.12 512.56,-148.12 506.56,-148.12 500.56,-142.12 500.56,-136.12 500.56,-136.12 500.56,-123.16 500.56,-123.16 500.56,-117.16 506.56,-111.16 512.56,-111.16 512.56,-111.16 725.44,-111.16 725.44,-111.16 731.44,-111.16 737.44,-117.16 737.44,-123.16 737.44,-123.16 737.44,-136.12 737.44,-136.12 737.44,-142.12 731.44,-148.12 725.44,-148.12"/>
+<text xml:space="preserve" text-anchor="middle" x="619" y="-125.44" font-family="PingFang SC" font-size="14.00" fill="#2e214a">保留原支付记录，不带旧资源</text>
+</g>
+<!-- RECORD&#45;&gt;OLD -->
+<g id="edge14" class="edge">
+<title>RECORD&#45;&gt;OLD</title>
+<path fill="none" stroke="#8a77a6" d="M511.89,-226.38C536.51,-204.37 570.13,-174.32 593.1,-153.79"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="594.56,-155.77 598.15,-149.28 591.3,-152.11 594.56,-155.77"/>
+<text xml:space="preserve" text-anchor="middle" x="566.45" y="-184.12" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- D01 -->
+<g id="node14" class="node">
+<title>D01</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M450.68,-53.76C450.68,-53.76 231.32,-53.76 231.32,-53.76 225.32,-53.76 219.32,-47.76 219.32,-41.76 219.32,-41.76 219.32,-12 219.32,-12 219.32,-6 225.32,0 231.32,0 231.32,0 450.68,0 450.68,0 456.68,0 462.68,-6 462.68,-12 462.68,-12 462.68,-41.76 462.68,-41.76 462.68,-47.76 456.68,-53.76 450.68,-53.76"/>
+<text xml:space="preserve" text-anchor="middle" x="341" y="-31.08" font-family="PingFang SC" font-size="14.00" fill="#2e214a">D01 订单详情的订单支付信息</text>
+<text xml:space="preserve" text-anchor="middle" x="341" y="-14.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">展示</text>
+</g>
+<!-- SNAP&#45;&gt;D01 -->
+<g id="edge15" class="edge">
+<title>SNAP&#45;&gt;D01</title>
+<path fill="none" stroke="#8a77a6" d="M341,-102.43C341,-90.18 341,-75.44 341,-62.31"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="343.45,-62.47 341,-55.47 338.55,-62.47 343.45,-62.47"/>
+</g>
+</g>
+</svg>
+</div><figcaption class="flow-caption">默认适应宽度 · 滚轮缩放 · 按住拖动 · 双击适应全图</figcaption><details class="flow-source"><summary>查看可编辑流程源码</summary><pre><code>flowchart TB
+  SCENE[W01散客 / W02团队；原对象选择W03不变] --&gt; FILTER[按启用状态及当前场景显示支付方式]
+  FILTER --&gt; ORIGINAL[选票、资料及确认下单沿用原流程]
+  ORIGINAL --&gt; W04[W04 支付订单确认]
+  W04 --&gt; WAY{所选支付方式}
+  WAY --&gt;|扫码付/银行卡| RESOURCE[一人一票右侧：资源及只读编号]
+  WAY --&gt;|现金及其他| KEEP[原现金或其他方式交互]
+  RESOURCE --&gt; CHECK{本期配置与资源有效}
+  CHECK --&gt;|否| ERROR[弹窗提示，保留业务，可换方式]
+  ERROR --&gt; WAY
+  CHECK --&gt;|是| SUBMIT[确认出票，执行原下单及支付处理]
+  KEEP --&gt; SUBMIT
+  SUBMIT --&gt; RECORD{是否扫码付/银行卡}
+  RECORD --&gt;|是| SNAP[每笔订单支付记录保存资源ID、名称及编号快照]
+  RECORD --&gt;|否| OLD[保留原支付记录，不带旧资源]
+  SNAP --&gt; D01[D01 订单详情的订单支付信息展示]
+</code></pre></details></figure>
+<h2 id="六-长期合作伙伴与临时客户售票">六、长期合作伙伴与临时客户售票</h2>
+<figure class="flow-card"><div class="flow-toolbar"><button data-action="in" aria-label="放大流程图">＋ 放大</button><button data-action="out" aria-label="缩小流程图">－ 缩小</button><button data-action="fit">适应全图</button><button data-action="width">适应宽度</button><a href="assets/flow-06.svg" target="_blank" rel="noopener">独立查看 ↗</a><span class="zoom-label"></span></div><div class="flow-stage" aria-label="可缩放拖动的流程图" tabindex="0">
+
+<!-- Generated by graphviz version 14.1.3 (20260303.0454)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg width="675pt" height="804pt"
+ viewBox="0.00 0.00 675.00 804.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 778.4)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-25.2,25.2 -25.2,-778.4 649.36,-778.4 649.36,25.2 -25.2,25.2"/>
+<!-- W05 -->
+<g id="node1" class="node">
+<title>W05</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M529.92,-753.2C529.92,-753.2 335.04,-753.2 335.04,-753.2 329.04,-753.2 323.04,-747.2 323.04,-741.2 323.04,-741.2 323.04,-711.44 323.04,-711.44 323.04,-705.44 329.04,-699.44 335.04,-699.44 335.04,-699.44 529.92,-699.44 529.92,-699.44 535.92,-699.44 541.92,-705.44 541.92,-711.44 541.92,-711.44 541.92,-741.2 541.92,-741.2 541.92,-747.2 535.92,-753.2 529.92,-753.2"/>
+<text xml:space="preserve" text-anchor="middle" x="432.48" y="-730.52" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W05/W06 原伙伴售票与选</text>
+<text xml:space="preserve" text-anchor="middle" x="432.48" y="-713.72" font-family="PingFang SC" font-size="14.00" fill="#2e214a">择对象</text>
+</g>
+<!-- TYPE -->
+<g id="node2" class="node">
+<title>TYPE</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M421.35,-645.96C421.35,-645.96 351.81,-617.96 351.81,-617.96 346.25,-615.72 346.25,-611.24 351.81,-609 351.81,-609 421.35,-581 421.35,-581 426.91,-578.76 438.05,-578.76 443.61,-581 443.61,-581 513.15,-609 513.15,-609 518.71,-611.24 518.71,-615.72 513.15,-617.96 513.15,-617.96 443.61,-645.96 443.61,-645.96 438.05,-648.2 426.91,-648.2 421.35,-645.96"/>
+<text xml:space="preserve" text-anchor="middle" x="432.48" y="-609.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">伙伴类型</text>
+</g>
+<!-- W05&#45;&gt;TYPE -->
+<g id="edge1" class="edge">
+<title>W05&#45;&gt;TYPE</title>
+<path fill="none" stroke="#8a77a6" d="M432.48,-699.05C432.48,-687.07 432.48,-672.55 432.48,-658.94"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="434.93,-659.14 432.48,-652.14 430.03,-659.14 434.93,-659.14"/>
+</g>
+<!-- DEFAULT -->
+<g id="node3" class="node">
+<title>DEFAULT</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M435.36,-514.12C435.36,-514.12 237.6,-514.12 237.6,-514.12 231.6,-514.12 225.6,-508.12 225.6,-502.12 225.6,-502.12 225.6,-489.16 225.6,-489.16 225.6,-483.16 231.6,-477.16 237.6,-477.16 237.6,-477.16 435.36,-477.16 435.36,-477.16 441.36,-477.16 447.36,-483.16 447.36,-489.16 447.36,-489.16 447.36,-502.12 447.36,-502.12 447.36,-508.12 441.36,-514.12 435.36,-514.12"/>
+<text xml:space="preserve" text-anchor="middle" x="336.48" y="-491.44" font-family="PingFang SC" font-size="14.00" fill="#2e214a">原默认账户：挂帐或预付款</text>
+</g>
+<!-- TYPE&#45;&gt;DEFAULT -->
+<g id="edge2" class="edge">
+<title>TYPE&#45;&gt;DEFAULT</title>
+<path fill="none" stroke="#8a77a6" d="M409.97,-585.32C393.74,-565.73 372.03,-539.54 356.42,-520.7"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="358.7,-519.61 352.34,-515.78 354.92,-522.73 358.7,-519.61"/>
+<text xml:space="preserve" text-anchor="middle" x="390.6" y="-541.72" font-family="PingFang SC" font-size="12.00" fill="#695385">长期</text>
+</g>
+<!-- TEMP -->
+<g id="node7" class="node">
+<title>TEMP</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M612.16,-453.16C612.16,-453.16 428.8,-453.16 428.8,-453.16 422.8,-453.16 416.8,-447.16 416.8,-441.16 416.8,-441.16 416.8,-428.2 416.8,-428.2 416.8,-422.2 422.8,-416.2 428.8,-416.2 428.8,-416.2 612.16,-416.2 612.16,-416.2 618.16,-416.2 624.16,-422.2 624.16,-428.2 624.16,-428.2 624.16,-441.16 624.16,-441.16 624.16,-447.16 618.16,-453.16 612.16,-453.16"/>
+<text xml:space="preserve" text-anchor="middle" x="520.48" y="-430.48" font-family="PingFang SC" font-size="14.00" fill="#2e214a">原固定挂帐，无充值入口</text>
+</g>
+<!-- TYPE&#45;&gt;TEMP -->
+<g id="edge6" class="edge">
+<title>TYPE&#45;&gt;TEMP</title>
+<path fill="none" stroke="#8a77a6" d="M447.61,-582.09C464.64,-547.86 492.01,-492.88 507.91,-460.92"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="510.1,-462.04 511.02,-454.68 505.71,-459.85 510.1,-462.04"/>
+<text xml:space="preserve" text-anchor="middle" x="477.97" y="-541.72" font-family="PingFang SC" font-size="12.00" fill="#695385">临时</text>
+</g>
+<!-- ENABLE -->
+<g id="node4" class="node">
+<title>ENABLE</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M228.62,-390.38C228.62,-390.38 11.86,-357.06 11.86,-357.06 5.93,-356.15 5.93,-354.33 11.86,-353.42 11.86,-353.42 228.62,-320.1 228.62,-320.1 234.55,-319.19 246.41,-319.19 252.34,-320.1 252.34,-320.1 469.1,-353.42 469.1,-353.42 475.03,-354.33 475.03,-356.15 469.1,-357.06 469.1,-357.06 252.34,-390.38 252.34,-390.38 246.41,-391.29 234.55,-391.29 228.62,-390.38"/>
+<text xml:space="preserve" text-anchor="middle" x="240.48" y="-351.04" font-family="PingFang SC" font-size="14.00" fill="#2e214a">对应方式启用且包含长期伙伴场景</text>
+</g>
+<!-- DEFAULT&#45;&gt;ENABLE -->
+<g id="edge3" class="edge">
+<title>DEFAULT&#45;&gt;ENABLE</title>
+<path fill="none" stroke="#8a77a6" d="M324.13,-476.83C310.04,-456.52 286.57,-422.69 268.07,-396.02"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="270.11,-394.66 264.11,-390.3 266.08,-397.45 270.11,-394.66"/>
+</g>
+<!-- ERR -->
+<g id="node5" class="node">
+<title>ERR</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M468.48,-255.88C468.48,-255.88 240.48,-255.88 240.48,-255.88 234.48,-255.88 228.48,-249.88 228.48,-243.88 228.48,-243.88 228.48,-230.92 228.48,-230.92 228.48,-224.92 234.48,-218.92 240.48,-218.92 240.48,-218.92 468.48,-218.92 468.48,-218.92 474.48,-218.92 480.48,-224.92 480.48,-230.92 480.48,-230.92 480.48,-243.88 480.48,-243.88 480.48,-249.88 474.48,-255.88 468.48,-255.88"/>
+<text xml:space="preserve" text-anchor="middle" x="354.48" y="-233.2" font-family="PingFang SC" font-size="14.00" fill="#2e214a">提示不可用，不自动改另一账户</text>
+</g>
+<!-- ENABLE&#45;&gt;ERR -->
+<g id="edge4" class="edge">
+<title>ENABLE&#45;&gt;ERR</title>
+<path fill="none" stroke="#8a77a6" d="M271.63,-322.59C290.47,-303.45 314.08,-279.45 331.27,-261.98"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="332.61,-264.11 335.78,-257.4 329.12,-260.67 332.61,-264.11"/>
+<text xml:space="preserve" text-anchor="middle" x="315.54" y="-283.48" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- LOCK -->
+<g id="node6" class="node">
+<title>LOCK</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M184.92,-255.88C184.92,-255.88 62.04,-255.88 62.04,-255.88 56.04,-255.88 50.04,-249.88 50.04,-243.88 50.04,-243.88 50.04,-230.92 50.04,-230.92 50.04,-224.92 56.04,-218.92 62.04,-218.92 62.04,-218.92 184.92,-218.92 184.92,-218.92 190.92,-218.92 196.92,-224.92 196.92,-230.92 196.92,-230.92 196.92,-243.88 196.92,-243.88 196.92,-249.88 190.92,-255.88 184.92,-255.88"/>
+<text xml:space="preserve" text-anchor="middle" x="123.48" y="-233.2" font-family="PingFang SC" font-size="14.00" fill="#2e214a">锁定原默认方式</text>
+</g>
+<!-- ENABLE&#45;&gt;LOCK -->
+<g id="edge5" class="edge">
+<title>ENABLE&#45;&gt;LOCK</title>
+<path fill="none" stroke="#8a77a6" d="M208.82,-322.89C189.36,-303.63 164.85,-279.36 147.09,-261.78"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="149.12,-260.34 142.42,-257.15 145.67,-263.82 149.12,-260.34"/>
+<text xml:space="preserve" text-anchor="middle" x="182.97" y="-283.48" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- W07 -->
+<g id="node8" class="node">
+<title>W07</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M566.92,-156.52C566.92,-156.52 354.04,-156.52 354.04,-156.52 348.04,-156.52 342.04,-150.52 342.04,-144.52 342.04,-144.52 342.04,-114.76 342.04,-114.76 342.04,-108.76 348.04,-102.76 354.04,-102.76 354.04,-102.76 566.92,-102.76 566.92,-102.76 572.92,-102.76 578.92,-108.76 578.92,-114.76 578.92,-114.76 578.92,-144.52 578.92,-144.52 578.92,-150.52 572.92,-156.52 566.92,-156.52"/>
+<text xml:space="preserve" text-anchor="middle" x="460.48" y="-133.84" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W07 原支付确认，无扫码付/</text>
+<text xml:space="preserve" text-anchor="middle" x="460.48" y="-117.04" font-family="PingFang SC" font-size="14.00" fill="#2e214a">银行卡资源字段</text>
+</g>
+<!-- LOCK&#45;&gt;W07 -->
+<g id="edge7" class="edge">
+<title>LOCK&#45;&gt;W07</title>
+<path fill="none" stroke="#8a77a6" d="M180.65,-218.46C232.05,-202.33 308.46,-178.35 368.46,-159.52"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="369.05,-161.9 374.99,-157.47 367.58,-157.23 369.05,-161.9"/>
+</g>
+<!-- W09 -->
+<g id="node10" class="node">
+<title>W09</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M228.48,-148.12C228.48,-148.12 18.48,-148.12 18.48,-148.12 12.48,-148.12 6.48,-142.12 6.48,-136.12 6.48,-136.12 6.48,-123.16 6.48,-123.16 6.48,-117.16 12.48,-111.16 18.48,-111.16 18.48,-111.16 228.48,-111.16 228.48,-111.16 234.48,-111.16 240.48,-117.16 240.48,-123.16 240.48,-123.16 240.48,-136.12 240.48,-136.12 240.48,-142.12 234.48,-148.12 228.48,-148.12"/>
+<text xml:space="preserve" text-anchor="middle" x="123.48" y="-125.44" font-family="PingFang SC" font-size="14.00" fill="#2e214a">共用W09充值弹窗，见下一图</text>
+</g>
+<!-- LOCK&#45;&gt;W09 -->
+<g id="edge10" class="edge">
+<title>LOCK&#45;&gt;W09</title>
+<path fill="none" stroke="#8a77a6" d="M123.48,-218.46C123.48,-201.49 123.48,-175.84 123.48,-156.63"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="125.93,-156.83 123.48,-149.83 121.03,-156.83 125.93,-156.83"/>
+<text xml:space="preserve" text-anchor="middle" x="132.48" y="-184.12" font-family="PingFang SC" font-size="12.00" fill="#695385">充值</text>
+</g>
+<!-- TEMP&#45;&gt;W07 -->
+<g id="edge8" class="edge">
+<title>TEMP&#45;&gt;W07</title>
+<path fill="none" stroke="#8a77a6" d="M518.48,-415.74C512.71,-364.12 496.48,-218.92 496.48,-218.92 496.48,-218.92 484.45,-189.42 474.3,-164.53"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="476.57,-163.61 471.66,-158.05 472.03,-165.46 476.57,-163.61"/>
+</g>
+<!-- ORIGINAL -->
+<g id="node9" class="node">
+<title>ORIGINAL</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M582.04,-53.76C582.04,-53.76 338.92,-53.76 338.92,-53.76 332.92,-53.76 326.92,-47.76 326.92,-41.76 326.92,-41.76 326.92,-12 326.92,-12 326.92,-6 332.92,0 338.92,0 338.92,0 582.04,0 582.04,0 588.04,0 594.04,-6 594.04,-12 594.04,-12 594.04,-41.76 594.04,-41.76 594.04,-47.76 588.04,-53.76 582.04,-53.76"/>
+<text xml:space="preserve" text-anchor="middle" x="460.48" y="-31.08" font-family="PingFang SC" font-size="14.00" fill="#2e214a">确认后执行原下单、账户支付及出</text>
+<text xml:space="preserve" text-anchor="middle" x="460.48" y="-14.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">票逻辑</text>
+</g>
+<!-- W07&#45;&gt;ORIGINAL -->
+<g id="edge9" class="edge">
+<title>W07&#45;&gt;ORIGINAL</title>
+<path fill="none" stroke="#8a77a6" d="M460.48,-102.43C460.48,-90.18 460.48,-75.44 460.48,-62.31"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="462.93,-62.47 460.48,-55.47 458.03,-62.47 462.93,-62.47"/>
+</g>
+</g>
+</svg>
+</div><figcaption class="flow-caption">默认适应宽度 · 滚轮缩放 · 按住拖动 · 双击适应全图</figcaption><details class="flow-source"><summary>查看可编辑流程源码</summary><pre><code>flowchart TB
+  W05[W05/W06 原伙伴售票与选择对象] --&gt; TYPE{伙伴类型}
+  TYPE --&gt;|长期| DEFAULT[原默认账户：挂帐或预付款]
+  DEFAULT --&gt; ENABLE{对应方式启用且包含长期伙伴场景}
+  ENABLE --&gt;|否| ERR[提示不可用，不自动改另一账户]
+  ENABLE --&gt;|是| LOCK[锁定原默认方式]
+  TYPE --&gt;|临时| TEMP[原固定挂帐，无充值入口]
+  LOCK --&gt; W07[W07 原支付确认，无扫码付/银行卡资源字段]
+  TEMP --&gt; W07
+  W07 --&gt; ORIGINAL[确认后执行原下单、账户支付及出票逻辑]
+  LOCK --&gt;|充值| W09[共用W09充值弹窗，见下一图]
+</code></pre></details></figure>
+<h2 id="七-两个充值入口共用资源与编号">七、两个充值入口共用资源与编号</h2>
+<figure class="flow-card"><div class="flow-toolbar"><button data-action="in" aria-label="放大流程图">＋ 放大</button><button data-action="out" aria-label="缩小流程图">－ 缩小</button><button data-action="fit">适应全图</button><button data-action="width">适应宽度</button><a href="assets/flow-07.svg" target="_blank" rel="noopener">独立查看 ↗</a><span class="zoom-label"></span></div><div class="flow-stage" aria-label="可缩放拖动的流程图" tabindex="0">
+
+<!-- Generated by graphviz version 14.1.3 (20260303.0454)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg width="802pt" height="1065pt"
+ viewBox="0.00 0.00 802.00 1065.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 1039.68)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-25.2,25.2 -25.2,-1039.68 776.32,-1039.68 776.32,25.2 -25.2,25.2"/>
+<!-- SALE -->
+<g id="node1" class="node">
+<title>SALE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M359.12,-1014.48C359.12,-1014.48 239.12,-1014.48 239.12,-1014.48 233.12,-1014.48 227.12,-1008.48 227.12,-1002.48 227.12,-1002.48 227.12,-989.52 227.12,-989.52 227.12,-983.52 233.12,-977.52 239.12,-977.52 239.12,-977.52 359.12,-977.52 359.12,-977.52 365.12,-977.52 371.12,-983.52 371.12,-989.52 371.12,-989.52 371.12,-1002.48 371.12,-1002.48 371.12,-1008.48 365.12,-1014.48 359.12,-1014.48"/>
+<text xml:space="preserve" text-anchor="middle" x="299.12" y="-991.8" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W05售票页充值</text>
+</g>
+<!-- W09 -->
+<g id="node2" class="node">
+<title>W09</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M466.56,-928.52C466.56,-928.52 307.68,-928.52 307.68,-928.52 301.68,-928.52 295.68,-922.52 295.68,-916.52 295.68,-916.52 295.68,-903.56 295.68,-903.56 295.68,-897.56 301.68,-891.56 307.68,-891.56 307.68,-891.56 466.56,-891.56 466.56,-891.56 472.56,-891.56 478.56,-897.56 478.56,-903.56 478.56,-903.56 478.56,-916.52 478.56,-916.52 478.56,-922.52 472.56,-928.52 466.56,-928.52"/>
+<text xml:space="preserve" text-anchor="middle" x="387.12" y="-905.84" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W09 原共用充值弹窗</text>
+</g>
+<!-- SALE&#45;&gt;W09 -->
+<g id="edge1" class="edge">
+<title>SALE&#45;&gt;W09</title>
+<path fill="none" stroke="#8a77a6" d="M317.78,-977.19C330.85,-964.73 348.44,-947.94 362.63,-934.4"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="364.02,-936.47 367.39,-929.86 360.63,-932.92 364.02,-936.47"/>
+</g>
+<!-- FILTER -->
+<g id="node4" class="node">
+<title>FILTER</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M505.8,-842.56C505.8,-842.56 268.44,-842.56 268.44,-842.56 262.44,-842.56 256.44,-836.56 256.44,-830.56 256.44,-830.56 256.44,-800.8 256.44,-800.8 256.44,-794.8 262.44,-788.8 268.44,-788.8 268.44,-788.8 505.8,-788.8 505.8,-788.8 511.8,-788.8 517.8,-794.8 517.8,-800.8 517.8,-800.8 517.8,-830.56 517.8,-830.56 517.8,-836.56 511.8,-842.56 505.8,-842.56"/>
+<text xml:space="preserve" text-anchor="middle" x="387.12" y="-819.88" font-family="PingFang SC" font-size="14.00" fill="#2e214a">按充值/回款场景过滤五种原支付</text>
+<text xml:space="preserve" text-anchor="middle" x="387.12" y="-803.08" font-family="PingFang SC" font-size="14.00" fill="#2e214a">方式</text>
+</g>
+<!-- W09&#45;&gt;FILTER -->
+<g id="edge3" class="edge">
+<title>W09&#45;&gt;FILTER</title>
+<path fill="none" stroke="#8a77a6" d="M387.12,-891.23C387.12,-879.86 387.12,-864.74 387.12,-851.09"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="389.57,-851.34 387.12,-844.34 384.67,-851.34 389.57,-851.34"/>
+</g>
+<!-- LIST -->
+<g id="node3" class="node">
+<title>LIST</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M535.12,-1014.48C535.12,-1014.48 415.12,-1014.48 415.12,-1014.48 409.12,-1014.48 403.12,-1008.48 403.12,-1002.48 403.12,-1002.48 403.12,-989.52 403.12,-989.52 403.12,-983.52 409.12,-977.52 415.12,-977.52 415.12,-977.52 535.12,-977.52 535.12,-977.52 541.12,-977.52 547.12,-983.52 547.12,-989.52 547.12,-989.52 547.12,-1002.48 547.12,-1002.48 547.12,-1008.48 541.12,-1014.48 535.12,-1014.48"/>
+<text xml:space="preserve" text-anchor="middle" x="475.12" y="-991.8" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W08列表行充值</text>
+</g>
+<!-- LIST&#45;&gt;W09 -->
+<g id="edge2" class="edge">
+<title>LIST&#45;&gt;W09</title>
+<path fill="none" stroke="#8a77a6" d="M456.46,-977.19C443.39,-964.73 425.8,-947.94 411.61,-934.4"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="413.61,-932.92 406.85,-929.86 410.22,-936.47 413.61,-932.92"/>
+</g>
+<!-- WAY -->
+<g id="node5" class="node">
+<title>WAY</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M375.99,-735.32C375.99,-735.32 306.45,-707.32 306.45,-707.32 300.89,-705.08 300.89,-700.6 306.45,-698.36 306.45,-698.36 375.99,-670.36 375.99,-670.36 381.55,-668.12 392.69,-668.12 398.25,-670.36 398.25,-670.36 467.79,-698.36 467.79,-698.36 473.35,-700.6 473.35,-705.08 467.79,-707.32 467.79,-707.32 398.25,-735.32 398.25,-735.32 392.69,-737.56 381.55,-737.56 375.99,-735.32"/>
+<text xml:space="preserve" text-anchor="middle" x="387.12" y="-698.64" font-family="PingFang SC" font-size="14.00" fill="#2e214a">所选方式</text>
+</g>
+<!-- FILTER&#45;&gt;WAY -->
+<g id="edge4" class="edge">
+<title>FILTER&#45;&gt;WAY</title>
+<path fill="none" stroke="#8a77a6" d="M387.12,-788.41C387.12,-776.43 387.12,-761.91 387.12,-748.3"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="389.57,-748.5 387.12,-741.5 384.67,-748.5 389.57,-748.5"/>
+</g>
+<!-- RESOURCE -->
+<g id="node6" class="node">
+<title>RESOURCE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M611.12,-603.48C611.12,-603.48 383.12,-603.48 383.12,-603.48 377.12,-603.48 371.12,-597.48 371.12,-591.48 371.12,-591.48 371.12,-578.52 371.12,-578.52 371.12,-572.52 377.12,-566.52 383.12,-566.52 383.12,-566.52 611.12,-566.52 611.12,-566.52 617.12,-566.52 623.12,-572.52 623.12,-578.52 623.12,-578.52 623.12,-591.48 623.12,-591.48 623.12,-597.48 617.12,-603.48 611.12,-603.48"/>
+<text xml:space="preserve" text-anchor="middle" x="497.12" y="-580.8" font-family="PingFang SC" font-size="14.00" fill="#2e214a">支付按钮下方：资源及只读编号</text>
+</g>
+<!-- WAY&#45;&gt;RESOURCE -->
+<g id="edge5" class="edge">
+<title>WAY&#45;&gt;RESOURCE</title>
+<path fill="none" stroke="#8a77a6" d="M412.08,-675.55C430.76,-655.88 456.11,-629.19 474.26,-610.07"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="476.04,-611.76 479.08,-605 472.48,-608.39 476.04,-611.76"/>
+<text xml:space="preserve" text-anchor="middle" x="483.87" y="-631.08" font-family="PingFang SC" font-size="12.00" fill="#695385">扫码付/银行卡</text>
+</g>
+<!-- CASH -->
+<g id="node7" class="node">
+<title>CASH</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M180.24,-542.52C180.24,-542.52 12,-542.52 12,-542.52 6,-542.52 0,-536.52 0,-530.52 0,-530.52 0,-517.56 0,-517.56 0,-511.56 6,-505.56 12,-505.56 12,-505.56 180.24,-505.56 180.24,-505.56 186.24,-505.56 192.24,-511.56 192.24,-517.56 192.24,-517.56 192.24,-530.52 192.24,-530.52 192.24,-536.52 186.24,-542.52 180.24,-542.52"/>
+<text xml:space="preserve" text-anchor="middle" x="96.12" y="-519.84" font-family="PingFang SC" font-size="14.00" fill="#2e214a">下方原现金实收及找零</text>
+</g>
+<!-- WAY&#45;&gt;CASH -->
+<g id="edge6" class="edge">
+<title>WAY&#45;&gt;CASH</title>
+<path fill="none" stroke="#8a77a6" d="M351.15,-679.98C295.41,-646.12 188.77,-581.33 132.68,-547.25"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="133.99,-545.18 126.73,-543.64 131.44,-549.37 133.99,-545.18"/>
+<text xml:space="preserve" text-anchor="middle" x="293.69" y="-631.08" font-family="PingFang SC" font-size="12.00" fill="#695385">现金</text>
+</g>
+<!-- EMPTY -->
+<g id="node8" class="node">
+<title>EMPTY</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M446.8,-542.52C446.8,-542.52 209.44,-542.52 209.44,-542.52 203.44,-542.52 197.44,-536.52 197.44,-530.52 197.44,-530.52 197.44,-517.56 197.44,-517.56 197.44,-511.56 203.44,-505.56 209.44,-505.56 209.44,-505.56 446.8,-505.56 446.8,-505.56 452.8,-505.56 458.8,-511.56 458.8,-517.56 458.8,-517.56 458.8,-530.52 458.8,-530.52 458.8,-536.52 452.8,-542.52 446.8,-542.52"/>
+<text xml:space="preserve" text-anchor="middle" x="328.12" y="-519.84" font-family="PingFang SC" font-size="14.00" fill="#2e214a">不显示现金/资源字段，不留空槽</text>
+</g>
+<!-- WAY&#45;&gt;EMPTY -->
+<g id="edge7" class="edge">
+<title>WAY&#45;&gt;EMPTY</title>
+<path fill="none" stroke="#8a77a6" d="M376.44,-669.82C365.03,-635.66 347.2,-582.21 336.68,-550.71"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="339.07,-550.11 334.53,-544.25 334.42,-551.66 339.07,-550.11"/>
+<text xml:space="preserve" text-anchor="middle" x="390.52" y="-631.08" font-family="PingFang SC" font-size="12.00" fill="#695385">微信/支付宝</text>
+</g>
+<!-- CHECK -->
+<g id="node9" class="node">
+<title>CHECK</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M468.43,-478.85C468.43,-478.85 332.33,-447.31 332.33,-447.31 326.49,-445.95 326.49,-443.25 332.33,-441.89 332.33,-441.89 468.43,-410.35 468.43,-410.35 474.27,-408.99 485.97,-408.99 491.81,-410.35 491.81,-410.35 627.91,-441.89 627.91,-441.89 633.75,-443.25 633.75,-445.95 627.91,-447.31 627.91,-447.31 491.81,-478.85 491.81,-478.85 485.97,-480.21 474.27,-480.21 468.43,-478.85"/>
+<text xml:space="preserve" text-anchor="middle" x="480.12" y="-440.4" font-family="PingFang SC" font-size="14.00" fill="#2e214a">本期配置及资源有效</text>
+</g>
+<!-- RESOURCE&#45;&gt;CHECK -->
+<g id="edge8" class="edge">
+<title>RESOURCE&#45;&gt;CHECK</title>
+<path fill="none" stroke="#8a77a6" d="M494.93,-566.19C492.55,-546.82 488.66,-515.15 485.47,-489.12"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="487.93,-489.05 484.64,-482.4 483.06,-489.64 487.93,-489.05"/>
+</g>
+<!-- ORIGINAL -->
+<g id="node11" class="node">
+<title>ORIGINAL</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M390.8,-345.24C390.8,-345.24 153.44,-345.24 153.44,-345.24 147.44,-345.24 141.44,-339.24 141.44,-333.24 141.44,-333.24 141.44,-303.48 141.44,-303.48 141.44,-297.48 147.44,-291.48 153.44,-291.48 153.44,-291.48 390.8,-291.48 390.8,-291.48 396.8,-291.48 402.8,-297.48 402.8,-303.48 402.8,-303.48 402.8,-333.24 402.8,-333.24 402.8,-339.24 396.8,-345.24 390.8,-345.24"/>
+<text xml:space="preserve" text-anchor="middle" x="272.12" y="-322.56" font-family="PingFang SC" font-size="14.00" fill="#2e214a">确认充值，执行原充值/回款及其</text>
+<text xml:space="preserve" text-anchor="middle" x="272.12" y="-305.76" font-family="PingFang SC" font-size="14.00" fill="#2e214a">他收入处理</text>
+</g>
+<!-- CASH&#45;&gt;ORIGINAL -->
+<g id="edge12" class="edge">
+<title>CASH&#45;&gt;ORIGINAL</title>
+<path fill="none" stroke="#8a77a6" d="M111.43,-505.32C141,-471.1 206.38,-395.44 243.99,-351.91"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="245.62,-353.78 248.34,-346.88 241.91,-350.57 245.62,-353.78"/>
+</g>
+<!-- EMPTY&#45;&gt;ORIGINAL -->
+<g id="edge13" class="edge">
+<title>EMPTY&#45;&gt;ORIGINAL</title>
+<path fill="none" stroke="#8a77a6" d="M318.23,-505.21C312,-493.97 305.12,-481.56 305.12,-481.56 305.12,-481.56 288.77,-401.21 279.09,-353.61"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="281.52,-353.27 277.72,-346.9 276.72,-354.25 281.52,-353.27"/>
+</g>
+<!-- ERR -->
+<g id="node10" class="node">
+<title>ERR</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M739.12,-336.84C739.12,-336.84 511.12,-336.84 511.12,-336.84 505.12,-336.84 499.12,-330.84 499.12,-324.84 499.12,-324.84 499.12,-311.88 499.12,-311.88 499.12,-305.88 505.12,-299.88 511.12,-299.88 511.12,-299.88 739.12,-299.88 739.12,-299.88 745.12,-299.88 751.12,-305.88 751.12,-311.88 751.12,-311.88 751.12,-324.84 751.12,-324.84 751.12,-330.84 745.12,-336.84 739.12,-336.84"/>
+<text xml:space="preserve" text-anchor="middle" x="625.12" y="-314.16" font-family="PingFang SC" font-size="14.00" fill="#2e214a">弹窗提示，阻止确认，可换方式</text>
+</g>
+<!-- CHECK&#45;&gt;ERR -->
+<g id="edge9" class="edge">
+<title>CHECK&#45;&gt;ERR</title>
+<path fill="none" stroke="#8a77a6" d="M513.39,-415.1C539.07,-393.09 574.14,-363.04 598.1,-342.51"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="599.68,-344.39 603.4,-337.97 596.49,-340.67 599.68,-344.39"/>
+<text xml:space="preserve" text-anchor="middle" x="570.11" y="-372.84" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- CHECK&#45;&gt;ORIGINAL -->
+<g id="edge11" class="edge">
+<title>CHECK&#45;&gt;ORIGINAL</title>
+<path fill="none" stroke="#8a77a6" d="M436.26,-417.4C403.33,-397.73 358.13,-370.73 323.5,-350.05"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="324.84,-348 317.57,-346.51 322.33,-352.2 324.84,-348"/>
+<text xml:space="preserve" text-anchor="middle" x="380.62" y="-372.84" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- ERR&#45;&gt;WAY -->
+<g id="edge10" class="edge">
+<title>ERR&#45;&gt;WAY</title>
+<path fill="none" stroke="#8a77a6" d="M631.19,-337.22C639.96,-363.02 655.12,-407.64 655.12,-407.64 655.12,-407.64 655.12,-481.56 655.12,-481.56 655.12,-481.56 639.12,-603.48 639.12,-603.48 639.12,-603.48 514.95,-651.95 440.93,-680.84"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="440.09,-678.54 434.46,-683.36 441.87,-683.1 440.09,-678.54"/>
+</g>
+<!-- SNAP -->
+<g id="node12" class="node">
+<title>SNAP</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M390.8,-242.48C390.8,-242.48 153.44,-242.48 153.44,-242.48 147.44,-242.48 141.44,-236.48 141.44,-230.48 141.44,-230.48 141.44,-200.72 141.44,-200.72 141.44,-194.72 147.44,-188.72 153.44,-188.72 153.44,-188.72 390.8,-188.72 390.8,-188.72 396.8,-188.72 402.8,-194.72 402.8,-200.72 402.8,-200.72 402.8,-230.48 402.8,-230.48 402.8,-236.48 396.8,-242.48 390.8,-242.48"/>
+<text xml:space="preserve" text-anchor="middle" x="272.12" y="-219.8" font-family="PingFang SC" font-size="14.00" fill="#2e214a">扫码付/银行卡记录本次实际资源</text>
+<text xml:space="preserve" text-anchor="middle" x="272.12" y="-203" font-family="PingFang SC" font-size="14.00" fill="#2e214a">及编号</text>
+</g>
+<!-- ORIGINAL&#45;&gt;SNAP -->
+<g id="edge14" class="edge">
+<title>ORIGINAL&#45;&gt;SNAP</title>
+<path fill="none" stroke="#8a77a6" d="M272.12,-291.15C272.12,-278.9 272.12,-264.16 272.12,-251.03"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="274.57,-251.19 272.12,-244.19 269.67,-251.19 274.57,-251.19"/>
+</g>
+<!-- D02 -->
+<g id="node13" class="node">
+<title>D02</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M381.8,-139.72C381.8,-139.72 162.44,-139.72 162.44,-139.72 156.44,-139.72 150.44,-133.72 150.44,-127.72 150.44,-127.72 150.44,-97.96 150.44,-97.96 150.44,-91.96 156.44,-85.96 162.44,-85.96 162.44,-85.96 381.8,-85.96 381.8,-85.96 387.8,-85.96 393.8,-91.96 393.8,-97.96 393.8,-97.96 393.8,-127.72 393.8,-127.72 393.8,-133.72 387.8,-139.72 381.8,-139.72"/>
+<text xml:space="preserve" text-anchor="middle" x="272.12" y="-117.04" font-family="PingFang SC" font-size="14.00" fill="#2e214a">D02 原充值支付信息展示；其</text>
+<text xml:space="preserve" text-anchor="middle" x="272.12" y="-100.24" font-family="PingFang SC" font-size="14.00" fill="#2e214a">他收入逻辑不改</text>
+</g>
+<!-- SNAP&#45;&gt;D02 -->
+<g id="edge15" class="edge">
+<title>SNAP&#45;&gt;D02</title>
+<path fill="none" stroke="#8a77a6" d="M272.12,-188.39C272.12,-176.14 272.12,-161.4 272.12,-148.27"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="274.57,-148.43 272.12,-141.43 269.67,-148.43 274.57,-148.43"/>
+</g>
+<!-- RETURN -->
+<g id="node14" class="node">
+<title>RETURN</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M360.56,-36.96C360.56,-36.96 183.68,-36.96 183.68,-36.96 177.68,-36.96 171.68,-30.96 171.68,-24.96 171.68,-24.96 171.68,-12 171.68,-12 171.68,-6 177.68,0 183.68,0 183.68,0 360.56,0 360.56,0 366.56,0 372.56,-6 372.56,-12 372.56,-12 372.56,-24.96 372.56,-24.96 372.56,-30.96 366.56,-36.96 360.56,-36.96"/>
+<text xml:space="preserve" text-anchor="middle" x="272.12" y="-14.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">按原成功/失败流程返回</text>
+</g>
+<!-- D02&#45;&gt;RETURN -->
+<g id="edge16" class="edge">
+<title>D02&#45;&gt;RETURN</title>
+<path fill="none" stroke="#8a77a6" d="M272.12,-85.62C272.12,-73.05 272.12,-58.05 272.12,-45.51"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="274.57,-45.79 272.12,-38.79 269.67,-45.79 274.57,-45.79"/>
+</g>
+</g>
+</svg>
+</div><figcaption class="flow-caption">默认适应宽度 · 滚轮缩放 · 按住拖动 · 双击适应全图</figcaption><details class="flow-source"><summary>查看可编辑流程源码</summary><pre><code>flowchart TB
+  SALE[W05售票页充值] --&gt; W09[W09 原共用充值弹窗]
+  LIST[W08列表行充值] --&gt; W09
+  W09 --&gt; FILTER[按充值/回款场景过滤五种原支付方式]
+  FILTER --&gt; WAY{所选方式}
+  WAY --&gt;|扫码付/银行卡| RESOURCE[支付按钮下方：资源及只读编号]
+  WAY --&gt;|现金| CASH[下方原现金实收及找零]
+  WAY --&gt;|微信/支付宝| EMPTY[不显示现金/资源字段，不留空槽]
+  RESOURCE --&gt; CHECK{本期配置及资源有效}
+  CHECK --&gt;|否| ERR[弹窗提示，阻止确认，可换方式]
+  ERR --&gt; WAY
+  CHECK --&gt;|是| ORIGINAL[确认充值，执行原充值/回款及其他收入处理]
+  CASH --&gt; ORIGINAL
+  EMPTY --&gt; ORIGINAL
+  ORIGINAL --&gt; SNAP[扫码付/银行卡记录本次实际资源及编号]
+  SNAP --&gt; D02[D02 原充值支付信息展示；其他收入逻辑不改]
+  D02 --&gt; RETURN[按原成功/失败流程返回]
+</code></pre></details></figure>
+<h2 id="八-配置变化-挂单恢复与历史展示">八、配置变化、挂单恢复与历史展示</h2>
+<figure class="flow-card"><div class="flow-toolbar"><button data-action="in" aria-label="放大流程图">＋ 放大</button><button data-action="out" aria-label="缩小流程图">－ 缩小</button><button data-action="fit">适应全图</button><button data-action="width">适应宽度</button><a href="assets/flow-08.svg" target="_blank" rel="noopener">独立查看 ↗</a><span class="zoom-label"></span></div><div class="flow-stage" aria-label="可缩放拖动的流程图" tabindex="0">
+
+<!-- Generated by graphviz version 14.1.3 (20260303.0454)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg width="845pt" height="807pt"
+ viewBox="0.00 0.00 845.00 807.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 781.4)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-25.2,25.2 -25.2,-781.4 819.44,-781.4 819.44,25.2 -25.2,25.2"/>
+<!-- CHANGE -->
+<g id="node1" class="node">
+<title>CHANGE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M208.8,-756.2C208.8,-756.2 25.44,-756.2 25.44,-756.2 19.44,-756.2 13.44,-750.2 13.44,-744.2 13.44,-744.2 13.44,-731.24 13.44,-731.24 13.44,-725.24 19.44,-719.24 25.44,-719.24 25.44,-719.24 208.8,-719.24 208.8,-719.24 214.8,-719.24 220.8,-725.24 220.8,-731.24 220.8,-731.24 220.8,-744.2 220.8,-744.2 220.8,-750.2 214.8,-756.2 208.8,-756.2"/>
+<text xml:space="preserve" text-anchor="middle" x="117.12" y="-733.52" font-family="PingFang SC" font-size="14.00" fill="#2e214a">改配置、改绑定或改资源</text>
+</g>
+<!-- RELOAD -->
+<g id="node2" class="node">
+<title>RELOAD</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M464.12,-670.24C464.12,-670.24 236.12,-670.24 236.12,-670.24 230.12,-670.24 224.12,-664.24 224.12,-658.24 224.12,-658.24 224.12,-645.28 224.12,-645.28 224.12,-639.28 230.12,-633.28 236.12,-633.28 236.12,-633.28 464.12,-633.28 464.12,-633.28 470.12,-633.28 476.12,-639.28 476.12,-645.28 476.12,-645.28 476.12,-658.24 476.12,-658.24 476.12,-664.24 470.12,-670.24 464.12,-670.24"/>
+<text xml:space="preserve" text-anchor="middle" x="350.12" y="-647.56" font-family="PingFang SC" font-size="14.00" fill="#2e214a">新业务及最终提交读取当前配置</text>
+</g>
+<!-- CHANGE&#45;&gt;RELOAD -->
+<g id="edge1" class="edge">
+<title>CHANGE&#45;&gt;RELOAD</title>
+<path fill="none" stroke="#8a77a6" d="M166.82,-718.81C203.78,-705.49 254.3,-687.29 292.94,-673.37"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="293.32,-675.83 299.07,-671.15 291.66,-671.22 293.32,-675.83"/>
+</g>
+<!-- HISTORY -->
+<g id="node9" class="node">
+<title>HISTORY</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M180.24,-670.24C180.24,-670.24 12,-670.24 12,-670.24 6,-670.24 0,-664.24 0,-658.24 0,-658.24 0,-645.28 0,-645.28 0,-639.28 6,-633.28 12,-633.28 12,-633.28 180.24,-633.28 180.24,-633.28 186.24,-633.28 192.24,-639.28 192.24,-645.28 192.24,-645.28 192.24,-658.24 192.24,-658.24 192.24,-664.24 186.24,-670.24 180.24,-670.24"/>
+<text xml:space="preserve" text-anchor="middle" x="96.12" y="-647.56" font-family="PingFang SC" font-size="14.00" fill="#2e214a">不回写已完成历史编号</text>
+</g>
+<!-- CHANGE&#45;&gt;HISTORY -->
+<g id="edge8" class="edge">
+<title>CHANGE&#45;&gt;HISTORY</title>
+<path fill="none" stroke="#8a77a6" stroke-dasharray="5,2" d="M112.67,-718.91C109.74,-707.23 105.87,-691.75 102.61,-678.7"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="105.01,-678.2 100.93,-672.01 100.26,-679.39 105.01,-678.2"/>
+</g>
+<!-- VALID -->
+<g id="node4" class="node">
+<title>VALID</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M338.43,-581.57C338.43,-581.57 202.33,-550.03 202.33,-550.03 196.49,-548.67 196.49,-545.97 202.33,-544.61 202.33,-544.61 338.43,-513.07 338.43,-513.07 344.27,-511.71 355.97,-511.71 361.81,-513.07 361.81,-513.07 497.91,-544.61 497.91,-544.61 503.75,-545.97 503.75,-548.67 497.91,-550.03 497.91,-550.03 361.81,-581.57 361.81,-581.57 355.97,-582.93 344.27,-582.93 338.43,-581.57"/>
+<text xml:space="preserve" text-anchor="middle" x="350.12" y="-543.12" font-family="PingFang SC" font-size="14.00" fill="#2e214a">本期配置及资源有效</text>
+</g>
+<!-- RELOAD&#45;&gt;VALID -->
+<g id="edge3" class="edge">
+<title>RELOAD&#45;&gt;VALID</title>
+<path fill="none" stroke="#8a77a6" d="M350.12,-632.92C350.12,-621.8 350.12,-606.97 350.12,-592.83"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="352.57,-593.13 350.12,-586.13 347.67,-593.13 352.57,-593.13"/>
+</g>
+<!-- RESTORE -->
+<g id="node3" class="node">
+<title>RESTORE</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M414.8,-756.2C414.8,-756.2 285.44,-756.2 285.44,-756.2 279.44,-756.2 273.44,-750.2 273.44,-744.2 273.44,-744.2 273.44,-731.24 273.44,-731.24 273.44,-725.24 279.44,-719.24 285.44,-719.24 285.44,-719.24 414.8,-719.24 414.8,-719.24 420.8,-719.24 426.8,-725.24 426.8,-731.24 426.8,-731.24 426.8,-744.2 426.8,-744.2 426.8,-750.2 420.8,-756.2 414.8,-756.2"/>
+<text xml:space="preserve" text-anchor="middle" x="350.12" y="-733.52" font-family="PingFang SC" font-size="14.00" fill="#2e214a">W10 原挂单恢复</text>
+</g>
+<!-- RESTORE&#45;&gt;RELOAD -->
+<g id="edge2" class="edge">
+<title>RESTORE&#45;&gt;RELOAD</title>
+<path fill="none" stroke="#8a77a6" d="M350.12,-718.91C350.12,-707.23 350.12,-691.75 350.12,-678.7"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="352.57,-679.05 350.12,-672.05 347.67,-679.05 352.57,-679.05"/>
+</g>
+<!-- ERROR -->
+<g id="node5" class="node">
+<title>ERROR</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M448.68,-447.96C448.68,-447.96 205.56,-447.96 205.56,-447.96 199.56,-447.96 193.56,-441.96 193.56,-435.96 193.56,-435.96 193.56,-423 193.56,-423 193.56,-417 199.56,-411 205.56,-411 205.56,-411 448.68,-411 448.68,-411 454.68,-411 460.68,-417 460.68,-423 460.68,-423 460.68,-435.96 460.68,-435.96 460.68,-441.96 454.68,-447.96 448.68,-447.96"/>
+<text xml:space="preserve" text-anchor="middle" x="327.12" y="-425.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">确认弹窗提示并保留业务，不兜底</text>
+</g>
+<!-- VALID&#45;&gt;ERROR -->
+<g id="edge4" class="edge">
+<title>VALID&#45;&gt;ERROR</title>
+<path fill="none" stroke="#8a77a6" d="M343.22,-511.56C339.7,-493.86 335.5,-472.69 332.27,-456.43"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="334.74,-456.29 330.98,-449.9 329.94,-457.24 334.74,-456.29"/>
+<text xml:space="preserve" text-anchor="middle" x="342.43" y="-475.56" font-family="PingFang SC" font-size="12.00" fill="#695385">否</text>
+</g>
+<!-- ORIGINAL -->
+<g id="node6" class="node">
+<title>ORIGINAL</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M637.24,-447.96C637.24,-447.96 505,-447.96 505,-447.96 499,-447.96 493,-441.96 493,-435.96 493,-435.96 493,-423 493,-423 493,-417 499,-411 505,-411 505,-411 637.24,-411 637.24,-411 643.24,-411 649.24,-417 649.24,-423 649.24,-423 649.24,-435.96 649.24,-435.96 649.24,-441.96 643.24,-447.96 637.24,-447.96"/>
+<text xml:space="preserve" text-anchor="middle" x="571.12" y="-425.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">原下单/支付处理</text>
+</g>
+<!-- VALID&#45;&gt;ORIGINAL -->
+<g id="edge5" class="edge">
+<title>VALID&#45;&gt;ORIGINAL</title>
+<path fill="none" stroke="#8a77a6" d="M398.35,-521.04C437.64,-500.45 492.53,-471.67 529.82,-452.13"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="530.63,-454.47 535.69,-449.05 528.36,-450.13 530.63,-454.47"/>
+<text xml:space="preserve" text-anchor="middle" x="491.41" y="-475.56" font-family="PingFang SC" font-size="12.00" fill="#695385">是</text>
+</g>
+<!-- SNAP -->
+<g id="node7" class="node">
+<title>SNAP</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M677.56,-362C677.56,-362 464.68,-362 464.68,-362 458.68,-362 452.68,-356 452.68,-350 452.68,-350 452.68,-337.04 452.68,-337.04 452.68,-331.04 458.68,-325.04 464.68,-325.04 464.68,-325.04 677.56,-325.04 677.56,-325.04 683.56,-325.04 689.56,-331.04 689.56,-337.04 689.56,-337.04 689.56,-350 689.56,-350 689.56,-356 683.56,-362 677.56,-362"/>
+<text xml:space="preserve" text-anchor="middle" x="571.12" y="-339.32" font-family="PingFang SC" font-size="14.00" fill="#2e214a">每笔保存实际资源名称及编号</text>
+</g>
+<!-- ORIGINAL&#45;&gt;SNAP -->
+<g id="edge6" class="edge">
+<title>ORIGINAL&#45;&gt;SNAP</title>
+<path fill="none" stroke="#8a77a6" d="M571.12,-410.67C571.12,-398.99 571.12,-383.51 571.12,-370.46"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="573.57,-370.81 571.12,-363.81 568.67,-370.81 573.57,-370.81"/>
+</g>
+<!-- DETAIL -->
+<g id="node8" class="node">
+<title>DETAIL</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M665.68,-276.04C665.68,-276.04 476.56,-276.04 476.56,-276.04 470.56,-276.04 464.56,-270.04 464.56,-264.04 464.56,-264.04 464.56,-234.28 464.56,-234.28 464.56,-228.28 470.56,-222.28 476.56,-222.28 476.56,-222.28 665.68,-222.28 665.68,-222.28 671.68,-222.28 677.68,-228.28 677.68,-234.28 677.68,-234.28 677.68,-264.04 677.68,-264.04 677.68,-270.04 671.68,-276.04 665.68,-276.04"/>
+<text xml:space="preserve" text-anchor="middle" x="571.12" y="-253.36" font-family="PingFang SC" font-size="14.00" fill="#2e214a">D01订单支付 / D02充值</text>
+<text xml:space="preserve" text-anchor="middle" x="571.12" y="-236.56" font-family="PingFang SC" font-size="14.00" fill="#2e214a">支付信息</text>
+</g>
+<!-- SNAP&#45;&gt;DETAIL -->
+<g id="edge7" class="edge">
+<title>SNAP&#45;&gt;DETAIL</title>
+<path fill="none" stroke="#8a77a6" d="M571.12,-324.71C571.12,-313.34 571.12,-298.22 571.12,-284.57"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="573.57,-284.82 571.12,-277.82 568.67,-284.82 573.57,-284.82"/>
+</g>
+<!-- OLD -->
+<g id="node10" class="node">
+<title>OLD</title>
+<path fill="#fff7e8" stroke="#d6b36d" d="M559.56,-170.06C559.56,-170.06 450.2,-139.54 450.2,-139.54 444.42,-137.93 444.42,-134.71 450.2,-133.1 450.2,-133.1 559.56,-102.58 559.56,-102.58 565.34,-100.97 576.9,-100.97 582.68,-102.58 582.68,-102.58 692.04,-133.1 692.04,-133.1 697.82,-134.71 697.82,-137.93 692.04,-139.54 692.04,-139.54 582.68,-170.06 582.68,-170.06 576.9,-171.67 565.34,-171.67 559.56,-170.06"/>
+<text xml:space="preserve" text-anchor="middle" x="571.12" y="-132.12" font-family="PingFang SC" font-size="14.00" fill="#2e214a">记录有当时编号</text>
+</g>
+<!-- DETAIL&#45;&gt;OLD -->
+<g id="edge9" class="edge">
+<title>DETAIL&#45;&gt;OLD</title>
+<path fill="none" stroke="#8a77a6" d="M571.12,-221.89C571.12,-209.91 571.12,-195.39 571.12,-181.78"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="573.57,-181.98 571.12,-174.98 568.67,-181.98 573.57,-181.98"/>
+</g>
+<!-- SHOW -->
+<g id="node11" class="node">
+<title>SHOW</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M558.12,-36.96C558.12,-36.96 330.12,-36.96 330.12,-36.96 324.12,-36.96 318.12,-30.96 318.12,-24.96 318.12,-24.96 318.12,-12 318.12,-12 318.12,-6 324.12,0 330.12,0 330.12,0 558.12,0 558.12,0 564.12,0 570.12,-6 570.12,-12 570.12,-12 570.12,-24.96 570.12,-24.96 570.12,-30.96 564.12,-36.96 558.12,-36.96"/>
+<text xml:space="preserve" text-anchor="middle" x="444.12" y="-14.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">按记录展示，不读当前绑定替换</text>
+</g>
+<!-- OLD&#45;&gt;SHOW -->
+<g id="edge10" class="edge">
+<title>OLD&#45;&gt;SHOW</title>
+<path fill="none" stroke="#8a77a6" d="M540.7,-107.57C519.02,-87.8 490.2,-61.51 469.7,-42.82"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="471.57,-41.2 464.74,-38.29 468.26,-44.82 471.57,-41.2"/>
+<text xml:space="preserve" text-anchor="middle" x="508.31" y="-64.56" font-family="PingFang SC" font-size="12.00" fill="#695385">有</text>
+</g>
+<!-- DASH -->
+<g id="node12" class="node">
+<title>DASH</title>
+<path fill="#f7f3ff" stroke="#b7a2df" d="M782.24,-36.96C782.24,-36.96 614,-36.96 614,-36.96 608,-36.96 602,-30.96 602,-24.96 602,-24.96 602,-12 602,-12 602,-6 608,0 614,0 614,0 782.24,0 782.24,0 788.24,0 794.24,-6 794.24,-12 794.24,-12 794.24,-24.96 794.24,-24.96 794.24,-30.96 788.24,-36.96 782.24,-36.96"/>
+<text xml:space="preserve" text-anchor="middle" x="698.12" y="-14.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">显示横线，不补写历史</text>
+</g>
+<!-- OLD&#45;&gt;DASH -->
+<g id="edge11" class="edge">
+<title>OLD&#45;&gt;DASH</title>
+<path fill="none" stroke="#8a77a6" d="M601.54,-107.57C623.22,-87.8 652.04,-61.51 672.54,-42.82"/>
+<polygon fill="#8a77a6" stroke="#8a77a6" points="673.98,-44.82 677.5,-38.29 670.67,-41.2 673.98,-44.82"/>
+<text xml:space="preserve" text-anchor="middle" x="654.23" y="-64.56" font-family="PingFang SC" font-size="12.00" fill="#695385">无</text>
+</g>
+</g>
+</svg>
+</div><figcaption class="flow-caption">默认适应宽度 · 滚轮缩放 · 按住拖动 · 双击适应全图</figcaption><details class="flow-source"><summary>查看可编辑流程源码</summary><pre><code>flowchart TB
+  CHANGE[改配置、改绑定或改资源] --&gt; RELOAD[新业务及最终提交读取当前配置]
+  RESTORE[W10 原挂单恢复] --&gt; RELOAD
+  RELOAD --&gt; VALID{本期配置及资源有效}
+  VALID --&gt;|否| ERROR[确认弹窗提示并保留业务，不兜底]
+  VALID --&gt;|是| ORIGINAL[原下单/支付处理]
+  ORIGINAL --&gt; SNAP[每笔保存实际资源名称及编号]
+  SNAP --&gt; DETAIL[D01订单支付 / D02充值支付信息]
+  CHANGE -.-&gt; HISTORY[不回写已完成历史编号]
+  DETAIL --&gt; OLD{记录有当时编号}
+  OLD --&gt;|有| SHOW[按记录展示，不读当前绑定替换]
+  OLD --&gt;|无| DASH[显示横线，不补写历史]
+</code></pre></details></figure>
+</article><footer class="footer-nav"><a href="index.html">← 方案总览</a><span class="muted">V3.6 · 开发 / 测试资料</span><a href="acceptance.html">开发与验收 →</a></footer></main><button class="quick" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button><script>
+document.querySelector('.mobile-menu').onclick=()=>document.body.classList.toggle('menu-open');
+document.querySelectorAll('.sidebar a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu-open')));
+document.querySelectorAll('.flow-card').forEach(card=>{const stage=card.querySelector('.flow-stage'),svg=stage.querySelector('svg'),vb=svg.viewBox.baseVal;let scale=1,x=0,y=0,drag=null;const w=vb.width,h=vb.height;svg.style.width=w+'px';svg.style.height=h+'px';function paint(){svg.style.transform='translate('+x+'px,'+y+'px) scale('+scale+')';card.querySelector('.zoom-label').textContent=Math.round(scale*100)+'%';}function fit(widthOnly=false){scale=widthOnly?(stage.clientWidth-32)/w:Math.min((stage.clientWidth-32)/w,(stage.clientHeight-32)/h);x=(stage.clientWidth-w*scale)/2;y=widthOnly?16:(stage.clientHeight-h*scale)/2;paint();}function zoom(factor,cx=stage.clientWidth/2,cy=stage.clientHeight/2){const next=Math.max(.05,Math.min(5,scale*factor));x=cx-(cx-x)*next/scale;y=cy-(cy-y)*next/scale;scale=next;paint();}card.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>({in:()=>zoom(1.25),out:()=>zoom(.8),fit:()=>fit(),width:()=>fit(true)})[b.dataset.action]());stage.addEventListener('wheel',e=>{e.preventDefault();const r=stage.getBoundingClientRect();zoom(e.deltaY<0?1.12:1/1.12,e.clientX-r.left,e.clientY-r.top);},{passive:false});stage.addEventListener('pointerdown',e=>{drag={sx:e.clientX,sy:e.clientY,x,y};stage.setPointerCapture(e.pointerId);stage.classList.add('dragging');});stage.addEventListener('pointermove',e=>{if(!drag)return;x=drag.x+e.clientX-drag.sx;y=drag.y+e.clientY-drag.sy;paint();});stage.addEventListener('pointerup',()=>{drag=null;stage.classList.remove('dragging')});stage.addEventListener('pointercancel',()=>{drag=null;stage.classList.remove('dragging')});stage.addEventListener('dblclick',()=>fit());stage.addEventListener('keydown',e=>{if(e.key==='+'||e.key==='=')zoom(1.25);if(e.key==='-')zoom(.8);if(e.key==='0')fit();});new ResizeObserver(()=>fit(true)).observe(stage);fit(true);});
+const sections=[...document.querySelectorAll('.doc h2')];if(sections.length){const observer=new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){document.querySelectorAll('.toc-link').forEach(a=>a.classList.toggle('current',a.hash==='#'+e.target.id));}},{rootMargin:'-5% 0px -70% 0px'});sections.forEach(s=>observer.observe(s));}
+</script></body></html>

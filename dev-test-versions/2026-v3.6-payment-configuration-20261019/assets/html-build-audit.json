@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "index.html",
+    "page-list.html",
+    "flows.html",
+    "development-spec.html",
+    "acceptance.html"
+  ],
+  "flowCount": 8,
+  "flows": [
+    {
+      "name": "flow-01.svg",
+      "nodes": 17,
+      "edges": 22
+    },
+    {
+      "name": "flow-02.svg",
+      "nodes": 14,
+      "edges": 16
+    },
+    {
+      "name": "flow-03.svg",
+      "nodes": 23,
+      "edges": 24
+    },
+    {
+      "name": "flow-04.svg",
+      "nodes": 22,
+      "edges": 25
+    },
+    {
+      "name": "flow-05.svg",
+      "nodes": 14,
+      "edges": 15
+    },
+    {
+      "name": "flow-06.svg",
+      "nodes": 10,
+      "edges": 10
+    },
+    {
+      "name": "flow-07.svg",
+      "nodes": 14,
+      "edges": 16
+    },
+    {
+      "name": "flow-08.svg",
+      "nodes": 12,
+      "edges": 11
+    }
+  ],
+  "styleReference": "../../../散客合作伙伴管理/方案与需求/2026-v3.2-partner-management-20260805/index.html"
+}

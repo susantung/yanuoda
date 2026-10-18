@@ -1,0 +1,1146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>售票窗口｜支付配置预览</title>
+<style>
+:root{--blue:#0052d9;--primary:#1677ff;--canvas:#f0f5ff;--line:#d9d9d9;--input:#d3d3d3;--text:#1f1f1f;--muted:#999;--red:#f5222d;--danger:#ff4d4f;--green:#3dbe74;--select:#2b60dd;--radius:6px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;color:var(--text)}
+*{box-sizing:border-box}html,body{margin:0;min-width:1024px;height:100%;overflow:hidden;font-size:14px;line-height:22px;background:var(--canvas)}button,input{font:inherit}button{cursor:pointer}.svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-3px}.tool-icon{display:grid;place-items:center;color:#fff}.header{height:56px;background:var(--blue);display:flex;align-items:center;color:#fff;padding:0 18px;gap:20px;white-space:nowrap}.brand{display:flex;align-items:center;gap:8px;font-weight:600}.mark{position:relative;width:32px;height:32px}.mark:before,.mark:after{content:"";position:absolute;border-radius:3px;background:#43d5b8;transform:rotate(-45deg)}.mark:before{width:11px;height:28px;left:6px;top:1px}.mark:after{width:11px;height:20px;left:17px;top:10px}.system-tag{height:30px;display:flex;align-items:center;border:1px solid #b8d1ff;border-radius:4px;padding:0 10px;font-weight:400}.mainnav{display:flex;height:100%;align-items:center;gap:8px;flex:1}.mainnav button{color:#fff;background:transparent;border:0;border-radius:4px;height:36px;padding:0 14px;font-weight:600}.mainnav button.active{background:#fff;color:var(--blue)}.tools{display:flex;align-items:center;gap:16px;font-weight:600}.admin{height:32px;border:0;border-radius:4px;background:#1677ff;color:#fff;padding:0 16px;font-weight:600}.avatar{width:28px;height:28px;background:#ffe2ce;color:#9b5d26;border-radius:50%;display:inline-grid;place-items:center;margin-right:-9px}.tabsbar{height:40px;background:linear-gradient(90deg,#f7fbff,#edf4ff);display:flex;align-items:end;padding-left:8px;border-bottom:1px solid #dce5f4}.page-tab{height:32px;border:0;border-right:1px solid #dbe4f3;background:transparent;padding:0 13px;color:#6b7280}.page-tab.active{background:white;color:var(--primary);font-weight:600}.tab-close{border:0;background:transparent;color:inherit;padding:0 0 0 7px;line-height:1}.page{height:calc(100vh - 96px);padding:8px;display:flex;flex-direction:column;gap:0}.business-tabs{height:52px;background:#fff;display:flex;align-items:end;padding:0 16px;border-radius:6px 6px 0 0;border-bottom:1px solid #edf0f5}.business-tabs button{height:44px;border:0;background:#fff;padding:0 16px;margin-right:10px;color:#1f1f1f;font-weight:500}.business-tabs button.active{color:var(--primary);border-bottom:2px solid var(--primary)}.workspace{min-height:0;flex:1;background:#fff;display:grid;grid-template-columns:clamp(320px,30.2vw,580px) minmax(0,1fr);border-radius:0 0 6px 6px;overflow:hidden}.left{padding:8px;border-right:1px solid #edf0f5;min-width:0;display:flex;flex-direction:column}.filters{display:grid;grid-template-columns:2fr 1fr;gap:8px}.filters .name{grid-column:1 / span 1}.filters .category{grid-column:1 / span 1}.filters .search{grid-column:2;grid-row:2;justify-self:end}.control{height:32px;width:100%;border:1px solid var(--input);border-radius:6px;background:#fff;color:#666;padding:4px 11px;outline:none}.control:focus{border-color:var(--primary);box-shadow:0 0 0 2px rgba(5,145,255,.1)}.select{position:relative;display:flex;align-items:center;color:#999}.select .svg{position:absolute;right:11px;color:#777;width:12px;height:12px}.select-panel{position:absolute;z-index:20;left:0;right:0;top:36px;background:#fff;border-radius:6px;box-shadow:0 6px 16px rgba(0,0,0,.14);border:1px solid #eee;padding:4px;display:none}.select.open .select-panel{display:block}.option{height:32px;padding:5px 10px;border-radius:4px;color:#333}.option:hover,.option.selected{background:#e6f4ff;color:var(--primary)}.primary{height:32px;border:0;border-radius:6px;background:var(--primary);color:#fff;padding:4px 15px;box-shadow:0 2px 0 rgba(5,145,255,.1);font-weight:500}.search{width:86px;display:flex;justify-content:center;gap:8px;align-items:center}.radio-row{display:flex;margin-top:16px}.radio{height:32px;border:1px solid var(--line);background:#fff;padding:0 15px;font-weight:400;line-height:30px}.radio:first-child{border-radius:6px 0 0 6px}.radio:last-child{border-radius:0 6px 6px 0;border-left:0}.radio.active{color:var(--primary);border-color:var(--primary);position:relative;z-index:1}.utility{height:42px;display:flex;align-items:center;justify-content:space-between}.check{display:flex;align-items:center;gap:7px}.check input{accent-color:var(--primary)}.sort{height:32px;border:1px solid transparent;border-radius:6px;background:transparent;color:rgba(0,0,0,.88);font-size:14px;font-weight:400;padding:4px 15px;display:flex;align-items:center;gap:4px}.ticket-list{overflow:auto;padding-right:1px}.ticket{min-height:75px;border:1px solid #f0f5ff;border-radius:6px;margin-bottom:8px;padding:8px;display:flex;flex-direction:column;justify-content:space-between;background:#fff;cursor:pointer}.ticket.selected{border-color:#0052d9;background:#f0f5ff}.ticket-title{font-weight:500;overflow:hidden;white-space:normal;color:#333}.season{display:inline-flex;font-size:12px;line-height:24px;background:#ebf8f1;color:#3dbe74;border-radius:4px;padding:0 8px;margin-right:7px}.ticket.selected .season{color:#2b60dd;background:rgba(43,96,221,.1)}.ticket-foot{display:flex;justify-content:space-between;align-items:center}.valid{font-size:12px;color:#39b980}.ticket.selected .valid{color:#999}.price{color:var(--red);font-size:16px;font-weight:700;line-height:25px}.right{display:flex;min-width:0;flex-direction:column}.sale-head{height:82px;padding:10px 16px 0;border-bottom:1px solid #edf0f5}.sale-title{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:500;line-height:25px}.sale-title:before{content:"";display:block;width:3px;height:18px;background:var(--primary);border-radius:2px}.recent{font-size:14px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.date-row{height:40px;display:flex;align-items:center;gap:14px}.datebox{display:flex;position:relative;height:32px;border:1px solid var(--input);border-radius:6px;background:#fff}.date-prefix{padding:4px 9px;background:#fafafa;border-right:1px solid var(--line);border-radius:6px 0 0 6px;color:#333}.date-value{padding:4px 36px 4px 10px;min-width:140px;position:relative}.datebox .svg{position:absolute;right:10px;top:7px;color:#777}.calendar{position:absolute;z-index:20;top:36px;left:0;width:300px;padding:12px;background:#fff;border:1px solid #eee;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,.14);display:none}.datebox.open .calendar{display:block}.cal-head{display:flex;align-items:center;justify-content:space-between;font-weight:600;margin-bottom:10px}.week,.days{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;gap:3px;font-size:12px}.week{color:#999}.days span{height:28px;line-height:28px;border-radius:4px}.days span.active{background:var(--primary);color:#fff}.days span:hover{background:#e6f4ff}.download{border:0;background:transparent;color:var(--primary);padding:0;display:flex;gap:6px;align-items:center}.order-body{min-height:0;overflow:auto;padding:8px 16px}.order{border:1px solid #e6e6e6;border-radius:6px;margin-bottom:8px;overflow:hidden}.order-head{height:48px;background:#f0f5ff;display:flex;align-items:center;padding:0 10px;gap:10px;min-width:650px}.order-name{font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.stock{color:#999}.import{width:64px}.danger{height:32px;width:32px;border:0;background:transparent;color:var(--danger);display:grid;place-items:center;padding:0}.order-form{padding:8px 16px 10px;min-width:650px}.amountrow{height:34px;display:flex;align-items:center;gap:34px}.stepper{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;height:32px;vertical-align:middle}.stepper button{width:32px;border:0;background:#fff;color:#555}.stepper input{width:44px;border:0;border-left:1px solid var(--line);border-right:1px solid var(--line);text-align:center;outline:0}.traveler{display:grid;grid-template-columns:20px minmax(130px,1.1fr) 124px minmax(160px,1.2fr) 92px 32px;gap:8px;align-items:center;margin-top:8px}.settlement{height:56px;border-top:1px solid #e6e6e6;padding:12px 16px;display:flex;align-items:center;gap:10px;background:#fff}.pay-select{width:170px}.pay-dot{width:16px;height:16px;border-radius:50%;background:#f5a623;color:#fff;display:grid;place-items:center;font-size:11px;line-height:1}.settlement .summary{margin-left:auto;white-space:nowrap}.secondary{height:32px;min-width:100px;border:1px solid var(--line);border-radius:6px;background:#fff;color:#333;padding:4px 15px}.modal-mask{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:30;display:none;place-items:center}.modal-mask.open{display:grid}.modal{width:min(720px,calc(100vw - 32px));max-height:calc(100vh - 32px);border-radius:8px;background:#fff;box-shadow:0 6px 16px rgba(0,0,0,.25);display:flex;flex-direction:column;overflow:hidden}.modal-title{height:52px;padding:14px 20px;font-size:16px;font-weight:600;border-bottom:1px solid #f0f0f0}.modal-content{padding:20px;overflow:auto}.modal-foot{padding:10px 20px;border-top:1px solid #f0f0f0;display:flex;justify-content:flex-end;gap:8px}.empty{display:flex;min-height:240px;align-items:center;justify-content:center;flex-direction:column;color:#999;gap:8px}.empty-icon{width:48px;height:38px;border:2px solid #d9e8ff;border-radius:8px;position:relative}.empty-icon:after{content:"";position:absolute;width:20px;border-top:2px solid #d9e8ff;left:12px;top:17px}@media(max-width:1160px){.header{gap:12px}.system-tag{display:none}.traveler{grid-template-columns:20px 1fr 112px 1fr 80px 32px}.sale-head{padding-left:12px}.order-body{padding-left:12px;padding-right:12px}}
+/* 校准修正：真实散客票的第一行是票型名称、活动标签、价格类型；第二行分类跨两格，查询位于右侧。 */
+.filters{grid-template-columns:repeat(3,minmax(0,1fr))}.filters .category{grid-column:1 / span 2}.filters .search{grid-column:3;grid-row:2;justify-self:end;width:80px}.select-panel{border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}.calendar{width:288px;min-height:348px;box-shadow:0 6px 16px rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}
+.ant-quantity-control{position:relative;display:inline-flex;width:92px;height:32px}.ant-quantity-control .ant-input-number{width:92px;height:32px}.ant-quantity-control .ant-input-number-input{height:30px;padding-right:22px;text-align:center}.ant-quantity-buttons{position:absolute;z-index:3;top:1px;right:1px;display:flex;flex-direction:column;width:20px;height:30px;overflow:hidden;border-left:1px solid #d9d9d9;border-radius:0 5px 5px 0;background:#fff;opacity:0;pointer-events:none;transition:opacity .12s}.ant-quantity-control:hover .ant-quantity-buttons,.ant-quantity-control:focus-within .ant-quantity-buttons{opacity:1;pointer-events:auto}.ant-quantity-buttons .ant-btn{width:20px;height:15px;min-height:15px;padding:0;border:0;border-radius:0;color:#8c8c8c;font-size:12px;line-height:13px}.ant-quantity-buttons .ant-btn:first-child{border-bottom:1px solid #f0f0f0}.ant-quantity-buttons .ant-btn:hover{position:relative;z-index:1;color:#1677ff;background:#f5f5f5}
+</style>
+<style>
+.preview-session-host{margin-left:auto;align-self:center;padding:0 12px;min-width:0}
+.preview-session-controls{display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:12px;color:#596579}
+.preview-session-controls .ant-select{width:210px;font-size:12px}
+.preview-session-controls a{color:#1677ff;text-decoration:none}.preview-session-status{color:#73839a}
+@media(max-width:1160px){.preview-session-controls{gap:5px}.preview-session-controls .ant-select{width:164px}.preview-session-host{padding-right:8px}}
+</style>
+</head>
+<body>
+<header class="header"><div class="left-header"><div class="brand"><i class="mark"></i><span>程程票售票窗口</span></div><span class="system-tag">呀诺达景区</span></div><nav class="mainnav"><button>首页</button><button class="active">售票</button><button>取票</button><button>退票</button><button>线上票确认</button><button>查询</button><button>统计</button><button>合作伙伴</button><button>内导</button><button>异常订单</button></nav><div class="tools"><button class="admin">后台管理</button><span class="tool-icon" aria-label="窗口工具"><svg class="svg" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="16" r="3"/><path d="m10.2 10.2 3.6 3.6"/></svg></span><span class="tool-icon" aria-label="刷新"><svg class="svg" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0 2 5.2"/><path d="M20 4v7h-7"/></svg></span><span class="avatar">苏</span><span>YST售票窗口</span></div></header>
+<div class="tabsbar" id="keepTabs"><button class="page-tab active" data-page="售票">售票 <span class="tab-close" role="button" aria-label="关闭售票页">×</span></button><div class="preview-session-host" id="previewSessionControls"></div></div>
+<main class="page"><div class="business-tabs"><button class="active">散客票</button><button>团队票</button><button>临时/长期合作伙伴</button><button>挂单列表</button></div><section class="workspace"><aside class="left"><div class="filters"><input class="control name" placeholder="票型名称"/><div class="select control" data-select>活动标签<svg class="svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg><div class="select-panel"><div class="option selected">全部活动标签</div><div class="option">节假日活动</div><div class="option">会员专属</div></div></div><div class="select control category" data-select>门票分类<svg class="svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg><div class="select-panel"><div class="option selected">全部门票分类</div><div class="option">成人票</div><div class="option">儿童票</div></div></div><button class="primary search"><svg class="svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>查询</button></div><div class="radio-row"><button class="radio active">常规票</button><button class="radio">套票</button></div><div class="utility"><label class="check"><input type="checkbox" checked/>显示价格类型，票型票种</label><button class="sort"><svg class="svg" viewBox="0 0 24 24"><path d="m8 8 4-4 4 4M16 16l-4 4-4-4"/></svg>金额</button></div><div class="ticket-list" id="tickets"></div></aside>
+<section class="right"><div class="sale-head"><div class="sale-title">售卖信息 <span class="recent">最近订单：2026-10-08 14:01:33　DD261008140133001001s　5张　现金：<b style="color:var(--red)">¥0.05</b></span></div><div class="date-row"><div class="datebox" id="datebox"><span class="date-prefix">日期</span><span class="date-value">2026-10-09</span><svg class="svg" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg><div class="calendar"><div class="cal-head"><span>‹</span><span>2026年10月</span><span>›</span></div><div class="week"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div><div class="days"><span></span><span></span><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span class="active">9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span></div><div style="margin-top:10px;color:var(--primary);font-size:12px">今天</div></div></div><button class="download"><svg class="svg" viewBox="0 0 24 24"><path d="M7 18a4 4 0 1 1 .8-7.9A5 5 0 0 1 18 11.5"/><path d="M12 10v8m0 0-3-3m3 3 3-3"/></svg>下载模板</button></div></div><div class="order-body" id="orders"><div class="empty" id="empty"><i class="empty-icon"></i><span>暂未选择门票</span><small>请从左侧选择需要售卖的门票</small></div></div><footer class="settlement"><span>支付方式:</span><div class="select control pay-select" data-select><span class="pay-dot">¥</span>&nbsp;现金<svg class="svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg><div class="select-panel"><div class="option selected">现金</div><div class="option">扫码付</div></div></div><span class="summary">总票数:<b id="totalQty" style="color:var(--primary)">0</b>张　总金额:<b id="totalAmount" class="price">¥0.00</b></span><button class="secondary" id="cancel">取消</button><button class="primary" id="confirm">确认下单</button></footer></section></section></main>
+<div class="modal-mask" id="modal"><div class="modal"><div class="modal-title">确认下单</div><div class="modal-content" id="modalText"></div><div class="modal-foot"><button class="secondary" data-close>取消</button><button class="primary" data-close>确认出票</button></div></div></div>
+<script>
+const filterGrid=document.querySelector('.filters');const priceType=document.createElement('div');priceType.className='select control';priceType.dataset.select='';priceType.innerHTML='价格类型<svg class="svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg><div class="select-panel"><div class="option selected">全部价格类型</div><div class="option">成人价</div><div class="option">儿童价</div></div>';filterGrid.insertBefore(priceType,filterGrid.querySelector('.category'));
+const tickets=[{id:'a',season:'实',realName:true,name:'【优惠票-专属票】日历票-大门票+雨林拓展+幻境魔盒（同程测试）',valid:'当日可用',price:.01,stock:9999},{id:'b',season:'旺季',realName:false,name:'【限时秒杀】大门票+大巴车+玻璃平台+悬崖秋千【期票】',valid:'2026-09-16-2027-10-22',price:.01,stock:2734},{id:'c',season:'淡季',realName:true,name:'【全价票-专属票】自动日历库存组合票0807165539（儿童票）',valid:'当日可用',price:20,stock:9999},{id:'d',season:'淡季',realName:false,name:'【全价票-专属票】自动组合票0805163351（儿童票）',valid:'当日可用',price:20,stock:9999}];let cart=[];const icon=t=>({delete:'<svg class="svg" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6m4-6v6M9 7l1-3h4l1 3M6 7l1 14h10l1-14"/></svg>',minus:'<svg class="svg" viewBox="0 0 24 24"><path d="M5 12h14"/></svg>',plus:'<svg class="svg" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>'}[t]);
+function money(n){return '¥'+n.toFixed(2)}function renderTickets(){tickets.forEach(t=>{let el=document.querySelector('[data-ticket="'+t.id+'"]');if(!el){el=document.createElement('div');el.dataset.ticket=t.id;el.className='ticket';el.innerHTML='<div class="ticket-title"><span class="season">'+t.season+'</span>'+t.name+'</div><div class="ticket-foot"><span class="valid">有效期：'+t.valid+'</span><span class="price">'+money(t.price)+'</span></div>';el.onclick=()=>add(t);document.querySelector('#tickets').append(el)}el.classList.toggle('selected',cart.some(c=>c.id===t.id))})}
+function add(t){let c=cart.find(x=>x.id===t.id);if(c)c.qty++;else cart.push({...t,qty:1});render()}
+function change(id,d){let c=cart.find(x=>x.id===id);c.qty=Math.max(1,c.qty+d);render()}function remove(id){cart=cart.filter(c=>c.id!==id);render()}
+function order(c){let travelers=Array.from({length:c.qty},(_,i)=>'<div class="traveler"><span>'+ (i+1) +'</span><input class="control" placeholder="姓名"><div class="select control" data-select>身份证<svg class="svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg><div class="select-panel"><div class="option selected">身份证</div><div class="option">护照</div></div></div><input class="control" placeholder="请输入证件号"><div class="select control" data-select>性别<svg class="svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg><div class="select-panel"><div class="option">男</div><div class="option">女</div></div></div><button class="danger" onclick="removeTraveler(\''+c.id+'\')">'+icon('delete')+'</button></div>').join('');return '<article class="order"><div class="order-head">'+(c.realName?'<span class="season real-name-tag">实</span>':'')+'<span class="order-name">'+c.name+'</span><span class="stock">剩余库存：'+c.stock+'</span><span class="price">'+money(c.price)+'</span><button class="primary import">导入</button><button class="danger" onclick="remove(\''+c.id+'\')">'+icon('delete')+'</button></div><div class="order-form"><div class="amountrow">门票数量：<span class="stepper"><button aria-label="减少" onclick="change(\''+c.id+'\',-1)">'+icon('minus')+'</button><input value="'+c.qty+'" readonly><button aria-label="增加" onclick="change(\''+c.id+'\',1)">'+icon('plus')+'</button></span><span>应付金额： <b class="price">'+money(c.price*c.qty)+'</b></span></div>'+travelers+'</div></article>'}
+function removeTraveler(id){change(id,-1)}function render(){renderTickets();document.querySelector('#empty').style.display=cart.length?'none':'flex';document.querySelector('#orders').querySelectorAll('.order').forEach(x=>x.remove());document.querySelector('#orders').insertAdjacentHTML('beforeend',cart.map(order).join(''));let q=cart.reduce((s,x)=>s+x.qty,0),m=cart.reduce((s,x)=>s+x.qty*x.price,0);totalQty.textContent=q;totalAmount.textContent=money(m);bindSelects()}
+function bindSelects(){document.querySelectorAll('[data-select]').forEach(s=>{if(s.dataset.bound)return;s.dataset.bound='1';s.addEventListener('click',e=>{e.stopPropagation();document.querySelectorAll('[data-select]').forEach(x=>x!==s&&x.classList.remove('open'));s.classList.toggle('open')})});document.querySelectorAll('.option').forEach(o=>o.onclick=()=>o.closest('[data-select]').classList.remove('open'))}document.addEventListener('click',()=>document.querySelectorAll('[data-select]').forEach(x=>x.classList.remove('open')));datebox.onclick=e=>{e.stopPropagation();datebox.classList.toggle('open')};document.getElementById('cancel').onclick=()=>{cart=[];render()};document.getElementById('confirm').onclick=()=>{if(!cart.length){modalText.textContent='请先选择至少一张门票。'}else{modalText.innerHTML='本次共 <b>'+cart.reduce((s,x)=>s+x.qty,0)+'</b> 张门票，订单金额 <b class="price">'+money(cart.reduce((s,x)=>s+x.qty*x.price,0))+'</b>。请确认出票。'}modal.classList.add('open')};document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>modal.classList.remove('open'));window.change=change;window.remove=remove;window.removeTraveler=removeTraveler;window.antQuantityChange=(id,value)=>{const item=cart.find(entry=>entry.id===id);if(!item||!Number.isFinite(value))return;item.qty=Math.max(1,Math.trunc(value));render()};render();
+document.addEventListener('click',e=>{if(e.target.closest('#datebox'))document.querySelectorAll('[data-select]').forEach(x=>x.classList.remove('open'))},true);
+
+// 校准页的基准交互：均只作用于本地演示状态，不访问真实站点。
+document.querySelectorAll('.radio').forEach(button=>button.onclick=()=>{document.querySelectorAll('.radio').forEach(x=>x.classList.remove('active'));button.classList.add('active')});
+document.querySelectorAll('.business-tabs button').forEach(button=>button.onclick=()=>{if(button.textContent.trim()!=='散客票'){modalText.textContent='本轮先评审散客支付增量，此页面尚未制作。';document.querySelector('#modal .modal-foot .primary').textContent='关闭';modal.classList.add('open');return}document.querySelectorAll('.business-tabs button').forEach(x=>x.classList.remove('active'));button.classList.add('active')});
+document.querySelectorAll('.page-tab').forEach(button=>button.onclick=()=>{document.querySelectorAll('.page-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active')});
+document.querySelector('.check input').onchange=e=>{document.querySelectorAll('.ticket .season').forEach(x=>x.style.visibility=e.target.checked?'visible':'hidden')};
+let ascending=true;document.querySelector('.sort').onclick=()=>{ascending=!ascending;const list=document.querySelector('#tickets');Array.from(list.children).sort((a,b)=>{const av=Number(a.textContent.match(/¥([\d.]+)/)[1]),bv=Number(b.textContent.match(/¥([\d.]+)/)[1]);return ascending?av-bv:bv-av}).forEach(x=>list.appendChild(x))};
+document.querySelector('.search').onclick=()=>{const keyword=document.querySelector('.filters input').value.trim();document.querySelectorAll('.ticket').forEach(x=>x.style.display=!keyword||x.textContent.includes(keyword)?'flex':'none')};
+document.querySelector('#orders').addEventListener('click',e=>{const button=e.target.closest('.import');if(!button)return;button.closest('.order').querySelectorAll('input[placeholder="姓名"]').forEach((input,index)=>input.value='游客'+(index+1))});
+document.querySelector('#confirm').onclick=()=>{
+  if(typeof window.reviewWindowPayment!=='function'){
+    document.querySelector('#modal .modal-title').textContent='页面加载异常';
+    modalText.textContent='售票控件未加载，请重新打开完整预览目录中的 index.html。';
+    document.querySelector('#modal .modal-foot .primary').textContent='关闭';modal.classList.add('open');return;
+  }
+  if(!cart.length){document.querySelector('#modal .modal-title').textContent='确认下单';modalText.textContent='请先选择至少一张门票。';document.querySelector('#modal .modal-foot .primary').textContent='关闭';modal.classList.add('open');return}
+  if(window.validateTeamSale?.())return;
+  if(window.validateWindowTravelers())return;
+  window.reviewWindowPayment();
+};
+
+// 页面签、浮层和下拉选项都采用窗口端的静默局部反馈：不为普通选择弹成功提示。
+document.addEventListener('click',()=>datebox.classList.remove('open'));
+function activatePageTab(tab){document.querySelectorAll('.page-tab').forEach(x=>x.classList.toggle('active',x===tab))}
+function bindKeepTabs(){document.querySelectorAll('.page-tab').forEach(tab=>{tab.onclick=e=>{const close=e.target.closest('.tab-close');if(close){e.stopPropagation();const tabs=[...document.querySelectorAll('.page-tab')];if(tabs.length===1)return;const wasActive=tab.classList.contains('active');tab.remove();if(wasActive)activatePageTab(tabs[tabs.length-2]||document.querySelector('.page-tab'));return}activatePageTab(tab)}})}
+document.querySelectorAll('.mainnav button').forEach(button=>button.onclick=()=>{document.querySelectorAll('.mainnav button').forEach(x=>x.classList.toggle('active',x===button));const page=button.textContent.trim();let tab=[...document.querySelectorAll('.page-tab')].find(x=>x.dataset.page===page);if(!tab){tab=document.createElement('button');tab.className='page-tab';tab.dataset.page=page;tab.innerHTML=page+' <span class="tab-close" role="button" aria-label="关闭'+page+'页">×</span>';keepTabs.append(tab);bindKeepTabs()}activatePageTab(tab)});
+bindKeepTabs();
+</script>
+<style>
+/* 运行态对照：散客票三票态（不复用合作伙伴账户控件）。 */
+.filters{grid-template-columns:repeat(3,minmax(0,1fr))}.filters .name{grid-column:1}.filters .category{grid-column:1/span 2}.filters .search{grid-column:3;grid-row:2;width:80px}
+.payment-box{width:217px;height:34px;display:flex;align-items:center;border:1px solid #dcdcdc;border-radius:6px;background:#fff;flex-wrap:nowrap;white-space:nowrap}.payment-label{width:auto;height:auto;display:flex;align-items:center;padding-left:16px;line-height:normal;color:rgba(0,0,0,.85);margin-right:8px;white-space:nowrap}.payment-label:after{content:"";display:inline-block;width:1px;height:24px;margin-left:8px;background:#dcdcdc}.payment-box .pay-select{min-width:120px;flex:1 1;height:32px;border:0;border-radius:0 6px 6px 0;padding:0 28px 0 11px;color:#0052d9}.payment-box .pay-select .select-panel{top:auto;bottom:36px;left:0;right:auto;width:120px;padding:4px}.payment-box .pay-select .option{display:flex;align-items:center;gap:8px;white-space:nowrap}.payment-box .pay-select .option img{width:16px;height:16px;flex:0 0 16px}
+.page{padding:8px;background:#fff}.business-tabs,.workspace{border-radius:0}.business-tabs{border:0;border-bottom:1px solid #edf0f5}.workspace{display:flex;flex:1;min-height:0;gap:8px;width:100%;height:auto;overflow:hidden;border:0;box-shadow:none;background:transparent}.left{width:30%;min-width:300px;min-height:0;padding:8px;border:1px solid #f5f5f5;border-radius:6px;background:#fff;box-sizing:border-box}.right{width:70%;min-width:0;min-height:0;overflow:hidden;border:0;background:transparent;box-shadow:none}.right-card{width:100%;height:auto;flex:1 1 0;min-height:0;display:flex;flex-direction:column;border:1px solid #e8e8e8;border-radius:4px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.09);overflow:hidden}
+.business-tabs{height:43px;flex:0 0 43px;align-items:flex-start;padding:8px 8px 0;margin-bottom:8px}.business-tabs button{height:34px;padding:6px 16px;margin-right:16px;line-height:22px}
+.right{min-height:0}.sale-title{min-width:0;white-space:nowrap;overflow:hidden}.sale-title .recent{min-width:0}.order-body{flex:1;min-height:0;overflow:auto}.settlement{height:51px;flex:0 0 51px;margin-top:auto;padding:8px;background:linear-gradient(#fff,#f5f5f5);border-top:1px solid #e8e8e8}.payment-box .pay-icon{display:block;width:16px;height:16px;flex:0 0 16px;margin-right:8px;object-fit:contain}.pending-order{border-color:#1677ff;color:#1677ff;display:inline-flex;align-items:center;justify-content:center;gap:6px}.pending-order .svg{width:16px;height:16px}
+.tabsbar{height:40px;align-items:end;padding-left:0;background:linear-gradient(#dfebff,#fafcff)}.page-tab{height:28px;border:0;border-right:1px solid #dbe4f3;border-radius:8px 8px 0 0;background:transparent;box-shadow:none;outline:0;font-size:14px;font-weight:400;line-height:22px}.page-tab.active{height:28px;border:0;border-radius:8px 8px 0 0;background:#fff;color:#1677ff;font-weight:400}.page-tab:focus,.page-tab:focus-visible{outline:0;box-shadow:none}.page-tab[data-page="售票"]{padding:0 13px}.search{display:flex;align-items:center;justify-content:center;gap:8px;padding:0;white-space:nowrap;line-height:32px}.search .svg{flex:0 0 16px}
+.order-head{gap:8px}.order-head>.season:empty,.order-head.no-leading-tag>.season{display:none}.order-head>.season{width:24px;height:24px;flex:0 0 24px;justify-content:center;margin:0;padding:0;border-radius:6px;background:#3dbe74;color:#fff;font-size:14px;font-weight:400;line-height:24px}.order-name{flex:0 1 auto;min-width:0}.order-meta{display:flex;align-items:center;gap:8px;flex:0 0 auto;white-space:nowrap}.order-meta-tag{display:inline-flex;align-items:center;height:22.86px;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:400;line-height:18.8571px}.season-tag{background:rgba(43,96,221,.1);color:#2b60dd}.activity-tag{background:#fcecef;color:#e84a5f}.stock{flex:0 0 auto;white-space:nowrap;color:#999;font-size:12px;font-weight:400;line-height:18.8571px}.order-head>.price{margin-left:auto;white-space:nowrap}
+.order-form{padding:0 16px 10px;border-top:1px dashed #f0f0f0}.amountrow{height:42px;gap:10px;border-bottom:1px dashed #f0f0f0}.amountrow>span:last-child{margin-left:24px}.traveler{display:flex!important;align-items:center!important;gap:8px!important;margin-top:8px}.traveler>span:first-child{width:8px!important;flex:0 0 8px!important}.traveler>input[placeholder="姓名"]{width:178px!important;height:32px!important;flex:0 0 178px!important}.traveler>.custom-select:nth-of-type(1){width:120px!important;height:32px!important;flex:0 0 120px!important}.traveler>input[placeholder="请输入证件号"]{width:200px!important;height:32px!important;flex:0 0 200px!important}.traveler>.custom-select:nth-of-type(2){width:80px!important;height:32px!important;flex:0 0 80px!important}.traveler>.danger{margin-left:auto!important;flex:0 0 32px!important}.stepper{position:relative;display:inline-block;width:90px;height:32px;overflow:hidden;border:1px solid #d3d3d3;border-radius:6px;vertical-align:middle}.stepper input{position:absolute;inset:0;width:88px;height:30px;border:0;text-align:left;padding:4px 11px;outline:0}.stepper button{position:absolute;right:0;z-index:1;width:22px;height:15px;border:0;border-left:1px solid #d3d3d3;background:#fff;padding:0;opacity:0;pointer-events:none;transition:opacity .15s}.stepper button:first-child{top:15px;border-top:1px solid #d3d3d3}.stepper button:last-child{top:0}.stepper:hover button{opacity:1;pointer-events:auto}.stepper button .svg{width:10px;height:10px;stroke-width:1.8}.stepper:hover input{padding-right:30px}
+.order{border:1px solid #dcdcdc;transition:border-color .2s ease}.order:hover{border-color:#40a9ff}.order:focus-within{border:1px solid #dcdcdc;box-shadow:none}.order.order-selected{border:2px solid #1890ff;box-shadow:0 0 0 2px rgba(24,144,255,.2)}
+.traveler>.select:nth-of-type(1){width:120px!important;height:32px!important;flex:0 0 120px!important}.traveler>.select:nth-of-type(2){width:80px!important;height:32px!important;flex:0 0 80px!important}
+/* 与测试环境 Ant InputNumber 一致：默认隐藏右侧上下处理器，悬浮或聚焦后展开。 */
+.stepper{position:relative;display:inline-block;width:90px;height:32px;overflow:hidden;border:1px solid #d9d9d9;border-radius:6px;background:#fff;vertical-align:middle}.stepper input{position:static;display:block;width:100%;height:30px;padding:4px 11px;border:0;border-radius:6px;background:transparent;text-align:left;outline:0}.stepper button{position:absolute;right:0;z-index:1;display:flex;align-items:center;justify-content:center;width:0;height:50%;padding:0;overflow:hidden;border:0;border-left:1px solid #d9d9d9;background:#fff;color:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:.2s}.stepper button:first-child{top:auto;bottom:0;border-top:1px solid #d9d9d9}.stepper button:last-child{top:0;bottom:auto}.stepper:hover button,.stepper:focus-within button{width:22px;opacity:1;pointer-events:auto}.stepper button:hover{color:#1677ff;background:#fff}.stepper .quantity-caret{display:none}.stepper .quantity-sub::before,.stepper .quantity-add::before,.stepper .quantity-add::after{content:"";position:absolute;width:8px;border-top:1px solid currentColor}.stepper .quantity-add::after{transform:rotate(90deg)}
+@media(max-width:1024px){.payment-box{width:207px;flex:0 0 207px}.payment-label{padding-left:8px;font-size:13px}.settlement{gap:8px;padding:8px;min-width:0}.settlement .summary{min-width:0;margin-left:auto;font-size:13px}.settlement .secondary,.settlement .primary{width:80px;min-width:80px;padding:4px 12px;font-size:13px}.pending-order{gap:6px}.pending-order .svg{width:14px;height:14px}}
+/* 生产页缩窄规则：大屏到最大值，小屏在安全下限内收缩，不能横向溢出。 */
+.order-head,.order-form{min-width:0}.order-head{min-height:48px;height:auto}.order-name{min-width:0}.traveler>input[placeholder="姓名"]{width:178px!important;min-width:112px;flex:0 1 178px!important}.traveler>.select:nth-of-type(1){width:120px!important;min-width:96px;flex:0 1 120px!important}.traveler>input[placeholder="请输入证件号"]{width:200px!important;min-width:140px;flex:0 1 200px!important}.traveler>.select:nth-of-type(2){width:80px!important;min-width:72px;flex:0 1 80px!important}
+/* 票卡必须在窄窗口内收缩；不以整页最小宽度或遮挡来掩盖溢出。 */
+html,body{min-width:0}
+.workspace,.right,.order-body,.order,.order-head,.order-form,.traveler{min-width:0}
+.order-head{flex-wrap:nowrap;overflow:hidden}
+.order-name{flex:0 1 auto;inline-size:auto}
+.order-meta{min-width:0;flex:0 0 auto;overflow:visible}
+.order-meta-tag{min-width:0;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stock{min-width:0;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis}
+.order-head>.price,.order-head>.import,.order-head>.danger{flex:0 0 auto}
+.order-head>.price,.amountrow .price{font-size:16px;font-weight:500;line-height:25.1429px;color:#f5222d}
+.settlement #totalAmount{font-size:18px;font-weight:600;line-height:28.2857px;color:#f5222d}
+.sale-title .recent b{font-size:14px;font-weight:400;line-height:22px}
+.sort{width:76px;height:32px;padding:4px 15px;display:inline-flex;align-items:center;justify-content:center;gap:8px}.sort-arrows{width:12px;height:24px;display:flex;flex-direction:column;justify-content:center;line-height:0}.sort-arrows svg{width:12px;height:12px;fill:currentColor;stroke:none}.sort-icon{color:#666}.sort-icon.sort-icon-active{color:#1890ff}.sort-text{font-size:12px;line-height:1}.order-refresh{display:inline-flex;width:16px;height:16px;padding:0;border:0;background:transparent;cursor:pointer}.order-refresh img{width:16px;height:16px;display:block}
+.traveler>input[placeholder="姓名"],.traveler>input[placeholder="请输入证件号"],.traveler>.select{max-width:100%;min-inline-size:0}
+@media(max-width:1160px){.order-head{align-items:flex-start;padding-top:8px;padding-bottom:8px}.order-name{white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}.order-meta{gap:6px}.order-meta-tag{padding-left:6px;padding-right:6px;max-width:112px}.stock{max-width:76px}.order-head>.price{margin-left:auto}.traveler{gap:8px}.traveler>.danger{margin-left:auto!important}}
+/* 测试环境 customerItem：列宽由 flex 比例决定，不能写死成一排固定像素。 */
+.traveler{width:100%;padding:8px;margin-top:0;gap:8px;overflow:visible}
+.traveler>span:first-child{width:auto!important;flex:0 0 auto!important;margin-top:4px;margin-right:8px}
+.traveler>input[placeholder="姓名"]{width:auto!important;min-width:150px;flex:2 1 0!important}
+.traveler>.select:nth-of-type(1){width:auto!important;min-width:120px;flex:1 1 0!important}
+.traveler>input[placeholder="请输入证件号"]{width:auto!important;min-width:200px;flex:3 1 0!important}
+.traveler>.select:nth-of-type(2){width:auto!important;min-width:80px;flex:1 1 0!important}
+.traveler>.danger{margin-left:auto!important;flex:0 0 32px!important}
+/* Ant Select 浮层在测试环境的层级为 1050；卡片只有打开浮层时才解除裁剪。 */
+.order.dropdown-open{position:relative;z-index:40;overflow:visible}
+.order.dropdown-open .select-panel{z-index:1050}
+.traveler .select-panel{top:36px;left:0;right:auto;min-width:100%;border:0;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,.08),0 3px 6px -4px rgba(0,0,0,.12),0 9px 28px 8px rgba(0,0,0,.05)}
+/* 测试环境 footerTop / footerLeft / footerRight 结构，1024 宽度下确认下单不可被截断。 */
+.settlement{display:flex;flex-direction:column;gap:4px;align-items:stretch}
+.footer-top{height:34px;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;min-width:0;white-space:nowrap}
+.footer-left,.footer-right{display:flex;align-items:center;min-width:0;white-space:nowrap}
+.footer-left{gap:16px;flex-wrap:nowrap}.footer-right{gap:12px;flex-wrap:nowrap}.total-info{display:flex;flex-flow:row nowrap;align-items:center;gap:24px;margin-left:0!important;white-space:nowrap}.total-count,.total-price{display:flex;align-items:center;flex-wrap:nowrap;white-space:nowrap}.total-count-label,.total-price-label{color:rgba(0,0,0,.85)}.total-count-value{font-weight:500;color:#0052d9}.total-price-label{margin-right:8px}.total-price .price{font-size:18px;font-weight:600;color:#f5222d}.footer-right .secondary,.footer-right .primary{height:32px;min-width:100px}
+@media(max-width:1024px){.footer-top{gap:0}.payment-box{width:207px;flex:0 0 207px;position:relative;z-index:1;border:1px solid #dcdcdc}.payment-label{padding-left:8px;font-size:13px}.payment-label:after{height:20px}.payment-box .pay-select,.payment-box .pay-text{font-size:12px}.footer-left{gap:8px;flex:0 0 207px;justify-content:flex-start}.footer-right{gap:4px;width:auto;flex:1 1 auto;justify-content:flex-end}.total-info{gap:8px;min-width:0}.total-count,.total-price{font-size:13px}.total-count-value{font-size:13px;font-weight:500}.total-price-label{font-size:13px;margin-right:4px}.total-price .price,.settlement #totalAmount{font-size:14px!important;font-weight:600;line-height:22px}.footer-right .secondary,.footer-right .primary{width:auto;min-width:80px;height:32px;padding:4px 12px;font-size:13px}}
+/* 按测试环境 footer 组件树落位：paymentActions/paymentItem/paymentValue/totalInfo/footerBtn。 */
+.settlement{position:sticky;bottom:0;z-index:10;box-sizing:border-box}.footer-left .payment-actions{display:flex;align-items:center;gap:10px;white-space:nowrap}.payment-box{box-sizing:border-box;border:1px solid #dcdcdc!important;border-radius:6px;overflow:hidden}.payment-value{min-width:120px;flex:1 1}.payment-value .pay-select{width:100%}.total-count-label,.total-price-label{font-size:13px;line-height:22px}.total-count-value{font-size:13px;line-height:22px}.total-price-value{font-size:14px;font-weight:600;line-height:22px;color:#f5222d}.footer-btn{height:32px}
+@media(max-width:1024px){.total-count-label,.total-price-label,.total-count-value{font-size:13px;line-height:22px}.total-price-value{font-size:14px!important;font-weight:600;line-height:22px}.footer-right .footer-btn{min-width:80px;height:32px;padding:4px 12px;font-size:13px}}
+/* 1024 的散客页将次操作压缩，主操作“确认下单”维持 80px。 */
+@media(max-width:1024px){.footer-right #cancel,.footer-right .pending-order{width:64px;min-width:64px;padding:4px 8px}.footer-right .pending-order{gap:4px}}
+@media(max-width:1024px){.payment-label{margin-right:0}.payment-value{min-width:116px}.payment-value .ant-select-selector{padding-inline:2px!important}}
+/* 右侧工作区在 1200px 前仍不足以容纳默认底栏；沿用紧凑规格，避免 1025~1199 再次遮挡。 */
+@media(max-width:1200px){.footer-left{gap:8px;flex:0 0 207px;justify-content:flex-start}.footer-right{gap:4px;width:auto;flex:1 1 auto;justify-content:flex-end}.payment-box{width:207px;flex:0 0 207px}.payment-label{padding-left:8px;margin-right:0;font-size:13px}.payment-label:after{height:20px}.payment-value{min-width:116px}.payment-value .ant-select-selector{padding-inline:2px!important;font-size:12px}.total-info{gap:8px;min-width:0}.total-count,.total-price,.total-count-label,.total-price-label,.total-count-value{font-size:13px;line-height:22px}.total-price-label{margin-right:4px}.total-price-value,.total-price .price,.settlement #totalAmount{font-size:14px!important;font-weight:600;line-height:22px}.footer-right .footer-btn{height:32px;font-size:13px}.footer-right #cancel,.footer-right .pending-order{width:64px;min-width:64px;padding:4px 8px}.footer-right .pending-order{gap:4px}.footer-right #confirm{width:80px;min-width:80px;padding:4px 12px}}
+/* 测试环境顶部外壳：1024 下保留品牌、系统名与菜单，不以手写“更多”替代菜单项。 */
+.header{height:56px;padding:0;gap:0}.left-header{min-width:280px;flex-shrink:0;display:flex;align-items:center;padding-left:24px}.brand{display:flex;align-items:center;gap:0;flex:0 1 auto}.brand .mark{width:34px;height:34px;flex:0 0 34px;margin-top:5px}.brand>span{margin-left:6px;font-size:14px;font-weight:600}.system-tag{height:28px;flex:0 0 auto;padding:0 5px;margin-left:12px;font-size:12px;font-weight:400}.mainnav{margin-left:4px;gap:4px}.mainnav button{min-width:70px;height:36px;padding:6px;font-size:14px;font-weight:400}.mainnav button.active{font-weight:600}.tools{min-width:120px;justify-content:flex-end;gap:15px;font-size:14px;font-weight:400}.admin{height:32px;padding:4px 12px;font-size:14px;font-weight:400}.tools>span:last-child{opacity:.8;font-size:14px;font-weight:400}
+@media(max-width:1200px){.brand>span{margin-left:4px}.mainnav{gap:3px}.tools{min-width:100px}}
+@media(max-width:1160px){.system-tag{display:flex}.mainnav button:nth-child(n){display:flex}.mainnav:after{display:none}}
+@media(max-width:1024px){.left-header{min-width:200px;padding-left:12px}.brand>span{margin-left:3px}.system-tag{height:24px;padding:0 3px;margin-left:6px}.mainnav{gap:2px}.mainnav button{min-width:40px;height:32px;padding:6px;font-size:12px}.tools{min-width:80px}.admin{height:32px;padding:4px 8px;font-size:13px}.tools>span:last-child{display:none}}
+</style>
+<script>
+(() => {
+  const iconBase = 'assets/';
+  const options = [['现金','CASH_PAY.png'],['扫码付','YC_SCAN_PAY.png'],['银行卡','YC_BANK_CARD_PAY.png'],['微信','YC_WECHAT_PAY.png'],['支付宝','YC_ALI_PAY.png'],['聚合支付','YC_AGGREGATE_PAY.png']];
+  const arrow = '<svg class="svg" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>';
+  const select = (label, options, cls = '') => '<div class="select control '+cls+'" data-select>'+label+arrow+'<div class="select-panel">'+options.map((item,index)=>'<div class="option'+(index===0?' selected':'')+'">'+item+'</div>').join('')+'</div></div>';
+
+  const sort = document.querySelector('.sort');
+  sort.innerHTML = '<div class="sort-arrows" aria-hidden="true"><span class="sort-icon sort-icon-asc sort-icon-active"><svg viewBox="0 0 1024 1024"><path d="M858.9 689 530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z"/></svg></span><span class="sort-icon sort-icon-desc"><svg viewBox="0 0 1024 1024"><path d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"/></svg></span></div><span class="sort-text">金额</span>';
+  sort.onclick = () => {
+    sort.classList.toggle('desc');
+    sort.querySelector('.sort-icon-asc').classList.toggle('sort-icon-active',!sort.classList.contains('desc'));
+    sort.querySelector('.sort-icon-desc').classList.toggle('sort-icon-active',sort.classList.contains('desc'));
+    const direction = sort.classList.contains('desc') ? -1 : 1;
+    tickets.sort((a, b) => (a.price - b.price) * direction);
+    const list = document.getElementById('tickets');
+    tickets.forEach(ticket => {
+      const item = list.querySelector('[data-ticket="'+ticket.id+'"]');
+      if (item) list.append(item);
+    });
+  };
+
+  const recent = document.querySelector('.sale-title .recent');
+  const refreshButton = document.createElement('button');
+  refreshButton.type = 'button';
+  refreshButton.className = 'order-refresh';
+  refreshButton.setAttribute('aria-label','刷新最近订单');
+  refreshButton.innerHTML = '<img src="assets/order_refresh.png" alt="">';
+  recent.after(refreshButton);
+  refreshButton.onclick = () => render();
+
+  const right = document.querySelector('.right');
+  const rightCard = document.createElement('div');
+  rightCard.className = 'right-card';
+  while (right.firstChild) rightCard.append(right.firstChild);
+  right.append(rightCard);
+
+  const settlement = document.querySelector('.settlement');
+  const oldLabel = settlement.querySelector(':scope > span:first-child');
+  const paySelect = settlement.querySelector('.pay-select');
+  const paymentBox = document.createElement('div');
+  paymentBox.className = 'payment-box';
+  oldLabel.className = 'payment-label';
+  const panel = paySelect.querySelector('.select-panel');
+  paySelect.firstChild.remove();
+  paySelect.insertAdjacentHTML('afterbegin','<img class="pay-icon" src="'+iconBase+'CASH_PAY.png" alt="现金"><span class="pay-text">现金</span>');
+  Array.from(paySelect.childNodes).filter(node => node.nodeType === Node.TEXT_NODE).forEach(node => node.remove());
+  panel.innerHTML = options.map(([label, icon], index) => '<div class="option'+(index===0?' selected':'')+'" data-icon="'+icon+'"><img src="'+iconBase+icon+'" alt="'+label+'"><span>'+label+'</span></div>').join('');
+  const paymentValue = document.createElement('div');
+  paymentValue.className = 'payment-value';
+  paymentValue.append(paySelect);
+  paymentBox.append(oldLabel, paymentValue);
+  const paymentActions = document.createElement('div');
+  paymentActions.className = 'payment-actions';
+  paymentActions.append(paymentBox);
+  settlement.prepend(paymentActions);
+  const confirmButton = settlement.querySelector('#confirm');
+  const pendingButton = document.createElement('button');
+  pendingButton.type = 'button';
+  pendingButton.className = 'secondary pending-order';
+  pendingButton.innerHTML = '<svg class="svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>挂单';
+  confirmButton.before(pendingButton);
+  pendingButton.onclick = () => {
+    modalText.textContent = '当前为预览稿：挂单操作将在正式系统中创建挂单记录。';
+    modal.classList.add('open');
+  };
+  /* 与测试页一致：结算栏不是把所有按钮平铺在 footer 中，而是左右两组。 */
+  const summary = settlement.querySelector('.summary');
+  const cancelButton = settlement.querySelector('#cancel');
+  const footerTop = document.createElement('div');
+  footerTop.className = 'footer-top';
+  const footerLeft = document.createElement('div');
+  footerLeft.className = 'footer-left';
+  const footerRight = document.createElement('div');
+  footerRight.className = 'footer-right';
+  const totalInfo = document.createElement('div');
+  totalInfo.className = 'total-info';
+  const totalCount = document.createElement('div');
+  totalCount.className = 'total-count';
+  const totalCountLabel = document.createElement('span');
+  totalCountLabel.className = 'total-count-label';
+  totalCountLabel.textContent = '总票数:';
+  const totalCountValue = document.getElementById('totalQty');
+  totalCountValue.className = 'total-count-value';
+  const totalCountUnit = document.createElement('span');
+  totalCountUnit.className = 'total-count-label';
+  totalCountUnit.textContent = '张';
+  totalCount.append(totalCountLabel, totalCountValue, totalCountUnit);
+  const totalPrice = document.createElement('div');
+  totalPrice.className = 'total-price';
+  const totalPriceLabel = document.createElement('span');
+  totalPriceLabel.className = 'total-price-label';
+  totalPriceLabel.textContent = '总金额:';
+  const totalPriceValue = document.getElementById('totalAmount');
+  totalPriceValue.className = 'total-price-value';
+  totalPrice.append(totalPriceLabel, totalPriceValue);
+  summary.remove();
+  totalInfo.append(totalCount, totalPrice);
+  footerLeft.append(paymentActions);
+  footerRight.append(totalInfo, cancelButton, pendingButton, confirmButton);
+  [cancelButton, pendingButton, confirmButton].forEach(button => button.classList.add('footer-btn'));
+  footerTop.append(footerLeft, footerRight);
+  settlement.replaceChildren(footerTop);
+  panel.querySelectorAll('.option').forEach(option => option.onclick = event => {
+    event.stopPropagation();
+    const label = option.textContent.trim();
+    paySelect.querySelector('.pay-text').textContent = label;
+    paySelect.querySelector('.pay-icon').src = iconBase + option.dataset.icon;
+    paySelect.querySelector('.pay-icon').alt = label;
+    panel.querySelectorAll('.option').forEach(item => item.classList.toggle('selected',item===option));
+    paySelect.classList.remove('open');
+  });
+
+  tickets[0].name='【优惠票-专属票】日历票-大门票+雨林拓展+幻境魔盒（同程测试）（周杰伦粉丝专属）';
+  tickets[0].season='实'; tickets[0].stock=9999; tickets[0].activity='活动标签，组合票被删除了活动标签是否可以删除';
+  tickets[1].season='旺季'; tickets[1].stock=2809; tickets[1].priceType='旺季';
+  tickets[2].stock=2999; tickets[2].priceType='淡季'; tickets[2].activity='毕业季体验游';
+  tickets[3].priceType='淡季';
+  let selectedOrderId = null;
+  const originalRender = render;
+  render = function(){ originalRender(); decorateOrderMeta(); };
+  function decorateOrderMeta(){
+    document.querySelectorAll('.order').forEach(card => {
+      const name = card.querySelector('.order-name')?.textContent || '';
+      const ticket = tickets.find(item => name === item.name);
+      if (!ticket) return;
+      card.dataset.ticketId = ticket.id;
+      card.classList.toggle('order-selected', selectedOrderId === ticket.id);
+      if (!card.dataset.selectionBound) {
+        card.dataset.selectionBound = '1';
+        card.addEventListener('click', () => {
+          selectedOrderId = ticket.id;
+          document.querySelectorAll('.order').forEach(order => order.classList.remove('order-selected'));
+          card.classList.add('order-selected');
+        });
+      }
+      const head = card.querySelector('.order-head');
+      head.classList.toggle('no-leading-tag', ticket.id === 'b');
+      head.querySelector('.order-meta')?.remove();
+      const tags = [];
+      if (ticket.priceType) tags.push('<span class="order-meta-tag season-tag">'+ticket.priceType+'</span>');
+      if (ticket.activity) tags.push('<span class="order-meta-tag activity-tag">'+ticket.activity+'</span>');
+      if (tags.length) head.querySelector('.stock').insertAdjacentHTML('beforebegin','<span class="order-meta">'+tags.join('')+'</span>');
+      const quantity = card.querySelector('.stepper');
+      if (quantity) {
+        const [decrease, increase] = quantity.querySelectorAll('button');
+        const input = quantity.querySelector('input');
+        decrease.classList.add('quantity-sub');
+        increase.classList.add('quantity-add');
+        decrease.innerHTML = '';
+        increase.innerHTML = '';
+        input.removeAttribute('readonly');
+        input.onchange = () => {
+          const item = cart.find(entry => entry.id === ticket.id);
+          if (item) { item.qty = Math.max(1, Number.parseInt(input.value,10) || 1); render(); }
+        };
+      }
+      /* 测试环境的 Select 通过 portal 位于卡片之上；本静态稿以卡片临时抬层实现同一效果。 */
+      card.querySelectorAll('.traveler [data-select]').forEach(select => {
+        if (select.dataset.cardLayerBound) return;
+        select.dataset.cardLayerBound = '1';
+        select.addEventListener('click', () => {
+          document.querySelectorAll('.order.dropdown-open').forEach(other => {
+            if (other !== card) other.classList.remove('dropdown-open');
+          });
+          card.classList.toggle('dropdown-open', select.classList.contains('open'));
+        });
+      });
+    });
+  }
+  document.addEventListener('click', () => document.querySelectorAll('.order.dropdown-open').forEach(card => card.classList.remove('dropdown-open')));
+  cart=[tickets[2],tickets[1],tickets[0]].map(ticket=>({...ticket,qty:1}));
+  render();
+  bindSelects();
+
+  const keepTabsRoot = document.getElementById('keepTabs');
+  const activateKeepTab = tab => keepTabsRoot.querySelectorAll('.page-tab').forEach(item => item.classList.toggle('active', item === tab));
+  const bindKeepTabsByRuntime = () => keepTabsRoot.querySelectorAll('.page-tab').forEach(tab => tab.onclick = event => {
+    if (event.target.closest('.tab-close')) {
+      event.stopPropagation();
+      if (keepTabsRoot.querySelectorAll('.page-tab').length === 1) return;
+      const wasActive = tab.classList.contains('active');
+      const siblings = [...keepTabsRoot.querySelectorAll('.page-tab')];
+      tab.remove();
+      if (wasActive) activateKeepTab(siblings.find(item => item !== tab) || keepTabsRoot.querySelector('.page-tab'));
+      return;
+    }
+    activateKeepTab(tab);
+  });
+  document.querySelectorAll('.mainnav button').forEach(button => button.onclick = () => {
+    const page = button.textContent.trim();
+    if (page === '首页') {
+      keepTabsRoot.querySelectorAll('.page-tab[data-page="首页"]').forEach(tab => tab.remove());
+      return;
+    }
+    let tab = keepTabsRoot.querySelector('.page-tab[data-page="'+page+'"]');
+    if (!tab) {
+      tab = document.createElement('button');
+      tab.className = 'page-tab';
+      tab.dataset.page = page;
+      tab.innerHTML = page+' <span class="tab-close" role="button" aria-label="关闭'+page+'页">×</span>';
+      keepTabsRoot.insertBefore(tab,document.getElementById('previewSessionControls'));
+      bindKeepTabsByRuntime();
+    }
+    activateKeepTab(tab);
+  });
+  bindKeepTabsByRuntime();
+})();
+</script>
+<!-- 本地 Ant Design 运行时：只用于替换现有控件，页面业务结构仍由上方散客票试跑页维护。 -->
+<style>
+/* 仅为 Ant 控件提供原页面同一位置与尺寸，不改变散客票业务容器。 */
+.ant-filter-host{grid-column:1/-1;min-width:0}.ant-filter-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:8px}.ant-filter-grid .category{grid-column:1/span 2}.ant-filter-grid .search{justify-self:end;width:86px}.ant-filter-grid .ant-btn{height:32px}.ant-filter-grid .ant-input,.ant-filter-grid .ant-select-selector{height:32px!important}.ant-filter-grid .ant-select-selection-item,.ant-filter-grid .ant-select-selection-placeholder{line-height:30px!important}
+.radio-row{align-items:center}.ant-radio-host .ant-radio-button-wrapper{height:32px;line-height:30px;padding-inline:15px}.utility .check{gap:0}.ant-check-host .ant-checkbox+span{padding-inline-start:7px}
+.ant-date-host{display:block;width:100%;height:100%}.ant-date-inner{height:30px;display:flex;align-items:center}.ant-date-label{height:30px;line-height:30px;padding:0 9px;background:#f7f9fc;border-right:1px solid #dcdcdc;color:#555}.ant-date-inner .ant-picker{height:30px;flex:1;padding-inline:10px}.ant-date-inner .ant-picker-input>input{font-size:14px}
+.ticket-ant-dropdown{z-index:1050!important}.ant-payment-host{width:100%}.ant-payment-host .ant-select-selector{border:0!important;box-shadow:none!important}.ant-payment-host .ant-select-selection-item{color:#0052d9}.payment-option{display:flex;align-items:center;gap:8px}.payment-option img{width:16px;height:16px;object-fit:contain}
+.traveler{display:flex;align-items:center}.ant-traveler-name{width:150px;min-width:150px;flex:0 0 150px}.ant-traveler-type{width:120px;min-width:120px;flex:0 0 120px}.ant-traveler-id{width:200px;min-width:200px;flex:0 0 200px}.ant-traveler-gender{width:80px;min-width:80px;flex:0 0 80px}.traveler .ant-input,.traveler .ant-select-selector{height:32px!important}.traveler .ant-select-selection-item,.traveler .ant-select-selection-placeholder{line-height:30px!important}.traveler .ant-input{padding-block:4px}.ant-quantity-host{display:inline-flex;vertical-align:middle}.ant-quantity-host .ant-input-number{position:relative;width:92px;height:32px}.ant-quantity-host .ant-input-number-input-wrap{position:relative;z-index:1}.ant-quantity-host .ant-input-number-input{height:30px}.ant-quantity-host .ant-input-number-handler-wrap{z-index:3!important;display:flex!important;width:22px!important;opacity:0!important;pointer-events:none!important;background:#fff}.ant-quantity-host .ant-input-number:hover .ant-input-number-handler-wrap,.ant-quantity-host .ant-input-number:focus-within .ant-input-number-handler-wrap{opacity:1!important;pointer-events:auto!important}.ant-quantity-host .ant-input-number-handler{z-index:4!important;height:15px!important;line-height:14px!important;color:rgba(0,0,0,.45)!important;pointer-events:auto!important}.ant-quantity-host .ant-input-number-handler span{display:block!important;font-size:12px!important;font-weight:400!important;line-height:14px!important}.ant-quantity-host .ant-input-number-handler:hover{color:#1677ff!important}.ant-quantity-host .ant-input-number:hover .ant-input-number-input{padding-right:30px}.ant-import-host{width:64px;flex:0 0 64px}.ant-import-host .ant-btn{width:64px;height:32px;padding-inline:0}
+</style>
+<style>.ant-quantity-control{display:inline-flex!important;width:92px!important;height:32px!important}.ant-quantity-control .ant-input-number{width:92px!important;height:32px!important}.ant-quantity-control .ant-input-number-input{height:30px!important;text-align:center!important}.ant-quantity-control .ant-input-number-handler-wrap{width:20px!important;opacity:0}.ant-quantity-control:hover .ant-input-number-handler-wrap,.ant-quantity-control:focus-within .ant-input-number-handler-wrap{opacity:1}.ant-quantity-control .ant-input-number-handler{height:15px!important;line-height:14px!important}.ant-quantity-control .ant-input-number-handler-up-inner,.ant-quantity-control .ant-input-number-handler-down-inner{font-size:10px!important}.ant-delete-host{display:inline-flex;align-items:center;flex:0 0 auto}.traveler .ant-delete-host{margin-left:auto}.ant-delete-host .ant-btn{width:32px;height:32px;padding:0}.ant-delete-host .anticon{display:inline-flex;align-items:center;color:inherit;font-size:14px;font-style:normal;line-height:0;text-align:center;text-rendering:optimizeLegibility;text-transform:none;vertical-align:-.125em}.ant-delete-host .anticon>svg{display:inline-block;width:1em;height:1em;fill:currentColor}@media(max-width:1200px){.traveler.has-missing-cert{flex-wrap:wrap!important}.traveler.has-missing-cert .missing-cert-host{order:7;display:inline-flex;align-items:center;flex:0 0 100%;height:32px}.traveler.has-missing-cert .ant-delete-host{margin-left:auto}}</style>
+<style>
+/* 增量字段沿用既有游客行，不创建第二套网格。 */
+.ant-delete-host .ant-btn{width:auto;height:auto;padding-inline:0}
+.ant-delete-host .anticon{font-size:16px!important;vertical-align:inherit}
+.order-head{padding-inline:8px!important}
+.order-form{padding-left:0!important;padding-right:0!important}
+.amountrow{padding-inline:16px}
+.traveler{padding-inline:8px!important}
+</style>
+<style>
+/* 原生 InputNumber handler 继承输入框右侧圆角；交互层仅提交一次 click。 */
+.ant-quantity-control .ant-input-number{border-radius:6px!important}
+.ant-quantity-control .ant-input-number-handler-wrap{border-radius:0 5px 5px 0!important;overflow:hidden!important}
+</style>
+<script src="vendor/react.production.min.js"></script>
+<script src="vendor/react-dom.production.min.js"></script>
+<script src="vendor/dayjs.min.js"></script>
+<script src="vendor/antd.min.js"></script>
+<script src="payment-fixture.js"></script>
+<style>
+.resource-strip{flex:0 0 auto;padding:8px;border-top:1px solid #e8e8e8;background:#fff}
+.resource-fields{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.resource-field{display:flex;align-items:center;gap:8px;flex:1 1 260px;min-width:0}
+.resource-field>label{flex:0 0 auto;white-space:nowrap;color:rgba(0,0,0,.85)}
+.resource-field .ant-select,.resource-field .ant-input{min-width:0;flex:1;width:100%}
+.resource-code{font-variant-numeric:tabular-nums}
+.resource-strip .ant-input[disabled]{color:rgba(0,0,0,.65);background:#f5f5f5}
+.resource-error{color:#ff4d4f;font-size:13px;line-height:20px}
+.resource-error:not(:empty){margin-top:4px}
+.payment-review{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px 16px;margin:16px 0 0}
+.payment-review dt{color:#666}.payment-review dd{margin:0;overflow-wrap:anywhere}
+.modal .preview-boundary{margin-top:16px;color:#888;font-size:13px}
+.payment-dialog{place-items:start center;padding-top:100px}
+.payment-dialog .modal{position:relative;width:min(900px,calc(100vw - 32px));height:min(452px,calc(100vh - 132px))}
+.payment-dialog .modal-title{border:0;flex:0 0 52px}
+.payment-dialog .modal-content{padding:0;flex:1;min-height:0;display:flex;overflow:hidden}
+.payment-dialog .modal-foot{display:none}
+.payment-dialog-body{display:flex;flex-direction:column;min-height:0;width:100%}
+.payment-ticket-area{padding:0 20px;overflow:auto;flex:1;min-height:80px}
+.payment-ticket-area .ant-table-wrapper{border:1px solid #f0f0f0;border-radius:8px;overflow:hidden}
+.payment-ticket-area .ant-table-thead>tr>th{background:#f0f5ff}
+.payment-ticket-area .ant-table-cell{padding:4px!important}
+.payment-ticket-area .ant-table-footer{padding:4px;background:white}
+.payment-ticket-total{text-align:right;padding:8px;font-weight:500}
+.payment-ticket-total strong{color:#f5222d;margin-left:12px}
+.payment-dialog-controls{flex:0 0 auto;background:#f0f2ff;padding:8px 12px}
+.payment-choice-row{display:flex;gap:8px;flex-wrap:wrap}
+.payment-choice-row .ant-btn,.payment-final-row .ant-btn{height:44px;background:white;border-color:transparent;padding:8px 12px}
+.payment-choice-row .ant-btn.selected,.payment-final-row .ticket-print-selected{border-color:#0052d9;color:rgba(0,0,0,.88);box-shadow:none;overflow:hidden}
+.payment-choice-row .ant-btn.selected:after,.payment-final-row .ticket-print-selected:after{content:'';position:absolute;right:0;bottom:0;width:20px;height:14px;background:#0052d9;clip-path:polygon(100% 0,100% 100%,0 100%)}
+.payment-choice-row .ant-btn.selected:before,.payment-final-row .ticket-print-selected:before{content:'';position:absolute;right:3px;bottom:3px;width:7px;height:4px;border-left:1px solid white;border-bottom:1px solid white;transform:rotate(-45deg);z-index:1}
+.payment-choice-row img{width:16px;height:16px}
+.payment-final-row{display:flex;gap:8px;align-items:center;margin-top:12px}
+.payment-final-row .payment-final-cancel{margin-left:auto;border-color:#d9d9d9}
+.payment-final-row .ant-btn-primary{background:#1677ff;border-color:#1677ff}
+.payment-modal-resources{flex:1;min-width:0;padding:0}.payment-modal-resources .resource-fields{flex-wrap:nowrap;gap:8px}.payment-modal-resources .resource-field{flex:1 1 0;min-width:0}.payment-modal-resources .resource-field>label{width:auto}
+.payment-cash-row{display:flex;align-items:center;gap:6px;margin:0;white-space:nowrap}.payment-cash-row .ant-input-number-group-wrapper{width:170px}.payment-cash-row .ant-input-number{width:100%}.payment-cash-row strong{color:#ff4d4f}.payment-final-row>.ant-btn{flex-shrink:0}.payment-final-row .payment-modal-resources .resource-field{flex-basis:0}.payment-final-row .payment-modal-resources .resource-field>label{width:auto}
+.payment-modal-close{position:absolute;right:12px;top:10px}
+.payment-modal-result{padding:10px 0;color:#0052d9}
+.team-only{display:none}.team-scene .team-only{display:block}.team-scene .filters,.team-scene .radio-row,.team-scene .pending-order{display:none!important}
+[hidden]{display:none!important}.partner-only{display:none}.partner-scene .partner-only{display:block}.partner-scene .pending-order{display:none!important}.partner-picker-row{display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:8px;margin-bottom:8px}.partner-picker-row .ant-btn{overflow:hidden;text-overflow:ellipsis}.partner-account-summary{padding:10px 12px;display:flex;flex-wrap:wrap;gap:4px 16px;border-bottom:1px solid #eee}.partner-temporary-fields{display:flex;flex-wrap:wrap;gap:8px;padding:8px 12px}.partner-temporary-fields label{display:flex;align-items:center;gap:4px}.partner-temporary-fields i{color:#ff4d4f}.partner-temporary-fields .ant-select,.partner-temporary-fields .ant-input{width:180px}.partner-recharge-entry .ant-btn{padding:0 4px}.partner-scene .payment-box{width:160px;flex-basis:160px}.partner-scene .payment-label{padding-left:8px;margin-right:0}.partner-scene .payment-label:after{margin-left:4px}.partner-scene .payment-box .ant-select{min-width:0}.partner-scene .payment-box .ant-select-disabled .ant-select-selector{background:transparent!important;color:#0052d9!important}
+#partnerWorkspace{height:calc(100vh - 96px);padding:8px;background:#fff;overflow:auto}#partnerWorkspace .ant-table-cell-fix-right{background:#fff}.partner-list-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 8px}.partner-list-filters label{display:flex;align-items:center;gap:6px;white-space:nowrap;min-width:0}.partner-list-filters .ant-input,.partner-list-filters .ant-select{min-width:0;flex:1}.partner-list-filters .team-chooser-actions{grid-column:span 2;margin:0}
+.partner-recharge-modal{max-width:calc(100vw - 32px);padding-bottom:0}.partner-recharge-modal .ant-modal-content{padding:20px 24px;background:#fff}.partner-recharge-modal .ant-modal-body{padding-top:4px;max-height:calc(100vh - 155px);overflow:auto}.recharge-table{width:100%;border-collapse:collapse;table-layout:fixed}.recharge-table th,.recharge-table td{height:40px;padding:7px 10px;border:1px solid #e8edf4}.recharge-table th{width:108px;background:#f7f9fc;color:#667085;font-weight:400;text-align:right}.recharge-table td{color:#30343b}.partner-recharge-modal .ant-input-number{width:100%}.partner-recharge-modal .ant-input-number-group-wrapper{max-width:100%;width:100%}.partner-recharge-modal .ant-modal-footer{margin-top:12px}.partner-recharge-footer{display:flex;align-items:center;gap:8px}.partner-recharge-footer>span{margin-right:auto;color:#1677ff}.partner-recharge-footer strong{font-size:18px}.recharge-total{color:#1677ff!important;font-weight:600}.partner-recharge-payment{margin:14px -18px 0;padding:10px 18px;border-top:1px solid #dae7ff;background:#edf3ff}.partner-recharge-payment .payment-choice-row{display:flex;gap:8px;flex-wrap:wrap}.partner-recharge-payment .ant-radio-button-wrapper{height:32px;border:1px solid #d9d9d9!important;border-radius:3px!important;line-height:30px;background:white}.partner-recharge-payment .ant-radio-button-wrapper:before{display:none!important}.partner-recharge-payment .ant-radio-button-wrapper-checked{border-color:#1677ff!important}.recharge-payment-tile{display:inline-flex;align-items:center;gap:6px}.partner-recharge-payment .payment-choice-row img{width:16px;height:16px;object-fit:contain}.recharge-cash-row{min-height:40px;display:flex;align-items:center;gap:8px;margin-top:8px}.recharge-cash-row label{display:flex;align-items:center;gap:8px}.recharge-cash-row .ant-input-number{width:180px}.recharge-cash-row>span{margin-left:12px;color:#ff4d4f}.partner-recharge-payment .resource-fields{padding:0}.partner-recharge-payment .resource-error:empty{display:none}
+.partner-recharge-entry #salePartnerRecharge{height:34px;min-width:88px;padding:4px 15px;margin-left:8px;border-radius:4px;box-shadow:0 3px 8px #1677ff3d;font-weight:600}.partner-recharge-entry #salePartnerRecharge:hover{transform:translateY(-1px);box-shadow:0 5px 12px #1677ff52}.partner-recharge-entry #salePartnerRecharge:active{transform:translateY(0)}.partner-recharge-entry .anticon-wallet{display:inline-flex;vertical-align:-.125em}
+.partner-recharge-modal .recharge-resource-slot{margin-top:8px}
+.partner-recharge-modal .partner-recharge-payment{margin:14px 0 0;width:100%;box-sizing:border-box}
+.partner-scene .ant-filter-grid>.category{grid-column:1/span 2;grid-row:1}.partner-scene .ant-filter-grid>.name{grid-column:3;grid-row:1}.partner-scene .ant-filter-grid>.activity{grid-column:1;grid-row:2}.partner-scene .ant-filter-grid>.price-type{grid-column:2;grid-row:2}.partner-scene .ant-filter-grid>.search{grid-column:3;grid-row:2}
+@media(max-width:1024px){.partner-recharge-entry #salePartnerRecharge{min-width:76px;padding:4px 12px}}
+@media(max-width:1160px){.partner-account-summary{font-size:12px;gap:2px 8px}.partner-list-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.partner-recharge-modal .resource-fields{gap:10px}}
+.team-filter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.team-filter-grid .agency-picker{grid-column:span 2}.team-filter-grid .team-type-filter{grid-column:span 3}.team-filter-grid .team-category{grid-column:span 2}.team-filter-grid .ant-btn{width:100%;text-align:left;overflow:hidden;text-overflow:ellipsis}.team-filter-grid .ant-select{width:100%;min-width:0}.team-filter-grid .team-query{text-align:center;width:80px;justify-self:end}.team-filter-grid .team-picker{display:flex;min-width:0}.team-picker .ant-btn:first-child{flex:1;min-width:0}.team-picker .ant-btn-icon-only{width:26px;flex:0 0 26px;padding:0;margin-left:2px}.team-scene .utility{flex:0 0 42px}
+.team-filter-grid .team-picker{border:1px solid #d3d3d3;border-radius:6px;height:32px;align-items:center;overflow:hidden}.team-picker:hover{border-color:#4096ff}.team-picker .ant-btn{border:0;box-shadow:none;height:30px;justify-content:flex-start;padding-inline:11px;background:transparent}.team-picker .ant-btn>span:not(.ant-btn-icon){overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.team-picker .ant-btn-icon-only{height:28px;width:24px;flex:0 0 24px;margin:0;padding:0;justify-content:center;color:#bfbfbf}.team-picker .picker-placeholder{color:#bfbfbf}.team-filter-grid .team-query{justify-content:center}.team-scene .ticket .season:empty{display:none}
+.team-account-summary{padding:10px 12px;border-bottom:1px solid #d9d9d9;display:flex;gap:12px;align-items:center;min-height:56px;flex-wrap:wrap}.team-account-summary>span{white-space:nowrap}.team-account-summary .agency-summary{max-width:240px;overflow:hidden;text-overflow:ellipsis}.team-account-summary .team-type-label{margin-left:auto;display:flex;gap:8px;align-items:center}.team-account-summary .ant-select{width:140px}.team-account-error{padding:0 12px;color:#ff4d4f}.team-account-error:empty{display:none}.team-scene .settlement{background:#f0f2ff}.team-chooser .ant-modal-body{max-height:calc(100vh - 205px);overflow:auto}.team-chooser-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:12px}.team-chooser-filters label{display:flex;align-items:center;gap:8px;min-width:0;white-space:nowrap}.team-chooser-filters .ant-input,.team-chooser-filters .ant-select{min-width:0;flex:1;width:100%}.team-chooser-actions{display:flex;gap:8px;justify-content:flex-end;margin-bottom:12px}.team-empty{color:#999;text-align:center;padding:40px 0}.team-scene .payment-choice-row{gap:6px}.team-scene .payment-choice-row .ant-btn{padding-inline:9px}.account-pay-icon{width:16px;height:16px}
+@media(max-width:1200px){.team-account-summary{gap:4px 12px;font-size:12px;min-height:84px}.team-account-summary .team-type-label{margin-left:0}.team-account-summary .ant-select{width:110px}.team-chooser-filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1200px){.resource-fields{gap:6px 12px}.resource-field{flex-basis:100%}.resource-field>label{width:140px}.resource-strip span{font-size:13px}}
+</style>
+<script>
+/*
+ * 控件桥接层
+ * - 不创建另一套页面，也不改变散客票、票卡、售卖信息、结算栏的容器层级。
+ * - 仅将原页面中原先手写的 Input / Select / InputNumber / DatePicker / Button
+ *   逐一替换为本地 Ant Design 控件。
+ */
+(() => {
+  const { createElement: h, useState } = React;
+  const { Input, Select, Button, Checkbox, Radio, DatePicker, InputNumber, ConfigProvider, Table, Modal, Descriptions } = antd;
+  const roots = new WeakMap();
+  const antTheme = { token: { colorPrimary: '#1677ff', borderRadius: 6, controlHeight: 32, fontSize: 14 } };
+  const wrap = node => h(ConfigProvider, { theme: antTheme }, node);
+  const mount = (host, node) => {
+    if (!host) return;
+    let root = roots.get(host);
+    if (!root) { root = ReactDOM.createRoot(host); roots.set(host, root); }
+    root.render(wrap(node));
+  };
+  const selectProps = options => ({
+    options: options.map(value => ({ value, label: value })),
+    style: { width: '100%' },
+    popupMatchSelectWidth: true,
+    getPopupContainer: () => document.body,
+    popupClassName: 'ticket-ant-dropdown'
+  });
+  const replaceWithHost = (node, className) => {
+    if (!node) return null;
+    const host = document.createElement('div');
+    host.className = className;
+    node.replaceWith(host);
+    return host;
+  };
+
+  function FilterControls() {
+    const [keyword, setKeyword] = useState('');
+    const [activity, setActivity] = useState();
+    const [priceType, setPriceType] = useState();
+    const [category, setCategory] = useState();
+    const activities = ['毕业季体验游', '活动标签，组合票被删除了活动标签是否可以删除'];
+    const prices = ['旺季', '淡季'];
+    const categories = ['儿童票'];
+    const runSearch = () => {
+      document.querySelectorAll('.ticket').forEach(ticket => {
+        const text = ticket.textContent || '';
+        const visible = (!keyword || text.includes(keyword))
+          && (!activity || text.includes(activity))
+          && (!priceType || text.includes(priceType))
+          && (!category || text.includes(category));
+        ticket.style.display = visible ? 'flex' : 'none';
+      });
+    };
+    return h('div', { className: 'ant-filter-grid' },
+      h(Input, { className: 'name', placeholder: '票型名称', value: keyword, onChange: e => setKeyword(e.target.value), onPressEnter: runSearch }),
+      h(Select, { ...selectProps(activities), className: 'activity', placeholder: '活动标签', value: activity, onChange: setActivity, allowClear: true }),
+      h(Select, { ...selectProps(prices), className: 'price-type', placeholder: '价格类型', value: priceType, onChange: setPriceType, allowClear: true }),
+      h(Select, { ...selectProps(categories), className: 'category', placeholder: '门票分类', value: category, onChange: setCategory, allowClear: true }),
+      h(Button, { type: 'primary', className: 'search', onClick: runSearch }, '查询')
+    );
+  }
+
+  function mountTopControls() {
+    const filters = document.querySelector('.filters');
+    if (filters && !filters.dataset.antMounted) {
+      filters.dataset.antMounted = '1';
+      filters.replaceChildren(Object.assign(document.createElement('div'), { className: 'ant-filter-host' }));
+      mount(filters.firstElementChild, h(FilterControls));
+    }
+    const radioRow = document.querySelector('.radio-row');
+    if (radioRow && !radioRow.dataset.antMounted) {
+      radioRow.dataset.antMounted = '1';
+      const host = document.createElement('div'); host.className = 'ant-radio-host'; radioRow.replaceChildren(host);
+      mount(host, h(Radio.Group, { defaultValue: 'normal', optionType: 'button', buttonStyle: 'solid', options: [{ label: '常规票', value: 'normal' }, { label: '套票', value: 'package' }] }));
+    }
+    const check = document.querySelector('.utility .check');
+    if (check && !check.dataset.antMounted) {
+      check.dataset.antMounted = '1';
+      check.replaceChildren(Object.assign(document.createElement('span'), { className: 'ant-check-host' }));
+      mount(check.firstElementChild, h(Checkbox, { defaultChecked: true }, '显示价格类型，票型票种'));
+    }
+    const datebox = document.querySelector('#datebox');
+    if (datebox && !datebox.dataset.antMounted) {
+      datebox.dataset.antMounted = '1';
+      datebox.replaceChildren(Object.assign(document.createElement('span'), { className: 'ant-date-host' }));
+      mount(datebox.firstElementChild, h('div', { className: 'ant-date-inner' },
+        h('span', { className: 'ant-date-label' }, '日期'),
+        h(DatePicker, { defaultValue: dayjs('2026-10-09'), allowClear: false, format: 'YYYY-MM-DD', inputReadOnly: true, bordered: false })
+      ));
+    }
+  }
+
+  const initialFixture = structuredClone(window.paymentFixture);
+  let paymentFixture = structuredClone(initialFixture);
+  const previewStorageKey='tc-ticket-payment-preview:yanoda-demo:v1';
+  const previewSessionKey=previewStorageKey+':session';
+  let previewSyncTime=null;
+  function readPreviewConfiguration(){
+    if(!/^https?:$/.test(location.protocol))return null;
+    try{
+      const data=JSON.parse(localStorage.getItem(previewStorageKey)||'null');
+      return data?.version===1&&data.scenicId===initialFixture.scenicId&&Array.isArray(data.payments)&&Array.isArray(data.resources)&&data.bindings?data:null;
+    }catch{return null}
+  }
+  function mergePreviewConfiguration(data){
+    if(!data)return;
+    for(const key of ['payments','resources','bindings','accounts','devices'])if(data[key])paymentFixture[key]=structuredClone(data[key]);
+    paymentFixture.payments.forEach(p=>{p.allowedScenes=initialFixture.payments.find(x=>x.code===p.code)?.allowedScenes||[];if(data.sceneRevision!==2&&!p.scenes.includes('innerGuide'))p.scenes.push('innerGuide')});
+    previewSyncTime=data.updatedAt;
+  }
+  mergePreviewConfiguration(readPreviewConfiguration());
+  try{
+    const session=JSON.parse(sessionStorage.getItem(previewSessionKey)||'null');
+    if(session&&paymentFixture.accounts.some(x=>x.value===session.accountKey)&&paymentFixture.devices.some(x=>x.value===session.deviceKey))Object.assign(paymentFixture.session,{accountKey:session.accountKey,deviceKey:session.deviceKey});
+  }catch{}
+  const paymentState = { code:null, resourceId:null, reviewed:null };
+  // 团队工作台：数据为脱敏模拟样例，选择弹窗和工作台字段来自当次线上只读核对。
+  const retailCatalog=tickets.map(t=>({...t}));
+  const teamCatalog=[
+    {id:'team-down',name:'【私有化部署价格类型】团队2号下行',season:'',realName:false,valid:'当日可用',price:80,stock:9999},
+    {id:'team-period',name:'【优惠票】团队单门票（期票）',season:'旺季',priceType:'旺季',activity:'直播间福利1',realName:false,valid:'2026-09-16-2027-10-22',price:99,stock:9999992}
+  ];
+  const teamAgencies=[
+    {id:'agency-demo-1',group:'演示集团',name:'团队测试旅行社一',types:['常规团','一日游'],source:'线上预约平台',reservation:'已禁用',approval:'已禁用',balance:1000.01,credit:null,enabled:true},
+    {id:'agency-demo-2',group:'演示集团',name:'团队测试旅行社二',types:['常规团','一日游'],source:'无预约',reservation:'已禁用',approval:'已禁用',balance:50,credit:100,enabled:true}
+  ];
+  const teamGuides=[
+    {id:'guide-demo-1',name:'演示导游一',documentType:'身份证',document:'DEMO-DOC-01',phone:'',guideCode:'DEMO-GUIDE-01',agencies:'团队测试旅行社一',status:'有效'},
+    {id:'guide-demo-2',name:'演示导游二',documentType:'护照',document:'DEMO-DOC-02',phone:'',guideCode:'DEMO-GUIDE-02',agencies:'团队测试旅行社二',status:'有效'}
+  ];
+  const teamState={agencyId:null,guideId:null,type:undefined,filterType:undefined};
+  const sceneViews={};
+  const agency=()=>teamAgencies.find(x=>x.id===teamState.agencyId);
+  const guide=()=>teamGuides.find(x=>x.id===teamState.guideId);
+  const inTeam=()=>paymentFixture.session.scene==='team';
+  const teamFilterHost=document.createElement('div');teamFilterHost.className='team-only';teamFilterHost.id='teamFilters';document.querySelector('.left').prepend(teamFilterHost);
+  const teamSummaryHost=document.createElement('div');teamSummaryHost.className='team-only';teamSummaryHost.id='teamSummary';document.querySelector('.sale-head').before(teamSummaryHost);
+  const chooserHost=document.createElement('div');document.body.append(chooserHost);
+  // 两个充值入口共用同一组件、同一伙伴主数据；不复用或改写售票支付草稿。
+  const partners=[
+    {id:'partner-demo-1',type:'企业',name:'演示挂帐合作伙伴',account:'DEMO-A001',accountType:'ON_ACCOUNT',contact:'演示联系人一',phone:'',owner:'演示负责人',balance:-200,limit:500,enabled:true},
+    {id:'partner-demo-2',type:'企业',name:'演示预付款合作伙伴',account:'DEMO-A002',accountType:'PREPAY',contact:'演示联系人二',phone:'',owner:'演示负责人',balance:80,limit:0,enabled:true}
+  ];
+  const partnerState={id:null,temporary:false,customer:'',owner:null};
+  const rechargeRecords=[];
+  const partner=()=>partners.find(p=>p.id===partnerState.id);
+  const inPartner=()=>paymentFixture.session.scene==='partnerSale';
+  const accountLabel=code=>code==='PREPAY'?'预付款':'挂帐';
+  const partnerHost=document.createElement('div');partnerHost.className='partner-only';partnerHost.id='partnerControls';document.querySelector('.left').prepend(partnerHost);
+  const partnerSummaryHost=document.createElement('div');partnerSummaryHost.className='partner-only';partnerSummaryHost.id='partnerSummary';document.querySelector('.sale-head').before(partnerSummaryHost);
+  const rechargeButtonHost=document.createElement('span');rechargeButtonHost.className='partner-only partner-recharge-entry';document.querySelector('.payment-box').after(rechargeButtonHost);
+  const partnerListHost=document.createElement('main');partnerListHost.id='partnerWorkspace';partnerListHost.hidden=true;document.querySelector('main.page').after(partnerListHost);
+  const rechargeHost=document.createElement('div');document.body.append(rechargeHost);
+  function partnerError(checkAmount=true){
+    if(!inPartner())return '';
+    if(partnerState.temporary)return !partnerState.owner?'请选择对接负责人':!partnerState.customer.trim()?'请输入客户名称':'';
+    const p=partner();if(!p?.enabled)return '请选择可用合作伙伴';
+    const amount=cart.reduce((sum,x)=>sum+x.price*x.qty,0);
+    if(checkAmount&&p.accountType==='PREPAY'&&Math.round(amount*100)>Math.round(p.balance*100))return '合作伙伴预付款余额不足，请先充值';
+    if(checkAmount&&p.accountType==='ON_ACCOUNT'&&p.limit!==null&&Math.round(amount*100)>Math.round((p.balance+p.limit)*100))return '合作伙伴可用挂帐额度不足';
+    return '';
+  }
+  function partnerColumns(selecting=false){return [
+    {title:'合作类型',dataIndex:'type',width:100},{title:'合作伙伴名称',dataIndex:'name',width:210},
+    ...(!selecting?[{title:'账户号',dataIndex:'account',width:150},{title:'默认账户类型',dataIndex:'accountType',width:130,render:accountLabel}]:[]),
+    ...(selecting?[{title:'对接负责人',dataIndex:'owner',width:130}]:[]),{title:'联系人',dataIndex:'contact',width:140},
+    ...(selecting?[{title:'账户余额',dataIndex:'balance',width:120,render:v=>v.toFixed(2)},{title:'挂帐额度',dataIndex:'limit',width:120,render:v=>v===null?'无限额':v.toFixed(2)},{title:'可用挂帐额度',key:'available',width:140,render:(_,p)=>p.limit===null?'无限额':(p.balance+p.limit).toFixed(2)}]:[{title:'联系电话',dataIndex:'phone',width:130,render:v=>v||'—'},{title:'对接负责人',dataIndex:'owner',width:130},{title:'状态',dataIndex:'enabled',width:90,render:v=>v?'启用':'禁用'}])
+  ];}
+  const partnerPagination={pageSize:20,showSizeChanger:true,showQuickJumper:true,showTotal:total=>`共 ${total} 条`,locale:{items_per_page:'条/页',jump_to:'跳至',jump_to_confirm:'确定',page:'页',prev_page:'上一页',next_page:'下一页'}};
+  function PartnerChooser(){
+    const [open,setOpen]=useState(true),[selected,setSelected]=useState(partnerState.id),[draft,setDraft]=useState({}),[query,setQuery]=useState({});
+    const rows=partners.filter(p=>p.enabled&&(!query.id||p.id===query.id)&&(!query.contact||(p.contact+p.phone).includes(query.contact))&&(!query.owner||p.owner.includes(query.owner)));
+    return h(Modal,{open,title:'选择合作伙伴',width:1100,style:{top:32},className:'team-chooser partner-chooser',onCancel:()=>setOpen(false),footer:[h(Button,{key:'cancel',onClick:()=>setOpen(false)},'取消'),h(Button,{key:'ok',type:'primary',disabled:!selected,onClick:()=>{partnerState.id=selected;partnerState.temporary=false;choosePayment(partner().accountType);refreshPartner();refreshPayment();setOpen(false);}},'确定')]},
+      h('div',{className:'team-chooser-filters'},h('label',null,'合作伙伴：',h(Select,{showSearch:true,optionFilterProp:'label',allowClear:true,placeholder:'请选择或搜索合作伙伴',value:draft.id,options:partners.filter(p=>p.enabled).map(p=>({value:p.id,label:p.name})),onChange:id=>setDraft({...draft,id})})),h('label',null,'联系人/电话：',h(Input,{value:draft.contact, onChange:e=>setDraft({...draft,contact:e.target.value})})),h('label',null,'负责人/电话：',h(Input,{value:draft.owner,onChange:e=>setDraft({...draft,owner:e.target.value})}))),
+      h('div',{className:'team-chooser-actions'},h(Button,{type:'primary',onClick:()=>setQuery({...draft})},'查询'),h(Button,{onClick:()=>{setDraft({});setQuery({})}},'重置')),
+      h(Table,{rowKey:'id',size:'small',columns:partnerColumns(true),dataSource:rows,scroll:{x:1100},pagination:{...partnerPagination,pageSize:10},rowSelection:{type:'radio',selectedRowKeys:selected?[selected]:[],onChange:keys=>setSelected(keys[0])},onRow:p=>({onClick:()=>setSelected(p.id)})}));
+  }
+  function PartnerControls(){return h('div',{className:'partner-picker-row'},h(Button,{id:'selectPartner',onClick:()=>mount(chooserHost,h(PartnerChooser,{key:Date.now()}))},partnerState.temporary?'请选择合作伙伴':partner()?.name||'请选择合作伙伴'),h(Button,{id:'temporaryCustomer',type:partnerState.temporary?'primary':'default',onClick:()=>{partnerState.temporary=true;partnerState.id=null;choosePayment('ON_ACCOUNT');refreshPartner();refreshPayment();}},'临时客户'));}
+  function PartnerSummary(){
+    const p=partner();return h(React.Fragment,null,h('div',{className:'partner-account-summary'},
+      h('span',null,'合作伙伴：',partnerState.temporary?'公共临时客户':p?.name||'—'),
+      !partnerState.temporary&&p&&h(React.Fragment,null,h('span',null,'对接负责人：',p.owner),h('span',null,'联系人：',p.contact),h('span',null,p.accountType==='PREPAY'?'账户余额：':'挂帐金额：',money(p.accountType==='PREPAY'?p.balance:Math.max(0,-p.balance))),p.accountType==='ON_ACCOUNT'&&h('span',null,'可用挂帐额度：',p.limit===null?'无限额':money(p.balance+p.limit)))),
+      partnerState.temporary&&h('div',{className:'partner-temporary-fields'},h('label',null,h('i',null,'*'),'对接负责人：',h(Select,{'aria-label':'对接负责人',placeholder:'请选择或搜索员工',showSearch:true,value:partnerState.owner,options:[{value:'owner-demo',label:'演示负责人'}],onChange:owner=>{partnerState.owner=owner;refreshPartner();}})),h('label',null,h('i',null,'*'),'客户名称：',h(Input,{placeholder:'请输入客户名称',value:partnerState.customer,onChange:e=>{partnerState.customer=e.target.value;refreshPartner();}}))),
+      h('div',{id:'partnerSaleError',className:'team-account-error',role:'alert'}));
+  }
+  function refreshPartner(){
+    mount(partnerHost,h(PartnerControls));mount(partnerSummaryHost,h(PartnerSummary));
+    mount(rechargeButtonHost,!partnerState.temporary&&partner()?h(Button,{id:'salePartnerRecharge',type:'primary',icon:h(WalletOutlined),onClick:()=>openPartnerRecharge(partner().id,'sale')},'充值'):null);
+  }
+  function PartnerWorkspace(){
+    const [draft,setDraft]=useState({enabled:true}),[query,setQuery]=useState({enabled:true});
+    const rows=partners.filter(p=>(query.enabled===undefined||p.enabled===query.enabled)&&(!query.name||p.name.includes(query.name))&&(!query.contact||(p.contact+p.phone).includes(query.contact))&&(!query.owner||p.owner.includes(query.owner)));
+    return h(React.Fragment,null,h('div',{className:'business-tabs'},h('button',{className:'active'},'合作伙伴充值')),
+      h('div',{className:'partner-list-filters'},[['name','合作伙伴名称','请输入合作伙伴名称'],['contact','联系人/电话','请输入联系人或电话'],['owner','对接负责人','请输入员工名或手机号']].map(([key,label,placeholder])=>h('label',{key},label+'：',h(Input,{placeholder,value:draft[key]||'',onChange:e=>setDraft({...draft,[key]:e.target.value}),onPressEnter:()=>setQuery({...draft})}))),h('label',null,'状态：',h(Select,{'aria-label':'合作伙伴状态',value:draft.enabled,allowClear:true,options:[{value:true,label:'启用'},{value:false,label:'禁用'}],onChange:enabled=>setDraft({...draft,enabled})})),h('div',{className:'team-chooser-actions'},h(Button,{type:'primary',onClick:()=>setQuery({...draft})},'查询'),h(Button,{onClick:()=>{setDraft({enabled:true});setQuery({enabled:true})}},'重置'))),
+      h(Table,{rowKey:'id',size:'small',dataSource:rows,columns:[...partnerColumns(),{title:'操作',key:'actions',fixed:'right',width:90,render:(_,p)=>h(Button,{type:'link',disabled:!p.enabled,onClick:()=>openPartnerRecharge(p.id,'list')},'充值')}],scroll:{x:1270},pagination:partnerPagination}));
+  }
+  function showPartnerWorkspace(show){document.querySelector('main.page').hidden=show;partnerListHost.hidden=!show;document.querySelectorAll('.mainnav button').forEach(button=>button.classList.toggle('active',button.textContent.trim()===(show?'合作伙伴':'售票')));if(show)mount(partnerListHost,h(PartnerWorkspace));}
+  // 在现有页签路由中接入两个已实现页面，未实现的导航不冒充业务页面。
+  document.querySelectorAll('.mainnav button').forEach(button=>{if(['售票','合作伙伴'].includes(button.textContent.trim())){const original=button.onclick;button.onclick=()=>{original();showPartnerWorkspace(button.textContent.trim()==='合作伙伴');};}});
+  document.getElementById('keepTabs').addEventListener('click',event=>{const tab=event.target.closest('.page-tab');if(tab&&!event.target.closest('.tab-close'))showPartnerWorkspace(tab.dataset.page==='合作伙伴');else if(tab&&event.target.closest('.tab-close'))queueMicrotask(()=>showPartnerWorkspace(document.querySelector('.page-tab.active')?.dataset.page==='合作伙伴'));});
+  function setTeamError(error=''){const node=document.getElementById('teamAccountError');if(node)node.textContent=error;}
+  function teamError(code=paymentState.code){
+    if(!inTeam())return '';
+    const selected=agency();
+    if(!selected||!selected.enabled)return '请选择可用旅行社';
+    if(!selected.types.includes(teamState.type))return '请选择团队类型';
+    const total=cart.reduce((sum,x)=>sum+x.price*x.qty,0);
+    if(code==='PREPAY'&&Math.round(total*100)>Math.round(selected.balance*100))return '旅行社预付款余额不足，请更换支付方式';
+    if(code==='CREDIT_SIGN'&&selected.credit!==null&&Math.round(total*100)>Math.round(selected.credit*100))return '旅行社签单授信余额不足，请更换支付方式';
+    return '';
+  }
+  function TeamSummary(){return h(React.Fragment,null,
+    h('div',{className:'team-account-summary'},
+      h('span',{className:'agency-summary',title:agency()?.name||''},h('b',null,'旅行社：'),agency()?`${agency().name} (${agency().group})`:'—'),
+      h('span',null,h('b',null,'导游：'),guide()?.name||'—'),
+      h('span',null,h('b',null,'账户余额：'),agency()?.balance.toFixed(2)||'—'),
+      h('span',null,h('b',null,'签单授信余额：'),agency()?(agency().credit===null?'无限制':agency().credit.toFixed(2)):'—'),
+      h('label',{className:'team-type-label'},'团队类型：',h(Select,{id:'teamSaleType','aria-label':'售卖团队类型',value:teamState.type,placeholder:'请选择',options:(agency()?.types||[]).map(value=>({value,label:value})),disabled:!agency(),onChange:value=>{teamState.type=value;paymentState.reviewed=null;setTeamError();refreshTeam();}}))),
+    h('div',{id:'teamAccountError',className:'team-account-error',role:'alert'}));}
+  function refreshTeam(){mount(teamSummaryHost,h(TeamSummary));mount(teamFilterHost,h(TeamFilters));}
+  function applyTeamCatalog(){
+    tickets.splice(0,tickets.length,...(agency()?teamCatalog:[]));
+    document.getElementById('tickets').replaceChildren();renderTickets();
+    if(!agency()){const empty=document.createElement('div');empty.className='team-empty';empty.textContent='暂无数据';document.getElementById('tickets').append(empty);}
+  }
+  function chooseAgency(id){
+    teamState.agencyId=id;teamState.type=agency()?.types[0];
+    paymentState.reviewed=null;setTeamError();applyTeamCatalog();refreshTeam();
+  }
+  function TeamChooser({kind}){
+    const isAgency=kind==='agency';
+    const [open,setOpen]=useState(true),[selected,setSelected]=useState(isAgency?teamState.agencyId:teamState.guideId),[draft,setDraft]=useState({}),[query,setQuery]=useState({});
+    const fields=isAgency?[['group','集团名称','请输入集团名称'],['name','旅行社名称','请输入旅行社名称'],['source','预约来源','请选择预约来源']]:[['name','导游姓名','导游姓名'],['phone','导游手机','导游手机号'],['document','导游证件号','请输入导游证件号'],['guideCode','导游证号','请输入导游证号'],['agencies','已绑定旅行社','请输入已绑定旅行社']];
+    const rows=(isAgency?teamAgencies:teamGuides).filter(row=>Object.entries(query).every(([key,value])=>!value||String(row[key]).includes(value)));
+    const columns=isAgency?[
+      {title:'集团名称',dataIndex:'group',width:150},{title:'旅行社名称',dataIndex:'name',width:200},{title:'团队类型',dataIndex:'types',width:130,render:v=>v.join(',')},{title:'预约来源',dataIndex:'source',width:130},{title:'预约规则',dataIndex:'reservation',width:100},{title:'超限审批',dataIndex:'approval',width:100},{title:'账户余额(元)',dataIndex:'balance',width:125,render:v=>v.toFixed(2)},{title:'签单授信余额(元)',dataIndex:'credit',width:145,render:v=>v===null?'无限制':v.toFixed(2)}
+    ]:[{title:'导游姓名',dataIndex:'name',width:120},{title:'证件类型',dataIndex:'documentType',width:100},{title:'导游证件号',dataIndex:'document',width:170},{title:'导游手机号',dataIndex:'phone',width:135,render:v=>v||'—'},{title:'导游证号',dataIndex:'guideCode',width:150},{title:'已绑定旅行社',dataIndex:'agencies',width:220},{title:'导游状态',dataIndex:'status',width:100}];
+    const [hidden,setHidden]=useState([]),[configOpen,setConfigOpen]=useState(false),[error,setError]=useState('');
+    return h(Modal,{open,title:isAgency?'选择旅行社':'请选择导游',width:1100,style:{top:40},className:'team-chooser',onCancel:()=>setOpen(false),footer:[h(Button,{key:'ok',type:'primary',onClick:()=>{if(!selected){setError(isAgency?'请选择旅行社':'请选择导游');return}if(isAgency)chooseAgency(selected);else{teamState.guideId=selected;paymentState.reviewed=null;refreshTeam();}setOpen(false);}},'确定'),h(Button,{key:'cancel',onClick:()=>setOpen(false)},'取消')]},
+      h('div',{className:'team-chooser-filters'},fields.map(([key,label,placeholder])=>h('label',{key},label+'：',key==='source'||key==='agencies'?h(Select,{...selectProps(key==='source'?['线上预约平台','无预约','系统对接']:teamAgencies.map(x=>x.name)),placeholder,allowClear:true,value:draft[key],onChange:value=>setDraft({...draft,[key]:value})}):h(Input,{placeholder,value:draft[key]||'',onChange:e=>setDraft({...draft,[key]:e.target.value}),onPressEnter:()=>setQuery(draft)})))),
+      h('div',{className:'team-chooser-actions'},h(Button,{type:'primary',onClick:()=>setQuery(draft)},'查询'),h(Button,{onClick:()=>{setDraft({});setQuery({});}},'重置'),h(Button,{onClick:()=>setConfigOpen(!configOpen)},'配置列')),
+      configOpen&&h(Checkbox.Group,{value:columns.filter(c=>!hidden.includes(c.dataIndex)).map(c=>c.dataIndex),options:columns.map(c=>({value:c.dataIndex,label:c.title})),onChange:values=>setHidden(columns.map(c=>c.dataIndex).filter(key=>!values.includes(key)))}),
+      h(Table,{rowKey:'id',size:'small',locale:{emptyText:'暂无数据'},columns:columns.filter(c=>!hidden.includes(c.dataIndex)),dataSource:rows,scroll:{x:isAgency?1200:1150},rowSelection:{type:'radio',selectedRowKeys:selected?[selected]:[],onChange:keys=>{setSelected(keys[0]);setError('');}},onRow:row=>({onClick:()=>{setSelected(row.id);setError('');}}),pagination:{pageSize:10,showSizeChanger:true,showQuickJumper:true,showTotal:total=>`共 ${total} 条`,locale:{items_per_page:'条/页',jump_to:'跳至',jump_to_confirm:'确定',page:'页',prev_page:'上一页',next_page:'下一页'}}}),error&&h('div',{className:'resource-error',role:'alert'},error));
+  }
+  function openTeamChooser(kind){mount(chooserHost,h(TeamChooser,{kind,key:Date.now()}));}
+  function TeamFilters(){
+    const [keyword,setKeyword]=useState(''),[category,setCategory]=useState(),[activity,setActivity]=useState(),[price,setPrice]=useState();
+    const picker=(kind,label,clear)=>h('div',{className:'team-picker '+(kind==='agency'?'agency-picker':'')},h(Button,{className:label?'':'picker-placeholder',title:label,onClick:()=>openTeamChooser(kind)},label||`请选择${kind==='agency'?'旅行社':'导游'}`),label&&h(Button,{'aria-label':`清空${kind==='agency'?'旅行社':'导游'}`,size:'small',icon:h('svg',{width:12,height:12,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor'},h('circle',{cx:12,cy:12,r:9}),h('path',{d:'M8 8l8 8M16 8l-8 8'})),onClick:clear}));
+    return h('div',{className:'team-filter-grid'},
+      picker('agency',agency()?.name,()=>chooseAgency(null)),picker('guide',guide()?.name,()=>{teamState.guideId=null;paymentState.reviewed=null;refreshTeam();}),
+      h(Select,{...selectProps(['常规团','一日游']),className:'team-type-filter',placeholder:'请选择团队类型',value:teamState.filterType,allowClear:true,onChange:value=>{teamState.filterType=value;refreshTeam();}}),
+      h(Select,{...selectProps(['团队票']),className:'team-category',placeholder:'门票分类',value:category,allowClear:true,onChange:setCategory}),h(Input,{placeholder:'票型名称',value:keyword,onChange:e=>setKeyword(e.target.value)}),
+      h(Select,{...selectProps(['直播间福利1']),placeholder:'活动标签',value:activity,allowClear:true,onChange:setActivity}),h(Select,{...selectProps(['私有化部署价格类型','优惠票']),placeholder:'价格类型',value:price,allowClear:true,onChange:setPrice}),
+      h(Button,{type:'primary',className:'team-query',onClick:()=>document.querySelectorAll('#tickets .ticket').forEach(node=>{node.style.display=(!keyword||node.textContent.includes(keyword))&&(!activity||teamCatalog.find(t=>t.id===node.dataset.ticket)?.activity===activity)&&(!price||node.textContent.includes(price))&&(!teamState.filterType||agency()?.types.includes(teamState.filterType))?'flex':'none';})},'查询'));
+  }
+  function switchSaleScene(scene){
+    if(scene===paymentFixture.session.scene)return;
+    const previous=paymentFixture.session.scene;
+    sceneViews[previous]={cart,tickets:[...tickets],orders:[...document.querySelectorAll('#orders .order')],ticketNodes:[...document.getElementById('tickets').childNodes],payment:{...paymentState}};
+    document.querySelectorAll('#orders .order').forEach(node=>node.remove());
+    paymentFixture.session.scene=scene;const saved=sceneViews[scene];cart=saved?.cart||[];
+    tickets.splice(0,tickets.length,...(saved?.tickets||(scene==='team'?(agency()?teamCatalog:[]):retailCatalog)));
+    document.getElementById('tickets').replaceChildren(...(saved?.ticketNodes||[]));
+    if(!saved){renderTickets();if(scene==='team'&&!agency())applyTeamCatalog();}
+    document.getElementById('orders').append(...(saved?.orders||[]));document.getElementById('empty').style.display=cart.length?'none':'flex';
+    totalQty.textContent=cart.reduce((sum,x)=>sum+x.qty,0);totalAmount.textContent=money(cart.reduce((sum,x)=>sum+x.price*x.qty,0));
+    document.body.classList.toggle('team-scene',scene==='team');
+    document.body.classList.toggle('partner-scene',scene==='partnerSale');
+    document.querySelectorAll('main.page>.business-tabs button').forEach((button,index)=>button.classList.toggle('active',index===(scene==='team'?1:scene==='partnerSale'?2:0)));
+    document.querySelector('.sale-title .recent').textContent=scene==='team'?'最近订单：2026-10-16 16:13:35　演示订单　1张　现金：¥80':'最近订单：2026-10-08 14:01:33　DD261008140133001001s　5张　现金：¥0.05';
+    if(saved)Object.assign(paymentState,saved.payment);
+    if(!saved||!eligiblePayments().some(p=>p.code===paymentState.code))choosePayment(eligiblePayments()[0]?.code||null);
+    else{const result=resolveResources(paymentState.code);if(usesResources(paymentState.code)&&!result.options.some(r=>r.id===paymentState.resourceId))choosePayment(paymentState.code);}
+    if(inPartner())choosePayment(partnerState.temporary?'ON_ACCOUNT':partner()?.accountType||null);
+    refreshTeam();refreshPartner();refreshPayment();
+  }
+  document.querySelectorAll('main.page>.business-tabs button').forEach((button,index)=>{if(index<3)button.onclick=()=>switchSaleScene(index===1?'team':index===2?'partnerSale':'retail');});
+  window.validateTeamSale=()=>{const error=teamError(null)||partnerError(false);setTeamError(error);const node=document.getElementById('partnerSaleError');if(node)node.textContent=error;return error;};
+  let refreshPayment = () => {};
+  const usesResources = code => ['SCAN_PAY','BANK_CARD'].includes(code);
+  const teamPaymentOrder=['CASH','SCAN_PAY','BANK_CARD','ON_ACCOUNT','WECHAT','ALIPAY','PREPAY','CREDIT_SIGN','AGGREGATE_PAY'];
+  const eligiblePayments = () => {
+    const rows=paymentFixture.payments.filter(p => p.on && p.scenes.includes(paymentFixture.session.scene));
+    if(inPartner()){
+      if(partnerState.temporary)return [{code:'ON_ACCOUNT',name:'挂帐',mode:'账户支付',on:true,scenes:[]}];
+      return rows.filter(p=>p.code===partner()?.accountType&&['ON_ACCOUNT','PREPAY'].includes(p.code));
+    }
+    return inTeam()?rows.sort((a,b)=>teamPaymentOrder.indexOf(a.code)-teamPaymentOrder.indexOf(b.code)):rows;
+  };
+  function resolveResources(code) {
+    const payment = paymentFixture.payments.find(p => p.code === code);
+    if (!payment || !usesResources(code)) return { payment, options:[], error:'' };
+    const account = payment.owner === 'account';
+    const binding = paymentFixture.bindings[account ? paymentFixture.session.accountKey : paymentFixture.session.deviceKey];
+    const prefix = code === 'SCAN_PAY' ? 'scan' : 'bank';
+    const type = code === 'SCAN_PAY' ? 'scan' : 'pos';
+    const ids = binding?.[prefix+'Selected'] || [];
+    const options = paymentFixture.resources.filter(r => r.enabled && r.type === type && ids.includes(r.id));
+    const defaultId = binding?.[prefix+'Default'];
+    let error = '';
+    if (!ids.length) error = account ? '当前账号未配置收款资源' : '当前窗口未配置收款资源';
+    else if (!options.length) error = '收款资源已失效，请联系管理员配置';
+    else if (payment.usage === '固定使用一个' && (ids.length !== 1 || !options.some(r => r.id === defaultId))) error = '固定资源配置无效，请联系管理员配置';
+    else if (!options.some(r => r.id === defaultId)) error = '默认资源已失效，请联系管理员配置';
+    return { payment, options, defaultId, error };
+  }
+  function choosePayment(code) {
+    paymentState.code = code;
+    paymentState.reviewed = null;
+    const resolved = resolveResources(code);
+    paymentState.resourceId = usesResources(code) && !resolved.error ? resolved.defaultId : null;
+  }
+  choosePayment(eligiblePayments()[0]?.code || null);
+  function effectiveBindingSignature(){
+    const result=resolveResources(paymentState.code);
+    const key=result.payment?.owner==='account'?paymentFixture.session.accountKey:paymentFixture.session.deviceKey;
+    return JSON.stringify([paymentState.code,result.payment?.on,result.payment?.scenes,result.payment?.owner,result.payment?.usage,key,result.defaultId,result.error,result.options]);
+  }
+  function updatePreviewSession(field,value){
+    const before=effectiveBindingSignature();
+    paymentFixture.session[field]=value;
+    try{sessionStorage.setItem(previewSessionKey,JSON.stringify(paymentFixture.session))}catch{}
+    if(before!==effectiveBindingSignature())choosePayment(paymentState.code);
+    paymentState.reviewed=null;
+    refreshPayment();renderPreviewSession();window.refreshPaymentDialog?.();window.refreshPartnerRecharge?.();window.refreshInnerGuide?.();
+  }
+  function PreviewSessionControls(){
+    const linked=/^https?:$/.test(location.protocol);
+    return h('div',{className:'preview-session-controls'},
+      h('label',null,'测试账号'),h(Select,{id:'testAccount', 'aria-label':'测试账号',showSearch:true,optionFilterProp:'label',value:paymentFixture.session.accountKey,options:paymentFixture.accounts,onChange:value=>updatePreviewSession('accountKey',value),popupClassName:'ticket-ant-dropdown'}),
+      h('label',null,'测试设备'),h(Select,{id:'testDevice','aria-label':'测试设备',showSearch:true,optionFilterProp:'label',value:paymentFixture.session.deviceKey,options:paymentFixture.devices,onChange:value=>updatePreviewSession('deviceKey',value),popupClassName:'ticket-ant-dropdown'}),
+      h('span',{className:'preview-session-status',id:'previewSyncStatus'},linked?(previewSyncTime?'后台配置已同步':'初始样例'):'独立样例'),
+      h('a',{href:linked?'../admin/index.html':'../window/index.html',target:'_blank',rel:'noopener'},linked?'后台配置':'打开联动预览'));
+  }
+  function renderPreviewSession(){
+    mount(document.getElementById('previewSessionControls'),h(PreviewSessionControls));
+    const userName=document.querySelector('.tools>span:last-child');
+    if(userName)userName.textContent=paymentFixture.session.accountKey.split(' / ')[1]||paymentFixture.session.accountKey.slice(5);
+  }
+  function syncPreviewConfiguration(){
+    const data=readPreviewConfiguration();
+    if(!data||data.updatedAt===previewSyncTime)return;
+    const before=effectiveBindingSignature();
+    mergePreviewConfiguration(data);
+    if(!eligiblePayments().some(x=>x.code===paymentState.code))choosePayment(eligiblePayments()[0]?.code||null);
+    else if(before!==effectiveBindingSignature())choosePayment(paymentState.code);
+    paymentState.reviewed=null;
+    refreshPayment();renderPreviewSession();window.refreshPaymentDialog?.();window.refreshPartnerRecharge?.();window.refreshInnerGuide?.();
+  }
+  window.addEventListener('storage',event=>{if(event.key===previewStorageKey)syncPreviewConfiguration()});
+  window.addEventListener('focus',syncPreviewConfiguration);
+  document.querySelector('.admin').onclick=()=>window.open(location.protocol==='file:'?'../admin/index.html':'../admin/index.html','_blank','noopener');
+  renderPreviewSession();
+  function paymentError() {
+    const payment = eligiblePayments().find(p => p.code === paymentState.code);
+    if (!payment) return eligiblePayments().length ? '当前支付方式已停用或不适用，请重新选择' : '当前无可用支付方式，请联系管理员配置';
+    const accountError=teamError()||partnerError();if(accountError)return accountError;
+    if (!usesResources(payment.code)) return '';
+    const result = resolveResources(payment.code);
+    if (result.error) return result.error;
+    if (!result.options.some(r => r.id === paymentState.resourceId)) return '所选收款资源已失效，请重新选择';
+    const selected=result.options.find(r=>r.id===paymentState.resourceId);
+    if (!(selected.counterCode || selected.posCode || '').trim()) return '收款资源编码未配置，请联系管理员配置';
+    if (payment.usage === '固定使用一个' && paymentState.resourceId !== result.defaultId) return '收款配置已变更，请重新选择支付方式';
+    return '';
+  }
+  function currentSnapshot() {
+    const payment = paymentFixture.payments.find(p => p.code === paymentState.code);
+    const resource = usesResources(paymentState.code) ? paymentFixture.resources.find(r => r.id === paymentState.resourceId) : null;
+    return {
+      scenicId:paymentFixture.scenicId, scene:paymentFixture.session.scene,
+      ...(inTeam()?{team:{agencyId:agency()?.id||null,agencyName:agency()?.name||null,groupName:agency()?.group||null,guideId:guide()?.id||null,guideName:guide()?.name||null,type:teamState.type||null,balance:agency()?.balance??null,credit:agency()?.credit??null}}:{}),
+      ...(inPartner()?{partner:{id:partner()?.id||null,name:partnerState.temporary?partnerState.customer:partner()?.name,temporary:partnerState.temporary,owner:partnerState.temporary?partnerState.owner:partner()?.owner,account:partner()?.account||null,accountType:partnerState.temporary?'ON_ACCOUNT':partner()?.accountType}}:{}),
+      accountKey:paymentFixture.session.accountKey, deviceKey:paymentFixture.session.deviceKey,
+      paymentCode:payment?.code, paymentName:payment?.name, mode:payment?.mode,
+      owner:usesResources(paymentState.code) ? payment?.owner : null,
+      resourceId:resource?.id || null, resourceName:resource?.name || null,
+      resourceCode:resource ? resource.counterCode || resource.posCode : null,
+      quantity:cart.reduce((sum,x) => sum+x.qty,0), amount:cart.reduce((sum,x) => sum+x.price*x.qty,0)
+    };
+  }
+  function ResourceFields({modalScope=false,state=paymentState,onChange,validation,readOnly=false,showFixedHint=true}={}) {
+    if (!usesResources(state.code)) return null;
+    const { payment, options, error } = resolveResources(state.code);
+    const resource = options.find(r => r.id === state.resourceId);
+    const fixed = payment.usage === '固定使用一个';
+    const resourceInputId=state===paymentState?(modalScope?'modalCollectionResource':'collectionResource'):'rechargeCollectionResource';
+    const codeInputId=state===paymentState?(modalScope?'modalCollectionCode':'collectionCode'):'rechargeCollectionCode';
+    return h(React.Fragment, null,
+      h('div', { className:'resource-fields' },
+        h('div', { className:'resource-field' }, h('label', { htmlFor:resourceInputId }, '收款资源：'),
+          fixed ? h(Input, { id:resourceInputId, disabled:true, value:resource?.name || '', placeholder:'未配置' })
+            : h(Select, { id:resourceInputId, 'aria-label':'收款资源', value:resource?.id, placeholder:'请选择收款资源',
+              options:options.map(r => ({value:r.id,label:r.name})), disabled:!!error||readOnly, placement:'topLeft',
+              popupClassName:'ticket-ant-dropdown', getPopupContainer:() => document.body,
+              onChange:id => {if(onChange)onChange(id);else{paymentState.resourceId=id;paymentState.reviewed=null;refreshPayment();window.refreshPaymentDialog?.();}} })),
+        h('div', { className:'resource-field resource-code' }, h('label', {htmlFor:codeInputId}, '柜台编码/POS编号：'),
+          h(Input, {id:codeInputId,disabled:true,value:resource?.counterCode || resource?.posCode || '',placeholder:'—'}))),
+      h('div', {className:'resource-error',role:'alert'}, error || (validation?validation():paymentError())),
+      showFixedHint&&!error&&!(validation?validation():paymentError())&&fixed&&h('div',{style:{fontSize:12,color:'#8c8c8c',paddingTop:4}},'固定资源不可切换；编号自动带出。')
+    );
+  }
+  const rechargePayments=()=>paymentFixture.payments.filter(p=>p.on&&p.scenes.includes('partner')&&['CASH','SCAN_PAY','BANK_CARD','WECHAT','ALIPAY'].includes(p.code));
+  function rechargePaymentError(state){
+    const p=rechargePayments().find(p=>p.code===state.code);if(!p)return '当前无可用充值支付方式，请联系管理员配置';
+    if(!usesResources(p.code))return '';
+    const r=resolveResources(p.code),selected=r.options.find(x=>x.id===state.resourceId);
+    return r.error||(!selected?'请选择有效收款资源':!(selected.counterCode||selected.posCode||'').trim()?'收款资源编码未配置，请联系管理员配置':p.usage==='固定使用一个'&&state.resourceId!==r.defaultId?'收款配置已变更，请重新选择支付方式':'');
+  }
+  function PartnerRecharge({partnerId,source}){
+    const p=partners.find(p=>p.id===partnerId);
+    const [open,setOpen]=useState(true),[amount,setAmount]=useState(0),[other,setOther]=useState(0),[cash,setCash]=useState(null),[payer,setPayer]=useState(''),[remark,setRemark]=useState(''),[error,setError]=useState(''),[recorded,setRecorded]=useState(false),[,rerender]=useState(0);
+    const [state]=useState(()=>{const code=rechargePayments()[0]?.code||null,r=resolveResources(code);return {code,resourceId:r.error?null:r.defaultId,signature:''};});
+    const signature=()=>{const r=resolveResources(state.code),key=r.payment?.owner==='account'?paymentFixture.session.accountKey:paymentFixture.session.deviceKey;return JSON.stringify([r.payment,r.options,r.defaultId,r.error,key]);};
+    if(!state.signature)state.signature=signature();
+    window.refreshPartnerRecharge=()=>{if(recorded)return;if(!rechargePayments().some(x=>x.code===state.code)){state.code=rechargePayments()[0]?.code||null;state.signature='';}const next=signature();if(next!==state.signature){const r=resolveResources(state.code);state.resourceId=r.error?null:r.defaultId;state.signature=next;}rerender(v=>v+1);};
+    const close=()=>{setOpen(false);window.refreshPartnerRecharge=null;};
+    const cents=value=>Math.round(Number(value||0)*100);
+    const total=(cents(amount)+cents(other))/100;
+    const choose=code=>{state.code=code;const r=resolveResources(code);state.resourceId=r.error?null:r.defaultId;state.signature=signature();setError('');rerender(v=>v+1);};
+    const submit=()=>{
+      if(state.submitted)return;
+      syncPreviewConfiguration();window.refreshPartnerRecharge?.();
+      let invalid=!p?.enabled?'当前合作伙伴已停用':!Number.isFinite(total)||total<=0||amount===null||other===null||Number(amount)<0||Number(other)<0?'请输入有效充值金额，收款合计须大于零':rechargePaymentError(state);
+      if(!invalid&&state.code==='CASH'&&(cash===null||cents(cash)<cents(total)))invalid='现金实收不能小于本次收款合计';
+      if(invalid){setError(invalid);return;}
+      const payment=rechargePayments().find(x=>x.code===state.code),resource=usesResources(state.code)?resolveResources(state.code).options.find(r=>r.id===state.resourceId):null;
+      const record={id:'local-recharge-'+(rechargeRecords.length+1),createdAt:new Date().toISOString(),scenicId:paymentFixture.scenicId,source,scene:'partner',partnerId:p.id,partnerName:p.name,account:p.account,accountType:p.accountType,amount:Number(amount),otherIncome:Number(other),total,payer,remark,paymentCode:payment.code,paymentName:payment.name,mode:payment.mode,owner:resource?payment.owner:null,resourceId:resource?.id||null,resourceName:resource?.name||null,resourceCode:resource?(resource.counterCode||resource.posCode):null,accountKey:paymentFixture.session.accountKey,deviceKey:paymentFixture.session.deviceKey,cashReceived:state.code==='CASH'?Number(cash):null,cashChange:state.code==='CASH'?(cents(cash)-cents(total))/100:null};
+      state.submitted=true;rechargeRecords.push(structuredClone(record));p.balance=(cents(p.balance)+cents(amount))/100;
+      setRecorded(true);setError('');refreshPartner();if(!partnerListHost.hidden)mount(partnerListHost,h(PartnerWorkspace));
+    };
+    const cells=(label,value,label2,value2)=>h('tr',null,h('th',null,label),h('td',label2?null:{colSpan:3},value),label2&&h('th',null,label2),label2&&h('td',null,value2));
+    return h(Modal,{open,title:'合作伙伴充值',width:920,centered:true,className:'partner-recharge-modal',onCancel:close,footer:h('div',{className:'partner-recharge-footer'},h('span',null,'本次收款合计：',h('strong',null,total.toFixed(2)),' 元'),h(Button,{onClick:close},'取消充值'),h(Button,{type:'primary',disabled:recorded,onClick:submit},'确认充值'))},
+      h('div',{className:'partner-recharge-details'},h('table',{className:'recharge-table'},h('tbody',null,
+        cells('合作类型',p.type,'合作伙伴',p.name),cells('联系人',p.contact,'联系电话',p.phone||'—'),cells('对接负责人',p.owner,'账户类型',accountLabel(p.accountType)),
+        cells('客户/付款人',h(Input,{maxLength:50,placeholder:'请输入客户/付款人名称',value:payer,disabled:recorded,onChange:e=>setPayer(e.target.value)})),
+        cells('充值账号',p.account,p.accountType==='PREPAY'?'账户余额':'当前挂帐金额',(p.accountType==='PREPAY'?p.balance:Math.max(0,-p.balance)).toFixed(2)),
+        cells('充值金额',h(InputNumber,{'aria-label':'充值金额',min:0,precision:2,value:amount,disabled:recorded,addonAfter:'元',onChange:setAmount}),'计入其他收入',h(InputNumber,{'aria-label':'计入其他收入',min:0,precision:2,value:other,disabled:recorded,addonAfter:'元',onChange:setOther})),
+        cells('本次收款合计',h('strong',{className:'recharge-total'},total.toFixed(2)+' 元')),cells('备注',h(Input.TextArea,{'aria-label':'充值备注',rows:2,maxLength:500,showCount:true,value:remark,disabled:recorded,onChange:e=>setRemark(e.target.value)}))))),
+      h('div',{className:'partner-recharge-payment'},
+        h(Radio.Group,{className:'payment-choice-row',value:state.code,disabled:recorded,onChange:e=>choose(e.target.value)},rechargePayments().map(x=>h(Radio.Button,{key:x.code,value:x.code},h('span',{className:'recharge-payment-tile'},h(PaymentIcon,{code:x.code}),h('span',null,x.name))))),
+        usesResources(state.code)&&h('div',{className:'recharge-resource-slot'},h(ResourceFields,{state,modalScope:true,readOnly:recorded,validation:()=>rechargePaymentError(state),onChange:id=>{if(recorded)return;state.resourceId=id;setError('');rerender(v=>v+1);}})),
+        state.code==='CASH'&&h('div',{className:'recharge-cash-row'},h('label',null,'现金实收：',h(InputNumber,{'aria-label':'现金实收',min:0,precision:2,value:cash,disabled:recorded,onChange:setCash}),' 元'),h('span',null,'现金找零：',Math.max(0,(cents(cash)-cents(total))/100).toFixed(2),' 元'))),
+      error&&h('div',{className:'resource-error',role:'alert'},error),recorded&&h('div',{className:'payment-modal-result',role:'status'},'本地预览已记录充值，未提交真实支付或入账。'));
+  }
+  function openPartnerRecharge(partnerId,source){syncPreviewConfiguration();mount(rechargeHost,h(PartnerRecharge,{partnerId,source,key:Date.now()}));}
+  window.partnerPreview={partners:()=>structuredClone(partners),records:()=>structuredClone(rechargeRecords)};
+  window.validateWindowPayment = () => {
+    syncPreviewConfiguration();
+    const error = paymentError();
+    refreshPayment();
+    return error;
+  };
+  // 游客录入区两类票均保留；必填校验按每张票的实名标志判断，不能按整单一刀切。
+  window.validateWindowTravelers = () => {
+    let invalid=false;
+    document.querySelectorAll('#orders .order').forEach(card=>{
+      const ticket=cart.find(item=>item.id===card.dataset.ticketId);
+      card.querySelectorAll('.traveler').forEach(row=>{
+        row.nextElementSibling?.classList.contains('traveler-required-errors')&&row.nextElementSibling.remove();
+        const missingLabels=[];
+        for(const [placeholder,label] of [['姓名','姓名'],['请输入证件号','证件号码']]) {
+          const input=row.querySelector(`input[placeholder="${placeholder}"]`);
+          if(!input)continue;
+          const missing=!!ticket?.realName&&!input.value.trim();
+          input.classList.toggle('ant-input-status-error',missing);
+          input.setAttribute('aria-invalid',String(missing));
+          input.setAttribute('aria-required',String(!!ticket?.realName));
+          if(missing){
+            invalid=true;
+            missingLabels.push(label);
+            input.oninput=()=>{input.classList.remove('ant-input-status-error');input.setAttribute('aria-invalid','false');const tip=row.nextElementSibling;if(tip?.classList.contains('traveler-required-errors'))tip.remove()};
+          }
+        }
+        if(missingLabels.length){const tip=document.createElement('div');tip.className='traveler-required-errors';tip.setAttribute('role','alert');tip.style.cssText='color:#ff4d4f;font-size:12px;line-height:18px;padding:0 8px 0 24px';tip.textContent=`请补充${missingLabels.join('、')}`;row.after(tip);}
+      });
+    });
+    return invalid;
+  };
+  const paymentIconFiles={CASH:'CASH_PAY',SCAN_PAY:'YC_SCAN_PAY',BANK_CARD:'YC_BANK_CARD_PAY',WECHAT:'YC_WECHAT_PAY',ALIPAY:'YC_ALI_PAY',AGGREGATE_PAY:'YC_AGGREGATE_PAY'};
+  function PaymentIcon({code}){
+    if(paymentIconFiles[code])return h('img',{src:'assets/'+paymentIconFiles[code]+'.png',alt:''});
+    return h('svg',{className:'account-pay-icon',viewBox:'0 0 24 24',fill:'none',stroke:code==='ON_ACCOUNT'?'#faad14':code==='PREPAY'?'#1677ff':'#36b7bb',strokeWidth:1.8,'aria-hidden':true},h('rect',{x:4,y:3,width:16,height:18,rx:2}),h('path',{d:code==='CREDIT_SIGN'?'M8 8h8M8 12h5M12 17l2 2 4-5':code==='PREPAY'?'M8 8h8M12 11v7M9 14h6':'M8 8h8M8 12h8M8 16h5'}));
+  }
+  function PaymentDialog(){
+    const cents=value=>Math.round(Number(value||0)*100);
+    const [,rerender]=useState(0);const [printMode,setPrintMode]=useState('一人一票');const [recorded,setRecorded]=useState(false);const [cash,setCash]=useState(()=>currentSnapshot().amount);const [cashError,setCashError]=useState('');
+    const snapshot=currentSnapshot();
+    window.refreshPaymentDialog=()=>{setRecorded(false);rerender(v=>v+1)};
+    const close=()=>{modal.classList.remove('open','payment-dialog');window.refreshPaymentDialog=null;roots.get(modalText)?.unmount();roots.delete(modalText);modalText.replaceChildren()};
+    return h('div',{className:'payment-dialog-body'},
+      h(Button,{type:'text',className:'payment-modal-close','aria-label':'关闭支付订单确认',onClick:close,icon:h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:1.8},h('path',{d:'M6 6l12 12M18 6L6 18'}))}),
+      h('div',{className:'payment-ticket-area'},
+        h(Table,{size:'small',pagination:false,rowKey:'id',dataSource:cart,columns:[{title:'门票名称',dataIndex:'name',width:'66%'},{title:'售卖单价（元）',dataIndex:'price',width:'17%',render:money},{title:'张数（张）',dataIndex:'qty',width:'17%'}],footer:()=>h('div',{className:'payment-ticket-total'},`总数： ${snapshot.quantity}张　　应付：`,h('strong',null,money(snapshot.amount)))}),
+        recorded&&h('div',{className:'payment-modal-result',role:'status'},'本地预览已记录本次出票信息，未提交真实订单或支付。')),
+      h('div',{className:'payment-dialog-controls'},
+        h('div',{className:'payment-choice-row'},eligiblePayments().map(p=>h(Button,{key:p.code,className:paymentState.code===p.code?'selected':'',onClick:()=>{choosePayment(p.code);setRecorded(false);setCashError('');refreshPayment();rerender(v=>v+1)},icon:h(PaymentIcon,{code:p.code})},p.name))),
+        !usesResources(paymentState.code)&&paymentError()&&h('div',{className:'resource-error',role:'alert'},paymentError()),
+        cashError&&h('div',{className:'resource-error',role:'alert'},cashError),
+        h('div',{className:'payment-final-row'},['一票多人','一人一票'].map(mode=>h(Button,{key:mode,className:printMode===mode?'ticket-print-selected':'',onClick:()=>setPrintMode(mode)},mode)),
+          usesResources(paymentState.code)&&h('div',{className:'payment-modal-resources'},h(ResourceFields,{modalScope:true,showFixedHint:false})),
+          paymentState.code==='CASH'&&h('div',{className:'payment-cash-row'},h(InputNumber,{id:'saleCashReceived','aria-label':'现金实收',addonBefore:'现金实收',min:0,precision:2,value:cash,onChange:value=>{setCash(value);setCashError('');setRecorded(false)}}),'元',h('strong',null,'现金找零：',money(Math.max(0,(cents(cash)-cents(snapshot.amount))/100)))),
+          h(Button,{className:'payment-final-cancel',onClick:close},'取消出票'),
+          h(Button,{type:'primary',disabled:recorded,onClick:()=>{if(window.validateWindowPayment()){rerender(v=>v+1);return}if(paymentState.code==='CASH'&&(cash===null||cents(cash)<cents(snapshot.amount))){setCashError('现金实收不能小于应付金额');return}paymentState.reviewed={...structuredClone(currentSnapshot()),printMode,cashReceived:paymentState.code==='CASH'?Number(cash):null,cashChange:paymentState.code==='CASH'?(cents(cash)-cents(snapshot.amount))/100:null};setRecorded(true)}},'确认出票'))))
+  }
+  window.reviewWindowPayment = () => {
+    syncPreviewConfiguration();
+    paymentState.reviewed=structuredClone(currentSnapshot());
+    document.querySelector('#modal .modal-title').textContent='支付订单确认';
+    modal.classList.add('payment-dialog','open');
+    mount(modalText,h(PaymentDialog,{key:Date.now()}));
+  };
+  // 自动验收接口：仅改变本地内存；不提供额外产品配置入口。
+  window.paymentPreview = {
+    fixture:() => structuredClone(paymentFixture),
+    state:() => ({...structuredClone(paymentState),error:paymentError(),snapshot:currentSnapshot()}),
+    replaceFixture:fixture => {paymentFixture=structuredClone(fixture);refreshPayment();},
+    reset:() => {paymentFixture=structuredClone(initialFixture);choosePayment(eligiblePayments()[0]?.code||null);refreshPayment();}
+  };
+
+  function mountFooterControl() {
+    const paymentValue = document.querySelector('.payment-value');
+    if (!paymentValue || paymentValue.dataset.antMounted) return;
+    paymentValue.dataset.antMounted = '1';
+    const host = document.createElement('div'); host.className = 'ant-payment-host'; paymentValue.replaceChildren(host);
+    refreshPayment = () => {
+      const eligible=eligiblePayments();
+      const options=eligible.map(p=>({value:p.code,label:h('span',{className:'payment-option'},h(PaymentIcon,{code:p.code}),h('span',null,p.name))}));
+      mount(host,h(Select,{value:options.some(o=>o.value===paymentState.code)?paymentState.code:undefined,options,placeholder:options.length?'请选择支付方式':'暂无支付方式',disabled:inPartner()||!options.length,
+        style:{width:'100%'},placement:'topLeft',popupMatchSelectWidth:true,getPopupContainer:()=>document.body,popupClassName:'ticket-ant-dropdown',
+        onChange:code=>{choosePayment(code);refreshPayment();}}));
+    };
+    refreshPayment();
+    document.getElementById('cancel').onclick=()=>{cart=[];choosePayment(eligiblePayments()[0]?.code||null);refreshPayment();window.render();};
+  }
+
+  function QuantityControl({ ticketId, initialValue }) {
+    const value = initialValue;
+    const commit = nextValue => {
+      if (!Number.isFinite(nextValue)) return;
+      const next = Math.max(1, Math.trunc(nextValue));
+      if (next === value) return;
+      window.antQuantityChange?.(ticketId, next);
+    };
+    const commitSingleStep = event => {
+      const handler = event.target.closest('.ant-input-number-handler');
+      if (!handler) return;
+      event.preventDefault();
+      event.stopPropagation();
+      commit(value + (handler.classList.contains('ant-input-number-handler-up') ? 1 : -1));
+    };
+    return h('span', { className: 'ant-quantity-control', onMouseDownCapture: commitSingleStep },
+      h(InputNumber, { min: 1, precision: 0, value, controls: {
+        upIcon: h(QuantityStepIcon, { type: 'plus' }),
+        downIcon: h(QuantityStepIcon, { type: 'minus' })
+      }, onChange: commit })
+    );
+  }
+
+  function QuantityStepIcon({ type }) {
+    const path = type === 'plus'
+      ? 'M482 152m0-40a40 40 0 1 1 80 0v360h360a40 40 0 1 1 0 80H562v360a40 40 0 1 1-80 0V552H122a40 40 0 1 1 0-80h360V112z'
+      : 'M904 482H120c-4.4 0-8 3.6-8 8v44c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-44c0-4.4-3.6-8-8-8z';
+    return h('span', { role: 'img', 'aria-label': type, className: `anticon anticon-${type}` },
+      h('svg', { viewBox: '64 64 896 896', focusable: 'false', 'aria-hidden': 'true' }, h('path', { d: path }))
+    );
+  }
+
+  function WalletOutlined(){return h('span',{role:'img','aria-label':'wallet',className:'anticon anticon-wallet'},h('svg',{viewBox:'64 64 896 896',width:'1em',height:'1em',fill:'currentColor','aria-hidden':true},h('path',{d:'M880 298H152v-92h676v44h72V138c0-17.7-14.3-32-32-32H144c-35.3 0-64 28.7-64 64v684c0 35.3 28.7 64 64 64h736c35.3 0 64-28.7 64-64V362c0-35.3-28.7-64-64-64zm-8 548H152V370h720v476zM704 572a40 40 0 1 0 80 0 40 40 0 0 0-80 0z'})));}
+
+  function DeleteOutlined() {
+    return h('span', { role: 'img', 'aria-label': 'delete', className: 'anticon anticon-delete' },
+      h('svg', { viewBox: '64 64 896 896', focusable: 'false', 'aria-hidden': 'true' },
+        h('path', { d: 'M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z' })
+      )
+    );
+  }
+
+  function mountDeleteButton(node, className) {
+    if (!node || node.dataset.antMounted) return;
+    node.dataset.antMounted = '1';
+    const legacyClick = node.onclick;
+    const host = replaceWithHost(node, `ant-delete-host ${className}`);
+    mount(host, h(Button, { type: 'text', danger: true, icon: h(DeleteOutlined), 'aria-label': '删除', onClick: event => legacyClick?.call(node, event) }));
+  }
+
+  function bridgeOrderControls() {
+    document.querySelectorAll('.order').forEach(card => {
+      if (card.dataset.antControlsMounted) return;
+      card.dataset.antControlsMounted = '1';
+      const cardIndex = [...document.querySelectorAll('#orders .order')].indexOf(card);
+      const ticketId = card.dataset.ticketId || cart[cardIndex]?.id;
+      if (!ticketId) return;
+      card.dataset.ticketId = ticketId;
+      const stepper = card.querySelector('.stepper');
+      if (stepper) {
+        const quantity = Number.parseInt(stepper.querySelector('input')?.value, 10) || 1;
+        const host = replaceWithHost(stepper, 'ant-quantity-host');
+        mount(host, h(QuantityControl, { ticketId, initialValue: quantity }));
+      }
+      mountDeleteButton(card.querySelector('.order-head > .danger'), 'order-delete-host');
+      card.querySelectorAll('.traveler').forEach((row,index) => {
+        const item=cart.find(entry=>entry.id===ticketId);
+        const visitor=(inTeam()||inPartner())?(item.travelers??=[])[index]??((item.travelers[index])={}):null;
+        const savedInput=key=>visitor?{defaultValue:visitor[key],onChange:event=>{visitor[key]=event.target.value;paymentState.reviewed=null;}}:{};
+        const savedSelect=key=>visitor?{defaultValue:visitor[key],onChange:value=>{visitor[key]=value;paymentState.reviewed=null;}}:{};
+        const nameInput = row.querySelector('input[placeholder="姓名"]');
+        const idInput = row.querySelector('input[placeholder="请输入证件号"]');
+        const selects = row.querySelectorAll('[data-select]');
+        const nameHost = replaceWithHost(nameInput, 'ant-traveler-name');
+        const typeHost = replaceWithHost(selects[0], 'ant-traveler-type');
+        const idHost = replaceWithHost(idInput, 'ant-traveler-id');
+        const genderHost = replaceWithHost(selects[1], 'ant-traveler-gender');
+        mount(nameHost, h(Input, { placeholder: '姓名',...savedInput('name') }));
+        mount(typeHost, h(Select, { ...selectProps(['身份证', '护照']),...savedSelect('documentType'),defaultValue:visitor?.documentType||'身份证' }));
+        mount(idHost, h(Input, { placeholder: '请输入证件号',...savedInput('document') }));
+        mount(genderHost, h(Select, { ...selectProps(['男', '女']), placeholder: '性别',...savedSelect('gender') }));
+        mountDeleteButton(row.querySelector('.danger'), 'traveler-delete-host');
+      });
+      const importButton = card.querySelector('.import');
+      if (importButton) {
+        const host = replaceWithHost(importButton, 'ant-import-host');
+        mount(host, h(Button, { type: 'primary' }, '导入'));
+      }
+    });
+  }
+
+  const legacyRender = window.render;
+  window.render = function() {
+    legacyRender();
+    queueMicrotask(() => { bridgeOrderControls(); mountFooterControl(); });
+  };
+  window.antQuantityChange = function(ticketId, value) {
+    const item = cart.find(entry => entry.id === ticketId);
+    if (!item || !Number.isFinite(value)) return;
+    item.qty = Math.max(1, Math.trunc(value));
+    if((inTeam()||inPartner())&&item.travelers)item.travelers.length=Math.min(item.travelers.length,item.qty);
+    window.render();
+  };
+  // 内导使用独立业务工作台，复用同一配置、资源解析器与 React 控件桥接层。
+  const innerHost=document.createElement('main');innerHost.id='innerGuideWorkspace';innerHost.hidden=true;partnerListHost.after(innerHost);
+  const innerCatalog=[{id:'ig-vip',name:'VIP服务',price:.01,timed:true},{id:'ig-vip-year',name:'VIP服务（2026年）',price:.02,timed:true},{id:'ig-camp',name:'露营设备（固定收费）',price:99,timed:false},{id:'ig-service',name:'导游服务费',price:100,timed:false}];
+  const innerState={kind:'retail',guideId:null,teamOrder:null,items:[],code:null,resourceId:null,deposit:0,reviewed:null,records:[]};
+  const innerPayments=()=>paymentFixture.payments.filter(p=>p.on&&p.scenes.includes('innerGuide')&&(innerState.kind==='team'||!['ON_ACCOUNT','PREPAY','CREDIT_SIGN'].includes(p.code)));
+  const innerTotal=()=>Math.round(innerState.items.reduce((n,x)=>n+x.price*x.qty,0)*100)/100;
+  const innerCount=()=>innerState.items.reduce((n,x)=>n+x.qty,0);
+  const innerDue=()=>innerState.kind==='retail'?Number(innerState.deposit):innerTotal();
+  function innerChoose(code){innerState.code=code;const r=resolveResources(code);innerState.resourceId=r.error?null:r.defaultId;innerState.reviewed=null;}
+  function innerSignature(){const r=resolveResources(innerState.code);return JSON.stringify([innerState.code,r.payment,r.options,r.defaultId,r.error,r.payment?.owner==='account'?paymentFixture.session.accountKey:paymentFixture.session.deviceKey]);}
+  let innerLastSignature='';
+  function innerError({checkResources=true}={}){
+    if(!innerPayments().some(p=>p.code===innerState.code))return '当前支付方式不可用，请重新选择';
+    if(!innerState.guideId)return '请选择内导';
+    if(!innerState.items.length)return '请选择服务项目';
+    if(innerState.kind==='team'&&!innerState.teamOrder)return '请选择团队订单';
+    if(innerState.deposit===null||!Number.isFinite(innerDue())||innerDue()<0)return '请输入有效押金金额';
+    const context=innerState.teamOrder;
+    if(innerState.code==='PREPAY'&&context.balance<innerDue())return '旅行社预付款余额不足';
+    if(innerState.code==='CREDIT_SIGN'&&context.credit!==null&&context.credit<innerDue())return '旅行社签单授信余额不足';
+    if(checkResources&&usesResources(innerState.code)){
+      const r=resolveResources(innerState.code),resource=r.options.find(x=>x.id===innerState.resourceId);
+      return r.error||(!resource?'请选择有效收款资源':!(resource.counterCode||resource.posCode||'').trim()?'收款资源编码未配置':r.payment.usage==='固定使用一个'&&resource.id!==r.defaultId?'收款配置已变更，请重新选择':'');
+    }
+    return '';
+  }
+  function InnerGuideWorkspace(){
+    const [,redraw]=useState(0),[category,setCategory]=useState('全部'),[date,setDate]=useState(dayjs('2026-10-18')),[selector,setSelector]=useState(null),[selected,setSelected]=useState(null),[confirm,setConfirm]=useState(false),[cash,setCash]=useState(0),[print,setPrint]=useState(true),[error,setError]=useState(''),[recorded,setRecorded]=useState(false);
+    const update=()=>redraw(v=>v+1);
+    const invalidate=()=>{innerState.reviewed=null;setError('');setRecorded(false);update();};
+    const reconcile=()=>{
+      if(!innerPayments().some(p=>p.code===innerState.code))innerChoose(innerPayments()[0]?.code||null);
+      const signature=innerSignature();if(innerLastSignature!==signature){const r=resolveResources(innerState.code);innerState.resourceId=r.error?null:r.defaultId;innerState.reviewed=null;setRecorded(false);innerLastSignature=signature;}update();
+    };
+    window.refreshInnerGuide=reconcile;
+    const guides=[{id:'inner-guide-1',name:'演示内导一'},{id:'inner-guide-2',name:'演示内导二'}];
+    const teamOrders=teamAgencies.map((a,index)=>({id:'DEMO-INNER-TEAM-0'+(index+1),agencyId:a.id,agency:a.name,balance:a.balance,credit:a.credit,quantity:index+1}));
+    const add=item=>{const existing=innerState.items.find(x=>x.id===item.id);if(existing)existing.qty++;else innerState.items.push({...item,qty:1,travelers:[{}]});innerState.deposit=innerTotal();invalidate();};
+    const choose=code=>{innerChoose(code);innerLastSignature=innerSignature();invalidate();};
+    const close=()=>{setConfirm(false);setError('');};
+    const preview=()=>{syncPreviewConfiguration();reconcile();const e=innerError({checkResources:false});if(e){setError(e);return;}setCash(innerDue());setRecorded(false);setError('');setConfirm(true);};
+    const submit=()=>{
+      if(recorded)return;const signature=innerSignature();syncPreviewConfiguration();reconcile();
+      if(signature!==innerSignature()){setError('支付配置已变更，请核对后重新确认');return;}
+      const e=innerError()||(innerState.code==='CASH'&&(cash===null||Math.round(Number(cash)*100)<Math.round(innerDue()*100))?'现金实收不能小于应付金额':'');
+      if(e){setError(usesResources(innerState.code)&&e===innerError()?'':e);return;}
+      const p=innerPayments().find(x=>x.code===innerState.code),r=usesResources(p.code)?resolveResources(p.code).options.find(x=>x.id===innerState.resourceId):null;
+      const snapshot={id:'local-inner-'+(innerState.records.length+1),scene:'innerGuide',kind:innerState.kind,date:date.format('YYYY-MM-DD'),guideId:innerState.guideId,guideName:guides.find(x=>x.id===innerState.guideId)?.name,teamOrder:structuredClone(innerState.teamOrder),items:structuredClone(innerState.items),quantity:innerCount(),amount:innerDue(),paymentCode:p.code,paymentName:p.name,mode:p.mode,owner:r?p.owner:null,resourceId:r?.id||null,resourceName:r?.name||null,resourceCode:r?(r.counterCode||r.posCode):null,accountKey:paymentFixture.session.accountKey,deviceKey:paymentFixture.session.deviceKey,printMode:innerState.kind==='retail'?(print?'散客内导打印':'不打印'):null,cashReceived:p.code==='CASH'?Number(cash):null,cashChange:p.code==='CASH'?Math.round((Number(cash)-innerDue())*100)/100:null};
+      innerState.reviewed=structuredClone(snapshot);innerState.records.push(structuredClone(snapshot));setRecorded(true);setError('');
+    };
+    const paymentSelect=h(Select,{'aria-label':'内导支付方式',value:innerState.code||undefined,placeholder:'暂无可用支付方式',options:innerPayments().map(p=>({value:p.code,label:h('span',{className:'payment-option'},h(PaymentIcon,{code:p.code}),p.name)})),onChange:choose,style:{width:175}});
+    return h(React.Fragment,null,
+      h('div',{className:'business-tabs'},h('button',{className:'active'},'导游开单')),
+      h('div',{className:'inner-workspace'},
+        h('aside',{className:'inner-products'},h(Select,{'aria-label':'内导服务分类',value:category,options:['全部','计时收费','固定收费'].map(value=>({value,label:value})),onChange:setCategory,style:{width:'100%'}}),innerCatalog.filter(x=>category==='全部'||x.timed===(category==='计时收费')).map(item=>h(Button,{key:item.id,className:'inner-product',onClick:()=>add(item)},h('span',null,item.name),h('strong',null,money(item.price))))),
+        h('section',{className:'inner-sale'},h('div',{className:'inner-sale-head'},h('div',{className:'sale-title'},'售卖信息',h('span',{className:'recent'},'最近订单：',innerState.records.length?'本地模拟记录':'—')),h('div',{className:'date-row'},h(DatePicker,{value:date,allowClear:false,onChange:value=>{setDate(value);invalidate();}}))),
+          h('div',{className:'inner-kind'},h(Radio.Group,{value:innerState.kind,optionType:'button',options:[{value:'retail',label:'散客'},{value:'team',label:'团队'}],onChange:e=>{innerState.kind=e.target.value;innerState.teamOrder=null;innerState.items=[];innerState.deposit=0;choose(innerPayments()[0]?.code||null);}})),
+          innerState.kind==='team'&&h('div',{className:'inner-summary'},'旅行社：',innerState.teamOrder?.agency||'—','　账户余额：',innerState.teamOrder?.balance??'—','　签单授信余额：',innerState.teamOrder?.credit===null?'无限制':innerState.teamOrder?.credit??'—'),
+          h('div',{className:'inner-pickers'},h(Button,{id:'innerGuidePicker',onClick:()=>{setSelector('guide');setSelected(innerState.guideId);}},'内导：',guides.find(x=>x.id===innerState.guideId)?.name||'请选择','　›'),innerState.kind==='team'&&h(Button,{type:'primary',id:'innerTeamOrderPicker',onClick:()=>{setSelector('order');setSelected(innerState.teamOrder?.id);}},'选择团队订单')),
+          h('div',{className:'inner-items'},!innerState.items.length&&h('div',{className:'empty'},'暂无数据，请先选择服务项目'),innerState.items.map(item=>h('div',{className:'inner-item',key:item.id},h('div',{className:'inner-item-head'},h('b',null,`【${item.timed?'计时收费':'固定收费'}】${item.name}`),h(Button,{type:'text',danger:true,icon:h(DeleteOutlined),'aria-label':'删除内导项目',onClick:()=>{innerState.items=innerState.items.filter(x=>x.id!==item.id);innerState.deposit=innerTotal();invalidate();}})),h('div',{className:'inner-item-fields'},h('span',null,'收费标准：',money(item.price),item.timed?' 元/小时':' 元'),h('label',null,'游客数量：',h(InputNumber,{'aria-label':'内导游客数量',min:1,precision:0,value:item.qty,onChange:value=>{if(!Number.isInteger(value)||value<1)return;item.qty=value;innerState.deposit=innerTotal();invalidate();}}))),h('div',{className:'inner-traveler'},h(Input,{placeholder:'姓名',value:item.travelerName||'',onChange:e=>{item.travelerName=e.target.value;invalidate();}}),h(Select,{value:item.documentType||'身份证',onChange:value=>{item.documentType=value;invalidate();},options:[{value:'身份证',label:'身份证'},{value:'护照',label:'护照'}]}),h(Input,{placeholder:'请输入证件号',value:item.document||'',onChange:e=>{item.document=e.target.value;invalidate();}}),h(Select,{placeholder:'性别',value:item.gender,onChange:value=>{item.gender=value;invalidate();},options:[{value:'男',label:'男'},{value:'女',label:'女'}]}))))),
+          error&&!confirm&&h('div',{className:'resource-error',role:'alert'},error),
+          h('div',{className:'inner-settlement'},h('label',null,'支付方式：',paymentSelect),h('span',null,'总人数：',innerCount(),' 人'),innerState.kind==='retail'&&h('label',null,'收取押金：',h(InputNumber,{'aria-label':'内导收取押金',min:0,precision:2,value:innerState.deposit,onChange:value=>{innerState.deposit=value;invalidate();}})),h(Button,{className:'inner-cancel',onClick:()=>{innerState.items=[];innerState.deposit=0;invalidate();}},'取消'),h(Button,{type:'primary',id:'innerConfirmOrder',onClick:preview},'确认下单')))),
+      h(Modal,{open:!!selector,title:selector==='guide'?'选择内导':'选择团队订单',width:850,onCancel:()=>setSelector(null),onOk:()=>{if(!selected)return;if(selector==='guide')innerState.guideId=selected;else innerState.teamOrder=structuredClone(teamOrders.find(x=>x.id===selected));setSelector(null);invalidate();},okText:'确定',cancelText:'取消'},h(Table,{rowKey:'id',size:'small',pagination:false,dataSource:selector==='guide'?guides:teamOrders,columns:selector==='guide'?[{title:'内导姓名',dataIndex:'name'}]:[{title:'团队订单号',dataIndex:'id'},{title:'旅行社',dataIndex:'agency'},{title:'人数',dataIndex:'quantity'}],rowSelection:{type:'radio',selectedRowKeys:selected?[selected]:[],onChange:keys=>setSelected(keys[0])},onRow:row=>({onClick:()=>setSelected(row.id)})})),
+      h(Modal,{open:confirm,title:'支付订单确认',width:900,className:'inner-payment-modal',footer:null,onCancel:close},
+        h(Table,{className:'inner-payment-summary',size:'small',rowKey:'id',pagination:false,dataSource:innerState.items,columns:[{title:'门票名称',dataIndex:'name',width:'75%'},{title:'售卖单价（元/小时）',dataIndex:'price',width:'25%',render:(_,x)=>money(x.price)+(x.timed?' / 小时':'')}],footer:()=>h('div',{className:'payment-ticket-total'},'内导：',guides.find(x=>x.id===innerState.guideId)?.name,'　总人数：',innerCount(),'人　',innerState.kind==='retail'?'押金应付：':'应付：',h('strong',null,money(innerDue())))}),
+        h('div',{className:'payment-dialog-controls'},h('div',{className:'payment-choice-row'},innerPayments().map(p=>h(Button,{key:p.code,disabled:recorded,className:innerState.code===p.code?'selected':'',icon:h(PaymentIcon,{code:p.code}),onClick:()=>choose(p.code)},p.name))),
+          h('div',{className:'payment-final-row'},innerState.kind==='retail'&&h(Button,{className:print?'ticket-print-selected':'',disabled:recorded,'aria-pressed':print,onClick:()=>setPrint(!print)},'散客内导打印'),
+            usesResources(innerState.code)&&h('div',{className:'payment-modal-resources'},h(ResourceFields,{state:innerState,readOnly:recorded,showFixedHint:false,validation:innerError,onChange:id=>{innerState.resourceId=id;invalidate();}})),
+            innerState.code==='CASH'&&h('div',{className:'payment-cash-row'},h(InputNumber,{'aria-label':'内导现金实收',addonBefore:'现金实收',value:cash,min:0,precision:2,disabled:recorded,onChange:setCash}),'元',h('strong',null,'现金找零：',money(Math.max(0,Math.round((Number(cash)-innerDue())*100)/100)))),h(Button,{className:'payment-final-cancel',onClick:close},'取消出票'),h(Button,{type:'primary',disabled:recorded,onClick:submit},'确认出票')),
+          error&&h('div',{className:'resource-error',role:'alert'},error),recorded&&h('div',{role:'status',className:'payment-modal-result'},'本地预览已记录内导收款，未提交真实订单、支付或押金入账。'))));
+  }
+  const innerStyle=document.createElement('style');innerStyle.textContent=`#innerGuideWorkspace{height:calc(100vh - 96px);padding:8px;display:flex;flex-direction:column;background:#fff}#innerGuideWorkspace[hidden]{display:none}.inner-workspace{display:grid;grid-template-columns:minmax(250px,28%) minmax(0,1fr);min-height:0;flex:1;gap:8px;padding-top:8px}.inner-products,.inner-sale{border:1px solid #eee;border-radius:6px;min-width:0}.inner-products{overflow:auto;padding:10px}.inner-product.ant-btn{margin-top:16px;width:100%;min-height:62px;height:auto;display:flex;justify-content:space-between;text-align:left;white-space:normal;padding:12px}.inner-product strong{color:#ff4d4f}.inner-sale{display:flex;flex-direction:column}.inner-sale-head{padding:12px}.inner-kind,.inner-pickers,.inner-summary{padding:8px 12px}.inner-pickers{display:flex;gap:12px}.inner-items{flex:1;min-height:0;overflow:auto;padding:8px 12px}.inner-item{border:1px solid #eee;border-radius:6px;margin-bottom:8px}.inner-item-head{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#f0f5ff}.inner-item-fields{padding:8px 12px;display:flex;gap:16px;flex-wrap:wrap}.inner-item-fields label{display:flex;gap:6px;align-items:center}.inner-traveler{display:flex;gap:8px;padding:8px 12px}.inner-traveler .ant-input{min-width:0;flex:1}.inner-traveler .ant-select{width:100px;flex-shrink:0}.inner-settlement{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 12px;background:#f0f2ff}.inner-settlement label{display:flex;gap:6px;align-items:center}.inner-settlement .ant-input-number{width:92px}.inner-cancel{margin-left:auto}.inner-payment-modal{max-width:calc(100vw - 32px)}.inner-payment-modal .ant-modal-body{max-height:calc(100vh - 160px);overflow-y:auto;overflow-x:hidden}.inner-payment-modal .payment-dialog-controls{margin-top:36px;padding:12px;background:#f0f2ff}.inner-payment-modal .payment-final-row{margin-top:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.inner-payment-modal .payment-modal-resources{flex:1;min-width:0}.inner-payment-modal .resource-fields{display:flex;gap:8px;flex-wrap:wrap;padding:0}.inner-payment-modal .resource-field{flex:1;min-width:240px}.inner-payment-modal .payment-final-cancel{margin-left:auto}.inner-payment-modal .payment-choice-row{display:flex;gap:8px;flex-wrap:wrap}.inner-payment-modal .payment-choice-row img{width:18px;height:18px}.inner-payment-modal .selected{border-color:#1677ff;color:#1677ff}@media(max-width:1100px){.inner-settlement{gap:6px}.inner-settlement>span{font-size:12px}.inner-traveler{flex-wrap:wrap}.inner-payment-modal .resource-field{min-width:220px}}`;document.head.append(innerStyle);
+  innerStyle.textContent+=`.inner-payment-modal{top:100px;padding-bottom:0}.inner-payment-modal .ant-modal-content{height:452px;max-height:calc(100vh - 132px);padding:0;display:flex;flex-direction:column;overflow:hidden}.inner-payment-modal .ant-modal-header{padding:16px 20px 12px;margin:0;flex:none}.inner-payment-modal .ant-modal-close{top:12px;right:12px}.inner-payment-modal .ant-modal-body{display:flex;flex-direction:column;flex:1;min-height:0;max-height:none;overflow:hidden}.inner-payment-modal .inner-payment-summary{margin:0 20px;flex:1;min-height:0;overflow:auto}.inner-payment-summary .ant-table{border:1px solid #f0f0f0;border-radius:8px;overflow:hidden}.inner-payment-summary .ant-table-thead>tr>th{background:#f0f5ff;padding:4px!important}.inner-payment-summary .ant-table-tbody>tr>td{padding:4px!important;border-right:1px solid #f0f0f0}.inner-payment-summary .ant-table-footer{background:white;padding:4px}.inner-payment-summary .payment-ticket-total{padding:8px 4px}.inner-payment-summary .payment-ticket-total strong{margin-left:8px}.inner-payment-modal .payment-dialog-controls{margin-top:0;padding:8px 12px;flex:none}.inner-payment-modal .payment-final-row{flex-wrap:nowrap;min-height:46px}.inner-payment-modal .payment-final-row>.ant-btn{padding:8px 12px}.inner-payment-modal .payment-final-row .ticket-print-selected{font-size:12px}.inner-payment-modal .payment-choice-row img{width:16px;height:16px}.inner-payment-modal .selected{color:rgba(0,0,0,.88);border-color:#0052d9}.inner-payment-modal .resource-fields{flex-wrap:nowrap}.inner-payment-modal .resource-field{min-width:0;flex:1}.inner-payment-modal .resource-field>label{font-size:12px;white-space:nowrap}.inner-payment-modal .resource-field .ant-select,.inner-payment-modal .resource-field .ant-input{min-width:0;width:100%}.inner-payment-modal .payment-cash-row .ant-input-number-group-wrapper{width:160px}.inner-payment-modal .payment-cash-row .ant-input-number,.inner-payment-modal .payment-cash-row .ant-input-number-group-addon{height:44px}.inner-payment-modal .payment-cash-row .ant-input-number-input{height:42px}.inner-payment-modal .payment-cash-row .ant-input-number-group-addon{background:#f0f5ff}.inner-payment-modal .resource-error,.inner-payment-modal .payment-modal-result{max-height:54px;overflow:auto;margin:4px 0 0;padding:0}@media(max-height:650px){.inner-payment-modal{top:16px}.inner-payment-modal .ant-modal-content{max-height:calc(100vh - 32px)}}`;
+  innerStyle.textContent+=`.inner-payment-modal .inner-payment-summary .ant-table-footer{padding:0!important}.inner-payment-modal .inner-payment-summary .payment-ticket-total{padding:8px 4px;line-height:22px}`;
+  function routeInner(page){const show=page==='内导';innerHost.hidden=!show;if(show){document.querySelector('main.page').hidden=true;partnerListHost.hidden=true;if(!innerPayments().some(p=>p.code===innerState.code))innerChoose(innerPayments()[0]?.code||null);innerLastSignature=innerSignature();mount(innerHost,h(InnerGuideWorkspace));}document.querySelectorAll('.mainnav button').forEach(b=>{if(show)b.classList.toggle('active',b.textContent.trim()==='内导')});}
+  document.querySelectorAll('.mainnav button').forEach(button=>{const original=button.onclick;button.onclick=()=>{original?.();routeInner(button.textContent.trim());};});
+  document.getElementById('keepTabs').addEventListener('click',()=>queueMicrotask(()=>routeInner(document.querySelector('.page-tab.active')?.dataset.page)));
+  window.innerGuidePreview={state:()=>structuredClone(innerState),payments:()=>structuredClone(innerPayments())};
+  mountTopControls();
+  mountFooterControl();
+  bridgeOrderControls();
+  window.render();
+})();
+</script>
+</body></html>

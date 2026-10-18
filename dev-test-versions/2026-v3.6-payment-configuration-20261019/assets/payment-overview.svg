@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1440" viewBox="0 0 1280 1440" role="img" aria-labelledby="title desc">
+<title id="title">支付配置化全程业务总览</title><desc id="desc">后台统一支付配置和资源绑定，连接散客团队、内导售票、合作伙伴账户售票及两个共用充值入口，原下单和支付处理不变；扫码付、银行卡每笔新增资源及编号记录，在订单支付信息展示。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#64748b"/></marker></defs>
+<style>text{font-family:"PingFang SC","Microsoft YaHei",sans-serif;fill:#24324b;font-size:17px} .title{font-size:28px;font-weight:700}.sub{font-size:15px;fill:#64748b}.section{font-size:20px;font-weight:700;fill:#1557af}.box{fill:white;stroke:#aac6ea;stroke-width:1.5;rx:10}.green{fill:#f0fdf7;stroke:#81c9a5}.orange{fill:#fff9ee;stroke:#e9bf70}.label{font-weight:600}.edge{fill:none;stroke:#64748b;stroke-width:2;marker-end:url(#arrow)}.note{font-size:15px;fill:#a14428}</style>
+<rect width="1280" height="1440" fill="#f6f8fc"/>
+<text x="40" y="48" class="title">支付配置化｜配置、资源选择与每笔支付编号</text>
+<text x="40" y="78" class="sub">V1.4 · 2026-10-19　页面编号与逐页方案对应；详细分支见配套流程图文档</text>
+<rect x="24" y="100" width="1232" height="345" rx="16" fill="#eaf1fc"/>
+<text x="44" y="132" class="section">① 后台统一配置：规则一份，绑定按主体，不按业务场景拆分</text>
+<rect x="50" y="153" width="560" height="79" class="box"/><text x="70" y="181" class="label">B01 / B02 支付配置</text><text x="70" y="210">启用状态＋合法适用场景＋资源归属＋资源使用方式</text>
+<rect x="670" y="153" width="560" height="79" class="box"/><text x="690" y="181" class="label">B03 / B04 / B05 支付资源管理</text><text x="690" y="210">同景区主数据：资源ID、名称、柜台编码/POS编号、启停</text>
+<path d="M330 232V253H950V272" class="edge"/><path d="M950 232V253H330V272" class="edge"/>
+<rect x="50" y="273" width="560" height="78" class="box"/><text x="70" y="301" class="label">B06 → B07 设备管理 → 设备收款配置</text><text x="70" y="330">仅窗口售票机；配置当前归属为设备的扫码付 / 银行卡</text>
+<rect x="670" y="273" width="560" height="78" class="box"/><text x="690" y="301" class="label">B08 → B09 系统角色 → 账号收款配置</text><text x="690" y="330">收银账号；配置当前归属为账号的扫码付 / 银行卡</text>
+<text x="50" y="383">固定一个：单选＝默认　｜　允许多个：多选＋指定其中一个默认</text>
+<text x="50" y="415" class="note">资源改名 / 改编号同步当前引用；存在绑定不能直接停用或删除；不改写历史快照</text>
+<path d="M640 445V477" class="edge"/>
+<rect x="50" y="480" width="1180" height="84" class="box green"/><text x="70" y="510" class="label">K01 / K02 公共读取与解析</text><text x="70" y="540">主页面筛选方式 → 确认/充值弹窗按账号或设备解析资源与编号；缺资源仅弹窗提示并拦最终提交</text>
+<rect x="24" y="604" width="1232" height="400" rx="16" fill="#edf8f2"/>
+<text x="44" y="637" class="section">② 窗口业务：场景与支付资格分别判断，最终提交再次校验</text>
+<path d="M640 564V588H230V601" class="edge"/><path d="M640 588V601" class="edge"/><path d="M640 588H1050V601" class="edge"/>
+<rect x="50" y="658" width="360" height="98" class="box"/><text x="70" y="687" class="label">W01 散客 / W02 团队 / W11 内导</text><text x="70" y="718">选票或服务、人数及支付方式</text><text x="70" y="744" class="sub">内导保留内导、团队订单及押金上下文</text>
+<rect x="460" y="658" width="360" height="98" class="box"/><text x="480" y="687" class="label">W05 / W06 合作伙伴售票</text><text x="480" y="718">长期伙伴锁定默认挂帐 / 预付款</text><text x="480" y="744" class="sub">临时客户固定挂帐，无充值入口</text>
+<rect x="870" y="658" width="360" height="98" class="box"/><text x="890" y="687" class="label">两个充值入口</text><text x="890" y="718">W05 长期伙伴售票充值</text><text x="890" y="744">W08 合作伙伴充值列表行充值</text>
+<path d="M230 756V784" class="edge"/><path d="M640 756V784" class="edge"/><path d="M1050 756V784" class="edge"/>
+<rect x="50" y="786" width="360" height="113" class="box"/><text x="70" y="815" class="label">W04 / W12 支付订单确认</text><text x="70" y="845">支付按钮在上；保留各自打印模式</text><text x="70" y="872">现金 / 资源字段在打印操作区右侧</text>
+<rect x="460" y="786" width="360" height="113" class="box"/><text x="480" y="815" class="label">W07 账户支付确认</text><text x="480" y="845">无扫码付 / 银行卡选择</text><text x="480" y="872">按当前伙伴账户及额度校验</text>
+<rect x="870" y="786" width="360" height="113" class="box"/><text x="890" y="815" class="label">W09 共用充值弹窗</text><text x="890" y="845">支付按钮在上，动态字段在下</text><text x="890" y="872">现金 / 资源互斥；五种线下支付</text>
+<path d="M230 899V925H640V944" class="edge"/><path d="M640 899V944" class="edge"/><path d="M1050 899V925H640" fill="none" stroke="#64748b" stroke-width="2"/>
+<text x="50" y="965" class="note">无配置、默认失效、账户不可用 → 明确提示并保留业务；不跨主体兜底、不自动换账户</text>
+<path d="M640 1004V1031" class="edge"/>
+<rect x="50" y="1033" width="1180" height="84" class="box orange"/><text x="70" y="1063" class="label">K03 本期配置及资源复核 → 原处理不变</text><text x="70" y="1093">仅复核本期配置与资源 → 所有方式执行原下单、支付、充值逻辑 → 扫码付/银行卡每笔记录编号</text>
+<path d="M640 1117V1140H230V1160" class="edge"/><path d="M640 1140V1160" class="edge"/><path d="M640 1140H1050V1160" class="edge"/>
+<rect x="50" y="1163" width="360" height="76" class="box"/><text x="70" y="1193" class="label">D01 订单详情 · 订单支付</text><text x="70" y="1221">每笔资源 / 柜台编码/POS编号</text>
+<rect x="460" y="1163" width="360" height="76" class="box"/><text x="480" y="1193" class="label">D02 充值 / 回款详情</text><text x="480" y="1221">新增本次资源及编号展示</text>
+<rect x="870" y="1163" width="360" height="76" class="box"/><text x="890" y="1193" class="label">D03 其他收入详情</text><text x="890" y="1221">原关联及展示不变</text>
+<text x="50" y="1280">③ K04 每笔扫码付/银行卡保存实际资源及编号；历史不回写，旧单无编号显示“—”</text>
+<text x="50" y="1318" class="sub">W10挂单恢复：重读当前身份和配置，不直接复用旧资源；充值成功刷新账户，不清空售票购物车。</text>
+<text x="50" y="1352" class="sub">本期不改账户、计费、押金、结算、退款或打印，不新增财务报表。</text>
+<text x="50" y="1395" class="sub">详细分支：配置变更、资源解析、售票结果、伙伴账户售票、共用充值、挂单及历史追溯，见02-全程流程图.md。</text>
+</svg>

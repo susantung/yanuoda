@@ -1,0 +1,260 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>支付配置化｜页面清单</title><style>
+:root{--ink:#201a2c;--muted:#71697d;--purple:#7c3aed;--purple2:#4c1d95;--soft:#f5f3ff;--line:#e8e2f1;--side:272px;--shadow:0 8px 30px rgba(58,35,91,.09)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f3f0f7;color:var(--ink);line-height:1.75}.sidebar{position:fixed;right:0;top:0;width:var(--side);height:100vh;overflow:auto;padding:26px 0;background:linear-gradient(180deg,#1e1b4b,#312e81 58%,#4c1d95);z-index:20}.sidebar h2{padding:0 22px;margin:0 0 16px;color:#e9d5ff;font-size:15px;letter-spacing:1px}.sidebar a{display:block;padding:9px 22px;color:#c4b5fd;text-decoration:none;font-size:14px;border-left:3px solid transparent}.sidebar a:hover,.sidebar a.current{color:#fff;background:#ffffff14;border-left-color:#a78bfa}.sidebar .group{margin:13px 22px 5px;color:#a5b4fc;font-size:11px;letter-spacing:1px}.main{width:calc(100% - var(--side));margin-right:var(--side);padding:28px clamp(20px,2.4vw,44px) 70px;max-width:none}.hero{padding:42px 46px;margin-bottom:28px;border-radius:20px;color:#fff;background:linear-gradient(135deg,#1e1b4b,#4c1d95 62%,#7c3aed);box-shadow:0 16px 50px #6d28d933}.hero h1{margin:0 0 8px;font-size:31px;line-height:1.35;color:#fff}.hero p{margin:0;color:#f1efff}.eyebrow{font-size:12px;letter-spacing:2px;color:#ded7ff;margin-bottom:10px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.hero .btn{display:inline-block;padding:8px 15px;border-radius:9px;background:#fff;border:1px solid #fff;color:#4c1d95!important;text-decoration:none;font-size:13px;font-weight:700}.hero .btn:hover{background:#ede9fe;border-color:#ede9fe}.section{margin:0 0 34px;scroll-margin-top:20px}.section h2{font-size:23px;margin:0 0 14px;color:#211a49}.card{background:#fff;padding:25px 29px;margin:0 0 18px;border-radius:15px;border-left:4px solid var(--purple);box-shadow:var(--shadow)}.lead{font-size:16px;color:#534b60}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.metric{text-align:center;background:#fff;padding:20px;border-radius:14px;box-shadow:var(--shadow)}.metric strong{display:block;font-size:29px;color:var(--purple)}.doc h1{display:none}.doc h2{margin:42px 0 16px;padding-top:10px;border-top:1px solid var(--line);font-size:25px;color:#211a49;scroll-margin-top:20px}.doc h2 .prototype-link{display:inline-flex;vertical-align:middle;align-items:center;margin:0 0 2px 10px;padding:3px 9px;border-radius:999px;background:#7c3aed;color:#fff;text-decoration:none;font-size:12px;font-weight:600;line-height:1.5}.doc h2 .prototype-link:hover{background:#5b21b6;color:#fff}.doc h3{font-size:19px;color:#4c1d95;margin:29px 0 10px}.doc h4{font-size:16px;color:#6d28d9;margin:21px 0 8px}.doc p{margin:10px 0}.doc strong{color:#35205f}.doc code{padding:2px 5px;border-radius:5px;background:#f2eff8;font-family:SFMono-Regular,Consolas,monospace;font-size:.92em}.doc pre code{padding:0;border-radius:0;background:transparent;color:inherit;font-size:inherit}.table-wrap{overflow:auto;margin:15px 0 22px;border-radius:11px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;background:#fff;font-size:13px}th{background:#ede9fe;color:#4c1d95;text-align:left;white-space:nowrap}th,td{padding:10px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border-bottom:0}tr:nth-child(even) td{background:#fcfbfe}th:last-child,td:last-child{border-right:0}ul,ol{padding-left:24px;margin:10px 0 16px}li{margin:6px 0}pre{padding:16px;background:#1f1930;color:#e9d5ff;border-radius:10px;overflow:auto;line-height:1.6}blockquote{margin:12px 0;padding:10px 16px;background:#faf5ff;border-left:3px solid #a78bfa}.quick{position:fixed;right:calc(var(--side) + 26px);bottom:24px;width:42px;height:42px;border:0;border-radius:12px;background:var(--purple);color:#fff;cursor:pointer;box-shadow:var(--shadow)}a{color:#6d28d9}.tag{display:inline-block;padding:3px 9px;border-radius:999px;background:#ede9fe;color:#5b21b6;font-size:12px}.notice{padding:14px 17px;border-radius:10px;margin:14px 0;background:#eff6ff;border-left:3px solid #3b82f6}.footer-nav{position:sticky;bottom:0;background:#ffffffeb;backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:13px 20px;display:flex;gap:10px;justify-content:space-between;align-items:center}.footer-nav a{font-size:13px;text-decoration:none}@media(max-width:950px){:root{--side:220px}.main{padding:24px 20px}.grid{grid-template-columns:1fr 1fr}.hero{padding:30px}}@media(max-width:720px){.sidebar{display:none}.main{width:100%;margin-right:0;padding:18px}.grid{grid-template-columns:1fr}.quick{right:18px}.hero h1{font-size:26px}.doc h2 .prototype-link{margin:8px 0 0;font-size:11px}}
+
+.sidebar h2{line-height:1.5}.sidebar a{overflow-wrap:anywhere}.sidebar .group{margin-top:18px}.sidebar nav .toc-link{font-size:12px;padding-top:6px;padding-bottom:6px}.doc{min-width:0}.doc>h1{display:none}.doc img{max-width:100%;height:auto}.doc h2,.doc h3,.doc h4{scroll-margin-top:24px}.doc td{overflow-wrap:anywhere}.doc pre{white-space:pre-wrap;overflow-wrap:anywhere}.doc .table-wrap{max-width:100%}.doc table{min-width:560px}.doc td:first-child{min-width:78px}.doc th{white-space:normal}.doc h2:first-of-type{margin-top:20px}.doc ol,.doc ul{padding-left:26px}.muted{color:var(--muted);font-size:13px}.page-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.page-card{display:block;text-decoration:none;color:var(--ink);background:white;padding:23px 25px;border-radius:15px;border:1px solid var(--line);box-shadow:var(--shadow)}.page-card:hover{border-color:#a78bfa}.page-card h3{margin:0 0 8px;color:var(--purple2)}.page-card p{margin:0;color:var(--muted);font-size:14px}.flow-card{margin:20px 0 30px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}.flow-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding:10px 12px;background:#faf8ff;border-bottom:1px solid var(--line)}.flow-toolbar button,.flow-toolbar a{font:inherit;font-size:12px;line-height:1.5;cursor:pointer;background:#fff;color:#5b21b6;border:1px solid #ddd3f1;border-radius:6px;padding:5px 9px;text-decoration:none}.flow-toolbar .zoom-label{font-size:12px;color:var(--muted);margin-left:auto}.flow-stage{height:620px;max-height:72vh;min-height:320px;overflow:hidden;position:relative;cursor:grab;touch-action:none;background:#fff;background-image:radial-gradient(#ddd6ed 1px,transparent 1px);background-size:18px 18px}.flow-stage.dragging{cursor:grabbing}.flow-stage>svg{display:block;position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;user-select:none}.flow-stage text{font-family:'PingFang SC','Microsoft YaHei',sans-serif}.flow-source{border-top:1px solid var(--line)}.flow-source summary{padding:10px 14px;font-size:13px;color:var(--purple2);cursor:pointer}.flow-source pre{margin:0;border-radius:0;font-size:12px}.flow-caption{font-size:12px;padding:8px 14px;margin:0;color:var(--muted);border-top:1px solid var(--line)}.mobile-menu{display:none}.scope-line{font-size:13px;color:var(--muted)}.footer-nav{margin-top:30px;position:static}.hero .tag{background:#ffffff24;color:#f0eaff}.prototype-note{margin:14px 0;font-size:13px;color:var(--muted)}
+@media(max-width:1050px){:root{--side:230px}.hero{padding:28px}.main{padding:24px 20px}.card{padding:20px}.page-cards{grid-template-columns:1fr}}
+@media(max-width:720px){.main{width:100%;margin:0;padding:16px}.sidebar{display:none;width:min(85vw,300px)}body.menu-open .sidebar{display:block;box-shadow:-10px 0 40px #201a2c44}.mobile-menu{display:block;position:fixed;right:14px;top:12px;z-index:30;background:#5b21b6;color:#fff;border:1px solid #a78bfa;border-radius:8px;padding:7px 12px}.hero{padding:24px 20px}.hero h1{font-size:25px}.hero p{font-size:14px}.quick{bottom:14px;right:14px}.grid{grid-template-columns:1fr 1fr}.flow-stage{height:500px}.doc h2{font-size:22px}}
+@media print{.sidebar,.quick,.mobile-menu,.actions,.flow-toolbar,.footer-nav{display:none!important}.main{width:100%;margin:0;padding:0}.hero{background:#fff;color:#211a49;box-shadow:none;padding:12px 0}.hero h1,.hero p,.eyebrow{color:#211a49}.card{box-shadow:none;padding:12px}.table-wrap{overflow:visible}table{font-size:10px}.flow-stage{height:850px;max-height:none;page-break-inside:avoid}.section{break-inside:avoid}}
+</style></head><body><button class="mobile-menu" aria-label="打开或关闭目录">目录 ☰</button><aside class="sidebar"><h2>支付配置化专项</h2><div class="group">版本迭代需求</div><a href="../index.html">← 返回版本列表</a><div class="group">开发 / 测试共同方案</div><nav><a class="" href="index.html">方案总览</a><a class="" href="development-spec.html">完整需求方案</a><a class="current" href="page-list.html">页面清单</a><a class="" href="flows.html">全程流程图</a><a class="" href="acceptance.html">开发与验收</a><div class="group">本页目录</div><a class="toc-link" href="#一-后台页面">一、后台页面</a><a class="toc-link" href="#二-售票窗口页面">二、售票窗口页面</a><a class="toc-link" href="#三-记录与详情">三、记录与详情</a><a class="toc-link" href="#四-公共能力-不作为页面">四、公共能力，不作为页面</a><a class="toc-link" href="#五-本期不新增">五、本期不新增</a><div class="group">原型入口</div><a href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口原型 ↗</a><div class="group">源文件</div><a href="PRD｜支付配置化_V3.6_20261019.md" target="_blank" rel="noopener noreferrer">打开完整 Markdown ↗</a></nav></aside><main class="main"><header class="hero"><div class="eyebrow">支付配置化专项 · V3.6 · 2026-10-19</div><h1>页面清单</h1><p>全部新增、修改与复用入口，按页面编号连接后台、窗口和记录详情。</p><div class="actions"><a class="btn" href="development-spec.html">完整需求方案</a><a class="btn" href="flows.html">全程流程图</a><a class="btn" href="page-list.html">页面清单</a><a class="btn" href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a class="btn" href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口 ↗</a></div></header><article class="doc"><h1>支付配置化｜页面清单</h1>
+<p>版本：V1.4｜2026-10-19。编号与<a href="02-%E5%85%A8%E7%A8%8B%E6%B5%81%E7%A8%8B%E5%9B%BE.md">全程流程图</a>、<a href="03-%E9%80%90%E9%A1%B5%E5%8A%9F%E8%83%BD%E6%96%B9%E6%A1%88.md">逐页方案</a>一致。</p>
+<h2 id="一-后台页面">一、后台页面</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>菜单路径 / 入口</th>
+<th>页面或弹窗</th>
+<th>类型</th>
+<th>本期内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B01</td>
+<td>配置中心 → 支付配置</td>
+<td>支付配置列表</td>
+<td>新增</td>
+<td>全部支付方式统一列表、启用状态开关、适用场景、处理及资源规则</td>
+</tr>
+<tr>
+<td>B02</td>
+<td>B01 → 配置</td>
+<td>配置支付方式</td>
+<td>新增弹窗</td>
+<td>启停、适用场景多选；扫码付/银行卡统一资源归属与使用方式</td>
+</tr>
+<tr>
+<td>B03</td>
+<td>配置中心 → 支付资源管理</td>
+<td>支付资源列表</td>
+<td>新增</td>
+<td>当前景区的资源主数据、统一编码列、启停与编辑删除</td>
+</tr>
+<tr>
+<td>B04</td>
+<td>B03 → 新增 / 编辑</td>
+<td>新增 / 编辑支付资源</td>
+<td>新增共用弹窗</td>
+<td>类型、名称、柜台编码/POS编号、启用状态</td>
+</tr>
+<tr>
+<td>B05</td>
+<td>B03 → 删除</td>
+<td>删除确认</td>
+<td>新增确认状态</td>
+<td>已绑定拦截；未绑定二次确认，历史快照不受影响</td>
+</tr>
+<tr>
+<td>B06</td>
+<td>基础信息 → 设备管理</td>
+<td>设备管理列表</td>
+<td>修改现有页</td>
+<td>完整保留现网，仅窗口售票机增加收款配置</td>
+</tr>
+<tr>
+<td>B07</td>
+<td>B06 → 收款配置</td>
+<td>设备收款配置</td>
+<td>新增弹窗</td>
+<td>当前归属为设备的支付方式，一套绑定跨场景共用</td>
+</tr>
+<tr>
+<td>B08</td>
+<td>员工管理 → 系统角色</td>
+<td>系统角色列表</td>
+<td>修改现有页</td>
+<td>完整保留现网账号管理，增加收款配置</td>
+</tr>
+<tr>
+<td>B09</td>
+<td>B08 → 收款配置</td>
+<td>账号收款配置</td>
+<td>新增弹窗</td>
+<td>当前归属为账号的支付方式，一套绑定跨场景共用</td>
+</tr>
+</tbody></table></div>
+<p>配置中心只保留已有内容的菜单；支付配置、支付资源管理为两个并列菜单，不再增加场景菜单或页内双层切换。</p>
+<h2 id="二-售票窗口页面">二、售票窗口页面</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>菜单路径 / 入口</th>
+<th>页面或弹窗</th>
+<th>类型</th>
+<th>本期内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>W01</td>
+<td>售票 → 散客票</td>
+<td>散客售票工作台</td>
+<td>修改现有页</td>
+<td>支付方式按统一配置过滤；主页面不放资源或编号</td>
+</tr>
+<tr>
+<td>W02</td>
+<td>售票 → 团队票</td>
+<td>团队售票工作台</td>
+<td>修改现有页</td>
+<td>九种支付方式可按配置使用；关联旅行社账户</td>
+</tr>
+<tr>
+<td>W03</td>
+<td>W02 → 选择旅行社 / 导游</td>
+<td>原有对象选择弹窗</td>
+<td>复用、回归</td>
+<td>提供当前团队及账户上下文；不另建团队档案</td>
+</tr>
+<tr>
+<td>W04</td>
+<td>W01 / W02 → 确认下单</td>
+<td>支付订单确认</td>
+<td>修改共用弹窗</td>
+<td>支付按钮、出票模式、现金或资源动态字段、资源校验及编号记录</td>
+</tr>
+<tr>
+<td>W05</td>
+<td>售票 → 临时/长期合作伙伴</td>
+<td>合作伙伴售票工作台</td>
+<td>修改现有页</td>
+<td>长期伙伴锁定默认账户支付；临时客户固定挂帐；长期伙伴充值入口</td>
+</tr>
+<tr>
+<td>W06</td>
+<td>W05 → 选择合作伙伴 / 临时客户</td>
+<td>原有选择弹窗 / 临时状态</td>
+<td>复用、回归</td>
+<td>加载对象与账户，保留购物车；临时客户无充值入口</td>
+</tr>
+<tr>
+<td>W07</td>
+<td>W05 → 确认下单</td>
+<td>合作伙伴支付订单确认</td>
+<td>修改共用弹窗的账户状态</td>
+<td>仅对应挂帐或预付款，不出现扫码付/银行卡</td>
+</tr>
+<tr>
+<td>W08</td>
+<td>顶部合作伙伴 → 合作伙伴充值</td>
+<td>合作伙伴充值列表</td>
+<td>修改现有页</td>
+<td>保留现有筛选、列及操作，行内充值统一调用 W09</td>
+</tr>
+<tr>
+<td>W09</td>
+<td>W05 充值 / W08 行内充值</td>
+<td>合作伙伴充值</td>
+<td>修改共用弹窗</td>
+<td>五种支付按配置过滤；资源及编号新增记录，充值处理不变</td>
+</tr>
+<tr>
+<td>W10</td>
+<td>售票 → 挂单列表 → 恢复</td>
+<td>原有挂单恢复</td>
+<td>复用逻辑调整</td>
+<td>恢复票和游客后按当前身份及配置重算，不锁死旧资源</td>
+</tr>
+<tr>
+<td>W11</td>
+<td>内导 → 导游开单 → 散客 / 团队</td>
+<td>内导销售工作台及原有选择步骤</td>
+<td>修改现有页</td>
+<td>按内导场景过滤方式；原开单逻辑不变</td>
+</tr>
+<tr>
+<td>W12</td>
+<td>W11 → 确认下单</td>
+<td>内导支付订单确认</td>
+<td>修改现有弹窗</td>
+<td>六种普通方式；团队另允许三种账户支付；现金/资源位于打印选项右侧动态区</td>
+</tr>
+</tbody></table></div>
+<p>W03、W06 是原有业务前置步骤；不是本期新增档案管理功能。W04、W07共用原有确认组件，不新建独立菜单。W09只维护一份组件和提交逻辑。</p>
+<h2 id="三-记录与详情">三、记录与详情</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>路径 / 入口</th>
+<th>页面</th>
+<th>类型</th>
+<th>本期内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D01</td>
+<td>后台订单中心 → 现有散客/团队订单列表 → 详情；窗口现有订单查询、内导订单/交易记录 → 详情</td>
+<td>订单详情 / 支付信息</td>
+<td>修改展示</td>
+<td>每笔扫码付/银行卡订单的“订单支付”新增资源及柜台编码/POS编号，原支付字段不变</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>窗口合作伙伴 → 账户充值记录 → 详情；后台现有对应账户充值记录 → 详情</td>
+<td>充值/回款详情</td>
+<td>修改展示</td>
+<td>收款方式、资源名称、统一编码及原有充值字段</td>
+</tr>
+<tr>
+<td>D03</td>
+<td>现有其他收入记录 → 详情</td>
+<td>其他收入详情</td>
+<td>复用展示关联</td>
+<td>原关联及展示不变，不新增字段或记账规则</td>
+</tr>
+</tbody></table></div>
+<p>D01—D03不新增同名重复菜单。开发先按现有记录入口定位组件；后台具体二级菜单名称沿用当前系统。原型未完成真实历史详情联调，本方案定义其应落实的增量。</p>
+<h2 id="四-公共能力-不作为页面">四、公共能力，不作为页面</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>能力</th>
+<th>使用位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>K01</td>
+<td>景区配置读取、场景白名单、至少保留一种校验</td>
+<td>B01/B02、所有窗口入口</td>
+</tr>
+<tr>
+<td>K02</td>
+<td>按账号/设备解析资源、默认与切换、失效拦截</td>
+<td>B07/B09、W04/W09/W12</td>
+</tr>
+<tr>
+<td>K03</td>
+<td>提交前复核本期配置及资源；原交易处理不变</td>
+<td>W04/W07/W09/W12</td>
+</tr>
+<tr>
+<td>K04</td>
+<td>每笔资源及编号记录、历史不回写</td>
+<td>D01—D03及现有交易服务</td>
+</tr>
+</tbody></table></div>
+<h2 id="五-本期不新增">五、本期不新增</h2>
+<ul>
+<li>微信、支付宝等新系统支付接口；聚合支付继续使用现有建行链路。</li>
+<li>商户号、证书、密钥维护，平台开发配置、跨景区复制、恢复默认、独立配置历史页面。</li>
+<li>新的合作伙伴档案、授信、审批、临时客户回款/调账、退款/冲红操作流程。</li>
+<li>收银员日交款单及新的统计报表页面；不调整原统计口径。</li>
+<li>生产账号/设备自由切换控件。原型里的测试账号、测试设备不进入上线页面清单。</li>
+</ul>
+</article><footer class="footer-nav"><a href="index.html">← 方案总览</a><span class="muted">V3.6 · 开发 / 测试资料</span><a href="acceptance.html">开发与验收 →</a></footer></main><button class="quick" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button><script>
+document.querySelector('.mobile-menu').onclick=()=>document.body.classList.toggle('menu-open');
+document.querySelectorAll('.sidebar a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu-open')));
+document.querySelectorAll('.flow-card').forEach(card=>{const stage=card.querySelector('.flow-stage'),svg=stage.querySelector('svg'),vb=svg.viewBox.baseVal;let scale=1,x=0,y=0,drag=null;const w=vb.width,h=vb.height;svg.style.width=w+'px';svg.style.height=h+'px';function paint(){svg.style.transform='translate('+x+'px,'+y+'px) scale('+scale+')';card.querySelector('.zoom-label').textContent=Math.round(scale*100)+'%';}function fit(widthOnly=false){scale=widthOnly?(stage.clientWidth-32)/w:Math.min((stage.clientWidth-32)/w,(stage.clientHeight-32)/h);x=(stage.clientWidth-w*scale)/2;y=widthOnly?16:(stage.clientHeight-h*scale)/2;paint();}function zoom(factor,cx=stage.clientWidth/2,cy=stage.clientHeight/2){const next=Math.max(.05,Math.min(5,scale*factor));x=cx-(cx-x)*next/scale;y=cy-(cy-y)*next/scale;scale=next;paint();}card.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>({in:()=>zoom(1.25),out:()=>zoom(.8),fit:()=>fit(),width:()=>fit(true)})[b.dataset.action]());stage.addEventListener('wheel',e=>{e.preventDefault();const r=stage.getBoundingClientRect();zoom(e.deltaY<0?1.12:1/1.12,e.clientX-r.left,e.clientY-r.top);},{passive:false});stage.addEventListener('pointerdown',e=>{drag={sx:e.clientX,sy:e.clientY,x,y};stage.setPointerCapture(e.pointerId);stage.classList.add('dragging');});stage.addEventListener('pointermove',e=>{if(!drag)return;x=drag.x+e.clientX-drag.sx;y=drag.y+e.clientY-drag.sy;paint();});stage.addEventListener('pointerup',()=>{drag=null;stage.classList.remove('dragging')});stage.addEventListener('pointercancel',()=>{drag=null;stage.classList.remove('dragging')});stage.addEventListener('dblclick',()=>fit());stage.addEventListener('keydown',e=>{if(e.key==='+'||e.key==='=')zoom(1.25);if(e.key==='-')zoom(.8);if(e.key==='0')fit();});new ResizeObserver(()=>fit(true)).observe(stage);fit(true);});
+const sections=[...document.querySelectorAll('.doc h2')];if(sections.length){const observer=new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){document.querySelectorAll('.toc-link').forEach(a=>a.classList.toggle('current',a.hash==='#'+e.target.id));}},{rootMargin:'-5% 0px -70% 0px'});sections.forEach(s=>observer.observe(s));}
+</script></body></html>
