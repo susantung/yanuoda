@@ -123,7 +123,7 @@ window.paymentFixture={
         "team",
         "innerGuide"
       ],
-      "mode": "系统支付",
+      "mode": "线上支付",
       "integration": "建行聚合支付",
       "resource": "现有聚合支付设备关系",
       "usage": "—"

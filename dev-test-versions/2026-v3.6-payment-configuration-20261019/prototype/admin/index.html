@@ -44,7 +44,27 @@
     .sticky-right{z-index:1;box-shadow:-8px 0 10px -8px rgba(0,0,0,.3)}
     th.sticky-right{z-index:2}
     .device-table-wrap{position:relative;overflow-x:auto;overflow-y:hidden}
-    .device-table{width:1360px;min-width:1360px;table-layout:fixed;border-collapse:separate;border-spacing:0}
+    .device-table{width:100%;min-width:1380px;table-layout:fixed;border-collapse:separate;border-spacing:0}
+    .device-table .sticky-right{box-shadow:none}
+    .device-table-wrap.has-right-overflow .sticky-right{box-shadow:-8px 0 10px -8px rgba(0,0,0,.3)}
+    .device-table th,.device-table td{border-right:1px solid #f0f0f0}
+    .device-table th:last-child,.device-table td:last-child{border-right:0}
+    .device-filter-row.top,.device-filter-row.bottom{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+    .device-filter .location-item{grid-column:span 2}
+    .device-filter .form-item{padding-right:0}
+    .device-filter .device-select{display:flex}
+    .device-filter .device-select-trigger{width:100%}
+    .device-filter .label,.device-filter .location-item .label{width:auto;margin-right:8px;text-align:left}
+    .device-filter-actions{margin-top:12px}
+    #page-device .device-actions{margin-top:6px}
+    .role-filter .filter-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .role-filter .form-item{min-width:0;width:100%}
+    .role-filter .label{width:auto;flex:none;text-align:left}
+    .role-filter .input{min-width:0;width:auto;flex:1}
+    .role-filter .device-select{display:flex}
+    .role-filter .filter-actions{justify-self:end}
+    .role-actions{justify-content:flex-end;margin-top:8px}
+    .role-actions .config-column{margin-left:0}
     .device-table td.sticky-right{border-left:1px solid #f0f0f0;background:#fff!important}
     .device-table th.sticky-right{border-left:1px solid #f0f0f0;background:#fafafa!important}
     .device-table tr:hover td.sticky-right{background:#fafcff!important}
@@ -101,8 +121,9 @@
               <div class="form-item"><span class="label">设备id：</span><input class="input" /></div>
               <div class="form-item"><span class="label">设备状态：</span><div class="device-select" data-device-select><button type="button" class="device-select-trigger"><span class="device-select-value"></span></button><div class="device-select-menu"><button type="button" class="device-select-option">运行正常</button><button type="button" class="device-select-option">故障</button><button type="button" class="device-select-option">未找到</button></div></div></div>
               <div class="form-item"><span class="label">启用状态：</span><div class="device-select" data-device-select><button type="button" class="device-select-trigger"><span class="device-select-value"></span></button><div class="device-select-menu"><button type="button" class="device-select-option">已启用</button><button type="button" class="device-select-option">已禁用</button></div></div></div>
-              <div class="device-filter-actions"><button class="btn primary">查 询</button><button class="btn">重 置</button></div>
+              <div class="form-item"><span class="label">支付资源：</span><div class="device-select" id="deviceResourceFilter" data-device-select><button type="button" class="device-select-trigger"><span class="device-select-value">全部</span></button><div class="device-select-menu"></div></div></div>
             </div>
+            <div class="device-filter-actions"><button class="btn primary">查 询</button><button class="btn">重 置</button></div>
           </div></div>
           <div class="actions device-actions"><button class="btn primary">新 增</button><button class="btn primary">启 用</button><button class="btn primary">禁 用</button><button class="btn primary">导 出</button><button class="btn">⚙ 配置列</button></div>
           <div class="table-wrap device-table-wrap"><table class="table device-table"><thead><tr><th style="width:40px"><span class="checkbox"></span></th><th style="width:190px">设备名称</th><th style="width:90px">所属景点</th><th style="width:120px">所属站点</th><th style="width:190px">所属通道</th><th style="width:150px">设备IP</th><th style="width:120px">设备类型</th><th style="width:100px">设备状态</th><th style="width:100px">启用状态</th><th class="sticky-right" style="width:280px">操作</th></tr></thead><tbody>
@@ -116,9 +137,8 @@
         </section>
 
         <section id="page-systemRole" class="page-container hidden">
-          <div class="page-head"><div class="page-title">系统角色</div></div>
-          <div class="filter role-filter"><div class="filter-row"><div class="form-item"><span class="label">账号：</span><input class="input" placeholder="请输入账号" /></div><div class="filter-actions"><button class="btn primary">查 询</button><button class="btn">重 置</button></div></div></div>
-          <div class="actions role-actions"><button class="btn primary">＋ 新增</button><button class="btn">绑定日志</button><button class="btn config-column">⚙ 配置列</button></div>
+          <div class="filter role-filter"><div class="filter-row"><div class="form-item"><span class="label">账号：</span><input class="input" /></div><div class="form-item"><span class="label">支付资源：</span><div class="device-select" id="roleResourceFilter" data-device-select><button type="button" class="device-select-trigger"><span class="device-select-value">全部</span></button><div class="device-select-menu"></div></div></div><div class="filter-actions"><button class="btn primary">查 询</button><button class="btn">重 置</button></div></div></div>
+          <div class="actions role-actions"><button class="btn primary">＋ 新增</button><button class="btn primary">绑定日志</button><button class="btn config-column">⚙ 配置列</button></div>
           <div class="table-wrap"><table class="table role-table"><thead><tr><th style="width:100px">账号</th><th style="width:115px">手机号</th><th style="width:155px">注册日期</th><th style="width:125px">用户名</th><th style="width:190px">绑定窗口</th><th style="width:70px">状态</th><th class="sticky-right" style="width:210px">操作</th></tr></thead><tbody>
             <tr><td>yndtd13</td><td>13013000049</td><td>2026-02-11 11:08:19</td><td>团队13</td><td>安委办临时电脑01</td><td><span class="tag green">正常</span></td><td class="sticky-right operation-cell"><button class="btn link">编辑</button><button class="btn link">删除</button><button class="btn link">绑定窗口</button><button class="btn link">解绑</button><button class="btn link payment-resource" data-kind="role" data-name="yndtd13 / 团队13" data-extra="安委办临时电脑01">收款配置</button></td></tr>
             <tr><td>yndtd12</td><td>13013000048</td><td>2026-02-02 15:27:12</td><td>团队12</td><td>安委办5</td><td><span class="tag green">正常</span></td><td class="sticky-right operation-cell"><button class="btn link">编辑</button><button class="btn link">删除</button><button class="btn link">绑定窗口</button><button class="btn link">解绑</button><button class="btn link payment-resource" data-kind="role" data-name="yndtd12 / 团队12" data-extra="安委办5">收款配置</button></td></tr>
@@ -176,20 +196,20 @@
     {name:'银行卡',code:'BANK_CARD',on:true,scenes:['retail','team','partner','innerGuide'],allowedScenes:['retail','team','partner','innerGuide'],mode:'线下支付',integration:'—',resource:'跟窗口设备',owner:'device',usage:'固定使用一个'},
     {name:'微信',code:'WECHAT',on:true,scenes:['retail','team','partner','innerGuide'],allowedScenes:['retail','team','partner','innerGuide'],mode:'线下支付',integration:'—',resource:'—',usage:'—'},
     {name:'支付宝',code:'ALIPAY',on:true,scenes:['retail','team','partner','innerGuide'],allowedScenes:['retail','team','partner','innerGuide'],mode:'线下支付',integration:'—',resource:'—',usage:'—'},
-    {name:'聚合支付',code:'AGGREGATE_PAY',on:true,scenes:['retail','team','innerGuide'],allowedScenes:['retail','team','innerGuide'],mode:'系统支付',integration:'建行聚合支付',resource:'现有聚合支付设备关系',usage:'—'},
+    {name:'聚合支付',code:'AGGREGATE_PAY',on:true,scenes:['retail','team','innerGuide'],allowedScenes:['retail','team','innerGuide'],mode:'线上支付',integration:'建行聚合支付',resource:'现有聚合支付设备关系',usage:'—'},
     {name:'挂帐',code:'ON_ACCOUNT',on:true,scenes:['team','partnerSale','innerGuide'],allowedScenes:['team','partnerSale','innerGuide'],mode:'账户支付',integration:'对应业务账户',resource:'—',usage:'—'},
     {name:'预付款',code:'PREPAY',on:true,scenes:['team','partnerSale','innerGuide'],allowedScenes:['team','partnerSale','innerGuide'],mode:'账户支付',integration:'对应业务账户',resource:'—',usage:'—'},
     {name:'授信签单',code:'CREDIT_SIGN',on:true,scenes:['team','innerGuide'],allowedScenes:['team','innerGuide'],mode:'账户支付',integration:'团队账户',resource:'—',usage:'—'}
   ];
   let currentPaymentCode='CASH';let currentPaymentItem=null;let currentPaymentDraft=null;
-  function modeTag(mode){return `<span class="tag ${mode==='系统支付'?'blue':mode==='账户支付'?'orange':'gray'}">${mode}</span>`}
+  function modeTag(mode){return `<span class="tag ${mode==='线上支付'?'blue':mode==='账户支付'?'orange':'gray'}">${mode}</span>`}
   function sceneTags(scenes){return `<div class="scene-summary">${scenes.map(x=>`<span class="tag blue">${sceneNames[x]}</span>`).join('')}</div>`}
   function renderPayments(){document.getElementById('paymentRows').innerHTML=paymentData.map((x,i)=>`<tr><td><div class="payment-name">${x.name}</div></td><td><span class="switch ${x.on?'on':''}" data-index="${i}" title="${x.on?'点击停用':'点击启用'}"></span></td><td>${sceneTags(x.scenes)}</td><td>${modeTag(x.mode)}</td><td>${x.integration}</td><td>${x.resource}</td><td>${x.usage}</td><td class="sticky-right"><button class="btn link configure-payment" data-index="${i}" data-name="${x.name}" data-code="${x.code}">配置</button></td></tr>`).join('');document.getElementById('paymentTotal').textContent=`共 ${paymentData.length} 条`;bindPaymentButtons();bindPaymentSwitches()}
   function showToast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
   function unavailableScenes(){const missing=sceneOptions.filter(s=>!paymentData.some(x=>x.on&&x.scenes.includes(s.value))).map(s=>s.label);if(!missing.includes('内导售票')&&!paymentData.some(x=>x.on&&x.scenes.includes('innerGuide')&&!['ON_ACCOUNT','PREPAY','CREDIT_SIGN'].includes(x.code)))missing.push('内导售票（散客）');return missing}
   function bindPaymentSwitches(){document.querySelectorAll('#paymentRows .switch').forEach(s=>s.onclick=()=>{const item=paymentData[Number(s.dataset.index)];item.on=!item.on;const missing=unavailableScenes();if(missing.length){item.on=!item.on;showToast(`无法停用：${missing.join('、')}将无可用支付方式`);return}renderPayments()})}
   function renderScenePicker(selected,allowedScenes){const target=document.getElementById('mScenes');const options=sceneOptions.filter(x=>allowedScenes.includes(x.value));target.innerHTML=`<button type="button" class="multi-trigger">${selected.map(x=>`<span class="select-tag">${sceneNames[x]}</span>`).join('')}</button><div class="multi-menu">${options.map(x=>`<label class="multi-option"><input type="checkbox" ${selected.includes(x.value)?'checked':''} data-scene-option="${x.value}">${x.label}</label>`).join('')}</div>`;const trigger=target.querySelector('.multi-trigger');target.onclick=e=>e.stopPropagation();trigger.onclick=()=>target.classList.toggle('open');target.querySelectorAll('input').forEach(input=>input.onchange=()=>{const key=input.dataset.sceneOption;const index=selected.indexOf(key);if(input.checked&&index<0)selected.push(key);if(!input.checked&&index>=0)selected.splice(index,1);trigger.innerHTML=selected.length?selected.map(x=>`<span class="select-tag">${sceneNames[x]}</span>`).join(''):'<span class="subtle">请选择适用场景</span>'})}
-  function bindPaymentButtons(){document.querySelectorAll('.configure-payment').forEach(b=>b.onclick=()=>{currentPaymentCode=b.dataset.code;currentPaymentItem=paymentData[Number(b.dataset.index)];currentPaymentDraft={...currentPaymentItem,scenes:[...currentPaymentItem.scenes],allowedScenes:[...currentPaymentItem.allowedScenes]};document.getElementById('mPayment').textContent=b.dataset.name;document.querySelectorAll('#mEnabled .radio').forEach(x=>x.classList.toggle('active',(x.dataset.enabled==='true')===currentPaymentDraft.on));renderScenePicker(currentPaymentDraft.scenes,currentPaymentDraft.allowedScenes);const mode=currentPaymentDraft.mode;const modeValue=mode==='系统支付'?'system':mode==='账户支付'?'account':'offline';document.getElementById('mMode').innerHTML=`<option value="${modeValue}">${mode}</option>`;const resourceRadios=document.querySelectorAll('#resourceLine .radio');resourceRadios.forEach(r=>r.classList.toggle('active',r.dataset.owner===currentPaymentDraft.owner));const usageRadios=document.querySelectorAll('#resourceUsageLine .radio');usageRadios.forEach((r,i)=>r.classList.toggle('active',currentPaymentDraft.usage==='允许多个并默认一个'?i===1:i===0));updateMode();updateResourceOwnerHelp();openModal('paymentModal')})}
+  function bindPaymentButtons(){document.querySelectorAll('.configure-payment').forEach(b=>b.onclick=()=>{currentPaymentCode=b.dataset.code;currentPaymentItem=paymentData[Number(b.dataset.index)];currentPaymentDraft={...currentPaymentItem,scenes:[...currentPaymentItem.scenes],allowedScenes:[...currentPaymentItem.allowedScenes]};document.getElementById('mPayment').textContent=b.dataset.name;document.querySelectorAll('#mEnabled .radio').forEach(x=>x.classList.toggle('active',(x.dataset.enabled==='true')===currentPaymentDraft.on));renderScenePicker(currentPaymentDraft.scenes,currentPaymentDraft.allowedScenes);const mode=currentPaymentDraft.mode;const modeValue=mode==='线上支付'?'system':mode==='账户支付'?'account':'offline';document.getElementById('mMode').innerHTML=`<option value="${modeValue}">${mode}</option>`;const resourceRadios=document.querySelectorAll('#resourceLine .radio');resourceRadios.forEach(r=>r.classList.toggle('active',r.dataset.owner===currentPaymentDraft.owner));const usageRadios=document.querySelectorAll('#resourceUsageLine .radio');usageRadios.forEach((r,i)=>r.classList.toggle('active',currentPaymentDraft.usage==='允许多个并默认一个'?i===1:i===0));updateMode();updateResourceOwnerHelp();openModal('paymentModal')})}
   function updateMode(){const system=currentPaymentCode==='AGGREGATE_PAY';document.getElementById('integrationLine').classList.toggle('hidden',!system);const usesBoundResource=['SCAN_PAY','BANK_CARD'].includes(currentPaymentCode);document.getElementById('resourceLine').classList.toggle('hidden',!usesBoundResource);document.getElementById('resourceUsageLine').classList.toggle('hidden',!usesBoundResource)}
   const meta={home:['','首页'],payment:['配置中心','支付配置'],paymentResources:['配置中心','支付资源管理'],device:['基础信息','设备管理'],systemRole:['员工管理','系统角色'],order:['订单中心','订单详情']};
   let openPages=['payment'];let activePage='payment';
@@ -304,6 +324,8 @@
   const originalResourceActions=bindResourceRowActions;
   bindResourceRowActions=()=>{originalResourceActions();document.querySelectorAll('.resource-status-switch').forEach(button=>{const toggle=button.onclick;button.onclick=()=>{toggle();persistPreview()}})};
   restorePreview();
+  // 统一展示口径，兼容本机保存的旧版“系统支付”名称，不改变支付链路。
+  paymentData.find(item=>item.code==='AGGREGATE_PAY').mode='线上支付';
   renderPaymentResources();
   renderPayments();
   renderShellTabs();
@@ -311,6 +333,108 @@
   // 方案链接只切换预览页面，不提交业务数据。
   const requestedPage=new URLSearchParams(location.search).get('page');
   if(requestedPage&&meta[requestedPage])showPage(requestedPage);
+  let deviceResourceDraft='';
+  let deviceFilterApplied=null;
+  const deviceResourcePicker=document.getElementById('deviceResourceFilter');
+  const deviceFilterItems=[...document.querySelectorAll('.device-filter .form-item')];
+  const deviceDataRows=[...document.querySelectorAll('.device-table tbody tr')];
+  const deviceTotal=document.querySelector('#page-device .table-footer > span');
+  const deviceOriginalTotal=deviceTotal.textContent;
+  const deviceEmptyRow=document.createElement('tr');
+  deviceEmptyRow.hidden=true;
+  deviceEmptyRow.innerHTML='<td colspan="10"><div class="empty-state compact">暂无数据</div></td>';
+  document.querySelector('.device-table tbody').append(deviceEmptyRow);
+  function renderDeviceResourceFilter(){
+    const resources=paymentResources.filter(x=>x.enabled);
+    if(deviceResourceDraft&&!resources.some(x=>x.id===deviceResourceDraft))deviceResourceDraft='';
+    deviceResourcePicker.querySelector('.device-select-value').textContent=resources.find(x=>x.id===deviceResourceDraft)?.name||'全部';
+    const menu=deviceResourcePicker.querySelector('.device-select-menu');
+    menu.replaceChildren();
+    for(const resource of [{id:'',name:'全部'},...resources]){
+      const option=document.createElement('button');option.type='button';option.className='device-select-option';option.textContent=resource.name;
+      option.classList.toggle('selected',resource.id===deviceResourceDraft);
+      option.onclick=()=>{deviceResourceDraft=resource.id;deviceResourcePicker.classList.remove('open');renderDeviceResourceFilter()};
+      menu.append(option);
+    }
+  }
+  function readDeviceFilters(){return {
+    location:deviceFilterItems[0].querySelector('.device-select-value:not(.placeholder)')?.textContent||'',
+    name:deviceFilterItems[1].querySelector('input').value.trim(),
+    type:deviceFilterItems[2].querySelector('.device-select-value').textContent,
+    id:deviceFilterItems[3].querySelector('input').value.trim(),
+    status:deviceFilterItems[4].querySelector('.device-select-value').textContent,
+    enabled:deviceFilterItems[5].querySelector('.device-select-value').textContent,
+    resource:deviceResourceDraft
+  }}
+  function applyDeviceFilters(){
+    const f=deviceFilterApplied;let count=0;
+    deviceDataRows.forEach(row=>{
+      const cells=row.children;
+      const binding=bindingData[`device:${cells[1].textContent}`];
+      const matched=!f||((!f.name||cells[1].textContent.includes(f.name))&&(!f.id||cells[5].textContent.includes(f.id))&&(!f.type||cells[6].textContent.trim()===f.type)&&(!f.status||cells[7].textContent.trim()===f.status)&&(!f.enabled||cells[8].textContent.includes(f.enabled))&&(!f.location||f.location.split(' / ').every((text,i)=>cells[i+2]?.textContent.includes(text)))&&(!f.resource||[...(binding?.scanSelected||[]),...(binding?.bankSelected||[])].includes(f.resource)));
+      row.hidden=!matched;if(matched)count++;
+    });
+    deviceEmptyRow.hidden=count!==0;
+    const hasFilter=f&&Object.values(f).some(Boolean);
+    deviceTotal.textContent=hasFilter?`共 ${count} 条`:deviceOriginalTotal;
+  }
+  const deviceFilterButtons=document.querySelectorAll('.device-filter-actions .btn');
+  deviceFilterButtons[0].onclick=()=>{deviceFilterApplied=readDeviceFilters();applyDeviceFilters()};
+  deviceFilterButtons[1].onclick=()=>{
+    document.querySelectorAll('.device-filter input').forEach(x=>x.value='');
+    document.querySelectorAll('.device-filter [data-device-select]').forEach(select=>{
+      select.classList.remove('open');select.querySelectorAll('.selected').forEach(x=>x.classList.remove('selected'));
+      const value=select.querySelector('.device-select-value');value.textContent=select.classList.contains('device-tree-select')?'请选择':'';value.classList.toggle('placeholder',select.classList.contains('device-tree-select'));
+    });
+    deviceResourceDraft='';deviceFilterApplied=null;renderDeviceResourceFilter();applyDeviceFilters();
+  };
+  const resourceListObserver=new MutationObserver(()=>{renderDeviceResourceFilter();applyDeviceFilters();renderRoleResourceFilter();applyRoleFilters()});
+  resourceListObserver.observe(document.getElementById('paymentResourceRows'),{childList:true});
+  document.getElementById('saveBinding').addEventListener('click',()=>{if(!document.getElementById('resourceModal').classList.contains('show')){applyDeviceFilters();applyRoleFilters()}});
+  renderDeviceResourceFilter();
+  let roleResourceDraft='';
+  let roleFilterApplied=null;
+  const roleResourcePicker=document.getElementById('roleResourceFilter');
+  const roleDataRows=[...document.querySelectorAll('.role-table tbody tr')];
+  const roleTotal=document.querySelector('.role-pagination > span');
+  const roleOriginalTotal=roleTotal.textContent;
+  const roleEmptyRow=document.createElement('tr');roleEmptyRow.hidden=true;
+  roleEmptyRow.innerHTML='<td colspan="7"><div class="empty-state compact">暂无数据</div></td>';
+  document.querySelector('.role-table tbody').append(roleEmptyRow);
+  function renderRoleResourceFilter(){
+    const resources=paymentResources.filter(x=>x.enabled);
+    if(roleResourceDraft&&!resources.some(x=>x.id===roleResourceDraft))roleResourceDraft='';
+    roleResourcePicker.querySelector('.device-select-value').textContent=resources.find(x=>x.id===roleResourceDraft)?.name||'全部';
+    const menu=roleResourcePicker.querySelector('.device-select-menu');menu.replaceChildren();
+    for(const resource of [{id:'',name:'全部'},...resources]){
+      const option=document.createElement('button');option.type='button';option.className='device-select-option';option.textContent=resource.name;
+      option.classList.toggle('selected',resource.id===roleResourceDraft);
+      option.onclick=()=>{roleResourceDraft=resource.id;roleResourcePicker.classList.remove('open');renderRoleResourceFilter()};menu.append(option);
+    }
+  }
+  function applyRoleFilters(){
+    const f=roleFilterApplied;let count=0;
+    roleDataRows.forEach(row=>{
+      const name=row.querySelector('.payment-resource')?.dataset.name;
+      const binding=bindingData[`role:${name}`];
+      const matched=!f||((!f.account||row.children[0].textContent.includes(f.account))&&(!f.resource||[...(binding?.scanSelected||[]),...(binding?.bankSelected||[])].includes(f.resource)));
+      row.hidden=!matched;if(matched)count++;
+    });
+    roleEmptyRow.hidden=count!==0;
+    roleTotal.textContent=f&&(f.account||f.resource)?`共 ${count} 条`:roleOriginalTotal;
+  }
+  const roleFilterButtons=document.querySelectorAll('.role-filter .filter-actions .btn');
+  roleFilterButtons[0].onclick=()=>{roleFilterApplied={account:document.querySelector('.role-filter input').value.trim(),resource:roleResourceDraft};applyRoleFilters()};
+  roleFilterButtons[1].onclick=()=>{document.querySelector('.role-filter input').value='';roleResourceDraft='';roleFilterApplied=null;roleResourcePicker.classList.remove('open');renderRoleResourceFilter();applyRoleFilters()};
+  renderRoleResourceFilter();
+  // 固定列仅在右侧仍有被遮住的内容时显示分隔阴影。
+  const deviceTableWrap=document.querySelector('.device-table-wrap');
+  const updateDeviceTableEdge=()=>deviceTableWrap.classList.toggle('has-right-overflow',deviceTableWrap.scrollWidth-deviceTableWrap.clientWidth-deviceTableWrap.scrollLeft>1);
+  deviceTableWrap.addEventListener('scroll',updateDeviceTableEdge,{passive:true});
+  const deviceTableObserver=new ResizeObserver(updateDeviceTableEdge);
+  deviceTableObserver.observe(deviceTableWrap);
+  deviceTableObserver.observe(deviceTableWrap.querySelector('table'));
+  updateDeviceTableEdge();
 </script>
 <link rel="stylesheet" href="order-detail.css">
 <script src="vendor/react.production.min.js"></script>
