@@ -5,6 +5,7 @@ window.paymentFixture={
     {
       "name": "现金",
       "code": "CASH",
+      "sortOrder": 1,
       "on": true,
       "scenes": [
         "retail",
@@ -26,6 +27,7 @@ window.paymentFixture={
     {
       "name": "扫码付",
       "code": "SCAN_PAY",
+      "sortOrder": 2,
       "on": true,
       "scenes": [
         "retail",
@@ -48,6 +50,7 @@ window.paymentFixture={
     {
       "name": "银行卡",
       "code": "BANK_CARD",
+      "sortOrder": 3,
       "on": true,
       "scenes": [
         "retail",
@@ -70,6 +73,7 @@ window.paymentFixture={
     {
       "name": "微信",
       "code": "WECHAT",
+      "sortOrder": 4,
       "on": true,
       "scenes": [
         "retail",
@@ -91,6 +95,7 @@ window.paymentFixture={
     {
       "name": "支付宝",
       "code": "ALIPAY",
+      "sortOrder": 5,
       "on": true,
       "scenes": [
         "retail",
@@ -112,6 +117,7 @@ window.paymentFixture={
     {
       "name": "聚合支付",
       "code": "AGGREGATE_PAY",
+      "sortOrder": 6,
       "on": true,
       "scenes": [
         "retail",
@@ -131,6 +137,7 @@ window.paymentFixture={
     {
       "name": "挂帐",
       "code": "ON_ACCOUNT",
+      "sortOrder": 7,
       "on": true,
       "scenes": [
         "team",
@@ -150,6 +157,7 @@ window.paymentFixture={
     {
       "name": "预付款",
       "code": "PREPAY",
+      "sortOrder": 8,
       "on": true,
       "scenes": [
         "team",
@@ -169,6 +177,7 @@ window.paymentFixture={
     {
       "name": "授信签单",
       "code": "CREDIT_SIGN",
+      "sortOrder": 9,
       "on": true,
       "scenes": [
         "team",

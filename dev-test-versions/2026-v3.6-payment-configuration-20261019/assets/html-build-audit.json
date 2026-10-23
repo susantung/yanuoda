@@ -6,12 +6,12 @@
     "development-spec.html",
     "acceptance.html"
   ],
-  "flowCount": 8,
+  "flowCount": 12,
   "flows": [
     {
       "name": "flow-01.svg",
-      "nodes": 17,
-      "edges": 22
+      "nodes": 25,
+      "edges": 33
     },
     {
       "name": "flow-02.svg",
@@ -30,8 +30,8 @@
     },
     {
       "name": "flow-05.svg",
-      "nodes": 14,
-      "edges": 15
+      "nodes": 15,
+      "edges": 16
     },
     {
       "name": "flow-06.svg",
@@ -40,13 +40,33 @@
     },
     {
       "name": "flow-07.svg",
-      "nodes": 14,
-      "edges": 16
+      "nodes": 15,
+      "edges": 17
     },
     {
       "name": "flow-08.svg",
       "nodes": 12,
       "edges": 11
+    },
+    {
+      "name": "flow-09.svg",
+      "nodes": 16,
+      "edges": 18
+    },
+    {
+      "name": "flow-10.svg",
+      "nodes": 15,
+      "edges": 16
+    },
+    {
+      "name": "flow-11.svg",
+      "nodes": 14,
+      "edges": 17
+    },
+    {
+      "name": "flow-12.svg",
+      "nodes": 32,
+      "edges": 44
     }
   ],
   "styleReference": "../../../散客合作伙伴管理/方案与需求/2026-v3.2-partner-management-20260805/index.html"

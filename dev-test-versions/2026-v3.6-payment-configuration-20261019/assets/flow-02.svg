@@ -187,16 +187,16 @@
 <path fill="none" stroke="#8a77a6" d="M490.56,-205.19C490.56,-192.94 490.56,-178.2 490.56,-165.07"/>
 <polygon fill="#8a77a6" stroke="#8a77a6" points="493.01,-165.23 490.56,-158.23 488.11,-165.23 493.01,-165.23"/>
 </g>
-<!-- D01 -->
+<!-- D05 -->
 <g id="node14" class="node">
-<title>D01</title>
+<title>D05</title>
 <path fill="#f7f3ff" stroke="#b7a2df" d="M600.24,-53.76C600.24,-53.76 380.88,-53.76 380.88,-53.76 374.88,-53.76 368.88,-47.76 368.88,-41.76 368.88,-41.76 368.88,-12 368.88,-12 368.88,-6 374.88,0 380.88,0 380.88,0 600.24,0 600.24,0 606.24,0 612.24,-6 612.24,-12 612.24,-12 612.24,-41.76 612.24,-41.76 612.24,-47.76 606.24,-53.76 600.24,-53.76"/>
-<text xml:space="preserve" text-anchor="middle" x="490.56" y="-31.08" font-family="PingFang SC" font-size="14.00" fill="#2e214a">D01 订单支付展示，历史值不</text>
-<text xml:space="preserve" text-anchor="middle" x="490.56" y="-14.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">回写</text>
+<text xml:space="preserve" text-anchor="middle" x="490.56" y="-31.08" font-family="PingFang SC" font-size="14.00" fill="#2e214a">D05 内导详情逐笔展示，历史</text>
+<text xml:space="preserve" text-anchor="middle" x="490.56" y="-14.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">值不回写</text>
 </g>
-<!-- SNAP&#45;&gt;D01 -->
+<!-- SNAP&#45;&gt;D05 -->
 <g id="edge16" class="edge">
-<title>SNAP&#45;&gt;D01</title>
+<title>SNAP&#45;&gt;D05</title>
 <path fill="none" stroke="#8a77a6" d="M490.56,-102.43C490.56,-90.18 490.56,-75.44 490.56,-62.31"/>
 <polygon fill="#8a77a6" stroke="#8a77a6" points="493.01,-62.47 490.56,-55.47 488.11,-62.47 493.01,-62.47"/>
 </g>

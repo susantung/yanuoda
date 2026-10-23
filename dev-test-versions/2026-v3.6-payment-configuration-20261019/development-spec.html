@@ -5,15 +5,17 @@
 @media(max-width:1050px){:root{--side:230px}.hero{padding:28px}.main{padding:24px 20px}.card{padding:20px}.page-cards{grid-template-columns:1fr}}
 @media(max-width:720px){.main{width:100%;margin:0;padding:16px}.sidebar{display:none;width:min(85vw,300px)}body.menu-open .sidebar{display:block;box-shadow:-10px 0 40px #201a2c44}.mobile-menu{display:block;position:fixed;right:14px;top:12px;z-index:30;background:#5b21b6;color:#fff;border:1px solid #a78bfa;border-radius:8px;padding:7px 12px}.hero{padding:24px 20px}.hero h1{font-size:25px}.hero p{font-size:14px}.quick{bottom:14px;right:14px}.grid{grid-template-columns:1fr 1fr}.flow-stage{height:500px}.doc h2{font-size:22px}}
 @media print{.sidebar,.quick,.mobile-menu,.actions,.flow-toolbar,.footer-nav{display:none!important}.main{width:100%;margin:0;padding:0}.hero{background:#fff;color:#211a49;box-shadow:none;padding:12px 0}.hero h1,.hero p,.eyebrow{color:#211a49}.card{box-shadow:none;padding:12px}.table-wrap{overflow:visible}table{font-size:10px}.flow-stage{height:850px;max-height:none;page-break-inside:avoid}.section{break-inside:avoid}}
-</style></head><body><button class="mobile-menu" aria-label="打开或关闭目录">目录 ☰</button><aside class="sidebar"><h2>支付配置化专项</h2><div class="group">版本迭代需求</div><a href="../index.html">← 返回版本列表</a><div class="group">开发 / 测试共同方案</div><nav><a class="" href="index.html">方案总览</a><a class="current" href="development-spec.html">完整需求方案</a><a class="" href="page-list.html">页面清单</a><a class="" href="flows.html">全程流程图</a><a class="" href="acceptance.html">开发与验收</a><div class="group">本页目录</div><a class="toc-link" href="#1-本次修改范围">1. 本次修改范围</a><a class="toc-link" href="#2-公共规则">2. 公共规则</a><a class="toc-link" href="#3-B01-支付配置列表">3. B01｜支付配置列表</a><a class="toc-link" href="#4-B02-配置支付方式弹窗">4. B02｜配置支付方式弹窗</a><a class="toc-link" href="#5-B03-支付资源管理列表">5. B03｜支付资源管理列表</a><a class="toc-link" href="#6-B04-新增-编辑支付资源">6. B04｜新增/编辑支付资源</a><a class="toc-link" href="#7-B05-删除资源确认">7. B05｜删除资源确认</a><a class="toc-link" href="#8-B06-设备管理列表">8. B06｜设备管理列表</a><a class="toc-link" href="#9-B07-设备收款配置">9. B07｜设备收款配置</a><a class="toc-link" href="#10-B08-系统角色列表">10. B08｜系统角色列表</a><a class="toc-link" href="#11-B09-账号收款配置">11. B09｜账号收款配置</a><a class="toc-link" href="#12-W01-散客售票工作台">12. W01｜散客售票工作台</a><a class="toc-link" href="#13-W02-W03-团队售票及选择对象">13. W02、W03｜团队售票及选择对象</a><a class="toc-link" href="#14-W04-散客-团队支付订单确认">14. W04｜散客/团队支付订单确认</a><a class="toc-link" href="#15-W05-W06-合作伙伴售票与选择对象">15. W05、W06｜合作伙伴售票与选择对象</a><a class="toc-link" href="#16-W07-合作伙伴支付订单确认">16. W07｜合作伙伴支付订单确认</a><a class="toc-link" href="#17-W08-合作伙伴充值列表">17. W08｜合作伙伴充值列表</a><a class="toc-link" href="#18-W09-共用合作伙伴充值弹窗">18. W09｜共用合作伙伴充值弹窗</a><a class="toc-link" href="#19-W10-挂单恢复及配置刷新">19. W10｜挂单恢复及配置刷新</a><a class="toc-link" href="#20-D01-订单详情中的-订单支付">20. D01｜订单详情中的“订单支付”</a><a class="toc-link" href="#21-D02-充值-回款详情">21. D02｜充值/回款详情</a><a class="toc-link" href="#22-D03-其他收入详情">22. D03｜其他收入详情</a><a class="toc-link" href="#23-记录范围">23. 记录范围</a><a class="toc-link" href="#24-实施边界">24. 实施边界</a><a class="toc-link" href="#25-W11-W12-内导售票与支付确认">25. W11、W12｜内导售票与支付确认</a><div class="group">原型入口</div><a href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口原型 ↗</a><div class="group">源文件</div><a href="PRD｜支付配置化_V3.6_20261019.md" target="_blank" rel="noopener noreferrer">打开完整 Markdown ↗</a></nav></aside><main class="main"><header class="hero"><div class="eyebrow">支付配置化专项 · V3.6 · 2026-10-19</div><h1>完整需求方案</h1><p>一种支付方式，一份统一配置，多场景适用。按页面说明字段、操作、校验与结果。</p><div class="actions"><a class="btn" href="development-spec.html">完整需求方案</a><a class="btn" href="flows.html">全程流程图</a><a class="btn" href="page-list.html">页面清单</a><a class="btn" href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a class="btn" href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口 ↗</a></div></header><article class="doc"><h1>支付配置化功能方案</h1>
-<p>版本：V1.4｜2026-10-19｜产品方案评审稿。</p>
+</style></head><body><button class="mobile-menu" aria-label="打开或关闭目录">目录 ☰</button><aside class="sidebar"><h2>支付配置化专项</h2><div class="group">版本迭代需求</div><a href="../index.html">← 返回版本列表</a><div class="group">开发 / 测试共同方案</div><nav><a class="" href="index.html">方案总览</a><a class="current" href="development-spec.html">完整需求方案</a><a class="" href="page-list.html">页面清单</a><a class="" href="flows.html">全程流程图</a><a class="" href="acceptance.html">开发与验收</a><div class="group">本页目录</div><a class="toc-link" href="#1-本次修改范围">1. 本次修改范围</a><a class="toc-link" href="#2-公共规则">2. 公共规则</a><a class="toc-link" href="#3-B01-支付配置列表">3. B01｜支付配置列表</a><a class="toc-link" href="#4-B02-配置支付方式弹窗">4. B02｜配置支付方式弹窗</a><a class="toc-link" href="#5-B03-支付资源管理列表">5. B03｜支付资源管理列表</a><a class="toc-link" href="#6-B04-新增-编辑支付资源">6. B04｜新增/编辑支付资源</a><a class="toc-link" href="#7-B05-删除资源确认">7. B05｜删除资源确认</a><a class="toc-link" href="#8-B06-设备管理列表">8. B06｜设备管理列表</a><a class="toc-link" href="#9-B07-设备收款配置">9. B07｜设备收款配置</a><a class="toc-link" href="#10-B08-系统角色列表">10. B08｜系统角色列表</a><a class="toc-link" href="#11-B09-账号收款配置">11. B09｜账号收款配置</a><a class="toc-link" href="#12-W01-散客售票工作台">12. W01｜散客售票工作台</a><a class="toc-link" href="#13-W02-W03-团队售票及选择对象">13. W02、W03｜团队售票及选择对象</a><a class="toc-link" href="#14-W04-散客-团队支付订单确认">14. W04｜散客/团队支付订单确认</a><a class="toc-link" href="#15-W05-W06-合作伙伴售票与选择对象">15. W05、W06｜合作伙伴售票与选择对象</a><a class="toc-link" href="#16-W07-合作伙伴支付订单确认">16. W07｜合作伙伴支付订单确认</a><a class="toc-link" href="#17-W08-合作伙伴充值列表">17. W08｜合作伙伴充值列表</a><a class="toc-link" href="#18-W09-共用合作伙伴充值弹窗">18. W09｜共用合作伙伴充值弹窗</a><a class="toc-link" href="#19-W10-挂单恢复及配置刷新">19. W10｜挂单恢复及配置刷新</a><a class="toc-link" href="#20-D01-订单详情中的-订单支付">20. D01｜订单详情中的“订单支付”</a><a class="toc-link" href="#21-D02-充值-回款详情">21. D02｜充值/回款详情</a><a class="toc-link" href="#22-D03-其他收入详情">22. D03｜其他收入详情</a><a class="toc-link" href="#23-W11-W12-内导售票与支付确认">23. W11、W12｜内导售票与支付确认</a><a class="toc-link" href="#24-W13-W14-销售记录与冲红申请">24. W13、W14｜销售记录与冲红申请</a><a class="toc-link" href="#25-B10-B11-冲红审核与审核弹窗">25. B10、B11｜冲红审核与审核弹窗</a><a class="toc-link" href="#26-W15-D04-冲红记录与详情">26. W15、D04｜冲红记录与详情</a><a class="toc-link" href="#27-D01-订单详情-门票详情中的支付与冲红信息">27. D01｜订单详情、门票详情中的支付与冲红信息</a><a class="toc-link" href="#28-K05-冲红保存与生效规则">28. K05｜冲红保存与生效规则</a><a class="toc-link" href="#29-内导收款页面与调整范围">29. 内导收款页面与调整范围</a><a class="toc-link" href="#30-W16-W17-订单记录与订单结账">30. W16、W17｜订单记录与订单结账</a><a class="toc-link" href="#31-W18-结账补收支付订单确认">31. W18｜结账补收支付订单确认</a><a class="toc-link" href="#32-D05-W19-内导订单详情与交易记录">32. D05、W19｜内导订单详情与交易记录</a><a class="toc-link" href="#33-W20-异常支付与重复提交控制">33. W20｜异常支付与重复提交控制</a><a class="toc-link" href="#34-记录范围">34. 记录范围</a><a class="toc-link" href="#35-实施边界">35. 实施边界</a><div class="group">原型入口</div><a href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口原型 ↗</a><div class="group">源文件</div><a href="PRD｜支付配置化_V3.6_20261019.md" target="_blank" rel="noopener noreferrer">打开完整 Markdown ↗</a></nav></aside><main class="main"><header class="hero"><div class="eyebrow">支付配置化专项 · V3.6 · 2026-10-23</div><h1>完整需求方案</h1><p>一种支付方式，一份统一配置，多场景适用。按页面说明字段、操作、校验与结果。</p><div class="actions"><a class="btn" href="development-spec.html">完整需求方案</a><a class="btn" href="flows.html">全程流程图</a><a class="btn" href="page-list.html">页面清单</a><a class="btn" href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a class="btn" href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口 ↗</a></div></header><article class="doc"><h1>支付配置化功能方案</h1>
+<p>版本：V1.7｜2026-10-23｜产品方案评审稿。</p>
 <p>配套：<a href="01-%E9%A1%B5%E9%9D%A2%E6%B8%85%E5%8D%95.md">页面清单</a> · <a href="02-%E5%85%A8%E7%A8%8B%E6%B5%81%E7%A8%8B%E5%9B%BE.md">全程流程图</a> · <a href="04-%E5%BC%80%E5%8F%91%E6%A0%B8%E5%AF%B9%E4%B8%8E%E9%AA%8C%E6%94%B6%E6%B8%85%E5%8D%95.md">开发与验收</a>。</p>
 <h2 id="1-本次修改范围">1. 本次修改范围</h2>
-<p>本次只修改三部分：</p>
+<p>本次修改五部分：</p>
 <ol>
 <li>后台统一配置支付方式的启用状态、适用场景，以及扫码付/银行卡的资源规则和账号/设备绑定。</li>
 <li>窗口按配置显示支付方式；扫码付/银行卡在确认弹窗中带出收款资源和柜台编码/POS编号。</li>
 <li><strong>每笔扫码付、银行卡订单新增记录实际使用的资源及柜台编码/POS编号，并在订单的“订单支付”信息中展示。</strong> 合作伙伴充值/回款同样保存并展示本次使用的资源及编号。</li>
+<li>冲红接入支付配置，支持换支付方式及扫码付/银行卡同方式更正资源或编号；申请、审核和详情保存展示前后快照，审核同意成功后更新有效支付信息。详见<a href="05-%E5%86%B2%E7%BA%A2%E8%A1%A5%E5%85%85%E6%96%B9%E6%A1%88.md">第24—28节</a>。</li>
+<li>内导计时结账补收接入同一支付配置；开单与补收逐笔记录资源及编号，订单详情、交易记录和异常查询保持一致。详见<a href="07-%E5%86%85%E5%AF%BC%E7%BB%93%E8%B4%A6%E8%A1%A5%E5%85%85%E6%96%B9%E6%A1%88.md">第29—33节</a>。</li>
 </ol>
 <p><strong>所有支付方式确认后的下单、收款、账户处理、出票等均沿用原逻辑。本次不改支付接口、订单状态、扣款、计费、押金、结算、退款或打印逻辑。</strong></p>
 <h2 id="2-公共规则">2. 公共规则</h2>
@@ -198,6 +200,92 @@
 <li>每笔订单保存当时实际使用的资源及编号；后续改名、改码、解绑或删除不回写历史。旧记录无编号显示“—”。</li>
 <li>最终提交时复核当前配置和有效绑定，失败保留业务内容。</li>
 </ul>
+<h3 id="2-7-支付方式排序与默认选择">2.7 支付方式排序与默认选择</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>排序范围</td>
+<td>同景区每种支付方式维护一个排序序号，所有适用场景共用；支付配置列表及窗口支付下拉、支付按钮均按该序号升序</td>
+</tr>
+<tr>
+<td>加载顺序</td>
+<td>每个页面先按启用、适用场景及原业务资格取出实际可选方式，再按后台序号升序展示。配置9种就排这9种，配置3种就只排这3种；例如本页只有序号2、8、20，依次显示2、8、20，默认选2，不补号、不要求连续，不使用其他页面的第一种</td>
+</tr>
+<tr>
+<td>默认支付方式</td>
+<td>散客、团队、内导首次进入，以及充值和内导补收新开弹窗尚未选方式时，默认选本次候选排序后的第一种，不再写死现金；开单确认弹窗沿用主页面已选方式</td>
+</tr>
+<tr>
+<td>原业务锁定</td>
+<td>长期伙伴仍锁定原默认账户对应挂帐/预付款，临时客户仍固定挂帐；排序不改变账户及支付资格</td>
+</tr>
+<tr>
+<td>排序与资源</td>
+<td>第一种方式缺资源时不自动跳到现金或下一种；沿用弹窗内资源提示及校验，收银员可主动换方式</td>
+</tr>
+<tr>
+<td>已选方式</td>
+<td>当前业务手工选择、页面暂存或挂单恢复的方式仍有效时保留；配置刷新只重排，不强制切换。已选方式停用或不再适用时，改选过滤排序后的第一种并重置对应草稿资源</td>
+</tr>
+<tr>
+<td>冲红申请</td>
+<td>可选方式按相同规则排序，仍需申请人明确选择，初始为空，不自动提交或更正</td>
+</tr>
+<tr>
+<td>唯一性与存量</td>
+<td>同一景区全部支付方式的序号不可重复（包含停用方式），修改自身原序号除外；重复时阻止保存并提示“排序序号已被其他支付方式使用，请更换”；首次上线按原支付配置列表顺序初始化1—9。异常缺值排在有值之后并按原顺序展示，不因缺值中断加载</td>
+</tr>
+</tbody></table></div>
+<p>无可用支付方式时沿用无可用方式提示，不能回退到写死现金。排序不改历史订单支付信息。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>对应页面</th>
+<th>排序与首次默认</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>W01散客售票</td>
+<td>仅取本页可用方式，支付下拉升序；首次选本页最小序号</td>
+</tr>
+<tr>
+<td>W02团队售票</td>
+<td>仅取本页可用方式，最多九种；支付下拉升序，首次选本页最小序号</td>
+</tr>
+<tr>
+<td>W04散客/团队确认</td>
+<td>支付按钮与对应售票下拉同序；沿用主页面已选方式，不在打开确认时覆盖用户选择</td>
+</tr>
+<tr>
+<td>W11内导散客/团队</td>
+<td>分别按当前团散资格取方式，支付下拉升序；首次进入、切换团散类型时选对应列表最小序号</td>
+</tr>
+<tr>
+<td>W12内导确认</td>
+<td>与当前内导销售页同序，沿用其已选方式</td>
+</tr>
+<tr>
+<td>W18内导结账补收</td>
+<td>按当前订单团散及账户资格取内导候选，升序并默认本次最小序号；不复用原押金方式或资源</td>
+</tr>
+<tr>
+<td>W09共用充值/回款</td>
+<td>从该场景可用的五种线下方式中取值；每次新开弹窗升序展示并选最小序号，各入口一致</td>
+</tr>
+<tr>
+<td>W05/W07合作伙伴账户售票</td>
+<td>原业务仅允许一个账户支付时仍锁定该方式，不因其他页面的较小序号换账户</td>
+</tr>
+<tr>
+<td>W10挂单恢复/页签返回</td>
+<td>恢复当前有效的已选方式；失效才重选本页可用方式中序号最小的一种</td>
+</tr>
+</tbody></table></div>
 <h2 id="3-B01-支付配置列表">3. B01｜支付配置列表</h2>
 <p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=payment">打开原型：支付配置</a></p>
 <h3 id="3-1-入口与结构">3.1 入口与结构</h3>
@@ -210,6 +298,10 @@
 </tr>
 </thead>
 <tbody><tr>
+<td>排序序号</td>
+<td>第一列，显示已保存的正整数；列表按序号升序，序号不可重复</td>
+</tr>
+<tr>
 <td>支付方式</td>
 <td>现有字典名称，不提供新增、删除、改名或改编码</td>
 </tr>
@@ -247,6 +339,7 @@
 <li>点开关直接提交启停；请求中禁重复点，成功更新，失败保持原值并提示。</li>
 <li>停用前按变更后的全量配置检查五个正式场景；内导还须保证散客子类型至少一种普通方式，不能仅剩账户支付。任一场景变成0种，阻止并指出场景，如“无法停用：内导售票（散客）将无可用支付方式”。服务端同样执行，不依赖前端开关回滚。</li>
 <li>点配置进入B02，不改变当前配置；保存成功刷新该行；取消不改动。</li>
+<li>排序序号在B02修改；保存成功后列表立即重新排序，窗口后续加载按新顺序使用；失败或取消保持原序号。</li>
 <li>加载失败显示失败和重试，不能用“默认全部启用”冒充已保存数据。空配置提示初始化异常，管理员修复，不让窗口静默放行。</li>
 </ul>
 <h3 id="3-3-九种支付方式逐项设定">3.3 九种支付方式逐项设定</h3>
@@ -351,6 +444,7 @@
 </tr>
 </tbody></table></div>
 <p>收款处理、对接方式均是支付方式对应的固定值，不属于“默认选中但允许更换”的配置。所有方式保留配置入口。</p>
+<p>所有方式均可修改排序序号；上表“管理员可修改范围”之外，统一增加该项。</p>
 <h2 id="4-B02-配置支付方式弹窗">4. B02｜配置支付方式弹窗</h2>
 <p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=payment">打开原型：支付配置 → 配置</a></p>
 <h3 id="4-1-公共字段">4.1 公共字段</h3>
@@ -366,6 +460,11 @@
 <td>支付方式</td>
 <td>灰色只读</td>
 <td>当前方式名称；不允许改字典</td>
+</tr>
+<tr>
+<td>排序序号</td>
+<td>数字输入框，必填</td>
+<td>回显已保存序号；仅正整数，允许跳号，不允许与其他支付方式重复（包含停用方式）；重复时阻止保存并提示“排序序号已被其他支付方式使用，请更换”；空值、0、负数或小数阻止保存并提示“请输入正整数排序序号”</td>
 </tr>
 <tr>
 <td>启用状态</td>
@@ -400,7 +499,7 @@
 </tbody></table></div>
 <p>仅资源归属选项切换简短说明，固定值不出现可修改入口。保存/取消统一见4.4。</p>
 <h3 id="4-2-每种支付方式的弹窗差异">4.2 每种支付方式的弹窗差异</h3>
-<p>所有弹窗都有：支付方式（只读）、启用状态（可选）、适用场景（按3.3范围多选）、收款处理（固定只读，不可修改）。以下只列差异，隐藏字段不占空行，也不参与必填校验。</p>
+<p>所有弹窗都有：支付方式（只读）、排序序号（必填正整数）、启用状态（可选）、适用场景（按3.3范围多选）、收款处理（固定只读，不可修改）。以下只列差异，隐藏字段不占空行，也不参与必填校验。</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -717,7 +816,7 @@
 <p>原页面及下单操作不变；支付方式按散客场景配置过滤。</p>
 <p>主页面不显示资源、编号或资源错误；业务资料通过原校验后打开W04。</p>
 <ul>
-<li>进入或刷新时，读取散客场景的启用方式；主页面下拉与确认弹窗共用当前选择。</li>
+<li>进入时读取散客场景中启用且符合原资格的方式，支付下拉按后台排序序号升序；首次默认本页序号最小的一项。刷新时保留仍有效的已选值；主页面与确认弹窗共用当前选择。</li>
 <li>仅切换支付方式不改变已选票、数量、游客和金额。</li>
 <li>当前方式被停用或取消场景时，提示重新选择；无可用方式时明确提示，不自动放行。</li>
 <li>缺账号/设备资源不在此处报错，进入W04后处理；原实名等业务校验不改。</li>
@@ -727,7 +826,7 @@
 <p>旅行社、导游、选票及账户逻辑沿用原功能。团队九种支付方式按启用状态及团队场景过滤，挂帐允许配置使用。</p>
 <p>主页面不显示资源/编号，确认下单进入W04；原选择弹窗不新增业务逻辑。</p>
 <ul>
-<li>支付顺序沿用现有团队窗口：现金、扫码付、银行卡、挂帐、微信、支付宝、预付款、授信签单、聚合支付，再按配置过滤。</li>
+<li>从九种方式中按启用、团队场景及原业务资格取候选，支付下拉按后台排序序号升序；首次默认本页序号最小的一项。有几种就排几种，允许跳号，不沿用原固定顺序。</li>
 <li>团队账户方式仍取所选旅行社原账户，不因本期配置改变账户来源。</li>
 <li>切换场景后不将团队账户支付残留到散客；团队原对象选择和资料保留规则不变。</li>
 <li>扫码付/银行卡的账号或设备绑定与其他场景共用，不另配团队资源。</li>
@@ -737,7 +836,7 @@
 <h3 id="14-1-本期界面变化">14.1 本期界面变化</h3>
 <p>门票表格、金额、出票模式及确认/取消按钮沿用原页面。</p>
 <ol>
-<li>第一行：当前场景可用支付方式按钮。</li>
+<li>第一行：当前场景可用支付方式按钮，与来源售票页下拉按相同序号升序；打开时沿用页面已选方式，不重新默认。</li>
 <li>第二行：一票多人 → 一人一票 → 动态字段 → 取消出票 → 确认出票。</li>
 </ol>
 <div class="table-wrap"><table>
@@ -804,6 +903,7 @@
 </tr>
 </tbody></table></div>
 <p>资源下拉的候选值为资源ID、显示资源名称；编号取当前所选资源的柜台编码（扫码付）或POS编号（银行卡）。首次选择该支付方式带出已绑定默认资源，再次切回该方式也从其默认资源开始；没有有效默认不自动取第一项。只读编号无值显示“—”。</p>
+<p>散客、团队、内导支付确认及合作伙伴两处入口共用的充值弹窗，收款资源下拉均支持输入资源名称模糊搜索（忽略首尾空格及英文大小写）。仅筛选当前有效已绑定资源，不支持手填新增；无匹配显示“暂无匹配资源”，不改变原选项或编号。选中结果后同步带出编号；固定使用一个时仍只读。</p>
 <p>缺绑定、默认失效、资源失效或编号缺失时，在弹窗资源区域提示一次，禁止该方式最终出票；可改用其他方式。取消后主页面不留资源错误，不清空已选票及游客。</p>
 <h3 id="14-3-确认后的处理">14.3 确认后的处理</h3>
 <p>复核本期支付配置及资源后，<strong>所有方式均执行原下单和支付处理</strong>，不新增交易分支。</p>
@@ -831,7 +931,7 @@
 <h3 id="18-2-本期界面变化">18.2 本期界面变化</h3>
 <p>原伙伴资料、充值金额、其他收入、现金实收/找零、备注及按钮保持原逻辑。</p>
 <ul>
-<li>支付方式按充值/回款场景过滤，仅现金、扫码付、银行卡、微信、支付宝。</li>
+<li>支付方式仅从现金、扫码付、银行卡、微信、支付宝中，按启用及充值/回款场景取候选，再按后台序号升序；每次新开弹窗默认本次候选中序号最小的一项，两个入口一致。</li>
 <li>支付按钮在上，动态字段在下：现金显示原实收/找零；扫码付/银行卡显示资源及只读编号；微信/支付宝不留空白槽。</li>
 <li>资源解析、切换及失效提示与W04相同，不出现横向滚动或大段留白。</li>
 </ul>
@@ -886,13 +986,14 @@
 <td>本订单实际使用的编号快照；扫码付为柜台编码，银行卡为POS编号</td>
 </tr>
 </tbody></table></div>
-<p>适用于相关散客、团队及内导订单；窗口与后台读取同一笔订单支付数据，不新增菜单或独立支付订单。</p>
+<p>适用于相关散客、团队订单；窗口与后台读取同一笔订单支付数据，不新增菜单或独立支付订单。内导沿用自身详情及交易记录结构，见第32节D05。</p>
 <p>其他方式无本期资源值；旧订单没有编号显示“—”，不按当前绑定补写。支付方式、金额、状态等原字段及处理不变。</p>
 <ul>
 <li>柜台编码和POS编号是同一展示字段，按支付方式显示本笔实际值，不并排新增两个空列。</li>
 <li>改资源名称、编号或删除当前资源后，已完成订单仍显示当时值。</li>
 <li>同一账号/设备连续使用不同资源下单，各订单分别保存自己的值；不能共用一份可变配置代替订单记录。</li>
 <li>订单已有多条支付记录时，按原记录结构在对应扫码付/银行卡记录上展示，不因本期新增支付拆分方式。</li>
+<li>冲红待审批或驳回不改有效支付信息；同意成功后显示最新生效方式及资源编号，各次冲红前后快照独立保留，详见第27节。</li>
 </ul>
 <h2 id="21-D02-充值-回款详情">21. D02｜充值/回款详情</h2>
 <p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=partnerList">打开关联入口：合作伙伴 → 账户充值记录</a>（历史充值详情尚未制作独立原型）</p>
@@ -901,23 +1002,446 @@
 <h2 id="22-D03-其他收入详情">22. D03｜其他收入详情</h2>
 <p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=partnerList">打开关联充值入口</a>（其他收入详情沿用原页，未制作独立原型）</p>
 <p>不单独改造。沿用原充值业务关联及展示，不新增收入字段、不改记账逻辑。</p>
-<h2 id="23-记录范围">23. 记录范围</h2>
-<p>本期仅补充扫码付/银行卡实际使用的资源及编号，历史值不回写。不新增财务统计口径、日交款、对账或报表功能。</p>
-<h2 id="24-实施边界">24. 实施边界</h2>
-<p>配置、绑定及编号记录复用现有权限和业务接口；现有景区上线前补齐所需资源和绑定，历史订单不补造编号。</p>
-<p>本文为开发要求，原型使用模拟数据，不代表真实交易已联调。原下单和支付逻辑不在本次重做。</p>
-<h2 id="25-W11-W12-内导售票与支付确认">25. W11、W12｜内导售票与支付确认</h2>
+<h2 id="23-W11-W12-内导售票与支付确认">23. W11、W12｜内导售票与支付确认</h2>
 <p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=innerGuide">打开原型：内导 → 导游开单</a> · <a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=innerGuide">打开原型：内导 → 确认下单</a></p>
-<h3 id="25-1-主页面">25.1 主页面</h3>
+<h3 id="23-1-主页面">23.1 主页面</h3>
 <p>内导 → 导游开单。原散客/团队、项目、内导、人数及业务操作不变；支付方式读取内导售票场景，散客六种、团队九种，再按配置过滤。</p>
+<p>支付下拉按后台排序序号升序；首次进入、切换散客/团队类型时，默认当前候选中序号最小的一项，有几种就排几种。</p>
 <p>不显示资源/编号。原资料校验通过即可打开W12，不因缺资源在主页面拦截。</p>
-<h3 id="25-2-确认弹窗">25.2 确认弹窗</h3>
+<h3 id="23-2-确认弹窗">23.2 确认弹窗</h3>
 <p>保留原表格、金额及打印选项。第一行支付方式，下一行：原打印按钮 → 现金或资源/编号 → 取消出票/确认出票。</p>
+<p>支付按钮与内导销售页下拉同序，打开时沿用页面已选方式，不重新默认。</p>
 <p>现金显示原实收/找零；扫码付/银行卡显示资源及只读编号，解析和提示同W04。缺资源仅弹窗内提示一次；取消不在主页面留错。</p>
 <p>沿用线上样式：常规900×452px、顶部100px，表格约75%/25%，浅蓝表头、白色合计、红色金额、44px按钮。底部支付区铺满；散客内导打印保留角标按钮，非复选框；低高度适配，无横向溢出。</p>
-<h3 id="25-3-确认后的处理">25.3 确认后的处理</h3>
-<p>所有方式沿用原内导下单和支付逻辑。仅扫码付/银行卡订单新增记录实际资源及柜台编码/POS编号，在D01“订单支付”中展示，不改原收费、押金、结算、账户或打印。</p>
-<p>原型固定收费表头单位仍待恢复为原计费单位，属于还原问题，不是新增计费需求。</p>
+<h3 id="23-3-确认后的处理">23.3 确认后的处理</h3>
+<p>所有方式沿用原内导下单和支付逻辑。仅扫码付/银行卡新增记录实际资源及柜台编码/POS编号，在D05内导详情及交易记录中展示，不改原收费、押金、结算、账户或打印。计时结账补收另按第29—33节处理，不能覆盖首次开单支付。</p>
+<hr>
+<h1>冲红接入支付配置</h1>
+<p>版本：V1.6｜2026-10-22。以下为完整需求方案第24—28节；配套<a href="01-%E9%A1%B5%E9%9D%A2%E6%B8%85%E5%8D%95.md">页面清单</a>、<a href="02-%E5%85%A8%E7%A8%8B%E6%B5%81%E7%A8%8B%E5%9B%BE.md">全程流程图</a>及<a href="04-%E5%BC%80%E5%8F%91%E6%A0%B8%E5%AF%B9%E4%B8%8E%E9%AA%8C%E6%94%B6%E6%B8%85%E5%8D%95.md">验收清单</a>。</p>
+<h2 id="24-W13-W14-销售记录与冲红申请">24. W13、W14｜销售记录与冲红申请</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=reversal">打开原型：统计 → 销售记录 → 冲红</a></p>
+<h3 id="24-1-入口与可选方式">24.1 入口与可选方式</h3>
+<p>复用原销售记录的冲红入口、申请资格及审批流程；新增支持扫码付、银行卡保持原支付方式，仅更正收款资源或柜台编码/POS编号。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>业务场景</td>
+<td>原冲红允许范围与当前已启用、适用订单所属业务场景的方式取交集；不新增“冲红”适用场景</td>
+</tr>
+<tr>
+<td>原支付方式</td>
+<td>原方式为扫码付/银行卡时仍可选，用于更正资源或编号；其他方式按原规则排除原方式；聚合支付不进入可选范围</td>
+</tr>
+<tr>
+<td>申请资格</td>
+<td>沿用原校验；聚合支付订单、有退票或已有待审批申请的订单不允许申请</td>
+</tr>
+<tr>
+<td>申请入口状态</td>
+<td>提交成功后隐藏该订单的“冲红申请”；待审批期间不能再次申请。审核同意成功后，按原资格恢复入口，下一次以最新有效支付为调整前值</td>
+</tr>
+<tr>
+<td>无可选方式</td>
+<td>在申请弹窗内提示无可用支付方式，不能提交；取消返回销售记录</td>
+</tr>
+</tbody></table></div>
+<h3 id="24-2-弹窗内容与字段取值">24.2 弹窗内容与字段取值</h3>
+<p>保留原订单基础信息、团队信息、订单状态及原因区域。订单基础信息、订单支付信息仍为无边框三列。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>区域 / 字段</th>
+<th>显示、取值与交互</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>订单支付信息：收款资源</td>
+<td>原有效方式为扫码付/银行卡时新增，只读；取订单当前有效支付记录的资源名称快照，不取本次申请选择值或当前绑定</td>
+</tr>
+<tr>
+<td>订单支付信息：柜台编码/POS编号</td>
+<td>与原资源一并显示，只读；取同笔支付记录的编号快照，历史无值显示“—”</td>
+</tr>
+<tr>
+<td>冲红申请售票员</td>
+<td>当前发起申请的登录账号，只读；与订单原售票员分别展示</td>
+</tr>
+<tr>
+<td>冲红申请来源</td>
+<td>发起申请的实际窗口设备，只读；与订单原销售来源分别展示</td>
+</tr>
+<tr>
+<td>上述两项布局</td>
+<td>在冲红调整信息第一行，占三列网格的第一、第二列，第三列留空；与上方信息及下一行控件列起点对齐</td>
+</tr>
+<tr>
+<td>冲红后支付类型</td>
+<td>必选；按26.1取候选后按后台排序序号升序，初始不选、不默认最小项；位于下一行第一列</td>
+</tr>
+<tr>
+<td>收款资源</td>
+<td>仅新方式为扫码付/银行卡时显示、必填，位于第二列；分别取扫码付柜台/银行卡POS</td>
+</tr>
+<tr>
+<td>柜台编码/POS编号</td>
+<td>仅新方式需要资源时显示，位于第三列；随资源自动带出，只读，按文本保留前导零</td>
+</tr>
+<tr>
+<td>冲红申请原因</td>
+<td>沿用原选填，最多500字，整行显示；切换方式不清空原因</td>
+</tr>
+</tbody></table></div>
+<p>弹窗沿用900px宽、居中、24px内边距，正文最高60vh并内部滚动；取消申请/提交申请位于正文外。窄屏按网格换行，不横向溢出。</p>
+<h3 id="24-3-资源加载-默认与切换">24.3 资源加载、默认与切换</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>条件 / 操作</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>跟收银账号</td>
+<td>读取申请时当前账号的绑定；不按订单原售票员重新取值</td>
+</tr>
+<tr>
+<td>跟窗口设备</td>
+<td>读取申请时实际窗口设备的绑定；不用账号档案中的绑定窗口替代</td>
+</tr>
+<tr>
+<td>资源候选</td>
+<td>仅当前景区、匹配类型、已启用、编号非空且绑定给该主体的资源；不跨主体或类型兜底</td>
+</tr>
+<tr>
+<td>固定使用一个</td>
+<td>恰好一个有效绑定且默认有效，名称灰显不可切换，自动带出编号</td>
+</tr>
+<tr>
+<td>允许多个并默认一个</td>
+<td>带出有效默认；下拉支持输入名称搜索，仅在有效绑定中选择，不允许输入新资源或手填编号</td>
+</tr>
+<tr>
+<td>无绑定、默认失效、数量不符或编号缺失</td>
+<td>在申请弹窗资源区提示，阻止提交；不自动取第一项，可换其他允许方式</td>
+</tr>
+<tr>
+<td>切换支付方式</td>
+<td>清除上一方式的草稿资源和编号，按新方式重新加载；非扫码付/银行卡隐藏资源区且不提交残留资源</td>
+</tr>
+<tr>
+<td>弹窗期间配置、绑定、资源名称或编号变化</td>
+<td>提交时提示重新确认；刷新资源后由申请人明确重选，不静默替换或提交旧编号</td>
+</tr>
+</tbody></table></div>
+<h3 id="24-4-提交与取消">24.4 提交与取消</h3>
+<p>提交时复核原申请资格、订单有效支付信息、可选方式及资源配置。以<strong>支付方式、资源ID、编号</strong>比较是否调整；三者均未变化时提示“支付信息未发生调整”，不创建申请。历史缺编号的原记录可选择当前有效资源补正，仍须审核。</p>
+<p>通过后保存待审批申请：订单关联、调整前后支付方式及资源ID/名称/编号快照、申请账号、实际设备、订单业务场景、申请时间及原因。资源解析主体一并留存，供审核复核；此时不修改订单有效支付信息。</p>
+<p>保存失败保留草稿；重复提交不产生多条待审批申请。取消或关闭不保存、不改变订单。</p>
+<h2 id="25-B10-B11-冲红审核与审核弹窗">25. B10、B11｜冲红审核与审核弹窗</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=reversal">打开原型：冲红管理 → 冲红审核 → 同意 / 驳回</a></p>
+<h3 id="25-1-列表与审核内容">25.1 列表与审核内容</h3>
+<p>复用待审批/已审批列表及原筛选、列、导出、配置列和分页，不增加资源列或资源筛选。待审批保留同意/驳回，已审批保留详情。同方式更正时，列表原支付类型与冲红后支付类型允许相同，进入弹窗核对资源差异。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>弹窗区域</th>
+<th>本次增量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>订单支付信息</td>
+<td>原方式为扫码付/银行卡时，增加调整前收款资源、柜台编码/POS编号；只读，取本次申请的调整前快照</td>
+</tr>
+<tr>
+<td>冲红调整信息</td>
+<td>申请方式为扫码付/银行卡时，增加冲红后收款资源、冲红后柜台编码/POS编号；只读，取申请快照</td>
+</tr>
+<tr>
+<td>历史缺值</td>
+<td>显示“—”，不按当前绑定或主数据补填</td>
+</tr>
+<tr>
+<td>审核操作</td>
+<td>审核人不能修改申请方式、资源或编号；原因说明沿用原必填、最多500字，初始为对应操作“同意”或“驳回”</td>
+</tr>
+</tbody></table></div>
+<p>同意、驳回、详情沿用“订单冲红申请”弹窗，原基础信息、团队信息及顺序保持。宽960px、内边距24px、三列无边框；正文高640px，视口高度≤720px时440px，内部滚动，底部操作在正文外；详情保留日志及关闭按钮。</p>
+<h3 id="25-2-同意前复核与结果">25.2 同意前复核与结果</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>校验 / 结果</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>申请已处理、订单已退票或有效支付已被其他操作修改</td>
+<td>不执行同意，提示刷新，不覆盖现有效支付</td>
+</tr>
+<tr>
+<td>方式启停、场景、归属、使用方式或绑定已变更</td>
+<td>按申请记录的账号/实际设备及订单场景复核；配置不一致时阻止同意并提示，不读取审核人的绑定</td>
+</tr>
+<tr>
+<td>所选资源失效、名称或编号已变更</td>
+<td>不换成当前默认或新编号；申请保留待审批，可按原流程驳回重提</td>
+</tr>
+<tr>
+<td>复核通过</td>
+<td>换支付方式沿用原冲红审批及账户处理；全部成功后方式、资源及编号一并生效</td>
+</tr>
+<tr>
+<td>同方式仅更正资源或编号</td>
+<td>更正有效支付记录并留冲红记录；金额不变，不再次收款、扣账、返还或退款</td>
+</tr>
+<tr>
+<td>新方式无需资源</td>
+<td>生效支付不附带原柜台/POS资源，原资源保留在调整前历史快照</td>
+</tr>
+<tr>
+<td>驳回</td>
+<td>记录原审核意见和结果，有效方式、资源及编号不变；资源失效不阻止驳回</td>
+</tr>
+<tr>
+<td>失败或重复操作</td>
+<td>失败不标记同意、不提前改资源；重复审核不再次执行，审批结果与有效支付保持一致</td>
+</tr>
+</tbody></table></div>
+<h2 id="26-W15-D04-冲红记录与详情">26. W15、D04｜冲红记录与详情</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=reversal">窗口原型：统计 → 冲红记录 → 查看</a> · <a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=reversal">后台原型：已审批 → 详情</a></p>
+<p>列表沿用原字段、状态及操作。详情在原支付信息、冲红调整信息中分别增加资源名称和统一柜台编码/POS编号；仅对应快照方式为扫码付/银行卡时显示，无值显示“—”。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>申请状态</th>
+<th>展示与生效</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>待审批</td>
+<td>分别显示调整前快照、申请目标值；目标值尚未生效</td>
+</tr>
+<tr>
+<td>已同意</td>
+<td>显示本次前后快照及审核结果；有效支付按成功结果更新</td>
+</tr>
+<tr>
+<td>已驳回</td>
+<td>保留申请目标值及驳回意见；有效支付不变</td>
+</tr>
+</tbody></table></div>
+<p>每次申请独立留存，审核结束后按原资格允许再次申请；新申请以当时最新有效支付作为调整前值。再次冲红、资源改名改码、解绑或删除均不改写历史。审核日志沿用原节点、操作人、状态、意见、时间、耗时。</p>
+<h2 id="27-D01-订单详情-门票详情中的支付与冲红信息">27. D01｜订单详情、门票详情中的支付与冲红信息</h2>
+<p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=reversal">窗口原型：销售记录 → 查看</a> · <a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=order">后台订单详情原型</a></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>位置</th>
+<th>本次规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>窗口入口</td>
+<td>统计 → 销售记录 → 查看，打开独立“订单详情”页签；返回统计时保留列表查询条件</td>
+</tr>
+<tr>
+<td>窗口详情结构</td>
+<td>沿用订单基础信息、订单支付信息、订单检票信息、游客门票详情；基础与支付信息为无边框三列，宽表在表格内部滚动</td>
+</tr>
+<tr>
+<td>订单支付</td>
+<td>两端同源显示最后一次成功生效的方式；扫码付/银行卡同时显示有效资源及编号快照</td>
+</tr>
+<tr>
+<td>审核中 / 已驳回</td>
+<td>不用申请目标值替换有效支付</td>
+</tr>
+<tr>
+<td>冲红调整信息</td>
+<td>在订单支付信息下方、订单检票信息上方显示已同意记录；待审批/已驳回申请仍在冲红记录中查看，不提前显示为已生效调整</td>
+</tr>
+<tr>
+<td>调整表格</td>
+<td>保留九列：冲红单号、原支付类型、冲红后支付类型、申请人、申请时间、支付金额（元）、审批人、审核状态、审核时间。原支付类型、冲红后支付类型单元格分别展示本次申请前后快照：支付方式、收款资源、柜台编码/POS编号；仅扫码付/银行卡显示后两项，历史无值显示“—”。即使支付方式相同，也可直接对照资源和编号变化。点击冲红单号仍可查看详情</td>
+</tr>
+<tr>
+<td>多次冲红</td>
+<td>订单支付显示最新成功结果，各次详情保持各自快照</td>
+</tr>
+<tr>
+<td>历史缺编号</td>
+<td>显示“—”，不按当前配置回填；更正后更新生效值，原快照仍保留缺值</td>
+</tr>
+</tbody></table></div>
+<p>按对应原支付记录更新，不新建支付拆分；原金额、支付时间、流水、出票和账户处理沿用原逻辑。</p>
+<p>支付资源原型用例：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>用例</th>
+<th>打开原型</th>
+<th>核对结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>扫码付更正柜台码，已同意</td>
+<td><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=reversal&orderId=DEMO-CH-ORDER-APPROVED-SCAN">订单详情 ↗</a></td>
+<td>订单支付为扫码付、散客2号柜台码、CCB-SK-02；点击冲红单号可查调整前CCB-SK-01及调整后CCB-SK-02</td>
+</tr>
+<tr>
+<td>银行卡更正POS，已同意</td>
+<td><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=reversal&orderId=DEMO-CH-ORDER-APPROVED-POS">订单详情 ↗</a></td>
+<td>订单支付为银行卡、散客 POS-02、POS-SK-02；点击冲红单号可查调整前POS-SK-01及调整后POS-SK-02</td>
+</tr>
+<tr>
+<td>更正柜台码，待审批</td>
+<td><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=reversal&orderId=DEMO-CH-ORDER-SCAN">订单详情 ↗</a></td>
+<td>有效支付保留CCB-SK-01，不显示已生效调整区；返回销售记录后无冲红申请按钮</td>
+</tr>
+</tbody></table></div>
+<h2 id="28-K05-冲红保存与生效规则">28. K05｜冲红保存与生效规则</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>环节</th>
+<th>保存 / 修改</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>提交申请</td>
+<td>独立保存前后快照和解析主体，不修改有效支付</td>
+</tr>
+<tr>
+<td>同意成功</td>
+<td>审批结果与有效方式、资源ID、名称、编号一致生效；保留原冲红关联及流水</td>
+</tr>
+<tr>
+<td>驳回 / 失败</td>
+<td>驳回只记录原审核结果；失败不生效，原有效支付及历史快照不变</td>
+</tr>
+<tr>
+<td>历史查询</td>
+<td>读取交易及申请快照，不用当前主数据替换</td>
+</tr>
+</tbody></table></div>
+<p>账户支付与线下方式互转仍执行原校验、扣回/返还及流水逻辑；本次只补资源取值、校验、记录与展示。</p>
+<hr>
+<h2 id="29-内导收款页面与调整范围">29. 内导收款页面与调整范围</h2>
+<p>计时结账补收使用“内导售票”支付配置。新增内容为：补收支付选择接入配置，扫码付/银行卡逐笔保存资源及编号，在订单详情和交易记录显示。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>页面</th>
+<th>本次调整</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>W16订单记录、W17订单结账</td>
+<td>串联W18补收确认；补收不覆盖开单收款</td>
+</tr>
+<tr>
+<td>W18补收支付订单确认</td>
+<td>支付方式排序、默认值、资源选择及提交校验</td>
+</tr>
+<tr>
+<td>D05内导订单详情、W19交易记录</td>
+<td>开单、补收各自显示资源及编号</td>
+</tr>
+<tr>
+<td>W20异常订单</td>
+<td>查看时显示原交易提交快照</td>
+</tr>
+</tbody></table></div>
+<h2 id="30-W16-W17-订单记录与订单结账">30. W16、W17｜订单记录与订单结账</h2>
+<p>打开原型：<a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=innerOrders">订单记录 ↗</a> · <a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=innerSettlement">订单结账 ↗</a></p>
+<ul>
+<li>W17调整结算时间后，W18读取重新计算后的结算时长、结算金额及补收金额；仅补收大于0时进入付款。取消返回W17修改时间，再进入时更新金额。原开单支付方式不作为补收默认值。</li>
+<li>W16开单、补收方式及金额分别读取对应交易；查看进入D05。</li>
+</ul>
+<h2 id="31-W18-结账补收支付订单确认">31. W18｜结账补收支付订单确认</h2>
+<p>打开原型：<a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=innerSupplement">补收支付订单确认 ↗</a></p>
+<p>只调整原支付方式区域，资源字段紧接支付方式；不增加打印选择区。</p>
+<h3 id="31-1-字段-取值与默认">31.1 字段、取值与默认</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>显示与取值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>支付方式</td>
+<td>可输入筛选的必选下拉。取已启用、包含“内导售票”且符合本单团散及账户资格的方式；散客最多六种，团队最多九种。按配置序号升序，允许跳号、序号不重复</td>
+</tr>
+<tr>
+<td>支付方式初值</td>
+<td>每次新进入默认本次候选中序号最小的一项；不取原押金方式。无候选留空，提示“当前场景无可用支付方式”，禁止确定</td>
+</tr>
+<tr>
+<td>收款资源</td>
+<td>仅扫码付/银行卡显示。按当前结账账号或实际窗口设备取已绑定、启用且类型匹配的资源；不取开单人/开单设备绑定</td>
+</tr>
+<tr>
+<td>资源默认与选择</td>
+<td>固定使用一个：只读；允许多个：默认绑定默认项，可输入筛选切换。无资源或默认失效在本弹窗提示，禁止该方式确定；不跨主体取资源、不自动改成现金</td>
+</tr>
+<tr>
+<td>柜台编码/POS编号</td>
+<td>仅扫码付/银行卡显示，跟随资源自动带出，只读</td>
+</tr>
+<tr>
+<td>动态字段</td>
+<td>现金显示原实收/找零；扫码付/银行卡显示资源/编号；其他方式不显示资源字段。隐藏字段不占位、不校验</td>
+</tr>
+</tbody></table></div>
+<h3 id="31-2-选择与确认">31.2 选择与确认</h3>
+<ul>
+<li>同一次弹窗内保留有效手选值；仅调整排序不重置。方式失效时改选剩余候选第一项；切换扫码付/银行卡重新读取对应资源，不串用草稿。</li>
+<li>确定时复核方式及账户资格；扫码付/银行卡增加资源归属、绑定、启用、默认规则和编号校验。失败留在本弹窗，不新增成功收款。</li>
+<li>通过后执行原支付处理，本笔金额取结算结果中的补收金额。补收资源及编号独立保存，不覆盖原押金快照。</li>
+<li>未提交时取消返回W17；重新进入重新加载候选和资源。</li>
+</ul>
+<h2 id="32-D05-W19-内导订单详情与交易记录">32. D05、W19｜内导订单详情与交易记录</h2>
+<p>打开原型：<a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=innerDetail">内导订单详情 ↗</a> · <a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=innerTrades">交易记录 ↗</a></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>位置</th>
+<th>本次新增</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D05原开单支付信息</td>
+<td>支付方式后显示本笔收款资源、柜台编码/POS编号</td>
+</tr>
+<tr>
+<td>D05交易记录表、W19交易记录列表</td>
+<td>支付/退款方式后新增“收款资源”“柜台编码/POS编号”两列，按每笔开单、补收交易快照展示</td>
+</tr>
+<tr>
+<td>各入口的内导订单详情</td>
+<td>窗口和后台读取同一笔交易快照；保留各自详情结构</td>
+</tr>
+</tbody></table></div>
+<p>每笔扫码付/银行卡保存资源ID、名称及编号快照，关联本次操作员和实际设备；资源后续更名、改号、停用不回写历史。其他方式、旧交易缺值显示“—”；退款仅在明确关联原收款交易时回显其快照。</p>
+<p>验收示例：押金0.02元为“扫码付 / 散客1号柜台码 / CCB-SK-01”，补收0.48元为“银行卡 / 团队POS-01 / POS-TD-01”，两笔分别展示；同为扫码付但更换柜台码，也应分别展示两个编号。</p>
+<h2 id="33-W20-异常支付与重复提交控制">33. W20｜异常支付与重复提交控制</h2>
+<p>打开原型：<a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html?view=innerExceptions">内导异常订单 ↗</a></p>
+<ul>
+<li>已提交、结果未明的补收保留提交时支付方式、账号/设备及资源快照；查看使用该次快照，不按最新配置改写，不新增支付方式选择。</li>
+<li>成功后将该笔资源及编号与收款结果一起保存；重复查询不得产生第二笔补收。</li>
+<li>明确失败后，若原流程允许重新结账，新尝试重新读取配置并保存独立快照，不覆盖失败交易。</li>
+</ul>
+<h2 id="34-记录范围">34. 记录范围</h2>
+<p>本期仅补充扫码付/银行卡实际使用的资源及编号，历史值不回写。不新增财务统计口径、日交款、对账或报表功能。</p>
+<h2 id="35-实施边界">35. 实施边界</h2>
+<p>配置、绑定及编号记录复用现有权限和业务接口；现有景区上线前补齐所需资源和绑定，历史订单不补造编号。</p>
+<p>本文为开发要求，原型使用模拟数据，不代表真实交易已联调。原下单和支付逻辑不在本次重做。</p>
 </article><footer class="footer-nav"><a href="index.html">← 方案总览</a><span class="muted">V3.6 · 开发 / 测试资料</span><a href="acceptance.html">开发与验收 →</a></footer></main><button class="quick" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button><script>
 document.querySelector('.mobile-menu').onclick=()=>document.body.classList.toggle('menu-open');
 document.querySelectorAll('.sidebar a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu-open')));
