@@ -1,0 +1,164 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V3.2上线前增补｜本次增量方案</title><style>
+:root{--ink:#201a2c;--muted:#71697d;--purple:#7c3aed;--purple2:#4c1d95;--soft:#f5f3ff;--line:#e8e2f1;--side:272px;--shadow:0 8px 30px rgba(58,35,91,.09)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f3f0f7;color:var(--ink);line-height:1.75}.sidebar{position:fixed;right:0;top:0;width:var(--side);height:100vh;overflow:auto;padding:26px 0;background:linear-gradient(180deg,#1e1b4b,#312e81 58%,#4c1d95);z-index:20}.sidebar h2{padding:0 22px;margin:0 0 16px;color:#e9d5ff;font-size:15px;letter-spacing:1px}.sidebar a{display:block;padding:9px 22px;color:#c4b5fd;text-decoration:none;font-size:14px;border-left:3px solid transparent}.sidebar a:hover,.sidebar a.current{color:#fff;background:#ffffff14;border-left-color:#a78bfa}.sidebar .group{margin:13px 22px 5px;color:#a5b4fc;font-size:11px;letter-spacing:1px}.main{width:calc(100% - var(--side));margin-right:var(--side);padding:28px clamp(20px,2.4vw,44px) 70px;max-width:none}.hero{padding:42px 46px;margin-bottom:28px;border-radius:20px;color:#fff;background:linear-gradient(135deg,#1e1b4b,#4c1d95 62%,#7c3aed);box-shadow:0 16px 50px #6d28d933}.hero h1{margin:0 0 8px;font-size:31px;line-height:1.35;color:#fff}.hero p{margin:0;color:#f1efff}.eyebrow{font-size:12px;letter-spacing:2px;color:#ded7ff;margin-bottom:10px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.hero .btn{display:inline-block;padding:8px 15px;border-radius:9px;background:#fff;border:1px solid #fff;color:#4c1d95!important;text-decoration:none;font-size:13px;font-weight:700}.hero .btn:hover{background:#ede9fe;border-color:#ede9fe}.section{margin:0 0 34px;scroll-margin-top:20px}.section h2{font-size:23px;margin:0 0 14px;color:#211a49}.card{background:#fff;padding:25px 29px;margin:0 0 18px;border-radius:15px;border-left:4px solid var(--purple);box-shadow:var(--shadow)}.lead{font-size:16px;color:#534b60}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.metric{text-align:center;background:#fff;padding:20px;border-radius:14px;box-shadow:var(--shadow)}.metric strong{display:block;font-size:29px;color:var(--purple)}.doc h1{display:none}.doc h2{margin:42px 0 16px;padding-top:10px;border-top:1px solid var(--line);font-size:25px;color:#211a49;scroll-margin-top:20px}.doc h2 .prototype-link{display:inline-flex;vertical-align:middle;align-items:center;margin:0 0 2px 10px;padding:3px 9px;border-radius:999px;background:#7c3aed;color:#fff;text-decoration:none;font-size:12px;font-weight:600;line-height:1.5}.doc h2 .prototype-link:hover{background:#5b21b6;color:#fff}.doc h3{font-size:19px;color:#4c1d95;margin:29px 0 10px}.doc h4{font-size:16px;color:#6d28d9;margin:21px 0 8px}.doc p{margin:10px 0}.doc strong{color:#35205f}.doc code{padding:2px 5px;border-radius:5px;background:#f2eff8;font-family:SFMono-Regular,Consolas,monospace;font-size:.92em}.doc pre code{padding:0;border-radius:0;background:transparent;color:inherit;font-size:inherit}.table-wrap{overflow:auto;margin:15px 0 22px;border-radius:11px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;background:#fff;font-size:13px}th{background:#ede9fe;color:#4c1d95;text-align:left;white-space:nowrap}th,td{padding:10px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border-bottom:0}tr:nth-child(even) td{background:#fcfbfe}th:last-child,td:last-child{border-right:0}ul,ol{padding-left:24px;margin:10px 0 16px}li{margin:6px 0}pre{padding:16px;background:#1f1930;color:#e9d5ff;border-radius:10px;overflow:auto;line-height:1.6}blockquote{margin:12px 0;padding:10px 16px;background:#faf5ff;border-left:3px solid #a78bfa}.quick{position:fixed;right:calc(var(--side) + 26px);bottom:24px;width:42px;height:42px;border:0;border-radius:12px;background:var(--purple);color:#fff;cursor:pointer;box-shadow:var(--shadow)}a{color:#6d28d9}.tag{display:inline-block;padding:3px 9px;border-radius:999px;background:#ede9fe;color:#5b21b6;font-size:12px}.notice{padding:14px 17px;border-radius:10px;margin:14px 0;background:#eff6ff;border-left:3px solid #3b82f6}.footer-nav{position:sticky;bottom:0;background:#ffffffeb;backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:13px 20px;display:flex;gap:10px;justify-content:space-between;align-items:center}.footer-nav a{font-size:13px;text-decoration:none}@media(max-width:950px){:root{--side:220px}.main{padding:24px 20px}.grid{grid-template-columns:1fr 1fr}.hero{padding:30px}}@media(max-width:720px){.sidebar{display:none}.main{width:100%;margin-right:0;padding:18px}.grid{grid-template-columns:1fr}.quick{right:18px}.hero h1{font-size:26px}.doc h2 .prototype-link{margin:8px 0 0;font-size:11px}}
+.shot,.shot-group{scroll-margin-top:24px}.shot:target{outline:3px solid #a78bfa}.state-index{line-height:1.9}.state-index small{color:#81738e}.state-links{font-size:13px;font-weight:400;line-height:1.8;margin:8px 0 20px}.state-links summary{cursor:pointer}
+.page-links{display:flex;gap:8px;flex-wrap:wrap;margin:9px 0 13px}.page-links a{font-size:12px;padding:4px 11px;border-radius:999px;background:#ede9fe;text-decoration:none}.sidebar a.page{font-size:12px;padding:5px 22px}.sidebar a.active{background:#ffffff14;color:white;border-left-color:#a78bfa}.doc{min-width:0}.doc img{max-width:100%}.doc table{min-width:0}.doc td{overflow-wrap:anywhere}.doc h3{scroll-margin-top:18px}.table-wrap{max-width:100%}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.cards .card{margin:0;min-width:0}.card h2{font-size:19px;margin:8px 0}.meta{color:var(--muted);font-size:13px}.btn{display:inline-block;background:#ede9fe;color:#5b21b6;padding:7px 12px;border-radius:8px;text-decoration:none;font-size:13px}.shot{margin:18px 0;border:1px solid var(--line);border-radius:12px;background:white;overflow:hidden}.shot figcaption{padding:12px 16px}.shot img{display:block;width:100%;height:auto}.shot small{display:block;color:var(--muted)}.filter{display:flex;gap:10px;margin:18px 0}.filter input{flex:1;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:inherit}.filter select{max-width:40%;font:inherit;border:1px solid var(--line);border-radius:8px}.card[hidden],section[hidden],figure[hidden]{display:none!important}.flow{width:100%;background:white;border:1px solid var(--line);border-radius:12px}a:focus-visible,button:focus-visible{outline:3px solid #c4b5fd;outline-offset:3px}@media(max-width:950px){.cards{grid-template-columns:1fr}}@media print{.sidebar,.quick,.filter{display:none}.main{width:100%;margin:0;padding:0}.hero{background:#fff;color:#201a2c;box-shadow:none}.hero h1,.hero p{color:#201a2c}.shot{break-inside:avoid}}</style></head><body id="top"><aside class="sidebar"><h2>散客合作伙伴管理</h2><div class="group">V3.2 上线前增补</div><nav><a href="index.html" class="">方案总览</a><a href="development-spec.html" class="current">本次增量方案</a><a href="prototype-center.html" class="">原型中心 · 页面清单</a><a href="screenshots.html" class="">全部状态截图</a><div class="group">本次字段与逻辑变化</div><a class="" href="development-spec.html#section-1">1. 本次共用变化</a><a class="" href="development-spec.html#section-2">2. 窗口页面增量</a><a class="page" href="development-spec.html#W00">W00 原售票页关联</a><a class="page" href="development-spec.html#W01">W01 合作伙伴充值列表</a><a class="page" href="development-spec.html#W02">W02 长期合作伙伴充值弹窗</a><a class="page" href="development-spec.html#W03">W03 待认领入款弹窗</a><a class="page" href="development-spec.html#W04">W04 来源选择与批量逐笔结算</a><a class="page" href="development-spec.html#W05">W05 公共临时客户回款页面</a><a class="page" href="development-spec.html#W06">W06 公共临客回款弹窗</a><a class="page" href="development-spec.html#W07">W07 多订单不一致确认</a><a class="page" href="development-spec.html#W08">W08 迁移第一步</a><a class="page" href="development-spec.html#W09">W09 迁移目标方式</a><a class="page" href="development-spec.html#W10">W10 新建迁移目标</a><a class="page" href="development-spec.html#W11">W11 已有迁移目标</a><a class="page" href="development-spec.html#W12">W12 账户充值记录列表</a><a class="page" href="development-spec.html#W13">W13 充值详情</a><a class="page" href="development-spec.html#W14">W14 其他收入列表</a><a class="page" href="development-spec.html#W15">W15 其他收入详情</a><a class="page" href="development-spec.html#W16">W16 窗口充值报表</a><a class="" href="development-spec.html#section-3">3. 后台页面增量</a><a class="page" href="development-spec.html#B01">B01 合作伙伴管理列表</a><a class="page" href="development-spec.html#B02">B02 新增合作伙伴</a><a class="page" href="development-spec.html#B03">B03 待认领档案查看</a><a class="page" href="development-spec.html#B04">B04 预付款管理</a><a class="page" href="development-spec.html#B05">B05 后台充值列表</a><a class="page" href="development-spec.html#B06">B06 后台新增充值</a><a class="page" href="development-spec.html#B07">B07 后台批量导入</a><a class="page" href="development-spec.html#B08">B08 后台充值详情</a><a class="page" href="development-spec.html#B09">B09 后台其他收入列表</a><a class="page" href="development-spec.html#B10">B10 后台其他收入详情</a><a class="page" href="development-spec.html#B11">B11 资金流水</a><a class="page" href="development-spec.html#B12">B12 原合作伙伴对帐单</a><a class="page" href="development-spec.html#R01">R01 原订单详情关联</a><a class="" href="development-spec.html#section-4">4. 新增联动与保存</a><div class="group">文档与原型</div><a href="20-%E5%A2%9E%E8%A1%A5%E5%BC%80%E5%8F%91%E6%96%B9%E6%A1%88.md" download="20-增补开发方案.md">下载增量 Markdown ↗</a><a href="assets/supplement-page-flow.svg">新增补流程图 ↗</a><a href="prototype/index.html" target="_blank">后台原型 ↗</a><a href="prototype/partner-workspace.html?tab=temporary" target="_blank">窗口原型 ↗</a></nav></aside><main class="main"><header class="hero"><div class="eyebrow">开发 / 测试共同方案 · 2026-10-29</div><h1>V3.2 上线前增补｜本次增量方案</h1><p>只写本次新增与修改：新增字段、控制规则及前后台关联；未修改内容沿用原方案。</p><div class="actions"><a class="btn" href="development-spec.html">本次增量方案</a><a class="btn" href="prototype-center.html">原型中心</a><a class="btn" href="screenshots.html">全部状态截图</a><a class="btn" href="20-%E5%A2%9E%E8%A1%A5%E5%BC%80%E5%8F%91%E6%96%B9%E6%A1%88.md" download="20-增补开发方案.md">下载增量 Markdown</a></div></header><article class="doc"><h1 id="heading-1">V3.2上线前增补｜本次新增与修改</h1><p>更新：2026-10-29。仅写本次增补，未列出的原功能保持不变。与原V3.2合并上线，不覆盖历史基线。01—19号文件保留讨论依据，本文件为当前增量方案。</p>
+<p><a href="prototype-center.html">页面清单</a> · <a href="assets/supplement-page-flow.svg">新增流程图</a> · <a href="screenshots.html">最新截图</a></p>
+<h2 id="section-1">1. 本次共用变化</h2><ul>
+<li>窗口增加公共临时客户回款、临客转长期；增加待认领客户入款、整笔来源付款、批量逐笔结算。</li>
+<li>标签顺序：合作伙伴充值 → 账户充值记录 → 其他收入记录 → 公共临时客户回款 → 充值报表。后台对帐单仍在报表中心。</li>
+<li>待认领客户后台唯一创建，只建预付款账户、初始余额0；不能售票、透支、作为迁移目标、后台充值或导入。</li>
+<li>本期不做录错撤销、来源部分使用、不同打款合并抵缺、补收差额、混合付款；窗口不开放人工调账。</li>
+</ul>
+<p>**支付日期（W02／W03／W06新增）：**默认当天、可补过去、禁止未来，保存当日00:00:00；申请／完成时间仍为实际操作时刻。</p>
+<p>**支付配置联动：**普通方式按景区、场景和操作主体资格取有效配置并排序。扫码付／银行卡按账号或设备绑定取资源；固定资源只读，多资源可搜索切换。柜台编码／POS编号由资源自动带出、必填且只读。缺绑定、默认失效或编号空时禁止确认，可人工换其他有效方式，不自动切现金。保存资源ID、名称和编号快照，保留前导零。</p>
+<p>**待认领付款：**内部来源入口，不加入普通支付配置枚举，不再次扫码；沿用来源原方式、资源及编号，使用支付日期不得早于来源日期。</p>
+<h2 id="section-2">2. 窗口页面增量</h2><h3 id="W00">W00 原售票页关联<span class="page-links"><a href="prototype/ticket-window.html" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W00">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（3张）</summary><ol><li><a href="screenshots.html#W00-LATEST-01">售票伙伴选择：排除待认领客户</a></li><li><a href="screenshots.html#W00-LATEST-02">售票页草稿中打开新版充值弹窗</a></li><li><a href="screenshots.html#W00-LATEST-03">取消充值：姓名、伙伴及99元购物车保持</a></li></ol></details><p>路径：售票窗口 → 售票 → 临时／长期合作伙伴。</p>
+<p>仅将原长期伙伴充值入口接本次W02，返回不清购物车；客户选择排除待认领。不重做原售票字段和下单流程。</p>
+<h3 id="W01">W01 合作伙伴充值列表<span class="page-links"><a href="prototype/partner-workspace.html?tab=partner" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W01">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#W01-LATEST-01">待认领客户行及入款入口</a></li></ol></details><p>路径：售票窗口 → 合作伙伴 → 合作伙伴充值。</p>
+<p>新增唯一“待认领客户”行，默认预付款，仅查看、充值。无联系人／档案负责人显示“—”，不能把某笔入款负责人写回共享档案。其他原筛选及普通伙伴操作不改。</p>
+<h3 id="W02">W02 长期合作伙伴充值弹窗<span class="page-links"><a href="prototype/partner-workspace.html?tab=partner" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W02">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（7张）</summary><ol><li><a href="screenshots.html#W02-LATEST-01">支付日期与内部来源入口</a></li><li><a href="screenshots.html#W02-LATEST-02">188元来源分配：客户180与公司收入8</a></li><li><a href="screenshots.html#W02-LATEST-03">昨日25元来源：今日整笔转入长期伙伴</a></li><li><a href="screenshots.html#W02-LATEST-04">扫码付切换：资源与编号联动</a></li><li><a href="screenshots.html#W02-LATEST-05">银行卡切换：POS资源与只读编号</a></li><li><a href="screenshots.html#W02-LATEST-06">微信切换：不显示扫码或POS资源</a></li><li><a href="screenshots.html#W02-LATEST-07">支付宝切换：不显示扫码或POS资源</a></li></ol></details><p>路径：W01长期伙伴行 → 充值；或W00原充值入口。</p>
+<ul>
+<li>新增支付日期、配置资源及“待认领账户”付款。</li>
+<li>选待认领打开W04；来源摘要显示单号、金额、原方式及编号，可重新选择。</li>
+<li>来源金额S＝客户充值C＋其他收入I，默认C=S、I=0；可调整，均不得负，合计必须S。C=0不生成零元客户充值。</li>
+<li>目标账户及负责人沿用原长期伙伴规则；其他收入归公司，不入客户余额。</li>
+<li>成功关联来源、客户充值、公司收入及负转出，见第4节。</li>
+</ul>
+<h3 id="W03">W03 待认领入款弹窗<span class="page-links"><a href="prototype/partner-workspace.html?tab=partner" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W03">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（5张）</summary><ol><li><a href="screenshots.html#W03-LATEST-01">待认领入款：初始字段与现金</a></li><li><a href="screenshots.html#W03-LATEST-02">待认领入款：扫码资源及只读编号</a></li><li><a href="screenshots.html#W03-LATEST-03">张敏负责人及100元现金入款确认</a></li><li><a href="screenshots.html#W03-LATEST-04">补录昨日25元：支付日期与实际完成时间分别保存</a></li><li><a href="screenshots.html#W03-LATEST-05">入款120元、现金实收119元：确认禁用</a></li></ol></details><p>路径：W01待认领客户行 → 充值。</p>
+<p>新增特殊表单：只读合作类型／名称、账号／预付款、当前余额；支付日期、本笔负责人、客户／付款人、充值金额、整行备注、普通支付区及合计。</p>
+<p>日期、金额、支付必填；金额&gt;0、最多两位小数。负责人可按姓名／手机选择，选填；付款人、备注选填，备注最多500字。现金校验实收与找零，扫码／银行卡按配置资源。</p>
+<p>不出现其他收入、订单选择或待认领自付。全额入预付款，生成成功未使用充值及正数流水，保存当前申请人／售票员和窗口；负责人只属于本笔入款。</p>
+<h3 id="W04">W04 来源选择与批量逐笔结算<span class="page-links"><a href="prototype/partner-workspace.html?tab=temporary" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W04">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（8张）</summary><ol><li><a href="screenshots.html#W04-LATEST-01">单笔整用来源及六项查询</a></li><li><a href="screenshots.html#W04-LATEST-02">批量来源：多选排队不合并</a></li><li><a href="screenshots.html#W04-LATEST-03">逐笔选单：一行查询及总额退款</a></li><li><a href="screenshots.html#W04-LATEST-04">100元不能结120元订单：下一步禁用</a></li><li><a href="screenshots.html#W04-LATEST-05">100元结88元订单：主动确认其他收入12元</a></li><li><a href="screenshots.html#W04-LATEST-06">第一笔完成后自动进入第二笔200元</a></li><li><a href="screenshots.html#W04-LATEST-07">第一笔88元完成，第二笔90元尚未处理</a></li><li><a href="screenshots.html#W04-LATEST-08">中途结束：已完成一笔保留、未处理一笔不扣减</a></li></ol></details><p>路径：W02／W06 → 待认领账户；批量入口：W05 → 待认领款批量结算。</p>
+<p>**普通选择：**仅成功未使用的原入款，每次一笔、整笔一次用完，不拆分／合并／补收。单号可查看。查询顺序：充值金额精确值、支付日期范围、负责人、原充值售票员、支付方式、柜台号／POS编号；充值单号放后。不限当天／当前售票员。取消不覆盖原来源，切普通支付清来源；提交再次核验未使用。</p>
+<p>**批量选择：**多选来源排队，不合并成一次付款；随后“第N笔／共M笔”逐笔选单、校验、提交，不同来源方式／编号可不同。</p>
+<p>**逐笔选单：**一行综合搜索客户／订单／负责人，后接下单时间、应回款精确金额、查询／重置。订单号可查看；保留应回款、订单总额、已退款、下单时间，金额表头单行且去“（元）”。跨页保留选择，页脚合计及清空选择。</p>
+<ul>
+<li>来源少于所选订单净额：立即提示并禁用下一步，不能借下一笔补足。</li>
+<li>等于直接确认；大于转W06主动确认其他收入。</li>
+<li>一笔成功才进入下一笔，失败不扣款、不跳过；订单不得被重复结清。</li>
+<li>提前结束保留成功结果，未处理来源仍可用；结果区分已完成／未处理。每笔独立事务，不要求整队列一起回滚。</li>
+</ul>
+<h3 id="W05">W05 公共临时客户回款页面<span class="page-links"><a href="prototype/partner-workspace.html?tab=temporary" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W05">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（3张）</summary><ol><li><a href="screenshots.html#W05-LATEST-01">待回款查询与按钮初态</a></li><li><a href="screenshots.html#W05-LATEST-02">本轮已回款结果</a></li><li><a href="screenshots.html#W05-LATEST-03">勾选后回款迁移启用、批量禁用</a></li></ol></details><p>路径：售票窗口 → 合作伙伴 → 公共临时客户回款（其他收入记录后）。</p>
+<p>新增订单页，回款状态下拉切待回款／已回款，不增加子标签。</p>
+<ul>
+<li>查询首行：客户、负责人、下单时间；之后订单号、原售票员。已回款另有回款单号、操作人、来源、支付日期。条件全展示，不留无效展开／收起。</li>
+<li>客户／负责人按订单快照模糊查，负责人兼容姓名、手机及手填文字；原售票员不默认当前人。日期初次不限，自动查询；查询回第一页，重置清条件。切视图／改变条件清选择，表头全选仅当前页。</li>
+<li>候选仅公共临客挂帐、未回款且净额&gt;0；应回款＝订单总额−成功退款，排除全退／迁移／结清。</li>
+<li>待回款列表：勾选、客户、负责人、原售票员、订单号、应回款、订单总额、退款、下单时间、状态。</li>
+<li>已回款展示本单结清快照、回款单号、操作人、来源、方式、编号及支付日期；不重复显示主记录总金额，不提供再次回款／迁移。</li>
+<li>勾选后回款和迁移蓝色启用、批量禁用；未勾选反之。</li>
+<li>待回款按下单时间倒序；已回款按支付时间倒序，相同再下单时间倒序，排序后分页。</li>
+<li>订单号开原详情，回款单号开充值详情。后台回款也可查询，但不能冒计为某售票员窗口收款。</li>
+</ul>
+<h3 id="W06">W06 公共临客回款弹窗<span class="page-links"><a href="prototype/partner-workspace.html?tab=temporary" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W06">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（8张）</summary><ol><li><a href="screenshots.html#W06-LATEST-01">普通窗口回款及支付日期</a></li><li><a href="screenshots.html#W06-LATEST-02">199小于200：不足拦截</a></li><li><a href="screenshots.html#W06-LATEST-03">210结200：主动确认其他收入及银行资源</a></li><li><a href="screenshots.html#W06-LATEST-04">支付日期日历与过去日期选择</a></li><li><a href="screenshots.html#W06-LATEST-05">现金实收425：收款420找零5</a></li><li><a href="screenshots.html#W06-LATEST-06">199小于200：确认按钮实时禁用</a></li><li><a href="screenshots.html#W06-LATEST-07">120元来源整笔结清120元订单：提交前</a></li><li><a href="screenshots.html#W06-LATEST-08">单笔回款成功：来源入款、目标充值及负转出</a></li></ol></details><p>路径：W05勾选 → 回款；W04逐笔选单 → 下一步。</p>
+<p>新增窗口入口，沿用后台临客结清逻辑；带入已选订单及应回款，明细保留总额／退款。增加窗口普通支付区、支付日期、当前售票员／窗口。</p>
+<p>设净应回款D、登记收款S：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>条件</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S&lt;D</td>
+<td>提示差额、禁止提交，不允许部分结清</td>
+</tr>
+<tr>
+<td>S=D</td>
+<td>客户充值D，所选订单全部结清</td>
+</tr>
+<tr>
+<td>S&gt;D</td>
+<td>主动选择差额计其他收入，不设默认；客户入D，公司收入S−D</td>
+</tr>
+</tbody></table>
+</div><p>待认领S由来源带入只读，同样逐笔校验。现金找零与公司收入分别处理。提交重读订单状态／退款；变化要求重新查选。成功退出候选、清选择，取消不写账。</p>
+<h3 id="W07">W07 多订单不一致确认<span class="page-links"><a href="prototype/partner-workspace.html?tab=temporary" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W07">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#W07-LATEST-01">多客户及负责人不一致：二次确认</a></li></ol></details><p>路径：W06或W08所选订单客户／负责人不一致时。</p>
+<p>提示核实同一客户，允许人工确认继续，不硬性禁止；保存确认人、时间、订单快照，改选择使确认失效。不能绕过金额、日期或订单状态校验。</p>
+<h3 id="W08">W08 迁移第一步<span class="page-links"><a href="prototype/partner-workspace.html?tab=temporary" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W08">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#W08-LATEST-01">确认待迁移订单</a></li></ol></details><p>路径：W05勾选 → 临时客户转合作伙伴。</p>
+<p>窗口新增入口，带入待迁移订单及净迁移金额，订单可查看；不作为回款。信息不一致走W07。</p>
+<h3 id="W09">W09 迁移目标方式<span class="page-links"><a href="prototype/partner-workspace.html?tab=temporary" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W09">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#W09-LATEST-01">新建或已有目标方式</a></li></ol></details><p>路径：W08 → 下一步。</p>
+<p>可新建长期伙伴或选已有启用企业／个人，排除公共临客、待认领、禁用对象。保存本次操作售票员／窗口，原开单售票员不改。</p>
+<h3 id="W10">W10 新建迁移目标<span class="page-links"><a href="prototype/partner-workspace.html?tab=temporary" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W10">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（3张）</summary><ol><li><a href="screenshots.html#W10-LATEST-01">创建新目标伙伴</a></li><li><a href="screenshots.html#W10-LATEST-02">新建预付款伙伴：填写完整资料</a></li><li><a href="screenshots.html#W10-LATEST-03">新建并迁移成功：后台同账号预付款余额负88</a></li></ol></details><p>路径：W09 → 创建新的长期合作伙伴。</p>
+<p>复用原建档字段及校验，不重新定义普通建档规则。新档案、双账户和迁移一起提交，失败不留空档案；按默认账户承接消费。</p>
+<h3 id="W11">W11 已有迁移目标<span class="page-links"><a href="prototype/partner-workspace.html?tab=temporary" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W11">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（4张）</summary><ol><li><a href="screenshots.html#W11-LATEST-01">已有目标实时资料与余额额度</a></li><li><a href="screenshots.html#W11-LATEST-02">负余额目标资料：迁移前</a></li><li><a href="screenshots.html#W11-LATEST-03">负余额目标迁移后：余额扣减</a></li><li><a href="screenshots.html#W11-LATEST-04">额度限制开启：迁移后余额负580且开关不变</a></li></ol></details><p>路径：W09 → 选择已有合作伙伴。</p>
+<p>实时带入所选档案、默认账户、挂帐／可用额度及预付款余额，不另造资料。</p>
+<p>**本次规则变更：迁移不校验目标余额／额度充足，即使限制开启也不因此拦截。**已经发生的消费归属转移，后续新消费仍按原额度规则。原迁移消费、退款及调账-往来保持；不标已回款、不入窗口充值报表。</p>
+<h3 id="W12">W12 账户充值记录列表<span class="page-links"><a href="prototype/partner-workspace.html?tab=account" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W12">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（2张）</summary><ol><li><a href="screenshots.html#W12-LATEST-01">同一来源入款、目标充值与负转出记录</a></li><li><a href="screenshots.html#W12-LATEST-02">两笔来源300元及逐笔负转出与目标充值</a></li></ol></details><p>路径：售票窗口 → 合作伙伴 → 账户充值记录。</p>
+<p>原列表纳入临客充值、待认领入款、“调账-认领款转出”；不新增“回款”处理类型。待认领原单可识别未使用／已使用，保留已用历史但退出可选来源。</p>
+<p>取消无效展开／收起；充值及收入按支付时间倒序、再完成时间倒序，无支付时间的系统迁移以完成时间参与排序。其他原字段不重写。</p>
+<h3 id="W13">W13 充值详情<span class="page-links"><a href="prototype/partner-workspace.html?tab=account" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W13">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#W13-LATEST-01">180元充值详情及188元来源关联</a></li></ol></details><p>路径：W12查看；W05回款单号；W04来源单号。</p>
+<p>只补本次来源、转出、目标及其他收入关联，沿用历史单号互查方式，放备注／关联处理区，不单设“待认领款来源”业务字段。备注有正文或关联时不另显“—”；备注、资料各占整行，边框连续。</p>
+<h3 id="W14">W14 其他收入列表<span class="page-links"><a href="prototype/partner-workspace.html?tab=income" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W14">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#W14-LATEST-01">公司收入8元列表</a></li></ol></details><p>路径：售票窗口 → 合作伙伴 → 其他收入记录。</p>
+<p>纳入临客超额及待认领分配产生的公司收入，不入客户余额；账号／账户类型沿用原其他收入口径。取消无效展开／收起，排序同W12。</p>
+<h3 id="W15">W15 其他收入详情<span class="page-links"><a href="prototype/partner-workspace.html?tab=income" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W15">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#W15-LATEST-01">8元公司收入详情与来源</a></li></ol></details><p>路径：W14查看；W13收入单号。</p>
+<p>只补本次来源／目标关联，复用原详情；正文及关联不叠加占位“—”。</p>
+<h3 id="W16">W16 窗口充值报表<span class="page-links"><a href="prototype/partner-workspace.html?tab=report" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#W16">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（5张）</summary><ol><li><a href="screenshots.html#W16-LATEST-01">入款、临客回款与负转出汇总</a></li><li><a href="screenshots.html#W16-LATEST-03">两笔独立结算：入款300、回款288、收入12及转出负300</a></li><li><a href="screenshots.html#W16-LATEST-04">昨日报表计入补录25元：合计325元</a></li><li><a href="screenshots.html#W16-LATEST-05">今日转入前：不重复统计昨日补录款</a></li><li><a href="screenshots.html#W16-LATEST-06">今日来源转出负25与目标充值正25：净额0</a></li></ol></details><p>路径：售票窗口 → 合作伙伴 → 充值报表。</p>
+<p>原报表增加临客充值及收入、待认领入款正数、认领转出负数。不纳入迁移调账-往来、人工调账或退款自动调整，不另做回款报表。</p>
+<ul>
+<li>按填写支付日期、实际操作售票员／窗口统计；原方式及编号归列。</li>
+<li>目标正数沿用目标负责人规则，来源负数保留原入款负责人，一来源一负数；两者可不同。临客主记录可显示多个订单负责人，订单各自保留；临客其他收入不分摊个人。</li>
+<li>使用日目标充值＋其他收入−转出＝0；原实收只在原入款日计一次，主记录与订单明细不重复累加。</li>
+<li>例：甲昨日入250，乙今日结临客200＋收入50；昨日甲＋250，今日乙＋200＋50−250＝0。</li>
+</ul>
+<h2 id="section-3">3. 后台页面增量</h2><h3 id="B01">B01 合作伙伴管理列表<span class="page-links"><a href="prototype/index.html#/partner" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#B01">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#B01-LATEST-01">后台待认领唯一对象及操作限制</a></li></ol></details><p>路径：后台 → 合作伙伴管理 → 合作伙伴管理。</p>
+<p>增加待认领类型、唯一行，仅查看／账户，无编辑、禁用、删除。其他伙伴不改。</p>
+<h3 id="B02">B02 新增合作伙伴<span class="page-links"><a href="prototype/index.html#/partner" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#B02">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（3张）</summary><ol><li><a href="screenshots.html#B02-LATEST-01">已有待认领对象：重复创建禁选</a></li><li><a href="screenshots.html#B02-LATEST-02">首次创建待认领客户：固定名称且仅预付款</a></li><li><a href="screenshots.html#B02-LATEST-03">首次创建成功：唯一对象与受限操作</a></li></ol></details><p>路径：B01 → 新增。</p>
+<p>类型增加待认领客户；名称固定、账户类型固定预付款；隐藏普通联系人、电话、档案负责人、状态、余额及额度设置。备注选填，账号保存前“—”；固定启用、余额0，只建预付款，不生成入款。</p>
+<p>按类型唯一创建，已有禁选、提交再校验；档案账户一起成功。切类型清除隐藏字段草稿及校验。</p>
+<h3 id="B03">B03 待认领档案查看<span class="page-links"><a href="prototype/index.html#/partner" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#B03">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#B03-LATEST-01">待认领只读档案</a></li></ol></details><p>路径：B01待认领行 → 查看。</p>
+<p>新增特殊只读展示；不能编辑成普通伙伴。每笔负责人独立保留，不回写档案。</p>
+<h3 id="B04">B04 预付款管理<span class="page-links"><a href="prototype/index.html#/partner-account?tab=prepay" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#B04">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#B04-LATEST-01">预付款余额及不可关闭限制</a></li></ol></details><p>路径：后台 → 合作伙伴管理 → 合作伙伴账户管理 → 预付款管理。</p>
+<p>纳入待认领唯一账户，余额随入款／转出更新，始终不得负；不可关闭非负限制，无挂帐账户。</p>
+<h3 id="B05">B05 后台充值列表<span class="page-links"><a href="prototype/index.html#/recharge?tab=account" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#B05">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（2张）</summary><ol><li><a href="screenshots.html#B05-LATEST-01">后台共享窗口充值与转出</a></li><li><a href="screenshots.html#B05-LATEST-02">两笔逐笔结算后台共享记录</a></li></ol></details><p>路径：后台 → 合作伙伴管理 → 充值申请 → 账户充值。</p>
+<p>读取窗口同一充值／转出记录，不复制入账；筛选及导出纳入待认领类型和转出操作。不新增回款来源列；申请人就是实际回款操作人。排序同W12。</p>
+<h3 id="B06">B06 后台新增充值<span class="page-links"><a href="prototype/index.html#/recharge?tab=account" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#B06">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#B06-LATEST-01">后台新增充值对象选择</a></li></ol></details><p>路径：B05 → 充值。</p>
+<p>只改对象范围：排除待认领客户，保存也拒绝，不能仅隐藏选项；原后台长期／临客流程不改。</p>
+<h3 id="B07">B07 后台批量导入<span class="page-links"><a href="prototype/index.html#/recharge?tab=account" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#B07">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（5张）</summary><ol><li><a href="screenshots.html#B07-LATEST-01">批量导入弹窗与未选文件禁用</a></li><li><a href="screenshots.html#B07-LATEST-02">空模板明确拒绝无数据</a></li><li><a href="screenshots.html#B07-LATEST-03">51条非空数据：整份文件明确拒绝</a></li><li><a href="screenshots.html#B07-LATEST-04">企业17元有效模板：浏览器导入成功1条</a></li><li><a href="screenshots.html#B07-LATEST-05">待认领客户19元模板：明确拒绝且未入账</a></li></ol></details><p>路径：B05 → 批量导入。</p>
+<p>新增拒绝待认领对象校验，不新增模板列，不提供后台待认领入款。导入弹窗沿用十一列模板，错误行显示拒绝原因；超过50条非空数据整份拒绝，不生成记录或流水。</p>
+<h3 id="B08">B08 后台充值详情<span class="page-links"><a href="prototype/index.html#/recharge?tab=account" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#B08">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#B08-LATEST-01">后台充值详情：1024连续边框与备注关联</a></li></ol></details><p>路径：B05查看；B11充值单号。</p>
+<p>查看同一窗口结果，补来源／目标／转出关联，规则同W13；不单列“回款来源”／“待认领款来源”。实际申请人、售票员、窗口与窗口记录一致。</p>
+<h3 id="B09">B09 后台其他收入列表<span class="page-links"><a href="prototype/index.html#/recharge?tab=income" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#B09">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#B09-LATEST-01">后台同批公司收入8、10、50</a></li></ol></details><p>路径：后台 → 合作伙伴管理 → 充值申请 → 其他收入。</p>
+<p>纳入同一批新增公司收入，金额及关联与窗口一致，不重复入账、不入客户余额；排序同W12。</p>
+<h3 id="B10">B10 后台其他收入详情<span class="page-links"><a href="prototype/index.html#/recharge?tab=income" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#B10">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（1张）</summary><ol><li><a href="screenshots.html#B10-LATEST-01">后台8元公司收入详情</a></li></ol></details><p>路径：B09查看；B08收入单号。</p>
+<p>只补本次来源／目标关联，复用原详情；备注关联不叠加占位“—”。</p>
+<h3 id="B11">B11 资金流水<span class="page-links"><a href="prototype/index.html#/flow?tab=all" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#B11">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（3张）</summary><ol><li><a href="screenshots.html#B11-LATEST-01">同账本充值及其他收入</a></li><li><a href="screenshots.html#B11-LATEST-02">调账标签中的认领负数转出</a></li><li><a href="screenshots.html#B11-LATEST-03">两笔独立结算：后台同账本正负流水及公司收入</a></li></ol></details><p>路径：后台 → 合作伙伴管理 → 资金流水。</p>
+<p>新增待认领入款＋S、“调账-认领款转出”−S；目标充值及收入按原类型。六个原标签不变，认领转出和调账-往来归调账，行内完整显示操作名。</p>
+<p>发生时间取实际完成时刻，倒序；不取补录支付日期。原消费只更新回款状态，不删除历史、不重复消费。</p>
+<h3 id="B12">B12 原合作伙伴对帐单<span class="page-links"><a href="prototype/index.html#/partner-statement" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#B12">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（5张）</summary><ol><li><a href="screenshots.html#B12-LATEST-01">原对帐单按日：到款及转出</a></li><li><a href="screenshots.html#B12-LATEST-02">原对帐单按月：到款及转出</a></li><li><a href="screenshots.html#B12-LATEST-03">原后台对帐单：昨日到款325、今日认领转出25</a></li><li><a href="screenshots.html#B12-LATEST-04">待认领对帐单导出：当日转出25、到款0与文件一致</a></li><li><a href="screenshots.html#B12-LATEST-05">导出移至报表上方：零余额显示0.00</a></li></ol></details><p>路径：后台 → 报表中心 → 合作伙伴对帐单 → 按日／按月。</p>
+<p>原报表新增待认领选项，不另建。选待认领时只将当日／当月消费改为当日／当月认领转出，列数、查询、导出不变。</p>
+<p>原入款按原支付日计到款，来源负转出按使用支付日取绝对值计认领转出，不再重复计底部调账。目标只计客户充值，不含公司收入。其他原消费、退款、人数及余额口径不重写。</p>
+<h3 id="R01">R01 原订单详情关联<span class="page-links"><a href="prototype/order-detail.html?tempOrder=DD202610240006" target="_blank" rel="noopener">打开对应原型 ↗</a><a href="screenshots.html#R01">全部状态截图 ↗</a></span></h3><details class="state-links"><summary>本页各阶段截图（2张）</summary><ol><li><a href="screenshots.html#R01-LATEST-01">本轮订单已回款且原售票员不变</a></li><li><a href="screenshots.html#R01-LATEST-02">迁移后订单归属、原售票员及变更记录</a></li></ol></details><p>路径：本次列表／弹窗 → 订单号 → 原详情。</p>
+<p>不改版。同步回款状态、结清关联或迁移伙伴／账户及追溯，原售票员不变。销售记录、退票页不新增页面，继续读取原订单结果。</p>
+<h2 id="section-4">4. 新增联动与保存</h2><div class="table-wrap"><table>
+<thead>
+<tr>
+<th>动作</th>
+<th>必须一起关联更新</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>待认领入款S</td>
+<td>原充值＋S、预付款＋S、正流水、未使用、原日期和收款人报表</td>
+</tr>
+<tr>
+<td>来源S用于长期充值</td>
+<td>C＋I=S；转出−S、源余额−S、来源已用、目标＋C及流水、同日正负报表</td>
+</tr>
+<tr>
+<td>来源S结临客</td>
+<td>净额D全部结清、充值D、收入S−D、转出−S、来源已用、账户流水及同日正负报表</td>
+</tr>
+<tr>
+<td>普通支付结临客</td>
+<td>充值D、收入S−D、逐单结清、原消费已回款、当前售票员／窗口及支付报表</td>
+</tr>
+<tr>
+<td>窗口迁移</td>
+<td>沿用原消费／退款／调账-往来；增加窗口操作身份，不按新消费校验余额</td>
+</tr>
+</tbody></table>
+</div><p>申请人＝本次充值／回款人＝当前售票员；原订单售票员、原入款售票员分别保留。源负数保留原负责人，目标正数沿用原目标规则。</p>
+<p>提交重读来源使用状态、余额、订单／退款、日期、资源及目标有效性。单笔正负记录、扣款、余额、订单和使用状态一起成功或失败，重试不重复记账；批量逐笔独立。</p>
+</article><div class="footer-nav"><a href="index.html">← 方案总览</a><a href="prototype-center.html">原型中心 →</a></div></main><button class="quick" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button><script>const sections=[...document.querySelectorAll('.doc h2[id],.doc h3[id]')];if(sections.length){const observer=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){document.querySelectorAll('.sidebar a.active').forEach(a=>a.classList.remove('active'));const a=document.querySelector('.sidebar a[href="development-spec.html#'+e.target.id+'"]');if(a)a.classList.add('active')}},{rootMargin:'0px 0px -70% 0px'});sections.forEach(s=>observer.observe(s))}</script></body></html>
