@@ -3,7 +3,7 @@
   const h=React.createElement,{useState}=React;
   const {Modal,Descriptions,Table,Input,DatePicker,Select,Button,Alert,Space,App:AntApp}=antd;
   const model=window.SupplementRepaymentModel,fmt=n=>(n/100).toFixed(2);
-  function RepaymentDialog({orders,dateLocale,onCancel,onComplete,baseOrders,initialSource=null,batchProgress,confirmLabel}){
+  function RepaymentDialog({orders,dateLocale,onCancel,onComplete,baseOrders,initialSource=null,confirmLabel}){
     const fixture=window.paymentFixture,{message,modal}=AntApp.useApp();
     const due=orders.reduce((n,r)=>n+r.amount-r.refunded,0);
     const initial=()=>{if(initialSource)return{date:dayjs().format('YYYY-MM-DD'),total:initialSource.amount.toFixed(2),cash:'',payer:'',note:'',excess:undefined,code:'UNCLAIMED',sourceIds:[initialSource.recordNo]};const code=model.candidates(fixture)[0]?.code,state=model.resourceState(fixture,code);return{date:dayjs().format('YYYY-MM-DD'),total:fmt(due),cash:'',payer:'',note:'',excess:undefined,code,resourceId:state.defaultId,signature:state.signature}};
@@ -24,7 +24,7 @@
     const editMoney=(id,key,placeholder)=>h(Input,{id,value:form[key],readOnly:key==='total'&&form.code==='UNCLAIMED',inputMode:'decimal',placeholder,suffix:'元',onChange:e=>set(key,e.target.value)});
     const columns=[{title:'客户名称',dataIndex:'customer',width:120},{title:'对接负责人',dataIndex:'owner',width:180},{title:'原订单售票员',dataIndex:'cashier',width:120},{title:'订单号',dataIndex:'id',width:220,render:id=>h('a',{href:'order-detail.html?tempOrder='+encodeURIComponent(id),target:'_blank',rel:'noopener'},id)},{title:'应回款金额（元）',width:155,render:(_,r)=>fmt(r.amount-r.refunded)},{title:'订单总金额（元）',dataIndex:'amount',width:155,render:fmt},{title:'已退款金额（元）',dataIndex:'refunded',width:155,render:fmt}];
     const payments=model.candidates(fixture);
-    return h(React.Fragment,null,h(Modal,{open:true,title:batchProgress?'公共临时客户回款 · '+batchProgress:'公共临时客户回款',width:940,centered:true,maskClosable:false,onCancel,keyboard:!busy,closable:!busy,className:'w06-modal',footer:h('div',{className:'w06-footer'},h('div',null,'本次收款合计：',h('strong',null,total===null?'—':fmt(total)),' 元'),h(Space,null,h(Button,{onClick:onCancel,disabled:busy},'取消'),h(Button,{type:'primary',onClick:submit,loading:busy,disabled:!!liveCheck.error},confirmLabel||'确认回款')))},
+    return h(React.Fragment,null,h(Modal,{open:true,title:'公共临时客户回款',width:940,centered:true,maskClosable:false,onCancel,keyboard:!busy,closable:!busy,className:'w06-modal',footer:h('div',{className:'w06-footer'},h('div',null,'本次收款合计：',h('strong',null,total===null?'—':fmt(total)),' 元'),h(Space,null,h(Button,{onClick:onCancel,disabled:busy},'取消'),h(Button,{type:'primary',onClick:submit,loading:busy,disabled:!!liveCheck.error},confirmLabel||'确认回款')))},
       h(Descriptions,{bordered:true,size:'small',column:2,items:[{key:1,label:'合作伙伴',children:'公共临时客户'},{key:2,label:'账户类型',children:'挂帐'},{key:3,label:'账户号',children:orders[0].accountNo},{key:4,label:'已选订单',children:orders.length+' 笔'}]}),
       h('div',{className:'w06-orders-title'},'已选订单',h('span',null,'应回款合计：',h('strong',null,fmt(due)),' 元')),
       h(Table,{className:'w06-orders',columns,dataSource:orders,rowKey:'id',size:'small',pagination:false,scroll:{x:1205,y:orders.length>2?140:undefined}}),
