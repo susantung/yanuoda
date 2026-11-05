@@ -1,0 +1,99 @@
+Window: "程程票", App: Google Chrome.
+0 标准窗口 程程票 - Google Chrome, URL: lvyou-ticket-3.qa.ly.com/#/payment-center/resources, Secondary Actions: Raise
+	1 container 程程票 - Google Chrome, URL: lvyou-ticket-3.qa.ly.com/#/payment-center/resources
+		2 container
+			3 工具栏
+				4 按钮 返回
+				5 按钮 (disabled) 前进
+				6 按钮 重新加载
+				7 按钮 首页
+				8 container
+					9 弹出式按钮 不安全
+					10 文本栏 (settable) 地址和搜索栏, Value: lvyou-ticket-3.qa.ly.com/#/payment-center/resources, Placeholder: 在 百度 中搜索，或输入网址
+					11 按钮 管理您的密码
+					12 按钮 为此标签页添加书签
+				13 container
+					14 弹出式按钮 FigmaCN
+					15 弹出式按钮 简单便签
+可以访问此网站
+					16 弹出式按钮 ChatGPT
+可以访问此网站
+					17 弹出式按钮 已允许在此网站上使用扩展程序。选择即可打开菜单
+				18 container
+					19 复选框 下载内容 - 已固定
+				20 按钮 Tung (susan)
+				21 弹出式按钮 重新启动即可更新
+			22 工具栏 书签
+				23 工具栏 已保存的标签页分组
+					24 “已保存的标签页分组”按钮 “林渡暖村UI”分组 - 已打开
+					25 “已保存的标签页分组”按钮 “灵动”分组 - 已关闭
+					26 “已保存的标签页分组”按钮 “优惠券相关历史方案”分组 - 已关闭
+					27 “已保存的标签页分组”按钮 “散客合作伙伴功能方案测试”分组 - 已关闭
+					28 按钮 标签页分组
+				29 分离器 分隔符
+				30 书签按钮 精品MAC应用分享
+				31 书签文件夹按钮 书签栏
+				32 书签文件夹按钮 已导入
+				33 书签文件夹按钮 程程票
+				34 书签文件夹按钮 青靛甪直
+				35 书签文件夹按钮 AI
+				36 书签按钮 OA
+				37 书签按钮 DS920plus - Synology NAS
+				38 书签按钮 6v电影-新版
+			39 container
+				40 滚动区
+					41 HTML 内容 程程票, URL: lvyou-ticket-3.qa.ly.com/#/payment-center/resources
+						42 container 新增支付资源
+							43 container
+								44 按钮 Close
+								45 文本 新增支付资源
+								46 container
+									47 text * 资源类型 :
+								48 container
+									49 组合框 * 资源类型 :
+									50 文本 扫码付柜台
+								51 container
+									52 text * 资源名称 :
+								53 文本栏 (settable) * 资源名称 :, Value: QA-PAY-20261103-R01-01
+								54 container
+									55 text * 柜台编码/POS编号 :
+								56 文本栏 (settable) * 柜台编码/POS编号 :, Value: 000QA1103SCAN01
+								57 container
+									58 text * 启用状态 :
+								59 container
+									60 单选按钮 启用  , Value: 1
+									61 文本 启用
+									62 单选按钮 停用  , Value: 0
+									63 文本 停用
+								64 按钮 取 消
+								65 按钮 保 存
+			66 弹出式按钮 标签页搜索
+			67 container
+				68 标签页组
+					69 标签页组 分组“林渡暖村UI”- 6 个标签页•  店铺装修•  包图网-正版商用视频音乐素材库，AI设计图片|PPT模板|海报|背景元素，会员免费下载•  田园手绘背景-田园手绘背景图片-【包图网】•  乡村田园风大图片-包图网•  林渡暖村 · 全部19种风格以及另外 1 个 - 已收起
+					70 标签 (settable, boolean) 报名开启 | 2026海南儋州马拉松今日上午10点开启报名！, Value: off
+						71 按钮 关闭
+					72 标签 (selected, settable, boolean) 程程票 - 内存用量 - 210 MB, Value: on
+						73 按钮 关闭
+					74 标签 (settable, boolean) 程程票售票窗口 - 内存用量 - 210 MB, Value: off
+						75 按钮 关闭
+					76 标签 (settable, boolean) V3.6支付配置化｜验收方案与执行总览 - 内存用量 - 84.9 MB, Value: off
+						77 按钮 关闭
+			78 按钮 新标签页
+			79 按钮 打开 Chrome 中的 Gemini
+	80 关闭按钮
+	81 全屏幕按钮 Help: 此按钮也可以执行缩放窗口的操作, Secondary Actions: 缩放窗口
+	82 最小化按钮
+83 menu bar
+	84 Chrome
+	85 文件
+	86 编辑
+	87 显示
+	88 历史记录
+	89 书签
+	90 个人资料
+	91 标签页
+	92 窗口
+	93 帮助
+
+The focused UI element is 56 文本栏 (settable) * 柜台编码/POS编号 :, Value: 000QA1103SCAN01

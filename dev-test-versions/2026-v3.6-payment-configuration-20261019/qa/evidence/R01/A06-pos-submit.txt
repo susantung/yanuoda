@@ -1,0 +1,3 @@
+The following is a diff from the previous accessibility tree for Window: "程程票" with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 272-274
+The focused UI element is 175 按钮 新增支付资源
