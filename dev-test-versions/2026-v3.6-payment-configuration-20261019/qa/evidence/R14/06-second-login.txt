@@ -1,0 +1,49 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: hjk001
+- tablist:
+  - tab "内导":
+    - generic: 内导
+  - button "remove":
+    - img "close":
+  - tab "首页" [selected]:
+    - generic: 首页
+  - button "remove":
+    - img "close":
+  - tab "售票":
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "统计":
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "订单详情":
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+- tabpanel "首页"
+- generic: 欢迎进入程程票售票窗口
+- text: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"

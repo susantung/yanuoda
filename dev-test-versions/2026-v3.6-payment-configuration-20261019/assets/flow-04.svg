@@ -261,8 +261,8 @@
 <g id="node19" class="node">
 <title>SUBMIT</title>
 <path fill="#f7f3ff" stroke="#b7a2df" d="M1245.64,-259.28C1245.64,-259.28 1002.52,-259.28 1002.52,-259.28 996.52,-259.28 990.52,-253.28 990.52,-247.28 990.52,-247.28 990.52,-217.52 990.52,-217.52 990.52,-211.52 996.52,-205.52 1002.52,-205.52 1002.52,-205.52 1245.64,-205.52 1245.64,-205.52 1251.64,-205.52 1257.64,-211.52 1257.64,-217.52 1257.64,-217.52 1257.64,-247.28 1257.64,-247.28 1257.64,-253.28 1251.64,-259.28 1245.64,-259.28"/>
-<text xml:space="preserve" text-anchor="middle" x="1124.08" y="-236.6" font-family="PingFang SC" font-size="14.00" fill="#2e214a">最终提交再次校验归属、绑定及编</text>
-<text xml:space="preserve" text-anchor="middle" x="1124.08" y="-219.8" font-family="PingFang SC" font-size="14.00" fill="#2e214a">码</text>
+<text xml:space="preserve" text-anchor="middle" x="1124.08" y="-236.6" font-family="PingFang SC" font-size="14.00" fill="#2e214a">前端按弹窗已加载数据校验归属、</text>
+<text xml:space="preserve" text-anchor="middle" x="1124.08" y="-219.8" font-family="PingFang SC" font-size="14.00" fill="#2e214a">绑定及编码</text>
 </g>
 <!-- READ&#45;&gt;SUBMIT -->
 <g id="edge20" class="edge">

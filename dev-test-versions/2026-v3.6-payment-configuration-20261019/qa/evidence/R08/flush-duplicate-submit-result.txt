@@ -1,0 +1,123 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "售票":
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "统计" [selected]:
+    - generic: 统计
+  - button "remove":
+    - img "close":
+- tabpanel "统计"
+- tablist:
+  - tab "销售记录/冲红申请" [selected]
+  - tab "冲红记录"
+  - tab "统计报表"
+  - tab "团票统计"
+- tabpanel "销售记录/冲红申请" [active]:
+  - generic "订单编号": "订单编号 :"
+  - textbox "订单编号 :":
+    - /placeholder: 订单号
+    - text: DD261104055152001001s
+  - generic "门票票号": "门票票号 :"
+  - textbox "门票票号 :":
+    - /placeholder: 门票票号
+  - generic "游客证件": "游客证件 :"
+  - textbox "游客证件 :":
+    - /placeholder: 游客证件号
+  - generic "导游证件": "导游证件 :"
+  - textbox "导游证件 :":
+    - /placeholder: 导游证件号
+  - generic "下单时间": "下单时间 :"
+  - textbox "下单时间 :":
+    - /placeholder: 开始时间
+    - text: 2026-11-04
+  - generic "to":
+    - img "swap-right":
+  - textbox "结束时间": 2026-11-04
+  - img "calendar":
+  - button "close-circle":
+    - img "close-circle":
+  - text: ": : : : : : :"
+  - button "search 查 询":
+    - img "search":
+    - generic: 查 询
+  - button "reload 重 置":
+    - img "reload":
+    - generic: 重 置
+  - button "down 展开":
+    - img "down":
+    - generic: 展开
+  - table:
+    - rowgroup:
+      - row "序号 订单编号 团散类型 门票张数 旅行社名 订单金额(元) 支付类型 支付金额(元) 支付状态 支付日期 支付流水号 销售来源 订单状态 操作":
+        - columnheader "序号"
+        - columnheader "订单编号"
+        - columnheader "团散类型"
+        - columnheader "门票张数"
+        - columnheader "旅行社名"
+        - columnheader "订单金额(元)"
+        - columnheader "支付类型"
+        - columnheader "支付金额(元)"
+        - columnheader "支付状态"
+        - columnheader "支付日期"
+        - columnheader "支付流水号"
+        - columnheader "销售来源"
+        - columnheader "订单状态"
+        - columnheader "操作"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "1 DD261104055152001001s 散客 1 - 0.01 现金 0.01 支付成功 2026-11-04 05:51:52 - YST团队售票窗口 待确认 查看":
+        - cell "1"
+        - cell "DD261104055152001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "-"
+        - cell "0.01"
+        - cell "现金"
+        - cell "0.01"
+        - cell "支付成功"
+        - cell "2026-11-04 05:51:52"
+        - cell "-"
+        - cell "YST团队售票窗口"
+        - cell "待确认"
+        - cell "查看"
+  - list:
+    - listitem: 共 1 条
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "下一页":
+      - button "right" [disabled]:
+        - img "right":
+    - generic "页码":
+      - combobox "页码"
+      - generic "10 条/页"
+- generic: ": : : : : : : : : : : : : : : : : : : : : :"

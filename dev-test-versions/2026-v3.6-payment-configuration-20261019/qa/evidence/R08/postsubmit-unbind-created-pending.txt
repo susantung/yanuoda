@@ -1,0 +1,282 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "统计" [selected]:
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "订单详情":
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+  - tab "售票":
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "内导":
+    - generic: 内导
+  - button "remove":
+    - img "close":
+  - tab "首页":
+    - generic: 首页
+  - button "remove":
+    - img "close":
+- tabpanel "统计"
+- tablist:
+  - tab "销售记录/冲红申请"
+  - tab "冲红记录" [active] [selected]
+  - tab "统计报表"
+  - tab "团票统计"
+- text: ": : : : : : : : : : : :"
+- tabpanel "冲红记录":
+  - generic "订单编号": "订单编号 :"
+  - textbox "订单号"
+  - generic "导游证件": "导游证件 :"
+  - textbox "导游证件号"
+  - generic "导游姓名": "导游姓名 :"
+  - textbox "导游姓名"
+  - generic "导游手机": "导游手机 :"
+  - textbox "导游手机"
+  - generic "申请日期": "申请日期 :"
+  - textbox "申请日期 :":
+    - /placeholder: 开始时间
+    - text: 2026-10-04
+  - generic "to":
+    - img "swap-right":
+  - textbox "结束时间": 2026-11-04
+  - img "calendar":
+  - button "close-circle":
+    - img "close-circle":
+  - text: ": :"
+  - button "search 查 询":
+    - img "search":
+    - generic: 查 询
+  - button "reload 重 置":
+    - img "reload":
+    - generic: 重 置
+  - button "down 展开":
+    - img "down":
+    - generic: 展开
+  - table:
+    - rowgroup:
+      - row "冲红单号 订单编号 团散类型 门票张数 旅行社名 订单金额(元) 支付金额(元) 原支付类型 冲红后支付类型 申请日期 审核人 审核状态 审核时间 操作":
+        - columnheader "冲红单号"
+        - columnheader "订单编号"
+        - columnheader "团散类型"
+        - columnheader "门票张数"
+        - columnheader "旅行社名"
+        - columnheader "订单金额(元)"
+        - columnheader "支付金额(元)"
+        - columnheader "原支付类型"
+        - columnheader "冲红后支付类型"
+        - columnheader "申请日期"
+        - columnheader "审核人"
+        - columnheader "审核状态"
+        - columnheader "审核时间"
+        - columnheader "操作"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "2026110467771 DD261103210118001001s 散客 1 - 0.01 0.01 扫码付 扫码付 2026-11-04 02:22:49 待审核 查看":
+        - cell "2026110467771"
+        - cell "DD261103210118001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "-"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "扫码付"
+        - cell "扫码付"
+        - cell "2026-11-04 02:22:49"
+        - cell
+        - cell "待审核"
+        - cell
+        - cell "查看":
+          - generic: 查看
+      - row "2026110448692 DD261103151357001001s 散客 1 - 0.01 0.01 银行卡 现金 2026-11-04 00:08:17 西瓜 已同意 2026-11-04 00:09:35 查看":
+        - cell "2026110448692"
+        - cell "DD261103151357001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "-"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "银行卡"
+        - cell "现金"
+        - cell "2026-11-04 00:08:17"
+        - cell "西瓜"
+        - cell "已同意"
+        - cell "2026-11-04 00:09:35"
+        - cell "查看":
+          - generic: 查看
+      - row "2026110474737 DD261103151357001001s 散客 1 - 0.01 0.01 银行卡 银行卡 2026-11-04 00:03:31 西瓜 已同意 2026-11-04 00:05:32 查看":
+        - cell "2026110474737"
+        - cell "DD261103151357001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "-"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "银行卡"
+        - cell "银行卡"
+        - cell "2026-11-04 00:03:31"
+        - cell "西瓜"
+        - cell "已同意"
+        - cell "2026-11-04 00:05:32"
+        - cell "查看":
+          - generic: 查看
+      - row "2026110374934 DD261103210118001001s 散客 1 - 0.01 0.01 扫码付 扫码付 2026-11-03 23:50:33 西瓜 已驳回 2026-11-03 23:54:36 查看":
+        - cell "2026110374934"
+        - cell "DD261103210118001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "-"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "扫码付"
+        - cell "扫码付"
+        - cell "2026-11-03 23:50:33"
+        - cell "西瓜"
+        - cell "已驳回"
+        - cell "2026-11-03 23:54:36"
+        - cell "查看":
+          - generic: 查看
+      - row "2026110396449 DD261103210118001001s 散客 1 - 0.01 0.01 扫码付 扫码付 2026-11-03 23:33:51 西瓜 已同意 2026-11-03 23:35:53 查看":
+        - cell "2026110396449"
+        - cell "DD261103210118001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "-"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "扫码付"
+        - cell "扫码付"
+        - cell "2026-11-03 23:33:51"
+        - cell "西瓜"
+        - cell "已同意"
+        - cell "2026-11-03 23:35:53"
+        - cell "查看":
+          - generic: 查看
+      - row "202611036553 DD261103210118001001s 散客 1 - 0.01 0.01 扫码付 扫码付 2026-11-03 23:10:27 西瓜 已同意 2026-11-03 23:20:45 查看":
+        - cell "202611036553"
+        - cell "DD261103210118001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "-"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "扫码付"
+        - cell "扫码付"
+        - cell "2026-11-03 23:10:27"
+        - cell "西瓜"
+        - cell "已同意"
+        - cell "2026-11-03 23:20:45"
+        - cell "查看":
+          - generic: 查看
+      - row "2026110369974 DD261103210118001001s 散客 1 - 0.01 0.01 扫码付 扫码付 2026-11-03 23:01:07 西瓜 已驳回 2026-11-03 23:07:06 查看":
+        - cell "2026110369974"
+        - cell "DD261103210118001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "-"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "扫码付"
+        - cell "扫码付"
+        - cell "2026-11-03 23:01:07"
+        - cell "西瓜"
+        - cell "已驳回"
+        - cell "2026-11-03 23:07:06"
+        - cell "查看":
+          - generic: 查看
+      - row "2026110390995 DD261103210118001001s 散客 1 - 0.01 0.01 扫码付 扫码付 2026-11-03 21:43:35 西瓜 已驳回 2026-11-03 21:51:08 查看":
+        - cell "2026110390995"
+        - cell "DD261103210118001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "-"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "扫码付"
+        - cell "扫码付"
+        - cell "2026-11-03 21:43:35"
+        - cell "西瓜"
+        - cell "已驳回"
+        - cell "2026-11-03 21:51:08"
+        - cell "查看":
+          - generic: 查看
+      - row "2026110346854 DD261103150739001001s 散客 1 - 0.01 0.01 扫码付 微信 2026-11-03 19:36:01 西瓜 已驳回 2026-11-03 20:48:33 查看":
+        - cell "2026110346854"
+        - cell "DD261103150739001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "-"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "扫码付"
+        - cell "微信"
+        - cell "2026-11-03 19:36:01"
+        - cell "西瓜"
+        - cell "已驳回"
+        - cell "2026-11-03 20:48:33"
+        - cell "查看":
+          - generic: 查看
+      - row "2026110337782 DD261103150739001001s 散客 1 - 0.01 0.01 扫码付 扫码付 2026-11-03 18:00:38 西瓜 已同意 2026-11-03 18:02:49 查看":
+        - cell "2026110337782"
+        - cell "DD261103150739001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "-"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "扫码付"
+        - cell "扫码付"
+        - cell "2026-11-03 18:00:38"
+        - cell "西瓜"
+        - cell "已同意"
+        - cell "2026-11-03 18:02:49"
+        - cell "查看":
+          - generic: 查看
+  - list:
+    - listitem: 共 14 条
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "2":
+      - generic: "2"
+    - listitem "下一页":
+      - button "right":
+        - img "right":
+    - generic "页码":
+      - combobox "页码"
+      - generic "10 条/页"
+    - text: 跳至
+    - textbox "页"
+    - text: 页
+- text: ": : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : :"

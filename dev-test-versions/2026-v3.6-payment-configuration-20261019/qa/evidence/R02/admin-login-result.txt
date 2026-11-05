@@ -1,0 +1,28 @@
+Browser tab: 1, Title: "程程票", URL: "https://lvyou-ticket-3.qa.ly.com/#/login/index".
+1 AXWebArea 程程票, URL: lvyou-ticket-3.qa.ly.com/#/login/index
+	2 container
+		3 image
+		4 heading 程程票, Value: 2
+			5 text 程程票
+		6 image
+		7 text 用户登录
+		8 tab group
+			9 container
+				10 tab (selected, settable, boolean) 账号密码登录, Value: 1, ID: rc-tabs-0-tab-account
+				11 tab (selectable, settable, boolean) 手机号登录, Value: 0, ID: rc-tabs-0-tab-phone
+		12 container Description: 账号密码登录, ID: rc-tabs-0-panel-account
+		13 container
+			14 image user
+			15 text field (settable) <redacted>
+			16 button close-circle
+				17 image close-circle
+		18 container
+			19 container
+				20 image lock
+				21 text field (settable)
+				22 image eye-invisible
+			23 text 请输入密码！
+		24 button 登 录
+		25 button 忘记密码?
+
+The focused UI element is 21 text field (settable)

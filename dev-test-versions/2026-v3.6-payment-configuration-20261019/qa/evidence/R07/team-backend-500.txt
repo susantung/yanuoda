@@ -1,0 +1,188 @@
+- generic: 程程票
+- generic: 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺
+- button "售票窗口":
+  - generic: 售票窗口
+- generic: 西瓜
+- menu:
+  - menuitem "home 首页":
+    - img "home":
+    - generic: 首页
+  - menuitem "product 基础信息":
+    - img "product":
+    - generic: 基础信息
+  - menuitem "setting 配置中心":
+    - img "setting":
+    - generic: 配置中心
+  - menuitem "user 员工管理":
+    - img "user":
+    - generic: 员工管理
+  - menuitem "audit 票务中心":
+    - img "audit":
+    - generic: 票务中心
+  - menuitem "transaction 订单中心" [expanded]:
+    - img "transaction":
+    - generic: 订单中心
+  - menu:
+    - menuitem "散客订单管理":
+      - generic: 散客订单管理
+    - menuitem "团队订单管理" [active]:
+      - generic: 团队订单管理
+    - menuitem "门票管理":
+      - generic: 门票管理
+    - menuitem "取票记录":
+      - generic: 取票记录
+    - menuitem "门票追溯":
+      - generic: 门票追溯
+  - menuitem "gold 售后中心":
+    - img "gold":
+    - generic: 售后中心
+  - menuitem "team 团队管理":
+    - img "team":
+    - generic: 团队管理
+  - menuitem "rest 冲红管理":
+    - img "rest":
+    - generic: 冲红管理
+  - menuitem "cluster 内导管理":
+    - img "cluster":
+    - generic: 内导管理
+  - menuitem "deployment-unit 分销管理":
+    - img "deployment-unit":
+    - generic: 分销管理
+  - menuitem "message 短信管理":
+    - img "message":
+    - generic: 短信管理
+  - menuitem "pie-chart 报表中心":
+    - img "pie-chart":
+    - generic: 报表中心
+  - menuitem "database 数据中心":
+    - img "database":
+    - generic: 数据中心
+- generic "收起侧边栏":
+  - img "menu-fold":
+- tablist:
+  - tab "支付配置":
+    - generic: 支付配置
+  - tab "冲红审核":
+    - generic: 冲红审核
+  - tab "系统角色":
+    - generic: 系统角色
+  - tab "支付资源管理":
+    - generic: 支付资源管理
+  - tab "团队订单管理" [selected]:
+    - generic: 团队订单管理
+  - button "remove":
+    - img "close-circle":
+  - img "close-square":
+  - generic: 清空页签
+- tabpanel "团队订单管理"
+- navigation:
+  - list:
+    - img "home":
+    - link "程程票":
+      - /url: "#/"
+    - listitem: /
+    - link "订单中心":
+      - /url: "#/order"
+    - listitem: /
+    - listitem: 团队订单管理
+- text: ": : : : : :"
+- tablist:
+  - tab "全部" [selected]
+  - tab "窗口售票"
+  - tab "线上预订"
+- tabpanel "全部":
+  - generic "时间": "时间 :"
+  - combobox
+  - generic "游玩日期"
+  - textbox "时间 :":
+    - /placeholder: 开始日期
+    - text: 2026-11-01 00:00:00
+  - generic "to":
+    - img "swap-right":
+  - textbox "结束日期": 2026-11-03 23:59:59
+  - img "calendar":
+  - generic "购票人": "购票人 :"
+  - textbox "购票人 :":
+    - /placeholder: 请输入购票人名
+  - generic "购票人手机": "购票人手机 :"
+  - textbox "购票人手机 :":
+    - /placeholder: 请输入购票人手机号
+  - generic "游客姓名": "游客姓名 :"
+  - textbox "游客姓名 :":
+    - /placeholder: 请输入游客姓名
+  - generic "游客证件号": "游客证件号 :"
+  - textbox "游客证件号 :":
+    - /placeholder: 请输入游客证件号
+  - generic "旅行社名": "旅行社名 :"
+  - textbox "旅行社名 :":
+    - /placeholder: 请输入旅行社名
+  - generic "订单编号": "订单编号 :"
+  - textbox "订单号"
+  - generic "预约单号": "预约单号 :"
+  - textbox "预约单号 :":
+    - /placeholder: 请输入预约单号
+  - button "查 询":
+    - generic: 查 询
+  - button "重 置":
+    - generic: 重 置
+  - button "down 展开":
+    - img "down":
+    - generic: 展开
+  - radio "全部" [checked]
+  - text: 全部
+  - radio "待付款"
+  - text: 待付款
+  - radio "待使用"
+  - text: 待使用
+  - radio "待确认"
+  - text: 待确认
+  - radio "已取票"
+  - text: 已取票
+  - radio "已检票"
+  - text: 已检票
+  - radio "已过期"
+  - text: 已过期
+  - radio "已完成"
+  - text: 已完成
+  - radio "已取消"
+  - text: 已取消
+  - radio "已关闭"
+  - text: 已关闭
+  - checkbox "显示价格类型，票型票种"
+  - generic: 显示价格类型，票型票种
+  - button "导 出":
+    - generic: 导 出
+  - button "setting 配置列":
+    - img "setting":
+    - generic: 配置列
+  - table:
+    - rowgroup:
+      - row "订单编号 旅行社名 售票员 购票人 联系电话 游玩日期 订单金额 总票数 退票数 已检票数 未检票数 订单状态 下单时间 支付状态 支付类型 支付时间 支付流水号 支付金额 操作":
+        - columnheader
+        - columnheader "订单编号"
+        - columnheader "旅行社名"
+        - columnheader "售票员"
+        - columnheader "购票人"
+        - columnheader "联系电话"
+        - columnheader "游玩日期"
+        - columnheader "订单金额"
+        - columnheader "总票数"
+        - columnheader "退票数"
+        - columnheader "已检票数"
+        - columnheader "未检票数"
+        - columnheader "订单状态"
+        - columnheader "下单时间"
+        - columnheader "支付状态"
+        - columnheader "支付类型"
+        - columnheader "支付时间"
+        - columnheader "支付流水号"
+        - columnheader "支付金额"
+        - columnheader "操作"
+    - rowgroup:
+      - row "Simple Empty 暂无数据":
+        - cell "Simple Empty 暂无数据":
+          - img "Simple Empty"
+          - generic: 暂无数据
+- generic: ": * : : * : : * : * :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : : * :"
+- generic: "* : * : * : * :"

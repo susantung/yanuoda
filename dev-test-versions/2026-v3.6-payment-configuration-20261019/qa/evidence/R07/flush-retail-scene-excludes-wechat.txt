@@ -1,0 +1,243 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "售票":
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "内导":
+    - generic: 内导
+  - button "remove":
+    - img "close":
+  - tab "统计" [selected]:
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "订单详情":
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+- tabpanel "统计"
+- text: ": : : : : : : : : : : : : : :"
+- tablist:
+  - tab "销售记录/冲红申请" [selected]
+  - tab "冲红记录"
+  - tab "统计报表"
+  - tab "团票统计"
+- tabpanel "销售记录/冲红申请":
+  - generic "订单编号": "订单编号 :"
+  - textbox "订单编号 :":
+    - /placeholder: 订单号
+    - text: DD261103150739001001s
+  - generic "门票票号": "门票票号 :"
+  - textbox "门票票号 :":
+    - /placeholder: 门票票号
+  - generic "游客证件": "游客证件 :"
+  - textbox "游客证件 :":
+    - /placeholder: 游客证件号
+  - generic "导游证件": "导游证件 :"
+  - textbox "导游证件 :":
+    - /placeholder: 导游证件号
+  - generic "下单时间": "下单时间 :"
+  - textbox "下单时间 :":
+    - /placeholder: 开始时间
+    - text: 2026-11-03
+  - generic "to":
+    - img "swap-right":
+  - textbox "结束时间": 2026-11-03
+  - img "calendar":
+  - button "close-circle":
+    - img "close-circle":
+  - text: ": : : : : : :"
+  - button "search 查 询":
+    - img "search":
+    - generic: 查 询
+  - button "reload 重 置":
+    - img "reload":
+    - generic: 重 置
+  - button "down 展开":
+    - img "down":
+    - generic: 展开
+  - table:
+    - rowgroup:
+      - row "序号 订单编号 团散类型 门票张数 旅行社名 订单金额(元) 支付类型 支付金额(元) 支付状态 支付日期 支付流水号 销售来源 订单状态 操作":
+        - columnheader "序号"
+        - columnheader "订单编号"
+        - columnheader "团散类型"
+        - columnheader "门票张数"
+        - columnheader "旅行社名"
+        - columnheader "订单金额(元)"
+        - columnheader "支付类型"
+        - columnheader "支付金额(元)"
+        - columnheader "支付状态"
+        - columnheader "支付日期"
+        - columnheader "支付流水号"
+        - columnheader "销售来源"
+        - columnheader "订单状态"
+        - columnheader "操作"
+  - table:
+    - rowgroup:
+      - row "1 DD261103150739001001s 散客 1 - 0.01 扫码付 0.01 支付成功 2026-11-03 15:07:41 - YST团队售票窗口 待确认 查看冲红申请":
+        - cell "1"
+        - cell "DD261103150739001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "-"
+        - cell "0.01"
+        - cell "扫码付"
+        - cell "0.01"
+        - cell "支付成功"
+        - cell "2026-11-03 15:07:41"
+        - cell "-"
+        - cell "YST团队售票窗口"
+        - cell "待确认"
+        - cell "查看冲红申请"
+  - list:
+    - listitem: 共 1 条
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "下一页":
+      - button "right" [disabled]:
+        - img "right":
+    - generic "页码":
+      - combobox "页码"
+      - generic "10 条/页"
+- text: ": : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"
+- dialog "冲红申请":
+  - button "Close":
+    - img "close":
+  - generic: 冲红申请
+  - generic: 订单基础信息
+  - generic: 待确认
+  - table:
+    - rowgroup:
+      - 'row "订单编号 : DD261103150739001001s 三方订单编号 : - 团散类型 : 散客"':
+        - 'cell "订单编号 : DD261103150739001001s"':
+          - generic: "订单编号 :"
+          - generic: DD261103150739001001s
+        - 'cell "三方订单编号 : -"':
+          - generic: "三方订单编号 :"
+          - generic: "-"
+        - 'cell "团散类型 : 散客"':
+          - generic: "团散类型 :"
+          - generic: 散客
+      - 'row "销售渠道 : 窗口售票 销售来源 : YST团队售票窗口 售票员 : YST售票窗口"':
+        - 'cell "销售渠道 : 窗口售票"':
+          - generic: "销售渠道 :"
+          - generic: 窗口售票
+        - 'cell "销售来源 : YST团队售票窗口"':
+          - generic: "销售来源 :"
+          - generic: YST团队售票窗口
+        - 'cell "售票员 : YST售票窗口"':
+          - generic: "售票员 :"
+          - generic: YST售票窗口
+      - 'row "购票人 : QA1103R04SCAN 联系电话 : - 下单时间 : 2026-11-03 15:07:40"':
+        - 'cell "购票人 : QA1103R04SCAN"':
+          - generic: "购票人 :"
+          - generic: QA1103R04SCAN
+        - 'cell "联系电话 : -"':
+          - generic: "联系电话 :"
+          - generic: "-"
+        - 'cell "下单时间 : 2026-11-03 15:07:40"':
+          - generic: "下单时间 :"
+          - generic: 2026-11-03 15:07:40
+      - 'row "游玩日期 : 2026-11-03 订单金额 : 0.01元 订单票数 : 1张"':
+        - 'cell "游玩日期 : 2026-11-03"':
+          - generic: "游玩日期 :"
+          - generic: 2026-11-03
+        - 'cell "订单金额 : 0.01元"':
+          - generic: "订单金额 :"
+          - generic: 0.01元
+        - 'cell "订单票数 : 1张"':
+          - generic: "订单票数 :"
+          - generic: 1张
+  - generic: 订单支付信息
+  - table:
+    - rowgroup:
+      - 'row "支付时间 : 2026-11-03 18:02:49 支付状态 : 支付成功 支付类型 : 扫码付"':
+        - 'cell "支付时间 : 2026-11-03 18:02:49"':
+          - generic: "支付时间 :"
+          - generic: 2026-11-03 18:02:49
+        - 'cell "支付状态 : 支付成功"':
+          - generic: "支付状态 :"
+          - generic: 支付成功
+        - 'cell "支付类型 : 扫码付"':
+          - generic: "支付类型 :"
+          - generic: 扫码付
+      - 'row "支付金额 : 0.01元 收款资源 : 散客2号柜台码测试测试测试测试 柜台编码/POS编号 : CCB-SK-012121212121212"':
+        - 'cell "支付金额 : 0.01元"':
+          - generic: "支付金额 :"
+          - generic: 0.01元
+        - 'cell "收款资源 : 散客2号柜台码测试测试测试测试"':
+          - generic: "收款资源 :"
+          - generic: 散客2号柜台码测试测试测试测试
+        - 'cell "柜台编码/POS编号 : CCB-SK-012121212121212"':
+          - generic: "柜台编码/POS编号 :"
+          - generic: CCB-SK-012121212121212
+      - 'row "支付流水号 : -"':
+        - 'cell "支付流水号 : -"':
+          - generic: "支付流水号 :"
+          - generic: "-"
+  - generic: 冲红调整信息
+  - table:
+    - rowgroup:
+      - 'row "* 冲红后支付类型 : 冲红申请售票员 : YST售票窗口 冲红申请来源 : YST团队售票窗口"':
+        - cell "* 冲红后支付类型 :":
+          - generic: "*"
+          - generic: 冲红后支付类型
+          - text: ":"
+          - combobox [expanded] [active]:
+            - listbox:
+              - option "现金": CASH_PAY
+              - option "扫码付": YC_SCAN_PAY
+        - 'cell "冲红申请售票员 : YST售票窗口"':
+          - generic: "冲红申请售票员 :"
+          - generic: YST售票窗口
+        - 'cell "冲红申请来源 : YST团队售票窗口"':
+          - generic: "冲红申请来源 :"
+          - generic: YST团队售票窗口
+      - 'row "冲红申请原因 : 0 / 500"':
+        - 'cell "冲红申请原因 : 0 / 500"':
+          - generic: "冲红申请原因 :"
+          - textbox
+          - generic: 0 / 500
+  - button "取消申请":
+    - generic: 取消申请
+  - button "提交申请":
+    - generic: 提交申请
+- generic "现金":
+  - generic: 现金
+- generic "扫码付":
+  - generic: 扫码付
+- generic "银行卡":
+  - generic: 银行卡
+- generic "支付宝":
+  - generic: 支付宝

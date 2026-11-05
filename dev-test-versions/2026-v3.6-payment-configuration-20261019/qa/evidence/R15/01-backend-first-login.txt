@@ -1,0 +1,57 @@
+- generic: 程程票
+- generic: 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺
+- button "售票窗口":
+  - generic: 售票窗口
+- generic: 西瓜
+- menu:
+  - menuitem "home 首页":
+    - img "home":
+    - generic: 首页
+  - menuitem "product 基础信息":
+    - img "product":
+    - generic: 基础信息
+  - menuitem "setting 配置中心":
+    - img "setting":
+    - generic: 配置中心
+  - menuitem "user 员工管理":
+    - img "user":
+    - generic: 员工管理
+  - menuitem "audit 票务中心":
+    - img "audit":
+    - generic: 票务中心
+  - menuitem "transaction 订单中心":
+    - img "transaction":
+    - generic: 订单中心
+  - menuitem "gold 售后中心":
+    - img "gold":
+    - generic: 售后中心
+  - menuitem "team 团队管理":
+    - img "team":
+    - generic: 团队管理
+  - menuitem "rest 冲红管理":
+    - img "rest":
+    - generic: 冲红管理
+  - menuitem "cluster 内导管理":
+    - img "cluster":
+    - generic: 内导管理
+  - menuitem "deployment-unit 分销管理":
+    - img "deployment-unit":
+    - generic: 分销管理
+  - menuitem "message 短信管理":
+    - img "message":
+    - generic: 短信管理
+  - menuitem "pie-chart 报表中心":
+    - img "pie-chart":
+    - generic: 报表中心
+  - menuitem "database 数据中心":
+    - img "database":
+    - generic: 数据中心
+- generic "收起侧边栏":
+  - img "menu-fold":
+- tablist:
+  - tab "首页" [selected]:
+    - generic: 首页
+  - img "close-square":
+  - generic: 清空页签
+- tabpanel "首页"
+- generic: 欢迎进入票务系统管理后台

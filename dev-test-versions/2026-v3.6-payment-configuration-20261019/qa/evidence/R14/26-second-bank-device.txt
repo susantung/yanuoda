@@ -1,0 +1,271 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: hjk001
+- tablist:
+  - tab "内导":
+    - generic: 内导
+  - button "remove":
+    - img "close":
+  - tab "首页":
+    - generic: 首页
+  - button "remove":
+    - img "close":
+  - tab "售票" [selected]:
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "统计":
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "订单详情":
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+- tabpanel "售票"
+- tablist:
+  - tab "散客票" [selected]
+  - tab "团队票"
+  - tab "挂单列表"
+- tabpanel "散客票":
+  - textbox "门票名称 :":
+    - /placeholder: 票型名称
+  - combobox
+  - generic: 活动标签
+  - combobox
+  - generic: 价格类型
+  - combobox
+  - generic: 门票分类
+  - button "search 查 询":
+    - img "search":
+    - generic: 查 询
+  - radio "常规票" [checked]
+  - text: 常规票
+  - radio "套票"
+  - text: 套票
+  - checkbox "显示价格类型，票型票种" [checked]
+  - generic: 显示价格类型，票型票种
+  - button "caret-up caret-down 金额":
+    - img "caret-up":
+    - img "caret-down":
+    - generic: 金额
+  - list:
+    - generic: 【优惠票-专属票】日历票-大门票+雨林拓展+幻境魔盒（同程测试）（周杰伦粉丝专属）
+    - generic: 有效期：当日可用
+    - generic: ¥0.01
+    - generic: 【优惠票】tt528基础票（非实名的票）（雨林项目）
+    - generic: 有效期：2026-10-27-2026-11-30
+    - generic: ¥0.01
+    - generic: 【优惠票】528基础票（不需要窗口确认）（雨林项目）
+    - generic: 有效期：当日可用
+    - generic: ¥0.01
+    - generic: 旺季
+    - generic: 【全价票】期票-玻璃+滑索+动物（雨林项目）
+    - generic: 有效期：2026-10-27-2026-11-30
+    - generic: ¥0.01
+    - generic: 【全价票】门 + 大巴车（4选2）（雨林项目）
+    - generic: 有效期：当日可用
+    - generic: ¥0.01
+    - generic: 旺季
+    - generic: 【限时秒杀】大门票+大巴车+玻璃平台+悬崖秋千【期票】
+    - generic: 有效期：2026-09-16-2027-10-22
+    - generic: ¥0.01
+    - generic: 【优惠票】悬崖秋千
+    - generic: 有效期：当日可用
+    - generic: ¥0.01
+    - generic: 【优惠票】高空滑索（单票）
+    - generic: 有效期：3天
+    - generic: ¥10
+    - generic: 【优惠票】时空隧道（商散）
+    - generic: 有效期：3天
+    - generic: ¥20
+    - generic: 淡季
+    - generic: 【全价票-专属票】自动日历库存组合票0807165539（儿童票）
+    - generic: 有效期：当日可用
+    - generic: ¥20
+    - generic: 淡季
+    - generic: 【全价票-专属票】自动组合票0805163351（儿童票）
+    - generic: 有效期：当日可用
+    - generic: ¥20
+    - generic: 淡季
+    - generic: 【全价票-专属票】自动日历库存组合票0805130910（儿童票）
+    - generic: 有效期：当日可用
+    - generic: ¥20
+    - generic: 淡季
+    - generic: 【全价票-专属票】自动日历库存组合票0804141347（儿童票）
+    - generic: 有效期：当日可用
+    - generic: ¥20
+    - generic: 淡季
+    - generic: 【全价票-专属票】自动日历库存组合票0804093227（儿童票）
+    - generic: 有效期：当日可用
+    - generic: ¥20
+    - generic: 【优惠票】tt528基础票（实名的票）（雨林项目）
+    - generic: 有效期：当日可用
+    - generic: ¥30
+    - generic: 【优惠票】tt528基础票（非实名的票）11（雨林项目）
+    - generic: 有效期：3天
+    - generic: ¥30
+    - generic: 旺季
+    - generic: 【全价票】抖音期票测试-玻璃+滑索+动物（雨林项目）
+    - generic: 有效期：2026-10-27-2026-11-30
+    - generic: ¥50
+    - generic: 【全价票】车票联票（4选2）（雨林项目）
+    - generic: 有效期：3天
+    - generic: ¥50
+    - generic: 旺季
+    - generic: 【优惠票】雨林拓展
+    - generic: 有效期：当日可用
+    - generic: ¥100
+    - generic: 旺季
+    - generic: 【优惠票】散客门票+雨林动物（散客）（雨林项目）
+    - generic: 有效期：3天
+    - generic: ¥108
+    - generic: 【全价票】门 + 大巴车联票（雨林项目）
+    - generic: 有效期：3天
+    - generic: ¥110
+    - generic: 淡季
+    - generic: 【全价票-专属票】自动组合票0807165937（儿童票）
+    - generic: 有效期：当日可用
+    - generic: ¥120
+    - generic: 淡季
+    - generic: 【全价票-专属票】自动组合票0805172036（儿童票）
+    - generic: 有效期：当日可用
+    - generic: ¥120
+    - generic: 淡季
+    - generic: 【全价票-专属票】自动组合票0805164317（儿童票）
+    - generic: 有效期：当日可用
+    - generic: ¥120
+    - generic: 淡季
+    - generic: 【全价票-专属票】自动组合票0805162708（儿童票）
+    - generic: 有效期：当日可用
+    - generic: ¥120
+    - generic: 淡季
+    - generic: 【全价票-专属票】自动组合票0805101411（儿童票）
+    - generic: 有效期：当日可用
+    - generic: ¥120
+  - generic: 售卖信息
+  - generic: 最近订单：2026-11-04 21:49:46
+  - generic: DD261104214946001001s
+  - generic: 1张
+  - text: 扫码付：
+  - generic: ¥0.01
+  - generic: 日期
+  - textbox "请选择日期": 2026-11-04
+  - img "calendar":
+  - button "cloud-download 下载模版":
+    - img "cloud-download":
+    - generic: 下载模版
+  - generic: 【优惠票】tt528基础票（非实名的票）（雨林项目）
+  - generic: 直播间福利
+  - generic: 剩余库存：9927067
+  - generic: ¥0.01
+  - button "导 入":
+    - generic: 导 入
+  - button "delete":
+    - img "delete":
+  - generic "门票数量": "门票数量 :"
+  - button "Increase Value":
+    - img "plus":
+  - button "Decrease Value":
+    - img "minus":
+  - spinbutton "门票数量 :": "1"
+  - generic: 应付金额：
+  - generic: ¥0.01
+  - generic: "1"
+  - textbox "姓名"
+  - combobox
+  - generic "身份证"
+  - textbox "请输入证件号"
+  - combobox
+  - generic: 性别
+  - button "delete":
+    - img "delete":
+  - generic: 支付方式：
+  - combobox
+  - img "银行卡"
+  - text: 银行卡
+  - button "刷新支付方式":
+    - img "reload":
+  - generic: 总票数：
+  - generic: "1"
+  - generic: 张
+  - generic: 订单总金额：
+  - generic: ¥0.01
+  - button "取 消":
+    - generic: 取 消
+  - button "clock-circle 挂单":
+    - img "clock-circle":
+    - generic: 挂单
+  - button "确认下单":
+    - generic: 确认下单
+- text: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- dialog "支付订单确认":
+  - button "Close":
+    - img "close":
+  - generic: 支付订单确认
+  - table:
+    - rowgroup:
+      - row "门票名称 售卖单价（元） 张数（张）":
+        - columnheader "门票名称"
+        - columnheader "售卖单价（元）"
+        - columnheader "张数（张）"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "【优惠票】tt528基础票（非实名的票）（雨林项目）直播间福利 ¥0.01 1":
+        - cell "【优惠票】tt528基础票（非实名的票）（雨林项目）直播间福利":
+          - generic: 【优惠票】tt528基础票（非实名的票）（雨林项目）直播间福利
+        - cell "¥0.01"
+        - cell "1"
+  - generic: 总数：
+  - generic: 1张
+  - generic: 应付：
+  - generic: ¥0.01
+  - img "现金"
+  - generic: 现金
+  - img "扫码付"
+  - generic: 扫码付
+  - img "银行卡"
+  - generic: 银行卡
+  - img "微信"
+  - generic: 微信
+  - img "支付宝"
+  - generic: 支付宝
+  - img "聚合支付"
+  - generic: 聚合支付
+  - button "刷新支付方式":
+    - img "reload":
+  - generic: 一票多人
+  - generic: 一人一票
+  - generic: POS设备
+  - generic "收款资源":
+    - combobox "收款资源"
+    - generic "QA-PAY-20261103-R04-POS-A"
+  - generic: POS编号
+  - textbox "收款资源编号" [disabled]: 000QA1103R04P
+  - button "取消出票":
+    - generic: 取消出票
+  - button "确认出票":
+    - generic: 确认出票

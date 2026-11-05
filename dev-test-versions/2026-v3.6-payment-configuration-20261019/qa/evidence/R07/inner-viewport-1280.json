@@ -1,0 +1,86 @@
+{
+  "dialogs": [
+    {
+      "buttons": [
+        {
+          "rect": {
+            "bottom": 144,
+            "height": 32,
+            "left": 1046,
+            "right": 1078,
+            "top": 112,
+            "width": 32,
+            "x": 1046,
+            "y": 112
+          },
+          "text": ""
+        },
+        {
+          "rect": {
+            "bottom": 476,
+            "height": 24,
+            "left": 742,
+            "right": 766,
+            "top": 452,
+            "width": 24,
+            "x": 742,
+            "y": 452
+          },
+          "text": ""
+        },
+        {
+          "rect": {
+            "bottom": 544,
+            "height": 46,
+            "left": 894,
+            "right": 982,
+            "top": 498,
+            "width": 88,
+            "x": 894,
+            "y": 498
+          },
+          "text": "取消出票"
+        },
+        {
+          "rect": {
+            "bottom": 544,
+            "height": 46,
+            "left": 990,
+            "right": 1078,
+            "top": 498,
+            "width": 88,
+            "x": 990,
+            "y": 498
+          },
+          "text": "确认出票"
+        }
+      ],
+      "clientWidth": 900,
+      "headers": [
+        {
+          "text": "门票名称",
+          "width": 644.25
+        },
+        {
+          "text": "售卖单价（元/小时）",
+          "width": 214.75
+        }
+      ],
+      "rect": {
+        "bottom": 576,
+        "height": 476,
+        "left": 190,
+        "right": 1090,
+        "top": 100,
+        "width": 900,
+        "x": 190,
+        "y": 100
+      },
+      "scrollWidth": 900
+    }
+  ],
+  "viewport": {
+    "height": 800,
+    "width": 1280
+  }
+}

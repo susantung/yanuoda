@@ -1,0 +1,157 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "售票":
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "内导" [selected]:
+    - generic: 内导
+  - button "remove":
+    - img "close":
+  - tab "统计":
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "订单详情":
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+- tabpanel "内导"
+- tablist:
+  - tab "导游开单" [selected]
+  - tab "订单记录"
+  - tab "交易记录"
+  - tab "内导报表统计"
+- tabpanel "导游开单":
+  - combobox
+  - generic "全部"
+  - button "caret-up caret-down 金额":
+    - img "caret-up":
+    - img "caret-down":
+    - generic: 金额
+  - generic: VIP服务
+  - generic: ¥ 0.01
+  - generic: 露营设备（固定收费）
+  - generic: ¥ 99
+  - generic: 导游服务费
+  - generic: ¥ 100
+  - generic: 售卖信息
+  - generic: 最近订单：2026-11-03 18:06:52
+  - generic: DD261103180652001001s
+  - generic: 1张
+  - text: 现金：
+  - generic: ¥0.02
+  - textbox "请选择日期": 2026-11-03
+  - img "calendar":
+  - button "cloud-download 导入模版下载":
+    - img "cloud-download":
+    - generic: 导入模版下载
+  - tablist:
+    - tab "散客"
+    - tab "团队" [selected]
+  - text: ":"
+  - tabpanel "团队":
+    - generic: 旅行社：
+    - generic: YST线上预约测试旅行社
+    - generic: 内导：
+    - generic: zxcdcc
+    - generic: 账户余额：￥
+    - generic: "1000.01"
+    - generic: 元
+    - generic: 签单授信余额：
+    - generic: 不限制
+    - generic: 内导
+    - generic: zxcdcc
+    - img "right":
+    - button "选择团队订单":
+      - generic: 选择团队订单
+    - generic: 【计时收费】
+    - text: VIP服务
+    - button "导 入":
+      - generic: 导 入
+    - button "delete":
+      - img "delete":
+    - generic: 收费标准：
+    - generic: ¥ 0.01元/小时
+    - generic: 内导：
+    - generic: zxcdcc（-）
+    - generic "游客数量": "游客数量 :"
+    - button "Increase Value":
+      - img "plus":
+    - button "Decrease Value" [disabled]:
+      - img "minus":
+    - spinbutton: "1"
+    - generic: "1"
+    - textbox "姓名": QA1103R07INNERTEAM
+    - combobox
+    - generic "身份证"
+    - textbox "请输入证件号"
+    - combobox
+    - generic: 性别
+    - button "delete":
+      - img "delete":
+    - generic: 支付方式：
+    - combobox [expanded] [active]:
+      - listbox:
+        - option "CASH_PAY" [selected]
+        - option "YC_SCAN_PAY"
+    - img "现金"
+    - text: 现金
+    - button "刷新支付方式":
+      - img "reload":
+    - generic: 总人数：
+    - generic: 1人
+    - text: 收取押金：
+    - button "Increase Value":
+      - img "up":
+    - button "Decrease Value":
+      - img "down":
+    - spinbutton: "0.02"
+    - button "取 消":
+      - generic: 取 消
+    - button "确认下单":
+      - generic: 确认下单
+- text: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : :"
+- img "现金"
+- text: 现金
+- img "扫码付"
+- text: 扫码付
+- img "银行卡"
+- text: 银行卡
+- img "挂账"
+- text: 挂账
+- img "微信"
+- text: 微信
+- img "支付宝"
+- text: 支付宝
+- img "预付款"
+- text: 预付款
+- img "授信签单"
+- text: 授信签单
+- img "聚合支付"
+- text: 聚合支付

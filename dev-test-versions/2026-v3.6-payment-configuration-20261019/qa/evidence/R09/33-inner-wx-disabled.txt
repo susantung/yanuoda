@@ -1,0 +1,297 @@
+- generic: 程程票
+- generic: 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺
+- button "售票窗口":
+  - generic: 售票窗口
+- generic: 西瓜
+- menu:
+  - menuitem "home 首页":
+    - img "home":
+    - generic: 首页
+  - menuitem "product 基础信息":
+    - img "product":
+    - generic: 基础信息
+  - menuitem "setting 配置中心" [expanded]:
+    - img "setting":
+    - generic: 配置中心
+  - menu:
+    - menuitem "支付配置":
+      - generic: 支付配置
+    - menuitem "支付资源管理":
+      - generic: 支付资源管理
+  - menuitem "user 员工管理":
+    - img "user":
+    - generic: 员工管理
+  - menuitem "audit 票务中心":
+    - img "audit":
+    - generic: 票务中心
+  - menuitem "transaction 订单中心":
+    - img "transaction":
+    - generic: 订单中心
+  - menuitem "gold 售后中心":
+    - img "gold":
+    - generic: 售后中心
+  - menuitem "team 团队管理":
+    - img "team":
+    - generic: 团队管理
+  - menuitem "rest 冲红管理":
+    - img "rest":
+    - generic: 冲红管理
+  - menuitem "cluster 内导管理":
+    - img "cluster":
+    - generic: 内导管理
+  - menuitem "deployment-unit 分销管理":
+    - img "deployment-unit":
+    - generic: 分销管理
+  - menuitem "message 短信管理":
+    - img "message":
+    - generic: 短信管理
+  - menuitem "pie-chart 报表中心":
+    - img "pie-chart":
+    - generic: 报表中心
+  - menuitem "database 数据中心":
+    - img "database":
+    - generic: 数据中心
+- generic "收起侧边栏":
+  - img "menu-fold":
+- tablist:
+  - tab "支付配置" [selected]:
+    - generic: 支付配置
+  - button "remove":
+    - img "close-circle":
+  - tab "系统角色":
+    - generic: 系统角色
+  - tab "冲红审核":
+    - generic: 冲红审核
+  - tab "支付资源管理":
+    - generic: 支付资源管理
+  - img "close-square":
+  - generic: 清空页签
+- tabpanel "支付配置"
+- navigation:
+  - list:
+    - img "home":
+    - link "程程票":
+      - /url: "#/"
+    - listitem: /
+    - link "配置中心":
+      - /url: "#/payment-center"
+    - listitem: /
+    - listitem: 支付配置
+- heading "支付配置" [level=3]
+- table:
+  - rowgroup:
+    - row "排序 支付方式 启用状态 适用场景 收款处理 对接方式 资源归属 资源使用方式 操作":
+      - columnheader "排序"
+      - columnheader "支付方式"
+      - columnheader "启用状态"
+      - columnheader "适用场景"
+      - columnheader "收款处理"
+      - columnheader "对接方式"
+      - columnheader "资源归属"
+      - columnheader "资源使用方式"
+      - columnheader "操作"
+  - rowgroup:
+    - row "1 现金 内导售票 合作伙伴充值/回款 散客售票 团队售票 线下支付 — — — 配置":
+      - cell "1"
+      - cell "现金"
+      - cell:
+        - switch [checked] [disabled]
+      - cell "内导售票 合作伙伴充值/回款 散客售票 团队售票":
+        - generic: 内导售票
+        - generic: 合作伙伴充值/回款
+        - generic: 散客售票
+        - generic: 团队售票
+      - cell "线下支付":
+        - generic: 线下支付
+      - cell "—"
+      - cell "—"
+      - cell "—"
+      - cell "配置":
+        - button "配置":
+          - generic: 配置
+    - row "2 扫码付 内导售票 合作伙伴充值/回款 散客售票 团队售票 线下支付 — 跟收银账号 允许多个并默认一个 配置":
+      - cell "2"
+      - cell "扫码付"
+      - cell:
+        - switch [checked] [disabled]
+      - cell "内导售票 合作伙伴充值/回款 散客售票 团队售票":
+        - generic: 内导售票
+        - generic: 合作伙伴充值/回款
+        - generic: 散客售票
+        - generic: 团队售票
+      - cell "线下支付":
+        - generic: 线下支付
+      - cell "—"
+      - cell "跟收银账号"
+      - cell "允许多个并默认一个"
+      - cell "配置":
+        - button "配置":
+          - generic: 配置
+    - row "3 银行卡 内导售票 合作伙伴充值/回款 散客售票 团队售票 线下支付 — 跟收银账号 允许多个并默认一个 配置":
+      - cell "3"
+      - cell "银行卡"
+      - cell:
+        - switch [checked] [disabled]
+      - cell "内导售票 合作伙伴充值/回款 散客售票 团队售票":
+        - generic: 内导售票
+        - generic: 合作伙伴充值/回款
+        - generic: 散客售票
+        - generic: 团队售票
+      - cell "线下支付":
+        - generic: 线下支付
+      - cell "—"
+      - cell "跟收银账号"
+      - cell "允许多个并默认一个"
+      - cell "配置":
+        - button "配置":
+          - generic: 配置
+    - row "4 挂账 内导售票 长期合作伙伴 团队售票 账户支付 对应业务账户 — — 配置":
+      - cell "4"
+      - cell "挂账"
+      - cell:
+        - switch [checked] [disabled]
+      - cell "内导售票 长期合作伙伴 团队售票":
+        - generic: 内导售票
+        - generic: 长期合作伙伴
+        - generic: 团队售票
+      - cell "账户支付":
+        - generic: 账户支付
+      - cell "对应业务账户"
+      - cell "—"
+      - cell "—"
+      - cell "配置":
+        - button "配置":
+          - generic: 配置
+    - row "5 微信 内导售票 合作伙伴充值/回款 散客售票 团队售票 线下支付 — — — 配置":
+      - cell "5"
+      - cell "微信"
+      - cell:
+        - switch [disabled]
+      - cell "内导售票 合作伙伴充值/回款 散客售票 团队售票":
+        - generic: 内导售票
+        - generic: 合作伙伴充值/回款
+        - generic: 散客售票
+        - generic: 团队售票
+      - cell "线下支付":
+        - generic: 线下支付
+      - cell "—"
+      - cell "—"
+      - cell "—"
+      - cell "配置":
+        - button "配置":
+          - generic: 配置
+    - row "6 支付宝 内导售票 合作伙伴充值/回款 散客售票 团队售票 线下支付 — — — 配置":
+      - cell "6"
+      - cell "支付宝"
+      - cell:
+        - switch [checked] [disabled]
+      - cell "内导售票 合作伙伴充值/回款 散客售票 团队售票":
+        - generic: 内导售票
+        - generic: 合作伙伴充值/回款
+        - generic: 散客售票
+        - generic: 团队售票
+      - cell "线下支付":
+        - generic: 线下支付
+      - cell "—"
+      - cell "—"
+      - cell "—"
+      - cell "配置":
+        - button "配置":
+          - generic: 配置
+    - row "7 预付款 内导售票 长期合作伙伴 团队售票 账户支付 对应业务账户 — — 配置":
+      - cell "7"
+      - cell "预付款"
+      - cell:
+        - switch [checked] [disabled]
+      - cell "内导售票 长期合作伙伴 团队售票":
+        - generic: 内导售票
+        - generic: 长期合作伙伴
+        - generic: 团队售票
+      - cell "账户支付":
+        - generic: 账户支付
+      - cell "对应业务账户"
+      - cell "—"
+      - cell "—"
+      - cell "配置":
+        - button "配置":
+          - generic: 配置
+    - row "8 授信签单 内导售票 团队售票 账户支付 团队账户 — — 配置":
+      - cell "8"
+      - cell "授信签单"
+      - cell:
+        - switch [checked] [disabled]
+      - cell "内导售票 团队售票":
+        - generic: 内导售票
+        - generic: 团队售票
+      - cell "账户支付":
+        - generic: 账户支付
+      - cell "团队账户"
+      - cell "—"
+      - cell "—"
+      - cell "配置":
+        - button "配置":
+          - generic: 配置
+    - row "9 聚合支付 内导售票 散客售票 团队售票 线上支付 建行聚合支付 — — 配置":
+      - cell "9"
+      - cell "聚合支付"
+      - cell:
+        - switch [checked] [disabled]
+      - cell "内导售票 散客售票 团队售票":
+        - generic: 内导售票
+        - generic: 散客售票
+        - generic: 团队售票
+      - cell "线上支付":
+        - generic: 线上支付
+      - cell "建行聚合支付"
+      - cell "—"
+      - cell "—"
+      - cell "配置":
+        - button "配置":
+          - generic: 配置
+- list:
+  - listitem: 共 9 条
+  - listitem "上一页":
+    - button "left" [disabled]:
+      - img "left":
+  - listitem "1":
+    - generic: "1"
+  - listitem "下一页":
+    - button "right" [disabled]:
+      - img "right":
+- text: ": : : : : : : : : : : :"
+- dialog "微信配置":
+  - button "Close":
+    - img "close":
+  - generic: 微信配置
+  - generic "支付方式": "支付方式 :"
+  - generic: 微信
+  - generic "排序": "* 排序 :"
+  - button "Increase Value":
+    - img "up":
+  - button "Decrease Value":
+    - img "down":
+  - spinbutton "* 排序 :": "5"
+  - generic: 数值越小越靠前，相同时沿用原支付方式顺序
+  - generic "启用状态": "启用状态 :"
+  - switch "启用状态 :"
+  - generic "适用场景": "* 适用场景 :"
+  - generic "内导售票":
+    - generic: 内导售票
+  - generic "合作伙伴充值/回款":
+    - generic: 合作伙伴充值/回款
+  - generic "散客售票":
+    - generic: 散客售票
+  - generic "团队售票":
+    - generic: 团队售票
+  - combobox "* 适用场景 :"
+  - generic "收款处理": "收款处理 :"
+  - generic: 线下支付
+  - button "取 消":
+    - generic: 取 消
+  - button "loading 保 存" [active]:
+    - img "loading":
+    - generic: 保 存
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : * :"
+- generic: "* : * : * : * :"
+- img "check-circle":
+- generic: 支付配置保存成功

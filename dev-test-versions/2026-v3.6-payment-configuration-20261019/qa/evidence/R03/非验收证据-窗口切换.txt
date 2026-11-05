@@ -1,0 +1,237 @@
+Window: "订单概况", App: Google Chrome.
+0 标准窗口 订单概况 - Google Chrome, URL: lvyou.ly.com/#/home/order-overview, Secondary Actions: Raise
+	1 container 订单概况 - Google Chrome, URL: lvyou.ly.com/#/home/order-overview
+		2 container
+			3 工具栏
+				4 按钮 返回
+				5 按钮 (disabled) 前进
+				6 按钮 重新加载
+				7 按钮 首页
+				8 container
+					9 弹出式按钮 查看网站信息
+					10 文本栏 (settable) 地址和搜索栏, Value: lvyou.ly.com/#/home/order-overview, Placeholder: 在 百度 中搜索，或输入网址
+					11 按钮 为此标签页添加书签
+				12 container
+					13 弹出式按钮 FigmaCN
+					14 弹出式按钮 简单便签
+可以访问此网站
+					15 弹出式按钮 ChatGPT
+可以访问此网站
+					16 弹出式按钮 已允许在此网站上使用扩展程序。选择即可打开菜单
+				17 container
+					18 复选框 下载内容 - 已固定
+				19 按钮 Tung (susan)
+				20 弹出式按钮 重新启动即可更新
+			21 工具栏 书签
+				22 工具栏 已保存的标签页分组
+					23 “已保存的标签页分组”按钮 “林渡暖村UI”分组 - 已打开
+					24 “已保存的标签页分组”按钮 “灵动”分组 - 已关闭
+					25 “已保存的标签页分组”按钮 “优惠券相关历史方案”分组 - 已关闭
+					26 “已保存的标签页分组”按钮 “散客合作伙伴功能方案测试”分组 - 已关闭
+					27 按钮 标签页分组
+				28 分离器 分隔符
+				29 书签按钮 精品MAC应用分享
+				30 书签文件夹按钮 书签栏
+				31 书签文件夹按钮 已导入
+				32 书签文件夹按钮 程程票
+				33 书签文件夹按钮 青靛甪直
+				34 书签文件夹按钮 AI
+				35 书签按钮 OA
+				36 书签按钮 DS920plus - Synology NAS
+				37 书签按钮 6v电影-新版
+			38 container
+				39 滚动区
+					40 HTML 内容 订单概况, URL: lvyou.ly.com/#/home/order-overview
+						41 container
+							42 container
+								43 文本 订单概况
+								44 container
+									45 container
+										46 文本栏 Value: 呀诺达雨林，店主 15672050, Placeholder: 请选择
+										47 文本 
+									48 按钮 默认昵称 ID:15672050 店主 
+										49 container
+											50 text 默认昵称 ID:15672050 店主
+											51 文本 
+							52 container
+								53 文本 商品编辑
+								54 文本 
+								55 文本 合作供应商
+								56 文本 
+								57 文本 商品中心
+								58 文本 
+								59 文本 商品编辑
+								60 文本 
+								61 文本 分类管理
+								62 文本 
+								63 文本 店铺装修
+								64 文本 
+								65 文本 店铺概况
+								66 文本 
+								67 文本 通用页面设置
+								68 文本 
+								69 文本 新建页面
+								70 文本 
+								71 文本 门店管理
+								72 文本 
+								73 文本 供应商管理
+								74 文本 
+								75 文本 分销商
+								76 文本 
+								77 文本 商品评价
+								78 文本 
+								79 文本 商品标签
+								80 文本 
+								81 文本 优惠券
+								82 文本 
+								83 文本 优惠券编辑
+								84 文本 
+								85 文本 社群引流
+								86 文本 
+								87 文本 营销弹窗
+								88 文本 
+								89 文本 个性化推荐
+								90 文本 
+								91 文本 社区详情
+								92 文本 
+								93 文本 推广码管理
+								94 文本 
+								95 文本 增购折扣
+								96 文本 
+								97 文本 客户管理
+								98 文本 
+								99 文本 权益管理
+								100 文本 
+								101 文本 会员等级
+								102 文本 
+								103 文本 年卡会员
+								104 文本 
+								105 文本 订单概况
+								106 文本 
+								107 文本 我的订单
+								108 文本 
+								109 文本 商品概况
+								110 文本 
+								111 文本 已核销订单
+								112 文本 
+								113 文本 卡券订单
+								114 文本 
+								115 文本 活动预约单
+								116 文本 
+							117 container
+								118 未加标签的图片 要获取缺失的图片说明，请打开上下文菜单。
+								119 标题 全域景区后台, Value: 1
+									120 文本 全域景区后台
+								121 菜单栏
+									122 container
+										123 text  实时数据大盘
+									124 container
+										125 text  团队预约管理 
+									126 container
+										127 text  门票商品 
+									128 container
+										129 text  电商商品 
+									130 container
+										131 text  商家中心 
+									132 container
+										133 text  订单中心 
+									134 container
+										135 文本 
+										136 文本 售后中心
+										137 文本 
+										138 内容列表
+											139 文本 散客售后
+											140 文本 电商售后
+											141 文本 卡券售后
+											142 文本 活动售后
+									143 container
+										144 text  配送管理 
+									145 container
+										146 text  结算中心 
+									147 container
+										148 text  小程序装修 
+									149 container
+										150 text  投诉建议 
+									151 container
+										152 text  内容管理 
+									153 container
+										154 text  智慧地图 
+									155 container
+										156 text  会员管理 
+									157 container
+										158 text  积分中心 
+									159 container
+										160 text  营销中心 
+									161 container
+										162 text  数据中心 
+									163 container
+										164 text  员工管理 
+									165 container
+										166 text  运营数据上报 
+									167 container
+										168 text  专家库 
+									169 container
+										170 text  数字文旅学院 
+									171 container
+										172 text  乘车预约管理 
+									173 container
+										174 text  金钥匙服务 
+									175 container
+										176 text  系统配置 
+									177 container
+										178 text  溪降挑战 
+									179 container
+										180 text  活动预约管理 
+								181 文本 
+							182 container
+								183 container
+									184 text 订单中心 /
+								185 文本 订单概览
+								186 container
+									187 文本 今日下单数
+									188 文本 ?
+									189 text 486 昨日:916 今日付款单数
+									190 文本 ?
+									191 text 428 昨日:843 今日销售额
+									192 文本 ?
+									193 text 382099 昨日:696354 待付款订单数:  1641 待发货订单数:  0 待处理售后订单数: 1
+								194 container
+									195 图像
+									196 图像
+									197 图像
+								198 文本 七日订单趋势
+								199 图像
+			200 弹出式按钮 标签页搜索
+			201 container
+				202 标签页组
+					203 标签页组 分组“林渡暖村UI”- 6 个标签页•  店铺装修•  包图网-正版商用视频音乐素材库，AI设计图片|PPT模板|海报|背景元素，会员免费下载•  田园手绘背景-田园手绘背景图片-【包图网】•  乡村田园风大图片-包图网•  林渡暖村 · 全部19种风格以及另外 1 个 - 已收起
+					204 标签 (settable, boolean) 报名开启 | 2026海南儋州马拉松今日上午10点开启报名！, Value: off
+						205 按钮 关闭
+					206 标签 (settable, boolean) 程程票 - 内存用量 - 133 MB, Value: off
+						207 按钮 关闭
+					208 标签 (settable, boolean) 程程票售票窗口 - 内存用量 - 203 MB, Value: off
+						209 按钮 关闭
+					210 标签 (settable, boolean) V3.6支付配置化｜验收方案与执行总览 - 内存用量 - 76.6 MB, Value: off
+						211 按钮 关闭
+					212 标签 (selected, settable, boolean) 订单概况 - 内存用量 - 203 MB, Value: on
+						213 按钮 关闭
+					214 标签 (settable, boolean) AI账号共享管理 - 内存用量 - 101 MB, Value: off
+						215 按钮 关闭
+			216 按钮 新标签页
+			217 按钮 打开 Chrome 中的 Gemini
+	218 关闭按钮
+	219 全屏幕按钮 Help: 此按钮也可以执行缩放窗口的操作, Secondary Actions: 缩放窗口
+	220 最小化按钮
+221 menu bar
+	222 Chrome
+	223 文件
+	224 编辑
+	225 显示
+	226 历史记录
+	227 书签
+	228 个人资料
+	229 标签页
+	230 窗口
+	231 帮助
+
+The focused UI element is 40 HTML 内容 订单概况, URL: lvyou.ly.com/#/home/order-overview

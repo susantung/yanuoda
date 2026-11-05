@@ -185,8 +185,8 @@
 <g id="node14" class="node">
 <title>CHECK</title>
 <path fill="#fff7e8" stroke="#d6b36d" d="M249.17,-221.06C249.17,-221.06 32.11,-172.54 32.11,-172.54 26.26,-171.23 26.26,-168.61 32.11,-167.3 32.11,-167.3 249.17,-118.78 249.17,-118.78 255.02,-117.47 266.74,-117.47 272.59,-118.78 272.59,-118.78 489.65,-167.3 489.65,-167.3 495.5,-168.61 495.5,-171.23 489.65,-172.54 489.65,-172.54 272.59,-221.06 272.59,-221.06 266.74,-222.37 255.02,-222.37 249.17,-221.06"/>
-<text xml:space="preserve" text-anchor="middle" x="260.88" y="-174.12" font-family="PingFang SC" font-size="14.00" fill="#2e214a">提交复核资格、原支付及当前配置</text>
-<text xml:space="preserve" text-anchor="middle" x="260.88" y="-157.32" font-family="PingFang SC" font-size="14.00" fill="#2e214a">通过</text>
+<text xml:space="preserve" text-anchor="middle" x="260.88" y="-174.12" font-family="PingFang SC" font-size="14.00" fill="#2e214a">原资格及支付校验、前端已加载配</text>
+<text xml:space="preserve" text-anchor="middle" x="260.88" y="-157.32" font-family="PingFang SC" font-size="14.00" fill="#2e214a">置校验通过</text>
 </g>
 <!-- DIFF&#45;&gt;CHECK -->
 <g id="edge16" class="edge">

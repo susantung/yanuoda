@@ -1,0 +1,252 @@
+- generic: 程程票
+- generic: 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺
+- button "售票窗口":
+  - generic: 售票窗口
+- generic: 西瓜
+- menu:
+  - menuitem "home 首页":
+    - img "home":
+    - generic: 首页
+  - menuitem "product 基础信息":
+    - img "product":
+    - generic: 基础信息
+  - menuitem "setting 配置中心":
+    - img "setting":
+    - generic: 配置中心
+  - menuitem "user 员工管理":
+    - img "user":
+    - generic: 员工管理
+  - menuitem "audit 票务中心":
+    - img "audit":
+    - generic: 票务中心
+  - menuitem "transaction 订单中心":
+    - img "transaction":
+    - generic: 订单中心
+  - menuitem "gold 售后中心":
+    - img "gold":
+    - generic: 售后中心
+  - menuitem "team 团队管理":
+    - img "team":
+    - generic: 团队管理
+  - menuitem "rest 冲红管理" [expanded]:
+    - img "rest":
+    - generic: 冲红管理
+  - menu:
+    - menuitem "冲红审核":
+      - generic: 冲红审核
+  - menuitem "cluster 内导管理":
+    - img "cluster":
+    - generic: 内导管理
+  - menuitem "deployment-unit 分销管理":
+    - img "deployment-unit":
+    - generic: 分销管理
+  - menuitem "message 短信管理":
+    - img "message":
+    - generic: 短信管理
+  - menuitem "pie-chart 报表中心":
+    - img "pie-chart":
+    - generic: 报表中心
+  - menuitem "database 数据中心":
+    - img "database":
+    - generic: 数据中心
+- generic "收起侧边栏":
+  - img "menu-fold":
+- tablist:
+  - tab "支付配置":
+    - generic: 支付配置
+  - tab "系统角色":
+    - generic: 系统角色
+  - tab "设备管理":
+    - generic: 设备管理
+  - tab "冲红审核" [selected]:
+    - generic: 冲红审核
+  - button "remove":
+    - img "close-circle":
+  - img "close-square":
+  - generic: 清空页签
+- tabpanel "冲红审核"
+- navigation:
+  - list:
+    - img "home":
+    - link "程程票":
+      - /url: "#/"
+    - listitem: /
+    - link "冲红管理":
+      - /url: "#/flush"
+    - listitem: /
+    - listitem: 冲红审核
+- text: ": : : : : : : : :"
+- tablist:
+  - tab "待审批" [selected]
+  - tab "已审批"
+- tabpanel "待审批":
+  - generic "订单编号": "订单编号 :"
+  - textbox "订单编号 :":
+    - /placeholder: 请输入订单编号
+    - text: DD261104153027001001s
+  - generic "申请人": "申请人 :"
+  - textbox "申请人 :":
+    - /placeholder: 请输入申请人
+  - button "查 询":
+    - generic: 查 询
+  - button "重 置":
+    - generic: 重 置
+  - button "导 出":
+    - generic: 导 出
+  - button "setting 配置列":
+    - img "setting":
+    - generic: 配置列
+  - table:
+    - rowgroup:
+      - row "冲红单号 订单编码 团散类型 门票张数 申请人 申请时间 订单金额（元） 支付金额（元） 原支付类型 冲红后支付类型 支付日期 操作":
+        - columnheader "冲红单号"
+        - columnheader "订单编码"
+        - columnheader "团散类型"
+        - columnheader "门票张数"
+        - columnheader "申请人"
+        - columnheader "申请时间"
+        - columnheader "订单金额（元）"
+        - columnheader "支付金额（元）"
+        - columnheader "原支付类型"
+        - columnheader "冲红后支付类型"
+        - columnheader "支付日期"
+        - columnheader "操作"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "2026110436677 DD261104153027001001s 散客 1 YST售票窗口 2026-11-04 17:01:11 0.01 0.01 银行卡 银行卡 - 同意 驳回":
+        - cell "2026110436677"
+        - cell "DD261104153027001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "YST售票窗口"
+        - cell "2026-11-04 17:01:11"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "银行卡"
+        - cell "银行卡"
+        - cell "-"
+        - cell "同意 驳回":
+          - button "同意":
+            - generic: 同意
+          - button "驳回":
+            - generic: 驳回
+  - list:
+    - listitem: 共 1 条
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "下一页":
+      - button "right" [disabled]:
+        - img "right":
+    - generic "页码":
+      - combobox "页码"
+      - generic "10 条/页"
+- generic: ": * : : * : : * : * :"
+- generic: "* : * :"
+- dialog "订单冲红申请":
+  - button "Close":
+    - img "close":
+  - generic: 订单冲红申请
+  - generic: 订单基础信息
+  - table:
+    - rowgroup:
+      - 'row "订单编号 : DD261104153027001001s 三方订单编号 : - 团散类型 : 散客"':
+        - 'cell "订单编号 : DD261104153027001001s"':
+          - generic: "订单编号 :"
+          - generic: DD261104153027001001s
+        - 'cell "三方订单编号 : -"':
+          - generic: "三方订单编号 :"
+          - generic: "-"
+        - 'cell "团散类型 : 散客"':
+          - generic: "团散类型 :"
+          - generic: 散客
+      - 'row "销售渠道 : 窗口售票 销售来源 : YST团队售票窗口 售票员 : YST售票窗口"':
+        - 'cell "销售渠道 : 窗口售票"':
+          - generic: "销售渠道 :"
+          - generic: 窗口售票
+        - 'cell "销售来源 : YST团队售票窗口"':
+          - generic: "销售来源 :"
+          - generic: YST团队售票窗口
+        - 'cell "售票员 : YST售票窗口"':
+          - generic: "售票员 :"
+          - generic: YST售票窗口
+      - 'row "购票人 : - 联系电话 : - 下单时间 : 2026-11-04 15:30:27"':
+        - 'cell "购票人 : -"':
+          - generic: "购票人 :"
+          - generic: "-"
+        - 'cell "联系电话 : -"':
+          - generic: "联系电话 :"
+          - generic: "-"
+        - 'cell "下单时间 : 2026-11-04 15:30:27"':
+          - generic: "下单时间 :"
+          - generic: 2026-11-04 15:30:27
+      - 'row "游玩日期 : 2026-11-04 订单金额（元） : 0.01 订单票数(张） : 1"':
+        - 'cell "游玩日期 : 2026-11-04"':
+          - generic: "游玩日期 :"
+          - generic: 2026-11-04
+        - 'cell "订单金额（元） : 0.01"':
+          - generic: "订单金额（元） :"
+          - generic: "0.01"
+        - 'cell "订单票数(张） : 1"':
+          - generic: "订单票数(张） :"
+          - generic: "1"
+  - generic: 订单支付信息
+  - table:
+    - rowgroup:
+      - 'row "支付时间 : 2026-11-04 15:30:28 支付状态 : 支付成功 支付类型 : 银行卡"':
+        - 'cell "支付时间 : 2026-11-04 15:30:28"':
+          - generic: "支付时间 :"
+          - generic: 2026-11-04 15:30:28
+        - 'cell "支付状态 : 支付成功"':
+          - generic: "支付状态 :"
+          - generic: 支付成功
+        - 'cell "支付类型 : 银行卡"':
+          - generic: "支付类型 :"
+          - generic: 银行卡
+      - 'row "支付金额（元） : 0.01 支付流水号 : - 收款资源 : QA-PAY-20261103-R01-POS01"':
+        - 'cell "支付金额（元） : 0.01"':
+          - generic: "支付金额（元） :"
+          - generic: "0.01"
+        - 'cell "支付流水号 : -"':
+          - generic: "支付流水号 :"
+          - generic: "-"
+        - 'cell "收款资源 : QA-PAY-20261103-R01-POS01"':
+          - generic: "收款资源 :"
+          - generic: QA-PAY-20261103-R01-POS01
+      - 'row "柜台编码/POS编号 : 000QA1103POS01"':
+        - 'cell "柜台编码/POS编号 : 000QA1103POS01"':
+          - generic: "柜台编码/POS编号 :"
+          - generic: 000QA1103POS01
+  - generic: 冲红调整信息
+  - table:
+    - rowgroup:
+      - 'row "冲红后支付类型 : 银行卡 冲红申请售票员 : YST售票窗口 冲红申请来源 : YST团队售票窗口"':
+        - 'cell "冲红后支付类型 : 银行卡"':
+          - generic: "冲红后支付类型 :"
+          - generic: 银行卡
+        - 'cell "冲红申请售票员 : YST售票窗口"':
+          - generic: "冲红申请售票员 :"
+          - generic: YST售票窗口
+        - 'cell "冲红申请来源 : YST团队售票窗口"':
+          - generic: "冲红申请来源 :"
+          - generic: YST团队售票窗口
+      - 'row "冲红申请原因 : QA1104R12：银行卡归属改为当前设备，校验同方式更正POS及前后快照 冲红后收款资源 : QA-PAY-20261103-R04-POS-A 冲红后柜台编码/POS编号 : 000QA1103R04P"':
+        - 'cell "冲红申请原因 : QA1104R12：银行卡归属改为当前设备，校验同方式更正POS及前后快照"':
+          - generic: "冲红申请原因 :"
+          - generic: QA1104R12：银行卡归属改为当前设备，校验同方式更正POS及前后快照
+        - 'cell "冲红后收款资源 : QA-PAY-20261103-R04-POS-A"':
+          - generic: "冲红后收款资源 :"
+          - generic: QA-PAY-20261103-R04-POS-A
+        - 'cell "冲红后柜台编码/POS编号 : 000QA1103R04P"':
+          - generic: "冲红后柜台编码/POS编号 :"
+          - generic: 000QA1103R04P
+  - generic "原因说明": "* 原因说明 :"
+  - textbox "* 原因说明 :": 同意
+  - generic: 2 / 500
+  - button "取 消":
+    - generic: 取 消
+  - button "同 意":
+    - generic: 同 意

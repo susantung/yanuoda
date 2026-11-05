@@ -1,0 +1,315 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "统计":
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "订单详情" [selected]:
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+- tabpanel "订单详情"
+- text: ": : : : : : : : : : : :"
+- generic: 订单详情
+- button "返 回":
+  - generic: 返 回
+- generic: 订单基础信息
+- generic: 待确认
+- table:
+  - rowgroup:
+    - 'row "订单编号 : DD261103150739001001s 三方订单编号 : - 团散类型 : 散客"':
+      - 'cell "订单编号 : DD261103150739001001s"':
+        - generic: "订单编号 :"
+        - generic: DD261103150739001001s
+      - 'cell "三方订单编号 : -"':
+        - generic: "三方订单编号 :"
+        - generic: "-"
+      - 'cell "团散类型 : 散客"':
+        - generic: "团散类型 :"
+        - generic: 散客
+    - 'row "销售渠道 : 窗口售票 销售来源 : YST团队售票窗口 售票员 : YST售票窗口"':
+      - 'cell "销售渠道 : 窗口售票"':
+        - generic: "销售渠道 :"
+        - generic: 窗口售票
+      - 'cell "销售来源 : YST团队售票窗口"':
+        - generic: "销售来源 :"
+        - generic: YST团队售票窗口
+      - 'cell "售票员 : YST售票窗口"':
+        - generic: "售票员 :"
+        - generic: YST售票窗口
+    - 'row "购票人 : QA1103R04SCAN 联系电话 : - 下单时间 : 2026-11-03 15:07:40"':
+      - 'cell "购票人 : QA1103R04SCAN"':
+        - generic: "购票人 :"
+        - generic: QA1103R04SCAN
+      - 'cell "联系电话 : -"':
+        - generic: "联系电话 :"
+        - generic: "-"
+      - 'cell "下单时间 : 2026-11-03 15:07:40"':
+        - generic: "下单时间 :"
+        - generic: 2026-11-03 15:07:40
+    - 'row "游玩日期 : 2026-11-03 订单金额 : 0.01元 订单票数 : 1张"':
+      - 'cell "游玩日期 : 2026-11-03"':
+        - generic: "游玩日期 :"
+        - generic: 2026-11-03
+      - 'cell "订单金额 : 0.01元"':
+        - generic: "订单金额 :"
+        - generic: 0.01元
+      - 'cell "订单票数 : 1张"':
+        - generic: "订单票数 :"
+        - generic: 1张
+- generic: 订单支付信息
+- table:
+  - rowgroup:
+    - 'row "支付时间 : 2026-11-03 15:07:41 支付状态 : 支付成功 支付类型 : 扫码付"':
+      - 'cell "支付时间 : 2026-11-03 15:07:41"':
+        - generic: "支付时间 :"
+        - generic: 2026-11-03 15:07:41
+      - 'cell "支付状态 : 支付成功"':
+        - generic: "支付状态 :"
+        - generic: 支付成功
+      - 'cell "支付类型 : 扫码付"':
+        - generic: "支付类型 :"
+        - generic: 扫码付
+    - 'row "支付金额 : 0.01元 支付流水号 : - 收款资源 : 散客1号柜台码"':
+      - 'cell "支付金额 : 0.01元"':
+        - generic: "支付金额 :"
+        - generic: 0.01元
+      - 'cell "支付流水号 : -"':
+        - generic: "支付流水号 :"
+        - generic: "-"
+      - 'cell "收款资源 : 散客1号柜台码"':
+        - generic: "收款资源 :"
+        - generic: 散客1号柜台码
+    - 'row "柜台编码 : CCB-SK-011"':
+      - 'cell "柜台编码 : CCB-SK-011"':
+        - generic: "柜台编码 :"
+        - generic: CCB-SK-011
+- generic: 冲红调整信息
+- table:
+  - rowgroup:
+    - row "冲红单号 原支付类型 冲红后支付类型 申请人 申请时间 支付金额（元） 审批人 审核状态 审核时间":
+      - columnheader "冲红单号"
+      - columnheader "原支付类型"
+      - columnheader "冲红后支付类型"
+      - columnheader "申请人"
+      - columnheader "申请时间"
+      - columnheader "支付金额（元）"
+      - columnheader "审批人"
+      - columnheader "审核状态"
+      - columnheader "审核时间"
+  - rowgroup:
+    - row "2026110348299 扫码付 收款资源：QA-PAY-20261103-R04-SCAN-A 柜台编码/POS编号：000QA1103R04A 扫码付 收款资源：散客1号柜台码 柜台编码/POS编号：CCB-SK-011 YST售票窗口 2026-11-03 15:11:56 0.01 西瓜 已同意 2026-11-03 15:12:39":
+      - cell "2026110348299":
+        - button "2026110348299":
+          - generic: "2026110348299"
+      - cell "扫码付 收款资源：QA-PAY-20261103-R04-SCAN-A 柜台编码/POS编号：000QA1103R04A":
+        - text: 扫码付
+        - generic: 收款资源：QA-PAY-20261103-R04-SCAN-A
+        - generic: 柜台编码/POS编号：000QA1103R04A
+      - cell "扫码付 收款资源：散客1号柜台码 柜台编码/POS编号：CCB-SK-011":
+        - text: 扫码付
+        - generic: 收款资源：散客1号柜台码
+        - generic: 柜台编码/POS编号：CCB-SK-011
+      - cell "YST售票窗口"
+      - cell "2026-11-03 15:11:56"
+      - cell "0.01"
+      - cell "西瓜"
+      - cell "已同意"
+      - cell "2026-11-03 15:12:39"
+    - row "2026110357877 扫码付 收款资源：散客1号柜台码 柜台编码/POS编号：CCB-SK-011 现金 YST售票窗口 2026-11-03 16:18:34 0.01 西瓜 已驳回 2026-11-03 16:19:47":
+      - cell "2026110357877":
+        - button "2026110357877":
+          - generic: "2026110357877"
+      - cell "扫码付 收款资源：散客1号柜台码 柜台编码/POS编号：CCB-SK-011":
+        - text: 扫码付
+        - generic: 收款资源：散客1号柜台码
+        - generic: 柜台编码/POS编号：CCB-SK-011
+      - cell "现金":
+        - generic: 现金
+      - cell "YST售票窗口"
+      - cell "2026-11-03 16:18:34"
+      - cell "0.01"
+      - cell "西瓜"
+      - cell "已驳回"
+      - cell "2026-11-03 16:19:47"
+    - row "2026110337782 扫码付 收款资源：散客1号柜台码 柜台编码/POS编号：CCB-SK-011 扫码付 收款资源：散客2号柜台码测试测试测试测试 柜台编码/POS编号：CCB-SK-012121212121212 YST售票窗口 2026-11-03 18:00:38 0.01 - 待审核 -":
+      - cell "2026110337782":
+        - button "2026110337782":
+          - generic: "2026110337782"
+      - cell "扫码付 收款资源：散客1号柜台码 柜台编码/POS编号：CCB-SK-011":
+        - text: 扫码付
+        - generic: 收款资源：散客1号柜台码
+        - generic: 柜台编码/POS编号：CCB-SK-011
+      - cell "扫码付 收款资源：散客2号柜台码测试测试测试测试 柜台编码/POS编号：CCB-SK-012121212121212":
+        - text: 扫码付
+        - generic: 收款资源：散客2号柜台码测试测试测试测试
+        - generic: 柜台编码/POS编号：CCB-SK-012121212121212
+      - cell "YST售票窗口"
+      - cell "2026-11-03 18:00:38"
+      - cell "0.01"
+      - cell "-"
+      - cell "待审核"
+      - cell "-"
+- generic: 订单检票信息
+- generic: 未检票数
+- generic: "1"
+- generic: 张
+- generic: 已检票数
+- generic: "0"
+- generic: 张
+- generic: 已退票数
+- generic: "0"
+- generic: 张
+- table:
+  - rowgroup:
+    - row "门票名称 分类 票型种类 价格类型 季节类型 票型打印 总票数 待付款 待确认 待使用 已取票 部分检票 全部检票 已退票":
+      - columnheader "门票名称"
+      - columnheader "分类"
+      - columnheader "票型种类"
+      - columnheader "价格类型"
+      - columnheader "季节类型"
+      - columnheader "票型打印"
+      - columnheader "总票数"
+      - columnheader "待付款"
+      - columnheader "待确认"
+      - columnheader "待使用"
+      - columnheader "已取票"
+      - columnheader "部分检票"
+      - columnheader "全部检票"
+      - columnheader "已退票"
+  - rowgroup:
+    - row "tt528基础票（非实名的票） 点击复制 晚会演出 雨林项目 优惠票 淡/旺季 打印 1 0 1 0 0 0 0 0":
+      - cell "tt528基础票（非实名的票） 点击复制":
+        - text: tt528基础票（非实名的票）
+        - button "点击复制":
+          - img "copy":
+      - cell "晚会演出"
+      - cell "雨林项目"
+      - cell "优惠票"
+      - cell "淡/旺季"
+      - cell "打印":
+        - button "打印":
+          - generic: 打印
+      - cell "1"
+      - cell "0"
+      - cell "1"
+      - cell "0"
+      - cell "0"
+      - cell "0"
+      - cell "0"
+      - cell "0"
+- generic: 游客门票详情
+- generic "票号": "票号 :"
+- textbox "票号 :":
+  - /placeholder: 请输入票号
+- generic "游客姓名": "游客姓名 :"
+- textbox "游客姓名 :":
+  - /placeholder: 请输入游客姓名
+- generic "游客证件号": "游客证件号 :"
+- textbox "游客证件号 :":
+  - /placeholder: 请输入游客证件号
+- generic "门票名称": "门票名称 :"
+- textbox "门票名称 :":
+  - /placeholder: 请输入门票名称
+- button "search 查 询":
+  - img "search":
+  - generic: 查 询
+- button "reload 重 置":
+  - img "reload":
+  - generic: 重 置
+- radio "全部" [checked]
+- text: 全部
+- radio "待付款"
+- text: 待付款
+- radio "待确认"
+- text: 待确认
+- radio "待使用"
+- text: 待使用
+- radio "已取票"
+- text: 已取票
+- radio "部分检票"
+- text: 部分检票
+- radio "全部检票"
+- text: 全部检票
+- radio "已退款"
+- text: 已退款
+- button "导 入":
+  - generic: 导 入
+- button "导 出":
+  - generic: 导 出
+- button "批量打印":
+  - generic: 批量打印
+- button "setting 配置列":
+  - img "setting":
+  - generic: 配置列
+- table:
+  - rowgroup:
+    - row "Select all 游客姓名 门票名称 售卖单价（元） 票号 证件号 门票状态 检票项目数（已检/全部） 打印序号 操作":
+      - columnheader "Select all":
+        - checkbox "Select all"
+      - columnheader "游客姓名"
+      - columnheader "门票名称"
+      - columnheader "售卖单价（元）"
+      - columnheader "票号"
+      - columnheader "证件号"
+      - columnheader "门票状态"
+      - columnheader "检票项目数（已检/全部）"
+      - columnheader "打印序号"
+      - columnheader "操作"
+  - rowgroup:
+    - row "QA1103R04SCAN tt528基础票（非实名的票） 0.01 562HNZ25DLJ22 - 待确认 0 / 1 1 打印 查看":
+      - cell:
+        - checkbox
+      - cell "QA1103R04SCAN"
+      - cell "tt528基础票（非实名的票）":
+        - generic: tt528基础票（非实名的票）
+      - cell "0.01"
+      - cell "562HNZ25DLJ22"
+      - cell "-"
+      - cell "待确认":
+        - generic: 待确认
+      - cell "0 / 1":
+        - generic: 0 / 1
+      - cell "1"
+      - cell "打印 查看":
+        - button "打印":
+          - generic: 打印
+        - button "查看":
+          - generic: 查看
+- list:
+  - listitem: 共 1 条
+  - listitem "上一页":
+    - button "left" [disabled]:
+      - img "left":
+  - listitem "1":
+    - generic: "1"
+  - listitem "下一页":
+    - button "right" [disabled]:
+      - img "right":
+  - generic "页码":
+    - combobox "页码"
+    - generic "10 条/页"

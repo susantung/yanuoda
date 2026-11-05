@@ -1,0 +1,153 @@
+- generic: 程程票
+- generic: 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺
+- button "售票窗口":
+  - generic: 售票窗口
+- generic: 西瓜
+- menu:
+  - menuitem "home 首页":
+    - img "home":
+    - generic: 首页
+  - menuitem "product 基础信息":
+    - img "product":
+    - generic: 基础信息
+  - menuitem "setting 配置中心":
+    - img "setting":
+    - generic: 配置中心
+  - menuitem "user 员工管理":
+    - img "user":
+    - generic: 员工管理
+  - menuitem "audit 票务中心":
+    - img "audit":
+    - generic: 票务中心
+  - menuitem "transaction 订单中心":
+    - img "transaction":
+    - generic: 订单中心
+  - menuitem "gold 售后中心":
+    - img "gold":
+    - generic: 售后中心
+  - menuitem "team 团队管理":
+    - img "team":
+    - generic: 团队管理
+  - menuitem "rest 冲红管理" [expanded]:
+    - img "rest":
+    - generic: 冲红管理
+  - menu:
+    - menuitem "冲红审核":
+      - generic: 冲红审核
+  - menuitem "cluster 内导管理":
+    - img "cluster":
+    - generic: 内导管理
+  - menuitem "deployment-unit 分销管理":
+    - img "deployment-unit":
+    - generic: 分销管理
+  - menuitem "message 短信管理":
+    - img "message":
+    - generic: 短信管理
+  - menuitem "pie-chart 报表中心":
+    - img "pie-chart":
+    - generic: 报表中心
+  - menuitem "database 数据中心":
+    - img "database":
+    - generic: 数据中心
+- generic "收起侧边栏":
+  - img "menu-fold":
+- tablist:
+  - tab "支付配置":
+    - generic: 支付配置
+  - tab "团队订单管理":
+    - generic: 团队订单管理
+  - tab "团队订单管理详情":
+    - generic: 团队订单管理详情
+  - tab "冲红审核" [selected]:
+    - generic: 冲红审核
+  - button "remove":
+    - img "close-circle":
+  - tab "支付资源管理":
+    - generic: 支付资源管理
+  - tab "系统角色":
+    - generic: 系统角色
+  - img "close-square":
+  - generic: 清空页签
+- tabpanel "冲红审核"
+- navigation:
+  - list:
+    - img "home":
+    - link "程程票":
+      - /url: "#/"
+    - listitem: /
+    - link "冲红管理":
+      - /url: "#/flush"
+    - listitem: /
+    - listitem: 冲红审核
+- text: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- tablist:
+  - tab "待审批" [selected]
+  - tab "已审批"
+- tabpanel "待审批":
+  - generic "订单编号": "订单编号 :"
+  - textbox "请输入订单编号": DD261103210118001001s
+  - generic "申请人": "申请人 :"
+  - 'textbox "申请人 : 申请人 :"':
+    - /placeholder: 请输入申请人
+  - button "查 询" [active]:
+    - generic: 查 询
+  - button "重 置":
+    - generic: 重 置
+  - button "导 出":
+    - generic: 导 出
+  - button "setting 配置列":
+    - img "setting":
+    - generic: 配置列
+  - table:
+    - rowgroup:
+      - row "冲红单号 订单编码 团散类型 门票张数 申请人 申请时间 订单金额（元） 支付金额（元） 原支付类型 冲红后支付类型 支付日期 操作":
+        - columnheader "冲红单号"
+        - columnheader "订单编码"
+        - columnheader "团散类型"
+        - columnheader "门票张数"
+        - columnheader "申请人"
+        - columnheader "申请时间"
+        - columnheader "订单金额（元）"
+        - columnheader "支付金额（元）"
+        - columnheader "原支付类型"
+        - columnheader "冲红后支付类型"
+        - columnheader "支付日期"
+        - columnheader "操作"
+  - table:
+    - rowgroup:
+      - row "2026110396449 DD261103210118001001s 散客 1 YST售票窗口 2026-11-03 23:33:51 0.01 0.01 扫码付 扫码付 - 同意 驳回":
+        - cell "2026110396449"
+        - cell "DD261103210118001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "YST售票窗口"
+        - cell "2026-11-03 23:33:51"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "扫码付"
+        - cell "扫码付"
+        - cell "-"
+        - cell "同意 驳回":
+          - button "同意":
+            - generic: 同意
+          - button "驳回":
+            - generic: 驳回
+  - list:
+    - listitem: 共 1 条
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "下一页":
+      - button "right" [disabled]:
+        - img "right":
+    - generic "页码":
+      - combobox "页码"
+      - generic "10 条/页"
+- text: ": :"
+- text: ": : : :"
+- generic: ": * : : * : : * : * :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : : * :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"
+- generic: "* : * : * : * :"

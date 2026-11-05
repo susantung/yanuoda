@@ -1,0 +1,229 @@
+- generic: 程程票
+- generic: 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺
+- button "售票窗口":
+  - generic: 售票窗口
+- generic: 西瓜
+- menu:
+  - menuitem "home 首页":
+    - img "home":
+    - generic: 首页
+  - menuitem "product 基础信息":
+    - img "product":
+    - generic: 基础信息
+  - menuitem "setting 配置中心":
+    - img "setting":
+    - generic: 配置中心
+  - menuitem "user 员工管理":
+    - img "user":
+    - generic: 员工管理
+  - menuitem "audit 票务中心":
+    - img "audit":
+    - generic: 票务中心
+  - menuitem "transaction 订单中心":
+    - img "transaction":
+    - generic: 订单中心
+  - menuitem "gold 售后中心":
+    - img "gold":
+    - generic: 售后中心
+  - menuitem "team 团队管理":
+    - img "team":
+    - generic: 团队管理
+  - menuitem "rest 冲红管理" [expanded]:
+    - img "rest":
+    - generic: 冲红管理
+  - menu:
+    - menuitem "冲红审核" [active]:
+      - generic: 冲红审核
+  - menuitem "cluster 内导管理":
+    - img "cluster":
+    - generic: 内导管理
+  - menuitem "deployment-unit 分销管理":
+    - img "deployment-unit":
+    - generic: 分销管理
+  - menuitem "message 短信管理":
+    - img "message":
+    - generic: 短信管理
+  - menuitem "pie-chart 报表中心":
+    - img "pie-chart":
+    - generic: 报表中心
+  - menuitem "database 数据中心":
+    - img "database":
+    - generic: 数据中心
+- generic "收起侧边栏":
+  - img "menu-fold":
+- tablist:
+  - tab "支付配置":
+    - generic: 支付配置
+  - tab "系统角色":
+    - generic: 系统角色
+  - tab "冲红审核" [selected]:
+    - generic: 冲红审核
+  - button "remove":
+    - img "close-circle":
+  - img "close-square":
+  - generic: 清空页签
+- tabpanel "冲红审核"
+- navigation:
+  - list:
+    - img "home":
+    - link "程程票":
+      - /url: "#/"
+    - listitem: /
+    - link "冲红管理":
+      - /url: "#/flush"
+    - listitem: /
+    - listitem: 冲红审核
+- text: ": :"
+- tablist:
+  - tab "待审批" [selected]
+  - tab "已审批"
+- tabpanel "待审批":
+  - generic "订单编号": "订单编号 :"
+  - textbox "订单编号 :":
+    - /placeholder: 请输入订单编号
+  - generic "申请人": "申请人 :"
+  - textbox "申请人 :":
+    - /placeholder: 请输入申请人
+  - button "查 询":
+    - generic: 查 询
+  - button "重 置":
+    - generic: 重 置
+  - button "导 出":
+    - generic: 导 出
+  - button "setting 配置列":
+    - img "setting":
+    - generic: 配置列
+  - table:
+    - rowgroup:
+      - row "冲红单号 订单编码 团散类型 门票张数 申请人 申请时间 订单金额（元） 支付金额（元） 原支付类型 冲红后支付类型 支付日期 操作":
+        - columnheader "冲红单号"
+        - columnheader "订单编码"
+        - columnheader "团散类型"
+        - columnheader "门票张数"
+        - columnheader "申请人"
+        - columnheader "申请时间"
+        - columnheader "订单金额（元）"
+        - columnheader "支付金额（元）"
+        - columnheader "原支付类型"
+        - columnheader "冲红后支付类型"
+        - columnheader "支付日期"
+        - columnheader "操作"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "2026110435659 DD261104042133001001s 散客 1 YST售票窗口 2026-11-04 10:38:18 0.01 0.01 支付宝 扫码付 - 同意 驳回":
+        - cell "2026110435659"
+        - cell "DD261104042133001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "YST售票窗口"
+        - cell "2026-11-04 10:38:18"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "支付宝"
+        - cell "扫码付"
+        - cell "-"
+        - cell "同意 驳回":
+          - button "同意":
+            - generic: 同意
+          - button "驳回":
+            - generic: 驳回
+      - row "2026110431229 DD261104055852001001s 散客 1 YST售票窗口 2026-11-04 10:15:44 0.01 0.01 微信 银行卡 - 同意 驳回":
+        - cell "2026110431229"
+        - cell "DD261104055852001001s"
+        - cell "散客"
+        - cell "1"
+        - cell "YST售票窗口"
+        - cell "2026-11-04 10:15:44"
+        - cell "0.01"
+        - cell "0.01"
+        - cell "微信"
+        - cell "银行卡"
+        - cell "-"
+        - cell "同意 驳回":
+          - button "同意":
+            - generic: 同意
+          - button "驳回":
+            - generic: 驳回
+      - row "2026092252182 DD260922090952001001s 团队 1 王月欣 2026-09-22 11:50:46 99 99 现金 银行卡 - 同意 驳回":
+        - cell "2026092252182"
+        - cell "DD260922090952001001s"
+        - cell "团队"
+        - cell "1"
+        - cell "王月欣"
+        - cell "2026-09-22 11:50:46"
+        - cell "99"
+        - cell "99"
+        - cell "现金"
+        - cell "银行卡"
+        - cell "-"
+        - cell "同意 驳回":
+          - button "同意":
+            - generic: 同意
+          - button "驳回":
+            - generic: 驳回
+      - row "2026081926777 DD2506150LO4CDV55GGE8001s 散客 1 西瓜 2026-08-19 18:06:39 109 109 现金 银行卡 - 同意 驳回":
+        - cell "2026081926777"
+        - cell "DD2506150LO4CDV55GGE8001s"
+        - cell "散客"
+        - cell "1"
+        - cell "西瓜"
+        - cell "2026-08-19 18:06:39"
+        - cell "109"
+        - cell "109"
+        - cell "现金"
+        - cell "银行卡"
+        - cell "-"
+        - cell "同意 驳回":
+          - button "同意":
+            - generic: 同意
+          - button "驳回":
+            - generic: 驳回
+      - row "2026031697124 DD260316162010001001s 散客 2 王月欣 2026-03-16 16:20:34 100 100 现金 银行卡 - 同意 驳回":
+        - cell "2026031697124"
+        - cell "DD260316162010001001s"
+        - cell "散客"
+        - cell "2"
+        - cell "王月欣"
+        - cell "2026-03-16 16:20:34"
+        - cell "100"
+        - cell "100"
+        - cell "现金"
+        - cell "银行卡"
+        - cell "-"
+        - cell "同意 驳回":
+          - button "同意":
+            - generic: 同意
+          - button "驳回":
+            - generic: 驳回
+      - row "202603098438 DD260208222039001001s 散客 10 YST售票窗口 2026-03-09 19:38:11 1300 1300 现金 银行卡 - 同意 驳回":
+        - cell "202603098438"
+        - cell "DD260208222039001001s"
+        - cell "散客"
+        - cell "10"
+        - cell "YST售票窗口"
+        - cell "2026-03-09 19:38:11"
+        - cell "1300"
+        - cell "1300"
+        - cell "现金"
+        - cell "银行卡"
+        - cell "-"
+        - cell "同意 驳回":
+          - button "同意":
+            - generic: 同意
+          - button "驳回":
+            - generic: 驳回
+  - list:
+    - listitem: 共 6 条
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "下一页":
+      - button "right" [disabled]:
+        - img "right":
+    - generic "页码":
+      - combobox "页码"
+      - generic "10 条/页"
+- generic: ": * : : * : : * : * :"

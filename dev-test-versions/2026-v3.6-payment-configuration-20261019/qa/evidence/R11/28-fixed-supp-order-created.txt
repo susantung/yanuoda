@@ -1,0 +1,118 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "售票":
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "内导" [selected]:
+    - generic: 内导
+  - button "remove":
+    - img "close":
+  - tab "统计":
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "退票":
+    - generic: 退票
+  - button "remove":
+    - img "close":
+  - tab "订单详情":
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+  - tab "异常订单":
+    - generic: 异常订单
+  - button "remove":
+    - img "close":
+- tabpanel "内导"
+- tablist:
+  - tab "导游开单" [selected]
+  - tab "订单记录"
+  - tab "交易记录"
+  - tab "内导报表统计"
+- tabpanel "导游开单":
+  - combobox
+  - generic "全部"
+  - button "caret-up caret-down 金额":
+    - img "caret-up":
+    - img "caret-down":
+    - generic: 金额
+  - generic: VIP服务
+  - generic: ¥ 0.01
+  - generic: 露营设备（固定收费）
+  - generic: ¥ 99
+  - generic: 导游服务费
+  - generic: ¥ 100
+  - generic: 售卖信息
+  - generic: 最近订单：2026-11-04 15:54:47
+  - generic: DD261104155447001001s
+  - generic: 1张
+  - text: 现金：
+  - generic: ¥0.02
+  - textbox "请选择日期": 2026-11-04
+  - img "calendar":
+  - button "cloud-download 导入模版下载":
+    - img "cloud-download":
+    - generic: 导入模版下载
+  - tablist:
+    - tab "散客" [selected]
+    - tab "团队"
+  - tabpanel "散客":
+    - generic: 内导
+    - generic: 请选择
+    - img "right":
+    - img "empty image"
+    - generic: 暂无数据，请先选择门票
+    - generic: 支付方式：
+    - combobox
+    - img "现金"
+    - text: 现金
+    - button "刷新支付方式":
+      - img "reload":
+    - generic: 总人数：
+    - generic: 0人
+    - button "取 消":
+      - generic: 取 消
+    - button "确认下单":
+      - generic: 确认下单
+- text: ": : : : : : : : : : : : : : :"
+- text: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : :"
+- dialog "打印确认":
+  - button "Close":
+    - img "close":
+  - generic: 打印确认
+  - generic: 请选择是否打印门票
+  - button "不打印":
+    - generic: 不打印
+  - button "打 印":
+    - generic: 打 印
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : * : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- generic: "* : : * : :"
+- generic: ": : : : :"

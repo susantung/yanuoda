@@ -247,8 +247,8 @@
 <g id="node17" class="node">
 <title>REVIEW</title>
 <path fill="#f7f3ff" stroke="#b7a2df" d="M917.12,-750.84C917.12,-750.84 674,-750.84 674,-750.84 668,-750.84 662,-744.84 662,-738.84 662,-738.84 662,-709.08 662,-709.08 662,-703.08 668,-697.08 674,-697.08 674,-697.08 917.12,-697.08 917.12,-697.08 923.12,-697.08 929.12,-703.08 929.12,-709.08 929.12,-709.08 929.12,-738.84 929.12,-738.84 929.12,-744.84 923.12,-750.84 917.12,-750.84"/>
-<text xml:space="preserve" text-anchor="middle" x="795.56" y="-728.16" font-family="PingFang SC" font-size="14.00" fill="#2e214a">提交前复核结算结果、方式、资格</text>
-<text xml:space="preserve" text-anchor="middle" x="795.56" y="-711.36" font-family="PingFang SC" font-size="14.00" fill="#2e214a">及资源</text>
+<text xml:space="preserve" text-anchor="middle" x="795.56" y="-728.16" font-family="PingFang SC" font-size="14.00" fill="#2e214a">结算及账户沿用原校验；前端按补</text>
+<text xml:space="preserve" text-anchor="middle" x="795.56" y="-711.36" font-family="PingFang SC" font-size="14.00" fill="#2e214a">收弹窗已加载配置校验方式及资源</text>
 </g>
 <!-- WAY&#45;&gt;REVIEW -->
 <g id="edge21" class="edge">

@@ -1,0 +1,134 @@
+{
+  "accounts": [
+    {
+      "name": "17200000",
+      "match": true
+    },
+    {
+      "name": "ystceshi",
+      "match": true
+    },
+    {
+      "name": "13600000001",
+      "match": true
+    },
+    {
+      "name": "ck100001234",
+      "match": true
+    },
+    {
+      "name": "13194999212",
+      "match": true
+    },
+    {
+      "name": "zmp",
+      "match": true
+    },
+    {
+      "name": "whm112",
+      "match": true
+    },
+    {
+      "name": "17711220000",
+      "match": true
+    },
+    {
+      "name": "13100000005",
+      "match": true
+    },
+    {
+      "name": "18380435205",
+      "match": true
+    },
+    {
+      "name": "17011111111",
+      "match": true
+    },
+    {
+      "name": "撒地方进口法国的",
+      "match": true
+    },
+    {
+      "name": "13800000001",
+      "match": true
+    },
+    {
+      "name": "14500010002",
+      "match": true
+    },
+    {
+      "name": "13899999999",
+      "match": true
+    }
+  ],
+  "devices": [
+    {
+      "name": "YST团队售票窗口",
+      "match": true
+    },
+    {
+      "name": "YST散客售票窗口",
+      "match": true
+    },
+    {
+      "name": "售票设备111-修改",
+      "match": true
+    },
+    {
+      "name": "创建售票",
+      "match": true
+    },
+    {
+      "name": "YUAN的手机",
+      "match": true
+    },
+    {
+      "name": "pda真机",
+      "match": true
+    },
+    {
+      "name": "售票设备1028",
+      "match": true
+    },
+    {
+      "name": "528窗口售票C",
+      "match": true
+    },
+    {
+      "name": "528窗口售票机B",
+      "match": true
+    },
+    {
+      "name": "B门区售票窗口",
+      "match": true
+    },
+    {
+      "name": "528门区A",
+      "match": true
+    },
+    {
+      "name": "528门区窗口",
+      "match": true
+    },
+    {
+      "name": "ttpda",
+      "match": true
+    },
+    {
+      "name": "422出口设备红口",
+      "match": true
+    },
+    {
+      "name": "博物馆售票窗口",
+      "match": true
+    },
+    {
+      "name": "窗口测试的设备",
+      "match": true
+    },
+    {
+      "name": "苏州博物馆北门售票窗口",
+      "match": true
+    }
+  ]
+}

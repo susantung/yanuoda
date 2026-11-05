@@ -1,0 +1,339 @@
+- generic: 程程票
+- generic: 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺
+- button "售票窗口":
+  - generic: 售票窗口
+- generic: 西瓜
+- menu:
+  - menuitem "home 首页":
+    - img "home":
+    - generic: 首页
+  - menuitem "product 基础信息":
+    - img "product":
+    - generic: 基础信息
+  - menuitem "setting 配置中心":
+    - img "setting":
+    - generic: 配置中心
+  - menuitem "user 员工管理" [expanded]:
+    - img "user":
+    - generic: 员工管理
+  - menu:
+    - menuitem "员工管理":
+      - generic: 员工管理
+    - menuitem "角色管理":
+      - generic: 角色管理
+    - menuitem "系统角色":
+      - generic: 系统角色
+  - menuitem "audit 票务中心":
+    - img "audit":
+    - generic: 票务中心
+  - menuitem "transaction 订单中心":
+    - img "transaction":
+    - generic: 订单中心
+  - menuitem "gold 售后中心":
+    - img "gold":
+    - generic: 售后中心
+  - menuitem "team 团队管理":
+    - img "team":
+    - generic: 团队管理
+  - menuitem "rest 冲红管理":
+    - img "rest":
+    - generic: 冲红管理
+  - menuitem "cluster 内导管理":
+    - img "cluster":
+    - generic: 内导管理
+  - menuitem "deployment-unit 分销管理":
+    - img "deployment-unit":
+    - generic: 分销管理
+  - menuitem "message 短信管理":
+    - img "message":
+    - generic: 短信管理
+  - menuitem "pie-chart 报表中心":
+    - img "pie-chart":
+    - generic: 报表中心
+  - menuitem "database 数据中心":
+    - img "database":
+    - generic: 数据中心
+- generic "收起侧边栏":
+  - img "menu-fold":
+- tablist:
+  - tab "支付配置":
+    - generic: 支付配置
+  - tab "冲红审核":
+    - generic: 冲红审核
+  - tab "系统角色" [selected]:
+    - generic: 系统角色
+  - button "remove":
+    - img "close-circle":
+  - img "close-square":
+  - generic: 清空页签
+- tabpanel "系统角色"
+- navigation:
+  - list:
+    - img "home":
+    - link "程程票":
+      - /url: "#/"
+    - listitem: /
+    - link "员工管理":
+      - /url: "#/staff"
+    - listitem: /
+    - listitem: 系统角色
+- text: ": :"
+- generic "账号": "账号 :"
+- textbox "账号 :":
+  - /placeholder: ""
+- generic "支付资源": "支付资源 :"
+- combobox "支付资源 :"
+- generic: 全部
+- button "查 询":
+  - generic: 查 询
+- button "重 置":
+  - generic: 重 置
+- button "plus 新增":
+  - img "plus":
+  - generic: 新增
+- button "绑定日志":
+  - generic: 绑定日志
+- button "setting 配置列":
+  - img "setting":
+  - generic: 配置列
+- table:
+  - rowgroup:
+    - row "账号 手机号 注册日期 用户名 绑定窗口 状态 操作":
+      - columnheader "账号"
+      - columnheader "手机号"
+      - columnheader "注册日期"
+      - columnheader "用户名"
+      - columnheader "绑定窗口"
+      - columnheader "状态"
+      - columnheader "操作"
+- table:
+  - rowgroup:
+    - row "ystceshi 13600000002 2026-02-08 13:18:52 YST售票窗口 YST团队售票窗口 正常 编辑 删除 绑定窗口 解绑 收款配置":
+      - cell "ystceshi"
+      - cell "13600000002"
+      - cell "2026-02-08 13:18:52"
+      - cell "YST售票窗口"
+      - cell "YST团队售票窗口"
+      - cell "正常"
+      - cell "编辑 删除 绑定窗口 解绑 收款配置":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+        - button "绑定窗口":
+          - generic: 绑定窗口
+        - button "解绑":
+          - generic: 解绑
+        - button "收款配置":
+          - generic: 收款配置
+    - row "13600000001 13600000001 2025-12-25 12:02:24 hjk001 窗口测试的设备 正常 编辑 删除 绑定窗口 解绑 收款配置":
+      - cell "13600000001"
+      - cell "13600000001"
+      - cell "2025-12-25 12:02:24"
+      - cell "hjk001"
+      - cell "窗口测试的设备"
+      - cell "正常"
+      - cell "编辑 删除 绑定窗口 解绑 收款配置":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+        - button "绑定窗口":
+          - generic: 绑定窗口
+        - button "解绑":
+          - generic: 解绑
+        - button "收款配置":
+          - generic: 收款配置
+    - row "ck100001234 16100001119 2025-10-28 10:52:49 新窗口6 售票设备1028 正常 编辑 删除 绑定窗口 解绑 收款配置":
+      - cell "ck100001234"
+      - cell "16100001119"
+      - cell "2025-10-28 10:52:49"
+      - cell "新窗口6"
+      - cell "售票设备1028"
+      - cell "正常"
+      - cell "编辑 删除 绑定窗口 解绑 收款配置":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+        - button "绑定窗口":
+          - generic: 绑定窗口
+        - button "解绑":
+          - generic: 解绑
+        - button "收款配置":
+          - generic: 收款配置
+    - row "13194999212 13194999212 2025-10-27 11:55:58 西瓜 ttpda 正常 编辑 删除 绑定窗口 解绑 收款配置":
+      - cell "13194999212"
+      - cell "13194999212"
+      - cell "2025-10-27 11:55:58"
+      - cell "西瓜"
+      - cell "ttpda"
+      - cell "正常"
+      - cell "编辑 删除 绑定窗口 解绑 收款配置":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+        - button "绑定窗口":
+          - generic: 绑定窗口
+        - button "解绑":
+          - generic: 解绑
+        - button "收款配置":
+          - generic: 收款配置
+    - row "zmp 13194999123 2025-09-09 13:58:31 默认昵称 - 正常 编辑 删除 绑定窗口 收款配置":
+      - cell "zmp"
+      - cell "13194999123"
+      - cell "2025-09-09 13:58:31"
+      - cell "默认昵称"
+      - cell "-"
+      - cell "正常"
+      - cell "编辑 删除 绑定窗口 收款配置":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+        - button "绑定窗口":
+          - generic: 绑定窗口
+        - button "收款配置":
+          - generic: 收款配置
+    - row "whm112 13900000002 2025-05-28 10:49:37 张志忠 苏州博物馆北门售票窗口 正常 编辑 删除 绑定窗口 解绑 收款配置":
+      - cell "whm112"
+      - cell "13900000002"
+      - cell "2025-05-28 10:49:37"
+      - cell "张志忠"
+      - cell "苏州博物馆北门售票窗口"
+      - cell "正常"
+      - cell "编辑 删除 绑定窗口 解绑 收款配置":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+        - button "绑定窗口":
+          - generic: 绑定窗口
+        - button "解绑":
+          - generic: 解绑
+        - button "收款配置":
+          - generic: 收款配置
+    - row "17200000 17200000001 2025-05-28 09:26:14 默认 售票设备111-修改 正常 编辑 删除 绑定窗口 解绑 收款配置":
+      - cell "17200000"
+      - cell "17200000001"
+      - cell "2025-05-28 09:26:14"
+      - cell "默认"
+      - cell "售票设备111-修改"
+      - cell "正常"
+      - cell "编辑 删除 绑定窗口 解绑 收款配置":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+        - button "绑定窗口":
+          - generic: 绑定窗口
+        - button "解绑":
+          - generic: 解绑
+        - button "收款配置":
+          - generic: 收款配置
+    - row "17711220000 17711220000 2025-05-28 09:19:29 默认昵称 - 正常 编辑 删除 绑定窗口 收款配置":
+      - cell "17711220000"
+      - cell "17711220000"
+      - cell "2025-05-28 09:19:29"
+      - cell "默认昵称"
+      - cell "-"
+      - cell "正常"
+      - cell "编辑 删除 绑定窗口 收款配置":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+        - button "绑定窗口":
+          - generic: 绑定窗口
+        - button "收款配置":
+          - generic: 收款配置
+    - row "13100000005 13100000005 2025-05-19 10:38:44 默认昵称123zzz - 正常 编辑 删除 绑定窗口 收款配置":
+      - cell "13100000005"
+      - cell "13100000005"
+      - cell "2025-05-19 10:38:44"
+      - cell "默认昵称123zzz"
+      - cell "-"
+      - cell "正常"
+      - cell "编辑 删除 绑定窗口 收款配置":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+        - button "绑定窗口":
+          - generic: 绑定窗口
+        - button "收款配置":
+          - generic: 收款配置
+    - row "18380435205 18380435205 2025-05-13 19:48:30 明小五-在线 - 正常 编辑 删除 绑定窗口 收款配置":
+      - cell "18380435205"
+      - cell "18380435205"
+      - cell "2025-05-13 19:48:30"
+      - cell "明小五-在线"
+      - cell "-"
+      - cell "正常"
+      - cell "编辑 删除 绑定窗口 收款配置":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+        - button "绑定窗口":
+          - generic: 绑定窗口
+        - button "收款配置":
+          - generic: 收款配置
+- list:
+  - listitem: 共 15 条
+  - listitem "上一页":
+    - button "left" [disabled]:
+      - img "left":
+  - listitem "1":
+    - generic: "1"
+  - listitem "2":
+    - generic: "2"
+  - listitem "下一页":
+    - button "right":
+      - img "right":
+  - generic "页码":
+    - combobox "页码"
+    - generic "10 条/页"
+  - text: 跳至
+  - textbox "页"
+  - text: 页
+- generic: ": * : : * : : * : * :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : : * :"
+- dialog "账号收款配置":
+  - button "Close":
+    - img "close":
+  - generic: 账号收款配置
+  - generic: 账号 / 用户名
+  - generic: ystceshi / YST售票窗口
+  - generic: 绑定窗口
+  - generic: YST团队售票窗口
+  - separator
+  - heading "扫码付" [level=5]
+  - text: 允许多个并默认一个
+  - generic: 可用资源
+  - generic "扫码付可用资源":
+    - generic: 散客1号柜台码（CCB-SK-011）
+    - generic "散客1号柜台码（CCB-SK-011）":
+      - generic: 散客1号柜台码（CCB-SK-011）
+    - combobox "扫码付可用资源" [active]
+  - generic: 可选项来自“配置中心 → 支付资源管理”。
+  - generic: 默认资源
+  - generic "扫码付默认资源":
+    - combobox "扫码付默认资源"
+    - generic "散客1号柜台码（CCB-SK-011）"
+  - heading "银行卡" [level=5]
+  - text: 允许多个并默认一个
+  - generic: 可用 POS
+  - generic "银行卡可用资源":
+    - combobox "银行卡可用资源"
+    - generic: 请选择收款资源，可输入名称搜索
+  - generic: 可选项来自“配置中心 → 支付资源管理”。
+  - generic: 默认资源
+  - generic "银行卡默认资源":
+    - combobox "银行卡默认资源"
+    - generic: 请选择默认资源
+  - button "取 消":
+    - generic: 取 消
+  - button "保 存":
+    - generic: 保 存

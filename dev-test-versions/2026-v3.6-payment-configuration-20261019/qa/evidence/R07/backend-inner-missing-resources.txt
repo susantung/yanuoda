@@ -1,0 +1,231 @@
+- generic: 程程票
+- generic: 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺
+- button "售票窗口":
+  - generic: 售票窗口
+- generic: 西瓜
+- menu:
+  - menuitem "home 首页":
+    - img "home":
+    - generic: 首页
+  - menuitem "product 基础信息":
+    - img "product":
+    - generic: 基础信息
+  - menuitem "setting 配置中心":
+    - img "setting":
+    - generic: 配置中心
+  - menuitem "user 员工管理":
+    - img "user":
+    - generic: 员工管理
+  - menuitem "audit 票务中心":
+    - img "audit":
+    - generic: 票务中心
+  - menuitem "transaction 订单中心":
+    - img "transaction":
+    - generic: 订单中心
+  - menuitem "gold 售后中心":
+    - img "gold":
+    - generic: 售后中心
+  - menuitem "team 团队管理":
+    - img "team":
+    - generic: 团队管理
+  - menuitem "rest 冲红管理":
+    - img "rest":
+    - generic: 冲红管理
+  - menuitem "cluster 内导管理" [expanded]:
+    - img "cluster":
+    - generic: 内导管理
+  - menu:
+    - menuitem "内导产品管理":
+      - generic: 内导产品管理
+    - menuitem "导游分组":
+      - generic: 导游分组
+    - menuitem "内导管理":
+      - generic: 内导管理
+    - menuitem "内导订单管理":
+      - generic: 内导订单管理
+  - menuitem "deployment-unit 分销管理":
+    - img "deployment-unit":
+    - generic: 分销管理
+  - menuitem "message 短信管理":
+    - img "message":
+    - generic: 短信管理
+  - menuitem "pie-chart 报表中心":
+    - img "pie-chart":
+    - generic: 报表中心
+  - menuitem "database 数据中心":
+    - img "database":
+    - generic: 数据中心
+- generic "收起侧边栏":
+  - img "menu-fold":
+- tablist:
+  - tab "设备管理":
+    - generic: 设备管理
+  - tab "支付资源管理":
+    - generic: 支付资源管理
+  - tab "内导订单管理":
+    - generic: 内导订单管理
+  - tab "内导订单详情" [selected]:
+    - generic: 内导订单详情
+  - button "remove":
+    - img "close-circle":
+  - img "close-square":
+  - generic: 清空页签
+- tabpanel "内导订单详情"
+- navigation:
+  - list:
+    - img "home":
+    - link "程程票":
+      - /url: "#/"
+    - listitem: /
+    - link "内导管理":
+      - /url: "#/guide"
+    - listitem: /
+    - link "内导订单管理":
+      - /url: "#/guide/guide-order-manage"
+    - listitem: /
+    - listitem: 内导订单详情
+- text: ": : : : : : : : : : : : : :"
+- generic: 订单详情
+- generic: 产品信息
+- table:
+  - rowgroup:
+    - 'row "产品名称 : VIP服务 所属类型 : 计时收费 单价（元） : 0.01/小时 默认押金（元） : 0.02"':
+      - 'cell "产品名称 : VIP服务"':
+        - generic: "产品名称 :"
+        - generic: VIP服务
+      - 'cell "所属类型 : 计时收费"':
+        - generic: "所属类型 :"
+        - generic: 计时收费
+      - 'cell "单价（元） : 0.01/小时"':
+        - generic: "单价（元） :"
+        - generic: 0.01/小时
+      - 'cell "默认押金（元） : 0.02"':
+        - generic: "默认押金（元） :"
+        - generic: "0.02"
+- generic: 订单信息
+- table:
+  - rowgroup:
+    - 'row "订单号 : DD261103151529001001s 开单时间 : 2026-11-03 15:15:29 开单人 : YST售票窗口 开单金额/押金（元） : 0.02"':
+      - 'cell "订单号 : DD261103151529001001s"':
+        - generic: "订单号 :"
+        - generic: DD261103151529001001s
+      - 'cell "开单时间 : 2026-11-03 15:15:29"':
+        - generic: "开单时间 :"
+        - generic: 2026-11-03 15:15:29
+      - 'cell "开单人 : YST售票窗口"':
+        - generic: "开单人 :"
+        - generic: YST售票窗口
+      - 'cell "开单金额/押金（元） : 0.02"':
+        - generic: "开单金额/押金（元） :"
+        - generic: "0.02"
+    - 'row "内导姓名 : zxcdcc 内导编号 : - 内导性别 : 女 内导级别 : 初级"':
+      - 'cell "内导姓名 : zxcdcc"':
+        - generic: "内导姓名 :"
+        - generic: zxcdcc
+      - 'cell "内导编号 : -"':
+        - generic: "内导编号 :"
+        - generic: "-"
+      - 'cell "内导性别 : 女"':
+        - generic: "内导性别 :"
+        - generic: 女
+      - 'cell "内导级别 : 初级"':
+        - generic: "内导级别 :"
+        - generic: 初级
+    - 'row "游客类型 : 散客 游客数量 : 1 旅行社名 : - 外导姓名 : -"':
+      - 'cell "游客类型 : 散客"':
+        - generic: "游客类型 :"
+        - generic: 散客
+      - 'cell "游客数量 : 1"':
+        - generic: "游客数量 :"
+        - generic: "1"
+      - 'cell "旅行社名 : -"':
+        - generic: "旅行社名 :"
+        - generic: "-"
+      - 'cell "外导姓名 : -"':
+        - generic: "外导姓名 :"
+        - generic: "-"
+- text: 游客信息
+- generic: 游玩日期：2026-11-03
+- table:
+  - rowgroup:
+    - row "游客姓名 证件号 性别":
+      - columnheader "游客姓名"
+      - columnheader "证件号"
+      - columnheader "性别"
+  - rowgroup:
+    - row "QA1103R04INNER 未知":
+      - cell "QA1103R04INNER"
+      - cell
+      - cell "未知"
+- list:
+  - listitem: 共 1 条
+  - listitem "上一页":
+    - button "left" [disabled]:
+      - img "left":
+  - listitem "1":
+    - generic: "1"
+  - listitem "下一页":
+    - button "right" [disabled]:
+      - img "right":
+- generic: 交易记录
+- table:
+  - rowgroup:
+    - row "操作员 交易类型 支付/退款方式 支付金额 交易时间 交易流水":
+      - columnheader "操作员"
+      - columnheader "交易类型"
+      - columnheader "支付/退款方式"
+      - columnheader "支付金额"
+      - columnheader "交易时间"
+      - columnheader "交易流水"
+  - rowgroup:
+    - row "YST售票窗口 开单 扫码付 0.02 2026-11-03 15:15:29":
+      - cell "YST售票窗口"
+      - cell "开单"
+      - cell "扫码付"
+      - cell "0.02"
+      - cell "2026-11-03 15:15:29"
+      - cell
+    - row "YST售票窗口 补收 银行卡 0.01 2026-11-03 15:16:42":
+      - cell "YST售票窗口"
+      - cell "补收"
+      - cell "银行卡"
+      - cell "0.01"
+      - cell "2026-11-03 15:16:42"
+      - cell
+- list:
+  - listitem "上一页":
+    - button "left" [disabled]:
+      - img "left":
+  - listitem "1":
+    - generic: "1"
+  - listitem "下一页":
+    - button "right" [disabled]:
+      - img "right":
+- generic: 结账信息
+- table:
+  - rowgroup:
+    - 'row "结算时间 : 2026-11-03 18:15:00 实际时长（分钟） : 180 结算时长（小时） : 3"':
+      - 'cell "结算时间 : 2026-11-03 18:15:00"':
+        - generic: "结算时间 :"
+        - generic: 2026-11-03 18:15:00
+      - 'cell "实际时长（分钟） : 180"':
+        - generic: "实际时长（分钟） :"
+        - generic: "180"
+      - 'cell "结算时长（小时） : 3"':
+        - generic: "结算时长（小时） :"
+        - generic: "3"
+    - 'row "补收金额（元） : 0.01 退款金额（元） : - 结算金额（元） : 0.03"':
+      - 'cell "补收金额（元） : 0.01"':
+        - generic: "补收金额（元） :"
+        - generic: "0.01"
+      - 'cell "退款金额（元） : -"':
+        - generic: "退款金额（元） :"
+        - generic: "-"
+      - 'cell "结算金额（元） : 0.03"':
+        - generic: "结算金额（元） :"
+        - generic: "0.03"
+    - 'row "结算/退票人 : YST售票窗口"':
+      - 'cell "结算/退票人 : YST售票窗口"':
+        - generic: "结算/退票人 :"
+        - generic: YST售票窗口
+- generic: "* : * : * : * :"

@@ -5,7 +5,7 @@
 @media(max-width:1050px){:root{--side:230px}.hero{padding:28px}.main{padding:24px 20px}.card{padding:20px}.page-cards{grid-template-columns:1fr}}
 @media(max-width:720px){.main{width:100%;margin:0;padding:16px}.sidebar{display:none;width:min(85vw,300px)}body.menu-open .sidebar{display:block;box-shadow:-10px 0 40px #201a2c44}.mobile-menu{display:block;position:fixed;right:14px;top:12px;z-index:30;background:#5b21b6;color:#fff;border:1px solid #a78bfa;border-radius:8px;padding:7px 12px}.hero{padding:24px 20px}.hero h1{font-size:25px}.hero p{font-size:14px}.quick{bottom:14px;right:14px}.grid{grid-template-columns:1fr 1fr}.flow-stage{height:500px}.doc h2{font-size:22px}}
 @media print{.sidebar,.quick,.mobile-menu,.actions,.flow-toolbar,.footer-nav{display:none!important}.main{width:100%;margin:0;padding:0}.hero{background:#fff;color:#211a49;box-shadow:none;padding:12px 0}.hero h1,.hero p,.eyebrow{color:#211a49}.card{box-shadow:none;padding:12px}.table-wrap{overflow:visible}table{font-size:10px}.flow-stage{height:850px;max-height:none;page-break-inside:avoid}.section{break-inside:avoid}}
-</style></head><body><button class="mobile-menu" aria-label="打开或关闭目录">目录 ☰</button><aside class="sidebar"><h2>支付配置化专项</h2><div class="group">版本迭代需求</div><a href="../index.html">← 返回版本列表</a><div class="group">开发 / 测试共同方案</div><nav><a class="" href="index.html">方案总览</a><a class="" href="development-spec.html">完整需求方案</a><a class="" href="page-list.html">页面清单</a><a class="" href="flows.html">全程流程图</a><a class="current" href="acceptance.html">开发与验收</a><div class="group">本页目录</div><a class="toc-link" href="#一-开发边界">一、开发边界</a><a class="toc-link" href="#二-需要对接的增量">二、需要对接的增量</a><a class="toc-link" href="#三-本次验收">三、本次验收</a><a class="toc-link" href="#四-冲红增量验收">四、冲红增量验收</a><a class="toc-link" href="#订单详情与申请入口补充验收">订单详情与申请入口补充验收</a><a class="toc-link" href="#五-支付排序验收">五、支付排序验收</a><a class="toc-link" href="#六-内导结账与补收验收">六、内导结账与补收验收</a><a class="toc-link" href="#七-验收说明">七、验收说明</a><div class="group">原型入口</div><a href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口原型 ↗</a><div class="group">源文件</div><a href="PRD｜支付配置化_V3.6_20261019.md" target="_blank" rel="noopener noreferrer">打开完整 Markdown ↗</a></nav></aside><main class="main"><header class="hero"><div class="eyebrow">支付配置化专项 · V3.6 · 2026-10-23</div><h1>开发与验收</h1><p>只验收本次配置、资源选择、编号记录及展示的增量。</p><div class="actions"><a class="btn" href="development-spec.html">完整需求方案</a><a class="btn" href="flows.html">全程流程图</a><a class="btn" href="page-list.html">页面清单</a><a class="btn" href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a class="btn" href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口 ↗</a></div></header><article class="doc"><h1>支付配置化｜开发核对与验收清单</h1>
+</style></head><body><button class="mobile-menu" aria-label="打开或关闭目录">目录 ☰</button><aside class="sidebar"><h2>支付配置化专项</h2><div class="group">版本迭代需求</div><a href="../index.html">← 返回版本列表</a><div class="group">开发 / 测试共同方案</div><nav><a class="" href="index.html">方案总览</a><a class="" href="development-spec.html">完整需求方案</a><a class="" href="page-list.html">页面清单</a><a class="" href="flows.html">全程流程图</a><a class="current" href="acceptance.html">开发与验收</a><a class="" href="qa/index.html">测试环境验收方案</a><div class="group">本页目录</div><a class="toc-link" href="#一-开发边界">一、开发边界</a><a class="toc-link" href="#二-需要对接的增量">二、需要对接的增量</a><a class="toc-link" href="#三-本次验收">三、本次验收</a><a class="toc-link" href="#四-冲红增量验收">四、冲红增量验收</a><a class="toc-link" href="#订单详情与申请入口补充验收">订单详情与申请入口补充验收</a><a class="toc-link" href="#五-支付排序验收">五、支付排序验收</a><a class="toc-link" href="#六-内导结账与补收验收">六、内导结账与补收验收</a><a class="toc-link" href="#七-验收说明">七、验收说明</a><div class="group">原型入口</div><a href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口原型 ↗</a><div class="group">源文件</div><a href="PRD｜支付配置化_V3.6_20261019.md" target="_blank" rel="noopener noreferrer">打开完整 Markdown ↗</a></nav></aside><main class="main"><header class="hero"><div class="eyebrow">支付配置化专项 · V3.6 · 2026-11-04</div><h1>开发与验收</h1><p>只验收本次配置、资源选择、编号记录及展示的增量。</p><div class="actions"><a class="btn" href="development-spec.html">完整需求方案</a><a class="btn" href="flows.html">全程流程图</a><a class="btn" href="page-list.html">页面清单</a><a class="btn" href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a class="btn" href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口 ↗</a></div></header><article class="doc"><h1>支付配置化｜开发核对与验收清单</h1>
 <p>版本：V1.7｜2026-10-23。</p>
 <h2 id="一-开发边界">一、开发边界</h2>
 <p>所有支付方式确认后执行原下单、支付、充值及出票处理。本次只增加配置过滤、资源选择/校验，以及扫码付/银行卡每笔资源和柜台编码/POS编号的保存、展示。原账户、金额、押金、结算、退款及打印逻辑不重写。</p>
@@ -225,8 +225,8 @@
 </tr>
 <tr>
 <td>A33</td>
-<td>挂单恢复或弹窗期间改配置/绑定后提交</td>
-<td>按当前配置复核，失效在确认弹窗提示；不直接使用旧编号</td>
+<td>后台改配置/绑定，分别核对旧弹窗及刷新/重开后的业务</td>
+<td>旧弹窗不要求实时拦截；主页面点支付方式刷新或关闭标签重开、弹窗关闭重开后按新配置校验，缺资源在弹窗提示</td>
 </tr>
 <tr>
 <td>A34</td>
@@ -330,8 +330,8 @@
 </tr>
 <tr>
 <td>A52</td>
-<td>申请期间改配置、绑定、资源名称或编号</td>
-<td>提交失败并要求重选确认，不静默换默认或提交旧值</td>
+<td>后台改配置、绑定或资源名称/编号后，关闭冲红申请再打开</td>
+<td>新弹窗读取新配置，按有效绑定选择并记录；旧弹窗未实时拦截不判缺陷，重开仍无默认支付方式</td>
 </tr>
 <tr>
 <td>A53</td>
@@ -345,8 +345,8 @@
 </tr>
 <tr>
 <td>A55</td>
-<td>申请后更换审核人，或申请资源配置发生变化</td>
-<td>始终按原申请主体复核；配置变化阻止同意且保留待审批，可驳回重提</td>
+<td>申请后更换审核人；变更资源后关闭审核弹窗重开</td>
+<td>按申请主体及本次审核弹窗加载的配置复核；已加载为失效则阻止同意，可驳回重提；不要求停留中的旧弹窗实时拦截</td>
 </tr>
 <tr>
 <td>A56</td>
@@ -475,8 +475,8 @@
 </tr>
 <tr>
 <td>A75</td>
-<td>无候选、无资源、默认失效；提交前停用方式或解绑资源</td>
-<td>无候选/资源在补收弹窗内提示并阻止确定；失效复核不通过，不自动换现金，不生成成功补收；仍可取消或手工换可用方式</td>
+<td>无候选、无资源、默认失效；停用方式或解绑后关闭补收弹窗再打开</td>
+<td>新弹窗读取新配置，无候选/资源或默认失效时提示并阻止对应方式提交；可取消或手工换方式。旧弹窗未实时拦截不判缺陷</td>
 </tr>
 <tr>
 <td>A76</td>

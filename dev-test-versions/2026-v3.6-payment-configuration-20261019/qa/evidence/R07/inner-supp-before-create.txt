@@ -1,0 +1,172 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "售票":
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "统计":
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "订单详情":
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+  - tab "内导" [selected]:
+    - generic: 内导
+  - button "remove":
+    - img "close":
+- tabpanel "内导"
+- text: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- tablist:
+  - tab "导游开单" [selected]
+  - tab "订单记录"
+  - tab "交易记录"
+  - tab "内导报表统计"
+- tabpanel "导游开单":
+  - combobox
+  - generic "全部"
+  - button "caret-up caret-down 金额":
+    - img "caret-up":
+    - img "caret-down":
+    - generic: 金额
+  - generic: VIP服务
+  - generic: ¥ 0.01
+  - generic: 露营设备（固定收费）
+  - generic: ¥ 99
+  - generic: 导游服务费
+  - generic: ¥ 100
+  - generic: 售卖信息
+  - generic: 最近订单：2026-11-03 17:24:28
+  - generic: DD261103172428001001s
+  - generic: 1张
+  - text: 现金：
+  - generic: ¥99
+  - textbox "请选择日期": 2026-11-03
+  - img "calendar":
+  - button "cloud-download 导入模版下载":
+    - img "cloud-download":
+    - generic: 导入模版下载
+  - tablist:
+    - tab "散客" [selected]
+    - tab "团队"
+  - tabpanel "散客":
+    - generic: 内导
+    - generic: zxcdcc
+    - img "right":
+    - generic: 【计时收费】
+    - text: VIP服务
+    - button "导 入":
+      - generic: 导 入
+    - button "delete":
+      - img "delete":
+    - generic: 收费标准：
+    - generic: ¥ 0.01元/小时
+    - generic: 内导：
+    - generic: zxcdcc（-）
+    - generic "游客数量": "游客数量 :"
+    - button "Increase Value":
+      - img "plus":
+    - button "Decrease Value" [disabled]:
+      - img "minus":
+    - spinbutton "游客数量 :": "1"
+    - generic: "1"
+    - textbox "姓名": QA1103R07SUPP
+    - combobox
+    - generic "身份证"
+    - textbox "请输入证件号"
+    - combobox
+    - generic: 性别
+    - button "delete":
+      - img "delete":
+    - generic: 支付方式：
+    - combobox
+    - img "现金"
+    - text: 现金
+    - button "刷新支付方式":
+      - img "reload":
+    - generic: 总人数：
+    - generic: 1人
+    - text: 收取押金：
+    - button "Increase Value":
+      - img "up":
+    - button "Decrease Value":
+      - img "down":
+    - spinbutton: "0.02"
+    - button "取 消":
+      - generic: 取 消
+    - button "确认下单":
+      - generic: 确认下单
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : :"
+- dialog "支付订单确认":
+  - button "Close":
+    - img "close":
+  - generic: 支付订单确认
+  - table:
+    - rowgroup:
+      - row "门票名称 售卖单价（元/小时）":
+        - columnheader "门票名称"
+        - columnheader "售卖单价（元/小时）"
+  - table:
+    - rowgroup:
+      - row "VIP服务 ¥0.01 / 小时":
+        - cell "VIP服务"
+        - cell "¥0.01 / 小时"
+  - generic: 内导：
+  - generic: zxcdcc
+  - generic: 总人数：
+  - generic: 1人
+  - generic: 押金应付：
+  - generic: ¥0.02
+  - img "现金"
+  - generic: 现金
+  - img "扫码付"
+  - generic: 扫码付
+  - img "银行卡"
+  - generic: 银行卡
+  - img "微信"
+  - generic: 微信
+  - img "支付宝"
+  - generic: 支付宝
+  - img "聚合支付"
+  - generic: 聚合支付
+  - button "刷新支付方式":
+    - img "reload":
+  - generic: 散客内导打印
+  - generic: 现金实收
+  - button "Increase Value":
+    - img "up":
+  - button "Decrease Value":
+    - img "down":
+  - spinbutton "请输入": "0.02"
+  - generic: 元
+  - generic: "现金找零:"
+  - generic: ￥0
+  - button "取消出票":
+    - generic: 取消出票
+  - button "确认出票":
+    - generic: 确认出票

@@ -96,8 +96,8 @@
 <g id="node7" class="node">
 <title>VALID</title>
 <path fill="#fff7e8" stroke="#d6b36d" d="M679.85,-699.22C679.85,-699.22 462.79,-650.7 462.79,-650.7 456.94,-649.39 456.94,-646.77 462.79,-645.46 462.79,-645.46 679.85,-596.94 679.85,-596.94 685.7,-595.63 697.42,-595.63 703.27,-596.94 703.27,-596.94 920.33,-645.46 920.33,-645.46 926.18,-646.77 926.18,-649.39 920.33,-650.7 920.33,-650.7 703.27,-699.22 703.27,-699.22 697.42,-700.53 685.7,-700.53 679.85,-699.22"/>
-<text xml:space="preserve" text-anchor="middle" x="691.56" y="-652.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">按申请主体复核方式、场景、绑定</text>
-<text xml:space="preserve" text-anchor="middle" x="691.56" y="-635.48" font-family="PingFang SC" font-size="14.00" fill="#2e214a">及资源快照</text>
+<text xml:space="preserve" text-anchor="middle" x="691.56" y="-652.28" font-family="PingFang SC" font-size="14.00" fill="#2e214a">按申请主体及审核弹窗已加载配置</text>
+<text xml:space="preserve" text-anchor="middle" x="691.56" y="-635.48" font-family="PingFang SC" font-size="14.00" fill="#2e214a">复核方式、场景、绑定及资源快照</text>
 </g>
 <!-- STATE&#45;&gt;VALID -->
 <g id="edge6" class="edge">

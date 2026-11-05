@@ -1,0 +1,104 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "售票":
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "内导":
+    - generic: 内导
+  - button "remove":
+    - img "close":
+  - tab "统计":
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "退票":
+    - generic: 退票
+  - button "remove":
+    - img "close":
+  - tab "订单详情":
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+  - tab "异常订单" [selected]:
+    - generic: 异常订单
+  - button "remove":
+    - img "close":
+- tabpanel "异常订单"
+- text: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- tablist:
+  - tab "异常订单-支付" [selected]
+  - tab "异常订单-退票"
+- tabpanel "异常订单-支付":
+  - generic "订单编号": "订单编号 :"
+  - textbox "订单号"
+  - generic "支付时间": "支付时间 :"
+  - textbox "支付时间 :":
+    - /placeholder: 开始时间
+  - generic "to":
+    - img "swap-right":
+  - textbox "结束时间"
+  - img "calendar":
+  - generic "支付流水号": "支付流水号 :"
+  - textbox "支付流水号 :":
+    - /placeholder: 支付流水号
+  - button "search 查 询" [active]:
+    - img "search":
+    - generic: 查 询
+  - button "reload 重 置":
+    - img "reload":
+    - generic: 重 置
+  - table:
+    - rowgroup:
+      - row "序号 订单编号 团散类型 门票张数 旅行社名 订单金额(元) 支付类型 支付金额 支付状态 支付流水号 销售来源 订单状态 操作":
+        - columnheader "序号"
+        - columnheader "订单编号"
+        - columnheader "团散类型"
+        - columnheader "门票张数"
+        - columnheader "旅行社名"
+        - columnheader "订单金额(元)"
+        - columnheader "支付类型"
+        - columnheader "支付金额"
+        - columnheader "支付状态"
+        - columnheader "支付流水号"
+        - columnheader "销售来源"
+        - columnheader "订单状态"
+        - columnheader "操作"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "Simple Empty 暂无数据":
+        - cell "Simple Empty 暂无数据":
+          - img "Simple Empty"
+          - generic: 暂无数据
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : * : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- generic: "* : : * : :"
+- generic: ": : :"
+- generic: ": : : : :"

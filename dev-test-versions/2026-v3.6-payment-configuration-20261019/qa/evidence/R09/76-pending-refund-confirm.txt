@@ -1,0 +1,269 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "售票":
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "内导":
+    - generic: 内导
+  - button "remove":
+    - img "close":
+  - tab "统计":
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "订单详情":
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+  - tab "退票" [selected]:
+    - generic: 退票
+  - button "remove":
+    - img "close":
+- tabpanel "退票"
+- text: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- tablist:
+  - tab "正常退票" [selected]
+  - tab "退票记录"
+  - tab "强退申请"
+  - tab "强退确认"
+- tabpanel "正常退票":
+  - generic "订单编号": "订单编号 :"
+  - textbox "订单号": DD261104055152001001s
+  - generic "门票票号": "门票票号 :"
+  - textbox "门票票号"
+  - radio "散客" [checked]
+  - generic: 散客
+  - radio "团队"
+  - generic: 团队
+  - generic "证件号": "证件号 :"
+  - textbox "证件号 :":
+    - /placeholder: 证件号
+  - generic "导游手机": "导游手机 :"
+  - textbox "导游手机号"
+  - text: ": :"
+  - button "search 查 询":
+    - img "search":
+    - generic: 查 询
+  - button "reload 重 置":
+    - img "reload":
+    - generic: 重 置
+  - button "down 展开":
+    - img "down":
+    - generic: 展开
+  - checkbox "显示价格类型票型票种"
+  - generic: 显示价格类型票型票种
+  - separator
+  - generic: 订单信息
+  - generic: 展开订单信息
+  - img "down":
+  - table:
+    - rowgroup:
+      - row "编号 订单编号 销售来源 订单状态 下单时间 游玩日期 总票数":
+        - columnheader
+        - columnheader "编号"
+        - columnheader "订单编号"
+        - columnheader "销售来源"
+        - columnheader "订单状态"
+        - columnheader "下单时间"
+        - columnheader "游玩日期"
+        - columnheader "总票数"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "1 DD261104055152001001s YST团队售票窗口 待确认 2026.11.04 05:51 2026.11.04 1":
+        - cell:
+          - checkbox [checked]
+        - cell "1"
+        - cell "DD261104055152001001s"
+        - cell "YST团队售票窗口"
+        - cell "待确认":
+          - generic: 待确认
+        - cell "2026.11.04 05:51":
+          - generic: 2026.11.04 05:51
+        - cell "2026.11.04":
+          - generic: 2026.11.04
+        - cell "1":
+          - generic: "1"
+  - list:
+    - listitem: 共 1 条
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "下一页":
+      - button "right" [disabled]:
+        - img "right":
+    - generic "页码":
+      - combobox "页码"
+      - generic "10 条/页"
+  - separator
+  - generic: 门票信息
+  - table:
+    - rowgroup:
+      - row "门票名称 张数":
+        - columnheader
+        - columnheader "门票名称"
+        - columnheader "张数"
+    - rowgroup:
+      - row "tt528基础票（非实名的票） 1":
+        - cell:
+          - checkbox
+        - cell "tt528基础票（非实名的票）":
+          - generic: tt528基础票（非实名的票）
+        - cell "1"
+  - separator
+  - generic: 游客信息
+  - generic "游客姓名": "游客姓名 :"
+  - textbox "游客姓名 :":
+    - /placeholder: 游客姓名
+  - generic "游客证件号": "游客证件号 :"
+  - textbox "游客证件号 :":
+    - /placeholder: 游客证件号
+  - generic "门票票号": "门票票号 :"
+  - textbox "门票票号 :":
+    - /placeholder: 门票票号
+  - generic "门票状态": "门票状态 :"
+  - combobox "门票状态 :"
+  - generic: 门票状态
+  - button "查询并选择":
+    - generic: 查询并选择
+  - button "reload 重 置":
+    - img "reload":
+    - generic: 重 置
+  - table:
+    - rowgroup:
+      - row "Select all 序号 门票名称 门票票号 游客姓名 游客证件号 售卖单价（元） 门票状态 取票状态 退票规则 操作":
+        - columnheader "Select all":
+          - checkbox "Select all"
+        - columnheader "序号"
+        - columnheader "门票名称"
+        - columnheader "门票票号"
+        - columnheader "游客姓名"
+        - columnheader "游客证件号"
+        - columnheader "售卖单价（元）"
+        - columnheader "门票状态"
+        - columnheader "取票状态"
+        - columnheader "退票规则"
+        - columnheader "操作"
+    - rowgroup:
+      - row "1 tt528基础票（非实名的票） 563BKW25DMJ25 QA1104R08FLUSH-CASH 0.01 待确认 未取票 未检票皆可退 退票 查看":
+        - cell:
+          - checkbox
+        - cell "1"
+        - cell "tt528基础票（非实名的票）":
+          - generic: tt528基础票（非实名的票）
+        - cell "563BKW25DMJ25"
+        - cell "QA1104R08FLUSH-CASH"
+        - cell
+        - cell "0.01":
+          - generic: "0.01"
+        - cell "待确认":
+          - generic: 待确认
+        - cell "未取票":
+          - generic: 未取票
+        - cell "未检票皆可退"
+        - cell "退票 查看":
+          - generic: 退票
+          - generic: 查看
+  - generic: 总张数：
+  - generic: "1"
+  - generic: 张，已选：
+  - generic: "0"
+  - generic: 张
+  - button "批量退票":
+    - generic: 批量退票
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : * : :"
+- generic: ": : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- dialog "退票详情":
+  - button "Close":
+    - img "close":
+  - generic: 退票详情
+  - table:
+    - rowgroup:
+      - row "序号 门票编号 门票名称 游客姓名 游客证件号 售卖单价（元） 应退金额（元）":
+        - columnheader "序号"
+        - columnheader "门票编号"
+        - columnheader "门票名称"
+        - columnheader "游客姓名"
+        - columnheader "游客证件号"
+        - columnheader "售卖单价（元）"
+        - columnheader "应退金额（元）"
+    - rowgroup:
+      - row "1 563BKW25DMJ25 tt528基础票（非实名的票） QA1104R08FLUSH-CASH 0.01 0.01":
+        - cell "1"
+        - cell "563BKW25DMJ25"
+        - cell "tt528基础票（非实名的票）"
+        - cell "QA1104R08FLUSH-CASH"
+        - cell
+        - cell "0.01":
+          - generic: "0.01"
+        - cell "0.01":
+          - generic: "0.01"
+  - generic: 退票信息
+  - generic: 销售渠道：
+  - generic: 窗口售票
+  - generic: 销售来源：
+  - generic: YST团队售票窗口
+  - generic: 退票站点：
+  - generic: 门区售票
+  - generic: 退票来源：
+  - generic: YST团队售票窗口
+  - generic: 申请人员：
+  - generic: YST售票窗口
+  - generic: 退票类型：
+  - generic: 正常退票
+  - generic: 支付类型：
+  - generic: 扫码付
+  - generic: 退款方式：
+  - generic: 扫码付
+  - generic: 退票张数：
+  - generic: "1"
+  - generic: 退款金额：
+  - generic: "0.01"
+  - generic "退票原因": "* 退票原因 :"
+  - combobox
+  - generic "其他"
+  - generic "退票日期": "退票日期 :"
+  - textbox "请选择日期" [disabled]: 2026-11-04
+  - img "calendar":
+  - generic "是否重购票": "* 是否重购票 :"
+  - radio "是"
+  - generic: 是
+  - radio "否" [checked]
+  - generic: 否
+  - generic "退票说明": "退票说明 :"
+  - textbox "请输入退票说明" [active]: QA1104R09PENDINGREFUND 自建测试订单，验证冲红待审期间退票与审核交叉校验
+  - generic: 47 / 500
+  - button "取消退票":
+    - generic: 取消退票
+  - button "确认退票":
+    - generic: 确认退票

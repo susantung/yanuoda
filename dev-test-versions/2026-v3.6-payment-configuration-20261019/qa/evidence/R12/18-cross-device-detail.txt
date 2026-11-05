@@ -1,0 +1,322 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "内导" [selected]:
+    - generic: 内导
+  - button "remove":
+    - img "close":
+  - tab "首页":
+    - generic: 首页
+  - button "remove":
+    - img "close":
+- tabpanel "内导"
+- tablist:
+  - tab "导游开单"
+  - tab "订单记录" [selected]
+  - tab "交易记录"
+  - tab "内导报表统计"
+- tabpanel "订单记录":
+  - generic "订单编号": "订单编号 :"
+  - textbox "订单编号 :":
+    - /placeholder: 请输入订单编号
+    - text: DD261104171120001001s
+  - generic "内导姓名": "内导姓名 :"
+  - textbox "内导姓名 :":
+    - /placeholder: 请输入内导姓名
+  - generic "外导姓名": "外导姓名 :"
+  - textbox "外导姓名 :":
+    - /placeholder: 请输入外导姓名
+  - generic "导游证件": "导游证件 :"
+  - textbox "导游证件 :":
+    - /placeholder: 请输入外导证件号
+  - generic "外导手机": "外导手机 :"
+  - textbox "外导手机 :":
+    - /placeholder: 请输入外导手机号
+  - generic "开单人": "开单人 :"
+  - textbox "开单人 :":
+    - /placeholder: 请输入开单人
+  - generic "订单状态": "订单状态 :"
+  - combobox "订单状态 :"
+  - generic "全部"
+  - generic "开单日期": "开单日期 :"
+  - textbox "开单日期 :":
+    - /placeholder: 开始时间
+    - text: 2026-11-04 00:00:00
+  - generic "to":
+    - img "swap-right":
+  - textbox "结束时间": 2026-11-04 23:59:59
+  - img "calendar":
+  - button "close-circle":
+    - img "close-circle":
+  - generic "旅行社名": "旅行社名 :"
+  - textbox "旅行社名 :":
+    - /placeholder: 请输入旅行社名
+  - button "search 查 询":
+    - img "search":
+    - generic: 查 询
+  - button "reload 重 置":
+    - img "reload":
+    - generic: 重 置
+  - button "setting 配置列":
+    - img "setting":
+    - generic: 配置列
+  - table:
+    - rowgroup:
+      - row "序号 订单编号 游客类型 产品名称 所属类型 内导姓名 单价（元） 开单时间 开单支付方式 开单金额（元） 补收支付方式 补收金额（元） 退款支付方式 退款金额（元） 实收金额（元） 开单人 结算/退票人 订单状态 操作":
+        - columnheader "序号"
+        - columnheader "订单编号"
+        - columnheader "游客类型"
+        - columnheader "产品名称"
+        - columnheader "所属类型"
+        - columnheader "内导姓名"
+        - columnheader "单价（元）"
+        - columnheader "开单时间"
+        - columnheader "开单支付方式"
+        - columnheader "开单金额（元）"
+        - columnheader "补收支付方式"
+        - columnheader "补收金额（元）"
+        - columnheader "退款支付方式"
+        - columnheader "退款金额（元）"
+        - columnheader "实收金额（元）"
+        - columnheader "开单人"
+        - columnheader "结算/退票人"
+        - columnheader "订单状态"
+        - columnheader "操作"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "1 DD261104171120001001s 散客 VIP服务 计时收费 zxcdcc 0.01 2026-11-04 17:11:20 现金 0.02 银行卡 0.01 - - 0.03 YST售票窗口 - 已结算 查看 打印":
+        - cell "1"
+        - cell "DD261104171120001001s"
+        - cell "散客"
+        - cell "VIP服务"
+        - cell "计时收费"
+        - cell "zxcdcc"
+        - cell "0.01"
+        - cell "2026-11-04 17:11:20"
+        - cell "现金"
+        - cell "0.02"
+        - cell "银行卡"
+        - cell "0.01"
+        - cell "-"
+        - cell "-"
+        - cell "0.03"
+        - cell "YST售票窗口"
+        - cell "-"
+        - cell "已结算"
+        - cell "查看 打印":
+          - button "查看":
+            - generic: 查看
+          - button "打印":
+            - generic: 打印
+  - list:
+    - listitem: 共 1 条
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "下一页":
+      - button "right" [disabled]:
+        - img "right":
+    - generic "页码":
+      - combobox "页码"
+      - generic "10 条/页"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"
+- dialog "订单详情":
+  - button "Close":
+    - img "close":
+  - generic: 订单详情
+  - generic: 产品信息
+  - table:
+    - rowgroup:
+      - 'row "产品名称 : VIP服务 所属类型 : 计时收费 单价（元/小时） : 0.01 默认押金（元） : 0.02"':
+        - 'cell "产品名称 : VIP服务"':
+          - generic: "产品名称 :"
+          - generic: VIP服务
+        - 'cell "所属类型 : 计时收费"':
+          - generic: "所属类型 :"
+          - generic: 计时收费
+        - 'cell "单价（元/小时） : 0.01"':
+          - generic: "单价（元/小时） :"
+          - generic: "0.01"
+        - 'cell "默认押金（元） : 0.02"':
+          - generic: "默认押金（元） :"
+          - generic: "0.02"
+  - generic: 订单信息
+  - table:
+    - rowgroup:
+      - 'row "订单编号 : DD261104171120001001s 开单时间 : 2026-11-04 17:11:20 开单人 : YST售票窗口 开单金额/押金（元） : 0.02"':
+        - 'cell "订单编号 : DD261104171120001001s"':
+          - generic: "订单编号 :"
+          - generic: DD261104171120001001s
+        - 'cell "开单时间 : 2026-11-04 17:11:20"':
+          - generic: "开单时间 :"
+          - generic: 2026-11-04 17:11:20
+        - 'cell "开单人 : YST售票窗口"':
+          - generic: "开单人 :"
+          - generic: YST售票窗口
+        - 'cell "开单金额/押金（元） : 0.02"':
+          - generic: "开单金额/押金（元） :"
+          - generic: "0.02"
+      - 'row "内导姓名 : zxcdcc 内导编号 : - 内导性别 : 女 内导级别 : 初级"':
+        - 'cell "内导姓名 : zxcdcc"':
+          - generic: "内导姓名 :"
+          - generic: zxcdcc
+        - 'cell "内导编号 : -"':
+          - generic: "内导编号 :"
+          - generic: "-"
+        - 'cell "内导性别 : 女"':
+          - generic: "内导性别 :"
+          - generic: 女
+        - 'cell "内导级别 : 初级"':
+          - generic: "内导级别 :"
+          - generic: 初级
+      - 'row "游客类型 : 散客 游客数量 : 1人 旅行社名 : - 外导姓名 : -"':
+        - 'cell "游客类型 : 散客"':
+          - generic: "游客类型 :"
+          - generic: 散客
+        - 'cell "游客数量 : 1人"':
+          - generic: "游客数量 :"
+          - generic: 1人
+        - 'cell "旅行社名 : -"':
+          - generic: "旅行社名 :"
+          - generic: "-"
+        - 'cell "外导姓名 : -"':
+          - generic: "外导姓名 :"
+          - generic: "-"
+      - 'row "支付方式 : 现金"':
+        - 'cell "支付方式 : 现金"':
+          - generic: "支付方式 :"
+          - generic: 现金
+  - generic: 游客信息
+  - generic: 游玩日期：2026-11-04
+  - button "setting 配置列":
+    - img "setting":
+    - generic: 配置列
+  - table:
+    - rowgroup:
+      - row "游客姓名 证件号 性别":
+        - columnheader "游客姓名"
+        - columnheader "证件号"
+        - columnheader "性别"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "QA1104R12DEVICE 未知":
+        - cell "QA1104R12DEVICE"
+        - cell
+        - cell "未知"
+  - list:
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "下一页":
+      - button "right" [disabled]:
+        - img "right":
+  - generic: 交易记录
+  - button "setting 配置列":
+    - img "setting":
+    - generic: 配置列
+  - table:
+    - rowgroup:
+      - row "操作员 操作设备名 交易类型 交易状态 支付/退款方式 收款资源 柜台编码/POS编号 交易金额（元） 交易时间 交易流水":
+        - columnheader "操作员"
+        - columnheader "操作设备名"
+        - columnheader "交易类型"
+        - columnheader "交易状态"
+        - columnheader "支付/退款方式"
+        - columnheader "收款资源"
+        - columnheader "柜台编码/POS编号"
+        - columnheader "交易金额（元）"
+        - columnheader "交易时间"
+        - columnheader "交易流水"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "YST售票窗口 YST团队售票窗口 开单 支付成功 现金 - - 0.02 2026-11-04 17:11:20 -":
+        - cell "YST售票窗口"
+        - cell "YST团队售票窗口"
+        - cell "开单"
+        - cell "支付成功"
+        - cell "现金"
+        - cell "-"
+        - cell "-"
+        - cell "0.02"
+        - cell "2026-11-04 17:11:20"
+        - cell "-"
+      - row "YST售票窗口 YST散客售票窗口 补收 支付成功 银行卡 QA-PAY-20261103-R01-POS01 000QA1103POS01 0.01 2026-11-04 17:21:52 -":
+        - cell "YST售票窗口"
+        - cell "YST散客售票窗口"
+        - cell "补收"
+        - cell "支付成功"
+        - cell "银行卡"
+        - cell "QA-PAY-20261103-R01-POS01"
+        - cell "000QA1103POS01"
+        - cell "0.01"
+        - cell "2026-11-04 17:21:52"
+        - cell "-"
+  - list:
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "下一页":
+      - button "right" [disabled]:
+        - img "right":
+  - generic: 结账信息
+  - table:
+    - rowgroup:
+      - 'row "结算时间 : 2026-11-04 20:12:00 实际时长（分钟） : 181 结算时长（小时） : 3 补收金额（元） : 0.01"':
+        - 'cell "结算时间 : 2026-11-04 20:12:00"':
+          - generic: "结算时间 :"
+          - generic: 2026-11-04 20:12:00
+        - 'cell "实际时长（分钟） : 181"':
+          - generic: "实际时长（分钟） :"
+          - generic: "181"
+        - 'cell "结算时长（小时） : 3"':
+          - generic: "结算时长（小时） :"
+          - generic: "3"
+        - 'cell "补收金额（元） : 0.01"':
+          - generic: "补收金额（元） :"
+          - generic: "0.01"
+      - 'row "退款金额（元） : 0 结算金额（元） : 0.03 结算/退票人 : YST售票窗口"':
+        - 'cell "退款金额（元） : 0"':
+          - generic: "退款金额（元） :"
+          - generic: "0"
+        - 'cell "结算金额（元） : 0.03"':
+          - generic: "结算金额（元） :"
+          - generic: "0.03"
+        - 'cell "结算/退票人 : YST售票窗口"':
+          - generic: "结算/退票人 :"
+          - generic: YST售票窗口
+  - button "取 消":
+    - generic: 取 消
+  - button "确 定":
+    - generic: 确 定

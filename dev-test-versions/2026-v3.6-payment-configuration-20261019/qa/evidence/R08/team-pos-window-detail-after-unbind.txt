@@ -1,0 +1,292 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "售票":
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "统计":
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "内导":
+    - generic: 内导
+  - button "remove":
+    - img "close":
+  - tab "订单详情" [selected]:
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+- tabpanel "订单详情"
+- text: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- generic: 订单详情
+- button "返 回":
+  - generic: 返 回
+- generic: 订单基础信息
+- generic: 待使用
+- table:
+  - rowgroup:
+    - 'row "订单编号 : DD261104075121001001s 三方订单编号 : - 团散类型 : 团队"':
+      - 'cell "订单编号 : DD261104075121001001s"':
+        - generic: "订单编号 :"
+        - generic: DD261104075121001001s
+      - 'cell "三方订单编号 : -"':
+        - generic: "三方订单编号 :"
+        - generic: "-"
+      - 'cell "团散类型 : 团队"':
+        - generic: "团散类型 :"
+        - generic: 团队
+    - 'row "销售渠道 : 窗口售票 销售来源 : YST团队售票窗口 售票员 : YST售票窗口"':
+      - 'cell "销售渠道 : 窗口售票"':
+        - generic: "销售渠道 :"
+        - generic: 窗口售票
+      - 'cell "销售来源 : YST团队售票窗口"':
+        - generic: "销售来源 :"
+        - generic: YST团队售票窗口
+      - 'cell "售票员 : YST售票窗口"':
+        - generic: "售票员 :"
+        - generic: YST售票窗口
+    - 'row "购票人 : 测试导游5 联系电话 : 18300000005 下单时间 : 2026-11-04 07:51:21"':
+      - 'cell "购票人 : 测试导游5"':
+        - generic: "购票人 :"
+        - generic: 测试导游5
+      - 'cell "联系电话 : 18300000005"':
+        - generic: "联系电话 :"
+        - generic: "18300000005"
+      - 'cell "下单时间 : 2026-11-04 07:51:21"':
+        - generic: "下单时间 :"
+        - generic: 2026-11-04 07:51:21
+    - 'row "游玩日期 : 2026-11-04 订单金额 : 99元 订单票数 : 1张"':
+      - 'cell "游玩日期 : 2026-11-04"':
+        - generic: "游玩日期 :"
+        - generic: 2026-11-04
+      - 'cell "订单金额 : 99元"':
+        - generic: "订单金额 :"
+        - generic: 99元
+      - 'cell "订单票数 : 1张"':
+        - generic: "订单票数 :"
+        - generic: 1张
+- generic: 订单支付信息
+- table:
+  - rowgroup:
+    - 'row "支付时间 : 2026-11-04 07:51:22 支付状态 : 支付成功 支付类型 : 银行卡"':
+      - 'cell "支付时间 : 2026-11-04 07:51:22"':
+        - generic: "支付时间 :"
+        - generic: 2026-11-04 07:51:22
+      - 'cell "支付状态 : 支付成功"':
+        - generic: "支付状态 :"
+        - generic: 支付成功
+      - 'cell "支付类型 : 银行卡"':
+        - generic: "支付类型 :"
+        - generic: 银行卡
+    - 'row "支付金额 : 99元 支付流水号 : - 收款资源 : QA-PAY-20261103-R04-POS-A"':
+      - 'cell "支付金额 : 99元"':
+        - generic: "支付金额 :"
+        - generic: 99元
+      - 'cell "支付流水号 : -"':
+        - generic: "支付流水号 :"
+        - generic: "-"
+      - 'cell "收款资源 : QA-PAY-20261103-R04-POS-A"':
+        - generic: "收款资源 :"
+        - generic: QA-PAY-20261103-R04-POS-A
+    - 'row "POS编号 : 000QA1103R04P"':
+      - 'cell "POS编号 : 000QA1103R04P"':
+        - generic: "POS编号 :"
+        - generic: 000QA1103R04P
+- generic: 团队基础信息
+- table:
+  - rowgroup:
+    - 'row "集团名称 : YST测试集团 旅行社名 : YST线上预约测试旅行社 行程单号 : -"':
+      - 'cell "集团名称 : YST测试集团"':
+        - generic: "集团名称 :"
+        - generic: YST测试集团
+      - 'cell "旅行社名 : YST线上预约测试旅行社"':
+        - generic: "旅行社名 :"
+        - generic: YST线上预约测试旅行社
+      - 'cell "行程单号 : -"':
+        - generic: "行程单号 :"
+        - generic: "-"
+    - 'row "预约来源 : - 团队类型 : 一日游 团队人数 : -"':
+      - 'cell "预约来源 : -"':
+        - generic: "预约来源 :"
+        - generic: "-"
+      - 'cell "团队类型 : 一日游"':
+        - generic: "团队类型 :"
+        - generic: 一日游
+      - 'cell "团队人数 : -"':
+        - generic: "团队人数 :"
+        - generic: "-"
+    - 'row "导游姓名 : 测试导游5 导游手机号 : 18300000005 导游证件号 : 530101196001012250"':
+      - 'cell "导游姓名 : 测试导游5"':
+        - generic: "导游姓名 :"
+        - generic: 测试导游5
+      - 'cell "导游手机号 : 18300000005"':
+        - generic: "导游手机号 :"
+        - generic: "18300000005"
+      - 'cell "导游证件号 : 530101196001012250"':
+        - generic: "导游证件号 :"
+        - generic: "530101196001012250"
+- generic: 订单检票信息
+- generic: 未检票数
+- generic: "1"
+- generic: 张
+- generic: 已检票数
+- generic: "0"
+- generic: 张
+- generic: 已退票数
+- generic: "0"
+- generic: 张
+- table:
+  - rowgroup:
+    - row "门票名称 分类 票型种类 价格类型 季节类型 票型打印 总票数 待付款 待确认 待使用 已取票 部分检票 全部检票 已退票":
+      - columnheader "门票名称"
+      - columnheader "分类"
+      - columnheader "票型种类"
+      - columnheader "价格类型"
+      - columnheader "季节类型"
+      - columnheader "票型打印"
+      - columnheader "总票数"
+      - columnheader "待付款"
+      - columnheader "待确认"
+      - columnheader "待使用"
+      - columnheader "已取票"
+      - columnheader "部分检票"
+      - columnheader "全部检票"
+      - columnheader "已退票"
+  - rowgroup:
+    - row "团队单门票 点击复制 门区项目（2025年） - 优惠票 旺季 打印 1 0 0 1 0 0 0 0":
+      - cell "团队单门票 点击复制":
+        - text: 团队单门票
+        - button "点击复制":
+          - img "copy":
+      - cell "门区项目（2025年）"
+      - cell "-"
+      - cell "优惠票"
+      - cell "旺季"
+      - cell "打印":
+        - button "打印":
+          - generic: 打印
+      - cell "1"
+      - cell "0"
+      - cell "0"
+      - cell "1"
+      - cell "0"
+      - cell "0"
+      - cell "0"
+      - cell "0"
+- generic: 游客门票详情
+- generic "票号": "票号 :"
+- textbox "票号 :":
+  - /placeholder: 请输入票号
+- generic "游客姓名": "游客姓名 :"
+- textbox "游客姓名 :":
+  - /placeholder: 请输入游客姓名
+- generic "游客证件号": "游客证件号 :"
+- textbox "游客证件号 :":
+  - /placeholder: 请输入游客证件号
+- generic "门票名称": "门票名称 :"
+- textbox "请输入门票名称"
+- button "search 查 询":
+  - img "search":
+  - generic: 查 询
+- button "reload 重 置":
+  - img "reload":
+  - generic: 重 置
+- radio "全部" [checked]
+- text: 全部
+- radio "待付款"
+- text: 待付款
+- radio "待确认"
+- text: 待确认
+- radio "待使用"
+- text: 待使用
+- radio "已取票"
+- text: 已取票
+- radio "部分检票"
+- text: 部分检票
+- radio "全部检票"
+- text: 全部检票
+- radio "已退款"
+- text: 已退款
+- button "导 入":
+  - generic: 导 入
+- button "导 出":
+  - generic: 导 出
+- button "批量打印":
+  - generic: 批量打印
+- button "setting 配置列":
+  - img "setting":
+  - generic: 配置列
+- table:
+  - rowgroup:
+    - row "Select all 游客姓名 门票名称 售卖单价（元） 票号 证件号 门票状态 检票项目数（已检/全部） 打印序号 操作":
+      - columnheader "Select all":
+        - checkbox "Select all"
+      - columnheader "游客姓名"
+      - columnheader "门票名称"
+      - columnheader "售卖单价（元）"
+      - columnheader "票号"
+      - columnheader "证件号"
+      - columnheader "门票状态"
+      - columnheader "检票项目数（已检/全部）"
+      - columnheader "打印序号"
+      - columnheader "操作"
+  - rowgroup:
+    - row "- 团队单门票 99 563F3X25DMJ23 - 待使用 0 / 1 1 打印 查看":
+      - cell:
+        - checkbox
+      - cell "-"
+      - cell "团队单门票":
+        - generic: 团队单门票
+      - cell "99"
+      - cell "563F3X25DMJ23"
+      - cell "-"
+      - cell "待使用":
+        - generic: 待使用
+      - cell "0 / 1":
+        - generic: 0 / 1
+      - cell "1"
+      - cell "打印 查看":
+        - button "打印":
+          - generic: 打印
+        - button "查看":
+          - generic: 查看
+- list:
+  - listitem: 共 1 条
+  - listitem "上一页":
+    - button "left" [disabled]:
+      - img "left":
+  - listitem "1":
+    - generic: "1"
+  - listitem "下一页":
+    - button "right" [disabled]:
+      - img "right":
+  - generic "页码":
+    - combobox "页码"
+    - generic "10 条/页"
+- generic: ": : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"

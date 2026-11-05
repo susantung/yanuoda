@@ -1,0 +1,2 @@
+- img "Unauthorized"
+- generic: 暂无权限，请联系管理员

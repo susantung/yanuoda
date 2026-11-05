@@ -1,0 +1,290 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "售票" [selected]:
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "内导":
+    - generic: 内导
+  - button "remove":
+    - img "close":
+  - tab "统计":
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "退票":
+    - generic: 退票
+  - button "remove":
+    - img "close":
+  - tab "订单详情":
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+- tabpanel "售票"
+- tablist:
+  - tab "散客票"
+  - tab "团队票" [selected]
+  - tab "挂单列表"
+- tabpanel "团队票":
+  - generic: 请选择旅行社
+  - generic: 请选择导游
+  - combobox
+  - generic: 请选择团队类型
+  - combobox
+  - generic: 门票分类
+  - textbox "门票名称 :":
+    - /placeholder: 票型名称
+  - combobox
+  - generic: 活动标签
+  - combobox
+  - generic: 价格类型
+  - button "search 查 询":
+    - img "search":
+    - generic: 查 询
+  - checkbox "显示价格类型，票型票种" [checked]
+  - generic: 显示价格类型，票型票种
+  - button "caret-up caret-down 金额":
+    - img "caret-up":
+    - img "caret-down":
+    - generic: 金额
+  - img "Simple Empty"
+  - generic: 暂无数据
+  - generic: 旅行社：
+  - generic: "-"
+  - generic: 导游：
+  - generic: "-"
+  - generic: 账户余额：
+  - generic: "-"
+  - generic: 签单授信余额：
+  - generic: "-"
+  - generic: 团队类型：
+  - combobox
+  - generic: 售卖信息
+  - generic: 最近订单：2026-11-04 14:14:53
+  - generic: DD261104141453001001s
+  - generic: 1张
+  - text: 预付款：
+  - generic: ¥99
+  - generic: 日期
+  - textbox "请选择日期": 2026-11-04
+  - img "calendar":
+  - button "cloud-download 下载模版":
+    - img "cloud-download":
+    - generic: 下载模版
+  - img "empty image"
+  - generic: 暂无数据，请先选择门票
+  - generic: 支付方式：
+  - combobox
+  - img "预付款"
+  - text: 预付款
+  - button "刷新支付方式":
+    - img "reload":
+  - generic: 总票数：
+  - generic: "0"
+  - generic: 张
+  - generic: 订单总金额：
+  - generic: ¥0
+  - button "取 消":
+    - generic: 取 消
+  - button "确认下单":
+    - generic: 确认下单
+- text: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : * : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- generic: "* : : * : :"
+- dialog "选择旅行社":
+  - button "Close":
+    - img "close":
+  - generic: 选择旅行社
+  - generic "集团名称": "集团名称 :"
+  - textbox "集团名称 :":
+    - /placeholder: 请输入集团名称
+  - generic "旅行社名称": "旅行社名称 :"
+  - textbox "请输入旅行社名称"
+  - generic "预约来源": "预约来源 :"
+  - combobox "预约来源 :"
+  - generic: 请选择预约来源
+  - button "search 查 询":
+    - img "search":
+    - generic: 查 询
+  - button "reload 重 置":
+    - img "reload":
+    - generic: 重 置
+  - button "setting 配置列":
+    - img "setting":
+    - generic: 配置列
+  - table:
+    - rowgroup:
+      - row "集团名称 旅行社名称 团队类型 预约来源 预约规则 超限审批 账户余额(元) 签单授信余额(元)":
+        - columnheader
+        - columnheader "集团名称"
+        - columnheader "旅行社名称"
+        - columnheader "团队类型"
+        - columnheader "预约来源"
+        - columnheader "预约规则"
+        - columnheader "超限审批"
+        - columnheader "账户余额(元)"
+        - columnheader "签单授信余额(元)"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "YST测试集团 YST线上预约测试旅行社 一日游,常规团 线上预约平台 已禁用 已禁用 901.01 无限制":
+        - cell:
+          - radio
+        - cell "YST测试集团"
+        - cell "YST线上预约测试旅行社"
+        - cell "一日游,常规团"
+        - cell "线上预约平台"
+        - cell "已禁用"
+        - cell "已禁用"
+        - cell "901.01"
+        - cell "无限制"
+      - row "这个集团下的都用集团账户预付款 1022全域创建的旅行社 常规团,一日游 线上预约平台 已启用 已启用 0 无限制":
+        - cell:
+          - radio
+        - cell "这个集团下的都用集团账户预付款"
+        - cell "1022全域创建的旅行社"
+        - cell "常规团,一日游"
+        - cell "线上预约平台"
+        - cell "已启用"
+        - cell "已启用"
+        - cell "0"
+        - cell "无限制"
+      - row "7.17集团 0923创建的旅行社 常规团,一日游 无预约 已禁用 已禁用 999980 无限制":
+        - cell:
+          - radio
+        - cell "7.17集团"
+        - cell "0923创建的旅行社"
+        - cell "常规团,一日游"
+        - cell "无预约"
+        - cell "已禁用"
+        - cell "已禁用"
+        - cell "999980"
+        - cell "无限制"
+      - row "这个集团下的都用集团账户预付款 829旅行社 常规团,一日游 无预约 已禁用 已禁用 -2814.13 无限制":
+        - cell:
+          - radio
+        - cell "这个集团下的都用集团账户预付款"
+        - cell "829旅行社"
+        - cell "常规团,一日游"
+        - cell "无预约"
+        - cell "已禁用"
+        - cell "已禁用"
+        - cell "-2814.13"
+        - cell "无限制"
+      - row "这个集团下的都用集团账户预付款 7.24旅行社 常规团,一日游 无预约 已禁用 已禁用 28804.94 无限制":
+        - cell:
+          - radio
+        - cell "这个集团下的都用集团账户预付款"
+        - cell "7.24旅行社"
+        - cell "常规团,一日游"
+        - cell "无预约"
+        - cell "已禁用"
+        - cell "已禁用"
+        - cell "28804.94"
+        - cell "无限制"
+      - row "7.17集团 授信旅行社（在线预约平台） 常规团,一日游 线上预约平台 已启用 已启用 78807.92 -24111":
+        - cell:
+          - radio
+        - cell "7.17集团"
+        - cell "授信旅行社（在线预约平台）"
+        - cell "常规团,一日游"
+        - cell "线上预约平台"
+        - cell "已启用"
+        - cell "已启用"
+        - cell "78807.92"
+        - cell "-24111"
+      - row "7.17集团 系统对接（默认预付款）-自己付款 常规团,一日游 系统对接 已禁用 已禁用 6.62 无限制":
+        - cell:
+          - radio
+        - cell "7.17集团"
+        - cell "系统对接（默认预付款）-自己付款"
+        - cell "常规团,一日游"
+        - cell "系统对接"
+        - cell "已禁用"
+        - cell "已禁用"
+        - cell "6.62"
+        - cell "无限制"
+      - row "这个集团下的都用集团账户预付款 集团下旅行社B 常规团,一日游 系统对接 已启用 已启用 28804.94 无限制":
+        - cell:
+          - radio
+        - cell "这个集团下的都用集团账户预付款"
+        - cell "集团下旅行社B"
+        - cell "常规团,一日游"
+        - cell "系统对接"
+        - cell "已启用"
+        - cell "已启用"
+        - cell "28804.94"
+        - cell "无限制"
+      - row "这个集团下的都用集团账户预付款 集团下旅行社A 常规团,一日游 系统对接 已禁用 已禁用 28804.94 无限制":
+        - cell:
+          - radio
+        - cell "这个集团下的都用集团账户预付款"
+        - cell "集团下旅行社A"
+        - cell "常规团,一日游"
+        - cell "系统对接"
+        - cell "已禁用"
+        - cell "已禁用"
+        - cell "28804.94"
+        - cell "无限制"
+      - row "这个集团下的都用集团账户预付款 7.16旅行社 常规团,一日游 线上预约平台 已禁用 已禁用 51.99 无限制":
+        - cell:
+          - radio
+        - cell "这个集团下的都用集团账户预付款"
+        - cell "7.16旅行社"
+        - cell "常规团,一日游"
+        - cell "线上预约平台"
+        - cell "已禁用"
+        - cell "已禁用"
+        - cell "51.99"
+        - cell "无限制"
+  - list:
+    - listitem: 共 26 条
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "2":
+      - generic: "2"
+    - listitem "3":
+      - generic: "3"
+    - listitem "下一页":
+      - button "right":
+        - img "right":
+    - generic "页码":
+      - combobox "页码"
+      - generic "10 条/页"
+    - text: 跳至
+    - textbox "页"
+    - text: 页
+  - button "确 定":
+    - generic: 确 定
+  - button "取 消":
+    - generic: 取 消

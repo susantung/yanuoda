@@ -1,0 +1,12 @@
+[
+  {
+    "label": null,
+    "readonly": true,
+    "value": ""
+  },
+  {
+    "label": "收款资源",
+    "readonly": true,
+    "value": ""
+  }
+]

@@ -1,0 +1,156 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "售票":
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "统计":
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "内导" [selected]:
+    - generic: 内导
+  - button "remove":
+    - img "close":
+- tabpanel "内导"
+- text: ": : : : : : : : : : : : : : : : : : :"
+- tablist:
+  - tab "导游开单"
+  - tab "订单记录" [selected]
+  - tab "交易记录"
+  - tab "内导报表统计"
+- tabpanel "订单记录":
+  - generic "订单编号": "订单编号 :"
+  - 'textbox "订单编号 : 订单编号 :"':
+    - /placeholder: 请输入订单编号
+    - text: DD261104070211001001s
+  - generic "内导姓名": "内导姓名 :"
+  - textbox "内导姓名 :":
+    - /placeholder: 请输入内导姓名
+  - generic "外导姓名": "外导姓名 :"
+  - textbox "外导姓名 :":
+    - /placeholder: 请输入外导姓名
+  - generic "导游证件": "导游证件 :"
+  - textbox "导游证件 :":
+    - /placeholder: 请输入外导证件号
+  - generic "外导手机": "外导手机 :"
+  - textbox "外导手机 :":
+    - /placeholder: 请输入外导手机号
+  - generic "开单人": "开单人 :"
+  - textbox "开单人 :":
+    - /placeholder: 请输入开单人
+  - generic "订单状态": "订单状态 :"
+  - combobox "订单状态 :"
+  - generic "全部"
+  - generic "开单日期": "开单日期 :"
+  - textbox "开单日期 :":
+    - /placeholder: 开始时间
+    - text: 2026-11-04 00:00:00
+  - generic "to":
+    - img "swap-right":
+  - textbox "结束时间": 2026-11-04 23:59:59
+  - img "calendar":
+  - button "close-circle":
+    - img "close-circle":
+  - generic "旅行社名": "旅行社名 :"
+  - textbox "旅行社名 :":
+    - /placeholder: 请输入旅行社名
+  - button "search 查 询":
+    - img "search":
+    - generic: 查 询
+  - button "reload 重 置":
+    - img "reload":
+    - generic: 重 置
+  - button "setting 配置列":
+    - img "setting":
+    - generic: 配置列
+  - table:
+    - rowgroup:
+      - row "序号 订单编号 游客类型 产品名称 所属类型 内导姓名 单价（元） 开单时间 开单支付方式 开单金额（元） 补收支付方式 补收金额（元） 退款支付方式 退款金额（元） 实收金额（元） 开单人 结算/退票人 订单状态 操作":
+        - columnheader "序号"
+        - columnheader "订单编号"
+        - columnheader "游客类型"
+        - columnheader "产品名称"
+        - columnheader "所属类型"
+        - columnheader "内导姓名"
+        - columnheader "单价（元）"
+        - columnheader "开单时间"
+        - columnheader "开单支付方式"
+        - columnheader "开单金额（元）"
+        - columnheader "补收支付方式"
+        - columnheader "补收金额（元）"
+        - columnheader "退款支付方式"
+        - columnheader "退款金额（元）"
+        - columnheader "实收金额（元）"
+        - columnheader "开单人"
+        - columnheader "结算/退票人"
+        - columnheader "订单状态"
+        - columnheader "操作"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "1 DD261104070211001001s 散客 VIP服务 计时收费 zxcdcc 0.01 2026-11-04 07:02:13 扫码付 0.02 - - - - 0.02 YST售票窗口 - 已结算 查看 打印":
+        - cell "1"
+        - cell "DD261104070211001001s"
+        - cell "散客"
+        - cell "VIP服务"
+        - cell "计时收费"
+        - cell "zxcdcc"
+        - cell "0.01"
+        - cell "2026-11-04 07:02:13"
+        - cell "扫码付"
+        - cell "0.02"
+        - cell "-"
+        - cell "-"
+        - cell "-"
+        - cell "-"
+        - cell "0.02"
+        - cell "YST售票窗口"
+        - cell "-"
+        - cell "已结算"
+        - cell "查看 打印":
+          - button "查看":
+            - generic: 查看
+          - button "打印":
+            - generic: 打印
+  - list:
+    - listitem: 共 1 条
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "下一页":
+      - button "right" [disabled]:
+        - img "right":
+    - generic "页码":
+      - combobox "页码"
+      - generic "10 条/页"
+- text: ": : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"

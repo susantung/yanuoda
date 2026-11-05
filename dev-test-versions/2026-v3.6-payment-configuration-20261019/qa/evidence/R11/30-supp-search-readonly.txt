@@ -1,0 +1,1 @@
+内导支付订单确认，银行卡设备多资源。实际DOM检查收款资源combobox：readonly=true，disabled=false。候选仅QA-PAY-20261103-R01-POS01和QA-PAY-20261103-R04-POS-A。默认POS-A，手选POS01后编号000QA1103POS01；已真实补收0.01元。

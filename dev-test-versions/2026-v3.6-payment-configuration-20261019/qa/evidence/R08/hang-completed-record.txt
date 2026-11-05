@@ -1,0 +1,217 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "订单详情":
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+  - tab "内导":
+    - generic: 内导
+  - button "remove":
+    - img "close":
+  - tab "售票" [selected]:
+    - generic: 售票
+  - button "remove":
+    - img "close":
+- tabpanel "售票"
+- text: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- tablist:
+  - tab "散客票"
+  - tab "团队票"
+  - tab "挂单列表" [active] [selected]
+- tabpanel "挂单列表":
+  - generic "游客姓名": "游客姓名 :"
+  - textbox "游客姓名 :":
+    - /placeholder: 输入姓名
+  - generic "证件号": "证件号 :"
+  - textbox "证件号 :":
+    - /placeholder: 输入证件号
+  - generic "总金额": "总金额 :"
+  - textbox "总金额 :":
+    - /placeholder: 输入总金额
+  - generic "行程批次": "行程批次 :"
+  - textbox "行程批次 :":
+    - /placeholder: 输入批次
+  - generic "导游": "导游 :"
+  - combobox
+  - generic: 选择/搜索
+  - button "search 查 询":
+    - img "search":
+    - generic: 查 询
+  - button "reload 重 置":
+    - img "reload":
+    - generic: 重 置
+  - switch
+  - generic: 全域同步模式
+  - img "right":
+  - generic: 游玩日期
+  - generic: 2026-11-02
+  - generic: 挂单号
+  - generic: GD202611020001
+  - generic: 购票人（选填）
+  - combobox
+  - generic: 选择购票人
+  - generic: 门票总数
+  - generic: 5张
+  - generic: 挂单金额
+  - generic: ¥0.03
+  - generic: 状态
+  - generic: 待支付
+  - generic: 更新时间
+  - generic: 13:37:26
+  - generic: 行程批次
+  - generic: 20261102-1
+  - button "edit 编辑":
+    - img "edit":
+    - generic: 编辑
+  - button "cloud-upload 同步数据":
+    - img "cloud-upload":
+    - generic: 同步数据
+  - button "delete 删除":
+    - img "delete":
+    - generic: 删除
+  - generic: 联系电话（选填）
+  - textbox "填写联系电话"
+  - generic: 导游（选填）
+  - combobox
+  - generic: 选择导游
+  - generic: 车型（选填）
+  - combobox
+  - generic: 请选择
+  - generic: 推荐人（选填）
+  - textbox "填写推荐人"
+  - generic: 备注（选填）
+  - textbox "填写备注信息"
+  - table:
+    - rowgroup:
+      - row "票型名称 售卖单价 张数 总金额 同步状态 失败原因 操作":
+        - columnheader "票型名称"
+        - columnheader "售卖单价"
+        - columnheader "张数"
+        - columnheader "总金额"
+        - columnheader "同步状态"
+        - columnheader "失败原因"
+        - columnheader "操作"
+    - rowgroup:
+      - row "门+1号缆车上+1号缆车下 ¥0.01 2 ¥0.02 check-circle 同步成功 - eye 查看(2)":
+        - cell "门+1号缆车上+1号缆车下"
+        - cell "¥0.01"
+        - cell "2"
+        - cell "¥0.02"
+        - cell "check-circle 同步成功":
+          - img "check-circle":
+          - text: 同步成功
+        - cell "-"
+        - cell "eye 查看(2)":
+          - img "eye":
+          - text: 查看(2)
+      - row "套票2大1小（成人票-门+车+雨林拓展+528动物+幻景魔盒+秋千+滑索+玻璃平台） ¥0 2 ¥0.00 check-circle 同步成功 - eye 查看(2)":
+        - cell "套票2大1小（成人票-门+车+雨林拓展+528动物+幻景魔盒+秋千+滑索+玻璃平台）"
+        - cell "¥0"
+        - cell "2"
+        - cell "¥0.00"
+        - cell "check-circle 同步成功":
+          - img "check-circle":
+          - text: 同步成功
+        - cell "-"
+        - cell "eye 查看(2)":
+          - img "eye":
+          - text: 查看(2)
+      - row "套票2大1小（儿童票-门+车+雨林拓展+528动物+幻景魔盒+秋千+滑索+玻璃平台） ¥0.01 1 ¥0.01 check-circle 同步成功 - eye 查看(1)":
+        - cell "套票2大1小（儿童票-门+车+雨林拓展+528动物+幻景魔盒+秋千+滑索+玻璃平台）"
+        - cell "¥0.01"
+        - cell "1"
+        - cell "¥0.01"
+        - cell "check-circle 同步成功":
+          - img "check-circle":
+          - text: 同步成功
+        - cell "-"
+        - cell "eye 查看(1)":
+          - img "eye":
+          - text: 查看(1)
+  - img "right":
+  - generic: 游玩日期
+  - generic: 2026-11-02
+  - generic: 挂单号
+  - generic: GD202611020002
+  - generic: 购票人（选填）
+  - combobox
+  - generic: 选择购票人
+  - generic: 门票总数
+  - generic: 3张
+  - generic: 挂单金额
+  - generic: ¥0.01
+  - generic: 状态
+  - generic: 待支付
+  - generic: 更新时间
+  - generic: 13:50:52
+  - button "edit 编辑":
+    - img "edit":
+    - generic: 编辑
+  - button "cloud-upload 保存":
+    - img "cloud-upload":
+    - generic: 保存
+  - button "delete 删除":
+    - img "delete":
+    - generic: 删除
+  - table:
+    - rowgroup:
+      - row "票型名称 售卖单价 张数 总金额 操作":
+        - columnheader "票型名称"
+        - columnheader "售卖单价"
+        - columnheader "张数"
+        - columnheader "总金额"
+        - columnheader "操作"
+    - rowgroup:
+      - row "套票2大1小（成人票-门+车+雨林拓展+528动物+幻景魔盒+秋千+滑索+玻璃平台） ¥0 2 ¥0.00 eye 查看(2)":
+        - cell "套票2大1小（成人票-门+车+雨林拓展+528动物+幻景魔盒+秋千+滑索+玻璃平台）"
+        - cell "¥0"
+        - cell "2"
+        - cell "¥0.00"
+        - cell "eye 查看(2)":
+          - img "eye":
+          - text: 查看(2)
+      - row "套票2大1小（儿童票-门+车+雨林拓展+528动物+幻景魔盒+秋千+滑索+玻璃平台） ¥0.01 1 ¥0.01 eye 查看(1)":
+        - cell "套票2大1小（儿童票-门+车+雨林拓展+528动物+幻景魔盒+秋千+滑索+玻璃平台）"
+        - cell "¥0.01"
+        - cell "1"
+        - cell "¥0.01"
+        - cell "eye 查看(1)":
+          - img "eye":
+          - text: 查看(1)
+  - list:
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "下一页":
+      - button "right" [disabled]:
+        - img "right":
+    - generic "页码":
+      - combobox "页码"
+      - generic "10 条/页"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"

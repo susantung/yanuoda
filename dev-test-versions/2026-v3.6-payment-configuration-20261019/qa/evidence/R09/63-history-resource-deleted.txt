@@ -1,0 +1,216 @@
+- generic: 程程票
+- generic: 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺
+- button "售票窗口":
+  - generic: 售票窗口
+- generic: 西瓜
+- menu:
+  - menuitem "home 首页":
+    - img "home":
+    - generic: 首页
+  - menuitem "product 基础信息":
+    - img "product":
+    - generic: 基础信息
+  - menuitem "setting 配置中心" [expanded]:
+    - img "setting":
+    - generic: 配置中心
+  - menu:
+    - menuitem "支付配置":
+      - generic: 支付配置
+    - menuitem "支付资源管理":
+      - generic: 支付资源管理
+  - menuitem "user 员工管理":
+    - img "user":
+    - generic: 员工管理
+  - menuitem "audit 票务中心":
+    - img "audit":
+    - generic: 票务中心
+  - menuitem "transaction 订单中心":
+    - img "transaction":
+    - generic: 订单中心
+  - menuitem "gold 售后中心":
+    - img "gold":
+    - generic: 售后中心
+  - menuitem "team 团队管理":
+    - img "team":
+    - generic: 团队管理
+  - menuitem "rest 冲红管理":
+    - img "rest":
+    - generic: 冲红管理
+  - menuitem "cluster 内导管理":
+    - img "cluster":
+    - generic: 内导管理
+  - menuitem "deployment-unit 分销管理":
+    - img "deployment-unit":
+    - generic: 分销管理
+  - menuitem "message 短信管理":
+    - img "message":
+    - generic: 短信管理
+  - menuitem "pie-chart 报表中心":
+    - img "pie-chart":
+    - generic: 报表中心
+  - menuitem "database 数据中心":
+    - img "database":
+    - generic: 数据中心
+- generic "收起侧边栏":
+  - img "menu-fold":
+- tablist:
+  - tab "支付配置":
+    - generic: 支付配置
+  - tab "系统角色":
+    - generic: 系统角色
+  - tab "冲红审核":
+    - generic: 冲红审核
+  - tab "支付资源管理" [selected]:
+    - generic: 支付资源管理
+  - button "remove":
+    - img "close-circle":
+  - img "close-square":
+  - generic: 清空页签
+- tabpanel "支付资源管理"
+- navigation:
+  - list:
+    - img "home":
+    - link "程程票":
+      - /url: "#/"
+    - listitem: /
+    - link "配置中心":
+      - /url: "#/payment-center"
+    - listitem: /
+    - listitem: 支付资源管理
+- text: ": : : : : :"
+- heading "支付资源管理" [level=3]
+- generic "资源名称": "资源名称 :"
+- textbox "资源名称 :":
+  - /placeholder: 请输入资源名称
+- generic "资源类型": "资源类型 :"
+- combobox "资源类型 :"
+- button "查 询":
+  - generic: 查 询
+- button "重 置":
+  - generic: 重 置
+- button "新增支付资源":
+  - generic: 新增支付资源
+- table:
+  - rowgroup:
+    - row "资源名称 资源类型 柜台编码/POS编号 启用状态 操作":
+      - columnheader "资源名称"
+      - columnheader "资源类型"
+      - columnheader "柜台编码/POS编号"
+      - columnheader "启用状态"
+      - columnheader "操作"
+  - rowgroup:
+    - row "QA-PAY-20261103-R07-EDIT 扫码付柜台 000QA1103R07E 编辑 删除":
+      - cell "QA-PAY-20261103-R07-EDIT"
+      - cell "扫码付柜台"
+      - cell "000QA1103R07E"
+      - cell:
+        - switch [checked]
+      - cell "编辑 删除":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+    - row "QA-PAY-20261103-R04-POS-A 银行卡POS 000QA1103R04P 编辑 删除":
+      - cell "QA-PAY-20261103-R04-POS-A"
+      - cell "银行卡POS"
+      - cell "000QA1103R04P"
+      - cell:
+        - switch [checked]
+      - cell "编辑 删除":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+    - row "QA-PAY-20261103-R04-SCAN-A 扫码付柜台 000QA1103R04A 编辑 删除":
+      - cell "QA-PAY-20261103-R04-SCAN-A"
+      - cell "扫码付柜台"
+      - cell "000QA1103R04A"
+      - cell:
+        - switch [checked]
+      - cell "编辑 删除":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+    - row "QA-PAY-20261103-R01-POS01 银行卡POS 000QA1103POS01 编辑 删除":
+      - cell "QA-PAY-20261103-R01-POS01"
+      - cell "银行卡POS"
+      - cell "000QA1103POS01"
+      - cell:
+        - switch [checked]
+      - cell "编辑 删除":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+    - row "QA-PAY-20261103-R01-01 扫码付柜台 000QA1103SCAN01 编辑 删除":
+      - cell "QA-PAY-20261103-R01-01"
+      - cell "扫码付柜台"
+      - cell "000QA1103SCAN01"
+      - cell:
+        - switch [checked]
+      - cell "编辑 删除":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+    - row "散客 POS-02 银行卡POS POS-SK-02 编辑 删除":
+      - cell "散客 POS-02"
+      - cell "银行卡POS"
+      - cell "POS-SK-02"
+      - cell:
+        - switch [checked]
+      - cell "编辑 删除":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+    - row "散客 POS-01 银行卡POS POS-SK-01 编辑 删除":
+      - cell "散客 POS-01"
+      - cell "银行卡POS"
+      - cell "POS-SK-01"
+      - cell:
+        - switch [checked]
+      - cell "编辑 删除":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+    - row "散客2号柜台码测试测试测试测试 扫码付柜台 CCB-SK-012121212121212 编辑 删除":
+      - cell "散客2号柜台码测试测试测试测试"
+      - cell "扫码付柜台"
+      - cell "CCB-SK-012121212121212"
+      - cell:
+        - switch [checked]
+      - cell "编辑 删除":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+    - row "散客1号柜台码 扫码付柜台 CCB-SK-011 编辑 删除":
+      - cell "散客1号柜台码"
+      - cell "扫码付柜台"
+      - cell "CCB-SK-011"
+      - cell:
+        - switch [checked]
+      - cell "编辑 删除":
+        - button "编辑":
+          - generic: 编辑
+        - button "删除":
+          - generic: 删除
+- list:
+  - listitem: 共 9 条
+  - listitem "上一页":
+    - button "left" [disabled]:
+      - img "left":
+  - listitem "1":
+    - generic: "1"
+  - listitem "下一页":
+    - button "right" [disabled]:
+      - img "right":
+  - generic "页码":
+    - combobox "页码"
+    - generic "10 条/页"
+- generic: ": * : : * : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : : * :"
+- generic: "* : * : * : * :"
