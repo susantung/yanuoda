@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-04",
+  "variants": {
+    "通过": 171,
+    "后续验证": 23,
+    "未跑": 71,
+    "有问题": 19
+  },
+  "issueStatuses": {
+    "当前缺陷": 10,
+    "方案调整后关闭": 3,
+    "待复测": 1
+  },
+  "issueCount": 14,
+  "referencedEvidence": 605,
+  "missingEvidence": [],
+  "baselineNote": "用户确认配置刷新规则，方案V1.8及验收基线显式迁移，旧SHA保存baselineHistory；旧证据保留，不将规则撤销记为修复通过。",
+  "visualCheck": "本轮未完成浏览器视觉复验；仅生成及静态链接/内容检查。"
+}

@@ -1,0 +1,37 @@
+{
+  "artifactOnly": true,
+  "qaEnvironmentExecuted": false,
+  "cases": 82,
+  "variants": 284,
+  "pages": 36,
+  "checks": [
+    {
+      "width": 1024,
+      "height": 768,
+      "noPageOverflow": true
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "noPageOverflow": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "noPageOverflow": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "noPageOverflow": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "noPageOverflow": true
+    }
+  ],
+  "filterAndSearch": true,
+  "brokenLinks": [],
+  "pageErrors": []
+}
