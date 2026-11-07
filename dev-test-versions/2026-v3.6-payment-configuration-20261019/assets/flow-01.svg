@@ -314,7 +314,7 @@
 <g id="node21" class="node">
 <title>REVIEW</title>
 <path fill="#f7f3ff" stroke="#b7a2df" d="M355,-395.6C355,-395.6 160.12,-395.6 160.12,-395.6 154.12,-395.6 148.12,-389.6 148.12,-383.6 148.12,-383.6 148.12,-353.84 148.12,-353.84 148.12,-347.84 154.12,-341.84 160.12,-341.84 160.12,-341.84 355,-341.84 355,-341.84 361,-341.84 367,-347.84 367,-353.84 367,-353.84 367,-383.6 367,-383.6 367,-389.6 361,-395.6 355,-395.6"/>
-<text xml:space="preserve" text-anchor="middle" x="257.56" y="-372.92" font-family="PingFang SC" font-size="14.00" fill="#2e214a">B10/B11 按申请主体复核</text>
+<text xml:space="preserve" text-anchor="middle" x="257.56" y="-372.92" font-family="PingFang SC" font-size="14.00" fill="#2e214a">B10/B11 按申请快照审核</text>
 <text xml:space="preserve" text-anchor="middle" x="257.56" y="-356.12" font-family="PingFang SC" font-size="14.00" fill="#2e214a">及原审批</text>
 </g>
 <!-- REV&#45;&gt;REVIEW -->
