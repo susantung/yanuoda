@@ -1,0 +1,159 @@
+- generic: 程程票售票窗口
+- generic: 呀诺达票务系统（TEST）
+- menu:
+  - menuitem "首页":
+    - generic: 首页
+  - menuitem "售票":
+    - generic: 售票
+  - menuitem "取票":
+    - generic: 取票
+  - menuitem "退票":
+    - generic: 退票
+  - menuitem "线上票确认":
+    - generic: 线上票确认
+  - menuitem "查询":
+    - generic: 查询
+  - menuitem "统计":
+    - generic: 统计
+  - menuitem "内导":
+    - generic: 内导
+  - menuitem "异常订单":
+    - generic: 异常订单
+  - menuitem [disabled]:
+- button "后台管理":
+  - generic: 后台管理
+- generic: YST售票窗口
+- tablist:
+  - tab "售票":
+    - generic: 售票
+  - button "remove":
+    - img "close":
+  - tab "统计":
+    - generic: 统计
+  - button "remove":
+    - img "close":
+  - tab "订单详情":
+    - generic: 订单详情
+  - button "remove":
+    - img "close":
+  - tab "内导" [selected]:
+    - generic: 内导
+  - button "remove":
+    - img "close":
+- tabpanel "内导"
+- text: ": : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :"
+- tablist:
+  - tab "导游开单"
+  - tab "订单记录"
+  - tab "交易记录" [active] [selected]
+  - tab "内导报表统计"
+- text: ": : : : : : : : :"
+- tabpanel "交易记录":
+  - generic "订单编号": "订单编号 :"
+  - textbox "请输入订单编号"
+  - generic "交易类型": "交易类型 :"
+  - combobox "交易类型 :"
+  - generic "全部"
+  - generic "交易日期": "交易日期 :"
+  - textbox "交易日期 :":
+    - /placeholder: 开始时间
+    - text: 2026-11-05 00:00:00
+  - generic "to":
+    - img "swap-right":
+  - textbox "结束时间": 2026-11-05 23:59:59
+  - img "calendar":
+  - button "close-circle":
+    - img "close-circle":
+  - generic "交易流水": "交易流水 :"
+  - textbox "交易流水 :":
+    - /placeholder: 请输入交易流水
+  - generic "操作人": "操作人 :"
+  - textbox "操作人 :":
+    - /placeholder: 请输入操作人名称
+  - generic "操作设备名": "操作设备名 :"
+  - textbox "操作设备名 :":
+    - /placeholder: 请输入操作设备名
+  - button "search 查 询":
+    - img "search":
+    - generic: 查 询
+  - button "reload 重 置":
+    - img "reload":
+    - generic: 重 置
+  - button "setting 配置列":
+    - img "setting":
+    - generic: 配置列
+  - table:
+    - rowgroup:
+      - row "序号 订单编号 游客类型 产品名称 所属类型 交易类型 交易状态 支付方式 收款资源 柜台编码/POS编号 交易金额（元） 交易时间 操作人 操作设备名 订单状态 操作":
+        - columnheader "序号"
+        - columnheader "订单编号"
+        - columnheader "游客类型"
+        - columnheader "产品名称"
+        - columnheader "所属类型"
+        - columnheader "交易类型"
+        - columnheader "交易状态"
+        - columnheader "支付方式"
+        - columnheader "收款资源"
+        - columnheader "柜台编码/POS编号"
+        - columnheader "交易金额（元）"
+        - columnheader "交易时间"
+        - columnheader "操作人"
+        - columnheader "操作设备名"
+        - columnheader "订单状态"
+        - columnheader "操作"
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "1 DD261105232329001001s 散客 VIP服务 计时收费 补收 支付成功 银行卡 QA-PAY-20261103-R01-POS01 000QA1103POS01 0.02 2026-11-05 23:36:45 YST售票窗口 YST团队售票窗口 已结算 查看":
+        - cell "1"
+        - cell "DD261105232329001001s"
+        - cell "散客"
+        - cell "VIP服务"
+        - cell "计时收费"
+        - cell "补收"
+        - cell "支付成功"
+        - cell "银行卡"
+        - cell "QA-PAY-20261103-R01-POS01"
+        - cell "000QA1103POS01"
+        - cell "0.02"
+        - cell "2026-11-05 23:36:45"
+        - cell "YST售票窗口"
+        - cell "YST团队售票窗口"
+        - cell "已结算"
+        - cell "查看":
+          - button "查看":
+            - generic: 查看
+      - row "2 DD261105232329001001s 散客 VIP服务 计时收费 开单 支付成功 扫码付 QA-PAY-20261105-R18-SCAN 000QA1105R18S 0.02 2026-11-05 23:23:29 YST售票窗口 YST团队售票窗口 已结算 查看":
+        - cell "2"
+        - cell "DD261105232329001001s"
+        - cell "散客"
+        - cell "VIP服务"
+        - cell "计时收费"
+        - cell "开单"
+        - cell "支付成功"
+        - cell "扫码付"
+        - cell "QA-PAY-20261105-R18-SCAN"
+        - cell "000QA1105R18S"
+        - cell "0.02"
+        - cell "2026-11-05 23:23:29"
+        - cell "YST售票窗口"
+        - cell "YST团队售票窗口"
+        - cell "已结算"
+        - cell "查看":
+          - button "查看":
+            - generic: 查看
+  - list:
+    - listitem: 共 2 条
+    - listitem "上一页":
+      - button "left" [disabled]:
+        - img "left":
+    - listitem "1":
+      - generic: "1"
+    - listitem "下一页":
+      - button "right" [disabled]:
+        - img "right":
+    - generic "页码":
+      - combobox "页码"
+      - generic "10 条/页"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : : : :"
+- generic: ": : : : : : : : : : : : : : : : : : : : : : :"
