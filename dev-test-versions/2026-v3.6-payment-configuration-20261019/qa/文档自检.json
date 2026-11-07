@@ -1,6 +1,6 @@
 {
   "artifactOnly": true,
-  "qaEnvironmentExecuted": false,
+  "qaEnvironmentExecuted": true,
   "cases": 82,
   "variants": 284,
   "pages": 36,

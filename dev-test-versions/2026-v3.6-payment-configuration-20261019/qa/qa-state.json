@@ -1,7 +1,7 @@
 {
   "version": "V3.6",
   "created": "2026-11-02",
-  "phase": "R16本轮执行收尾：200通过、26有问题、0未跑、0阻塞；合作伙伴23项后续验证、35项本轮不执行。范围已确认，已有问题待修复复测，不表示全量验收通过",
+  "phase": "R18缺陷回归：本轮17个关联分支通过，6项缺陷已验证修复；累计217通过、0有问题、0未跑、0阻塞；23项合作伙伴后续验证、44项本轮不执行，10项问题按方案调整关闭",
   "runs": [
     {
       "runId": "R01",
@@ -315,6 +315,49 @@
       "issueIds": [],
       "blockerIds": [],
       "restoration": "本轮仅调整验收记录；未改测试环境、资源、绑定、权限和业务数据。"
+    },
+    {
+      "runId": "R17",
+      "executedAt": "2026-11-05",
+      "status": "方案规则确认",
+      "summary": "R17规则确认：200通过、17有问题、0未跑、0阻塞；23项合作伙伴后续验证、44项本轮不执行（含本次按方案关闭的9项）。当前缺陷6项，未新增实测或修复通过结论",
+      "record": "R17-执行记录.md",
+      "newData": [],
+      "issueIds": [
+        "PAY-001",
+        "PAY-003",
+        "PAY-005",
+        "PAY-009",
+        "PAY-012",
+        "PAY-014",
+        "PAY-016"
+      ],
+      "blockerIds": [],
+      "restoration": "仅修改方案及验收口径，未操作测试环境。"
+    },
+    {
+      "runId": "R18",
+      "executedAt": "2026-11-06",
+      "period": "2026-11-05至2026-11-06",
+      "status": "真实环境缺陷回归",
+      "summary": "R18缺陷回归：本轮17个关联分支通过，6项缺陷已验证修复；累计217通过、0有问题、0未跑、0阻塞；23项合作伙伴后续验证、44项本轮不执行，10项问题按方案调整关闭",
+      "record": "R18-执行记录.md",
+      "newData": [
+        "DD261105230040001001s",
+        "DD261105232329001001s",
+        "DD261105235118001001s",
+        "DD261106004923001001s"
+      ],
+      "issueIds": [
+        "PAY-002",
+        "PAY-004",
+        "PAY-006",
+        "PAY-007",
+        "PAY-008",
+        "PAY-015"
+      ],
+      "blockerIds": [],
+      "restoration": "现金已启用；扫码及银行卡均恢复跟收银账号/允许多个并默认一个。账号原绑定及默认已恢复；设备扫码未改变，临时POS绑定清空并重开回查。保留4笔自建订单及已解绑的R18扫码测试资源供复核；未提交冲红申请，未实际聚合支付或打印。"
     }
   ],
   "environment": {
@@ -337,13 +380,13 @@
     "executionConstraint": "使用专用后台测试标签，不操作用户当前前台页面；通过UI创建新测试数据、保存证据、恢复临时配置。"
   },
   "baseline": {
-    "01-页面清单.md": "61144cd3a3a1bb3b6f369dca101dd4b668fd765e3b26db1920c29e6822dda188",
-    "02-全程流程图.md": "29b90a13a48cc6e49c1498a6fddca278dfc8b9a7b766b762b110be9341ad93e4",
-    "03-逐页功能方案.md": "06bab168ee3a778b3d0c2b2eb2af7e2e3aa21247357d2ab8e1ff101c4162a989",
-    "04-开发核对与验收清单.md": "722f04d805480db38d78083f138ca6e2b65476992762529b177064485ac10021",
-    "05-冲红补充方案.md": "04a7d13d6398506fc5d449641319de1b48acace2b5f213ec5b09c4c4d0a22530",
+    "01-页面清单.md": "c542bcdaabd92f106a326353c25ce11f588a4cfd8c0b3679e1204f2e86af02fd",
+    "02-全程流程图.md": "a953a5a0bfb8ed8394a690c69802cdc9bce54107c6cde7f849e85edee198a61a",
+    "03-逐页功能方案.md": "7329a38d4811985611e8eea29343f8698b29867d9bb0adcc9a61b679189e9d2b",
+    "04-开发核对与验收清单.md": "76c3b4825cc15d7aebfce96eade3eab3724b1fb2d3a0ace78e09fdd469f0c195",
+    "05-冲红补充方案.md": "db8e4ffe10808f0a964ea5f87fc238385f85ff85e1dde1ce768499b4772a8100",
     "06-记录范围与实施边界.md": "183d002474a7a9e9ef2bdd81d01ac3f919a8eba193734795e991e09d26301976",
-    "07-内导结账补充方案.md": "9b8c91a1c9c0774285394debead7c4705e0ce0e1118af4bfeca8294793fee2a3"
+    "07-内导结账补充方案.md": "468a7558683e0a6f8da91f3b7b027dc7b96a7cf5e737be553b315a3f4672efc7"
   },
   "cases": [
     {
@@ -1802,7 +1845,7 @@
     {
       "id": "A13",
       "action": "切归属或多资源改固定",
-      "expected": "不复制/删除另一方绑定，不合格配置须修正，不自动取第一项",
+      "expected": "不复制/删除另一方绑定；多资源改固定使用原默认，改回多资源自动恢复原绑定及默认，无须重配",
       "module": "配置与资源绑定",
       "pages": "B01～B09",
       "flow": "FL03/FL04/FL08",
@@ -1881,7 +1924,7 @@
         {
           "id": "A13-03",
           "label": "多资源改固定",
-          "status": "有问题",
+          "status": "本轮不执行",
           "runs": [
             {
               "runId": "R11",
@@ -1909,9 +1952,21 @@
               "issueIds": [
                 "PAY-016"
               ]
+            },
+            {
+              "runId": "R17",
+              "executedAt": "2026-11-05",
+              "result": "本轮不执行",
+              "actual": "原缺陷按用户确认规则关闭，不新增实测通过：多资源改固定使用原默认资源，改回多资源自动恢复原绑定及默认，无须管理员重配置。",
+              "documents": "R17-执行记录.md",
+              "evidence": [],
+              "issueIds": [
+                "PAY-016"
+              ]
             }
           ],
-          "executionPhase": "本次发布"
+          "executionPhase": "本次发布",
+          "scopeDisposition": "方案调整后关闭；多资源改固定使用原默认资源，改回多资源自动恢复原绑定及默认，无须管理员重配置。"
         },
         {
           "id": "A13-04",
@@ -2197,7 +2252,7 @@
         {
           "id": "A16-02",
           "label": "账号-扫码-多资源",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R04",
@@ -2223,6 +2278,29 @@
                 "PAY-002"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "固定灰显，多资源按名称切换；柜台编码/POS编号自动带出且只读",
+              "actual": "已实际输入名称筛选候选并选择；切换后柜台/POS编号同步，只读显示。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/01-sale-resource-no-match.txt",
+                "evidence/R18/01-sale-resource-no-match.png",
+                "evidence/R18/02-sale-resource-filter-selected.txt",
+                "evidence/R18/02-sale-resource-filter-selected.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -2264,7 +2342,7 @@
         {
           "id": "A16-04",
           "label": "设备-扫码-多资源",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R08",
@@ -2300,6 +2378,29 @@
               "issueIds": [
                 "PAY-002"
               ]
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "固定灰显，多资源按名称切换；柜台编码/POS编号自动带出且只读",
+              "actual": "已实际输入名称筛选候选并选择；切换后柜台/POS编号同步，只读显示。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/34-device-scan-search.txt",
+                "evidence/R18/34-device-scan-search.png",
+                "evidence/R18/35-device-scan-selected-code.txt",
+                "evidence/R18/35-device-scan-selected-code.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -2337,7 +2438,7 @@
         {
           "id": "A16-06",
           "label": "账号-POS-多资源",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R08",
@@ -2368,6 +2469,27 @@
               "issueIds": [
                 "PAY-002"
               ]
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "固定灰显，多资源按名称切换；柜台编码/POS编号自动带出且只读",
+              "actual": "已实际输入名称筛选候选并选择；切换后柜台/POS编号同步，只读显示。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/14-sale-pos-search.txt",
+                "evidence/R18/14-sale-pos-search.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -2405,7 +2527,7 @@
         {
           "id": "A16-08",
           "label": "设备-POS-多资源",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R08",
@@ -2435,6 +2557,29 @@
               "issueIds": [
                 "PAY-002"
               ]
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "固定灰显，多资源按名称切换；柜台编码/POS编号自动带出且只读",
+              "actual": "已实际输入名称筛选候选并选择；切换后柜台/POS编号同步，只读显示。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/36-device-pos-search.txt",
+                "evidence/R18/36-device-pos-search.png",
+                "evidence/R18/37-device-pos-selected-code.txt",
+                "evidence/R18/37-device-pos-selected-code.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -3739,7 +3884,7 @@
         {
           "id": "A33-02",
           "label": "变更后关闭重开：配置变化",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R07",
@@ -3800,6 +3945,29 @@
               "issueIds": [
                 "PAY-015"
               ]
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "旧弹窗不要求实时拦截；主页面点支付方式刷新或关闭标签重开、弹窗关闭重开后按新配置校验，缺资源在弹窗提示",
+              "actual": "后台停用现金后，按刷新规则加载：现金移除并自动选择扫码付；恢复现金、关闭重开确认后现金重新出现。旧弹窗停留期间不要求实时拦截。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/12-cash-disabled-refresh-default-scan.txt",
+                "evidence/R18/12-cash-disabled-refresh-default-scan.png",
+                "evidence/R18/13-reopen-method-config-cash-restored.txt",
+                "evidence/R18/13-reopen-method-config-cash-restored.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布",
@@ -3808,7 +3976,7 @@
         {
           "id": "A33-03",
           "label": "变更后关闭重开：绑定变化",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R07",
@@ -3870,6 +4038,27 @@
               "issueIds": [
                 "PAY-015"
               ]
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "旧弹窗不要求实时拦截；主页面点支付方式刷新或关闭标签重开、弹窗关闭重开后按新配置校验，缺资源在弹窗提示",
+              "actual": "关闭确认弹窗，后台绑定新建R18扫码资源并设默认，保存后重开，已加载新资源和000QA1105R18S。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/04-reopen-new-binding-default.txt",
+                "evidence/R18/04-reopen-new-binding-default.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布",
@@ -5225,7 +5414,7 @@
         {
           "id": "A45-01",
           "label": "申请人/来源三列起点",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R04",
@@ -5249,6 +5438,29 @@
                 "PAY-004"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "申请人/来源占第一、第二列，与上方和下一行列起点对齐；窄屏换行，底部操作可见",
+              "actual": "申请售票员、申请来源分别对齐第一、第二列；第三列留空。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/07-reversal-layout.txt",
+                "evidence/R18/07-reversal-layout.png",
+                "evidence/R18/32-reversal-1920.txt",
+                "evidence/R18/32-reversal-1920.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -5256,7 +5468,7 @@
         {
           "id": "A45-02",
           "label": "1024×768",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R07",
@@ -5278,6 +5490,27 @@
                 "PAY-004"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "申请人/来源占第一、第二列，与上方和下一行列起点对齐；窄屏换行，底部操作可见",
+              "actual": "1024视口下，上下两组对应列的起点与宽度一致；申请人/来源位于第一、第二列，弹窗无横向溢出，操作可见。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/33-reversal-1024.txt",
+                "evidence/R18/33-reversal-1024.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -5285,7 +5518,7 @@
         {
           "id": "A45-03",
           "label": "1280×800",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R07",
@@ -5307,6 +5540,27 @@
                 "PAY-004"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "申请人/来源占第一、第二列，与上方和下一行列起点对齐；窄屏换行，底部操作可见",
+              "actual": "1280视口下，上下两组对应列的起点与宽度一致；申请人/来源位于第一、第二列，弹窗无横向溢出，操作可见。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/33-reversal-1280.txt",
+                "evidence/R18/33-reversal-1280.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -5314,7 +5568,7 @@
         {
           "id": "A45-04",
           "label": "1440×900",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R07",
@@ -5336,6 +5590,27 @@
                 "PAY-004"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "申请人/来源占第一、第二列，与上方和下一行列起点对齐；窄屏换行，底部操作可见",
+              "actual": "1440视口下，上下两组对应列的起点与宽度一致；申请人/来源位于第一、第二列，弹窗无横向溢出，操作可见。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/33-reversal-1440.txt",
+                "evidence/R18/33-reversal-1440.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -5343,7 +5618,7 @@
         {
           "id": "A45-05",
           "label": "1920×1080",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R07",
@@ -5365,6 +5640,27 @@
                 "PAY-004"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "申请人/来源占第一、第二列，与上方和下一行列起点对齐；窄屏换行，底部操作可见",
+              "actual": "1920视口下，上下两组对应列的起点与宽度一致；申请人/来源位于第一、第二列，弹窗无横向溢出，操作可见。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/33-reversal-1920.txt",
+                "evidence/R18/33-reversal-1920.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -5672,7 +5968,7 @@
         {
           "id": "A48-02",
           "label": "多资源搜索切换",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "build": "页面未提供可核验构建号",
@@ -5696,6 +5992,31 @@
                 "PAY-002"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "固定灰显，多资源带有效默认、支持名称搜索；仅选有效绑定，编号只读且保留前导零",
+              "actual": "冲红申请扫码及POS资源均能输入查询、选择并联动编号；未提交申请。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/08-reversal-scan-search.txt",
+                "evidence/R18/08-reversal-scan-search.png",
+                "evidence/R18/09-reversal-pos-search.txt",
+                "evidence/R18/09-reversal-pos-search.png",
+                "evidence/R18/10-reversal-pos-linked-code.txt",
+                "evidence/R18/10-reversal-pos-linked-code.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -6599,7 +6920,7 @@
     {
       "id": "A55",
       "action": "申请后更换审核人；变更资源后关闭审核弹窗重开",
-      "expected": "按申请主体及本次审核弹窗加载的配置复核；已加载为失效则阻止同意，可驳回重提；不要求停留中的旧弹窗实时拦截",
+      "expected": "始终按申请时快照审核及生效；后续改配置、解绑、改名或改码不阻止审核，重开弹窗也不替换申请值",
       "module": "冲红申请与审核",
       "pages": "W13～W15、B10/B11、D01/D04",
       "flow": "FL09/FL10/FL11",
@@ -6662,7 +6983,7 @@
         {
           "id": "A55-02",
           "label": "申请主体绑定变化",
-          "status": "有问题",
+          "status": "本轮不执行",
           "runs": [
             {
               "build": "页面未提供可核验构建号",
@@ -6760,15 +7081,27 @@
                 "PAY-012"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R17",
+              "executedAt": "2026-11-05",
+              "result": "本轮不执行",
+              "actual": "原缺陷按用户确认规则关闭，不新增实测通过：审核以申请时保存的快照为准，不按当前配置重新校验收款资源；后续配置变化不影响原申请。",
+              "documents": "R17-执行记录.md",
+              "evidence": [],
+              "issueIds": [
+                "PAY-012"
+              ]
             }
           ],
           "executionPhase": "本次发布",
-          "ruleRevision": "2026-11-04：按刷新/关闭重开后的已加载数据验证；旧记录不作新规则验收结论。"
+          "ruleRevision": "2026-11-04：按刷新/关闭重开后的已加载数据验证；旧记录不作新规则验收结论。",
+          "scopeDisposition": "方案调整后关闭；审核以申请时保存的快照为准，不按当前配置重新校验收款资源；后续配置变化不影响原申请。"
         },
         {
           "id": "A55-03",
           "label": "资源改名改号",
-          "status": "有问题",
+          "status": "本轮不执行",
           "runs": [
             {
               "build": "页面未提供可核验构建号",
@@ -6833,10 +7166,22 @@
               "issueIds": [
                 "PAY-012"
               ]
+            },
+            {
+              "runId": "R17",
+              "executedAt": "2026-11-05",
+              "result": "本轮不执行",
+              "actual": "原缺陷按用户确认规则关闭，不新增实测通过：审核以申请时保存的快照为准，不按当前配置重新校验收款资源；后续配置变化不影响原申请。",
+              "documents": "R17-执行记录.md",
+              "evidence": [],
+              "issueIds": [
+                "PAY-012"
+              ]
             }
           ],
           "executionPhase": "本次发布",
-          "ruleRevision": "2026-11-04：按刷新/关闭重开后的已加载数据验证；旧记录不作新规则验收结论。"
+          "ruleRevision": "2026-11-04：按刷新/关闭重开后的已加载数据验证；旧记录不作新规则验收结论。",
+          "scopeDisposition": "方案调整后关闭；审核以申请时保存的快照为准，不按当前配置重新校验收款资源；后续配置变化不影响原申请。"
         },
         {
           "id": "A55-04",
@@ -7275,7 +7620,7 @@
     {
       "id": "A60",
       "action": "查看B01、打开九种方式配置并修改排序",
-      "expected": "列表显示排序序号，弹窗必填正整数；保存后重排、刷新回显，失败/取消不改变",
+      "expected": "列表显示排序序号，弹窗必填非负整数；保存后重排、刷新回显，失败/取消不改变",
       "module": "支付排序与默认",
       "pages": "B01/B02及各支付页面",
       "flow": "FL03/FL05/FL07/FL08/FL09/FL12",
@@ -7381,8 +7726,8 @@
     },
     {
       "id": "A61",
-      "action": "设置序号2、8、20以及相同序号；验证空值、0、负数、小数",
-      "expected": "升序且不补号；重复序号（包括停用方式占用的序号）提示并阻止保存，自身原序号可保存；非法值不能保存；异常存量缺值置后，不中断加载",
+      "action": "设置序号0、2、8、20以及相同序号；验证空值、负数、小数",
+      "expected": "升序且不补号；0及重复序号可保存，相同序号按数据库原有排序二次排序；空值、负数、小数仍按非负整数规则处理；异常存量缺值置后，不中断加载",
       "module": "支付排序与默认",
       "pages": "B01/B02及各支付页面",
       "flow": "FL03/FL05/FL07/FL08/FL09/FL12",
@@ -7422,7 +7767,7 @@
         {
           "id": "A61-02",
           "label": "重复启用序号",
-          "status": "有问题",
+          "status": "本轮不执行",
           "runs": [
             {
               "runId": "R01",
@@ -7477,14 +7822,26 @@
                 "PAY-001"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R17",
+              "executedAt": "2026-11-05",
+              "result": "本轮不执行",
+              "actual": "原缺陷按用户确认规则关闭，不新增实测通过：排序允许重复，相同序号按支付方式在数据库中的原有排序二次排序。",
+              "documents": "R17-执行记录.md",
+              "evidence": [],
+              "issueIds": [
+                "PAY-001"
+              ]
             }
           ],
-          "executionPhase": "本次发布"
+          "executionPhase": "本次发布",
+          "scopeDisposition": "方案调整后关闭；排序允许重复，相同序号按支付方式在数据库中的原有排序二次排序。"
         },
         {
           "id": "A61-03",
           "label": "重复停用序号",
-          "status": "有问题",
+          "status": "本轮不执行",
           "runs": [
             {
               "runId": "R08",
@@ -7510,9 +7867,21 @@
               "issueIds": [
                 "PAY-001"
               ]
+            },
+            {
+              "runId": "R17",
+              "executedAt": "2026-11-05",
+              "result": "本轮不执行",
+              "actual": "原缺陷按用户确认规则关闭，不新增实测通过：排序允许重复，相同序号按支付方式在数据库中的原有排序二次排序。",
+              "documents": "R17-执行记录.md",
+              "evidence": [],
+              "issueIds": [
+                "PAY-001"
+              ]
             }
           ],
-          "executionPhase": "本次发布"
+          "executionPhase": "本次发布",
+          "scopeDisposition": "方案调整后关闭；排序允许重复，相同序号按支付方式在数据库中的原有排序二次排序。"
         },
         {
           "id": "A61-04",
@@ -7545,7 +7914,7 @@
         {
           "id": "A61-05",
           "label": "空值/0/负数/小数",
-          "status": "有问题",
+          "status": "本轮不执行",
           "runs": [
             {
               "build": "页面未提供可核验构建号",
@@ -7596,9 +7965,22 @@
                 "PAY-005",
                 "PAY-001"
               ]
+            },
+            {
+              "runId": "R17",
+              "executedAt": "2026-11-05",
+              "result": "本轮不执行",
+              "actual": "原缺陷按用户确认规则关闭，不新增实测通过：排序允许重复，相同序号按支付方式在数据库中的原有排序二次排序。；排序允许0及重复，相同序号按数据库原有排序二次排序；本事项不作为缺陷。小数转换的原观察保留，本次未新增实测通过结论。",
+              "documents": "R17-执行记录.md",
+              "evidence": [],
+              "issueIds": [
+                "PAY-001",
+                "PAY-005"
+              ]
             }
           ],
-          "executionPhase": "本次发布"
+          "executionPhase": "本次发布",
+          "scopeDisposition": "方案调整后关闭；排序允许重复，相同序号按支付方式在数据库中的原有排序二次排序。；排序允许0及重复，相同序号按数据库原有排序二次排序；本事项不作为缺陷。小数转换的原观察保留，本次未新增实测通过结论。"
         },
         {
           "id": "A61-06",
@@ -7802,7 +8184,7 @@
     {
       "id": "A63",
       "action": "保留手工选择后改排序；停用所选方式",
-      "expected": "仅重排时有效选择保留；所选失效才选新列表第一种，清理旧草稿资源，确认弹窗沿用主页面选择",
+      "expected": "仅重排时有效选择保留；所选失效才选新列表第一种，清理旧草稿资源，确认弹窗沿用主页面选择；挂单不存支付方式，恢复后重新加载当前候选及排序，默认首项",
       "module": "支付排序与默认",
       "pages": "B01/B02及各支付页面",
       "flow": "FL03/FL05/FL07/FL08/FL09/FL12",
@@ -7867,7 +8249,7 @@
         {
           "id": "A63-02",
           "label": "停用已选方式",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "build": "页面未提供可核验构建号",
@@ -7892,6 +8274,27 @@
                 "PAY-006"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "仅重排时有效选择保留；所选失效才选新列表第一种，清理旧草稿资源，确认弹窗沿用主页面选择；挂单不存支付方式，恢复后重新加载当前候选及排序，默认首项",
+              "actual": "原选现金被停用后，点击窗口支付方式刷新，默认切换为候选中序号最小的扫码付；随后现金恢复。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/12-cash-disabled-refresh-default-scan.txt",
+                "evidence/R18/12-cash-disabled-refresh-default-scan.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -7929,7 +8332,7 @@
         {
           "id": "A63-04",
           "label": "挂单恢复",
-          "status": "有问题",
+          "status": "本轮不执行",
           "runs": [
             {
               "runId": "R08",
@@ -7963,9 +8366,21 @@
               "issueIds": [
                 "PAY-014"
               ]
+            },
+            {
+              "runId": "R17",
+              "executedAt": "2026-11-05",
+              "result": "本轮不执行",
+              "actual": "原缺陷按用户确认规则关闭，不新增实测通过：挂单不记录支付方式；恢复业务数据后重新加载当前可用支付方式及排序，默认首项，不恢复旧方式。",
+              "documents": "R17-执行记录.md",
+              "evidence": [],
+              "issueIds": [
+                "PAY-014"
+              ]
             }
           ],
-          "executionPhase": "本次发布"
+          "executionPhase": "本次发布",
+          "scopeDisposition": "方案调整后关闭；挂单不记录支付方式；恢复业务数据后重新加载当前可用支付方式及排序，默认首项，不恢复旧方式。"
         }
       ]
     },
@@ -8219,7 +8634,7 @@
     {
       "id": "A67",
       "action": "审核同意成功后返回销售记录、打开订单详情",
-      "expected": "按原资格恢复申请入口；支付显示生效值，“冲红调整信息”位于支付与检票之间，九列及单号详情入口与现有页面一致",
+      "expected": "按原资格恢复申请入口；两端支付显示生效值；仅窗口订单详情的“冲红调整信息”位于支付与检票之间，PC后台不新增此区，九列及单号详情入口与现有页面一致",
       "module": "冲红申请与审核",
       "pages": "W13～W15、B10/B11、D01/D04",
       "flow": "FL09/FL10/FL11",
@@ -8257,7 +8672,7 @@
         {
           "id": "A67-02",
           "label": "详情调整区位置及单号链接",
-          "status": "有问题",
+          "status": "本轮不执行",
           "runs": [
             {
               "runId": "R04",
@@ -8282,9 +8697,21 @@
                 "PAY-003"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R17",
+              "executedAt": "2026-11-05",
+              "result": "本轮不执行",
+              "actual": "原缺陷按用户确认规则关闭，不新增实测通过：PC后台原来没有冲红调整信息，本次不补做；仅售票窗口保留原调整区。",
+              "documents": "R17-执行记录.md",
+              "evidence": [],
+              "issueIds": [
+                "PAY-003"
+              ]
             }
           ],
-          "executionPhase": "本次发布"
+          "executionPhase": "本次发布",
+          "scopeDisposition": "方案调整后关闭；PC后台原来没有冲红调整信息，本次不补做；仅售票窗口保留原调整区。"
         }
       ]
     },
@@ -8996,7 +9423,7 @@
         {
           "id": "A74-01",
           "label": "账号与开单人不同",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R14",
@@ -9024,6 +9451,31 @@
               "issueIds": [
                 "PAY-002"
               ]
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "补收按本次主体绑定取资源，固定一个只读、多个按默认并可搜索切换；不得复用原押金资源或跨主体兜底",
+              "actual": "R14跨账号结账的主体取值及保存已验证正确，唯一失败点为资源搜索。本轮以本人新建内导单回归同一补收控件，扫码/POS查询、选择及保存通过；未重跑跨账号整链路。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/17-inner-supplement-scan-search.txt",
+                "evidence/R18/17-inner-supplement-scan-search.png",
+                "evidence/R18/18-inner-supplement-pos-search.txt",
+                "evidence/R18/18-inner-supplement-pos-search.png",
+                "evidence/R18/20-inner-mixed-transactions.txt",
+                "evidence/R18/20-inner-mixed-transactions.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -9075,7 +9527,7 @@
         {
           "id": "A74-03",
           "label": "固定/多资源",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "runId": "R11",
@@ -9104,6 +9556,33 @@
               "issueIds": [
                 "PAY-002"
               ]
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "补收按本次主体绑定取资源，固定一个只读、多个按默认并可搜索切换；不得复用原押金资源或跨主体兜底",
+              "actual": "保留R11固定模式已通过证据；本轮回归多资源搜索，账号扫码/POS及设备POS均能输入筛选并切换，设备POS补收成功，按实际资源保存。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/17-inner-supplement-scan-search.txt",
+                "evidence/R18/17-inner-supplement-scan-search.png",
+                "evidence/R18/18-inner-supplement-pos-search.txt",
+                "evidence/R18/18-inner-supplement-pos-search.png",
+                "evidence/R18/38-inner-supplement-device-pos-search.txt",
+                "evidence/R18/38-inner-supplement-device-pos-search.png",
+                "evidence/R18/40-inner-device-supplement-saved.txt",
+                "evidence/R18/40-inner-device-supplement-saved.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -9410,7 +9889,7 @@
     {
       "id": "A77",
       "action": "修改结算时间后重新进入补收；同一次弹窗重绘或仅调整支付排序",
-      "expected": "时长、结算金额、补收金额同步更新，付款及保存金额一致；取消后改时间不复用旧金额，早于开单时间不可提交。重新进入加载当前候选；同次有效手选保留，失效才改选剩余首项并清旧资源",
+      "expected": "时长、结算金额、补收金额同步更新，付款及保存金额一致；取消后改时间不复用旧金额，早于开单时间前端可进入确认，后端最终提交校验并拒绝。重新进入加载当前候选；同次有效手选保留，失效才改选剩余首项并清旧资源",
       "module": "内导结账补收",
       "pages": "W16～W20、D05",
       "flow": "FL12",
@@ -9484,7 +9963,7 @@
         {
           "id": "A77-03",
           "label": "早于开单时间",
-          "status": "有问题",
+          "status": "本轮不执行",
           "runs": [
             {
               "build": "页面未提供可核验构建号",
@@ -9510,9 +9989,21 @@
                 "PAY-009"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R17",
+              "executedAt": "2026-11-05",
+              "result": "本轮不执行",
+              "actual": "原缺陷按用户确认规则关闭，不新增实测通过：结算时间校验保留原逻辑：前端可填写并进入确认，后端最终提交时校验拒绝早于开单时间，不新增前端限制。",
+              "documents": "R17-执行记录.md",
+              "evidence": [],
+              "issueIds": [
+                "PAY-009"
+              ]
             }
           ],
-          "executionPhase": "本次发布"
+          "executionPhase": "本次发布",
+          "scopeDisposition": "方案调整后关闭；结算时间校验保留原逻辑：前端可填写并进入确认，后端最终提交时校验拒绝早于开单时间，不新增前端限制。"
         },
         {
           "id": "A77-04",
@@ -9883,7 +10374,7 @@
         {
           "id": "A81-02",
           "label": "内导交易记录详情",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "build": "页面未提供可核验构建号",
@@ -9910,6 +10401,37 @@
                 "PAY-007"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "沿用内导详情结构；各笔开单/补收资源编号一致，交易列表新增两列，查看仍回订单详情",
+              "actual": "扫码押金与银行卡补收逐笔资源不同且对应正确；查询后仍一致。纯现金订单资源及编号为空，重置按当天日期加载；清空日期再查可见跨日现金单，未串入其他单资源。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/20-inner-mixed-transactions.txt",
+                "evidence/R18/20-inner-mixed-transactions.png",
+                "evidence/R18/21-inner-transactions-query.txt",
+                "evidence/R18/21-inner-transactions-query.png",
+                "evidence/R18/22-inner-transactions-reset.txt",
+                "evidence/R18/22-inner-transactions-reset.png",
+                "evidence/R18/26-inner-cash-transactions-query.txt",
+                "evidence/R18/26-inner-cash-transactions-query.png",
+                "evidence/R18/27-inner-cash-transactions-reset.txt",
+                "evidence/R18/27-inner-cash-transactions-reset.png",
+                "evidence/R18/28-inner-cash-reset-no-date.txt",
+                "evidence/R18/28-inner-cash-reset-no-date.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -9953,7 +10475,7 @@
         {
           "id": "A81-04",
           "label": "后台现有内导详情",
-          "status": "有问题",
+          "status": "通过",
           "runs": [
             {
               "build": "页面未提供可核验构建号",
@@ -9980,6 +10502,27 @@
                 "PAY-008"
               ],
               "result": "有问题"
+            },
+            {
+              "runId": "R18",
+              "build": "页面未提供可核验构建号",
+              "executedAt": "2026-11-06",
+              "actor": "后台西瓜；窗口ystceshi / YST售票窗口",
+              "device": "YST团队售票窗口",
+              "preconditions": "QA3 HTTP，专用新标签页；自建测试单据。配置测试前留档、测试后恢复。",
+              "steps": [
+                "按R18执行记录回归该失败点",
+                "对照截图、页面实际值及新单记录"
+              ],
+              "expected": "沿用内导详情结构；各笔开单/补收资源编号一致，交易列表新增两列，查看仍回订单详情",
+              "actual": "后台内导订单详情已显示每笔收款资源和柜台/POS编号；扫码押金000QA1105R18S与POS补收000QA1103POS01对应正确。",
+              "documents": "R18-执行记录.md",
+              "evidence": [
+                "evidence/R18/23-backend-inner-mixed-detail.txt",
+                "evidence/R18/23-backend-inner-mixed-detail.png"
+              ],
+              "issueIds": [],
+              "result": "通过"
             }
           ],
           "executionPhase": "本次发布"
@@ -10153,7 +10696,7 @@
       "title": "现金与扫码付可以保存成相同排序号",
       "type": "功能逻辑",
       "severity": "P1",
-      "status": "当前缺陷",
+      "status": "方案调整后关闭",
       "runId": "R01",
       "cases": [
         "A61-02",
@@ -10180,18 +10723,20 @@
         "evidence/R08/duplicate-disabled-sort-saved.png"
       ],
       "restoration": "现金已恢复1、支付宝恢复启用；全部方式恢复原序号1至9。",
-      "retest": "2026-11-03 R04复测仍复现；现金已恢复为1。",
+      "retest": "按确认规则关闭，不要求开发修复；原实测与证据保留，不记为已验证修复。见R17-执行记录.md。",
       "category": "支付配置",
       "entry": "后台 → 配置中心 → 支付配置 → 现金 → 配置",
       "flow": "FL03 支付配置；A61-02 排序号唯一性",
-      "impact": "两个支付方式使用相同序号，无法按唯一序号确定先后，违反排序号不可重复的规则。"
+      "impact": "两个支付方式使用相同序号，无法按唯一序号确定先后，违反排序号不可重复的规则。",
+      "resolution": "2026-11-05 用户确认：排序允许重复，相同序号按支付方式在数据库中的原有排序二次排序。",
+      "scopeResolution": "2026-11-05 用户确认：排序允许重复，相同序号按支付方式在数据库中的原有排序二次排序。"
     },
     {
       "id": "PAY-002",
       "title": "支付确认、冲红申请及内导补款的收款资源不能输入搜索",
       "type": "功能逻辑",
       "severity": "P2",
-      "status": "当前缺陷",
+      "status": "已验证修复",
       "runId": "R04",
       "cases": [
         "A16-02",
@@ -10241,21 +10786,52 @@
         "evidence/R11/30-supp-multiple.png",
         "evidence/R14/11-cross-supplement-resource.txt",
         "evidence/R14/11-cross-supplement-resource.png",
-        "evidence/R14/12-cross-checkout-saved.txt"
+        "evidence/R14/12-cross-checkout-saved.txt",
+        "evidence/R18/01-sale-resource-no-match.txt",
+        "evidence/R18/01-sale-resource-no-match.png",
+        "evidence/R18/02-sale-resource-filter-selected.txt",
+        "evidence/R18/02-sale-resource-filter-selected.png",
+        "evidence/R18/34-device-scan-search.txt",
+        "evidence/R18/34-device-scan-search.png",
+        "evidence/R18/35-device-scan-selected-code.txt",
+        "evidence/R18/35-device-scan-selected-code.png",
+        "evidence/R18/14-sale-pos-search.txt",
+        "evidence/R18/14-sale-pos-search.png",
+        "evidence/R18/36-device-pos-search.txt",
+        "evidence/R18/36-device-pos-search.png",
+        "evidence/R18/37-device-pos-selected-code.txt",
+        "evidence/R18/37-device-pos-selected-code.png",
+        "evidence/R18/08-reversal-scan-search.txt",
+        "evidence/R18/08-reversal-scan-search.png",
+        "evidence/R18/09-reversal-pos-search.txt",
+        "evidence/R18/09-reversal-pos-search.png",
+        "evidence/R18/10-reversal-pos-linked-code.txt",
+        "evidence/R18/10-reversal-pos-linked-code.png",
+        "evidence/R18/17-inner-supplement-scan-search.txt",
+        "evidence/R18/17-inner-supplement-scan-search.png",
+        "evidence/R18/18-inner-supplement-pos-search.txt",
+        "evidence/R18/18-inner-supplement-pos-search.png",
+        "evidence/R18/20-inner-mixed-transactions.txt",
+        "evidence/R18/20-inner-mixed-transactions.png",
+        "evidence/R18/38-inner-supplement-device-pos-search.txt",
+        "evidence/R18/38-inner-supplement-device-pos-search.png",
+        "evidence/R18/40-inner-device-supplement-saved.txt",
+        "evidence/R18/40-inner-device-supplement-saved.png"
       ],
       "restoration": "未改变业务配置；该测试随后正常选择资源完成独立订单。 R08银行卡临时两个POS已恢复为空，扫码原两资源及默认不变；未提交该草稿。 设备原无POS绑定已恢复，银行卡归属恢复跟账号，账号扫码和默认未变。 R11临时设备POS7/9已清空，银行卡恢复账号多资源；自建内导补款已结算。",
-      "retest": "R06在冲红入口复现同类问题；修复后逐入口验证名称搜索、无匹配及候选选择。 R14补齐跨账号内导补收入口，修复后同样回归。",
+      "retest": "R18（2026-11-05至06）：已实际输入名称筛选候选并选择；切换后柜台/POS编号同步，只读显示。 已实际输入名称筛选候选并选择；切换后柜台/POS编号同步，只读显示。 已实际输入名称筛选候选并选择；切换后柜台/POS编号同步，只读显示。 已实际输入名称筛选候选并选择；切换后柜台/POS编号同步，只读显示。 冲红申请扫码及POS资源均能输入查询、选择并联动编号；未提交申请。 R14跨账号结账的主体取值及保存已验证正确，唯一失败点为资源搜索。本轮以本人新建内导单回归同一补收控件，扫码/POS查询、选择及保存通过；未重跑跨账号整链路。 保留R11固定模式已通过证据；本轮回归多资源搜索，账号扫码/POS及设备POS均能输入筛选并切换，设备POS补收成功，按实际资源保存。",
       "category": "窗口资源选择",
       "entry": "售票窗口 → 售票 → 散客票 → 确认下单 → 支付订单确认；统计 → 销售记录 → 冲红申请；内导 → 订单记录 → 结账 → 补收支付订单确认",
       "flow": "FL05 窗口支付确认；A16-02 账号多资源",
-      "impact": "已验证散客支付确认的账号/设备多资源、冲红申请、内导计时补款不能按名称搜索，只能逐项选择；其余未执行入口不外推。"
+      "impact": "已验证散客支付确认的账号/设备多资源、冲红申请、内导计时补款不能按名称搜索，只能逐项选择；其余未执行入口不外推。",
+      "resolution": "R18（2026-11-05至06）：已实际输入名称筛选候选并选择；切换后柜台/POS编号同步，只读显示。 已实际输入名称筛选候选并选择；切换后柜台/POS编号同步，只读显示。 已实际输入名称筛选候选并选择；切换后柜台/POS编号同步，只读显示。 已实际输入名称筛选候选并选择；切换后柜台/POS编号同步，只读显示。 冲红申请扫码及POS资源均能输入查询、选择并联动编号；未提交申请。 R14跨账号结账的主体取值及保存已验证正确，唯一失败点为资源搜索。本轮以本人新建内导单回归同一补收控件，扫码/POS查询、选择及保存通过；未重跑跨账号整链路。 保留R11固定模式已通过证据；本轮回归多资源搜索，账号扫码/POS及设备POS均能输入筛选并切换，设备POS补收成功，按实际资源保存。"
     },
     {
       "id": "PAY-003",
       "title": "冲红已同意，后台订单详情没有冲红调整记录",
       "type": "功能逻辑",
       "severity": "P2",
-      "status": "当前缺陷",
+      "status": "方案调整后关闭",
       "runId": "R04",
       "cases": [
         "A67-02"
@@ -10277,18 +10853,20 @@
         "evidence/R04/flush-approved-window-detail.txt"
       ],
       "restoration": "临时资源绑定和排序均已恢复；保留新单据供复查。",
-      "retest": "待修复后使用新数据复测并保留本轮证据。",
+      "retest": "按确认规则关闭，不要求开发修复；原实测与证据保留，不记为已验证修复。见R17-执行记录.md。",
       "category": "订单详情",
       "entry": "后台 → 订单中心 → 订单管理 → 查询订单 DD261103150739001001s → 详情",
       "flow": "FL11 冲红生效与订单回查；A67-02 详情调整区",
-      "impact": "后台只能看到更正后的有效资源，无法在订单详情直接对照原资源、目标资源及审核记录。"
+      "impact": "后台只能看到更正后的有效资源，无法在订单详情直接对照原资源、目标资源及审核记录。",
+      "resolution": "2026-11-05 用户确认：PC后台原来没有冲红调整信息，本次不补做；仅售票窗口保留原调整区。",
+      "scopeResolution": "2026-11-05 用户确认：PC后台原来没有冲红调整信息，本次不补做；仅售票窗口保留原调整区。"
     },
     {
       "id": "PAY-004",
       "title": "冲红申请的售票员和来源没有放到前两列",
       "type": "页面样式",
       "severity": "P2",
-      "status": "当前缺陷",
+      "status": "已验证修复",
       "runId": "R04",
       "cases": [
         "A45-01"
@@ -10309,21 +10887,34 @@
         "evidence/R07/flush-1024.png",
         "evidence/R07/flush-1280.png",
         "evidence/R07/flush-1440.png",
-        "evidence/R07/flush-1920.png"
+        "evidence/R07/flush-1920.png",
+        "evidence/R18/07-reversal-layout.txt",
+        "evidence/R18/07-reversal-layout.png",
+        "evidence/R18/32-reversal-1920.txt",
+        "evidence/R18/32-reversal-1920.png",
+        "evidence/R18/33-reversal-1024.txt",
+        "evidence/R18/33-reversal-1024.png",
+        "evidence/R18/33-reversal-1280.txt",
+        "evidence/R18/33-reversal-1280.png",
+        "evidence/R18/33-reversal-1440.txt",
+        "evidence/R18/33-reversal-1440.png",
+        "evidence/R18/33-reversal-1920.txt",
+        "evidence/R18/33-reversal-1920.png"
       ],
       "restoration": "临时资源绑定和排序均已恢复；保留新单据供复查。",
-      "retest": "R07在1024×768、1280×800、1440×900、1920×1080均复现；弹窗按钮可见，但申请售票员/来源未按第一第二列排列。",
+      "retest": "R18（2026-11-05至06）：申请售票员、申请来源分别对齐第一、第二列；第三列留空。 1024视口下，上下两组对应列的起点与宽度一致；申请人/来源位于第一、第二列，弹窗无横向溢出，操作可见。 1280视口下，上下两组对应列的起点与宽度一致；申请人/来源位于第一、第二列，弹窗无横向溢出，操作可见。 1440视口下，上下两组对应列的起点与宽度一致；申请人/来源位于第一、第二列，弹窗无横向溢出，操作可见。 1920视口下，上下两组对应列的起点与宽度一致；申请人/来源位于第一、第二列，弹窗无横向溢出，操作可见。",
       "category": "冲红申请",
       "entry": "售票窗口 → 统计 → 销售记录 → 冲红申请",
       "flow": "FL09 冲红申请；A45-01 三列布局",
-      "impact": "申请人、来源未按确认的列位排列，和上下信息列起点不一致；不影响本轮提交。只核对当前视口，其他分辨率尚未验。"
+      "impact": "申请人、来源未按确认的列位排列，和上下信息列起点不一致；不影响本轮提交。只核对当前视口，其他分辨率尚未验。",
+      "resolution": "R18（2026-11-05至06）：申请售票员、申请来源分别对齐第一、第二列；第三列留空。 1024视口下，上下两组对应列的起点与宽度一致；申请人/来源位于第一、第二列，弹窗无横向溢出，操作可见。 1280视口下，上下两组对应列的起点与宽度一致；申请人/来源位于第一、第二列，弹窗无横向溢出，操作可见。 1440视口下，上下两组对应列的起点与宽度一致；申请人/来源位于第一、第二列，弹窗无横向溢出，操作可见。 1920视口下，上下两组对应列的起点与宽度一致；申请人/来源位于第一、第二列，弹窗无横向溢出，操作可见。"
     },
     {
       "id": "PAY-005",
       "title": "支付排序号允许0保存，小数会转换后保存",
       "type": "功能逻辑",
       "severity": "P2",
-      "status": "当前缺陷",
+      "status": "方案调整后关闭",
       "runId": "R07",
       "cases": [
         "A61-05"
@@ -10353,14 +10944,16 @@
       ],
       "impact": "无效排序进入配置，排到正常正整数之前，违反正整数要求。",
       "restoration": "现金已恢复序号1且启用；窗口刷新恢复默认现金。",
-      "retest": "待修复后使用新一轮配置重新验证。"
+      "retest": "按确认规则关闭，不要求开发修复；原实测与证据保留，不记为已验证修复。见R17-执行记录.md。",
+      "resolution": "2026-11-05 用户确认：排序允许0及重复，相同序号按数据库原有排序二次排序；本事项不作为缺陷。小数转换的原观察保留，本次未新增实测通过结论。",
+      "scopeResolution": "2026-11-05 用户确认：排序允许0及重复，相同序号按数据库原有排序二次排序；本事项不作为缺陷。小数转换的原观察保留，本次未新增实测通过结论。"
     },
     {
       "id": "PAY-006",
       "title": "已选现金停用后，窗口没有自动选剩余第一种方式",
       "type": "功能逻辑",
       "severity": "P2",
-      "status": "当前缺陷",
+      "status": "已验证修复",
       "runId": "R07",
       "cases": [
         "A63-02"
@@ -10380,18 +10973,21 @@
       "evidence": [
         "evidence/R07/disabled-selected-refresh.txt",
         "evidence/R07/disabled-selected-refresh.png",
-        "evidence/R07/disabled-selected-candidates.txt"
+        "evidence/R07/disabled-selected-candidates.txt",
+        "evidence/R18/12-cash-disabled-refresh-default-scan.txt",
+        "evidence/R18/12-cash-disabled-refresh-default-scan.png"
       ],
       "impact": "所选失效后的默认加载与方案不一致，收银员需要额外手选。",
       "restoration": "现金已恢复序号1且启用；窗口刷新恢复默认现金。",
-      "retest": "待修复后使用新一轮配置重新验证。"
+      "retest": "R18（2026-11-05至06）：原选现金被停用后，点击窗口支付方式刷新，默认切换为候选中序号最小的扫码付；随后现金恢复。",
+      "resolution": "R18（2026-11-05至06）：原选现金被停用后，点击窗口支付方式刷新，默认切换为候选中序号最小的扫码付；随后现金恢复。"
     },
     {
       "id": "PAY-007",
       "title": "内导交易列表显示错误收款资源，重置筛选后同笔记录也会变化",
       "type": "功能逻辑",
       "severity": "P1",
-      "status": "当前缺陷",
+      "status": "已验证修复",
       "runId": "R07",
       "cases": [
         "A81-02"
@@ -10422,17 +11018,30 @@
         "evidence/R07/inner-cash-reset-wrong-resource.txt",
         "evidence/R07/inner-cash-reset-wrong-resource.png",
         "evidence/R07/inner-cash-filter-correct-resource.txt",
-        "evidence/R07/inner-supp-cash-detail.txt"
+        "evidence/R07/inner-supp-cash-detail.txt",
+        "evidence/R18/20-inner-mixed-transactions.txt",
+        "evidence/R18/20-inner-mixed-transactions.png",
+        "evidence/R18/21-inner-transactions-query.txt",
+        "evidence/R18/21-inner-transactions-query.png",
+        "evidence/R18/22-inner-transactions-reset.txt",
+        "evidence/R18/22-inner-transactions-reset.png",
+        "evidence/R18/26-inner-cash-transactions-query.txt",
+        "evidence/R18/26-inner-cash-transactions-query.png",
+        "evidence/R18/27-inner-cash-transactions-reset.txt",
+        "evidence/R18/27-inner-cash-transactions-reset.png",
+        "evidence/R18/28-inner-cash-reset-no-date.txt",
+        "evidence/R18/28-inner-cash-reset-no-date.png"
       ],
       "restoration": "本轮只读回查，未修改订单。",
-      "retest": "修复后用跨方式和纯现金新订单验证列表、详情、筛选及重置，逐笔核对资源编号。"
+      "retest": "R18（2026-11-05至06）：扫码押金与银行卡补收逐笔资源不同且对应正确；查询后仍一致。纯现金订单资源及编号为空，重置按当天日期加载；清空日期再查可见跨日现金单，未串入其他单资源。",
+      "resolution": "R18（2026-11-05至06）：扫码押金与银行卡补收逐笔资源不同且对应正确；查询后仍一致。纯现金订单资源及编号为空，重置按当天日期加载；清空日期再查可见跨日现金单，未串入其他单资源。"
     },
     {
       "id": "PAY-008",
       "title": "后台内导订单详情缺少每笔收款资源和编号",
       "type": "功能逻辑",
       "severity": "P2",
-      "status": "当前缺陷",
+      "status": "已验证修复",
       "runId": "R07",
       "cases": [
         "A81-04"
@@ -10455,17 +11064,20 @@
       "evidence": [
         "evidence/R07/backend-inner-missing-resources.txt",
         "evidence/R07/backend-inner-missing-resources.png",
-        "evidence/R07/inner-transaction-open-detail.txt"
+        "evidence/R07/inner-transaction-open-detail.txt",
+        "evidence/R18/23-backend-inner-mixed-detail.txt",
+        "evidence/R18/23-backend-inner-mixed-detail.png"
       ],
       "restoration": "只读回查，未改订单。",
-      "retest": "修复后以新单开单和补收两笔交易跨端核对。"
+      "retest": "R18（2026-11-05至06）：后台内导订单详情已显示每笔收款资源和柜台/POS编号；扫码押金000QA1105R18S与POS补收000QA1103POS01对应正确。",
+      "resolution": "R18（2026-11-05至06）：后台内导订单详情已显示每笔收款资源和柜台/POS编号；扫码押金000QA1105R18S与POS补收000QA1103POS01对应正确。"
     },
     {
       "id": "PAY-009",
       "title": "内导结算时间早于开单时间仍可进入退款确认",
       "type": "功能逻辑",
       "severity": "P1",
-      "status": "当前缺陷",
+      "status": "方案调整后关闭",
       "runId": "R07",
       "cases": [
         "A77-03"
@@ -10489,7 +11101,9 @@
         "evidence/R07/inner-before-open-time-refund-dialog.png"
       ],
       "restoration": "取消退款；改合法结算时间20:06，120分钟/2小时0.02，无需补退款，订单已结算。未改业务配置。",
-      "retest": "修复后新建订单，验证早于、等于及晚于开单时间的校验。"
+      "retest": "按确认规则关闭，不要求开发修复；原实测与证据保留，不记为已验证修复。见R17-执行记录.md。",
+      "resolution": "2026-11-05 用户确认：结算时间校验保留原逻辑：前端可填写并进入确认，后端最终提交时校验拒绝早于开单时间，不新增前端限制。",
+      "scopeResolution": "2026-11-05 用户确认：结算时间校验保留原逻辑：前端可填写并进入确认，后端最终提交时校验拒绝早于开单时间，不新增前端限制。"
     },
     {
       "id": "PAY-010",
@@ -10595,7 +11209,7 @@
       "title": "冲红审核重开后仍放行已解绑或已改码资源",
       "type": "功能逻辑",
       "severity": "P1",
-      "status": "当前缺陷",
+      "status": "方案调整后关闭",
       "runId": "R09",
       "cases": [
         "A55-02",
@@ -10656,8 +11270,10 @@
         "evidence/R09/22-renamed-effective-order.png"
       ],
       "restoration": "账号扫码1+3/default3、POS空已恢复；仅保留本人测试单历史。",
-      "retest": "R09明确先解绑保存、关闭审核、重新打开后提交，仍复现。改码改名A55-03待单测。",
-      "originalExpected": "审核同意前按申请主体复核当前配置、绑定和目标资源；变化时阻止同意并保留待审批。"
+      "retest": "按确认规则关闭，不要求开发修复；原实测与证据保留，不记为已验证修复。见R17-执行记录.md。",
+      "originalExpected": "审核同意前按申请主体复核当前配置、绑定和目标资源；变化时阻止同意并保留待审批。",
+      "resolution": "2026-11-05 用户确认：审核以申请时保存的快照为准，不按当前配置重新校验收款资源；后续配置变化不影响原申请。",
+      "scopeResolution": "2026-11-05 用户确认：审核以申请时保存的快照为准，不按当前配置重新校验收款资源；后续配置变化不影响原申请。"
     },
     {
       "id": "PAY-013",
@@ -10719,7 +11335,7 @@
       "title": "挂单恢复丢失仍有效的原支付方式",
       "type": "功能逻辑",
       "severity": "P2",
-      "status": "当前缺陷",
+      "status": "方案调整后关闭",
       "runId": "R08",
       "cases": [
         "A63-04"
@@ -10756,14 +11372,16 @@
         "evidence/R08/hang-completed-record.txt"
       ],
       "restoration": "现金已恢复排序1；手工选回支付宝完成本人挂单，生成DD261104042133001001s，0.01线下记账、不打印；原挂单已从待支付列表移除。其余挂单未操作。",
-      "retest": "修复后新建分别选择现金、扫码、支付宝的挂单；排序变化恢复应保留原有效方式，原方式停用/不适用时才重选当前最小候选。"
+      "retest": "按确认规则关闭，不要求开发修复；原实测与证据保留，不记为已验证修复。见R17-执行记录.md。",
+      "resolution": "2026-11-05 用户确认：挂单不记录支付方式；恢复业务数据后重新加载当前可用支付方式及排序，默认首项，不恢复旧方式。",
+      "scopeResolution": "2026-11-05 用户确认：挂单不记录支付方式；恢复业务数据后重新加载当前可用支付方式及排序，默认首项，不恢复旧方式。"
     },
     {
       "id": "PAY-015",
       "title": "售票确认关闭重开仍使用旧支付配置，需再点刷新才更新",
       "type": "功能逻辑",
       "severity": "P2",
-      "status": "当前缺陷",
+      "status": "已验证修复",
       "runId": "R09",
       "cases": [
         "A33-02",
@@ -10791,17 +11409,24 @@
         "evidence/R09/27-sale-explicit-refresh-correct.png",
         "evidence/R09/28-wechat-disabled.txt",
         "evidence/R09/29-sale-reopened-disabled-method.png",
-        "evidence/R09/30-sale-refresh-removes-disabled.txt"
+        "evidence/R09/30-sale-refresh-removes-disabled.txt",
+        "evidence/R18/12-cash-disabled-refresh-default-scan.txt",
+        "evidence/R18/12-cash-disabled-refresh-default-scan.png",
+        "evidence/R18/13-reopen-method-config-cash-restored.txt",
+        "evidence/R18/13-reopen-method-config-cash-restored.png",
+        "evidence/R18/04-reopen-new-binding-default.txt",
+        "evidence/R18/04-reopen-new-binding-default.png"
       ],
       "restoration": "微信已启用；扫码1+3/default3恢复；草稿未出票。",
-      "retest": "修复后分别重开验证停用、场景、绑定变化；旧弹窗停留未实时更新不判缺陷。"
+      "retest": "R18（2026-11-05至06）：后台停用现金后，按刷新规则加载：现金移除并自动选择扫码付；恢复现金、关闭重开确认后现金重新出现。旧弹窗停留期间不要求实时拦截。 关闭确认弹窗，后台绑定新建R18扫码资源并设默认，保存后重开，已加载新资源和000QA1105R18S。",
+      "resolution": "R18（2026-11-05至06）：后台停用现金后，按刷新规则加载：现金移除并自动选择扫码付；恢复现金、关闭重开确认后现金重新出现。旧弹窗停留期间不要求实时拦截。 关闭确认弹窗，后台绑定新建R18扫码资源并设默认，保存后重开，已加载新资源和000QA1105R18S。"
     },
     {
       "id": "PAY-016",
       "title": "多资源改固定直接删除其他POS绑定，与方案处理不一致",
       "type": "功能逻辑",
       "severity": "P2",
-      "status": "当前缺陷",
+      "status": "方案调整后关闭",
       "runId": "R11",
       "cases": [
         "A13-03"
@@ -10829,7 +11454,9 @@
         "evidence/R11/17-return-multiple.txt"
       ],
       "restoration": "已恢复银行卡多资源；本人临时POS绑定清空，重开与测试前一致；原其他两个账号单POS绑定保留。",
-      "retest": "先确认保留默认/重新配置的产品口径，再按一致规则复测多绑定收敛和回切；不能只测原来仅一个绑定的账号。"
+      "retest": "按确认规则关闭，不要求开发修复；原实测与证据保留，不记为已验证修复。见R17-执行记录.md。",
+      "resolution": "2026-11-05 用户确认：多资源改固定使用原默认资源，改回多资源自动恢复原绑定及默认，无须管理员重配置。",
+      "scopeResolution": "2026-11-05 用户确认：多资源改固定使用原默认资源，改回多资源自动恢复原绑定及默认，无须管理员重配置。"
     }
   ],
   "pages": [
@@ -11396,7 +12023,7 @@
       "D03"
     ],
     "sharedCases": "共用配置/资源/排序/冲红/历史回查继续验本次可用场景；涉及合作伙伴的子步骤后续验证。团队、内导已有账户方式不因名称相似整项延期。",
-    "completionRule": "284个分支保留；本轮已执行226项（200通过、26有问题），合作伙伴23项后续验证、用户确认35项本轮不执行；当前无未跑和阻塞。已有问题保留待修复复测，不等于验收通过。",
+    "completionRule": "R18缺陷回归：本轮17个关联分支通过，6项缺陷已验证修复；累计217通过、0有问题、0未跑、0阻塞；23项合作伙伴后续验证、44项本轮不执行，10项问题按方案调整关闭",
     "actualPaymentExemption": {
       "decisionDate": "2026-11-04",
       "source": "用户明确：聚合支付不用实际测试",
@@ -11537,6 +12164,29 @@
       "date": "2026-11-05",
       "record": "R16-执行记录.md",
       "rule": "用户确认剩余7未跑和9阻塞均无需继续；16项转本轮不执行，正常保护不视作缺陷，冲红仅本人申请；已有缺陷和历史证据不变。"
+    },
+    {
+      "date": "2026-11-05",
+      "record": "R17-执行记录.md",
+      "rule": "用户确认六类业务口径，关闭PAY-003/005/009/012/014/016及重复排序同类PAY-001；原证据保留，不记修复通过。",
+      "previousBaseline": {
+        "01-页面清单.md": "61144cd3a3a1bb3b6f369dca101dd4b668fd765e3b26db1920c29e6822dda188",
+        "02-全程流程图.md": "29b90a13a48cc6e49c1498a6fddca278dfc8b9a7b766b762b110be9341ad93e4",
+        "03-逐页功能方案.md": "06bab168ee3a778b3d0c2b2eb2af7e2e3aa21247357d2ab8e1ff101c4162a989",
+        "04-开发核对与验收清单.md": "722f04d805480db38d78083f138ca6e2b65476992762529b177064485ac10021",
+        "05-冲红补充方案.md": "04a7d13d6398506fc5d449641319de1b48acace2b5f213ec5b09c4c4d0a22530",
+        "06-记录范围与实施边界.md": "183d002474a7a9e9ef2bdd81d01ac3f919a8eba193734795e991e09d26301976",
+        "07-内导结账补充方案.md": "9b8c91a1c9c0774285394debead7c4705e0ce0e1118af4bfeca8294793fee2a3"
+      },
+      "currentBaseline": {
+        "01-页面清单.md": "c542bcdaabd92f106a326353c25ce11f588a4cfd8c0b3679e1204f2e86af02fd",
+        "02-全程流程图.md": "a953a5a0bfb8ed8394a690c69802cdc9bce54107c6cde7f849e85edee198a61a",
+        "03-逐页功能方案.md": "7329a38d4811985611e8eea29343f8698b29867d9bb0adcc9a61b679189e9d2b",
+        "04-开发核对与验收清单.md": "76c3b4825cc15d7aebfce96eade3eab3724b1fb2d3a0ace78e09fdd469f0c195",
+        "05-冲红补充方案.md": "db8e4ffe10808f0a964ea5f87fc238385f85ff85e1dde1ce768499b4772a8100",
+        "06-记录范围与实施边界.md": "183d002474a7a9e9ef2bdd81d01ac3f919a8eba193734795e991e09d26301976",
+        "07-内导结账补充方案.md": "468a7558683e0a6f8da91f3b7b027dc7b96a7cf5e737be553b315a3f4672efc7"
+      }
     }
   ]
 }
