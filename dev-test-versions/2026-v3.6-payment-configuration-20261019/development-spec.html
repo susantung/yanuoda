@@ -5,8 +5,8 @@
 @media(max-width:1050px){:root{--side:230px}.hero{padding:28px}.main{padding:24px 20px}.card{padding:20px}.page-cards{grid-template-columns:1fr}}
 @media(max-width:720px){.main{width:100%;margin:0;padding:16px}.sidebar{display:none;width:min(85vw,300px)}body.menu-open .sidebar{display:block;box-shadow:-10px 0 40px #201a2c44}.mobile-menu{display:block;position:fixed;right:14px;top:12px;z-index:30;background:#5b21b6;color:#fff;border:1px solid #a78bfa;border-radius:8px;padding:7px 12px}.hero{padding:24px 20px}.hero h1{font-size:25px}.hero p{font-size:14px}.quick{bottom:14px;right:14px}.grid{grid-template-columns:1fr 1fr}.flow-stage{height:500px}.doc h2{font-size:22px}}
 @media print{.sidebar,.quick,.mobile-menu,.actions,.flow-toolbar,.footer-nav{display:none!important}.main{width:100%;margin:0;padding:0}.hero{background:#fff;color:#211a49;box-shadow:none;padding:12px 0}.hero h1,.hero p,.eyebrow{color:#211a49}.card{box-shadow:none;padding:12px}.table-wrap{overflow:visible}table{font-size:10px}.flow-stage{height:850px;max-height:none;page-break-inside:avoid}.section{break-inside:avoid}}
-</style></head><body><button class="mobile-menu" aria-label="打开或关闭目录">目录 ☰</button><aside class="sidebar"><h2>支付配置化专项</h2><div class="group">版本迭代需求</div><a href="../index.html">← 返回版本列表</a><div class="group">开发 / 测试共同方案</div><nav><a class="" href="index.html">方案总览</a><a class="current" href="development-spec.html">完整需求方案</a><a class="" href="page-list.html">页面清单</a><a class="" href="flows.html">全程流程图</a><a class="" href="acceptance.html">开发与验收</a><a class="" href="qa/index.html">测试环境验收方案</a><div class="group">本页目录</div><a class="toc-link" href="#1-本次修改范围">1. 本次修改范围</a><a class="toc-link" href="#2-公共规则">2. 公共规则</a><a class="toc-link" href="#3-B01-支付配置列表">3. B01｜支付配置列表</a><a class="toc-link" href="#4-B02-配置支付方式弹窗">4. B02｜配置支付方式弹窗</a><a class="toc-link" href="#5-B03-支付资源管理列表">5. B03｜支付资源管理列表</a><a class="toc-link" href="#6-B04-新增-编辑支付资源">6. B04｜新增/编辑支付资源</a><a class="toc-link" href="#7-B05-删除资源确认">7. B05｜删除资源确认</a><a class="toc-link" href="#8-B06-设备管理列表">8. B06｜设备管理列表</a><a class="toc-link" href="#9-B07-设备收款配置">9. B07｜设备收款配置</a><a class="toc-link" href="#10-B08-系统角色列表">10. B08｜系统角色列表</a><a class="toc-link" href="#11-B09-账号收款配置">11. B09｜账号收款配置</a><a class="toc-link" href="#12-W01-散客售票工作台">12. W01｜散客售票工作台</a><a class="toc-link" href="#13-W02-W03-团队售票及选择对象">13. W02、W03｜团队售票及选择对象</a><a class="toc-link" href="#14-W04-散客-团队支付订单确认">14. W04｜散客/团队支付订单确认</a><a class="toc-link" href="#15-W05-W06-合作伙伴售票与选择对象">15. W05、W06｜合作伙伴售票与选择对象</a><a class="toc-link" href="#16-W07-合作伙伴支付订单确认">16. W07｜合作伙伴支付订单确认</a><a class="toc-link" href="#17-W08-合作伙伴充值列表">17. W08｜合作伙伴充值列表</a><a class="toc-link" href="#18-W09-共用合作伙伴充值弹窗">18. W09｜共用合作伙伴充值弹窗</a><a class="toc-link" href="#19-W10-挂单恢复及配置刷新">19. W10｜挂单恢复及配置刷新</a><a class="toc-link" href="#20-D01-订单详情中的-订单支付">20. D01｜订单详情中的“订单支付”</a><a class="toc-link" href="#21-D02-充值-回款详情">21. D02｜充值/回款详情</a><a class="toc-link" href="#22-D03-其他收入详情">22. D03｜其他收入详情</a><a class="toc-link" href="#23-W11-W12-内导售票与支付确认">23. W11、W12｜内导售票与支付确认</a><a class="toc-link" href="#24-W13-W14-销售记录与冲红申请">24. W13、W14｜销售记录与冲红申请</a><a class="toc-link" href="#25-B10-B11-冲红审核与审核弹窗">25. B10、B11｜冲红审核与审核弹窗</a><a class="toc-link" href="#26-W15-D04-冲红记录与详情">26. W15、D04｜冲红记录与详情</a><a class="toc-link" href="#27-D01-订单详情-门票详情中的支付与冲红信息">27. D01｜订单详情、门票详情中的支付与冲红信息</a><a class="toc-link" href="#28-K05-冲红保存与生效规则">28. K05｜冲红保存与生效规则</a><a class="toc-link" href="#29-内导收款页面与调整范围">29. 内导收款页面与调整范围</a><a class="toc-link" href="#30-W16-W17-订单记录与订单结账">30. W16、W17｜订单记录与订单结账</a><a class="toc-link" href="#31-W18-结账补收支付订单确认">31. W18｜结账补收支付订单确认</a><a class="toc-link" href="#32-D05-W19-内导订单详情与交易记录">32. D05、W19｜内导订单详情与交易记录</a><a class="toc-link" href="#33-W20-异常支付与重复提交控制">33. W20｜异常支付与重复提交控制</a><a class="toc-link" href="#34-记录范围">34. 记录范围</a><a class="toc-link" href="#35-实施边界">35. 实施边界</a><div class="group">原型入口</div><a href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口原型 ↗</a><div class="group">源文件</div><a href="PRD｜支付配置化_V3.6_20261019.md" target="_blank" rel="noopener noreferrer">打开完整 Markdown ↗</a></nav></aside><main class="main"><header class="hero"><div class="eyebrow">支付配置化专项 · V3.6 · 2026-11-04</div><h1>完整需求方案</h1><p>一种支付方式，一份统一配置，多场景适用。按页面说明字段、操作、校验与结果。</p><div class="actions"><a class="btn" href="development-spec.html">完整需求方案</a><a class="btn" href="flows.html">全程流程图</a><a class="btn" href="page-list.html">页面清单</a><a class="btn" href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a class="btn" href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口 ↗</a></div></header><article class="doc"><h1>支付配置化功能方案</h1>
-<p>版本：V1.8｜2026-11-04｜产品方案评审稿。</p>
+</style></head><body><button class="mobile-menu" aria-label="打开或关闭目录">目录 ☰</button><aside class="sidebar"><h2>支付配置化专项</h2><div class="group">版本迭代需求</div><a href="../index.html">← 返回版本列表</a><div class="group">开发 / 测试共同方案</div><nav><a class="" href="index.html">方案总览</a><a class="current" href="development-spec.html">完整需求方案</a><a class="" href="page-list.html">页面清单</a><a class="" href="flows.html">全程流程图</a><a class="" href="acceptance.html">开发与验收</a><a class="" href="qa/index.html">测试环境验收方案</a><div class="group">本页目录</div><a class="toc-link" href="#1-本次修改范围">1. 本次修改范围</a><a class="toc-link" href="#2-公共规则">2. 公共规则</a><a class="toc-link" href="#3-B01-支付配置列表">3. B01｜支付配置列表</a><a class="toc-link" href="#4-B02-配置支付方式弹窗">4. B02｜配置支付方式弹窗</a><a class="toc-link" href="#5-B03-支付资源管理列表">5. B03｜支付资源管理列表</a><a class="toc-link" href="#6-B04-新增-编辑支付资源">6. B04｜新增/编辑支付资源</a><a class="toc-link" href="#7-B05-删除资源确认">7. B05｜删除资源确认</a><a class="toc-link" href="#8-B06-设备管理列表">8. B06｜设备管理列表</a><a class="toc-link" href="#9-B07-设备收款配置">9. B07｜设备收款配置</a><a class="toc-link" href="#10-B08-系统角色列表">10. B08｜系统角色列表</a><a class="toc-link" href="#11-B09-账号收款配置">11. B09｜账号收款配置</a><a class="toc-link" href="#12-W01-散客售票工作台">12. W01｜散客售票工作台</a><a class="toc-link" href="#13-W02-W03-团队售票及选择对象">13. W02、W03｜团队售票及选择对象</a><a class="toc-link" href="#14-W04-散客-团队支付订单确认">14. W04｜散客/团队支付订单确认</a><a class="toc-link" href="#15-W05-W06-合作伙伴售票与选择对象">15. W05、W06｜合作伙伴售票与选择对象</a><a class="toc-link" href="#16-W07-合作伙伴支付订单确认">16. W07｜合作伙伴支付订单确认</a><a class="toc-link" href="#17-W08-合作伙伴充值列表">17. W08｜合作伙伴充值列表</a><a class="toc-link" href="#18-W09-共用合作伙伴充值弹窗">18. W09｜共用合作伙伴充值弹窗</a><a class="toc-link" href="#19-W10-挂单恢复及配置刷新">19. W10｜挂单恢复及配置刷新</a><a class="toc-link" href="#20-D01-订单详情中的-订单支付">20. D01｜订单详情中的“订单支付”</a><a class="toc-link" href="#21-D02-充值-回款详情">21. D02｜充值/回款详情</a><a class="toc-link" href="#22-D03-其他收入详情">22. D03｜其他收入详情</a><a class="toc-link" href="#23-W11-W12-内导售票与支付确认">23. W11、W12｜内导售票与支付确认</a><a class="toc-link" href="#24-W13-W14-销售记录与冲红申请">24. W13、W14｜销售记录与冲红申请</a><a class="toc-link" href="#25-B10-B11-冲红审核与审核弹窗">25. B10、B11｜冲红审核与审核弹窗</a><a class="toc-link" href="#26-W15-D04-冲红记录与详情">26. W15、D04｜冲红记录与详情</a><a class="toc-link" href="#27-D01-订单详情-门票详情中的支付与冲红信息">27. D01｜订单详情、门票详情中的支付与冲红信息</a><a class="toc-link" href="#28-K05-冲红保存与生效规则">28. K05｜冲红保存与生效规则</a><a class="toc-link" href="#29-内导收款页面与调整范围">29. 内导收款页面与调整范围</a><a class="toc-link" href="#30-W16-W17-订单记录与订单结账">30. W16、W17｜订单记录与订单结账</a><a class="toc-link" href="#31-W18-结账补收支付订单确认">31. W18｜结账补收支付订单确认</a><a class="toc-link" href="#32-D05-W19-内导订单详情与交易记录">32. D05、W19｜内导订单详情与交易记录</a><a class="toc-link" href="#33-W20-异常支付与重复提交控制">33. W20｜异常支付与重复提交控制</a><a class="toc-link" href="#34-记录范围">34. 记录范围</a><a class="toc-link" href="#35-实施边界">35. 实施边界</a><div class="group">原型入口</div><a href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口原型 ↗</a><div class="group">源文件</div><a href="PRD｜支付配置化_V3.6_20261019.md" target="_blank" rel="noopener noreferrer">打开完整 Markdown ↗</a></nav></aside><main class="main"><header class="hero"><div class="eyebrow">支付配置化专项 · V3.6 · 2026-11-05</div><h1>完整需求方案</h1><p>一种支付方式，一份统一配置，多场景适用。按页面说明字段、操作、校验与结果。</p><div class="actions"><a class="btn" href="development-spec.html">完整需求方案</a><a class="btn" href="flows.html">全程流程图</a><a class="btn" href="page-list.html">页面清单</a><a class="btn" href="prototype/admin/index.html" target="_blank" rel="noopener">后台原型 ↗</a><a class="btn" href="prototype/window/index.html" target="_blank" rel="noopener">售票窗口 ↗</a></div></header><article class="doc"><h1>支付配置化功能方案</h1>
+<p>版本：V1.9｜2026-11-05｜产品方案评审稿。</p>
 <p>配套：<a href="01-%E9%A1%B5%E9%9D%A2%E6%B8%85%E5%8D%95.md">页面清单</a> · <a href="02-%E5%85%A8%E7%A8%8B%E6%B5%81%E7%A8%8B%E5%9B%BE.md">全程流程图</a> · <a href="04-%E5%BC%80%E5%8F%91%E6%A0%B8%E5%AF%B9%E4%B8%8E%E9%AA%8C%E6%94%B6%E6%B8%85%E5%8D%95.md">开发与验收</a>。</p>
 <h2 id="1-本次修改范围">1. 本次修改范围</h2>
 <p>本次修改五部分：</p>
@@ -191,7 +191,7 @@
 <td>至少绑定一个，指定其中一个默认；窗口允许在有效绑定中切换</td>
 </tr>
 </tbody></table></div>
-<p>不跨账号/设备兜底，不自动取第一项。切换归属保留另一方绑定，不自动复制；多资源改固定后，不符合新规则的绑定须重新配置。</p>
+<p>不跨账号/设备兜底，不自动取第一项。切换归属保留另一方绑定，不自动复制；多资源改固定时使用原默认资源，其他绑定及原默认保留；改回多资源时自动恢复原绑定和默认，无须管理员重配。</p>
 <h3 id="2-6-编辑-停用-删除与历史">2.6 编辑、停用、删除与历史</h3>
 <ul>
 <li>改资源名称/编号后，绑定及新业务在重新加载配置时读取新值，加载时机见2.8。</li>
@@ -230,7 +230,7 @@
 </tr>
 <tr>
 <td>已选方式</td>
-<td>当前业务手工选择、页面暂存或挂单恢复的方式仍有效时保留；配置刷新只重排，不强制切换。已选方式停用或不再适用时，改选过滤排序后的第一种并重置对应草稿资源</td>
+<td>当前业务手工选择或页面暂存的方式仍有效时保留（挂单恢复除外）；配置刷新只重排，不强制切换。已选方式停用或不再适用时，改选过滤排序后的第一种并重置对应草稿资源</td>
 </tr>
 <tr>
 <td>冲红申请</td>
@@ -238,7 +238,7 @@
 </tr>
 <tr>
 <td>唯一性与存量</td>
-<td>同一景区全部支付方式的序号不可重复（包含停用方式），修改自身原序号除外；重复时阻止保存并提示“排序序号已被其他支付方式使用，请更换”；首次上线按原支付配置列表顺序初始化1—9。异常缺值排在有值之后并按原顺序展示，不因缺值中断加载</td>
+<td>排序序号允许0、跳号和重复；先按序号升序，相同序号按支付方式在数据库中的原有排序二次排序，各页面下拉、按钮及首次默认均使用此顺序；首次上线按原支付配置列表顺序初始化1—9。异常缺值排在有值之后并按原顺序展示，不因缺值中断加载</td>
 </tr>
 </tbody></table></div>
 <p>无可用支付方式时沿用无可用方式提示，不能回退到写死现金。排序不改历史订单支付信息。</p>
@@ -283,7 +283,7 @@
 </tr>
 <tr>
 <td>W10挂单恢复/页签返回</td>
-<td>恢复当前有效的已选方式；失效才重选本页可用方式中序号最小的一种</td>
+<td>挂单不保存支付方式；恢复业务数据后重新加载当前可用方式及排序，默认排序后第一项。普通页内暂存按“已选方式”规则处理</td>
 </tr>
 </tbody></table></div>
 <h3 id="2-8-配置加载与刷新">2.8 配置加载与刷新</h3>
@@ -326,7 +326,7 @@
 </thead>
 <tbody><tr>
 <td>排序序号</td>
-<td>第一列，显示已保存的正整数；列表按序号升序，序号不可重复</td>
+<td>第一列，显示已保存的非负整数；序号升序，相同序号按数据库原有排序二次排序</td>
 </tr>
 <tr>
 <td>支付方式</td>
@@ -491,7 +491,7 @@
 <tr>
 <td>排序序号</td>
 <td>数字输入框，必填</td>
-<td>回显已保存序号；仅正整数，允许跳号，不允许与其他支付方式重复（包含停用方式）；重复时阻止保存并提示“排序序号已被其他支付方式使用，请更换”；空值、0、负数或小数阻止保存并提示“请输入正整数排序序号”</td>
+<td>回显已保存序号；必填非负整数，允许0、跳号及重复；相同序号按数据库原有排序二次排序。空值、负数或小数提示“请输入非负整数排序序号”</td>
 </tr>
 <tr>
 <td>启用状态</td>
@@ -526,7 +526,7 @@
 </tbody></table></div>
 <p>仅资源归属选项切换简短说明，固定值不出现可修改入口。保存/取消统一见4.4。</p>
 <h3 id="4-2-每种支付方式的弹窗差异">4.2 每种支付方式的弹窗差异</h3>
-<p>所有弹窗都有：支付方式（只读）、排序序号（必填正整数）、启用状态（可选）、适用场景（按3.3范围多选）、收款处理（固定只读，不可修改）。以下只列差异，隐藏字段不占空行，也不参与必填校验。</p>
+<p>所有弹窗都有：支付方式（只读）、排序序号（必填非负整数，允许重复）、启用状态（可选）、适用场景（按3.3范围多选）、收款处理（固定只读，不可修改）。以下只列差异，隐藏字段不占空行，也不参与必填校验。</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -992,7 +992,7 @@
 <p>不新定义入账、金额分拆或事务规则；成功/失败、账户刷新、购物车保留均沿用原逻辑。</p>
 <h2 id="19-W10-挂单恢复及配置刷新">19. W10｜挂单恢复及配置刷新</h2>
 <p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/window/index.html">打开原型：售票 → 挂单列表</a></p>
-<p>原挂单恢复逻辑不变。恢复时按当前账号、实际设备重新加载配置和资源，不能直接用草稿中的旧编号；最终提交按本弹窗已加载数据校验。后台后续变更的刷新时机见2.8。</p>
+<p>挂单不记录支付方式。恢复票和游客等业务数据后，按当前账号、实际设备重新加载可用支付方式、排序及资源；默认排序后第一种，不复原挂单前的方式或旧资源编号；最终提交按本弹窗已加载数据校验。后台后续变更的刷新时机见2.8。</p>
 <p>原型测试账号/设备切换仅供测试，不加入生产页面。</p>
 <h2 id="20-D01-订单详情中的-订单支付">20. D01｜订单详情中的“订单支付”</h2>
 <p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=order">打开原型：订单详情</a></p>
@@ -1167,7 +1167,7 @@
 </tbody></table></div>
 <h3 id="24-4-提交与取消">24.4 提交与取消</h3>
 <p>原申请资格及订单有效支付信息沿用原校验；支付方式及资源在前端按本弹窗已加载配置校验，不新增接口实时复核。以<strong>支付方式、资源ID、编号</strong>比较是否调整；三者均未变化时提示“支付信息未发生调整”，不创建申请。历史缺编号的原记录可选择当前有效资源补正，仍须审核。</p>
-<p>通过后保存待审批申请：订单关联、调整前后支付方式及资源ID/名称/编号快照、申请账号、实际设备、订单业务场景、申请时间及原因。资源解析主体一并留存，供审核复核；此时不修改订单有效支付信息。</p>
+<p>通过后保存待审批申请：订单关联、调整前后支付方式及资源ID/名称/编号快照、申请账号、实际设备、订单业务场景、申请时间及原因。资源解析主体一并留存，供审批展示和生效；此时不修改订单有效支付信息。</p>
 <p>保存失败保留草稿；重复提交不产生多条待审批申请。取消或关闭不保存、不改变订单。</p>
 <h2 id="25-B10-B11-冲红审核与审核弹窗">25. B10、B11｜冲红审核与审核弹窗</h2>
 <p><a class="prototype-link" target="_blank" rel="noopener noreferrer" href="prototype/admin/index.html?page=reversal">打开原型：冲红管理 → 冲红审核 → 同意 / 驳回</a></p>
@@ -1198,8 +1198,8 @@
 </tr>
 </tbody></table></div>
 <p>同意、驳回、详情沿用“订单冲红申请”弹窗，原基础信息、团队信息及顺序保持。宽960px、内边距24px、三列无边框；正文高640px，视口高度≤720px时440px，内部滚动，底部操作在正文外；详情保留日志及关闭按钮。</p>
-<h3 id="25-2-同意前复核与结果">25.2 同意前复核与结果</h3>
-<p>配置与资源校验以审核弹窗打开时加载的数据为准；弹窗已打开后后台再变更，不要求提交接口实时复核。关闭重开后再核对新配置，不能仅因旧弹窗未拦截判缺陷。</p>
+<h3 id="25-2-按申请快照审核与生效">25.2 按申请快照审核与生效</h3>
+<p>审核以申请时保存的支付方式、资源及编号快照为准，不按当前支付配置、绑定或资源重新校验。后续改配置、解绑、改名或改码不影响已提交申请；关闭重开审核弹窗仍使用该申请快照。</p>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -1212,12 +1212,12 @@
 <td>不执行同意，提示刷新，不覆盖现有效支付</td>
 </tr>
 <tr>
-<td>审核弹窗重新加载后，方式启停、场景、归属、使用方式或绑定已变更</td>
-<td>按申请记录的账号/实际设备及订单场景复核；配置不一致时阻止同意并提示，不读取审核人的绑定</td>
+<td>申请后支付配置、场景、归属、使用方式或绑定变化</td>
+<td>不据此阻止审核，不读取审核人的绑定，不替换申请值</td>
 </tr>
 <tr>
-<td>审核弹窗重新加载后，所选资源失效、名称或编号已变更</td>
-<td>不换成当前默认或新编号；申请保留待审批，可按原流程驳回重提</td>
+<td>申请后资源状态、名称或编号变化</td>
+<td>按申请时快照审核及生效，不替换成当前默认或新编号</td>
 </tr>
 <tr>
 <td>复核通过</td>
@@ -1290,11 +1290,11 @@
 <td>不用申请目标值替换有效支付</td>
 </tr>
 <tr>
-<td>冲红调整信息</td>
-<td>在订单支付信息下方、订单检票信息上方显示已同意记录；待审批/已驳回申请仍在冲红记录中查看，不提前显示为已生效调整</td>
+<td>窗口冲红调整信息</td>
+<td>仅售票窗口订单详情：在订单支付信息下方、订单检票信息上方显示已同意记录；待审批/已驳回申请仍在冲红记录中查看，不提前显示为已生效调整</td>
 </tr>
 <tr>
-<td>调整表格</td>
+<td>窗口调整表格</td>
 <td>保留九列：冲红单号、原支付类型、冲红后支付类型、申请人、申请时间、支付金额（元）、审批人、审核状态、审核时间。原支付类型、冲红后支付类型单元格分别展示本次申请前后快照：支付方式、收款资源、柜台编码/POS编号；仅扫码付/银行卡显示后两项，历史无值显示“—”。即使支付方式相同，也可直接对照资源和编号变化。点击冲红单号仍可查看详情</td>
 </tr>
 <tr>
@@ -1306,6 +1306,7 @@
 <td>显示“—”，不按当前配置回填；更正后更新生效值，原快照仍保留缺值</td>
 </tr>
 </tbody></table></div>
+<p>PC后台订单详情沿用原结构，不新增“冲红调整信息”；后台冲红审核及冲红详情继续展示申请快照。</p>
 <p>按对应原支付记录更新，不新建支付拆分；原金额、支付时间、流水、出票和账户处理沿用原逻辑。</p>
 <p>支付资源原型用例：</p>
 <div class="table-wrap"><table>
@@ -1404,7 +1405,7 @@
 </thead>
 <tbody><tr>
 <td>支付方式</td>
-<td>可输入筛选的必选下拉。取已启用、包含“内导售票”且符合本单团散及账户资格的方式；散客最多六种，团队最多九种。按配置序号升序，允许跳号、序号不重复</td>
+<td>可输入筛选的必选下拉。取已启用、包含“内导售票”且符合本单团散及账户资格的方式；散客最多六种，团队最多九种。按配置序号升序，允许0、跳号和重复；相同序号按数据库原有排序二次排序</td>
 </tr>
 <tr>
 <td>支付方式初值</td>
@@ -1465,6 +1466,7 @@
 <li>成功后将该笔资源及编号与收款结果一起保存；重复查询不得产生第二笔补收。</li>
 <li>明确失败后，若原流程允许重新结账，新尝试重新读取配置并保存独立快照，不覆盖失败交易。</li>
 </ul>
+<p>结算时间早于开单时间的校验沿用原逻辑：前端允许填写及进入确认，后端在最终提交时校验并拒绝，不新增前端拦截。</p>
 <h2 id="34-记录范围">34. 记录范围</h2>
 <p>本期仅补充扫码付/银行卡实际使用的资源及编号，历史值不回写。不新增财务统计口径、日交款、对账或报表功能。</p>
 <h2 id="35-实施边界">35. 实施边界</h2>
