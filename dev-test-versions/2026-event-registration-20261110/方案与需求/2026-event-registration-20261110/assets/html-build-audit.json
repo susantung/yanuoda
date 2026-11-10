@@ -12,18 +12,18 @@
   "flows": [
     {
       "file": "flow-01.svg",
-      "nodes": 15,
-      "edges": 17
+      "nodes": 17,
+      "edges": 19
     },
     {
       "file": "flow-02.svg",
-      "nodes": 14,
-      "edges": 19
+      "nodes": 16,
+      "edges": 20
     },
     {
       "file": "flow-03.svg",
       "nodes": 14,
-      "edges": 14
+      "edges": 13
     },
     {
       "file": "flow-04.svg",
@@ -37,8 +37,8 @@
     },
     {
       "file": "flow-06.svg",
-      "nodes": 10,
-      "edges": 12
+      "nodes": 14,
+      "edges": 20
     },
     {
       "file": "flow-07.svg",
@@ -47,8 +47,8 @@
     },
     {
       "file": "flow-08.svg",
-      "nodes": 10,
-      "edges": 12
+      "nodes": 14,
+      "edges": 16
     }
   ],
   "sourceFiles": [
