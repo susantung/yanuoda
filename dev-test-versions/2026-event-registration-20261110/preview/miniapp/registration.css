@@ -1,0 +1,51 @@
+.form-view{display:flex;flex:1;flex-direction:column;min-height:0}
+.form-summary{padding:12px 16px;background:#fff;flex:none;border-bottom:1px solid var(--line)}
+.form-summary h2{font-size:17px;margin:0;line-height:1.5;overflow-wrap:anywhere}
+.form-summary p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.form-tabs{display:flex;flex:none;background:#fff;border-bottom:1px solid var(--line)}
+.form-tabs button{flex:1;min-height:48px;border:0;background:#fff;color:var(--muted);font-size:16px;position:relative}
+.form-tabs button[aria-selected=true]{color:var(--brand);font-weight:600}
+.form-tabs button[aria-selected=true]::after{content:'';position:absolute;bottom:0;height:3px;width:36px;border-radius:2px;background:var(--brand);left:calc(50% - 18px)}
+.form-panel{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:12px 12px 24px}
+.person-card,.notice-paper,.signature-card{padding:16px;background:#fff;border-radius:12px;margin-bottom:12px}
+.person-card h3,.signature-card h3{margin:0 0 16px;font-size:17px}
+.form-field{margin:0 0 18px;min-width:0}.form-field:last-child{margin-bottom:0}
+.field-label{display:block;font-size:15px;margin-bottom:6px}.field-label .required{color:var(--price);margin-right:4px}
+.form-field input:not([type=checkbox]),.form-field select,.form-field textarea{width:100%;min-width:0;min-height:46px;padding:10px 12px;border:1px solid #c5cbd1;border-radius:8px;background:#fff;line-height:1.6;color:var(--text);font-family:inherit;font-size:15px}
+.form-field textarea{min-height:100px;resize:vertical}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{outline:2px solid var(--brand);outline-offset:1px}
+.field-help{font-size:14px;color:var(--muted);margin:5px 0 0;overflow-wrap:anywhere}
+.field-error{font-size:14px;color:var(--price);margin:5px 0 0}.field-error:empty{display:none}
+.form-field [aria-invalid=true]{border-color:var(--price)!important}
+.check-choice{display:flex;align-items:center;gap:10px;min-height:44px;font-size:15px}
+.check-choice input{width:20px;height:20px;accent-color:var(--brand)}
+.notice-paper h3{font-size:18px;margin:0 0 16px}.notice-paper p{font-size:15px;line-height:1.9;margin:0 0 18px;overflow-wrap:anywhere}
+.form-footer{flex:none;display:flex;gap:12px;background:#fff;border-top:1px solid var(--line);padding:12px 16px max(16px,env(safe-area-inset-bottom))}
+.form-footer button{min-height:48px;font-size:16px;border-radius:8px;padding:8px 16px;font-weight:600}
+.draft-save{flex:1;color:var(--brand);border:1px solid var(--brand);background:#fff}
+.registration-continue-payment{flex:1;color:var(--brand-on);border:1px solid var(--brand);background:var(--brand)}
+.registration-submit{flex:2;color:var(--brand-on);border:1px solid var(--brand);background:var(--brand)}
+.form-feedback{flex:none;padding:8px 16px;font-size:14px;background:#fff;color:var(--brand);margin:0;overflow-wrap:anywhere}.form-feedback:empty{display:none}
+.form-feedback.is-error{color:var(--price)}
+.signature-progress{color:var(--muted);font-size:14px;margin:0 0 8px}
+.signature-row{padding:12px 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.signature-person{flex:1;min-width:80px;overflow-wrap:anywhere}.signature-person small{display:block;color:var(--muted);font-size:14px}
+.signature-row button{min-height:44px;border:1px solid var(--brand);border-radius:6px;padding:6px 10px;color:var(--brand);background:#fff;font-size:14px}
+.signature-row button:disabled{border-color:#c5cbd1;color:#747c85;background:#f4f5f6}
+
+.phone{position:relative}
+
+.signature-jump{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;min-height:44px;margin-top:6px;padding:6px 0;background:none;border:0;color:var(--muted);font-size:14px;text-align:left}
+.signature-jump span{color:var(--brand);white-space:nowrap}
+
+.signature-requirement:empty{display:none}
+.shared-fields{margin:0}.shared-fields dt{font-size:14px;color:var(--muted);margin:14px 0 4px}.shared-fields dd{font-size:15px;line-height:1.7;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+
+.shared-signature-feedback{color:var(--brand);font-size:15px;line-height:1.7;margin:0 0 12px}.shared-signature-feedback:empty{display:none}
+
+
+
+.signature-row button[hidden]{display:none!important}
+
+/* Save acknowledgement overlays the content; it never creates a footer strip. */
+.form-feedback.is-toast{position:absolute;z-index:8;left:50%;bottom:92px;transform:translateX(-50%);width:max-content;max-width:calc(100% - 48px);padding:10px 18px;border-radius:8px;background:rgba(31,35,41,.9);color:#fff;font-size:14px;line-height:22px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.12);pointer-events:none}

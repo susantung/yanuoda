@@ -85,7 +85,6 @@
           <div class="page-scroll config-scroll" id="configContent"></div>
           <footer class="config-actions">
             <button class="config-prev" id="configPrev">上一步</button>
-            <button class="config-save secondary-save" id="configSave">保存</button>
             <button class="config-next" id="configNext">下一步</button>
           </footer>
         </section>
@@ -219,7 +218,8 @@
         </div>
 
         <div class="sheet-layer" id="modifyLayer" aria-hidden="true"><button class="mask" data-close="modify"></button><section class="modify-sheet"><div class="sheet-handle"></div><h2>修改预约信息</h2><p>预约日期、场次、分类和项目不可修改；以下字段来自该预约提交时的表单快照。</p><div class="modify-snapshot-fields" id="modifySnapshotFields"></div><div class="field-sheet-actions"><button class="secondary" data-close="modify">取消</button><button class="field-save" id="saveModify">保存修改</button></div></section></div>
-        <div class="dialog-layer" id="cancelBookingLayer" aria-hidden="true"><button class="mask" data-close="cancelBooking"></button><section class="dialog"><span class="danger-icon">!</span><h2>确认取消该预约？</h2><p>取消后立即返还场次和项目名额，操作不可恢复。</p><label class="cancel-input"><span>取消原因 <b>*</b></span><textarea id="adminCancelReason" placeholder="请输入管理员取消原因"></textarea></label><div class="dialog-actions"><button class="secondary" data-close="cancelBooking">暂不取消</button><button class="danger" id="confirmCancelBooking">确认取消</button></div></section></div>
+        <div class="dialog-layer" id="cancelBookingLayer" aria-hidden="true"><button class="mask" data-close="cancelBooking"></button><section class="dialog"><span class="danger-icon">!</span><h2>确认取消该预约？</h2><p>取消后立即返还场次和项目名额，操作不可恢复。</p><label class="cancel-input"><span>取消原因 <b>*</b></span><textarea id="adminCancelReason" placeholder="请输入管理员取消原因"></textarea></label><section class="cancel-sms-preview"><b>确认后将向游客发送以下短信</b><p id="adminCancelSmsPreview"></p></section><div class="dialog-actions"><button class="secondary" data-close="cancelBooking">暂不取消</button><button class="danger" id="confirmCancelBooking">确认取消</button></div></section></div>
+
 
         <div class="sheet-layer" id="actionLayer" aria-hidden="true">
           <button class="mask" data-close="action"></button>
@@ -290,6 +290,6 @@
       </div>
     </div>
   </main>
-  <script src="./app.js?v=20260831-o02-all-date-session"></script><script src="./operations.js?v=20260831-o02-all-date-session"></script><script src="./config.js?v=20260825-c02rulefix"></script><script src="./special-dates.js?v=20260824-templatedelete2"></script>
+  <script src="./app.js?v=20260914-wecom-notice"></script><script src="./operations.js?v=20260831-o02-all-date-session"></script><script src="./config.js?v=20260825-c02rulefix"></script><script src="./special-dates.js?v=20260824-templatedelete2"></script>
 </body>
 </html>

@@ -1,0 +1,839 @@
+{
+  "baseline": "赛事活动报名/交付/赛事活动报名-研发评审",
+  "policy": "仅对指定评审目录逐文件取证；历史资料未入包不等于业务新增，格式重排不算V1.1业务新增。",
+  "baselineFileComparison": [
+    {
+      "file": "preview/event-admin/app.js",
+      "baselineSha256": "6d41e1e4514191b875c1c0fa1e878035e97b39b60183ebe05685f7f7eb532de4",
+      "currentSha256": "8470b5f4d054ea0ccd76474fcdd81f7c41a0ffc058f77d4d20906e22769c4d1a",
+      "status": "修改"
+    },
+    {
+      "file": "preview/event-admin/assets/avatar.png",
+      "baselineSha256": "f5e6ac55bfa99d43c8c73e603a501aeeba4bb153409563d15513da2f1352ea8c",
+      "currentSha256": "f5e6ac55bfa99d43c8c73e603a501aeeba4bb153409563d15513da2f1352ea8c",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/element.js",
+      "baselineSha256": "89d3c55e8fa03f177b1cc3824aede7c94b2ce4143f6a30f54ebb96e20eb42bc2",
+      "currentSha256": "89d3c55e8fa03f177b1cc3824aede7c94b2ce4143f6a30f54ebb96e20eb42bc2",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/icon-sort.png",
+      "baselineSha256": "62f826aa92ea6f018eced5b2cd3375c8bc52566b78b4fbcbb22424f2c94b3237",
+      "currentSha256": "62f826aa92ea6f018eced5b2cd3375c8bc52566b78b4fbcbb22424f2c94b3237",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/logo.png",
+      "baselineSha256": "80c047a504f55fb1c1cfd0cb7c26d16bebfc623305c907e5697a6b96276a2441",
+      "currentSha256": "80c047a504f55fb1c1cfd0cb7c26d16bebfc623305c907e5697a6b96276a2441",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/sortable-LICENSE",
+      "baselineSha256": "e94dfc31e800d169257569db270457c9f028440c9ccae41e7eb78b2db18f1298",
+      "currentSha256": "e94dfc31e800d169257569db270457c9f028440c9ccae41e7eb78b2db18f1298",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/sortable.min.js",
+      "baselineSha256": "6d0a831fc19b4bae851797ad3393157e861afb7862459c11226359b27e2c4337",
+      "currentSha256": "6d0a831fc19b4bae851797ad3393157e861afb7862459c11226359b27e2c4337",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/alert.css",
+      "baselineSha256": "3a92d0a177655a2ec12660798506503f3000efae8a2edd79d43cbc7d4cc2f69a",
+      "currentSha256": "3a92d0a177655a2ec12660798506503f3000efae8a2edd79d43cbc7d4cc2f69a",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/aside.css",
+      "baselineSha256": "a60a11a84dc19e63b58d9e1483c4e8795911fa7547ab9621b8a38164d4939ace",
+      "currentSha256": "a60a11a84dc19e63b58d9e1483c4e8795911fa7547ab9621b8a38164d4939ace",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/autocomplete.css",
+      "baselineSha256": "1ad03bdfae2b948a358142ff5dff77a3c6498d572355d2c86f2fe235438f6e82",
+      "currentSha256": "1ad03bdfae2b948a358142ff5dff77a3c6498d572355d2c86f2fe235438f6e82",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/avatar.css",
+      "baselineSha256": "6463505f5b30fd45584f5f33682ef9128c33292468afe2f52afc19a1671a087e",
+      "currentSha256": "6463505f5b30fd45584f5f33682ef9128c33292468afe2f52afc19a1671a087e",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/backtop.css",
+      "baselineSha256": "c129f3d48fbccecc9b9cfd1e24b2499185cf9a9548f22deadbe208991ec212e8",
+      "currentSha256": "c129f3d48fbccecc9b9cfd1e24b2499185cf9a9548f22deadbe208991ec212e8",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/badge.css",
+      "baselineSha256": "27e3be528f52d56be0b0ea08360ac28bc9e6782ad52ff3ef7be1acb859e60c38",
+      "currentSha256": "27e3be528f52d56be0b0ea08360ac28bc9e6782ad52ff3ef7be1acb859e60c38",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/base.css",
+      "baselineSha256": "d5738765eb9fd5468957996bf8578147c37ad318e3f730d0299d67b8974441d8",
+      "currentSha256": "d5738765eb9fd5468957996bf8578147c37ad318e3f730d0299d67b8974441d8",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/breadcrumb-item.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/breadcrumb.css",
+      "baselineSha256": "ea4f80df1387ef711578bb58c14bc64e807558c6fd02ef537f5b00c19e9a8d7d",
+      "currentSha256": "ea4f80df1387ef711578bb58c14bc64e807558c6fd02ef537f5b00c19e9a8d7d",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/button-group.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/button.css",
+      "baselineSha256": "d84fba6badd5a88ff80a6af85cc35ddb59d3832ea47faeec8ca3fac277e85bbc",
+      "currentSha256": "d84fba6badd5a88ff80a6af85cc35ddb59d3832ea47faeec8ca3fac277e85bbc",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/calendar.css",
+      "baselineSha256": "a2f33d0f9964c9d46575675830793d7821d25f210639adb49e2038bc0ff43f3e",
+      "currentSha256": "a2f33d0f9964c9d46575675830793d7821d25f210639adb49e2038bc0ff43f3e",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/card.css",
+      "baselineSha256": "7fc049a247a73cdc3a39c574ab4cfefcc19968a19d00974c8eeba70e793566ff",
+      "currentSha256": "7fc049a247a73cdc3a39c574ab4cfefcc19968a19d00974c8eeba70e793566ff",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/carousel-item.css",
+      "baselineSha256": "49b6e7cef8289dbaf47c47df36fefc0dbbd3debaa67ba7a7020ad92853592680",
+      "currentSha256": "49b6e7cef8289dbaf47c47df36fefc0dbbd3debaa67ba7a7020ad92853592680",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/carousel.css",
+      "baselineSha256": "1e4042d473fa362e07d44ef9848354572a3070a260061655c78432615f087635",
+      "currentSha256": "1e4042d473fa362e07d44ef9848354572a3070a260061655c78432615f087635",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/cascader-panel.css",
+      "baselineSha256": "da0e5e14fd649e7b493f002f91bea3c000badaad296dc6365cb61de30cf4f5ed",
+      "currentSha256": "da0e5e14fd649e7b493f002f91bea3c000badaad296dc6365cb61de30cf4f5ed",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/cascader.css",
+      "baselineSha256": "2e9cc891be07b06efdbf6bb3553ca3f9e2fe1d74d6e3138aae957738637a4f3b",
+      "currentSha256": "2e9cc891be07b06efdbf6bb3553ca3f9e2fe1d74d6e3138aae957738637a4f3b",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/checkbox-button.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/checkbox-group.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/checkbox.css",
+      "baselineSha256": "3df9334c885ec959b3007b9c4442bd9cf405b70e5dab7957ee0797b3dc34fcd3",
+      "currentSha256": "3df9334c885ec959b3007b9c4442bd9cf405b70e5dab7957ee0797b3dc34fcd3",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/col.css",
+      "baselineSha256": "81d784d1b38f04ba01b179742a2c55b964866c29d6d8cb726d14b8575c7ea465",
+      "currentSha256": "81d784d1b38f04ba01b179742a2c55b964866c29d6d8cb726d14b8575c7ea465",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/collapse-item.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/collapse.css",
+      "baselineSha256": "cfc3458a811b4f40703cd2213d10ea65fa1c46300d01ee3e29bbe5d28b34049c",
+      "currentSha256": "cfc3458a811b4f40703cd2213d10ea65fa1c46300d01ee3e29bbe5d28b34049c",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/color-picker.css",
+      "baselineSha256": "a2af494e1c1586cb0e7f13e486f5c4cd98ea244a84fe9ca875632e1b18fa891a",
+      "currentSha256": "a2af494e1c1586cb0e7f13e486f5c4cd98ea244a84fe9ca875632e1b18fa891a",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/container.css",
+      "baselineSha256": "717823ec557a65e17ffbedd94c5c203675f611bf88c1251b3424b81b8fdd00bd",
+      "currentSha256": "717823ec557a65e17ffbedd94c5c203675f611bf88c1251b3424b81b8fdd00bd",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/date-picker.css",
+      "baselineSha256": "7d96c7944a1bbf61400117d038dbd0eb5db8096bf2c7de4071c189aa5300c5ed",
+      "currentSha256": "7d96c7944a1bbf61400117d038dbd0eb5db8096bf2c7de4071c189aa5300c5ed",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/descriptions-item.css",
+      "baselineSha256": "903a0d4d83dd9cc415dc3a6b02e63276e0ab8d332982982a41537a067c4ccf6a",
+      "currentSha256": "903a0d4d83dd9cc415dc3a6b02e63276e0ab8d332982982a41537a067c4ccf6a",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/descriptions.css",
+      "baselineSha256": "50991a240563763b73cd359ab5bc4662c198e90089c9fedbc36ffb9fc6188c7b",
+      "currentSha256": "50991a240563763b73cd359ab5bc4662c198e90089c9fedbc36ffb9fc6188c7b",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/dialog.css",
+      "baselineSha256": "d173b4a6b333b347008dd4849343f9e6165497ecaac166f306fda3235f38b352",
+      "currentSha256": "d173b4a6b333b347008dd4849343f9e6165497ecaac166f306fda3235f38b352",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/display.css",
+      "baselineSha256": "10451b01ead5e286ee4dd7fba2a18aeae2a0ecc31035fa9eeed6130865bd514a",
+      "currentSha256": "10451b01ead5e286ee4dd7fba2a18aeae2a0ecc31035fa9eeed6130865bd514a",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/divider.css",
+      "baselineSha256": "08c35a8cb3c1dcad3e443dd6bf108b67ab4ab1261d592a58d8779a14decca31e",
+      "currentSha256": "08c35a8cb3c1dcad3e443dd6bf108b67ab4ab1261d592a58d8779a14decca31e",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/drawer.css",
+      "baselineSha256": "850d828a23ea47ccbba3eea4c201a708a20a4aaba08746a2b77fdc611c174016",
+      "currentSha256": "850d828a23ea47ccbba3eea4c201a708a20a4aaba08746a2b77fdc611c174016",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/dropdown-item.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/dropdown-menu.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/dropdown.css",
+      "baselineSha256": "7858cebc9bfe007f61d42d236c61339de3ebcc2a384306f13561f3908d9d5010",
+      "currentSha256": "7858cebc9bfe007f61d42d236c61339de3ebcc2a384306f13561f3908d9d5010",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/empty.css",
+      "baselineSha256": "c2b682b5c262e029afe44b23d0497ada28800be031810cdcbcda40782dc9142a",
+      "currentSha256": "c2b682b5c262e029afe44b23d0497ada28800be031810cdcbcda40782dc9142a",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/fonts/element-icons.ttf",
+      "baselineSha256": "a30f5b3ba6a48822eae041e0ca5412a289125e4ba661d047dae565ac43b4a6b2",
+      "currentSha256": "a30f5b3ba6a48822eae041e0ca5412a289125e4ba661d047dae565ac43b4a6b2",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/fonts/element-icons.woff",
+      "baselineSha256": "ab40a58972be2ceab32e7e35dab3131b959aae63835d7bda1a79ae51f9a73c17",
+      "currentSha256": "ab40a58972be2ceab32e7e35dab3131b959aae63835d7bda1a79ae51f9a73c17",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/footer.css",
+      "baselineSha256": "ccb43019f9e87e60eb682730cff220cf0f24654c176023c97c520092b81b5532",
+      "currentSha256": "ccb43019f9e87e60eb682730cff220cf0f24654c176023c97c520092b81b5532",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/form-item.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/form.css",
+      "baselineSha256": "6478874fce6b2a1b983f86db04293b96c90e646c725665799880f536f890e23c",
+      "currentSha256": "6478874fce6b2a1b983f86db04293b96c90e646c725665799880f536f890e23c",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/header.css",
+      "baselineSha256": "87f90fe39f2d79ef8aab03fef8331aaa4b348c7fe681874495ad724175c3848e",
+      "currentSha256": "87f90fe39f2d79ef8aab03fef8331aaa4b348c7fe681874495ad724175c3848e",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/icon.css",
+      "baselineSha256": "394743249910791c5cba25d279ff61fa77726c4ffc16958dc1a3399b8678230a",
+      "currentSha256": "394743249910791c5cba25d279ff61fa77726c4ffc16958dc1a3399b8678230a",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/image.css",
+      "baselineSha256": "376014d91cd926a864fcb5e3a29d14d1698007368485b69c5abea4f2b5ffb56c",
+      "currentSha256": "376014d91cd926a864fcb5e3a29d14d1698007368485b69c5abea4f2b5ffb56c",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/index.css",
+      "baselineSha256": "dc86d4797565d05e88d63598128328e2ed6f02f7f6d950a36a1c4ca9eb9c8057",
+      "currentSha256": "dc86d4797565d05e88d63598128328e2ed6f02f7f6d950a36a1c4ca9eb9c8057",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/infinite-scroll.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/infiniteScroll.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/input-number.css",
+      "baselineSha256": "053dc15c404b7e3c97c0e3f15f88e02a5c4e339ff6fe73c99328ba13d707d5af",
+      "currentSha256": "053dc15c404b7e3c97c0e3f15f88e02a5c4e339ff6fe73c99328ba13d707d5af",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/input.css",
+      "baselineSha256": "b00f517558ff515a3f8a8211b7bd1dbc45b5fbbf9d203035f8e596c2ea036fac",
+      "currentSha256": "b00f517558ff515a3f8a8211b7bd1dbc45b5fbbf9d203035f8e596c2ea036fac",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/link.css",
+      "baselineSha256": "7529f81b3d617bdceba2015ca3d98969fac11f68463b52e72650f2e097a530e0",
+      "currentSha256": "7529f81b3d617bdceba2015ca3d98969fac11f68463b52e72650f2e097a530e0",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/loading.css",
+      "baselineSha256": "f10fa02749537e1d4cfecc8eb0c04d8711384199d19c3cb2b8ffa707379dec80",
+      "currentSha256": "f10fa02749537e1d4cfecc8eb0c04d8711384199d19c3cb2b8ffa707379dec80",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/main.css",
+      "baselineSha256": "0a7a30c853c0964fe3883f43817bee3f7a9c3bfce3951f33ccbf3efc47e37bbb",
+      "currentSha256": "0a7a30c853c0964fe3883f43817bee3f7a9c3bfce3951f33ccbf3efc47e37bbb",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/menu-item-group.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/menu-item.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/menu.css",
+      "baselineSha256": "75553b17ca3f1192e835ecffe616cc2187fa107d5575197eeb7fdbca630ac614",
+      "currentSha256": "75553b17ca3f1192e835ecffe616cc2187fa107d5575197eeb7fdbca630ac614",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/message-box.css",
+      "baselineSha256": "7b385016ff718b4d0efa5b525cc90765f8deaf3329692626645279818a89eb8d",
+      "currentSha256": "7b385016ff718b4d0efa5b525cc90765f8deaf3329692626645279818a89eb8d",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/message.css",
+      "baselineSha256": "3d979b05cddd3960594f60ea14ed58e3866ac4b4cbf46ded73fff168188f8288",
+      "currentSha256": "3d979b05cddd3960594f60ea14ed58e3866ac4b4cbf46ded73fff168188f8288",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/notification.css",
+      "baselineSha256": "97ab4b0a8edd69cf6835a6308c6f60165c5ad94bbce84fb917c8b1c4e19fa744",
+      "currentSha256": "97ab4b0a8edd69cf6835a6308c6f60165c5ad94bbce84fb917c8b1c4e19fa744",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/option-group.css",
+      "baselineSha256": "382bfa506dc79ea087248a0ec9b586afddc4c8af38d911a47f41e38d3bbcb892",
+      "currentSha256": "382bfa506dc79ea087248a0ec9b586afddc4c8af38d911a47f41e38d3bbcb892",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/option.css",
+      "baselineSha256": "e1e5b6d47838fb9de2304dc8b6bfab2f4adf91c64bde49ba91984d6059132a9d",
+      "currentSha256": "e1e5b6d47838fb9de2304dc8b6bfab2f4adf91c64bde49ba91984d6059132a9d",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/page-header.css",
+      "baselineSha256": "30e0839d4d2e6b81d023892cf724294a53b31632403a7aeae6325a3cccd647e8",
+      "currentSha256": "30e0839d4d2e6b81d023892cf724294a53b31632403a7aeae6325a3cccd647e8",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/pagination.css",
+      "baselineSha256": "2f60529a50b462478d30fac04391c713325ede67472365d93d4bd638e86f0dac",
+      "currentSha256": "2f60529a50b462478d30fac04391c713325ede67472365d93d4bd638e86f0dac",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/popconfirm.css",
+      "baselineSha256": "716a3417b48cb4337005a2c357c7267cc6cc102ef0ee41be6c6880dc06484b7c",
+      "currentSha256": "716a3417b48cb4337005a2c357c7267cc6cc102ef0ee41be6c6880dc06484b7c",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/popover.css",
+      "baselineSha256": "9da0f6f2221d797279589702441c44a51803cdeb9b5fc5b33a2ebc4e1633675a",
+      "currentSha256": "9da0f6f2221d797279589702441c44a51803cdeb9b5fc5b33a2ebc4e1633675a",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/popper.css",
+      "baselineSha256": "3b9e7d5d66335624161ff595b22b80193879d60d1d033fb0db02baa052b34d12",
+      "currentSha256": "3b9e7d5d66335624161ff595b22b80193879d60d1d033fb0db02baa052b34d12",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/progress.css",
+      "baselineSha256": "df25384befb945efe9ac4befc80ca2d2ff8128480fe678bc5e07a1b843c6837c",
+      "currentSha256": "df25384befb945efe9ac4befc80ca2d2ff8128480fe678bc5e07a1b843c6837c",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/radio-button.css",
+      "baselineSha256": "ef0b52b0cc6e68e50db4610cee3792127dbc27e611d8faf60451b2a2a295dfaa",
+      "currentSha256": "ef0b52b0cc6e68e50db4610cee3792127dbc27e611d8faf60451b2a2a295dfaa",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/radio-group.css",
+      "baselineSha256": "a8d1b635a397a3d77e6857c4df70188a08c25a9bc960f69e996382a3ea82c7e7",
+      "currentSha256": "a8d1b635a397a3d77e6857c4df70188a08c25a9bc960f69e996382a3ea82c7e7",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/radio.css",
+      "baselineSha256": "3d66d3717a045e3604b5614e214993e30698e6528d017f80b5da6bf221a6f9e4",
+      "currentSha256": "3d66d3717a045e3604b5614e214993e30698e6528d017f80b5da6bf221a6f9e4",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/rate.css",
+      "baselineSha256": "49fb5914b6d0b69b2a0af93e0b5f35439ab7d77ec4c38e006f56b46399cff801",
+      "currentSha256": "49fb5914b6d0b69b2a0af93e0b5f35439ab7d77ec4c38e006f56b46399cff801",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/reset.css",
+      "baselineSha256": "4718ffc9af1ae217b004ccbc0cea33a03bd4143c3717ade9a15cc447eaeed0e4",
+      "currentSha256": "4718ffc9af1ae217b004ccbc0cea33a03bd4143c3717ade9a15cc447eaeed0e4",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/result.css",
+      "baselineSha256": "5f45a4365bed27704dda61b05d75b483dc80c7baa0d1e6f07a3616c78d9ed3e2",
+      "currentSha256": "5f45a4365bed27704dda61b05d75b483dc80c7baa0d1e6f07a3616c78d9ed3e2",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/row.css",
+      "baselineSha256": "b90fef55053d9acae42796699c8e6c39354b36b39f99389bd2addfbdce67dde7",
+      "currentSha256": "b90fef55053d9acae42796699c8e6c39354b36b39f99389bd2addfbdce67dde7",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/scrollbar.css",
+      "baselineSha256": "b6fcca675c5156a3233d9b43f18c6643f58d08ddf208ad7d8b9bd08b732fb9ad",
+      "currentSha256": "b6fcca675c5156a3233d9b43f18c6643f58d08ddf208ad7d8b9bd08b732fb9ad",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/select-dropdown.css",
+      "baselineSha256": "f0abcdf4e572044e916093fd79ea17b0f36e4af82ebe8556da3ec750ab92374d",
+      "currentSha256": "f0abcdf4e572044e916093fd79ea17b0f36e4af82ebe8556da3ec750ab92374d",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/select.css",
+      "baselineSha256": "8387898a644d4cc68bed0cd56d5f18482efbaa0aefaa2c9df29550cd3df19389",
+      "currentSha256": "8387898a644d4cc68bed0cd56d5f18482efbaa0aefaa2c9df29550cd3df19389",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/skeleton-item.css",
+      "baselineSha256": "0e68a559cd473ed09859c00ff9ce4e106035c8f43315c5a44829b021bbb9713c",
+      "currentSha256": "0e68a559cd473ed09859c00ff9ce4e106035c8f43315c5a44829b021bbb9713c",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/skeleton.css",
+      "baselineSha256": "9187c68cf2719b0ca2ff372b7b79afceb52f2e415aa0621118074ce8b60be543",
+      "currentSha256": "9187c68cf2719b0ca2ff372b7b79afceb52f2e415aa0621118074ce8b60be543",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/slider.css",
+      "baselineSha256": "01d5316c85314644dd516233420e743f33d11e9b9db9fadc9ee568e07cd7495a",
+      "currentSha256": "01d5316c85314644dd516233420e743f33d11e9b9db9fadc9ee568e07cd7495a",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/spinner.css",
+      "baselineSha256": "6a00c7ce0c413370fc9f5620c41d4b6dc214b7de8e842910f69110c1cbca2681",
+      "currentSha256": "6a00c7ce0c413370fc9f5620c41d4b6dc214b7de8e842910f69110c1cbca2681",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/statistic.css",
+      "baselineSha256": "25cc32c86c51a420594369469488c04a7971b115c444778353f6a5375452a8e4",
+      "currentSha256": "25cc32c86c51a420594369469488c04a7971b115c444778353f6a5375452a8e4",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/step.css",
+      "baselineSha256": "d09636cfa437b8c94a8d338289fedee32c6934acb1e3eb2a6708050848d3989a",
+      "currentSha256": "d09636cfa437b8c94a8d338289fedee32c6934acb1e3eb2a6708050848d3989a",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/steps.css",
+      "baselineSha256": "779a2e99c50fa67298142d4bbd3bf2160ce09215022e38733e059acdeff3e2bb",
+      "currentSha256": "779a2e99c50fa67298142d4bbd3bf2160ce09215022e38733e059acdeff3e2bb",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/submenu.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/switch.css",
+      "baselineSha256": "cfa99ad2d95b5efb835aa67d1b6362a449111b9f1a06fccbe358c4f222c0012d",
+      "currentSha256": "cfa99ad2d95b5efb835aa67d1b6362a449111b9f1a06fccbe358c4f222c0012d",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/tab-pane.css",
+      "baselineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/table-column.css",
+      "baselineSha256": "03bceb728c87b3469748545b642a938c1713fb108ec071377718716cf722988f",
+      "currentSha256": "03bceb728c87b3469748545b642a938c1713fb108ec071377718716cf722988f",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/table.css",
+      "baselineSha256": "af7edfdc41638ff4f5e842b7c88340fd488bca624199c05b4eb0c0c9c7328176",
+      "currentSha256": "af7edfdc41638ff4f5e842b7c88340fd488bca624199c05b4eb0c0c9c7328176",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/tabs.css",
+      "baselineSha256": "1d9967fb408dc8439081b75aee38f88084eae63f29090e4666087f209b47811b",
+      "currentSha256": "1d9967fb408dc8439081b75aee38f88084eae63f29090e4666087f209b47811b",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/tag.css",
+      "baselineSha256": "6f885d4a3562a6be7e82443a913166c7a9d2188f4129c26da4e813f4ce82b4dc",
+      "currentSha256": "6f885d4a3562a6be7e82443a913166c7a9d2188f4129c26da4e813f4ce82b4dc",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/time-picker.css",
+      "baselineSha256": "13b7d85787d3956917ebd91b9dafda13342f5e67eff696b7e39fee79fb30a739",
+      "currentSha256": "13b7d85787d3956917ebd91b9dafda13342f5e67eff696b7e39fee79fb30a739",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/time-select.css",
+      "baselineSha256": "21cb2ae68ba40bb92c623703e0224195efd2f81837adb1cae1cfbb75c5a6784b",
+      "currentSha256": "21cb2ae68ba40bb92c623703e0224195efd2f81837adb1cae1cfbb75c5a6784b",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/timeline-item.css",
+      "baselineSha256": "480d3c07a7ab68ceca32f1918d34c7425d0f93ccd27c598ef0981cfe2b23f181",
+      "currentSha256": "480d3c07a7ab68ceca32f1918d34c7425d0f93ccd27c598ef0981cfe2b23f181",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/timeline.css",
+      "baselineSha256": "7f0356dc5ada99a33eafc5c5a2ce152ac1eac1929e64b8fbec15ebbb2c24acee",
+      "currentSha256": "7f0356dc5ada99a33eafc5c5a2ce152ac1eac1929e64b8fbec15ebbb2c24acee",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/tooltip.css",
+      "baselineSha256": "cf80267da167cedefc3036b780d8d7336f04ca008e21f5af0ab0dd3ebef14b4d",
+      "currentSha256": "cf80267da167cedefc3036b780d8d7336f04ca008e21f5af0ab0dd3ebef14b4d",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/transfer.css",
+      "baselineSha256": "12253377361b996f433393f9f289e5f949236c622da4d45c846e890087b5257a",
+      "currentSha256": "12253377361b996f433393f9f289e5f949236c622da4d45c846e890087b5257a",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/tree.css",
+      "baselineSha256": "92078a7a7aab5297de6ac63957811b2a42118fc5061491871b9e9efc8747fa1d",
+      "currentSha256": "92078a7a7aab5297de6ac63957811b2a42118fc5061491871b9e9efc8747fa1d",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/theme/upload.css",
+      "baselineSha256": "42dd517c8e3d71ecd684c551865b4a87f4102ff9d7e92226639e4b8abb099ad5",
+      "currentSha256": "42dd517c8e3d71ecd684c551865b4a87f4102ff9d7e92226639e4b8abb099ad5",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/tinymce/skins/lightgray/content.inline.min.css",
+      "baselineSha256": "061f7e8aa31f147d47ac0688f5cc73bef6e50807e0393960dc6a59d1d6dfe0e2",
+      "currentSha256": "061f7e8aa31f147d47ac0688f5cc73bef6e50807e0393960dc6a59d1d6dfe0e2",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/tinymce/skins/lightgray/content.min.css",
+      "baselineSha256": "915a9f94566b5214b6a05229b95d65403bbdfaea94a7f9c5e50eae2beb75eb21",
+      "currentSha256": "915a9f94566b5214b6a05229b95d65403bbdfaea94a7f9c5e50eae2beb75eb21",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/tinymce/skins/lightgray/fonts/tinymce.woff",
+      "baselineSha256": "84d35201689d08969a92a8ccdc5a0002da01eac30651fef23e79e1993ace2ebf",
+      "currentSha256": "84d35201689d08969a92a8ccdc5a0002da01eac30651fef23e79e1993ace2ebf",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/tinymce/skins/lightgray/skin.min.css",
+      "baselineSha256": "d9e1dafef8baca104c6144c1f7102f045ed5900e9205d6f2eb6cabdfca3f21eb",
+      "currentSha256": "d9e1dafef8baca104c6144c1f7102f045ed5900e9205d6f2eb6cabdfca3f21eb",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/tinymce/tinymce.min.js",
+      "baselineSha256": "933a30abb2c4139b1264f2f73379b4af207e3106e77dd8a4119d74b6e2826656",
+      "currentSha256": "933a30abb2c4139b1264f2f73379b4af207e3106e77dd8a4119d74b6e2826656",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/assets/vue.min.js",
+      "baselineSha256": "3c1d4b0c549e8de9d4a9bafb12ab70b6a1ac747d07293b98c5b25b6632999afd",
+      "currentSha256": "3c1d4b0c549e8de9d4a9bafb12ab70b6a1ac747d07293b98c5b25b6632999afd",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/field-config.js",
+      "baselineSha256": "95c09545bd44b3cb73860499c91fa601eb2abae180e273fdfb077f08ef7145f0",
+      "currentSha256": "82fcfe616a11250bb787425aff46f1f13b057377346cec9aac0ae132a939ff2e",
+      "status": "修改"
+    },
+    {
+      "file": "preview/event-admin/index.html",
+      "baselineSha256": "be13a7530ba6a2f54a9988290db502f3c594884e67103b108e74fd6e52d0e2cc",
+      "currentSha256": "7c9c2b31be2adda282bc7d895d0518e337ebd75e27794623d3ff23b8e8709d1c",
+      "status": "修改"
+    },
+    {
+      "file": "preview/event-admin/order-example.js",
+      "baselineSha256": "35fe40db63d2b85a1d68fb55c8b388433d63d575f093734711f104d546c89c14",
+      "currentSha256": "336f391e143534849c0cb8ba0e49ce9738878640bde8384e87726fe012249e0e",
+      "status": "修改"
+    },
+    {
+      "file": "preview/event-admin/style.css",
+      "baselineSha256": "2c78bc4e40af4621b09010b5674dd8ad82c8fcade56cce901516986d34233dee",
+      "currentSha256": "483a2a04a9ea72a631399e728eb2573621c4e95a456c4a2fc958741fcfbf9133",
+      "status": "修改"
+    },
+    {
+      "file": "preview/event-admin/tab-navigation.js",
+      "baselineSha256": "2123beda654d7d4af2efa95ff4547f2db2de39490bdf7ae9dd7fa10e88459cc0",
+      "currentSha256": "2123beda654d7d4af2efa95ff4547f2db2de39490bdf7ae9dd7fa10e88459cc0",
+      "status": "相同"
+    },
+    {
+      "file": "preview/event-admin/ticket-config.js",
+      "baselineSha256": "b819b3c57a92491fbbd2438ab6bab52ad99e744730930d2dac28190a285246d8",
+      "currentSha256": "b819b3c57a92491fbbd2438ab6bab52ad99e744730930d2dac28190a285246d8",
+      "status": "相同"
+    },
+    {
+      "file": "preview/miniapp/assets/original-order-ticket.png",
+      "baselineSha256": "52ef48908f0412fc67179eec3a66a701504941fede359475c875d75a88a3b781",
+      "currentSha256": "52ef48908f0412fc67179eec3a66a701504941fede359475c875d75a88a3b781",
+      "status": "相同"
+    },
+    {
+      "file": "preview/miniapp/assets/success-poster-reference.jpg",
+      "baselineSha256": "35aacddc1fed3a4fe8b606503e8f793404a928b71e5c0de003705d66b9a1c310",
+      "currentSha256": "35aacddc1fed3a4fe8b606503e8f793404a928b71e5c0de003705d66b9a1c310",
+      "status": "相同"
+    },
+    {
+      "file": "preview/miniapp/configuration-preview.js",
+      "baselineSha256": "84daf49396d98dc000769879a34fbab9a43a4f14f3fc6a41216e6ee3afe83b6e",
+      "currentSha256": "84daf49396d98dc000769879a34fbab9a43a4f14f3fc6a41216e6ee3afe83b6e",
+      "status": "相同"
+    },
+    {
+      "file": "preview/miniapp/index.html",
+      "baselineSha256": "3595ccfb96fb0b04d2f2c823ff0dde839e02ee5c396a745d51d4b4b184463791",
+      "currentSha256": "9f263e208de46e9801a07eac7b5e013a020a6653f1dd7c76bf8c34b6724768a0",
+      "status": "修改"
+    },
+    {
+      "file": "preview/miniapp/original-order.css",
+      "baselineSha256": "1bd3bd02a372599e347514e30631d7948154346c5942dbc1f25971066271188e",
+      "currentSha256": "1bd3bd02a372599e347514e30631d7948154346c5942dbc1f25971066271188e",
+      "status": "相同"
+    },
+    {
+      "file": "preview/miniapp/payment.css",
+      "baselineSha256": "bb80f2a7fd97a249d02db398aa86ae7705491158f9c21eba2d2b6c6c749ea4d7",
+      "currentSha256": "bb80f2a7fd97a249d02db398aa86ae7705491158f9c21eba2d2b6c6c749ea4d7",
+      "status": "相同"
+    },
+    {
+      "file": "preview/miniapp/payment.js",
+      "baselineSha256": "e45deea5246695d0bfda1d16b0072f58101bbbdd16217f4e82ed4b9393af4573",
+      "currentSha256": "b0b87d6c82f7dee6da33fddb5a781c1a40c0ed383192c314b8c55edd19f30688",
+      "status": "修改"
+    },
+    {
+      "file": "preview/miniapp/reader.css",
+      "baselineSha256": "7db3e378b5f8a4fd1f6ea4ffe885450115bb1d7e5a34c4e65888393704c231ae",
+      "currentSha256": "7db3e378b5f8a4fd1f6ea4ffe885450115bb1d7e5a34c4e65888393704c231ae",
+      "status": "相同"
+    },
+    {
+      "file": "preview/miniapp/reader.js",
+      "baselineSha256": "788175867aab1c8a01b8955e5207433549f764f8b8304b024a04380cfed3a0e6",
+      "currentSha256": "788175867aab1c8a01b8955e5207433549f764f8b8304b024a04380cfed3a0e6",
+      "status": "相同"
+    },
+    {
+      "file": "preview/miniapp/records.css",
+      "baselineSha256": "62371b6e64d9807f00e0cc119f5f12e2ebb1828924eefcdc8d8aadb187d37211",
+      "currentSha256": "b0e26c6de005d6ffa7e2f5b88aa19c3213da230ca384c9b27c253b5059216245",
+      "status": "修改"
+    },
+    {
+      "file": "preview/miniapp/records.js",
+      "baselineSha256": "9ec2f4faefa9a7eb0c778029488ee392581f95402405cdade41300aa5376a6ed",
+      "currentSha256": "154fc3c496387401d963d5906bb83be52c2607bd99f9c8a49f7fcc694cd79e4f",
+      "status": "修改"
+    },
+    {
+      "file": "preview/miniapp/registration.css",
+      "baselineSha256": "dc7f417e19c4f8b79d4660bbecab79fcd411ccbac82c6ce5709ad6a275b181a7",
+      "currentSha256": "7476cb08ccca8d2a61dc8dbf25bce01c6f4ba3ad8f800d36eb065c4f276ebab3",
+      "status": "修改"
+    },
+    {
+      "file": "preview/miniapp/registration.js",
+      "baselineSha256": "4e0f392dbbb8fdac63cd3031c8b48a9f82421f730217b12c76f0c54018c56630",
+      "currentSha256": "fe9bce8006ea9d855d582dcb2cbef9692c61baccbf625f7256b970535530b3ac",
+      "status": "修改"
+    },
+    {
+      "file": "preview/miniapp/shared-registration.js",
+      "baselineSha256": "812e1a9b0c8d46d30d6799275546ce1d0f13837feee06594e77af26be509777f",
+      "currentSha256": "9c698e875613789b2b1613e89fab2ccebef714c8af862c95bc4c473d3cc9eddf",
+      "status": "修改"
+    },
+    {
+      "file": "preview/miniapp/signature.css",
+      "baselineSha256": "7012f07e26ab4d2e70929933330c67bde0f85fd76ae225a13dd06e6f13ba39e5",
+      "currentSha256": "3b38b9b288ca2bc7e0f10e74c12201bc02a0d67578640726e964ce270963157d",
+      "status": "修改"
+    },
+    {
+      "file": "preview/miniapp/signature.js",
+      "baselineSha256": "0606af0faffc584a4e7a5f9ecf1e63b18b11404587bea2e5bf4ef68a404307f7",
+      "currentSha256": "49daf95898baf06c9fbea5bf0bb420cfc86e5a1bc68abe0a985f7cb4aa3de023",
+      "status": "修改"
+    },
+    {
+      "file": "preview/miniapp/submission.js",
+      "baselineSha256": "a02661623fdf0e10cb9f6f1350a896381f5665fec4bea7ce4a39584d77b5da04",
+      "currentSha256": "9192b17fae44da81a026dc33b01354fe423c13d8bea982ccef4cae2b90b16d79",
+      "status": "修改"
+    },
+    {
+      "file": "product/00-赛事活动报名当前确认方案.html",
+      "baselineSha256": "2096a8acbb78aedc3854279847cb83a9323f02dfce0493b10834014858a81c23",
+      "currentSha256": null,
+      "status": "基线保留、当前无同路径"
+    },
+    {
+      "file": "product/00-赛事活动报名当前确认方案.md",
+      "baselineSha256": "354c1dac1513a261d8ed8371b6ce0c3931ce4914544b9e473580b26567c540a2",
+      "currentSha256": "f4b02273a4b39284ea818644fb5abf213d0779cec89add49e5c3bf5ba4379957",
+      "status": "修改"
+    },
+    {
+      "file": "product/01-研发评审入口.html",
+      "baselineSha256": "1ff921e142b4e083cb5d9c9a601a25fc07e2e0752b66fdd7d0af93a208f8fade",
+      "currentSha256": null,
+      "status": "基线保留、当前无同路径"
+    },
+    {
+      "file": "product/01-研发评审入口.md",
+      "baselineSha256": "a95a0925313b67384466c6c1fb4ecde14bd01a8cf7bc0594c922fb91322dcccc",
+      "currentSha256": "b1b31f90de2acc2acfbdf486991f25e17e7c1e3bb435eee62ac09870c3019485",
+      "status": "修改"
+    }
+  ],
+  "newActivePrototypeFiles": [
+    "preview/event-admin/promotion-config.js",
+    "preview/miniapp/query.css",
+    "preview/miniapp/query.js"
+  ]
+}

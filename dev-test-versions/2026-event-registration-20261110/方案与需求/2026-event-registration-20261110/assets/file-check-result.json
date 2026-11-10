@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-10",
+  "passed": true,
+  "htmlPages": 8,
+  "localLinksAndAnchors": 490,
+  "inlineScriptsParsed": 8,
+  "flows": 8,
+  "aiFragments": 30,
+  "oldRuleGroupsMapped": 45,
+  "errors": [],
+  "scope": "文件、链接、生成一致性和脚本语法检查；不代表全部原型或真实服务验收。"
+}

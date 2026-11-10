@@ -1,0 +1,261 @@
+{
+  "B01": {
+    "url": "../../preview/event-admin/index.html",
+    "path": "赛事列表",
+    "instruction": "直接进入赛事列表；推广及报名查询页点对应行按钮。",
+    "screenshots": [
+      {
+        "url": "assets/prototype-screens/B01.png",
+        "caption": "本轮打开现原型截图；本地示例数据，不代表真实统计"
+      },
+      {
+        "url": "../../preview/event-admin/设计依据/20261110-报名查询页推广弹窗.png",
+        "caption": "已有本地截图：报名查询页推广弹窗，真实推广值尚未接入"
+      }
+    ]
+  },
+  "B02": {
+    "url": "../../preview/event-admin/index.html",
+    "path": "赛事列表 → 编辑赛事",
+    "instruction": "在赛事行点编辑赛事；也可点新建赛事查看新增态。",
+    "screenshots": [
+      {
+        "url": "assets/prototype-screens/B02.png",
+        "caption": "本轮编辑赛事截图，未改动或提交配置"
+      }
+    ]
+  },
+  "B03": {
+    "url": "../../preview/event-admin/index.html",
+    "path": "赛事列表 → 报名项目",
+    "instruction": "点当前赛事的报名项目。",
+    "screenshots": [
+      {
+        "url": "assets/prototype-screens/B03.png",
+        "caption": "本轮项目列表截图，含未配置与已有订单示例"
+      }
+    ]
+  },
+  "B04": {
+    "url": "../../preview/event-admin/index.html",
+    "path": "报名项目 → 编辑 → 基本信息",
+    "instruction": "选择已有订单示例行编辑，默认基本信息。",
+    "screenshots": [
+      {
+        "url": "assets/prototype-screens/B04.png",
+        "caption": "本轮基本信息截图，未保存改动"
+      }
+    ]
+  },
+  "B05": {
+    "url": "../../preview/event-admin/index.html",
+    "path": "报名项目 → 编辑 → 报名资料",
+    "instruction": "从基本信息点下一步；该按钮会按原型规则保存当前步骤，请勿修改示例后随意保存。",
+    "screenshots": [
+      {
+        "url": "../../preview/event-admin/设计依据/当前报名资料提示.png",
+        "caption": "已有配置页截图，展示字段和签署要求布局；不作为本次数据存储验收"
+      }
+    ]
+  },
+  "B06": {
+    "url": "../../preview/event-admin/index.html",
+    "path": "报名项目 → 编辑 → 签署材料",
+    "instruction": "在需要签署的项目中，按步骤进入签署材料。",
+    "screenshots": [
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-后台签署说明.jpg",
+        "caption": "已有后台签署说明截图；正式配置保存未接入"
+      }
+    ]
+  },
+  "B07": {
+    "url": "../../preview/event-admin/index.html",
+    "path": "报名项目 → 编辑 → 报名人数",
+    "instruction": "进入已有报名示例的报名人数步骤，可看有限名额增额规则。",
+    "screenshots": [
+      {
+        "url": "../../preview/event-admin/设计依据/20261110-总名额只增不减.png",
+        "caption": "已有本地增额检查截图，真实服务端校验未接入"
+      }
+    ]
+  },
+  "B08": {
+    "url": "../../preview/event-admin/index.html",
+    "path": "报名项目 → 编辑 → 关联门票",
+    "instruction": "关联门票项目的最后步骤；免费跳过。点击添加关联门票看选票弹窗。",
+    "screenshots": [
+      {
+        "url": "../../preview/event-admin/设计依据/当前报名限制条件.png",
+        "caption": "已有报名项级限制说明截图"
+      },
+      {
+        "url": "../../preview/event-admin/设计依据/当前选择关联门票.png",
+        "caption": "已有选择门票弹窗截图"
+      }
+    ]
+  },
+  "B09": {
+    "url": "../../preview/event-admin/index.html",
+    "path": "报名项目 → 报名记录",
+    "instruction": "在已有订单示例项目行点报名记录。",
+    "screenshots": [
+      {
+        "url": "../../preview/event-admin/设计依据/当前报名记录列表.png",
+        "caption": "已有列表截图；实际字段以本页正文为准"
+      }
+    ]
+  },
+  "B10": {
+    "url": "../../preview/event-admin/index.html",
+    "path": "报名记录 → 详情",
+    "instruction": "从任一报名行点详情；不同状态显示实际已有数据。",
+    "screenshots": [
+      {
+        "url": "../../preview/event-admin/设计依据/20261109-接续核对/报名详情.png",
+        "caption": "已有详情结构截图；非本次真实接口验收"
+      }
+    ]
+  },
+  "C01": {
+    "url": "../../preview/miniapp/index.html",
+    "path": "赛事总览与报名项选择",
+    "instruction": "直接进入；外部审阅控件可切场景。",
+    "screenshots": [
+      {
+        "url": "../../preview/miniapp/设计依据/总览页面检查.png",
+        "caption": "已有总览截图；项目名与价格等均为示例"
+      }
+    ]
+  },
+  "C02": {
+    "url": "../../preview/miniapp/index.html",
+    "path": "报名项 → 阅读材料",
+    "instruction": "选择需要签署项目的可报名项，进入阅读页；已读进度可能影响首次位置。",
+    "screenshots": [
+      {
+        "url": "../../preview/miniapp/设计依据/C02结构交互检查.jpg",
+        "caption": "已有阅读结构截图，阅读持久化尚未接入"
+      }
+    ]
+  },
+  "C03": {
+    "url": "../../preview/miniapp/index.html",
+    "path": "预览需签署资料页",
+    "instruction": "外部审阅区点预览需签署资料页；或按报名流程读完材料进入。默认参赛资料标签。",
+    "screenshots": [
+      {
+        "url": "../../preview/miniapp/设计依据/C03-A标签版.jpg",
+        "caption": "已有A标签布局截图；较早截图不代表最新底部状态"
+      },
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-签署前保存门槛.png",
+        "caption": "本轮迭代已有截图：先暂存再签署/分享"
+      },
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-待付款继续支付.png",
+        "caption": "本轮迭代已有截图：待付款发起人继续支付"
+      }
+    ]
+  },
+  "C04": {
+    "url": "../../preview/miniapp/index.html",
+    "path": "C03参赛资料 → 签署进度",
+    "instruction": "本组件集成C03，填齐资料并暂存后看去签署/分享，不建立独立页。",
+    "screenshots": [
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-签署前保存门槛.png",
+        "caption": "组件暂存门槛状态；完整进度按原型实际签署显示"
+      }
+    ]
+  },
+  "C05": {
+    "url": "../../preview/miniapp/index.html?view=signature",
+    "path": "本人签署／重签署",
+    "instruction": "该链接使用现有签署专用审阅入口，自动装入虚构已暂存资料并打开签署画布；分享接收从C03点分享签署。",
+    "screenshots": [
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-C05纯签署页.jpg",
+        "caption": "已有纯签署页结构截图"
+      },
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-分享接收只读资料.jpg",
+        "caption": "已有分享接收页截图，与纯签署页分开"
+      }
+    ]
+  },
+  "C06": {
+    "url": "../../preview/miniapp/index.html?view=records",
+    "path": "我的报名 → 待提交 → 继续报名 → 立即报名",
+    "instruction": "本项是C03提交动作，没有独立核对页；用虚构待提交示例操作。",
+    "screenshots": [
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-C06收费下单锁定.jpg",
+        "caption": "已有提交后锁定状态截图，仅模拟下单"
+      }
+    ]
+  },
+  "C07": {
+    "url": "../../preview/miniapp/index.html?view=records",
+    "path": "我的报名 → 待付款 → 查看订单",
+    "instruction": "可从待付款查看资料的继续支付进入同一原订单；首次提交自动弹模拟微信收银台。",
+    "screenshots": [
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-微信收银台模拟.png",
+        "caption": "已有微信收银台模拟，非真实支付"
+      },
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-原订单详情还原-手机.png",
+        "caption": "依据用户截图还原的原订单页示意，原系统界面不改"
+      }
+    ]
+  },
+  "C08": {
+    "url": "../../preview/miniapp/index.html?view=records",
+    "path": "我的报名 → 成功记录 → 查看海报",
+    "instruction": "或沿免费提交/模拟付款成功直接展示。正式底图及动态字段仍待确认。",
+    "screenshots": [
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-成功直接展示海报.png",
+        "caption": "已有参考海报展示截图，不能作为正式海报设计"
+      }
+    ]
+  },
+  "C09": {
+    "url": "../../preview/miniapp/index.html?view=records",
+    "path": "我的报名",
+    "instruction": "现有直达审阅入口；查看身份可切发起人/已关联组员；场景可切免费。",
+    "screenshots": [
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-C09我的报名列表.png",
+        "caption": "已有五状态列表截图，非真实账号数据"
+      }
+    ]
+  },
+  "C10": {
+    "url": "../../preview/miniapp/index.html?view=records",
+    "path": "我的报名 → 查看资料",
+    "instruction": "主报人/组员用同一详情；切身份后分别点成功记录查看资料。",
+    "screenshots": [
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-统一详情组员签名位置.png",
+        "caption": "已有组员共用详情及本人行按钮截图"
+      },
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-本人签名弹窗.png",
+        "caption": "已有本人签名弹窗截图"
+      }
+    ]
+  },
+  "C11": {
+    "url": "../../preview/miniapp/index.html?view=query",
+    "path": "独立报名查询",
+    "instruction": "现有直达查询入口；张三或13800000001可命中虚构成功示例。",
+    "screenshots": [
+      {
+        "url": "../../preview/miniapp/设计依据/20261110-C11仅成功手机号脱敏.png",
+        "caption": "已有最新查询口径截图：只成功、结果手机号脱敏"
+      }
+    ]
+  }
+}

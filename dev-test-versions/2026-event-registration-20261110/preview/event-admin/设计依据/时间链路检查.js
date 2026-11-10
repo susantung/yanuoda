@@ -1,0 +1,30 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const root=process.cwd()+'/赛事活动报名/preview/event-admin/';
+const box={window:{}};vm.runInNewContext(fs.readFileSync(root+'ticket-config.js','utf8'),box);
+const base={participants:2,raceDates:['2027-01-03','2027-01-03'],registrationDates:['2026-11-06 00:00:00','2026-11-21 23:59:59'],fields:[{type:'name',required:true},{type:'id',required:true}],ticketOptions:[]};
+const c={projectForm:structuredClone(base),ticketEditingIndex:-1};Object.assign(c,box.window.EventTicketConfig.methods);
+Object.defineProperty(c,'projectTicketEntries',{get:()=>c.projectForm.ticketOptions});
+const t=i=>c.ticketById('DEMO-'+String(i).padStart(4,'0'));
+const rows=[];function check(name,fn){c.projectForm=structuredClone(base);assert(fn(),name);rows.push('|'+name+'|通过|');}
+const sale=(ticket)=>c.matchTicket(ticket).find(r=>r.rule==='可售时间').ok;
+check('截图：1月3日比赛，11月6日至21日报名，原票10月1日至1月2日可售',()=>sale(t(1),base.registrationDates));
+check('提前1天截止计算为1月2日23:59:59',()=>c.ticketSaleRange(t(1))[1]==='2027-01-02 23:59:59');
+check('比赛前7天开放计算为12月27日00:00:00',()=>c.ticketSaleRange(t(12))[0]==='2026-12-27 00:00:00');
+check('11月报名不能关联12月27日才开放的票',()=>!c.ticketCanSelect(t(12)));
+check('早鸟覆盖部分报名期，自动取交集且无需填写',()=>{c.projectForm.registrationDates=['2026-11-01 00:00:00','2027-01-02 23:59:59'];return c.ticketMatchLabel(t(14))==='匹配'&&c.ticketRegistrationRange(t(14))[1]==='2026-11-30 23:59:59';});
+check('报名时段起止恰好等于票可售起止可通过',()=>{c.projectForm.registrationDates=['2026-10-01 00:00:00','2027-01-02 23:59:59'];return sale(t(1),c.projectForm.registrationDates);});
+check('项目早于票开始且晚于票截止，自动收窄到原票范围',()=>{c.projectForm.registrationDates=['2026-09-01 00:00:00','2027-01-03 23:59:59'];return JSON.stringify(c.ticketRegistrationRange(t(1)))===JSON.stringify(['2026-10-01 00:00:00','2027-01-02 23:59:59']);});
+check('项目报名范围更窄，自动保留项目范围',()=>JSON.stringify(c.ticketRegistrationRange(t(1)))===JSON.stringify(base.registrationDates));
+check('没有时间交集统一提示不匹配',()=>c.ticketMatchLabel(t(15)).includes('报名时间与门票可售时间不匹配'));
+check('当日12点截止按真实时刻计算',()=>c.ticketSaleRange(t(13))[1]==='2027-01-03 12:00:00');
+check('提前2小时仅文案，按当日23:59:59截止',()=>c.ticketSaleRange(t(11))[1]==='2027-01-03 23:59:59');
+check('固定期票忽略提前预订，按可售日期计算',()=>c.ticketSaleRange(t(7))[1]==='2027-01-05 23:59:59');
+check('开放日期晚于票可售截止，无有效交集不能关联',()=>!c.ticketCanSelect({...t(12),saleEnd:'2026-12-26 23:59:59'}));
+check('错误年份日历票不满足使用日期；可售范围按本次请求比赛日计算',()=>!c.matchTicket(t(16)).find(r=>r.rule==='使用日期').ok&&c.ticketSaleRange(t(16))[1]==='2027-01-02 23:59:59');
+check('多日比赛固定期票完整覆盖通过',()=>{c.projectForm.raceDates=['2027-01-03','2027-01-05'];return c.matchTicket(t(7)).find(r=>r.rule==='使用日期').ok;});
+check('多日比赛少覆盖一天不通过',()=>{c.projectForm.raceDates=['2027-01-03','2027-01-06'];return !c.matchTicket(t(7)).find(r=>r.rule==='使用日期').ok;});
+for(const [name,a,b]of [['衔接',['2026-11-06 00:00:00','2026-11-10 23:59:59'],['2026-11-11 00:00:00','2026-11-21 23:59:59']],['重叠',['2026-11-06 00:00:00','2026-11-16 23:59:59'],['2026-11-10 00:00:00','2026-11-21 23:59:59']],['间隔',['2026-11-06 00:00:00','2026-11-10 23:59:59'],['2026-11-15 00:00:00','2026-11-21 23:59:59']]])check('两票报名时段'+name+'，各自符合范围即通过',()=>JSON.stringify(c.ticketRegistrationRange({...t(1),saleStart:a[0],saleEnd:a[1]}))===JSON.stringify(a)&&JSON.stringify(c.ticketRegistrationRange({...t(2),saleStart:b[0],saleEnd:b[1]}))===JSON.stringify(b));
+const expected=[true,true,true,false,true,true,true,true,true,false,true,false,true,true,false,false];
+let count=0;for(let i=1;i<=240;i++){c.projectForm=structuredClone(base);assert.strictEqual(c.ticketCanSelect(t(i)),expected[(i-1)%16]&&t(i).status==='已上架','演示票'+i);count++;}
+const out='# 时间链路与演示票数据复核\n\n本地原型函数检查，不代表真实接口或浏览器交互验收。\n\n## 固定基准\n比赛2027-01-03；项目报名2026-11-06 00:00:00至2026-11-21 23:59:59；单次2人；姓名与身份证必填。\n\n## 计算口径\n- 日历票先检查比赛日在实际配置日期集合中，再以本次比赛日计算开放、截止，再与原可售范围取交集。\n- 固定期票按可售日期，不应用提前预订。\n- 每票可报名时间自动取项目报名期与原票可售期的交集；有交集即可通过时间匹配，无需手填每票报名时间。无交集统一提示不匹配，保存时使用同一计算。\n- 时间匹配不替代人数、资料、资格、上架状态校验。\n\n## 边界与组合检查\n|场景|结果|\n|---|---|\n'+rows.join('\n')+'\n\n## 全量演示数据\n240张票逐张检查，16种模板重复15组，用独立预期逐项断言可关联结果，并叠加上下架状态；全部通过。负例用于验证拦截，不代表真实业务要求。\n';
+fs.writeFileSync(root+'设计依据/时间链路复核.md',out);console.log(rows.length+'项时间组合检查，'+count+'张演示票预期核对通过');

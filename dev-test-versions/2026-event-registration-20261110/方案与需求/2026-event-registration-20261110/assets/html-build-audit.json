@@ -1,0 +1,99 @@
+{
+  "pages": [
+    "index.html",
+    "page-list.html",
+    "flows.html",
+    "development-spec.html",
+    "acceptance.html",
+    "changes.html",
+    "pending.html",
+    "ai-reading.html"
+  ],
+  "flows": [
+    {
+      "file": "flow-01.svg",
+      "nodes": 15,
+      "edges": 17
+    },
+    {
+      "file": "flow-02.svg",
+      "nodes": 14,
+      "edges": 19
+    },
+    {
+      "file": "flow-03.svg",
+      "nodes": 14,
+      "edges": 14
+    },
+    {
+      "file": "flow-04.svg",
+      "nodes": 16,
+      "edges": 18
+    },
+    {
+      "file": "flow-05.svg",
+      "nodes": 10,
+      "edges": 10
+    },
+    {
+      "file": "flow-06.svg",
+      "nodes": 10,
+      "edges": 12
+    },
+    {
+      "file": "flow-07.svg",
+      "nodes": 9,
+      "edges": 9
+    },
+    {
+      "file": "flow-08.svg",
+      "nodes": 10,
+      "edges": 12
+    }
+  ],
+  "sourceFiles": [
+    "01-页面清单.md",
+    "02-全程流程图.md",
+    "00-文档信息与需求背景.md",
+    "03-后台逐页功能方案.md",
+    "05-小程序逐页功能方案.md",
+    "06-公共业务规则.md",
+    "04-开发核对与验收清单.md",
+    "08-V1.1迭代对照.md",
+    "07-待确认与实施边界.md",
+    "任务索引.md"
+  ],
+  "aiFiles": [
+    "B01.md",
+    "B02.md",
+    "B03.md",
+    "B04.md",
+    "B05.md",
+    "B06.md",
+    "B07.md",
+    "B08.md",
+    "B09.md",
+    "B10.md",
+    "B11.md",
+    "C01.md",
+    "C02.md",
+    "C03.md",
+    "C04.md",
+    "C05.md",
+    "C06.md",
+    "C07.md",
+    "C08.md",
+    "C09.md",
+    "C10.md",
+    "C11.md",
+    "K01.md",
+    "K02.md",
+    "K03.md",
+    "K04.md",
+    "K05.md",
+    "K06.md",
+    "K07.md",
+    "P00.md"
+  ],
+  "reference": "支付配置化方案文档样式与离线流程图交互"
+}
