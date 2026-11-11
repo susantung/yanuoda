@@ -49,6 +49,11 @@
       "file": "flow-08.svg",
       "nodes": 14,
       "edges": 16
+    },
+    {
+      "file": "flow-09.svg",
+      "nodes": 21,
+      "edges": 24
     }
   ],
   "sourceFiles": [
@@ -75,6 +80,7 @@
     "B09.md",
     "B10.md",
     "B11.md",
+    "B12.md",
     "C01.md",
     "C02.md",
     "C03.md",
