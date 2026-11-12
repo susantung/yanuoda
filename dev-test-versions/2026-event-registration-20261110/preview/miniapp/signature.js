@@ -18,7 +18,7 @@ function openSignature(person){
  for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(event,()=>{signatureDrawing=false;});
  signatureResize=new ResizeObserver(()=>{if(!signatureView.hidden)drawSignature();});signatureResize.observe(canvas);
  drawSignature();
- outcome.textContent='C05本人签署结构预览。签署说明来自所选后台配置；笔迹保存在本浏览器示例记录中，不做姓名识别、身份授权或服务端保存。';
+ outcome.textContent='C05本人签署结构预览。签署说明来自所选后台配置；笔迹保存在本浏览器示例记录中，身份授权与服务端保存未接入。';
 }
 function drawSignature(){
  const canvas=signatureView.querySelector('canvas');if(!canvas)return;
@@ -36,7 +36,7 @@ signatureView.addEventListener('click',e=>{
   try{localStorage.setItem(formKey()+':signatures',JSON.stringify(records));}catch{signatureView.querySelector('.sign-message').textContent='签署保存失败，请重试';return;}
   formSignatureRecords=records;formSignedNames[signaturePerson]=formValues[signaturePerson].name;if(typeof recordSignatureSaved==='function')recordSignatureSaved();closeSignature();
   if(typeof sharedViewerContext!=='undefined'&&sharedViewerContext){const feedback=sharedView.querySelector('.shared-signature-feedback');feedback.textContent='签署成功';feedback.scrollIntoView({block:'center'});}else formMessage('签署成功');
-  outcome.textContent='已保存本浏览器示例签名并返回参赛资料；没有保存普通报名资料、提交报名或创建订单。真实签名保存与姓名识别未接入。';
+  outcome.textContent='已保存本浏览器示例签名并返回参赛资料；没有保存普通报名资料、提交报名或创建订单。真实签名服务端保存未接入。';
  }
 });
 // Dedicated review entry: example-only data, no draft write or registration submit.

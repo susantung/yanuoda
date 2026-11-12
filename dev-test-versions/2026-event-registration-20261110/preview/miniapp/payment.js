@@ -52,7 +52,7 @@ function confirmCancelOrder(){
  paymentMask.className='payment-mask dialog-mask';paymentMask.hidden=false;
  paymentMask.innerHTML='<section class="cancel-dialog" role="dialog" aria-modal="true" aria-label="取消订单确认"><h2>确认取消订单？</h2><p>取消后，报名恢复为未提交，保留资料与有效签署。</p><div class="transaction-actions"><button data-keep>暂不取消</button><button class="primary" data-close-order>确认取消</button></div></section>';
  paymentMask.querySelector('[data-keep]').onclick=()=>paymentMask.hidden=true;
- paymentMask.querySelector('[data-close-order]').onclick=()=>{paymentMask.hidden=true;transactionView.hidden=true;transactionBack.hidden=true;readerPhone.classList.remove('is-original-order');submissionState='editing';if(typeof activeRecord!=='undefined'&&activeRecord){activeRecord.status='ready';activeRecord.submittedAt=null;activeRecord.refundOrder=null;}formBusy=false;formView.hidden=false;formBack.hidden=false;readerNav.textContent='报名资料';updateSignatureEntries();formMessage('订单已取消，可继续完善报名');outcome.textContent='模拟原订单明确取消后的回退，资料与有效签署保留；真实重新提交仍需校验当时窗口、库存和资格。';};
+ paymentMask.querySelector('[data-close-order]').onclick=()=>{paymentMask.hidden=true;transactionView.hidden=true;transactionBack.hidden=true;readerPhone.classList.remove('is-original-order');submissionState='editing';if(typeof activeRecord!=='undefined'&&activeRecord){activeRecord.status='ready';activeRecord.submittedAt=null;activeRecord.refundOrder=null;if(activeRecord.id.startsWith('local-draft-'))persistLocalRecord(activeRecord);}formBusy=false;formView.hidden=false;formBack.hidden=false;readerNav.textContent='报名资料';updateSignatureEntries();formMessage('订单已取消，可继续完善报名');outcome.textContent='模拟原订单明确取消后的回退，资料与有效签署保留；真实重新提交仍需校验当时窗口、库存和资格。';};
 }
 function showPaymentSuccess(){
  formMessage('');

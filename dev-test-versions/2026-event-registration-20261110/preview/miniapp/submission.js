@@ -10,6 +10,7 @@ document.querySelector('.controls').append(submissionControls,submissionResoluti
 let submissionState='editing',submissionSnapshot=null;
 function resetSubmission(){submissionState='editing';submissionSnapshot=null;resetPaymentPreview();}
 function applySubmissionLock(){
+ if(typeof syncHomepageRecordState==='function')syncHomepageRecordState();
  if(!formContext)return;
  const busy=['submitting','unknown','paying','payment-unknown'].includes(submissionState),submitted=['paying','pending-payment','payment-unknown','complete','free'].includes(submissionState),readOnly=typeof recordReadOnly!=='undefined'&&recordReadOnly,frozen=busy||submitted||formBusy||readOnly;
  formView.querySelectorAll('.person-card input,.person-card textarea,.person-card select').forEach(control=>control.disabled=frozen);

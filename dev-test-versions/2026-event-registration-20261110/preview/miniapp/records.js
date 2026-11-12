@@ -14,7 +14,7 @@ function recordActions(r){
  const choices=isMemberPreview()?[['data','查看资料']]:r.status==='cancelled'?[['continue','继续报名'],['order','查看订单']]:['incomplete','signing','ready'].includes(r.status)?[['continue','继续报名']]:[['data','查看资料'],...(!r.free?[['order','查看订单']]:[]),...(r.status==='success'?[['poster','查看海报']]:[])];
  return choices.map(([action,label])=>`<button class="${action==='continue'?'record-main':''}" data-record="${r.id}" data-record-action="${action}" aria-label="${recordStates[r.status]}：${label}">${label}</button>`).join('');
 }
-let activeRecord=null,recordReadOnly=false;
+let activeRecord=null,recordReadOnly=false,recordEntrySource='records';
 function currentRecordPerson(){return isMemberPreview()?1:0;}
 let localSavedRecords=[];try{const saved=JSON.parse(localStorage.getItem('event-registration-local-records-v1')||'[]');if(Array.isArray(saved))localSavedRecords=saved.filter(r=>r&&r.id&&r.draftKey&&r.project&&r.option&&Array.isArray(r.participants));}catch{}
 function findSavedDraftRecord(key){return localSavedRecords.find(r=>r.draftKey===key);}
@@ -25,6 +25,7 @@ function hideRecordSources(){
  recordsView.hidden=true;recordsBack.hidden=true;readerMain.hidden=true;readerView.hidden=true;backReading.hidden=true;formView.hidden=true;formBack.hidden=true;signatureView.hidden=true;signatureBack.hidden=true;sharedView.hidden=true;sharedBack.hidden=true;resetPaymentPreview();readerPhone.classList.remove('is-signing');readerPhone.classList.add('is-reading');
 }
 function openRecords(){
+ recordEntrySource='records';
  hideRecordSources();activeRecord=null;recordReadOnly=false;recordsView.hidden=false;recordsBack.hidden=false;readerNav.textContent='我的报名';
  renderRecords();outcome.textContent=isMemberPreview()?'已关联组员权限演示：只展示第2位参赛者已签署的虚构记录，可只读查看整组资料及本人签名；真实登录、UID关联与服务端权限未接入。':'C09发起人虚构记录演示；未接服务器、正式排序分页及真实关联身份权限。';
 }
@@ -65,6 +66,7 @@ function recordDraftSaved(){
 function recordSignatureSaved(){if(!activeRecord)return;activeRecord.signed=[...formSignedNames];activeRecord.signatures=JSON.parse(JSON.stringify(formSignatureRecords));activeRecord.status=activeRecord.status==='cancelled'?'cancelled':formValues.every((v,i)=>formSignedNames[i]===v.name)?'ready':'signing';if(activeRecord.id.startsWith('local-draft-'))persistLocalRecord(activeRecord);}
 
 function returnToRecords(){
+ const returnHome=recordEntrySource==='home';
  if(!activeRecord)return false;
  const r=activeRecord;
  if(['pending-payment','paying','payment-unknown','complete','free'].includes(submissionState)&&submissionSnapshot){
@@ -75,7 +77,7 @@ function returnToRecords(){
  r.status='ready';r.submittedAt=null;
  }
  if(r.id.startsWith('local-draft-'))persistLocalRecord(r);
- openRecords();return true;
+ if(returnHome){hideRecordSources();readerPhone.classList.remove('is-reading');readerMain.hidden=false;readerNav.textContent='赛事报名';activeRecord=null;}else openRecords();return true;
 }
 recordsView.addEventListener('click',e=>{const b=e.target.closest('[data-record]');if(b)openDemoRecord([...demoRecords,...freeDemoRecords,...localSavedRecords].find(r=>r.id===b.dataset.record),b.dataset.recordAction);if(e.target.closest('[data-records-retry]')){document.querySelector('#records-scene').value='normal';renderRecords();}});
 recordsBack.onclick=()=>{recordsView.hidden=true;recordsBack.hidden=true;readerPhone.classList.remove('is-reading');readerMain.hidden=false;readerNav.textContent='赛事报名';activeRecord=null;};
@@ -88,3 +90,21 @@ if(new URLSearchParams(location.search).get('view')==='records'){
 
 recordRoleControl.querySelector('select').onchange=openRecords;
 if(new URLSearchParams(location.search).get('role')==='member'){recordRoleControl.querySelector('select').value='member';openRecords();}
+
+// Existing-record recovery is only reached after C01's disabled guard.
+function restoreHomepageRecord(project,option,free){
+ const matches=localSavedRecords.filter(r=>r.project.id===project.id&&!!r.free===!!free&&(free||r.option.id===option.id));
+ if(matches.length>1){outcome.textContent='当前报名项有多条历史记录，请从我的报名查看；未新建记录。';return true;}
+ if(!matches.length)return false;
+ recordRoleControl.querySelector('select').value='initiator';recordEntrySource='home';openDemoRecord(matches[0],'data');return true;
+}
+
+function syncHomepageRecordState(){
+ if(!submissionSnapshot||!['pending-payment','complete','free'].includes(submissionState))return;
+ if(!activeRecord)recordDraftSaved();
+ activeRecord.participants=JSON.parse(JSON.stringify(submissionSnapshot.participants));
+ activeRecord.signed=[...formSignedNames];activeRecord.signatures=JSON.parse(JSON.stringify(submissionSnapshot.signatures));
+ activeRecord.status=submissionState==='pending-payment'?'payment':'success';
+ if(!activeRecord.submittedAt)activeRecord.submittedAt=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
+ if(activeRecord.id.startsWith('local-draft-'))persistLocalRecord(activeRecord);
+}
