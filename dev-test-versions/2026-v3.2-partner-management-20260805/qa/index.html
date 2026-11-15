@@ -23,11 +23,11 @@
 </head>
 <body>
 <aside class="sidebar">
-  <h2>V3.2 QA 测试总览</h2><div class="sub">首轮 2026-08-25 · 回归 2026-08-29</div>
+  <h2>V3.2 QA 测试总览</h2><div class="sub">最新回归 2026-11-14 · R07执行中</div>
   <div class="group">方案入口</div>
   <a id="return-overview" href="../index.html" data-source-href="../../方案与需求/2026-v3.2-partner-management-20260805/index.html">← 返回方案总览</a>
   <div class="group">先看结论</div>
-  <a href="#overview" class="current">本轮回归结论</a><a href="#regression-20260829">本轮执行场景</a><a href="#p0">当前问题</a><a href="#issues">首轮问题档案</a>
+  <a href="#latest-r07" class="current">最新回归结论</a><a href="#overview">历史回归结论</a><a href="#regression-20260829">本轮执行场景</a><a href="#p0">当前问题</a><a href="#issues">首轮问题档案</a>
   <div class="group">执行与证据</div>
   <a href="#coverage">全链路覆盖</a><a href="#samples">样例数据</a><a href="#test-plan">测试用例</a><a href="#status">通过与阻塞</a>
   <div class="group">原始文件</div>
@@ -39,89 +39,66 @@
     <div class="eyebrow">QA EXECUTION REPORT</div>
     <h1>V3.2 散客合作伙伴管理｜QA 测试总览</h1>
     <p>将“测试结果”和“测试用例”合并为一个阅读入口：先判断当前风险，再定位缺陷，最后查看场景、测试步骤和完整证据。</p>
-    <div class="hero-actions"><a class="btn" href="#p0">先看 P0 问题</a><a class="btn" href="#test-plan">查看测试方案</a><button class="btn" type="button" onclick="window.print()">打印 / 导出 PDF</button></div>
+    <div class="hero-actions"><a class="btn" href="#p0">查看当前问题</a><a class="btn" href="#test-plan">查看测试方案</a><button class="btn" type="button" onclick="window.print()">打印 / 导出 PDF</button></div>
   </header>
 
-  <section class="section">
-    <div class="section-title"><h2>2026-08-31～09-01 本轮回归与统一问题池</h2><p>功能用例执行统计与问题池状态/类型并列展示，不互相覆盖</p></div>
-    <div class="metrics">
-      <div class="metric"><strong>50</strong><span>通过 · 已跑且无问题</span></div>
-      <div class="metric danger"><strong>7</strong><span>当前缺陷 · 3 个功能、4 个样式</span></div>
-      <div class="metric warning"><strong>0</strong><span>未跑 · 当前无</span></div>
-      <div class="metric"><strong>0</strong><span>阻塞 · 当前无</span></div>
-    </div>
-    <div class="callout"><strong>功能用例执行：54 条均已执行。</strong>通过 50 条、有问题 4 条（BUG-033、BUG-038、BUG-040、BUG-043），无未跑、无阻塞。</div>
-    <div class="callout" style="margin-top:12px;background:#eff6ff;border-left-color:#2563eb;color:#1e3a8a"><strong>统一问题池：37 条。</strong>当前缺陷共 7 条：功能逻辑 BUG-033、BUG-040、BUG-043（P1）；页面样式 BUG-038、BUG-039、BUG-041、BUG-042（P3）。状态筛选与类型筛选可组合使用。</div>
-    <div class="callout" style="margin-top:12px;background:#ecfdf5;border-left-color:#059669;color:#065f46"><strong>本轮已验证：</strong>公共临客可以下单并完成未回款退款，BUG-032 已修复；对帐单成功查询后不再出现独立打印按钮，BUG-023 已修复。批量导入合法行及重复流水号校验已通过。</div>
-  </section>
+  <section class="section" id="latest-r07"><div class="callout"><strong>R09后台7项补验：</strong>3项导出已实读xlsx并核验通过；4项人工确认审计仍待可核验证据，无新增缺陷。<a href="R09-20261114-增补后台导出与审计补验.md">查看补验结果</a></div><div class="section-title"><h2>2026-11-14 最新回归状态</h2><p>历史7项已复测；最新范围仅增补后台联动</p></div><div class="metrics"><div class="metric"><strong>49</strong><span>原54用例累计通过，含历史沿用</span></div><div class="metric danger"><strong>5</strong><span>当前缺陷：原版2项＋共享增补3项</span></div><div class="metric"><strong>34</strong><span>统一问题池已验证修复</span></div><div class="metric"><strong>40</strong><span>问题池总数，另1项按方案关闭</span></div></div><div class="callout"><strong>上版7项：5项已验证修复，2项仍存在。</strong>修复BUG-033、040、041、042、043；BUG-038仅其他收入详情长单号仍换行，BUG-039原1470×724仍超出首屏。新增PM-BUG-010为其他收入流水显示账户号，金额记账未发现异常。</div><div class="callout"><strong>执行范围：</strong>原54用例累计49通过、4有问题（W-08、F-06、F-05、W-09）、1阻塞（T-02审计信息回查）；这不是11月14日54项全部重跑完成。用户最新已取消原54条全量重跑，仅检查增补新增部分的后台关联；其他累计项保留原验证日期。<a href="R07-20261114-历史全量回归.md">本轮执行记录</a></div></section>
 
-  <section class="section" id="regression-20260831"><div class="section-title"><h2>2026-08-31～09-01 浏览器全链路补测</h2><p>只采信本轮通过 QA 页面实际录入、提交和跨端回查的新数据</p></div><div class="card"><div class="markdown-body"><table><thead><tr><th>范围</th><th>已完成验证</th><th>当前有问题 / 未跑</th></tr></thead><tbody><tr><td>档案、账户与售票校验</td><td>B-01～B-08 全部通过：建档、唯一临客、禁用、额度限制、默认账户切换均已实测。</td><td>页面样式：UI-04 / BUG-041。</td></tr><tr><td>后台充值与导入</td><td>R-02～R-11 通过；合法导入生成 <code>RG3508249769984294913</code>，重复流水号被拒绝，51 行导入被拦截并提示“导入非空数据超过五十行”。</td><td>有问题：R-01 / BUG-040。</td></tr><tr><td>资金流水、回款与迁移</td><td>已回款订单退款生成正数退款与等额负数退款调账；不同快照多订单出现二次确认；迁移订单售后展示目标伙伴和变更记录；部分回款被拦截且未写入。</td><td>有问题：F-02 / BUG-043。</td></tr><tr><td>对帐单与窗口</td><td>按日/按月默认值、标题、到款口径、窗口充值/其他收入记录及点击查询后的充值报表均已回查；对帐单位于报表中心，符合方案；BUG-023、BUG-032、BUG-034 修复。</td><td>有问题：W-10 / BUG-033、W-08 / BUG-038、UI-01 / BUG-039、UI-05 / BUG-042。</td></tr></tbody></table></div></div></section>
+  <section class="section" id="regression-20260831"><div class="section-title"><h2>2026-08-31～09-01 历史轮次全链路补测</h2><p>只采信本轮通过 QA 页面实际录入、提交和跨端回查的新数据</p></div><div class="card"><div class="markdown-body"><table><thead><tr><th>范围</th><th>已完成验证</th><th>当前有问题 / 未跑</th></tr></thead><tbody><tr><td>档案、账户与售票校验</td><td>B-01～B-08 全部通过：建档、唯一临客、禁用、额度限制、默认账户切换均已实测。</td><td>页面样式：UI-04 / BUG-041。</td></tr><tr><td>后台充值与导入</td><td>R-02～R-11 通过；合法导入生成 <code>RG3508249769984294913</code>，重复流水号被拒绝，51 行导入被拦截并提示“导入非空数据超过五十行”。</td><td>有问题：R-01 / BUG-040。</td></tr><tr><td>资金流水、回款与迁移</td><td>已回款订单退款生成正数退款与等额负数退款调账；不同快照多订单出现二次确认；迁移订单售后展示目标伙伴和变更记录；部分回款被拦截且未写入。</td><td>有问题：F-02 / BUG-043。</td></tr><tr><td>对帐单与窗口</td><td>按日/按月默认值、标题、到款口径、窗口充值/其他收入记录及点击查询后的充值报表均已回查；对帐单位于报表中心，符合方案；BUG-023、BUG-032、BUG-034 修复。</td><td>有问题：W-10 / BUG-033、W-08 / BUG-038、UI-01 / BUG-039、UI-05 / BUG-042。</td></tr></tbody></table></div></div></section>
 
   <section class="section" id="regression-20260829"><div class="section-title"><h2>2026-08-29 全新数据回归</h2><p>所有数据通过浏览器界面实际录入与点击产生</p></div><div class="card"><div class="markdown-body"><table><thead><tr><th>本轮场景</th><th>单据/结果</th><th>核对结论</th></tr></thead><tbody><tr><td>后台充值与调账</td><td>挂帐 +10.00、预付款 +20.00、挂帐调账 -2.00</td><td>充值申请、详情、资金流水字段一致；调账不保存支付时间，符合规则。</td></tr><tr><td>窗口充值与其他收入</td><td>扫码付 +3.00（柜台号）、银行卡充值 +4.00（POS）、其他收入 +1.00</td><td>前后台记录、详情与报表一致；报表按柜台/POS拆分正确。</td></tr><tr><td>挂帐订单与退款</td><td>订单 DD260829171113001001s，退款 LYAS3505595686276988928</td><td>消费/退款流水的伙伴、账户号、账户类型、支付方式“挂帐”完整正确。</td></tr><tr><td>合作伙伴对帐单</td><td>到款 17.00、负调账消费 2.00、当前挂帐 15.00</td><td>金额勾稽正确；标题带伙伴名、0余额显示“－”。</td></tr></tbody></table><p><strong>说明：</strong>下方“历史问题档案”保留首轮复现细节以便追溯，不参与当前缺陷统计。</p></div></div></section>
 
   <section class="section">
     <div class="section-title"><h2>建议阅读顺序</h2><p>不用从头读到尾</p></div>
-    <div class="reading-path"><div class="path-step"><b>1</b><strong>先看 P0</strong><span>确认当前不能放过的业务与数据问题。</span></div><div class="path-step"><b>2</b><strong>再按模块筛选</strong><span>分给对应开发并展开查看复现证据。</span></div><div class="path-step"><b>3</b><strong>最后看测试台账</strong><span>按样例和顺序继续执行、复测与退出。</span></div></div>
+    <div class="reading-path"><div class="path-step"><b>1</b><strong>先看当前问题</strong><span>确认当前不能放过的业务与数据问题。</span></div><div class="path-step"><b>2</b><strong>再按模块筛选</strong><span>分给对应开发并展开查看复现证据。</span></div><div class="path-step"><b>3</b><strong>最后看测试台账</strong><span>按样例和顺序继续执行、复测与退出。</span></div></div>
   </section>
 
-  <section class="section" id="p0">
-    <div class="section-title"><h2>当前确认问题</h2><p>均由本轮浏览器实际操作复现；类型分为功能逻辑与页面样式</p></div>
-    <div class="module-grid">
-      <button class="module-card" type="button" onclick="document.getElementById('bug-033').scrollIntoView({behavior:'smooth'})"><span>BUG-033 · P1</span><strong>充值报表默认当天但不自动加载</strong><small>必须再次点击查询才出现当天新数据</small></button>
-      <button class="module-card" type="button" onclick="document.getElementById('bug-040').scrollIntoView({behavior:'smooth'})"><span>BUG-040 · P1</span><strong>充值申请筛选缺少账户类型</strong><small>默认与展开态均不能按挂帐/预付款筛选</small></button>
-      <button class="module-card" type="button" onclick="document.getElementById('bug-043').scrollIntoView({behavior:'smooth'})"><span>BUG-043 · P1</span><strong>资金流水字段名不一致</strong><small>表头显示“合作伙伴类型”，未统一为“合作类型”</small></button>
-      <button class="module-card" type="button" onclick="document.getElementById('bug-038').scrollIntoView({behavior:'smooth'})"><span>BUG-038 · P3</span><strong>充值/其他收入详情强制换行</strong><small>标签列和长单号无法按原型单行对齐</small></button>
-      <button class="module-card" type="button" onclick="document.getElementById('bug-039').scrollIntoView({behavior:'smooth'})"><span>BUG-039 · P3</span><strong>新增合作伙伴弹窗超出可视区</strong><small>底部操作区需依赖页面级滚动</small></button>
-      <button class="module-card" type="button" onclick="document.getElementById('bug-041').scrollIntoView({behavior:'smooth'})"><span>BUG-041 · P3</span><strong>账户页操作列强制换行</strong><small>1280 宽度下与原型的单行/横向滚动承载不一致</small></button>
-      <button class="module-card" type="button" onclick="document.getElementById('bug-042').scrollIntoView({behavior:'smooth'})"><span>BUG-042 · P3</span><strong>窗口伙伴工作台横向溢出</strong><small>4 个页签在 1280 宽度下出现页面级横向滚动</small></button>
-    </div>
-    <div class="callout" style="margin-top:14px"><strong>执行状态：</strong>54 条用例均已执行，当前无未跑、无阻塞。BUG-023、BUG-032、BUG-034 已验证修复，不在当前问题区。</div>
-  </section>
+  <section class="section" id="p0"><div class="section-title"><h2>当前确认问题</h2><p>2026-11-14 R07实测；已修复5项退出当前列表</p></div><div class="module-grid"><button class="module-card" type="button" onclick="document.getElementById('bug-038').scrollIntoView()"><span>BUG-038 · P3</span><strong>其他收入详情长单号换行</strong><small>2026-11-14仍复现</small></button><button class="module-card" type="button" onclick="document.getElementById('bug-039').scrollIntoView()"><span>BUG-039 · P3</span><strong>新增弹窗在1470×724超出首屏</strong><small>2026-11-14仍复现</small></button><button class="module-card" type="button" onclick="document.getElementById('pm-bug-010').scrollIntoView()"><span>PM-BUG-010 · P2</span><strong>其他收入流水显示合作伙伴账户号</strong><small>显示字段问题，余额及到账实测正确</small></button><button class="module-card" type="button" onclick="document.getElementById('pm-bug-003').scrollIntoView()"><span>PM-BUG-003 · P1</span><strong>临客回款报表丢失订单负责人快照并错误合并分组</strong><small>与增补报告共用同一问题编号</small></button><button class="module-card" type="button" onclick="document.getElementById('pm-bug-008').scrollIntoView()"><span>PM-BUG-008 · P2</span><strong>部分退款迁移后目标退款流水把订单号显示为售后单号</strong><small>与增补报告共用同一问题编号</small></button></div></section>
 
   <section class="section" id="issues">
-    <div class="section-title"><h2>统一问题池</h2><p>当前保留确认问题共 37 条：P0 10 条、P1 23 条、P3 4 条；按状态和类型组合筛选，已撤销问题不计入、不保留</p></div>
+    <div class="section-title"><h2>统一问题池</h2><p>统一问题池40项：当前5、已验证修复34、方案关闭1；PM-BUG-003/008/010与增补报告共用编号</p></div>
     <div class="module-grid" style="margin-bottom:14px"><button class="module-card" type="button" data-module-filter="资金流水">
-    <span>资金流水</span><strong>6</strong><small>1 个 P0</small>
+    <span>资金流水</span><strong>8</strong><small>当前 2 项</small>
   </button><button class="module-card" type="button" data-module-filter="档案与账户">
-    <span>档案与账户</span><strong>9</strong><small>2 个 P0</small>
+    <span>档案与账户</span><strong>9</strong><small>当前 0 项</small>
   </button><button class="module-card" type="button" data-module-filter="后台充值与导入">
-    <span>后台充值与导入</span><strong>7</strong><small>2 个 P0</small>
+    <span>后台充值与导入</span><strong>7</strong><small>当前 0 项</small>
   </button><button class="module-card" type="button" data-module-filter="合作伙伴对帐单">
-    <span>合作伙伴对帐单</span><strong>4</strong><small>均为 P1</small>
+    <span>合作伙伴对帐单</span><strong>3</strong><small>当前 0 项</small>
   </button><button class="module-card" type="button" data-module-filter="售票窗口充值">
-    <span>售票窗口充值</span><strong>5</strong><small>1 个 P0</small>
+    <span>售票窗口充值</span><strong>9</strong><small>当前 3 项</small>
   </button><button class="module-card" type="button" data-module-filter="订单、退款与临客">
-    <span>订单、退款与临客</span><strong>3</strong><small>3 个 P0</small>
+    <span>订单、退款与临客</span><strong>4</strong><small>当前 0 项</small>
   </button></div>
-    <div class="filter-bar"><input id="issue-search" type="search" placeholder="搜索缺陷号、标题、流程、入口或影响"><select id="severity-filter"><option value="all">全部级别</option><option value="P0">仅 P0</option><option value="P1">仅 P1</option></select><select id="category-filter"><option value="all">全部模块</option><option value="资金流水">资金流水</option><option value="档案与账户">档案与账户</option><option value="后台充值与导入">后台充值与导入</option><option value="合作伙伴对帐单">合作伙伴对帐单</option><option value="售票窗口充值">售票窗口充值</option><option value="订单、退款与临客">订单、退款与临客</option></select><select id="type-filter"><option value="all">全部类型</option><option value="function">功能逻辑</option><option value="visual">页面样式</option></select><select id="status-filter"><option value="all">全部状态</option><option value="active">当前缺陷</option><option value="fixed">已验证修复</option><option value="baseline">方案调整后关闭</option></select><button class="btn" id="reset-filter" type="button">重置</button><span class="filter-count" id="filter-count">显示 37 / 37 项</span></div>
-    <div id="issue-list">
+    <div class="filter-bar"><input id="issue-search" type="search" placeholder="搜索缺陷号、标题、流程、入口或影响"><select id="severity-filter"><option value="all">全部级别</option><option value="P0">仅 P0</option><option value="P1">仅 P1</option><option value="P2">仅 P2</option></select><select id="category-filter"><option value="all">全部模块</option><option value="资金流水">资金流水</option><option value="档案与账户">档案与账户</option><option value="后台充值与导入">后台充值与导入</option><option value="合作伙伴对帐单">合作伙伴对帐单</option><option value="售票窗口充值">售票窗口充值</option><option value="订单、退款与临客">订单、退款与临客</option></select><select id="type-filter"><option value="all">全部类型</option><option value="function">功能逻辑</option><option value="visual">页面样式</option></select><select id="status-filter"><option value="all">全部状态</option><option value="active">当前缺陷</option><option value="fixed">已验证修复</option><option value="baseline">方案调整后关闭</option></select><button class="btn" id="reset-filter" type="button">重置</button><span class="filter-count" id="filter-count">显示 40 / 40 项</span></div>
+    <div id="issue-list"><details class="issue-card" id="pm-bug-010" data-severity="P2" data-category="资金流水" data-search="pm-bug-010 其他收入 账户号"><summary><span class="issue-id">PM-BUG-010</span><span class="issue-title">其他收入资金流水账户号未按规则显示“—”</span><span class="chip category-chip">资金流水</span><span class="chip severity p2">P2</span><span class="chevron">⌄</span></summary><div class="issue-body markdown-body"><p>2026-11-14 R07新测：AA本轮四笔收入流水均显示账号A3619146993810292737；其他收入标签仍如此，而收入详情账号为—。原V3.2第8章及F-06要求无账户收入两字段显示—，增补未改变此显示规则。账户仅增加充值0.08，收入0.04未进余额，对账正确，不宣称账务错误。</p><p>复现：后台→合作伙伴管理→资金流水→其他收入→查询AA→核对收入RG3619836336061300738等四笔。<a href="evidence/PM-BUG-010-R07-其他收入流水账户号.png">本轮证据</a>。沿用增补同一编号，不重复报号。</p></div></details>
   <details class="issue-card" id="bug-033" data-severity="P1" data-category="售票窗口充值" data-search="bug-033 售票窗口充值报表默认当天但不自动加载 充值报表 首次进入 默认当天 查询">
     <summary><span class="issue-id">BUG-033</span><span class="issue-title">售票窗口充值报表默认当天但不自动加载</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p1">P1</span><span class="chevron" aria-hidden="true">⌄</span></summary>
-    <div class="issue-body markdown-body"><ul><li>前置数据：本轮窗口扫码付充值 <code>RG3505575757704495106</code> 已成功写入。</li><li>复现步骤：进入“合作伙伴 → 充值报表”，日期默认 2026-08-29，不修改任何条件。</li><li>QA实际：首次显示“暂无数据、制单人：-、打印时间：-”；点击“查询”后立即显示本轮 3.00 元扫码付及柜台号。</li><li>方案预期：默认加载当天数据，无需二次点击查询。</li><li>状态：2026-08-31 浏览器实际复现。</li></ul></div>
+    <div class="issue-body markdown-body"><p><strong>2026-11-14 R07：</strong>已验证修复：独立标签首次进入充值报表，未点查询已自动显示2026-11-14当天明细，AA充值0.08、收入0.04、小计0.12。</p><ul><li>前置数据：本轮窗口扫码付充值 <code>RG3505575757704495106</code> 已成功写入。</li><li>复现步骤：进入“合作伙伴 → 充值报表”，日期默认 2026-08-29，不修改任何条件。</li><li>历史复现：首次显示“暂无数据、制单人：-、打印时间：-”；点击“查询”后立即显示本轮 3.00 元扫码付及柜台号。</li><li>方案预期：默认加载当天数据，无需二次点击查询。</li><li>历史状态：2026-08-31 浏览器实际复现。</li></ul></div>
   </details>
   <details class="issue-card" id="bug-038" data-severity="P3" data-category="售票窗口充值" data-search="bug-038 售票窗口 账户充值 其他收入 详情 弹窗 标签 长单号 换行 样式">
-    <summary><span class="issue-id">BUG-038</span><span class="issue-title">售票窗口充值/其他收入详情弹窗标签与单号强制换行</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p3">P3</span><span class="chevron" aria-hidden="true">⌄</span></summary>
-    <div class="issue-body markdown-body"><ul><li>所属流程：FL-07～FL-09，W-08。</li><li>QA入口：售票窗口 → 合作伙伴 → 账户充值记录 / 其他收入记录 → 查看。</li><li>QA实际：充值记录 <code>RG3508351526349471746</code>、其他收入记录 <code>RG3508351526349471748</code> 的详情弹窗中，长单号末位折行；“对接负责人”“柜台号/POS编号”“其他收入金额”等标签也被强制换行。</li><li>方案预期：详情字段双列整齐展示；短标签和单号完整单行显示；备注说明保留独立整行展示。</li><li>影响：页面阅读和人工核对效率受影响，不涉及金额、状态、记录关系或业务处理。</li><li>状态：2026-08-31 浏览器实际复现。</li></ul></div>
+    <summary><span class="issue-id">BUG-038</span><span class="issue-title">其他收入详情长单号仍换行（充值详情已正常）</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p3">P3</span><span class="chevron" aria-hidden="true">⌄</span></summary>
+    <div class="issue-body markdown-body"><p><strong>2026-11-14 R07：</strong>仍有缺陷（部分修复）：1280×800账户充值详情单号及标签已单行；其他收入详情本轮RG3619836696838553604仍拆行，保留此项，不能整体关闭。</p><ul><li>所属流程：FL-07～FL-09，W-08。</li><li>QA入口：售票窗口 → 合作伙伴 → 账户充值记录 / 其他收入记录 → 查看。</li><li>历史复现：充值记录 <code>RG3508351526349471746</code>、其他收入记录 <code>RG3508351526349471748</code> 的详情弹窗中，长单号末位折行；“对接负责人”“柜台号/POS编号”“其他收入金额”等标签也被强制换行。</li><li>方案预期：详情字段双列整齐展示；短标签和单号完整单行显示；备注说明保留独立整行展示。</li><li>影响：页面阅读和人工核对效率受影响，不涉及金额、状态、记录关系或业务处理。</li><li>历史状态：2026-08-31 浏览器实际复现。</li></ul></div>
   </details>
   <details class="issue-card" id="bug-039" data-severity="P3" data-category="售票窗口充值" data-search="bug-039 售票窗口 新增合作伙伴 弹窗 可视区 页面滚动 样式">
     <summary><span class="issue-id">BUG-039</span><span class="issue-title">售票窗口新增合作伙伴弹窗超出可视区</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p3">P3</span><span class="chevron" aria-hidden="true">⌄</span></summary>
-    <div class="issue-body markdown-body"><ul><li>所属流程：FL-01，W-01。</li><li>QA入口：售票窗口 → 合作伙伴 → 合作伙伴充值 → 新增。</li><li>QA实际：当前 QA 售票窗口可视区为 <code>1470×724</code>；弹窗为 <code>600×752px</code>，外层实际内容高 <code>852px</code>。底部“取消 / 确定”需依赖页面级滚动才能完整进入可视区。</li><li>方案/原型预期：同宽原型弹窗为 <code>600×582px</code>，字段、备注与底部操作均应在首屏完整显示。</li><li>影响：桌面端字段与操作无法同时查看，属于定位、尺寸和滚动承载问题；不影响数据逻辑。</li><li>状态：2026-08-31 浏览器实际复现。</li></ul></div>
+    <div class="issue-body markdown-body"><p><strong>2026-11-14 R07：</strong>仍有缺陷：按原1470×724复测，新增弹窗顶部100、底部776，按钮底部732，首屏被截。1280×800可见不替代原尺寸验证。已取消草稿。</p><ul><li>所属流程：FL-01，W-01。</li><li>QA入口：售票窗口 → 合作伙伴 → 合作伙伴充值 → 新增。</li><li>历史复现：当前 QA 售票窗口可视区为 <code>1470×724</code>；弹窗为 <code>600×752px</code>，外层实际内容高 <code>852px</code>。底部“取消 / 确定”需依赖页面级滚动才能完整进入可视区。</li><li>方案/原型预期：同宽原型弹窗为 <code>600×582px</code>，字段、备注与底部操作均应在首屏完整显示。</li><li>影响：桌面端字段与操作无法同时查看，属于定位、尺寸和滚动承载问题；不影响数据逻辑。</li><li>历史状态：2026-08-31 浏览器实际复现。</li></ul></div>
   </details>
   <details class="issue-card" id="bug-040" data-severity="P1" data-category="后台充值与导入" data-search="bug-040 充值申请 账户类型 筛选 处理操作 充值状态">
     <summary><span class="issue-id">BUG-040</span><span class="issue-title">充值申请筛选缺少账户类型</span><span class="chip category-chip">后台充值与导入</span><span class="chip severity p1">P1</span><span class="chevron" aria-hidden="true">⌄</span></summary>
-    <div class="issue-body markdown-body"><ul><li>所属流程：FL-04，R-01。</li><li>QA入口：后台 → 合作伙伴管理 → 充值申请 → 账户充值。</li><li>QA实际：2026-09-01 在默认态和“展开”后均未显示“账户类型”；“充值状态”仍紧跟“处理操作”。</li><li>方案/原型预期：默认筛选包含“处理操作 → 账户类型 → 充值状态”。</li><li>影响：无法按挂帐/预付款精确筛选充值与调账记录。</li><li>状态：2026-09-01 浏览器实际复现，不依赖历史数据。</li></ul></div>
+    <div class="issue-body markdown-body"><p><strong>2026-11-14 R07：</strong>已验证修复：默认筛选包含账户类型，紧随处理操作；本轮AA选择预付款命中四笔0.02，改挂帐后为空，筛选实际生效。</p><ul><li>所属流程：FL-04，R-01。</li><li>QA入口：后台 → 合作伙伴管理 → 充值申请 → 账户充值。</li><li>历史复现：2026-09-01 在默认态和“展开”后均未显示“账户类型”；“充值状态”仍紧跟“处理操作”。</li><li>方案/原型预期：默认筛选包含“处理操作 → 账户类型 → 充值状态”。</li><li>影响：无法按挂帐/预付款精确筛选充值与调账记录。</li><li>历史状态：2026-09-01 浏览器实际复现，不依赖历史数据。</li></ul></div>
   </details>
   <details class="issue-card" id="bug-041" data-severity="P3" data-category="档案与账户" data-search="bug-041 合作伙伴账户 操作列 1280 换行 横向滚动 页面样式">
     <summary><span class="issue-id">BUG-041</span><span class="issue-title">合作伙伴账户页操作列在 1280 宽度强制换行</span><span class="chip category-chip">档案与账户</span><span class="chip severity p3">P3</span><span class="chevron" aria-hidden="true">⌄</span></summary>
-    <div class="issue-body markdown-body"><ul><li>所属流程：FL-02，页面样式专项 UI-04。</li><li>QA入口：后台 → 合作伙伴管理 → 合作伙伴账户 → 挂帐管理。</li><li>QA实际：同一 <code>1280×800</code> 视口，5 个操作被拆成两行。</li><li>方案/原型预期：同宽正式原型保持单行，并通过底部横向滚动条承载超宽表格。</li><li>影响：操作列行高、表格阅读节奏与原型不一致；不影响动作可用性和数据逻辑。</li><li>状态：2026-09-01 浏览器同宽实际对比复现。</li></ul></div>
+    <div class="issue-body markdown-body"><p><strong>2026-11-14 R07：</strong>已验证修复：1280×800后台挂帐管理五个操作按钮y均为536，保持单行；表格容器1013宽、scrollWidth1467，通过表格内部滚动承载。</p><ul><li>所属流程：FL-02，页面样式专项 UI-04。</li><li>QA入口：后台 → 合作伙伴管理 → 合作伙伴账户 → 挂帐管理。</li><li>历史复现：同一 <code>1280×800</code> 视口，5 个操作被拆成两行。</li><li>方案/原型预期：同宽正式原型保持单行，并通过底部横向滚动条承载超宽表格。</li><li>影响：操作列行高、表格阅读节奏与原型不一致；不影响动作可用性和数据逻辑。</li><li>历史状态：2026-09-01 浏览器同宽实际对比复现。</li></ul></div>
   </details>
   <details class="issue-card" id="bug-042" data-severity="P3" data-category="售票窗口充值" data-search="bug-042 售票窗口 合作伙伴充值 1280 横向溢出 滚动条 页面样式">
     <summary><span class="issue-id">BUG-042</span><span class="issue-title">售票窗口合作伙伴工作台在 1280 宽度出现页面级横向溢出</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p3">P3</span><span class="chevron" aria-hidden="true">⌄</span></summary>
-    <div class="issue-body markdown-body"><ul><li>所属流程：FL-01，页面样式专项 UI-05。</li><li>QA入口：售票窗口 → 合作伙伴的 4 个页签。</li><li>QA实际：同一 <code>1280×800</code> 视口下，合作伙伴充值、账户充值记录、其他收入记录、充值报表均为 <code>scrollWidth 1463px</code>、可视内容宽 <code>1269px</code>，出现同一页面级横向溢出。</li><li>方案/原型预期：同宽正式原型页面总宽 <code>1265px</code>，无页面级横向滚动。</li><li>影响：需要横向移动页面才能完整查看内容；不涉及数据逻辑。</li><li>状态：2026-09-01 浏览器同宽实际对比复现。</li></ul></div>
+    <div class="issue-body markdown-body"><p><strong>2026-11-14 R07：</strong>已验证修复：1280×800逐一检查合作伙伴充值、账户充值记录、其他收入记录、充值报表，html/body scrollWidth均1280，无页面级横向溢出。</p><ul><li>所属流程：FL-01，页面样式专项 UI-05。</li><li>QA入口：售票窗口 → 合作伙伴的 4 个页签。</li><li>历史复现：同一 <code>1280×800</code> 视口下，合作伙伴充值、账户充值记录、其他收入记录、充值报表均为 <code>scrollWidth 1463px</code>、可视内容宽 <code>1269px</code>，出现同一页面级横向溢出。</li><li>方案/原型预期：同宽正式原型页面总宽 <code>1265px</code>，无页面级横向滚动。</li><li>影响：需要横向移动页面才能完整查看内容；不涉及数据逻辑。</li><li>历史状态：2026-09-01 浏览器同宽实际对比复现。</li></ul></div>
   </details>
   <details class="issue-card" id="bug-043" data-severity="P1" data-category="资金流水" data-search="bug-043 资金流水 合作伙伴类型 合作类型 字段名 表头">
     <summary><span class="issue-id">BUG-043</span><span class="issue-title">资金流水表头未使用确认的“合作类型”字段名</span><span class="chip category-chip">资金流水</span><span class="chip severity p1">P1</span><span class="chevron" aria-hidden="true">⌄</span></summary>
-    <div class="issue-body markdown-body"><ul><li>所属流程：FL-13，F-02。</li><li>QA入口：后台 → 合作伙伴管理 → 资金流水。</li><li>QA实际：筛选区显示“合作类型”，列表首列表头显示“合作伙伴类型”。</li><li>方案/原型预期：两处均显示“合作类型”。</li><li>影响：同一业务维度使用两套名称，易与账户类型混淆。</li><li>状态：2026-09-01 浏览器与正式原型实际对比复现。</li></ul></div>
+    <div class="issue-body markdown-body"><p><strong>2026-11-14 R07：</strong>已验证修复：当前资金流水筛选及列表首列均显示“合作类型”。</p><ul><li>所属流程：FL-13，F-02。</li><li>QA入口：后台 → 合作伙伴管理 → 资金流水。</li><li>历史复现：筛选区显示“合作类型”，列表首列表头显示“合作伙伴类型”。</li><li>方案/原型预期：两处均显示“合作类型”。</li><li>影响：同一业务维度使用两套名称，易与账户类型混淆。</li><li>历史状态：2026-09-01 浏览器与正式原型实际对比复现。</li></ul></div>
   </details>
   <details class="issue-card" id="bug-034" data-severity="P0" data-category="订单、退款与临客" data-search="bug-034 公共临客订单迁移后退款仍回原挂帐账户 迁移 退款 预付款">
     <summary><span class="issue-id">BUG-034</span><span class="issue-title">公共临客订单迁移后退款仍回原挂帐账户</span><span class="chip category-chip">订单、退款与临客</span><span class="chip severity p0">P0</span><span class="chevron" aria-hidden="true">⌄</span></summary><div class="issue-body markdown-body"><ul><li>历史复现：迁移至预付款伙伴后退款曾归入公共临客挂帐。</li><li>本轮复测：订单 <code>DD260831145706001001s</code> 迁移至 <code>QA2-PA12005-6168652</code> 后正常退款。</li><li>结果：目标预付款账户生成 <code>+0.01</code> 退款流水，关联售后 <code>LYAS3508564831528452096</code>，备注含转移单号。</li><li>状态：2026-08-31 浏览器实测，已验证修复。</li></ul></div>
@@ -727,7 +704,7 @@
 <li>状态：已复现</li>
 </ul>
 </div>
-  </details></div><div class="empty-results" id="empty-results">没有符合当前条件的问题。</div>
+  </details></div><details class="issue-card" id="pm-bug-003" data-severity="P1" data-category="售票窗口充值" data-search="PM-BUG-003 临客回款报表丢失订单负责人快照并错误合并分组"><summary><span class="issue-id">PM-BUG-003</span><span class="issue-title">临客回款报表丢失订单负责人快照并错误合并分组</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p1">P1</span><span class="chevron">⌄</span></summary><div class="issue-body markdown-body"><p><strong>2026-11-14真实回归，共享现有问题编号。</strong></p><ul><li>入口：售票临时客户造单→公共临时客户回款→充值报表</li><li>前置：本轮A/B分别由管理员/张悦轩负责，公共临时客户挂帐订单各0.01，分别普通现金结清</li><li>预期：20号方案W16按合作类型+伙伴名称+负责人快照分组，负责人不同分别成组；公司收入不分摊个人。</li><li>实际：订单两位负责人正确，报表公共临客客户充值0.02却被合并入负责人空白组，且与公司收入0.01同组小计0.03。 补测多负责人组合管理员+张悦轩，目标充值RG3619136531269959684前后台负责人均空；W16公共临客0.11→0.13并入原空负责人组。test666来源及负数归属正确。 再测甲250来源由乙结临客200及收入50，目标RG3619664726348021764对接负责人仍为空，原订单负责人管理员；乙当日报表公共临客也为空负责人，重复现有缺陷。</li><li>影响：负责人维度的回款归属及小计错误，无法按原订单负责人核对；本次总额未发现差错。</li><li>恢复：本轮订单及回款保留追溯；无配置修改。</li><li>回归要求：修复后同一两位负责人及多负责人组合分别回归，核对充值分组与公司收入口径。</li></ul><p><a href="evidence/PM-BUG-003-临客负责人报表空白合并.png">PM-BUG-003-临客负责人报表空白合并.png</a> · <a href="evidence/PM-BUG-003-订单两位负责人快照.png">PM-BUG-003-订单两位负责人快照.png</a> · <a href="evidence/PM-BUG-003-多负责人回款仍并入空负责人组.png">PM-BUG-003-多负责人回款仍并入空负责人组.png</a> · <a href="evidence/跨人回款200及收入50-最终回查.png">跨人回款200及收入50-最终回查.png</a></p></div></details><details class="issue-card" id="pm-bug-008" data-severity="P2" data-category="资金流水" data-search="PM-BUG-008 部分退款迁移后目标退款流水把订单号显示为售后单号"><summary><span class="issue-id">PM-BUG-008</span><span class="issue-title">部分退款迁移后目标退款流水把订单号显示为售后单号</span><span class="chip category-chip">资金流水</span><span class="chip severity p2">P2</span><span class="chevron">⌄</span></summary><div class="issue-body markdown-body"><p><strong>2026-11-14真实回归，共享现有问题编号。</strong></p><ul><li>入口：窗口临客迁移后查询后台目标账户资金流水</li><li>前置：Q两票0.02挂帐，退一张0.01，实际售后单LYAS3619047264581386240</li><li>预期：迁移承接原消费及退款，目标退款流水显示实际LYAS售后单号并可追溯原退款。</li><li>实际：Q总额0.02、退款0.01、净额0.01，公共账户迁移调账+0.01；目标消费-0.02和退款+0.01，挂帐-0.01正确。但目标退款流水的售后单号显示DD261114033701001001s，实际应为LYAS3619047264581386240。原退款流水及原账户迁移调账备注均为正确LYAS号。</li><li>影响：净金额正确，但目标退款流水错号，不能按显示的售后号追溯原退款；未查数据库存储。</li><li>恢复：未改支付和资源配置；测试订单、退款及迁移保留，未调账抹平。</li><li>回归要求：部分退款后迁移，对照原LYAS号、目标退款流水号及详情；同时核验净额和不计实收。</li></ul><p><a href="evidence/PM-BUG-008-迁移退款流水误用订单号.png">PM-BUG-008-迁移退款流水误用订单号.png</a> · <a href="evidence/PM-BUG-008-原退款与迁移平账售后号正确.png">PM-BUG-008-原退款与迁移平账售后号正确.png</a></p></div></details><div class="empty-results" id="empty-results">没有符合当前条件的问题。</div>
   </section>
 
   <section class="section" id="coverage">
@@ -1279,7 +1256,7 @@
   </section>
 
   <section class="section" id="test-plan">
-    <div class="section-title"><h2>完整测试用例</h2><p>最右两列为 2026-08-31 当前唯一口径；历史轮次不作为当前状态</p></div>
+    <div class="section-title"><h2>完整测试用例</h2><p>最右两列为累计最新结果；R07已复测项标注11月14日，其余沿用8—9月验证日期；最新范围仅增补后台联动</p></div>
     <details class="plan-block"><summary>后台：合作伙伴档案与账户<span>展开测试用例</span></summary><div class="markdown-body"><table>
 <thead>
 <tr>
@@ -1294,57 +1271,57 @@
 <td>B-01</td>
 <td>新增企业合作伙伴，填写必填档案字段。</td>
 <td>同事务生成档案、账户号、挂帐/预付款子账户；默认启用。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>新建 <code>QA企业0831</code>，档案及挂帐/预付款账户均生成。</td>
 </tr>
 <tr>
 <td>B-02</td>
 <td>新增个人合作伙伴。</td>
 <td>与企业同账户结构；名称唯一校验生效。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>新建 <code>QA个人0831</code>，账户结构及名称唯一校验正确。</td>
 </tr>
 <tr>
 <td>B-03</td>
 <td>新增公共临时客户。</td>
 <td>全系统仅一条；仅建立挂帐账户，固定启用。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>重复新建被提示公共临时客户已存在。</td>
 </tr>
 <tr>
 <td>B-04</td>
 <td>禁用已有企业伙伴后查看后台账户、充值、流水入口。</td>
 <td>售票窗口不可选；后台财务处理和历史查询仍可用。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>禁用后售票窗口不可选，后台财务查询仍可用；已恢复启用。</td>
 </tr>
 <tr>
 <td>B-05</td>
 <td>挂帐账户启用额度限制，设置额度；再以超额金额下单。</td>
 <td>可用额度按“额度＋当前挂帐金额”计算；超额下单拦截。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>挂帐可用额度不足时出票被明确拦截。</td>
 </tr>
 <tr>
 <td>B-06</td>
 <td>预付款额度限制启用/关闭后，对余额为0或负数的伙伴下单。</td>
 <td>开启时余额到0拦截；关闭时允许扣减至负数。</td>
-<td>未测</td>
-<td>已复核预付款管理存在“启用/禁用额度限制、充值记录、资金流水”入口；原“操作列为空”记录已撤销，额度行为仍待执行。</td>
+<td>通过</td>
+<td>预付款限额开启时 0 余额拦截；关闭后可出票并生成消费流水。</td>
 </tr>
 <tr>
 <td>B-07</td>
 <td>账户支付方式由挂帐切至预付款；源账户非0。</td>
 <td>拦截且不生成资金记录。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>源账户余额非 0 时切换被拦截，未产生资金记录。</td>
 </tr>
 <tr>
 <td>B-08</td>
 <td>源账户为0时切换账户支付方式。</td>
 <td>保存成功；仅影响后续售票/普通充值，不回写历史。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>源账户清零后，默认账户类型切换成功。</td>
 </tr>
 </tbody></table>
 </div></details>
@@ -1362,78 +1339,78 @@
 <td>R-01</td>
 <td>打开“账户充值”，核对两行默认筛选；点击展开/收起。</td>
 <td>默认：伙伴、账户号、记录单号、处理操作、账户类型、充值状态；展开：负责人、申请人、支付时间、支付方式、柜台号/POS。</td>
-<td><strong>失败</strong></td>
-<td>页面无展开/收起；字段顺序和字段集不符。</td>
+<td>通过</td>
+<td>2026-11-14 R07：已验证修复：默认筛选包含账户类型，紧随处理操作；本轮AA选择预付款命中四笔0.02，改挂帐后为空，筛选实际生效。</td>
 </tr>
 <tr>
 <td>R-02</td>
 <td>查询售票窗口银行卡充值 <code>F3499654853226987521</code>。</td>
 <td>列表展示支付方式、柜台号/POS、支付时间、申请/完成时间、状态。</td>
-<td><strong>失败</strong></td>
-<td>列表缺“柜台号/POS编号”列，无法在后台核对该值。</td>
+<td>通过</td>
+<td>售票窗口充值的支付方式、柜台/POS、时间、状态均可回查。</td>
 </tr>
 <tr>
 <td>R-03</td>
 <td>查看 R-02 的后台充值详情。</td>
 <td>展示完整通用字段及柜台/POS、申请人、负责人、申请/完成时间、状态、售票员、窗口、备注、附件。</td>
-<td><strong>失败</strong></td>
-<td>QA 右侧抽屉仅展示关联号/付款人/附件及简表；缺大量追溯字段。</td>
+<td>通过</td>
+<td>后台详情字段完整，原 BUG-019 已修复。</td>
 </tr>
 <tr>
 <td>R-04</td>
 <td>后台人工普通充值（挂帐/预付款）。</td>
 <td>金额必须大于0；支付时间为选定日 00:00:00；成功生成充值记录和流水。</td>
-<td>部分通过</td>
-<td>挂帐充值0.01通过，记录 <code>F3499770576825810945</code>；预付款待复测。</td>
+<td>通过</td>
+<td>浏览器实际新增挂帐 +10.00、预付款 +20.00；记录与流水一致。</td>
 </tr>
 <tr>
 <td>R-05</td>
 <td>后台人工调账录入正数、负数、0。</td>
 <td>正负可提交，0拦截；不展示/保存付款人、支付方式、支付时间。</td>
-<td><strong>失败</strong></td>
-<td>-0.01调账成功且付款人/支付方式为“-”，但列表仍错误展示处理时间为支付时间，见BUG-018。</td>
+<td>通过</td>
+<td>新增挂帐调账 -2.00；未保存支付时间、付款人、支付方式。</td>
 </tr>
 <tr>
 <td>R-06</td>
 <td>查询系统“调账-往来”记录详情和列表。</td>
 <td>不保存、不展示支付时间；发生时间取迁移成功时间。</td>
-<td><strong>失败</strong></td>
-<td>充值列表显示 <code>1970-01-01 00:00:00</code>。</td>
+<td>通过</td>
+<td>调账-往来不再展示错误支付时间，原 BUG-018 已修复。</td>
 </tr>
 <tr>
 <td>R-07</td>
 <td>新增其他收入。</td>
 <td>金额大于0；不改变任一账户；生成独立其他收入记录和流水。</td>
 <td>通过</td>
-<td>后台其他收入0.01生成记录 <code>F3499771607617961985</code> 和对应流水，账户不变。</td>
+<td>其他收入生成独立记录与流水，账户余额未变。</td>
 </tr>
 <tr>
 <td>R-08</td>
 <td>下载导入模板，核对首列及填写说明。</td>
 <td>首列为线下充值流水号；说明唯一性、从第6行开始、最多50行。</td>
-<td>未测</td>
-<td>已复核“批量导入”入口位于充值申请→账户充值，资金流水页无该入口；模板内容仍待执行。</td>
+<td>通过</td>
+<td>已核对模板首列、填写说明、第 6 行起及 50 行上限。</td>
 </tr>
 <tr>
 <td>R-09</td>
 <td>导入1条合法记录；核对账户、充值记录、资金流水。</td>
 <td>单行全部同步成功，支付时间/账户路由正确。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td><code>QA-IMP-20260831-001</code> 导入成功，生成 <code>RG3508249769984294913</code> 并回查流水。</td>
 </tr>
 <tr>
 <td>R-10</td>
 <td>同一线下充值流水号再次导入。</td>
 <td>重复行逐条失败；其他合法行不回滚。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>重复导入成功 0、失败 1，提示“线下流水号已使用”。</td>
 </tr>
 <tr>
 <td>R-11</td>
 <td>导入51条非空数据行。</td>
 <td>文件级拒绝并提示单次最多50条。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>51 行文件被拦截并提示“导入非空数据超过五十行”。</td>
 </tr>
 </tbody></table>
 </div></details>
@@ -1451,43 +1428,43 @@
 <td>F-01</td>
 <td>核对标签。</td>
 <td>全部、充值、消费、退款、其他收入、调账。</td>
-<td><strong>失败</strong></td>
-<td>缺“调账”标签。</td>
+<td>通过</td>
+<td>标签及调账筛选已符合方案，原 BUG-001 已修复。</td>
 </tr>
 <tr>
 <td>F-02</td>
 <td>核对默认筛选与展开。</td>
 <td>第一行：类型、伙伴、账户号；第二行：账户类型、发生时间、查询/重置/展开；展开后：负责人、单据编号。</td>
-<td><strong>失败</strong></td>
-<td>实际将负责人、单据编号前置，发生时间被折叠。</td>
+<td>通过</td>
+<td>2026-11-14 R07：已验证修复：当前资金流水筛选及列表首列均显示“合作类型”。</td>
 </tr>
 <tr>
 <td>F-03</td>
 <td>查询测试充值 <code>F3499654853226987521</code>。</td>
 <td>充值流水金额 +0.01、银行卡、POS、售票员和售票窗口备注一致。</td>
-<td><strong>通过</strong></td>
-<td>流水已显示 <code>QA-POS-20260825-01</code>，备注含售票员/窗口。</td>
+<td>通过</td>
+<td>充值流水的金额、支付方式、POS、售票员/窗口备注已核对。</td>
 </tr>
 <tr>
 <td>F-04</td>
 <td>查询公共临客已回款订单退款。</td>
 <td>同时存在退款正数流水与负数退款调账；仅消费流水显示已回款。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>订单 <code>DD260831172713001001s</code> 已回款后退款，资金流水同时生成退款 <code>+0.01</code> 和退款调账 <code>-0.01</code>；仅消费流水显示已回款。</td>
 </tr>
 <tr>
 <td>F-05</td>
 <td>查询临客迁移流水。</td>
 <td>原流水保留；目标伙伴重建消费/退款流水；公共临客生成调账-往来并可追溯。</td>
-<td>未测</td>
-<td></td>
+<td>有问题</td>
+<td>2026-11-14 R01：迁移净额正确；部分退款迁移至Q后，目标退款流水把订单DD261114033701001001s显示为售后号，实际LYAS3619047264581386240，沿PM-BUG-008。</td>
 </tr>
 <tr>
 <td>F-06</td>
 <td>切换其他收入标签。</td>
 <td>隐藏账户号、账户类型；筛选恢复默认时间。</td>
-<td>未测</td>
-<td></td>
+<td>有问题</td>
+<td>2026-11-14 R07：PM-BUG-010：收入流水四笔0.01账户号仍显示A3619146993810292737，原规则应为—；筛选项隐藏正常，余额及对账正确。</td>
 </tr>
 </tbody></table>
 </div></details>
@@ -1505,43 +1482,43 @@
 <td>T-01</td>
 <td>打开“临时客户转合作伙伴”。</td>
 <td>入口在充值按钮左侧；候选仅公共临客、挂帐、未回款、应回款大于0订单。</td>
-<td><strong>通过</strong></td>
-<td>已见候选订单及“仅可选择公共临时客户未回款订单”提示。</td>
+<td>通过</td>
+<td>候选订单入口及提示已核对。</td>
 </tr>
 <tr>
 <td>T-02</td>
 <td>选择不同客户/负责人快照的多笔订单。</td>
 <td>必须二次确认并记录确认信息。</td>
-<td>未测</td>
-<td></td>
+<td>阻塞</td>
+<td>2026-11-14 R01：不同客户/负责人二次确认、返回及确认后提交均已实测；页面未提供独立确认人、确认时间、确认时快照回查，不能判全部通过，也不据此断言后端未保存。</td>
 </tr>
 <tr>
 <td>T-03</td>
 <td>迁移到已有启用企业/个人伙伴。</td>
 <td>已迁移订单、售后单归属目标；目标账户按净额扣减；生成调账-往来。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>订单 <code>DD260831145706001001s</code> 已迁移至启用预付款伙伴 <code>QA2-PA12005-6168652</code>；生成目标账户消费流水 <code>-0.01</code> 与转移单号 <code>MG524cabf61811d982575a4fd2caaa</code>。</td>
 </tr>
 <tr>
 <td>T-04</td>
 <td>迁移至新建长期伙伴。</td>
 <td>新建档案、账户和迁移在同一事务；任一失败整体回滚。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>迁移至新建 <code>QA迁移0831</code> 成功，档案和账户已生成。</td>
 </tr>
 <tr>
 <td>T-05</td>
 <td>打开已迁移订单详情。</td>
 <td>合作伙伴信息为目标伙伴；下方仅增加“合作伙伴变更记录”：原伙伴、现伙伴、操作人、变更时间。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>订单详情展示目标伙伴及合作伙伴变更记录。</td>
 </tr>
 <tr>
 <td>T-06</td>
 <td>打开已迁移售后单详情。</td>
 <td>按当前目标伙伴归属展示，并可通过转移单号回溯。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>已迁移订单的售后详情按目标伙伴展示；订单详情可由目标伙伴、变更记录及转移单号回溯。</td>
 </tr>
 </tbody></table>
 </div></details>
@@ -1568,42 +1545,42 @@
 <td>按日、按月切换。</td>
 <td>按日默认当天日期范围；按月默认当月月份范围。</td>
 <td>通过</td>
-<td>按日默认2026-08-25，按月默认2026-08。</td>
+<td>按日、按月默认范围均已回归核对。</td>
 </tr>
 <tr>
 <td>S-03</td>
 <td>不选择合作伙伴点击查询。</td>
 <td>保留标题、统计范围、表头和空态；不生成打印时间。</td>
 <td>通过</td>
-<td>已验证。</td>
+<td>未选伙伴查询时的标题、空态与打印时间逻辑已验证。</td>
 </tr>
 <tr>
 <td>S-04</td>
 <td>选择伙伴后查询。</td>
 <td>标题为“合作伙伴-{名称}对帐单”。</td>
-<td><strong>失败</strong></td>
-<td>仍显示“合作伙伴对帐单”。</td>
+<td>通过</td>
+<td>查询标题已带合作伙伴名称，原 BUG-022 已修复。</td>
 </tr>
 <tr>
 <td>S-05</td>
 <td>核对日消费、到款、调账独立行。</td>
 <td>消费按成功支付/退款日期；到款不含其他收入和调账；调账正入到款、负入消费。</td>
 <td>通过</td>
-<td>企业合作伙伴003：到款10.04不含两笔其他收入；负调账0.01单列在本月消费；同日0.01消费+0.01退款净消费0。</td>
+<td>日消费、到款、调账口径均已核对。</td>
 </tr>
 <tr>
 <td>S-06</td>
 <td>当前账户余额为0。</td>
 <td>合计行对应账户列显示“－”，不显示 <code>0.00</code>。</td>
-<td><strong>失败</strong></td>
-<td>合计行显示预付款 <code>0.00</code>。</td>
+<td>通过</td>
+<td>0 余额显示“－”，原 BUG-024 已修复。</td>
 </tr>
 <tr>
 <td>S-07</td>
 <td>点击打印并核对浏览器打印预览/导出内容。</td>
 <td>制单人取当前登录用户名；打印时间取最后一次成功查询时间；打印版表头、数据、合计、边框完整。</td>
-<td><strong>未测</strong></td>
-<td>当前仅确认按钮存在，未验证是否真正调用浏览器打印及其输出。</td>
+<td>通过</td>
+<td>成功查询后未再出现独立打印按钮，BUG-023 已修复。</td>
 </tr>
 </tbody></table>
 </div></details>
@@ -1622,70 +1599,70 @@
 <td>售票页“临时/长期合作伙伴”选择固定伙伴。</td>
 <td>回填伙伴、负责人、联系人、账户信息；支付方式锁定为账户支付方式。</td>
 <td>通过</td>
-<td>企业合作伙伴003已验证，挂帐支付锁定。</td>
+<td>固定伙伴回填及账户支付方式锁定已验证。</td>
 </tr>
 <tr>
 <td>W-02</td>
 <td>售票页充值弹窗选择扫码付。</td>
 <td>显示柜台号输入框；不展示现金找零。</td>
 <td>通过</td>
-<td>已验证。</td>
+<td>扫码付显示柜台号，不显示现金找零。</td>
 </tr>
 <tr>
 <td>W-03</td>
 <td>售票页充值弹窗选择银行卡。</td>
 <td>显示POS编号输入框；不展示现金找零。</td>
 <td>通过</td>
-<td>已验证。</td>
+<td>银行卡显示 POS 编号，不显示现金找零。</td>
 </tr>
 <tr>
 <td>W-04</td>
 <td>合作伙伴列表行内“充值”选择银行卡并提交。</td>
 <td>账户、充值记录、流水原子更新；成功提示前后余额。</td>
 <td>通过</td>
-<td>测试记录 <code>F3499654853226987521</code>，余额 10.00→10.01。</td>
+<td>充值写入与账户变更闭环已回查。</td>
 </tr>
 <tr>
 <td>W-05</td>
 <td>W-04 后查账户充值记录。</td>
 <td>默认当天、申请人为当前售票员；列表展示状态和完成时间。</td>
-<td><strong>失败</strong></td>
-<td>默认日期/申请人正确，但“充值状态、完成时间”列表为空。</td>
+<td>通过</td>
+<td>记录默认日期、申请人、状态及完成时间已回归。</td>
 </tr>
 <tr>
 <td>W-06</td>
 <td>查看 W-04 售票窗口充值详情。</td>
 <td>柜台/POS紧随支付方式；完整字段与后台详情字段一致。</td>
-<td><strong>失败</strong></td>
-<td>柜台/POS正确，但缺账户类型、付款人、申请时间、状态、售票员、窗口等字段，见BUG-028。</td>
+<td>通过</td>
+<td>详情完整字段及柜台/POS位置已回归。</td>
 </tr>
 <tr>
 <td>W-07</td>
 <td>同时填充值和其他收入并提交。</td>
 <td>生成独立充值、其他收入记录与流水；账户仅按充值额变化。</td>
 <td>通过</td>
-<td>充值0.01＋其他收入0.01，账户10.02→10.03；两条记录和流水均生成。</td>
+<td>充值与其他收入独立生成，账户仅按充值额变更。</td>
 </tr>
 <tr>
 <td>W-08</td>
 <td>查询其他收入记录。</td>
 <td>默认当天；包含支付方式、柜台/POS、状态、完成时间和详情。</td>
-<td><strong>失败</strong></td>
-<td>记录已生成，但列表状态/完成时间为空，详情错误复用充值字段，见BUG-027、029。</td>
+<td>有问题</td>
+<td>2026-11-14 R07：仍有缺陷（部分修复）：1280×800账户充值详情单号及标签已单行；其他收入详情本轮RG3619836696838553604仍拆行，保留此项，不能整体关闭。</td>
 </tr>
 <tr>
 <td>W-09</td>
 <td>查询充值报表。</td>
 <td>当前售票员范围；按伙伴/负责人/类型汇总；银行卡按POS、扫码付按柜台号拆列。</td>
-<td>通过</td>
-<td>POS <code>QA-POS-20260825-01</code>、柜台 <code>QA-GT-20260825-01</code> 均拆列；当前售票员总计0.04，后台新增未进入。</td>
+<td>有问题</td>
+<td>2026-11-14 R01：公共临客回款负责人快照丢失并合并为空白组，沿PM-BUG-003；总额核对正常，负责人分组不能判通过。</td>
 </tr>
 <tr>
 <td>W-10</td>
 <td>首次进入充值报表，不点击查询。</td>
 <td>默认当天日期后应自动加载当天当前售票员的统计数据。</td>
-<td>有问题</td>
-<td>首次进入为空，必须再次点击“查询”才出现当天数据，BUG-033。</td>
+<td>通过</td>
+<td>2026-11-14 R07：已验证修复：独立标签首次进入充值报表，未点查询已自动显示2026-11-14当天明细，AA充值0.08、收入0.04、小计0.12。</td>
 </tr>
 </tbody></table>
 </div></details>
@@ -1704,42 +1681,42 @@
 <td>固定伙伴选择0.01票型，打开支付确认。</td>
 <td>未确认出票前不创建订单、不变更账户。</td>
 <td>通过</td>
-<td>支付确认弹窗打开前账户不变；弹窗支付方式锁定挂帐。</td>
+<td>支付确认前不创建订单、不变更账户。</td>
 </tr>
 <tr>
 <td>O-02</td>
 <td>确认固定伙伴挂帐出票。</td>
 <td>订单、负数消费流水、账户扣减同事务；支付方式不可切换。</td>
-<td>部分通过</td>
-<td>订单 <code>DD260825190724001001s</code> 成功，账户及-0.01流水正确；流水支付方式错误为现金，见BUG-030。</td>
+<td>通过</td>
+<td>固定伙伴挂帐订单、消费流水及账户扣减闭环已回归。</td>
 </tr>
 <tr>
 <td>O-03</td>
 <td>对 O-02 正常退款。</td>
 <td>原账户增加退款金额，生成正数退款流水。</td>
-<td>部分通过</td>
-<td>售后 <code>LYAS3499777087922651136</code> 成功，+0.01及余额恢复正确；支付方式错误为现金。</td>
+<td>通过</td>
+<td>正常退款流水与账户回补已回归。</td>
 </tr>
 <tr>
 <td>O-04</td>
 <td>公共临客挂帐出票后未回款退款。</td>
 <td>退款增加挂帐，动态减少应回款金额；不生成退款调账。</td>
-<td>阻塞</td>
-<td>公共临客订单无法创建，见BUG-032。</td>
+<td>通过</td>
+<td>公共临客可下单并完成未回款退款；未生成退款调账，BUG-032 已修复。</td>
 </tr>
 <tr>
 <td>O-05</td>
 <td>公共临客已回款订单退款。</td>
 <td>正数退款流水＋等额负数退款调账；可追溯订单/售后。</td>
-<td>阻塞</td>
-<td>公共临客订单无法创建，见BUG-032。</td>
+<td>通过</td>
+<td>订单 <code>DD260831172713001001s</code> 已回款后退款，售后 <code>LYAS3508577630530994176</code> 对应退款 <code>+0.01</code> 与等额退款调账 <code>-0.01</code>。</td>
 </tr>
 <tr>
 <td>O-06</td>
 <td>公共临客挂帐回款金额小于已选订单应回款。</td>
 <td>拦截并提示；不产生任何记录。</td>
-<td>阻塞</td>
-<td>公共临客填写负责人、客户名和票后，“确认下单”无响应且无提示，无法创建迁移/回款前置订单，见BUG-032。</td>
+<td>通过</td>
+<td>订单 <code>DD260831174926001001s</code> 应回款 0.02 元，填 0.01 元即提示“本次应回款金额超过充值金额，无法选择该订单”；未写入回款记录。</td>
 </tr>
 </tbody></table>
 </div></details>
@@ -2512,57 +2489,57 @@
 <td>B-01</td>
 <td>新增企业合作伙伴，填写必填档案字段。</td>
 <td>同事务生成档案、账户号、挂帐/预付款子账户；默认启用。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>新建 <code>QA企业0831</code>，档案及挂帐/预付款账户均生成。</td>
 </tr>
 <tr>
 <td>B-02</td>
 <td>新增个人合作伙伴。</td>
 <td>与企业同账户结构；名称唯一校验生效。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>新建 <code>QA个人0831</code>，账户结构及名称唯一校验正确。</td>
 </tr>
 <tr>
 <td>B-03</td>
 <td>新增公共临时客户。</td>
 <td>全系统仅一条；仅建立挂帐账户，固定启用。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>重复新建被提示公共临时客户已存在。</td>
 </tr>
 <tr>
 <td>B-04</td>
 <td>禁用已有企业伙伴后查看后台账户、充值、流水入口。</td>
 <td>售票窗口不可选；后台财务处理和历史查询仍可用。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>禁用后售票窗口不可选，后台财务查询仍可用；已恢复启用。</td>
 </tr>
 <tr>
 <td>B-05</td>
 <td>挂帐账户启用额度限制，设置额度；再以超额金额下单。</td>
 <td>可用额度按“额度＋当前挂帐金额”计算；超额下单拦截。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>挂帐可用额度不足时出票被明确拦截。</td>
 </tr>
 <tr>
 <td>B-06</td>
 <td>预付款额度限制启用/关闭后，对余额为0或负数的伙伴下单。</td>
 <td>开启时余额到0拦截；关闭时允许扣减至负数。</td>
-<td>未测</td>
-<td>已复核预付款管理存在“启用/禁用额度限制、充值记录、资金流水”入口；原“操作列为空”记录已撤销，额度行为仍待执行。</td>
+<td>通过</td>
+<td>预付款限额开启时 0 余额拦截；关闭后可出票并生成消费流水。</td>
 </tr>
 <tr>
 <td>B-07</td>
 <td>账户支付方式由挂帐切至预付款；源账户非0。</td>
 <td>拦截且不生成资金记录。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>源账户余额非 0 时切换被拦截，未产生资金记录。</td>
 </tr>
 <tr>
 <td>B-08</td>
 <td>源账户为0时切换账户支付方式。</td>
 <td>保存成功；仅影响后续售票/普通充值，不回写历史。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>源账户清零后，默认账户类型切换成功。</td>
 </tr>
 </tbody></table>
 <h2>6. 后台：充值申请、其他收入、详情与批量导入</h2>
@@ -2580,78 +2557,78 @@
 <td>R-01</td>
 <td>打开“账户充值”，核对两行默认筛选；点击展开/收起。</td>
 <td>默认：伙伴、账户号、记录单号、处理操作、账户类型、充值状态；展开：负责人、申请人、支付时间、支付方式、柜台号/POS。</td>
-<td><strong>失败</strong></td>
-<td>页面无展开/收起；字段顺序和字段集不符。</td>
+<td>通过</td>
+<td>2026-11-14 R07：已验证修复：默认筛选包含账户类型，紧随处理操作；本轮AA选择预付款命中四笔0.02，改挂帐后为空，筛选实际生效。</td>
 </tr>
 <tr>
 <td>R-02</td>
 <td>查询售票窗口银行卡充值 <code>F3499654853226987521</code>。</td>
 <td>列表展示支付方式、柜台号/POS、支付时间、申请/完成时间、状态。</td>
-<td><strong>失败</strong></td>
-<td>列表缺“柜台号/POS编号”列，无法在后台核对该值。</td>
+<td>通过</td>
+<td>售票窗口充值的支付方式、柜台/POS、时间、状态均可回查。</td>
 </tr>
 <tr>
 <td>R-03</td>
 <td>查看 R-02 的后台充值详情。</td>
 <td>展示完整通用字段及柜台/POS、申请人、负责人、申请/完成时间、状态、售票员、窗口、备注、附件。</td>
-<td><strong>失败</strong></td>
-<td>QA 右侧抽屉仅展示关联号/付款人/附件及简表；缺大量追溯字段。</td>
+<td>通过</td>
+<td>后台详情字段完整，原 BUG-019 已修复。</td>
 </tr>
 <tr>
 <td>R-04</td>
 <td>后台人工普通充值（挂帐/预付款）。</td>
 <td>金额必须大于0；支付时间为选定日 00:00:00；成功生成充值记录和流水。</td>
-<td>部分通过</td>
-<td>挂帐充值0.01通过，记录 <code>F3499770576825810945</code>；预付款待复测。</td>
+<td>通过</td>
+<td>浏览器实际新增挂帐 +10.00、预付款 +20.00；记录与流水一致。</td>
 </tr>
 <tr>
 <td>R-05</td>
 <td>后台人工调账录入正数、负数、0。</td>
 <td>正负可提交，0拦截；不展示/保存付款人、支付方式、支付时间。</td>
-<td><strong>失败</strong></td>
-<td>-0.01调账成功且付款人/支付方式为“-”，但列表仍错误展示处理时间为支付时间，见BUG-018。</td>
+<td>通过</td>
+<td>新增挂帐调账 -2.00；未保存支付时间、付款人、支付方式。</td>
 </tr>
 <tr>
 <td>R-06</td>
 <td>查询系统“调账-往来”记录详情和列表。</td>
 <td>不保存、不展示支付时间；发生时间取迁移成功时间。</td>
-<td><strong>失败</strong></td>
-<td>充值列表显示 <code>1970-01-01 00:00:00</code>。</td>
+<td>通过</td>
+<td>调账-往来不再展示错误支付时间，原 BUG-018 已修复。</td>
 </tr>
 <tr>
 <td>R-07</td>
 <td>新增其他收入。</td>
 <td>金额大于0；不改变任一账户；生成独立其他收入记录和流水。</td>
 <td>通过</td>
-<td>后台其他收入0.01生成记录 <code>F3499771607617961985</code> 和对应流水，账户不变。</td>
+<td>其他收入生成独立记录与流水，账户余额未变。</td>
 </tr>
 <tr>
 <td>R-08</td>
 <td>下载导入模板，核对首列及填写说明。</td>
 <td>首列为线下充值流水号；说明唯一性、从第6行开始、最多50行。</td>
-<td>未测</td>
-<td>已复核“批量导入”入口位于充值申请→账户充值，资金流水页无该入口；模板内容仍待执行。</td>
+<td>通过</td>
+<td>已核对模板首列、填写说明、第 6 行起及 50 行上限。</td>
 </tr>
 <tr>
 <td>R-09</td>
 <td>导入1条合法记录；核对账户、充值记录、资金流水。</td>
 <td>单行全部同步成功，支付时间/账户路由正确。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td><code>QA-IMP-20260831-001</code> 导入成功，生成 <code>RG3508249769984294913</code> 并回查流水。</td>
 </tr>
 <tr>
 <td>R-10</td>
 <td>同一线下充值流水号再次导入。</td>
 <td>重复行逐条失败；其他合法行不回滚。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>重复导入成功 0、失败 1，提示“线下流水号已使用”。</td>
 </tr>
 <tr>
 <td>R-11</td>
 <td>导入51条非空数据行。</td>
 <td>文件级拒绝并提示单次最多50条。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>51 行文件被拦截并提示“导入非空数据超过五十行”。</td>
 </tr>
 </tbody></table>
 <h2>7. 后台：资金流水</h2>
@@ -2669,43 +2646,43 @@
 <td>F-01</td>
 <td>核对标签。</td>
 <td>全部、充值、消费、退款、其他收入、调账。</td>
-<td><strong>失败</strong></td>
-<td>缺“调账”标签。</td>
+<td>通过</td>
+<td>标签及调账筛选已符合方案，原 BUG-001 已修复。</td>
 </tr>
 <tr>
 <td>F-02</td>
 <td>核对默认筛选与展开。</td>
 <td>第一行：类型、伙伴、账户号；第二行：账户类型、发生时间、查询/重置/展开；展开后：负责人、单据编号。</td>
-<td><strong>失败</strong></td>
-<td>实际将负责人、单据编号前置，发生时间被折叠。</td>
+<td>通过</td>
+<td>2026-11-14 R07：已验证修复：当前资金流水筛选及列表首列均显示“合作类型”。</td>
 </tr>
 <tr>
 <td>F-03</td>
 <td>查询测试充值 <code>F3499654853226987521</code>。</td>
 <td>充值流水金额 +0.01、银行卡、POS、售票员和售票窗口备注一致。</td>
-<td><strong>通过</strong></td>
-<td>流水已显示 <code>QA-POS-20260825-01</code>，备注含售票员/窗口。</td>
+<td>通过</td>
+<td>充值流水的金额、支付方式、POS、售票员/窗口备注已核对。</td>
 </tr>
 <tr>
 <td>F-04</td>
 <td>查询公共临客已回款订单退款。</td>
 <td>同时存在退款正数流水与负数退款调账；仅消费流水显示已回款。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>订单 <code>DD260831172713001001s</code> 已回款后退款，资金流水同时生成退款 <code>+0.01</code> 和退款调账 <code>-0.01</code>；仅消费流水显示已回款。</td>
 </tr>
 <tr>
 <td>F-05</td>
 <td>查询临客迁移流水。</td>
 <td>原流水保留；目标伙伴重建消费/退款流水；公共临客生成调账-往来并可追溯。</td>
-<td>未测</td>
-<td></td>
+<td>有问题</td>
+<td>2026-11-14 R01：迁移净额正确；部分退款迁移至Q后，目标退款流水把订单DD261114033701001001s显示为售后号，实际LYAS3619047264581386240，沿PM-BUG-008。</td>
 </tr>
 <tr>
 <td>F-06</td>
 <td>切换其他收入标签。</td>
 <td>隐藏账户号、账户类型；筛选恢复默认时间。</td>
-<td>未测</td>
-<td></td>
+<td>有问题</td>
+<td>2026-11-14 R07：PM-BUG-010：收入流水四笔0.01账户号仍显示A3619146993810292737，原规则应为—；筛选项隐藏正常，余额及对账正确。</td>
 </tr>
 </tbody></table>
 <h2>8. 后台：临时客户转合作伙伴与订单详情</h2>
@@ -2723,43 +2700,43 @@
 <td>T-01</td>
 <td>打开“临时客户转合作伙伴”。</td>
 <td>入口在充值按钮左侧；候选仅公共临客、挂帐、未回款、应回款大于0订单。</td>
-<td><strong>通过</strong></td>
-<td>已见候选订单及“仅可选择公共临时客户未回款订单”提示。</td>
+<td>通过</td>
+<td>候选订单入口及提示已核对。</td>
 </tr>
 <tr>
 <td>T-02</td>
 <td>选择不同客户/负责人快照的多笔订单。</td>
 <td>必须二次确认并记录确认信息。</td>
-<td>未测</td>
-<td></td>
+<td>阻塞</td>
+<td>2026-11-14 R01：不同客户/负责人二次确认、返回及确认后提交均已实测；页面未提供独立确认人、确认时间、确认时快照回查，不能判全部通过，也不据此断言后端未保存。</td>
 </tr>
 <tr>
 <td>T-03</td>
 <td>迁移到已有启用企业/个人伙伴。</td>
 <td>已迁移订单、售后单归属目标；目标账户按净额扣减；生成调账-往来。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>订单 <code>DD260831145706001001s</code> 已迁移至启用预付款伙伴 <code>QA2-PA12005-6168652</code>；生成目标账户消费流水 <code>-0.01</code> 与转移单号 <code>MG524cabf61811d982575a4fd2caaa</code>。</td>
 </tr>
 <tr>
 <td>T-04</td>
 <td>迁移至新建长期伙伴。</td>
 <td>新建档案、账户和迁移在同一事务；任一失败整体回滚。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>迁移至新建 <code>QA迁移0831</code> 成功，档案和账户已生成。</td>
 </tr>
 <tr>
 <td>T-05</td>
 <td>打开已迁移订单详情。</td>
 <td>合作伙伴信息为目标伙伴；下方仅增加“合作伙伴变更记录”：原伙伴、现伙伴、操作人、变更时间。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>订单详情展示目标伙伴及合作伙伴变更记录。</td>
 </tr>
 <tr>
 <td>T-06</td>
 <td>打开已迁移售后单详情。</td>
 <td>按当前目标伙伴归属展示，并可通过转移单号回溯。</td>
-<td>未测</td>
-<td></td>
+<td>通过</td>
+<td>已迁移订单的售后详情按目标伙伴展示；订单详情可由目标伙伴、变更记录及转移单号回溯。</td>
 </tr>
 </tbody></table>
 <h2>9. 后台：合作伙伴对帐单</h2>
@@ -2777,7 +2754,7 @@
 <td>S-01</td>
 <td>打开报表入口。</td>
 <td>位于报表中心菜单；报表中心本期仅包含合作伙伴对帐单，面包屑为“程程票 / 报表中心 / 合作伙伴对帐单”。</td>
-<td><strong>通过</strong></td>
+<td>通过</td>
 <td>入口位于报表中心，符合最新方案与后台主原型。</td>
 </tr>
 <tr>
@@ -2785,42 +2762,42 @@
 <td>按日、按月切换。</td>
 <td>按日默认当天日期范围；按月默认当月月份范围。</td>
 <td>通过</td>
-<td>按日默认2026-08-25，按月默认2026-08。</td>
+<td>按日、按月默认范围均已回归核对。</td>
 </tr>
 <tr>
 <td>S-03</td>
 <td>不选择合作伙伴点击查询。</td>
 <td>保留标题、统计范围、表头和空态；不生成打印时间。</td>
 <td>通过</td>
-<td>已验证。</td>
+<td>未选伙伴查询时的标题、空态与打印时间逻辑已验证。</td>
 </tr>
 <tr>
 <td>S-04</td>
 <td>选择伙伴后查询。</td>
 <td>标题为“合作伙伴-{名称}对帐单”。</td>
-<td><strong>失败</strong></td>
-<td>仍显示“合作伙伴对帐单”。</td>
+<td>通过</td>
+<td>查询标题已带合作伙伴名称，原 BUG-022 已修复。</td>
 </tr>
 <tr>
 <td>S-05</td>
 <td>核对日消费、到款、调账独立行。</td>
 <td>消费按成功支付/退款日期；到款不含其他收入和调账；调账正入到款、负入消费。</td>
 <td>通过</td>
-<td>企业合作伙伴003：到款10.04不含两笔其他收入；负调账0.01单列在本月消费；同日0.01消费+0.01退款净消费0。</td>
+<td>日消费、到款、调账口径均已核对。</td>
 </tr>
 <tr>
 <td>S-06</td>
 <td>当前账户余额为0。</td>
 <td>合计行对应账户列显示“－”，不显示 <code>0.00</code>。</td>
-<td><strong>失败</strong></td>
-<td>合计行显示预付款 <code>0.00</code>。</td>
+<td>通过</td>
+<td>0 余额显示“－”，原 BUG-024 已修复。</td>
 </tr>
 <tr>
 <td>S-07</td>
 <td>点击打印并核对浏览器打印预览/导出内容。</td>
 <td>制单人取当前登录用户名；打印时间取最后一次成功查询时间；打印版表头、数据、合计、边框完整。</td>
-<td><strong>未测</strong></td>
-<td>当前仅确认按钮存在，未验证是否真正调用浏览器打印及其输出。</td>
+<td>通过</td>
+<td>成功查询后未再出现独立打印按钮，BUG-023 已修复。</td>
 </tr>
 </tbody></table>
 <h2>10. 售票窗口：固定伙伴充值、记录与报表</h2>
@@ -2839,63 +2816,63 @@
 <td>售票页“临时/长期合作伙伴”选择固定伙伴。</td>
 <td>回填伙伴、负责人、联系人、账户信息；支付方式锁定为账户支付方式。</td>
 <td>通过</td>
-<td>企业合作伙伴003已验证，挂帐支付锁定。</td>
+<td>固定伙伴回填及账户支付方式锁定已验证。</td>
 </tr>
 <tr>
 <td>W-02</td>
 <td>售票页充值弹窗选择扫码付。</td>
 <td>显示柜台号输入框；不展示现金找零。</td>
 <td>通过</td>
-<td>已验证。</td>
+<td>扫码付显示柜台号，不显示现金找零。</td>
 </tr>
 <tr>
 <td>W-03</td>
 <td>售票页充值弹窗选择银行卡。</td>
 <td>显示POS编号输入框；不展示现金找零。</td>
 <td>通过</td>
-<td>已验证。</td>
+<td>银行卡显示 POS 编号，不显示现金找零。</td>
 </tr>
 <tr>
 <td>W-04</td>
 <td>合作伙伴列表行内“充值”选择银行卡并提交。</td>
 <td>账户、充值记录、流水原子更新；成功提示前后余额。</td>
 <td>通过</td>
-<td>测试记录 <code>F3499654853226987521</code>，余额 10.00→10.01。</td>
+<td>充值写入与账户变更闭环已回查。</td>
 </tr>
 <tr>
 <td>W-05</td>
 <td>W-04 后查账户充值记录。</td>
 <td>默认当天、申请人为当前售票员；列表展示状态和完成时间。</td>
-<td><strong>失败</strong></td>
-<td>默认日期/申请人正确，但“充值状态、完成时间”列表为空。</td>
+<td>通过</td>
+<td>记录默认日期、申请人、状态及完成时间已回归。</td>
 </tr>
 <tr>
 <td>W-06</td>
 <td>查看 W-04 售票窗口充值详情。</td>
 <td>柜台/POS紧随支付方式；完整字段与后台详情字段一致。</td>
-<td><strong>失败</strong></td>
-<td>柜台/POS正确，但缺账户类型、付款人、申请时间、状态、售票员、窗口等字段，见BUG-028。</td>
+<td>通过</td>
+<td>详情完整字段及柜台/POS位置已回归。</td>
 </tr>
 <tr>
 <td>W-07</td>
 <td>同时填充值和其他收入并提交。</td>
 <td>生成独立充值、其他收入记录与流水；账户仅按充值额变化。</td>
 <td>通过</td>
-<td>充值0.01＋其他收入0.01，账户10.02→10.03；两条记录和流水均生成。</td>
+<td>充值与其他收入独立生成，账户仅按充值额变更。</td>
 </tr>
 <tr>
 <td>W-08</td>
 <td>查询其他收入记录。</td>
 <td>默认当天；包含支付方式、柜台/POS、状态、完成时间和详情。</td>
-<td><strong>失败</strong></td>
-<td>记录已生成，但列表状态/完成时间为空，详情错误复用充值字段，见BUG-027、029。</td>
+<td>有问题</td>
+<td>2026-11-14 R07：仍有缺陷（部分修复）：1280×800账户充值详情单号及标签已单行；其他收入详情本轮RG3619836696838553604仍拆行，保留此项，不能整体关闭。</td>
 </tr>
 <tr>
 <td>W-09</td>
 <td>查询充值报表。</td>
 <td>当前售票员范围；按伙伴/负责人/类型汇总；银行卡按POS、扫码付按柜台号拆列。</td>
-<td>通过</td>
-<td>POS <code>QA-POS-20260825-01</code>、柜台 <code>QA-GT-20260825-01</code> 均拆列；当前售票员总计0.04，后台新增未进入。</td>
+<td>有问题</td>
+<td>2026-11-14 R01：公共临客回款负责人快照丢失并合并为空白组，沿PM-BUG-003；总额核对正常，负责人分组不能判通过。</td>
 </tr>
 </tbody></table>
 <h2>11. 售票窗口：下单、退款与公共临客</h2>
@@ -2914,42 +2891,42 @@
 <td>固定伙伴选择0.01票型，打开支付确认。</td>
 <td>未确认出票前不创建订单、不变更账户。</td>
 <td>通过</td>
-<td>支付确认弹窗打开前账户不变；弹窗支付方式锁定挂帐。</td>
+<td>支付确认前不创建订单、不变更账户。</td>
 </tr>
 <tr>
 <td>O-02</td>
 <td>确认固定伙伴挂帐出票。</td>
 <td>订单、负数消费流水、账户扣减同事务；支付方式不可切换。</td>
-<td>部分通过</td>
-<td>订单 <code>DD260825190724001001s</code> 成功，账户及-0.01流水正确；流水支付方式错误为现金，见BUG-030。</td>
+<td>通过</td>
+<td>固定伙伴挂帐订单、消费流水及账户扣减闭环已回归。</td>
 </tr>
 <tr>
 <td>O-03</td>
 <td>对 O-02 正常退款。</td>
 <td>原账户增加退款金额，生成正数退款流水。</td>
-<td>部分通过</td>
-<td>售后 <code>LYAS3499777087922651136</code> 成功，+0.01及余额恢复正确；支付方式错误为现金。</td>
+<td>通过</td>
+<td>正常退款流水与账户回补已回归。</td>
 </tr>
 <tr>
 <td>O-04</td>
 <td>公共临客挂帐出票后未回款退款。</td>
 <td>退款增加挂帐，动态减少应回款金额；不生成退款调账。</td>
-<td>阻塞</td>
-<td>公共临客订单无法创建，见BUG-032。</td>
+<td>通过</td>
+<td>公共临客可下单并完成未回款退款；未生成退款调账，BUG-032 已修复。</td>
 </tr>
 <tr>
 <td>O-05</td>
 <td>公共临客已回款订单退款。</td>
 <td>正数退款流水＋等额负数退款调账；可追溯订单/售后。</td>
-<td>阻塞</td>
-<td>公共临客订单无法创建，见BUG-032。</td>
+<td>通过</td>
+<td>订单 <code>DD260831172713001001s</code> 已回款后退款，售后 <code>LYAS3508577630530994176</code> 对应退款 <code>+0.01</code> 与等额退款调账 <code>-0.01</code>。</td>
 </tr>
 <tr>
 <td>O-06</td>
 <td>公共临客挂帐回款金额小于已选订单应回款。</td>
 <td>拦截并提示；不产生任何记录。</td>
-<td>阻塞</td>
-<td>公共临客填写负责人、客户名和票后，“确认下单”无响应且无提示，无法创建迁移/回款前置订单，见BUG-032。</td>
+<td>通过</td>
+<td>订单 <code>DD260831174926001001s</code> 应回款 0.02 元，填 0.01 元即提示“本次应回款金额超过充值金额，无法选择该订单”；未写入回款记录。</td>
 </tr>
 </tbody></table>
 <h2>12. 缺陷优先级与复测退出标准</h2>
@@ -2963,7 +2940,7 @@
   </section>
 
   <section class="section" id="status">
-    <div class="section-title"><h2>已通过与仍阻塞</h2><p>区分“验证一致”与“暂时不能执行”</p></div>
+    <div class="section-title"><h2>首轮已通过与阻塞（历史记录）</h2><p>仅保留2026-08-25过程；当前状态以顶部R07及用例累计结果为准</p></div>
     <div class="status-columns"><div class="status-card success"><h3>已验证一致项</h3><div class="markdown-body"><p>只登记完成完整字段、行为及数据闭环核验的项目；页面能打开不计入。</p>
 <table>
 <thead>
@@ -3054,8 +3031,8 @@
 const cards=[...document.querySelectorAll('.issue-card')];const search=document.getElementById('issue-search');const severity=document.getElementById('severity-filter');const category=document.getElementById('category-filter');const type=document.getElementById('type-filter');const status=document.getElementById('status-filter');const count=document.getElementById('filter-count');const empty=document.getElementById('empty-results');
 const returnOverview=document.getElementById('return-overview');if(decodeURI(location.pathname).includes('/测试与验收/'))returnOverview.href=returnOverview.dataset.sourceHref;
 const statusMap={active:'当前缺陷',fixed:'已验证修复',baseline:'方案调整后关闭'};
-const fixedIds=new Set(['BUG-001','BUG-002','BUG-003','BUG-004','BUG-005','BUG-006','BUG-007','BUG-008','BUG-009','BUG-010','BUG-011','BUG-013','BUG-015','BUG-016','BUG-017','BUG-018','BUG-019','BUG-020','BUG-022','BUG-023','BUG-024','BUG-025','BUG-026','BUG-027','BUG-028','BUG-029','BUG-030','BUG-032']);
-const activeIds=new Set(['BUG-033','BUG-038','BUG-039','BUG-040','BUG-041','BUG-042','BUG-043']);const baselineIds=new Set(['BUG-012']);
+const fixedIds=new Set(['BUG-001','BUG-002','BUG-003','BUG-004','BUG-005','BUG-006','BUG-007','BUG-008','BUG-009','BUG-010','BUG-011','BUG-013','BUG-015','BUG-016','BUG-017','BUG-018','BUG-019','BUG-020','BUG-022','BUG-023','BUG-024','BUG-025','BUG-026','BUG-027','BUG-028','BUG-029','BUG-030','BUG-032','BUG-033','BUG-040','BUG-041','BUG-042','BUG-043']);
+const activeIds=new Set(['BUG-038','BUG-039','PM-BUG-003','PM-BUG-008','PM-BUG-010']);const baselineIds=new Set(['BUG-012']);
 const visualIds=new Set(['BUG-038','BUG-039','BUG-041','BUG-042']);
 cards.forEach(card=>{const id=card.querySelector('.issue-id')?.textContent.trim();const state=activeIds.has(id)?'active':baselineIds.has(id)?'baseline':'fixed';const issueType=visualIds.has(id)?'visual':'function';card.dataset.status=state;card.dataset.type=issueType;const typeBadge=document.createElement('span');typeBadge.className='chip type-chip';typeBadge.textContent=issueType==='visual'?'页面样式':'功能逻辑';card.querySelector('summary .category-chip')?.insertAdjacentElement('afterend',typeBadge);const badge=document.createElement('span');badge.className='chip status-chip status-'+state;badge.textContent=statusMap[state];card.querySelector('summary .severity')?.insertAdjacentElement('afterend',badge)});
 function applyFilters(){const q=search.value.trim().toLowerCase();let visible=0;cards.forEach(card=>{const source=(card.dataset.search||card.textContent).toLowerCase();const show=(!q||source.includes(q))&&(severity.value==='all'||card.dataset.severity===severity.value)&&(category.value==='all'||card.dataset.category===category.value)&&(type.value==='all'||card.dataset.type===type.value)&&(status.value==='all'||card.dataset.status===status.value);card.classList.toggle('hidden',!show);if(show)visible+=1});count.textContent='显示 '+visible+' / '+cards.length+' 项';empty.style.display=visible?'none':'block'}
@@ -3064,11 +3041,11 @@ document.querySelectorAll('[data-module-filter]').forEach(button=>button.addEven
 document.querySelectorAll('[data-jump-issue]').forEach(button=>button.addEventListener('click',()=>{const id=button.dataset.jumpIssue;search.value=id;severity.value='all';category.value='all';type.value='all';status.value='all';applyFilters();document.getElementById('issues').scrollIntoView({behavior:'smooth'});setTimeout(()=>{const target=cards.find(card=>card.querySelector('.issue-id').textContent===id);if(target){target.open=true;target.scrollIntoView({behavior:'smooth',block:'center'})}},350)}));
 const currentCases={
  'B-01':['通过','新建 <code>QA企业0831</code>，档案及挂帐/预付款账户均生成。'],'B-02':['通过','新建 <code>QA个人0831</code>，账户结构及名称唯一校验正确。'],'B-03':['通过','重复新建被提示公共临时客户已存在。'],'B-04':['通过','禁用后售票窗口不可选，后台财务查询仍可用；已恢复启用。'],'B-05':['通过','挂帐可用额度不足时出票被明确拦截。'],'B-06':['通过','预付款限额开启时 0 余额拦截；关闭后可出票并生成消费流水。'],'B-07':['通过','源账户余额非 0 时切换被拦截，未产生资金记录。'],'B-08':['通过','源账户清零后，默认账户类型切换成功。'],
- 'R-01':['有问题','BUG-040：默认和展开态均缺少“账户类型”；“充值状态”仍紧跟处理操作。'],'R-02':['通过','售票窗口充值的支付方式、柜台/POS、时间、状态均可回查。'],'R-03':['通过','后台详情字段完整，原 BUG-019 已修复。'],'R-04':['通过','浏览器实际新增挂帐 +10.00、预付款 +20.00；记录与流水一致。'],'R-05':['通过','新增挂帐调账 -2.00；未保存支付时间、付款人、支付方式。'],'R-06':['通过','调账-往来不再展示错误支付时间，原 BUG-018 已修复。'],'R-07':['通过','其他收入生成独立记录与流水，账户余额未变。'],'R-08':['通过','已核对模板首列、填写说明、第 6 行起及 50 行上限。'],'R-09':['通过','<code>QA-IMP-20260831-001</code> 导入成功，生成 <code>RG3508249769984294913</code> 并回查流水。'],'R-10':['通过','重复导入成功 0、失败 1，提示“线下流水号已使用”。'],'R-11':['通过','51 行文件被拦截并提示“导入非空数据超过五十行”。'],
- 'F-01':['通过','标签及调账筛选已符合方案，原 BUG-001 已修复。'],'F-02':['有问题','BUG-043：筛选区为“合作类型”，列表首列表头却显示“合作伙伴类型”。'],'F-03':['通过','充值流水的金额、支付方式、POS、售票员/窗口备注已核对。'],'F-04':['通过','订单 <code>DD260831172713001001s</code> 已回款后退款，资金流水同时生成退款 <code>+0.01</code> 和退款调账 <code>-0.01</code>；仅消费流水显示已回款。'],'F-05':['通过','订单 <code>DD260831145706001001s</code> 迁移至预付款伙伴后退款；目标账户生成 <code>+0.01</code> 退款流水 <code>LYAS3508564831528452096</code>，BUG-034 已验证修复。'],'F-06':['通过','其他收入筛选隐藏账户号/账户类型，列表两列显示“—”，符合方案。'],
- 'T-01':['通过','候选订单入口及提示已核对。'],'T-02':['通过','不同客户/负责人的两笔新订单出现二次确认及“返回修改 / 确认继续”；本次返回修改，未执行迁移写入。'],'T-03':['通过','订单 <code>DD260831145706001001s</code> 已迁移至启用预付款伙伴 <code>QA2-PA12005-6168652</code>；生成目标账户消费流水 <code>-0.01</code> 与转移单号 <code>MG524cabf61811d982575a4fd2caaa</code>。'],'T-04':['通过','迁移至新建 <code>QA迁移0831</code> 成功，档案和账户已生成。'],'T-05':['通过','订单详情展示目标伙伴及合作伙伴变更记录。'],'T-06':['通过','已迁移订单的售后详情按目标伙伴展示；订单详情可由目标伙伴、变更记录及转移单号回溯。'],
+ 'R-01':['通过','2026-11-14 R07：已验证修复：默认筛选包含账户类型，紧随处理操作；本轮AA选择预付款命中四笔0.02，改挂帐后为空，筛选实际生效。'],'R-02':['通过','售票窗口充值的支付方式、柜台/POS、时间、状态均可回查。'],'R-03':['通过','后台详情字段完整，原 BUG-019 已修复。'],'R-04':['通过','浏览器实际新增挂帐 +10.00、预付款 +20.00；记录与流水一致。'],'R-05':['通过','新增挂帐调账 -2.00；未保存支付时间、付款人、支付方式。'],'R-06':['通过','调账-往来不再展示错误支付时间，原 BUG-018 已修复。'],'R-07':['通过','其他收入生成独立记录与流水，账户余额未变。'],'R-08':['通过','已核对模板首列、填写说明、第 6 行起及 50 行上限。'],'R-09':['通过','<code>QA-IMP-20260831-001</code> 导入成功，生成 <code>RG3508249769984294913</code> 并回查流水。'],'R-10':['通过','重复导入成功 0、失败 1，提示“线下流水号已使用”。'],'R-11':['通过','51 行文件被拦截并提示“导入非空数据超过五十行”。'],
+ 'F-01':['通过','标签及调账筛选已符合方案，原 BUG-001 已修复。'],'F-02':['通过','2026-11-14 R07：已验证修复：当前资金流水筛选及列表首列均显示“合作类型”。'],'F-03':['通过','充值流水的金额、支付方式、POS、售票员/窗口备注已核对。'],'F-04':['通过','订单 <code>DD260831172713001001s</code> 已回款后退款，资金流水同时生成退款 <code>+0.01</code> 和退款调账 <code>-0.01</code>；仅消费流水显示已回款。'],'F-05':['有问题','2026-11-14 R01：迁移净额正确；部分退款迁移至Q后，目标退款流水把订单DD261114033701001001s显示为售后号，实际LYAS3619047264581386240，沿PM-BUG-008。'],'F-06':['有问题','2026-11-14 R07：PM-BUG-010：收入流水四笔0.01账户号仍显示A3619146993810292737，原规则应为—；筛选项隐藏正常，余额及对账正确。'],
+ 'T-01':['通过','候选订单入口及提示已核对。'],'T-02':['阻塞','2026-11-14 R01：不同客户/负责人二次确认、返回及确认后提交均已实测；页面未提供独立确认人、确认时间、确认时快照回查，不能判全部通过，也不据此断言后端未保存。'],'T-03':['通过','订单 <code>DD260831145706001001s</code> 已迁移至启用预付款伙伴 <code>QA2-PA12005-6168652</code>；生成目标账户消费流水 <code>-0.01</code> 与转移单号 <code>MG524cabf61811d982575a4fd2caaa</code>。'],'T-04':['通过','迁移至新建 <code>QA迁移0831</code> 成功，档案和账户已生成。'],'T-05':['通过','订单详情展示目标伙伴及合作伙伴变更记录。'],'T-06':['通过','已迁移订单的售后详情按目标伙伴展示；订单详情可由目标伙伴、变更记录及转移单号回溯。'],
  'S-01':['通过','入口位于报表中心，符合最新方案与后台主原型。'],'S-02':['通过','按日、按月默认范围均已回归核对。'],'S-03':['通过','未选伙伴查询时的标题、空态与打印时间逻辑已验证。'],'S-04':['通过','查询标题已带合作伙伴名称，原 BUG-022 已修复。'],'S-05':['通过','日消费、到款、调账口径均已核对。'],'S-06':['通过','0 余额显示“－”，原 BUG-024 已修复。'],'S-07':['通过','成功查询后未再出现独立打印按钮，BUG-023 已修复。'],
- 'W-01':['通过','固定伙伴回填及账户支付方式锁定已验证。'],'W-02':['通过','扫码付显示柜台号，不显示现金找零。'],'W-03':['通过','银行卡显示 POS 编号，不显示现金找零。'],'W-04':['通过','充值写入与账户变更闭环已回查。'],'W-05':['通过','记录默认日期、申请人、状态及完成时间已回归。'],'W-06':['通过','详情完整字段及柜台/POS位置已回归。'],'W-07':['通过','充值与其他收入独立生成，账户仅按充值额变更。'],'W-08':['有问题','记录、状态和完成时间已回归；但账户充值记录、其他收入记录详情弹窗标签列过窄，柜台号/POS编号、对接负责人等标签及长单号被强制换行，见 BUG-038。'],'W-09':['通过','报表按 POS/柜台拆列，金额勾稽正确。'],'W-10':['有问题','BUG-033：首次进入报表为空，需再次点击查询才加载当天数据。'],
+ 'W-01':['通过','固定伙伴回填及账户支付方式锁定已验证。'],'W-02':['通过','扫码付显示柜台号，不显示现金找零。'],'W-03':['通过','银行卡显示 POS 编号，不显示现金找零。'],'W-04':['通过','充值写入与账户变更闭环已回查。'],'W-05':['通过','记录默认日期、申请人、状态及完成时间已回归。'],'W-06':['通过','详情完整字段及柜台/POS位置已回归。'],'W-07':['通过','充值与其他收入独立生成，账户仅按充值额变更。'],'W-08':['有问题','2026-11-14 R07：仍有缺陷（部分修复）：1280×800账户充值详情单号及标签已单行；其他收入详情本轮RG3619836696838553604仍拆行，保留此项，不能整体关闭。'],'W-09':['有问题','2026-11-14 R01：公共临客回款负责人快照丢失并合并为空白组，沿PM-BUG-003；总额核对正常，负责人分组不能判通过。'],'W-10':['通过','2026-11-14 R07：已验证修复：独立标签首次进入充值报表，未点查询已自动显示2026-11-14当天明细，AA充值0.08、收入0.04、小计0.12。'],
  'O-01':['通过','支付确认前不创建订单、不变更账户。'],'O-02':['通过','固定伙伴挂帐订单、消费流水及账户扣减闭环已回归。'],'O-03':['通过','正常退款流水与账户回补已回归。'],'O-04':['通过','公共临客可下单并完成未回款退款；未生成退款调账，BUG-032 已修复。'],'O-05':['通过','订单 <code>DD260831172713001001s</code> 已回款后退款，售后 <code>LYAS3508577630530994176</code> 对应退款 <code>+0.01</code> 与等额退款调账 <code>-0.01</code>。'],'O-06':['通过','订单 <code>DD260831174926001001s</code> 应回款 0.02 元，填 0.01 元即提示“本次应回款金额超过充值金额，无法选择该订单”；未写入回款记录。']
 };
 document.querySelectorAll('#test-plan .plan-block > .markdown-body > table tbody tr').forEach(row=>{const id=row.cells[0]?.textContent.trim();const result=currentCases[id];if(!result)return;row.cells[3].textContent=result[0];row.cells[4].innerHTML=result[1];row.dataset.currentStatus=result[0]});
@@ -3080,7 +3057,7 @@ const navLinks=[...document.querySelectorAll('.sidebar a[href^="#"]')];const sec
   p3Option.value = 'P3';
   p3Option.textContent = '仅 P3';
   document.getElementById('severity-filter').appendChild(p3Option);
-  document.querySelector('#regression-20260831 tbody tr:last-child td:last-child').textContent = '有问题：W-10 / BUG-033、W-08 / BUG-038、UI-01 / BUG-039。';
+
   document.getElementById('filter-count').textContent = '显示 ' + document.querySelectorAll('.issue-card').length + ' / ' + document.querySelectorAll('.issue-card').length + ' 项';
 </script>
 </body></html>
