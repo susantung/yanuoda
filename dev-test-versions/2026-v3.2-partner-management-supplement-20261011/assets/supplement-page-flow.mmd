@@ -1,0 +1,36 @@
+flowchart LR
+    setup["B01/B02 后台唯一创建"] --> account["B03/B04 资料与预付款账户"]
+    account --> partner["W01 窗口合作伙伴充值列表"]
+    partner --> intake["W03 待认领入款"]
+    intake --> incoming["K 入款成功：预付款增加"]
+    incoming -.->|"后续使用"| source["W04 单笔整笔来源选择"]
+    sale["W00 售票页充值入口"] --> fixed["W02 长期伙伴充值"]
+    partner --> fixed
+    fixed -->|"待认领付款"| source
+    temp["W05 临客待回款订单"] --> repay["W06 临客回款"]
+    repay -->|"待认领付款"| source
+    source -->|"返回发起表单"| allocation["W02/W06 自动总额与去向确认"]
+    allocation --> use["K 逐笔负数与目标正数共同事务"]
+    fixed -->|"普通付款"| ordinary["K 普通充值或回款事务"]
+    repay -->|"普通付款"| ordinary
+    temp --> sourceFirst["W04 待认领款回款：单选一笔款"]
+    sourceFirst --> perSource["选择一笔或多笔订单；不足禁用下一步"]
+    perSource --> repay
+    temp --> migration["W08/W09 转长期两步"]
+    migration --> target["W10 新建或W11已有伙伴"]
+    target --> moved["K 迁移成功：生成调账-往来"]
+    use --> records["W12-W15/B05-B10 记录与关联详情"]
+    ordinary --> records
+    incoming --> records
+    moved --> records
+    use --> capital["B11 资金流水"]
+    ordinary --> capital
+    incoming --> capital
+    moved --> capital
+    use --> windowReport["W16 窗口充值报表"]
+    ordinary --> windowReport
+    incoming --> windowReport
+    moved -->|"不纳入收款报表"| orderView["R01 原订单详情"]
+    use -->|"目标为临客回款"| paid["W05 已回款视图及R01订单查看"]
+    ordinary -->|"目标为临客回款"| paid
+    records -.-> backendReport["B12 原后台对帐单：共享数据"]
