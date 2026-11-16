@@ -1,0 +1,34 @@
+{
+  "records": 49,
+  "uniqueIds": 49,
+  "columns": 16,
+  "all15CommonFieldsMatch": true,
+  "crossPageMissing": 0,
+  "duplicates": 0,
+  "total": "-1550.60",
+  "leadingZeroPreserved": true,
+  "newReturnSourceColumn": false,
+  "files": [
+    {
+      "name": "合作伙伴-待认领客户对帐单.xlsx",
+      "period": "2026-11-14",
+      "out": "800.15",
+      "in": "500.16",
+      "balance": "450.06",
+      "pageMatch": true
+    },
+    {
+      "name": "合作伙伴-待认领客户对帐单 (1).xlsx",
+      "period": "2026-11",
+      "out": "1300.49",
+      "in": "1750.55",
+      "balance": "450.06",
+      "pageMatch": true
+    }
+  ],
+  "checksums": {
+    "R09-B12-待认领按日.xlsx": "a2a4425d2ddaa1e4c72a2009d0313f68724898b968f39555c7b85fbf64f66e22",
+    "R09-B12-待认领按月.xlsx": "899dde31885d826d83c3128821b4008092a22f66e96a44cca93e9b11fbbb1c2d",
+    "R09-B05-待认领转出49条.xlsx": "9f3a3ef87d606c9e5136b5e158fc0f4551a39e93529177f216b623aa6819973a"
+  }
+}
