@@ -1,0 +1,37 @@
+
+  - generic: 赛事管理/
+  - generic: 赛事列表
+  - button "1 基本信息":
+    - generic: "1"
+    - generic: 基本信息
+  - button "2 报名资料":
+    - generic: "2"
+    - generic: 报名资料
+  - button "3 报名人数":
+    - generic: "3"
+    - generic: 报名人数
+  - button "4 关联门票":
+    - generic: "4"
+    - generic: 关联门票
+  - generic: 基本信息
+  - generic: 所属赛事：
+  - generic: 赛事验收1118－全链路QA
+  - generic: "*项目名称："
+  - textbox "请输入项目名称": QA双人无证件收费
+  - generic: 集合地点：
+  - textbox "请输入集合地点": QA测试集合点
+  - generic: 项目说明：
+  - textbox "请输入项目说明": 仅用于QA功能验收，不参与真实赛事。
+  - generic: "*报名时间："
+  - generic: 
+  - textbox "报名开始时间": 2026-11-17 00:00:00
+  - generic: 至
+  - textbox "报名截止时间": 2026-11-25 23:59:59
+  - generic: "*比赛时间："
+  - generic: 
+  - textbox "比赛开始日期": 2026-11-24
+  - generic: 至
+  - textbox "比赛结束日期": 2026-11-25
+  - paragraph: 调整报名时间会影响未提交报名，不会自动延长门票售卖期或取消已有有效订单。
+  - button "取消"
+  - button "下一步"

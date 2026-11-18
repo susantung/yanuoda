@@ -1,0 +1,265 @@
+- banner:
+  - generic: 编辑赛事
+  - textbox "请选择": 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺，店主 40430
+  - generic: 
+  - button "西瓜 ID:40430 店主 ":
+    - generic: 西瓜
+    - generic: ID:40430
+    - generic: 店主
+    - generic: 
+- navigation:
+  - generic: 报名项目
+  - generic: 
+  - generic: 报名记录
+  - generic: 
+  - generic: 配置报名项目
+  - generic: 
+  - generic: 赛事列表
+  - generic: 
+  - generic: 短信通知
+  - generic: 
+  - generic: 编辑赛事
+  - generic: 
+  - generic: 报名记录
+  - generic: 
+  - generic: 报名详情
+  - generic: 
+- complementary:
+  - heading "全域景区后台" [level=1]
+  - menubar:
+    - generic: 
+    - text: 实时数据大盘
+    - generic: 
+    - text: 团队预约管理
+    - generic: 
+    - generic: 
+    - text: 门票商品
+    - generic: 
+    - generic: 
+    - text: 电商商品
+    - generic: 
+    - generic: 
+    - text: 商家中心
+    - generic: 
+    - generic: 
+    - text: 订单中心
+    - generic: 
+    - generic: 
+    - text: 售后中心
+    - generic: 
+    - generic: 
+    - text: 配送管理
+    - generic: 
+    - generic: 
+    - text: 结算中心
+    - generic: 
+    - generic: 
+    - text: 小程序装修
+    - generic: 
+    - generic: 
+    - text: 投诉建议
+    - generic: 
+    - generic: 
+    - text: 内容管理
+    - generic: 
+    - generic: 
+    - text: 智慧地图
+    - generic: 
+    - generic: 
+    - text: 会员管理
+    - generic: 
+    - generic: 
+    - text: 积分中心
+    - generic: 
+    - generic: 
+    - text: 营销中心
+    - generic: 
+    - generic: 
+    - text: 数据中心
+    - generic: 
+    - generic: 
+    - text: 员工管理
+    - generic: 
+    - generic: 
+    - text: 运营数据上报
+    - generic: 
+    - generic: 
+    - text: 专家库
+    - generic: 
+    - generic: 
+    - text: 数字文旅学院
+    - generic: 
+    - generic: 
+    - text: 乘车预约管理
+    - generic: 
+    - generic: 
+    - text: 金钥匙服务
+    - generic: 
+    - generic: 
+    - text: 系统配置
+    - generic: 
+    - generic: 
+    - text: 溪降挑战
+    - generic: 
+    - generic: 
+    - text: 活动预约管理
+    - generic: 
+    - generic: 
+    - text: 赛事管理
+    - generic: 
+    - list:
+      - listitem: 赛事列表
+    - text: 动物认养
+    - generic: 
+  - generic "折叠侧边栏":
+    - generic: 
+- main:
+  - generic: 赛事管理/
+  - generic: 赛事列表
+  - generic: 基本信息
+  - generic: "*赛事名称："
+  - textbox "请输入赛事名称": 赛事验收1118－全链路QA
+  - generic: 赛事封面：
+  - img "赛事封面"
+  - button "移除图片"
+  - generic: 举办时间：
+  - generic: 
+  - textbox "开始日期": 2026-11-24
+  - generic: 至
+  - textbox "结束日期": 2026-11-25
+  - generic: 退款截止时间：
+  - textbox "不设置则按门票退款规则"
+  - generic: 
+  - generic: 联系电话：
+  - textbox "请输入赛事联系电话"
+  - generic: 举办地点：
+  - textbox "请输入举办地点": 呀诺达QA专用测试场地
+  - generic: 赛事详细介绍
+  - generic: 介绍内容：
+  - application:
+    - menubar:
+      - menuitem "文件":
+        - button "文件": 文件
+      - menuitem "编辑":
+        - button "编辑": 编辑
+      - menuitem "插入":
+        - button "插入": 插入
+      - menuitem "视图":
+        - button "视图": 视图
+      - menuitem "格式":
+        - button "格式": 格式
+      - menuitem "表格":
+        - button "表格": 表格
+    - toolbar:
+      - button "Find and replace":
+        - button "":
+          - generic: 
+      - button "Bold":
+        - button "":
+          - generic: 
+      - button "Italic":
+        - button "":
+          - generic: 
+      - button "Underline":
+        - button "":
+          - generic: 
+      - button "Strikethrough":
+        - button "":
+          - generic: 
+      - button "Align left":
+        - button "":
+          - generic: 
+      - button "Align center":
+        - button "":
+          - generic: 
+      - button "Align right":
+        - button "":
+          - generic: 
+      - button "Decrease indent":
+        - button "":
+          - generic: 
+      - button "Increase indent":
+        - button "":
+          - generic: 
+      - button "Blockquote":
+        - button "":
+          - generic: 
+      - button "Undo":
+        - button "":
+          - generic: 
+      - button "Redo":
+        - button "":
+          - generic: 
+      - button "Clear formatting":
+        - button "":
+          - generic: 
+      - button "Subscript":
+        - button "":
+          - generic: 
+      - button "Superscript":
+        - button "":
+          - generic: 
+      - button "Source code":
+        - button "":
+          - generic: 
+      - button "Insert/Edit code sample":
+        - button "":
+          - generic: 
+    - toolbar:
+      - button "Horizontal line":
+        - button "":
+          - generic: 
+      - button "Bullet list":
+        - button "":
+          - generic: 
+        - button
+      - button "Numbered list":
+        - button "":
+          - generic: 
+        - button
+      - button "Insert/edit link":
+        - button "":
+          - generic: 
+      - button "Insert/edit image":
+        - button "":
+          - generic: 
+      - button "Preview":
+        - button "":
+          - generic: 
+      - button "Anchor":
+        - button "":
+          - generic: 
+      - button "Page break":
+        - button "":
+          - generic: 
+      - button "Insert date/time":
+        - button "":
+          - generic: 
+        - button
+      - button "Insert/edit media":
+        - button "":
+          - generic: 
+      - button "Table":
+        - button "":
+          - generic: 
+      - button "Emoticons":
+        - button "":
+          - generic: 
+      - button "Text color":
+        - button "":
+          - generic: 
+        - button
+      - button "Background color":
+        - button "":
+          - generic: 
+        - button
+      - button "Fullscreen":
+        - button "":
+          - generic: 
+    - iframe [id="vue-tinymce-1794943013854381_ifr"]:
+      - paragraph: QA专用验收赛事，不构成真实报名、合同或免责承诺。
+    - generic: 21 字
+    - text: 
+  - generic:  
+  - button "取消"
+  - button "保存"

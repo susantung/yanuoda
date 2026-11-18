@@ -1,0 +1,170 @@
+- banner:
+  - generic: 赛事列表
+  - textbox "请选择": 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺，店主 40430
+  - generic: 
+  - button "西瓜 ID:40430 店主 ":
+    - generic: 西瓜
+    - generic: ID:40430
+    - generic: 店主
+    - generic: 
+- navigation:
+  - generic: 报名项目
+  - generic: 
+  - generic: 报名记录
+  - generic: 
+  - generic: 配置报名项目
+  - generic: 
+  - generic: 赛事列表
+  - generic: 
+  - generic: 短信通知
+  - generic: 
+  - generic: 编辑赛事
+  - generic: 
+  - generic: 报名记录
+  - generic: 
+  - generic: 报名详情
+  - generic: 
+- complementary:
+  - heading "全域景区后台" [level=1]
+  - menubar:
+    - generic: 
+    - text: 实时数据大盘
+    - generic: 
+    - text: 团队预约管理
+    - generic: 
+    - generic: 
+    - text: 门票商品
+    - generic: 
+    - generic: 
+    - text: 电商商品
+    - generic: 
+    - generic: 
+    - text: 商家中心
+    - generic: 
+    - generic: 
+    - text: 订单中心
+    - generic: 
+    - generic: 
+    - text: 售后中心
+    - generic: 
+    - generic: 
+    - text: 配送管理
+    - generic: 
+    - generic: 
+    - text: 结算中心
+    - generic: 
+    - generic: 
+    - text: 小程序装修
+    - generic: 
+    - generic: 
+    - text: 投诉建议
+    - generic: 
+    - generic: 
+    - text: 内容管理
+    - generic: 
+    - generic: 
+    - text: 智慧地图
+    - generic: 
+    - generic: 
+    - text: 会员管理
+    - generic: 
+    - generic: 
+    - text: 积分中心
+    - generic: 
+    - generic: 
+    - text: 营销中心
+    - generic: 
+    - generic: 
+    - text: 数据中心
+    - generic: 
+    - generic: 
+    - text: 员工管理
+    - generic: 
+    - generic: 
+    - text: 运营数据上报
+    - generic: 
+    - generic: 
+    - text: 专家库
+    - generic: 
+    - generic: 
+    - text: 数字文旅学院
+    - generic: 
+    - generic: 
+    - text: 乘车预约管理
+    - generic: 
+    - generic: 
+    - text: 金钥匙服务
+    - generic: 
+    - generic: 
+    - text: 系统配置
+    - generic: 
+    - generic: 
+    - text: 溪降挑战
+    - generic: 
+    - generic: 
+    - text: 活动预约管理
+    - generic: 
+    - generic: 
+    - text: 赛事管理
+    - generic: 
+    - list:
+      - listitem: 赛事列表
+    - text: 动物认养
+    - generic: 
+  - generic "折叠侧边栏":
+    - generic: 
+- main:
+  - generic: 赛事管理/
+  - generic: 赛事列表
+  - generic: 举办时间：
+  - generic: 
+  - textbox "开始日期"
+  - generic: "-"
+  - textbox "结束日期"
+  - generic: 赛事名称：
+  - textbox "请输入赛事名称": QA不存在赛事1118
+  - button "查询"
+  - button "重置"
+  - button " 新建赛事":
+    - generic: 
+    - text: 新建赛事
+  - table:
+    - rowgroup:
+      - row "赛事名称 举办时间 报名人数 项目数量":
+        - columnheader "赛事名称":
+          - generic: 赛事名称
+        - columnheader "举办时间":
+          - generic: 举办时间
+        - columnheader "报名人数":
+          - generic: 报名人数
+        - columnheader "项目数量":
+          - generic: 项目数量
+        - columnheader
+        - columnheader
+  - table:
+    - rowgroup
+  - generic: 暂无数据
+  - table:
+    - rowgroup:
+      - row "操作":
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup
+  - generic: 共 0 条
+  - textbox "请选择": 10条/页
+  - generic: 
+  - button "" [disabled]:
+    - generic: 
+  - list:
+    - listitem: "1"
+  - button "" [disabled]:
+    - generic: 
+  - text: 前往
+  - spinbutton: "1"
+  - text: 页
+  - text: 

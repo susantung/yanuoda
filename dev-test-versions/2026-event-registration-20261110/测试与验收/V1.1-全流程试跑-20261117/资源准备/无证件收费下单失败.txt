@@ -1,0 +1,156 @@
+r
+				11 container
+					12 container
+						13 text 预览 编辑
+					14 container
+						15 text 赛事验收1118-QA
+					16 container
+						17 container
+							18 text 1 : 23
+						19 container
+							20 链接
+							21 链接
+						22 HTML 内容 Webview: pages/eventRegistration/overview/index, URL: 127.0.0.1:22147/__pageframe__/pages/eventRegistration/overview/index
+							23 container
+								24 文本 赛事报名
+							25 文本 赛事验收1118－全链路QA
+							26 文本 举办时间　2026-11-24 至 2026-11-25
+							27 文本 举办地点　呀诺达QA专用测试场地
+							28 文本 我的报名
+							29 文本 ›
+							30 文本 选择报名项目
+							31 文本 QA双人收费免签
+							32 文本 无需签署
+							33 container
+								34 text 比赛时间  2026-11-24 至 2026-11-25
+							35 文本 QA双人固定日期可退
+							36 文本 报名中
+							37 文本 报名时间：26/11/17 00:00–26/11/23 23:59
+							38 文本 ¥0.02
+							39 文本 /2人
+							40 文本 报名 ›
+							41 文本 QA单人免费免签
+							42 文本 无需签署
+							43 container
+								44 text 比赛时间  2026-11-24 至 2026-11-25
+							45 文本 QA单人免费免签
+							46 文本 报名中
+							47 文本 报名时间：26/11/17 00:00–26/11/23 23:59
+							48 文本 报名 ›
+							49 文本 QA双人无证件收费
+							50 文本 仅用于QA功能验收，不参与真实赛事。
+							51 文本 无需签署
+							52 container
+								53 text 比赛时间  2026-11-24 至 2026-11-25
+							54 文本 QA无证件收费双人
+							55 文本 报名中
+							56 文本 报名时间：26/11/17 00:00–26/11/25 23:59
+							57 文本 ¥0.02
+							58 文本 /2人
+							59 文本 报名 ›
+						60 container
+							61 链接
+							62 链接
+						63 HTML 内容 Webview: pages/eventRegistration/form/index, URL: 127.0.0.1:22147/__pageframe__/pages/eventRegistration/form/index
+							64 container
+								65 文本 填写参赛资料
+							66 文本 原票下单校验未通过，请检查报名条件后重试
+							67 文本 QA双人无证件收费
+							68 container
+								69 text QA无证件收费双人 · ¥0.02/2人 ·  2位参赛者
+							70 container
+								71 文本 第1位参赛者
+								72 container
+									73 text *  姓名
+								74 文本栏 (settable) 无证件验收甲
+									75 文本栏 (settable) 无证件验收甲
+								76 文本 第2位参赛者
+								77 container
+									78 text *  姓名
+								79 文本栏 (settable) 无证件验收乙
+									80 文本栏 (settable) 无证件验收乙
+							81 container
+								82 按钮 暂存
+								83 按钮 立即报名
+						84 HTML 内容 小程序渲染层, URL: 127.0.0.1:22147/__pageframe__/instanceframe.html
+						85 HTML 内容 小程序逻辑层, URL: 127.0.0.1:22147/appservice/s0/_sessionId/simulator-app-session-s0/mainframe?load
+							86 container
+								87 HTML 内容 小程序逻辑层, URL: 127.0.0.1:22147/appservice/instanceframe?s=1794936204513&autoload#id_1
+								88 HTML 内容 127.0.0.1:22147/appservice/appContext?contextName=app&id=ifr-1_2#id_1
+								89 HTML 内容 127.0.0.1:22147/appservice/app_xrframe_renderContext?contextName=app_xrframe_render&id=ifr-1_3&empty=true#id_1
+								90 HTML 内容 127.0.0.1:22147/appservice/app_sub_debugContext?contextName=app_sub_debug&id=ifr-1_4&empty=true#id_1
+								91 HTML 内容 小程序逻辑层, URL: 127.0.0.1:22147/appservice/instanceframe?s=1794936204513#id_2
+						92 container
+							93 链接
+							94 链接
+					95 container
+						96 文本 iPhone 12/13 (Pro) 75% 16
+					97 container
+						98 文本 页面路径
+					99 文本 pages/eventRegistration/form/index
+					100 链接 复制
+				101 container
+					102 container
+						103 container
+							104 文本 scenic-wxapp
+							105 工具栏
+								106 按钮 Toggle Primary Side Bar (⌘K ⌘B)
+									107 文本 
+								108 按钮 切换面板 (⌘J)
+									109 文本 
+								110 按钮 Toggle Secondary Side Bar (⌥⌘B)
+									111 文本 
+						112 container
+							113 container
+								114 标签页组 活动视图切换器
+									115 标签 (selected) Description: 资源管理器 (⌘K ⇧⌘E), Value: 1
+										116 container 资源管理器 (⌘K ⇧⌘E)
+											117 文本 
+									118 标签 (settable, integer) Search (⇧⌘F), Value: 0
+										119 container Search (⇧⌘F)
+											120 文本 
+									121 标签 (settable, integer) Description: 源代码管理 (⌃⇧G), Value: 0
+										122 文本 
+									123 标签 (settable, integer) 扩展 (⇧⌘X), Value: 0
+										124 container 扩展 (⇧⌘X)
+											125 文本 
+									126 弹出式按钮 其他视图
+										127 文本 
+								128 container
+									129 标题 资源管理器, Help: 资源管理器 (⌘K ⇧⌘E), Value: 2
+										130 文本 资源管理器
+									131 内容列表 资源管理器操作
+										132 弹出式按钮 Views and More Actions...
+									133 container
+										134 container
+											135 按钮 文件资源管理器部分
+												136 文本 
+												137 标题 Description: 文件资源管理器部分, Help: scenic-wxapp, Value: 3
+													138 文本 SCENIC-WXAPP
+											139 外框 树
+												140 container
+													141 row .husky
+														142 container
+															143 文本 
+															144 文本 .husky
+													145 row api
+														146 container
+															147 文本 
+															148 文本 api
+													149 row build
+														150 container
+															151 文本 
+															152 文本 build
+													153 row components
+														154 container
+															155 文本 
+															156 文本 components
+													157 row config
+														158 container
+															159 文本 
+															160 文本 config
+													161 row constants
+														162 container
+															163 文本 
+															164 文本 constants
+	

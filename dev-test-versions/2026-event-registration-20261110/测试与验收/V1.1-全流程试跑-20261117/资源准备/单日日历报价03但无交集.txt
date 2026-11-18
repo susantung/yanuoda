@@ -1,0 +1,349 @@
+- banner:
+  - generic: 配置报名项目
+  - textbox "请选择": 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺，店主 40430
+  - generic: 
+  - button "西瓜 ID:40430 店主 ":
+    - generic: 西瓜
+    - generic: ID:40430
+    - generic: 店主
+    - generic: 
+- navigation:
+  - generic: 报名项目
+  - generic: 
+  - generic: 报名记录
+  - generic: 
+  - generic: 配置报名项目
+  - generic: 
+- complementary:
+  - heading "全域景区后台" [level=1]
+  - menubar:
+    - generic: 
+    - text: 实时数据大盘
+    - generic: 
+    - text: 团队预约管理
+    - generic: 
+    - generic: 
+    - text: 门票商品
+    - generic: 
+    - generic: 
+    - text: 电商商品
+    - generic: 
+    - generic: 
+    - text: 商家中心
+    - generic: 
+    - generic: 
+    - text: 订单中心
+    - generic: 
+    - generic: 
+    - text: 售后中心
+    - generic: 
+    - generic: 
+    - text: 配送管理
+    - generic: 
+    - generic: 
+    - text: 结算中心
+    - generic: 
+    - generic: 
+    - text: 小程序装修
+    - generic: 
+    - generic: 
+    - text: 投诉建议
+    - generic: 
+    - generic: 
+    - text: 内容管理
+    - generic: 
+    - generic: 
+    - text: 智慧地图
+    - generic: 
+    - generic: 
+    - text: 会员管理
+    - generic: 
+    - generic: 
+    - text: 积分中心
+    - generic: 
+    - generic: 
+    - text: 营销中心
+    - generic: 
+    - generic: 
+    - text: 数据中心
+    - generic: 
+    - generic: 
+    - text: 员工管理
+    - generic: 
+    - generic: 
+    - text: 运营数据上报
+    - generic: 
+    - generic: 
+    - text: 专家库
+    - generic: 
+    - generic: 
+    - text: 数字文旅学院
+    - generic: 
+    - generic: 
+    - text: 乘车预约管理
+    - generic: 
+    - generic: 
+    - text: 金钥匙服务
+    - generic: 
+    - generic: 
+    - text: 系统配置
+    - generic: 
+    - generic: 
+    - text: 溪降挑战
+    - generic: 
+    - generic: 
+    - text: 活动预约管理
+    - generic: 
+    - generic: 
+    - text: 赛事管理
+    - generic: 
+    - text: 动物认养
+    - generic: 
+  - generic "折叠侧边栏":
+    - generic: 
+- main:
+  - generic: 
+  - generic: 基本信息
+  - generic: 
+  - generic: 报名资料
+  - generic: 
+  - generic: 报名人数
+  - generic: "4"
+  - generic: 关联门票
+  - text: "* *  * "
+  - generic: 关联门票
+  - generic: 比赛日期（使用日期）：
+  - generic: 2026-11-25 至 2026-11-25
+  - generic: 项目报名时间：
+  - generic: 2026-11-17 00:00:00 至 2026-11-25 23:59:59
+  - generic: 项目总报名名额：
+  - generic: 4人
+  - button " 添加关联门票":
+    - generic: 
+    - text: 添加关联门票
+  - button "刷新匹配情况"
+  - paragraph: 每次报名固定购买1张所选票；报名时间取项目与原票可售时间的交集，价格和库存读取原票。
+  - table:
+    - rowgroup:
+      - row "报名展示名称 关联门票 价格 / 独立票库存 可报名时间 匹配情况":
+        - columnheader "报名展示名称":
+          - generic: 报名展示名称
+        - columnheader "关联门票":
+          - generic: 关联门票
+        - columnheader "价格 / 独立票库存":
+          - generic: 价格 / 独立票库存
+        - columnheader "可报名时间":
+          - generic: 可报名时间
+        - columnheader "匹配情况":
+          - generic: 匹配情况
+        - columnheader
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "QA库存边界双人 8/20 报名限制条件（选填） 赛事验收1117－云程－双人库存仅两张 TKW692C000RK8 ￥0.02 库存 2 2026-11-17 00:00:00 至 2026-11-25 23:59:59 可关联":
+        - cell "QA库存边界双人 8/20 报名限制条件（选填）":
+          - textbox "请输入展示名称": QA库存边界双人
+          - generic: 8/20
+          - generic: 报名限制条件（选填）
+          - textbox "填写本报名项的年龄、地区、性别等限制说明"
+        - cell "赛事验收1117－云程－双人库存仅两张 TKW692C000RK8":
+          - text: 赛事验收1117－云程－双人库存仅两张
+          - generic: TKW692C000RK8
+        - cell "￥0.02 库存 2":
+          - text: ￥0.02
+          - generic: 库存 2
+        - cell "2026-11-17 00:00:00 至 2026-11-25 23:59:59":
+          - generic: 2026-11-17 00:00:00 至 2026-11-25 23:59:59
+        - cell "可关联":
+          - generic: 可关联
+        - cell
+  - table:
+    - rowgroup:
+      - row "操作":
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup:
+      - row "规则详情 移除":
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell "规则详情 移除":
+          - button "规则详情"
+          - button "移除"
+  - button "取消"
+  - button "上一步"
+  - button "完成"
+- text:             
+- dialog "选择关联门票":
+  - text: 选择关联门票
+  - button "Close":
+    - generic: 
+  - generic: 门票名称
+  - textbox
+  - generic: 门票编码
+  - textbox "自营门票ID / 票务系统编码": TKWGYH5000NBI
+  - button "查询"
+  - button "重置"
+  - table:
+    - rowgroup:
+      - row "选择 门票名称 / 编码 景区 价格 / 库存 可售时间范围 匹配情况 操作":
+        - columnheader "选择":
+          - generic: 选择
+        - columnheader "门票名称 / 编码":
+          - generic: 门票名称 / 编码
+        - columnheader "景区":
+          - generic: 景区
+        - columnheader "价格 / 库存":
+          - generic: 价格 / 库存
+        - columnheader "可售时间范围":
+          - generic: 可售时间范围
+        - columnheader "匹配情况":
+          - generic: 匹配情况
+        - columnheader "操作":
+          - generic: 操作
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "选择赛事验收1117－云程－双人日历分日价格 赛事验收1117－云程－双人日历分日价格 TKWGYH5000NBI 呀诺达景区 ￥0.03 100 — 项目报名时间与原票可售时间无交集 规则详情":
+        - cell "选择赛事验收1117－云程－双人日历分日价格":
+          - radio "选择赛事验收1117－云程－双人日历分日价格" [disabled]:
+            - radio [disabled]
+        - cell "赛事验收1117－云程－双人日历分日价格 TKWGYH5000NBI":
+          - text: 赛事验收1117－云程－双人日历分日价格
+          - generic: TKWGYH5000NBI
+        - cell "呀诺达景区":
+          - generic: 呀诺达景区
+        - cell "￥0.03 100":
+          - text: ￥0.03
+          - generic: "100"
+        - cell "—":
+          - generic: —
+        - cell "项目报名时间与原票可售时间无交集":
+          - generic: 项目报名时间与原票可售时间无交集
+        - cell "规则详情":
+          - button "规则详情" [active]
+  - generic: 共 1 条
+  - button "" [disabled]:
+    - generic: 
+  - list:
+    - listitem: "1"
+  - button "" [disabled]:
+    - generic: 
+  - text: 前往
+  - spinbutton: "1"
+  - text: 页
+  - button "取消"
+  - button "确定" [disabled]
+- dialog "门票规则详情":
+  - text: 门票规则详情
+  - button "Close":
+    - generic: 
+  - paragraph:
+    - strong: 赛事验收1117－云程－双人日历分日价格
+  - generic: 发码类型/门票编码：
+  - generic: 三方系统发码 / TKWGYH5000NBI
+  - generic: 价格 / 独立票库存：
+  - generic: ￥0.03 / 100
+  - table:
+    - rowgroup:
+      - row "规则 原票要求 匹配情况":
+        - columnheader "规则":
+          - generic: 规则
+        - columnheader "原票要求":
+          - generic: 原票要求
+        - columnheader "匹配情况":
+          - generic: 匹配情况
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "门票状态 已上架 匹配":
+        - cell "门票状态":
+          - generic: 门票状态
+        - cell "已上架":
+          - generic: 已上架
+        - cell "匹配":
+          - generic: 匹配
+      - row "独立票库存 使用当前门票自身库存 匹配":
+        - cell "独立票库存":
+          - generic: 独立票库存
+        - cell "使用当前门票自身库存":
+          - generic: 使用当前门票自身库存
+        - cell "匹配":
+          - generic: 匹配
+      - row "日期类型 选择日期有效期内有效 匹配":
+        - cell "日期类型":
+          - generic: 日期类型
+        - cell "选择日期有效期内有效":
+          - generic: 选择日期有效期内有效
+        - cell "匹配":
+          - generic: 匹配
+      - row "多日比赛 单日比赛 匹配":
+        - cell "多日比赛":
+          - generic: 多日比赛
+        - cell "单日比赛":
+          - generic: 单日比赛
+        - cell "匹配":
+          - generic: 匹配
+      - row "可售库存 100 匹配":
+        - cell "可售库存":
+          - generic: 可售库存
+        - cell "100":
+          - generic: "100"
+        - cell "匹配":
+          - generic: 匹配
+      - row "可报名时间 项目报名时间与原票可售时间无交集":
+        - cell "可报名时间":
+          - generic: 可报名时间
+        - cell
+        - cell "项目报名时间与原票可售时间无交集":
+          - generic: 项目报名时间与原票可售时间无交集
+      - row "使用日期 2026-11-25 至 2026-11-25 匹配":
+        - cell "使用日期":
+          - generic: 使用日期
+        - cell "2026-11-25 至 2026-11-25":
+          - generic: 2026-11-25 至 2026-11-25
+        - cell "匹配":
+          - generic: 匹配
+      - row "预订规则 原门票详情 匹配":
+        - cell "预订规则":
+          - generic: 预订规则
+        - cell "原门票详情":
+          - generic: 原门票详情
+        - cell "匹配":
+          - generic: 匹配
+      - row "报名人数 需填写2位游客信息 匹配":
+        - cell "报名人数":
+          - generic: 报名人数
+        - cell "需填写2位游客信息":
+          - generic: 需填写2位游客信息
+        - cell "匹配":
+          - generic: 匹配
+      - row "人员资料 姓名 匹配":
+        - cell "人员资料":
+          - generic: 人员资料
+        - cell "姓名":
+          - generic: 姓名
+        - cell "匹配":
+          - generic: 匹配
+      - row "人员资料 身份证号 匹配":
+        - cell "人员资料":
+          - generic: 人员资料
+        - cell "身份证号":
+          - generic: 身份证号
+        - cell "匹配":
+          - generic: 匹配
+      - row "游客端售卖 已开放 匹配":
+        - cell "游客端售卖":
+          - generic: 游客端售卖
+        - cell "已开放":
+          - generic: 已开放
+        - cell "匹配":
+          - generic: 匹配

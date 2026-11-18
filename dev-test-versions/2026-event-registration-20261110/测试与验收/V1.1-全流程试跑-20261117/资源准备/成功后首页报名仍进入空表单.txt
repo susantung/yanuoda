@@ -1,0 +1,66 @@
+r
+				11 container
+					12 container
+						13 text 预览 编辑
+					14 container
+						15 text 赛事验收1118-QA
+					16 container
+						17 container
+							18 text 1 : 18
+						19 container
+							20 链接
+							21 链接
+						22 HTML 内容 Webview: pages/eventRegistration/overview/index, URL: 127.0.0.1:22147/__pageframe__/pages/eventRegistration/overview/index
+							23 container
+								24 文本 赛事报名
+							25 文本 赛事验收1118－全链路QA
+							26 文本 举办时间　2026-11-24 至 2026-11-25
+							27 文本 举办地点　呀诺达QA专用测试场地
+							28 文本 我的报名
+							29 文本 ›
+							30 文本 选择报名项目
+							31 文本 QA双人收费免签
+							32 文本 无需签署
+							33 container
+								34 text 比赛时间  2026-11-24 至 2026-11-25
+							35 文本 QA双人固定日期可退
+							36 文本 报名中
+							37 文本 报名时间：26/11/17 00:00–26/11/23 23:59
+							38 文本 ¥0.02
+							39 文本 /2人
+							40 文本 报名 ›
+							41 文本 QA单人免费免签
+							42 文本 无需签署
+							43 container
+								44 text 比赛时间  2026-11-24 至 2026-11-25
+							45 文本 QA单人免费免签
+							46 文本 报名中
+							47 文本 报名时间：26/11/17 00:00–26/11/23 23:59
+							48 文本 报名 ›
+						49 container
+							50 链接
+							51 链接
+						52 HTML 内容 Webview: pages/eventRegistration/form/index, URL: 127.0.0.1:22147/__pageframe__/pages/eventRegistration/form/index
+							53 container
+								54 文本 填写参赛资料
+							55 文本 QA单人免费免签
+							56 文本 1位参赛者
+							57 container
+								58 文本 第1位参赛者
+								59 container
+									60 text *  姓名
+								61 文本栏 (settable) 
+请填写姓名
+									62 文本栏 (settable)
+									63 文本 请填写姓名
+							64 container
+								65 按钮 暂存
+								66 按钮 立即报名
+						67 HTML 内容 小程序渲染层, URL: 127.0.0.1:22147/__pageframe__/instanceframe.html
+						68 HTML 内容 小程序逻辑层, URL: 127.0.0.1:22147/appservice/s0/_sessionId/simulator-app-session-s0/mainframe?load
+							69 container
+								70 HTML 内容 小程序逻辑层, URL: 127.0.0.1:22147/appservice/instanceframe?s=1794935881190&autoload#id_1
+								71 HTML 内容 127.0.0.1:22147/appservice/appContext?contextName=app&id=ifr-1_2#id_1
+								72 HTML 内容 127.0.0.1:22147/appservice/app_xrframe_renderContext?contextName=app_xrframe_render&id=ifr-1_3&empty=true#id_1
+								73 HTML 内容 127.0.0.1:22147/appservice/app_sub_debugContext?contextName=app_sub_debug&id=ifr-1_4&empty=true#id_1
+								74 HTML 内容 小程序逻辑层, URL: 127.0.0.1:22147/appservice/instancefra

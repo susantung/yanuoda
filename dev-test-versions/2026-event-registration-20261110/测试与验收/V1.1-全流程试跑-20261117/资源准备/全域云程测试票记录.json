@@ -1,0 +1,169 @@
+{
+  "date": "2026-11-17",
+  "url": "http://lvyou.qa.ly.com/#/home/scenicSpot",
+  "rows": [
+    "132970赛事验收1117－云程－待上架与下架专用呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:35:58编辑推广删除上架复制",
+    "132967赛事验收1117－云程－未来可售期不相交呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:35:42编辑推广删除上架复制",
+    "132964赛事验收1117－云程－十八至六十岁呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:35:11编辑推广删除上架复制",
+    "132961赛事验收1117－云程－双人退款免审核呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:34:30编辑推广删除上架复制",
+    "132958赛事验收1117－云程－手机号限购一张呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:34:03编辑推广删除上架复制",
+    "132955赛事验收1117－云程－两张起售呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:33:40编辑推广删除上架复制",
+    "132954赛事验收1117－云程－双人日历分日价格呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:33:01编辑推广删除上架复制",
+    "132951赛事验收1117－云程－双人大库存99999呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:31:47编辑推广删除上架复制",
+    "132948赛事验收1117－云程－双人库存仅两张呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:31:08编辑推广删除上架复制",
+    "132945赛事验收1117－云程－双人不可退呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:30:34编辑推广删除上架复制",
+    "132942赛事验收1117－云程－全部游客资料呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:29:48编辑推广删除上架复制",
+    "132935赛事验收1117－云程－不收集游客资料呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:27:43编辑推广删除上架复制",
+    "132932赛事验收1117－云程－十人上限可退呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:27:04编辑推广删除上架复制",
+    "132929赛事验收1117－云程－单人固定日期可退呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:25:45编辑推广删除上架复制",
+    "132928赛事验收1117－云程－双人固定日期可退呀诺达景区 0.02起  三方系统发码  云程票务  待上架 2026-11-17 23:25:06编辑推广删除上架复制"
+  ],
+  "checks": [
+    {
+      "index": 0,
+      "name": "  - textbox \"请输入产品展示名称\": 赛事验收1117－云程－待上架与下架专用",
+      "core": [
+        "    - radio \"三方系统发码\" [checked] [disabled]:",
+        "      - radio [checked] [disabled]",
+        "  - textbox \"请输入产品名称或门票编码搜索\": 雨林拓展 TKRNNVF000WGD",
+        "    - radio \"每一张券需要   2 位游客信息\" [checked]:",
+        "      - radio [checked]",
+        "      - spinbutton: \"2\"",
+        "    - checkbox \"姓名\" [checked]",
+        "    - checkbox \"身份证\" [checked]",
+        "  - checkbox \"必填\" [checked]",
+        "    - radio \"不限\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"不限\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"上架后立即开放预约\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"可订当日，需提前 0 小时预定 （仅做文案说明，不进行真实核销校验）\" [checked]:",
+        "      - radio [checked]",
+        "  - textbox \"最小年龄\"",
+        "  - textbox \"最大年龄\"",
+        "      - radio \"下单不需要选择日期，固定日期内可使用  2026-11-17 至 2026-12-31\" [checked]:",
+        "        - radio [checked]",
+        "        - textbox \"开始日期\": 2026-11-17",
+        "        - textbox \"结束日期\": 2026-12-31",
+        "      - radio \"使用日期内允许使用 1 次\" [checked]:",
+        "        - radio [checked]",
+        "    - radio \"核销后二维码失效\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"未消费状态时，有效期内可退（已过期状态不可申请退款）\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"需要审核\" [checked]:",
+        "      - radio [checked]"
+      ]
+    },
+    {
+      "index": 1,
+      "name": "  - textbox \"请输入产品展示名称\": 赛事验收1117－云程－未来可售期不相交",
+      "core": [
+        "    - radio \"三方系统发码\" [checked] [disabled]:",
+        "      - radio [checked] [disabled]",
+        "    - radio \"每一张券需要   2 位游客信息\" [checked]:",
+        "      - radio [checked]",
+        "      - spinbutton: \"2\"",
+        "    - radio \"不限\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"不限\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"上架后立即开放预约\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"可订当日，需提前 0 小时预定 （仅做文案说明，不进行真实核销校验）\" [checked]:",
+        "      - radio [checked]",
+        "  - textbox \"最小年龄\"",
+        "  - textbox \"最大年龄\"",
+        "      - radio \"下单不需要选择日期，固定日期内可使用  2026-11-17 至 2026-12-31\" [checked]:",
+        "        - radio [checked]",
+        "        - textbox \"开始日期\": 2026-11-17",
+        "        - textbox \"结束日期\": 2026-12-31",
+        "      - radio \"使用日期内允许使用 1 次\" [checked]:",
+        "        - radio [checked]",
+        "    - radio \"核销后二维码失效\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"未消费状态时，有效期内可退（已过期状态不可申请退款）\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"需要审核\" [checked]:",
+        "      - radio [checked]"
+      ]
+    },
+    {
+      "index": 2,
+      "name": "  - textbox \"请输入产品展示名称\": 赛事验收1117－云程－十八至六十岁",
+      "core": [
+        "    - radio \"三方系统发码\" [checked] [disabled]:",
+        "      - radio [checked] [disabled]",
+        "  - textbox \"请输入票务系统产品ID\": TKRNNVF000WGD",
+        "    - radio \"每一张券需要   2 位游客信息\" [checked]:",
+        "      - radio [checked]",
+        "      - spinbutton: \"2\"",
+        "    - radio \"不限\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"不限\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"上架后立即开放预约\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"可订当日，需提前 0 小时预定 （仅做文案说明，不进行真实核销校验）\" [checked]:",
+        "      - radio [checked]",
+        "  - textbox \"最小年龄\": \"18\"",
+        "  - textbox \"最大年龄\": \"60\"",
+        "      - radio \"下单不需要选择日期，固定日期内可使用  2026-11-17 至 2026-12-31\" [checked]:",
+        "        - radio [checked]",
+        "        - textbox \"开始日期\": 2026-11-17",
+        "        - textbox \"结束日期\": 2026-12-31",
+        "      - radio \"使用日期内允许使用 1 次\" [checked]:",
+        "        - radio [checked]",
+        "    - radio \"核销后二维码失效\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"未消费状态时，有效期内可退（已过期状态不可申请退款）\" [checked]:",
+        "      - radio [checked]",
+        "    - radio \"需要审核\" [checked]:",
+        "      - radio [checked]"
+      ]
+    },
+    {
+      "id": 132932,
+      "name": "十人上限可退",
+      "verified": "\n  - generic: \"*预定信息 :\"\n  - radiogroup:\n    - radio \"不需要信息\":\n      - radio\n      - generic: 不需要信息\n    - radio \"仅需要一位客人信息\" [disabled]:\n      - radio [disabled]\n      - generic: 仅需要一位客人信息\n    - radio \"需要所有客人信息\":\n      - radio\n      - generic: 需要所有客人信息\n    - radio \"每一张券需要   10 位游客信息\" [checked]:\n      - radio [checked]\n      - text: 每一张券需要\n      - button \"\":\n        - generic: \n      - button \"\":\n        - generic: \n      - spinbutton: \"10\"\n      - text: 位游客信息\n  - generic: \"*输入信息 :\"\n  - group \"checkbox-group\":\n    - checkbox \"姓名\" [checked]\n    - generic: 姓名\n    - checkbox \"身份证\" [checked]\n    - generic: 身份证\n  - button \"添加字段\"\n  - checkbox \"必填\" [checked]\n  - generic: 必填\n  - generic: \"*起售限制 :\"\n  - radiogroup:\n    - radio \"不限\" [checked]:\n     "
+    },
+    {
+      "id": 132935,
+      "verified": "\n  - generic: \"*预定信息 :\"\n  - radiogroup:\n    - radio \"不需要信息\" [checked]:\n      - radio [checked]\n      - generic: 不需要信息\n    - radio \"仅需要一位客人信息\" [disabled]:\n      - radio [disabled]\n      - generic: 仅需要一位客人信息\n    - radio \"需要所有客人信息\":\n      - radio\n      - generic: 需要所有客人信息\n    - radio \"每一张券需要   1 位游客信息\":\n      - radio\n      - text: 每一张券需要\n      - button \"\":\n        - generic: \n      - button \"\":\n        - generic: \n      - spinbutton: \"1\"\n      - text: 位游客信息\n  - generic: \"*起售限制 :\"\n  - radiogroup:\n    - radio \"不限\" [checked]:\n      - radio [checked]\n      - generic: 不限\n    - radio \"限制\":\n      - radio\n      - generic: 限制\n  - textbox [disabled]\n  - text: 张\n  - generic: \"*预定限制 :\"\n  - radiogroup"
+    },
+    {
+      "id": 132942,
+      "verified": "\n  - generic: \"*预定信息 :\"\n  - radiogroup:\n    - radio \"不需要信息\":\n      - radio\n      - generic: 不需要信息\n    - radio \"仅需要一位客人信息\" [disabled]:\n      - radio [disabled]\n      - generic: 仅需要一位客人信息\n    - radio \"需要所有客人信息\" [checked]:\n      - radio [checked]\n      - generic: 需要所有客人信息\n    - radio \"每一张券需要   2 位游客信息\":\n      - radio\n      - text: 每一张券需要\n      - button \"\":\n        - generic: \n      - button \"\":\n        - generic: \n      - spinbutton: \"2\"\n      - text: 位游客信息\n  - generic: \"*输入信息 :\"\n  - group \"checkbox-group\":\n    - checkbox \"姓名\" [checked]\n    - generic: 姓名\n    - checkbox \"身份证\" [checked]\n    - generic: 身份证\n  - button \"添加字段\"\n  - checkbox \"必填\" [checked]\n  - generic: 必填\n  - generic: \"*起售限制 :\"\n  - radiogroup:\n    - radio \"不限\" [checked]:\n      - radio [checked]\n      - generic: 不限\n    - radio \"限制\":\n      - radio\n      - generic: 限制\n  - textbox [disabled]\n  - text: 张\n  - generic: \"*预定限制 :\"\n  -"
+    },
+    {
+      "id": 132955,
+      "verified": " :\"\n  - radiogroup:\n    - radio \"不限\":\n      - radio\n      - generic: 不限\n    - radio \"限制\" [checked]:\n      - radio [checked]\n      - generic: 限制\n  - textbox: \"2\"\n  - text: 张\n  - generic: \"*预定限制 :\"\n  - radiogroup:\n    - radio \"不限\" [checked]:\n      - radio [checked]\n      - generic: 不限\n    - radio \"每个\":\n      - radio\n      - generic: 每个\n  - textbox \"请选择\" [disabled]: 手机号\n  - generic: \n  - text: 限购\n  - textbox [disabled]\n  - text: 张\n  - generic: \"*开放时间 :\"\n  - radiogroup:\n    - radio \"上架后立即开放预约\" [checked]:\n      - radio [checked]\n      - generic: 上架后立即开放预约\n    - radio \"游玩日期前\":\n      - radio\n      - generic: 游玩日期前\n  - textbox [disabled]\n  - text: 天开放\n  - generic: \"*截止时间 :\"\n  - radiogroup:\n    - radio \"可订当日，需提前 0 小时预定 （仅做文案说明，不进行真实核销校验）\" [checked]"
+    },
+    {
+      "id": 132958,
+      "verified": " :\"\n  - radiogroup:\n    - radio \"不限\":\n      - radio\n      - generic: 不限\n    - radio \"每个\" [checked]:\n      - radio [checked]\n      - generic: 每个\n  - textbox \"请选择\": 手机号\n  - generic: \n  - text: 限购\n  - textbox: \"1\"\n  - text: 张\n  - generic: \"*开放时间 :\"\n  - radiogroup:\n    - radio \"上架后立即开放预约\" [checked]:\n      - radio [checked]\n      - generic: 上架后立即开放预约\n    - radio \"游玩日期前\":\n      - radio\n      - generic: 游玩日期前\n  - textbox [disabled]\n  - text: 天开放\n  - generic: \"*截止时间 :\"\n  - radiogroup:\n    - radio \"可订当日，需提前 0 小时预定 （仅做文案说明，不进行真实核销校验）\" [checked]:\n      - radio [checked]\n      - text: 可订当日，需提前\n      - textbox: \"0\"\n      - text: 小时预定\n      - generic: （仅做文案说明，不进行真实核销校验）\n    - radio \"可订当日，并在 时 分前预定\":\n      - radio\n      - text: 可订当日，并在\n      - textbox [d"
+    },
+    {
+      "id": 132945,
+      "verified": "\n  - generic: \"*"
+    },
+    {
+      "id": 132948,
+      "verified": "\n  - generic: 门票商品/\n  - generic: 散客票\n  - generic: \n  - generic: 基础信息\n  - generic: \n  - generic: 价格库存\n  - generic: \"3\"\n  - generic: 添加成功\n  - generic: \"*票面价格 :\"\n  - textbox \"请输入门票价格，可输入小数。不超过99999\": \"0.02\"\n  - generic: \"*售卖价格 :\"\n  - textbox \"请输入门票价格，可输入小数。不超过99999\": \"0.02\"\n  - generic: \"*成本价格 :\"\n  - textbox \"请输入门票价格，可输入小数。不超过99999\": \"0.02\"\n  - generic: \"*总库存 :\"\n  - textbox \"请输入日库存，如果输入-1，则表示无限库存\": \"2\"\n  - generic: \"*可售日期 :\"\n  - generic: \n  - textbox \"开始日期\" [disabled]\n  - generic: 至\n  - textbox \"结束日期\" [disabled]\n  - checkbox \"永久销售\" [checked]\n  - generic: 永久销售\n  - generic: 说明：下单不需选择日期的模式下，设置的（提前预订）逻辑无效，默认按照设置的可售时间为准\n  - button \"上一步\"\n  - button \"保存\"\n- text:  "
+    },
+    {
+      "id": 132951,
+      "verified": "\n  - generic: 门票商品/\n  - generic: 散客票\n  - generic: \n  - generic: 基础信息\n  - generic: \n  - generic: 价格库存\n  - generic: \"3\"\n  - generic: 添加成功\n  - generic: \"*票面价格 :\"\n  - textbox \"请输入门票价格，可输入小数。不超过99999\": \"0.02\"\n  - generic: \"*售卖价格 :\"\n  - textbox \"请输入门票价格，可输入小数。不超过99999\": \"0.02\"\n  - generic: \"*成本价格 :\"\n  - textbox \"请输入门票价格，可输入小数。不超过99999\": \"0.02\"\n  - generic: \"*总库存 :\"\n  - textbox \"请输入日库存，如果输入-1，则表示无限库存\": \"99999\"\n  - generic: \"*可售日期 :\"\n  - generic: \n  - textbox \"开始日期\" [disabled]\n  - generic: 至\n  - textbox \"结束日期\" [disabled]\n  - checkbox \"永久销售\" [checked]\n  - generic: 永久销售\n  - generic: 说明：下单不需选择日期的模式下，设置的（提前预订）逻辑无效，默认按照设置的可售时间为准\n  - button \"上一步\"\n  - button \"保存\"\n- text:  "
+    },
+    {
+      "id": 132954,
+      "verified": {
+        "11-24": "11-24\n\n全天可售\n\n库存100张\n\n票面价：¥0.02\n\n售卖价：¥0.02\n\n成本价：¥0.02",
+        "11-25": "11-25\n\n全天可售\n\n库存100张\n\n票面价：¥0.03\n\n售卖价：¥0.03\n\n成本价：¥0.02",
+        "11-26": "11-26"
+      }
+    }
+  ],
+  "status": "15张已保存待上架，临时关联云程雨林拓展TKRNNVF000WGD；未执行报名交易"
+}

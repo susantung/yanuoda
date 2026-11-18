@@ -1,0 +1,64 @@
+ - row "参赛人 手机号 报名项目 通知类型 发送时间 发送状态":
+        - columnheader:
+          - checkbox [disabled]
+        - columnheader "参赛人":
+          - generic: 参赛人
+        - columnheader "手机号":
+          - generic: 手机号
+        - columnheader "报名项目":
+          - generic: 报名项目
+        - columnheader "通知类型":
+          - generic: 通知类型
+        - columnheader "发送时间":
+          - generic: 发送时间
+        - columnheader "发送状态":
+          - generic: 发送状态
+        - columnheader
+        - columnheader
+  - table:
+    - rowgroup
+  - generic: 暂无通知记录
+  - table:
+    - rowgroup:
+      - row "操作":
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup
+  - generic: 共 0 条
+  - textbox "请选择": 10条/页
+  - generic: 
+  - button "" [disabled]:
+    - generic: 
+  - list:
+    - listitem: "1"
+  - button "" [disabled]:
+    - generic: 
+  - text: 前往
+  - spinbutton: "1"
+  - text: 页
+  - text: 
+- dialog "短信模板配置":
+  - text: 短信模板配置
+  - button "Close":
+    - generic: 
+  - generic: 通知类型
+  - textbox "请选择": 报名成功通知
+  - generic: 
+  - generic: 说明
+  - generic: 报名实际成功后，分别向每位参赛者的手机号发送通知。修改模板仅影响后续通知。
+  - generic: "*模板内容"
+  - textbox "请输入短信内容，可插入下方参数"
+  - generic: 0/2000
+  - generic: 插入参数
+  - button "参赛人姓名"
+  - button "报名项目名"
+  - button "取消"
+  - button "保存"

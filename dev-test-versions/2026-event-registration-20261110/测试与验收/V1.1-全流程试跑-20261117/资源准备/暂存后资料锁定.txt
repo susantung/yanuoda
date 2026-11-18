@@ -1,0 +1,237 @@
+
+  - generic: 赛事管理/
+  - generic: 赛事列表
+  - button " 基本信息":
+    - generic: 
+    - generic: 基本信息
+  - button "2 报名资料" [active]:
+    - generic: "2"
+    - generic: 报名资料
+  - button "3 报名人数":
+    - generic: "3"
+    - generic: 报名人数
+  - button "4 关联门票":
+    - generic: "4"
+    - generic: 关联门票
+  - text: "* *  * "
+  - generic: 报名资料
+  - generic: 报名须知：
+  - application:
+    - menubar:
+      - menuitem "文件":
+        - button "文件": 文件
+      - menuitem "编辑":
+        - button "编辑": 编辑
+      - menuitem "插入":
+        - button "插入": 插入
+      - menuitem "视图":
+        - button "视图": 视图
+      - menuitem "格式":
+        - button "格式": 格式
+      - menuitem "表格":
+        - button "表格": 表格
+    - toolbar:
+      - button "Find and replace":
+        - button "":
+          - generic: 
+      - button "Bold":
+        - button "":
+          - generic: 
+      - button "Italic":
+        - button "":
+          - generic: 
+      - button "Underline":
+        - button "":
+          - generic: 
+      - button "Strikethrough":
+        - button "":
+          - generic: 
+      - button "Align left":
+        - button "":
+          - generic: 
+      - button "Align center":
+        - button "":
+          - generic: 
+      - button "Align right":
+        - button "":
+          - generic: 
+      - button "Decrease indent":
+        - button "":
+          - generic: 
+      - button "Increase indent":
+        - button "":
+          - generic: 
+      - button "Blockquote":
+        - button "":
+          - generic: 
+      - button "Undo" [disabled]:
+        - button "" [disabled]:
+          - generic: 
+      - button "Redo" [disabled]:
+        - button "" [disabled]:
+          - generic: 
+      - button "Clear formatting":
+        - button "":
+          - generic: 
+      - button "Subscript":
+        - button "":
+          - generic: 
+      - button "Superscript":
+        - button "":
+          - generic: 
+      - button "Source code":
+        - button "":
+          - generic: 
+      - button "Insert/Edit code sample":
+        - button "":
+          - generic: 
+    - toolbar:
+      - button "Horizontal line":
+        - button "":
+          - generic: 
+      - button "Bullet list":
+        - button "":
+          - generic: 
+        - button
+      - button "Numbered list":
+        - button "":
+          - generic: 
+        - button
+      - button "Insert/edit link":
+        - button "":
+          - generic: 
+      - button "Insert/edit image":
+        - button "":
+          - generic: 
+      - button "Preview":
+        - button "":
+          - generic: 
+      - button "Anchor":
+        - button "":
+          - generic: 
+      - button "Page break":
+        - button "":
+          - generic: 
+      - button "Insert date/time":
+        - button "":
+          - generic: 
+        - button
+      - button "Insert/edit media":
+        - button "":
+          - generic: 
+      - button "Table":
+        - button "":
+          - generic: 
+      - button "Emoticons":
+        - button "":
+          - generic: 
+      - button "Text color":
+        - button "":
+          - generic: 
+        - button
+      - button "Background color":
+        - button "":
+          - generic: 
+        - button
+      - button "Fullscreen":
+        - button "":
+          - generic: 
+    - iframe [id="vue-tinymce-1794936009126770_ifr"]:
+      - paragraph
+    - generic: 0 字
+    - text: 
+  - generic:  
+  - generic: "*是否需要签署："
+  - radiogroup:
+    - radio "需要签署" [disabled]:
+      - radio [disabled]
+      - generic: 需要签署
+    - radio "无需签署" [checked] [disabled]:
+      - radio [checked] [disabled]
+      - generic: 无需签署
+  - paragraph: 已有报名记录，签署要求不可修改。
+  - button " 新增填写项":
+    - generic: 
+    - text: 新增填写项
+  - table:
+    - rowgroup:
+      - row "排序 填写项名称 类型 必填 填写规则 填写说明":
+        - columnheader "排序":
+          - generic: 排序
+        - columnheader "填写项名称":
+          - generic: 填写项名称
+        - columnheader "类型":
+          - generic: 类型
+        - columnheader "必填":
+          - generic: 必填
+        - columnheader "填写规则":
+          - generic: 填写规则
+        - columnheader "填写说明":
+          - generic: 填写说明
+        - columnheader
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "拖动排序：姓名 姓名 姓名 是 姓名必填":
+        - cell "拖动排序：姓名":
+          - generic "拖动排序：姓名": 
+        - cell "姓名":
+          - generic: 姓名
+        - cell "姓名":
+          - generic: 姓名
+        - cell "是":
+          - generic: 是
+        - cell "姓名必填":
+          - generic: 姓名必填
+        - cell
+        - cell
+      - row "拖动排序：身份证 身份证 身份证 是 身份证格式":
+        - cell "拖动排序：身份证":
+          - generic "拖动排序：身份证": 
+        - cell "身份证":
+          - generic: 身份证
+        - cell "身份证":
+          - generic: 身份证
+        - cell "是":
+          - generic: 是
+        - cell "身份证格式":
+          - generic: 身份证格式
+        - cell
+        - cell
+  - table:
+    - rowgroup:
+      - row "操作":
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup:
+      - row "编辑 移除":
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell "编辑 移除":
+          - button "编辑" [disabled]
+          - button "移除" [disabled]
+      - row "编辑 移除":
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell "编辑 移除":
+          - button "编辑" [disabled]
+          - button "移除" [disabled]
+  - text:  
+  - button "取消"
+  - button "上一步"
+  - button "下一步"

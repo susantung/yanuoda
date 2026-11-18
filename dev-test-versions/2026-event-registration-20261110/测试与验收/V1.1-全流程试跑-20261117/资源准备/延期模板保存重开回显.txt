@@ -1,0 +1,53 @@
+columnheader "发送时间":
+          - generic: 发送时间
+        - columnheader "发送状态":
+          - generic: 发送状态
+        - columnheader
+        - columnheader
+  - table:
+    - rowgroup
+  - generic: 暂无通知记录
+  - table:
+    - rowgroup:
+      - row "操作":
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup
+  - generic: 共 0 条
+  - textbox "请选择": 10条/页
+  - generic: 
+  - button "" [disabled]:
+    - generic: 
+  - list:
+    - listitem: "1"
+  - button "" [disabled]:
+    - generic: 
+  - text: 前往
+  - spinbutton: "1"
+  - text: 页
+  - text: 
+- dialog "短信模板配置":
+  - text: 短信模板配置
+  - button "Close":
+    - generic: 
+  - generic: 通知类型
+  - textbox "请选择": 延期通知
+  - generic: 
+  - generic: 说明
+  - generic: 保存模板不会发送。点击“批量发送延期通知”并确认后，通知本赛事当时报名成功的参赛者。
+  - generic: "*模板内容"
+  - textbox "请输入短信内容，可插入下方参数": "【QA验收】{参赛人姓名}{报名项目名}"
+  - generic: 20/2000
+  - generic: 插入参数
+  - button "参赛人姓名"
+  - button "报名项目名"
+  - button "取消"
+  - button "保存"

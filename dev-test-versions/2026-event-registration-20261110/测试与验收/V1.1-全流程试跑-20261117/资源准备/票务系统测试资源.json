@@ -1,0 +1,138 @@
+{
+  "updatedAt": "2026-11-18",
+  "baseTicket": {
+    "name": "赛事验收1117－专用基础票",
+    "code": "TKVW16F000S6U",
+    "scenic": "呀诺达票务系统（TEST）",
+    "spot": "虚拟通道"
+  },
+  "rules": {
+    "138": "实名身份证不限购",
+    "139": "固定日期免换票11/17至12/31",
+    "140": "有效期内未消费可退",
+    "141": "非实名不限购",
+    "142": "手机号游玩日期内限购一张",
+    "143": "十八至六十岁",
+    "144": "不可退",
+    "145": "游玩当日免换票"
+  },
+  "distributor": {
+    "name": "官网小程序",
+    "account": "M5OLHR0005OL",
+    "authorizedCount": 15
+  },
+  "combos": [
+    {
+      "id": 132928,
+      "code": "TKVYB6400054W",
+      "selected": "赛事验收1117－云程－双人固定日期可退 TKVYB6400054W",
+      "display": "赛事验收1117－云程－双人固定日期可退",
+      "verified": true
+    },
+    {
+      "id": 132929,
+      "code": "TKW4B4Z000HUL",
+      "selected": "赛事验收1117－云程－单人固定日期可退 TKW4B4Z000HUL",
+      "display": "赛事验收1117－云程－单人固定日期可退",
+      "verified": true
+    },
+    {
+      "id": 132932,
+      "code": "TKW4XLS000CVM",
+      "selected": "赛事验收1117－云程－十人上限可退 TKW4XLS000CVM",
+      "display": "赛事验收1117－云程－十人上限可退",
+      "verified": true
+    },
+    {
+      "id": 132935,
+      "code": "TKWAZ0F0009JT",
+      "selected": "赛事验收1117－云程－不收集游客资料 TKWAZ0F0009JT",
+      "display": "赛事验收1117－云程－不收集游客资料",
+      "verified": true
+    },
+    {
+      "id": 132942,
+      "code": "TKW7C950003GY",
+      "selected": "赛事验收1117－云程－全部游客资料 TKW7C950003GY",
+      "display": "赛事验收1117－云程－全部游客资料",
+      "verified": true
+    },
+    {
+      "id": 132945,
+      "code": "TKWBZ8X00093V",
+      "selected": "赛事验收1117－云程－双人不可退 TKWBZ8X00093V",
+      "display": "赛事验收1117－云程－双人不可退",
+      "verified": true
+    },
+    {
+      "id": 132948,
+      "code": "TKW692C000RK8",
+      "selected": "赛事验收1117－云程－双人库存仅两张 TKW692C000RK8",
+      "display": "赛事验收1117－云程－双人库存仅两张",
+      "verified": true
+    },
+    {
+      "id": 132951,
+      "code": "TKW6WUP000N96",
+      "selected": "赛事验收1117－云程－双人大库存99999 TKW6WUP000N96",
+      "display": "赛事验收1117－云程－双人大库存99999",
+      "verified": true
+    },
+    {
+      "id": 132954,
+      "code": "TKWGYH5000NBI",
+      "selected": "赛事验收1117－云程－双人日历分日价格 TKWGYH5000NBI",
+      "display": "赛事验收1117－云程－双人日历分日价格",
+      "verified": true
+    },
+    {
+      "id": 132955,
+      "code": "TKW7G1P000VQS",
+      "selected": "赛事验收1117－云程－两张起售 TKW7G1P000VQS",
+      "display": "赛事验收1117－云程－两张起售",
+      "verified": true
+    },
+    {
+      "id": 132958,
+      "code": "TKWB3JC000MG8",
+      "selected": "赛事验收1117－云程－手机号限购一张 TKWB3JC000MG8",
+      "display": "赛事验收1117－云程－手机号限购一张",
+      "verified": true
+    },
+    {
+      "id": 132961,
+      "code": "TKW7RMO000D09",
+      "selected": "赛事验收1117－云程－双人退款免审核 TKW7RMO000D09",
+      "display": "赛事验收1117－云程－双人退款免审核",
+      "verified": true
+    },
+    {
+      "id": 132964,
+      "code": "TKWBPX2000YCK",
+      "selected": "赛事验收1117－云程－十八至六十岁 TKWBPX2000YCK",
+      "display": "赛事验收1117－云程－十八至六十岁",
+      "verified": true
+    },
+    {
+      "id": 132967,
+      "code": "TKWCK5K000FZN",
+      "selected": "赛事验收1117－云程－未来可售期不相交 TKWCK5K000FZN",
+      "display": "赛事验收1117－云程－未来可售期不相交",
+      "verified": true
+    },
+    {
+      "id": 132970,
+      "code": "TKW7VI9000BEG",
+      "selected": "赛事验收1117－云程－待上架与下架专用 TKW7VI9000BEG",
+      "display": "赛事验收1117－云程－待上架与下架专用",
+      "verified": true
+    }
+  ],
+  "fullDomain": {
+    "published": 14,
+    "pending": [
+      132970
+    ]
+  },
+  "transactions": "尚未支付、退款、核销或发送短信"
+}

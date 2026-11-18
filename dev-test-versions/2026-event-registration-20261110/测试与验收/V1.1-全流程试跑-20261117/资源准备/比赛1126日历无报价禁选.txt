@@ -1,0 +1,426 @@
+- banner:
+  - generic: 配置报名项目
+  - textbox "请选择": 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺，店主 40430
+  - generic: 
+  - button "西瓜 ID:40430 店主 ":
+    - generic: 西瓜
+    - generic: ID:40430
+    - generic: 店主
+    - generic: 
+- navigation:
+  - generic: 报名项目
+  - generic: 
+  - generic: 报名记录
+  - generic: 
+  - generic: 配置报名项目
+  - generic: 
+  - generic: 赛事列表
+  - generic: 
+  - generic: 短信通知
+  - generic: 
+  - generic: 编辑赛事
+  - generic: 
+  - generic: 报名记录
+  - generic: 
+  - generic: 报名详情
+  - generic: 
+- complementary:
+  - heading "全域景区后台" [level=1]
+  - menubar:
+    - generic: 
+    - text: 实时数据大盘
+    - generic: 
+    - text: 团队预约管理
+    - generic: 
+    - generic: 
+    - text: 门票商品
+    - generic: 
+    - generic: 
+    - text: 电商商品
+    - generic: 
+    - generic: 
+    - text: 商家中心
+    - generic: 
+    - generic: 
+    - text: 订单中心
+    - generic: 
+    - generic: 
+    - text: 售后中心
+    - generic: 
+    - generic: 
+    - text: 配送管理
+    - generic: 
+    - generic: 
+    - text: 结算中心
+    - generic: 
+    - generic: 
+    - text: 小程序装修
+    - generic: 
+    - generic: 
+    - text: 投诉建议
+    - generic: 
+    - generic: 
+    - text: 内容管理
+    - generic: 
+    - generic: 
+    - text: 智慧地图
+    - generic: 
+    - generic: 
+    - text: 会员管理
+    - generic: 
+    - generic: 
+    - text: 积分中心
+    - generic: 
+    - generic: 
+    - text: 营销中心
+    - generic: 
+    - generic: 
+    - text: 数据中心
+    - generic: 
+    - generic: 
+    - text: 员工管理
+    - generic: 
+    - generic: 
+    - text: 运营数据上报
+    - generic: 
+    - generic: 
+    - text: 专家库
+    - generic: 
+    - generic: 
+    - text: 数字文旅学院
+    - generic: 
+    - generic: 
+    - text: 乘车预约管理
+    - generic: 
+    - generic: 
+    - text: 金钥匙服务
+    - generic: 
+    - generic: 
+    - text: 系统配置
+    - generic: 
+    - generic: 
+    - text: 溪降挑战
+    - generic: 
+    - generic: 
+    - text: 活动预约管理
+    - generic: 
+    - generic: 
+    - text: 赛事管理
+    - generic: 
+    - list:
+      - listitem: 赛事列表
+    - text: 动物认养
+    - generic: 
+  - generic "折叠侧边栏":
+    - generic: 
+- main:
+  - generic: 赛事管理/
+  - generic: 赛事列表
+  - button " 基本信息":
+    - generic: 
+    - generic: 基本信息
+  - button " 报名资料":
+    - generic: 
+    - generic: 报名资料
+  - button " 报名人数":
+    - generic: 
+    - generic: 报名人数
+  - button "4 关联门票":
+    - generic: "4"
+    - generic: 关联门票
+  - text: "* *  * "
+  - generic: 关联门票
+  - generic: 比赛日期（使用日期）：
+  - generic: 2026-11-26 至 2026-11-26
+  - generic: 项目报名时间：
+  - generic: 2026-11-17 00:00:00 至 2026-11-25 23:59:59
+  - generic: 项目总报名名额：
+  - generic: 4人
+  - button " 添加关联门票":
+    - generic: 
+    - text: 添加关联门票
+  - button "刷新匹配情况"
+  - paragraph: 每次报名固定购买1张所选票；报名时间取项目与原票可售时间的交集，价格和库存读取原票。
+  - table:
+    - rowgroup:
+      - row "报名展示名称 关联门票 价格 / 独立票库存 可报名时间 匹配情况":
+        - columnheader "报名展示名称":
+          - generic: 报名展示名称
+        - columnheader "关联门票":
+          - generic: 关联门票
+        - columnheader "价格 / 独立票库存":
+          - generic: 价格 / 独立票库存
+        - columnheader "可报名时间":
+          - generic: 可报名时间
+        - columnheader "匹配情况":
+          - generic: 匹配情况
+        - columnheader
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "QA库存边界双人 8/20 报名限制条件（选填） 赛事验收1117－云程－双人库存仅两张 TKW692C000RK8 ￥0.02 库存 2 2026-11-17 00:00:00 至 2026-11-25 23:59:59 可关联":
+        - cell "QA库存边界双人 8/20 报名限制条件（选填）":
+          - textbox "请输入展示名称": QA库存边界双人
+          - generic: 8/20
+          - generic: 报名限制条件（选填）
+          - textbox "填写本报名项的年龄、地区、性别等限制说明"
+        - cell "赛事验收1117－云程－双人库存仅两张 TKW692C000RK8":
+          - text: 赛事验收1117－云程－双人库存仅两张
+          - generic: TKW692C000RK8
+        - cell "￥0.02 库存 2":
+          - text: ￥0.02
+          - generic: 库存 2
+        - cell "2026-11-17 00:00:00 至 2026-11-25 23:59:59":
+          - generic: 2026-11-17 00:00:00 至 2026-11-25 23:59:59
+        - cell "可关联":
+          - generic: 可关联
+        - cell
+  - table:
+    - rowgroup:
+      - row "操作":
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup:
+      - row "规则详情 移除":
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell "规则详情 移除":
+          - button "规则详情"
+          - button "移除"
+  - text: 
+  - button "取消"
+  - button "上一步"
+  - button "完成"
+- text:        
+- dialog "选择关联门票":
+  - text: 选择关联门票
+  - button "Close":
+    - generic: 
+  - generic: 门票名称
+  - textbox: 赛事验收1117
+  - generic: 门票编码
+  - textbox "自营门票ID / 票务系统编码"
+  - button "查询"
+  - button "重置"
+  - table:
+    - rowgroup:
+      - row "选择 门票名称 / 编码 景区 价格 / 库存 可售时间范围 匹配情况 操作":
+        - columnheader "选择":
+          - generic: 选择
+        - columnheader "门票名称 / 编码":
+          - generic: 门票名称 / 编码
+        - columnheader "景区":
+          - generic: 景区
+        - columnheader "价格 / 库存":
+          - generic: 价格 / 库存
+        - columnheader "可售时间范围":
+          - generic: 可售时间范围
+        - columnheader "匹配情况":
+          - generic: 匹配情况
+        - columnheader "操作":
+          - generic: 操作
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "选择赛事验收1117－云程－未来可售期不相交 赛事验收1117－云程－未来可售期不相交 TKWCK5K000FZN 呀诺达景区 ￥0.02 100 — 项目报名时间与原票可售时间无交集 规则详情":
+        - cell "选择赛事验收1117－云程－未来可售期不相交":
+          - radio "选择赛事验收1117－云程－未来可售期不相交" [disabled]:
+            - radio [disabled]
+        - cell "赛事验收1117－云程－未来可售期不相交 TKWCK5K000FZN":
+          - text: 赛事验收1117－云程－未来可售期不相交
+          - generic: TKWCK5K000FZN
+        - cell "呀诺达景区":
+          - generic: 呀诺达景区
+        - cell "￥0.02 100":
+          - text: ￥0.02
+          - generic: "100"
+        - cell "—":
+          - generic: —
+        - cell "项目报名时间与原票可售时间无交集":
+          - generic: 项目报名时间与原票可售时间无交集
+        - cell "规则详情":
+          - button "规则详情"
+      - row "选择赛事验收1117－云程－十八至六十岁 赛事验收1117－云程－十八至六十岁 TKWBPX2000YCK 呀诺达景区 ￥0.02 100 1971-01-01 00:00:00 至 9999-12-31 23:59:59 可关联 规则详情":
+        - cell "选择赛事验收1117－云程－十八至六十岁":
+          - radio "选择赛事验收1117－云程－十八至六十岁":
+            - radio
+        - cell "赛事验收1117－云程－十八至六十岁 TKWBPX2000YCK":
+          - text: 赛事验收1117－云程－十八至六十岁
+          - generic: TKWBPX2000YCK
+        - cell "呀诺达景区":
+          - generic: 呀诺达景区
+        - cell "￥0.02 100":
+          - text: ￥0.02
+          - generic: "100"
+        - cell "1971-01-01 00:00:00 至 9999-12-31 23:59:59":
+          - generic: 1971-01-01 00:00:00 至 9999-12-31 23:59:59
+        - cell "可关联":
+          - generic: 可关联
+        - cell "规则详情":
+          - button "规则详情"
+      - row "选择赛事验收1117－云程－双人退款免审核 赛事验收1117－云程－双人退款免审核 TKW7RMO000D09 呀诺达景区 ￥0.02 100 1971-01-01 00:00:00 至 9999-12-31 23:59:59 可关联 规则详情":
+        - cell "选择赛事验收1117－云程－双人退款免审核":
+          - radio "选择赛事验收1117－云程－双人退款免审核":
+            - radio
+        - cell "赛事验收1117－云程－双人退款免审核 TKW7RMO000D09":
+          - text: 赛事验收1117－云程－双人退款免审核
+          - generic: TKW7RMO000D09
+        - cell "呀诺达景区":
+          - generic: 呀诺达景区
+        - cell "￥0.02 100":
+          - text: ￥0.02
+          - generic: "100"
+        - cell "1971-01-01 00:00:00 至 9999-12-31 23:59:59":
+          - generic: 1971-01-01 00:00:00 至 9999-12-31 23:59:59
+        - cell "可关联":
+          - generic: 可关联
+        - cell "规则详情":
+          - button "规则详情"
+      - row "选择赛事验收1117－云程－手机号限购一张 赛事验收1117－云程－手机号限购一张 TKWB3JC000MG8 呀诺达景区 ￥0.02 100 1971-01-01 00:00:00 至 9999-12-31 23:59:59 可关联 规则详情":
+        - cell "选择赛事验收1117－云程－手机号限购一张":
+          - radio "选择赛事验收1117－云程－手机号限购一张":
+            - radio
+        - cell "赛事验收1117－云程－手机号限购一张 TKWB3JC000MG8":
+          - text: 赛事验收1117－云程－手机号限购一张
+          - generic: TKWB3JC000MG8
+        - cell "呀诺达景区":
+          - generic: 呀诺达景区
+        - cell "￥0.02 100":
+          - text: ￥0.02
+          - generic: "100"
+        - cell "1971-01-01 00:00:00 至 9999-12-31 23:59:59":
+          - generic: 1971-01-01 00:00:00 至 9999-12-31 23:59:59
+        - cell "可关联":
+          - generic: 可关联
+        - cell "规则详情":
+          - button "规则详情"
+      - row "选择赛事验收1117－云程－两张起售 赛事验收1117－云程－两张起售 TKW7G1P000VQS 呀诺达景区 ￥0.02 100 1971-01-01 00:00:00 至 9999-12-31 23:59:59 可关联 规则详情":
+        - cell "选择赛事验收1117－云程－两张起售":
+          - radio "选择赛事验收1117－云程－两张起售":
+            - radio
+        - cell "赛事验收1117－云程－两张起售 TKW7G1P000VQS":
+          - text: 赛事验收1117－云程－两张起售
+          - generic: TKW7G1P000VQS
+        - cell "呀诺达景区":
+          - generic: 呀诺达景区
+        - cell "￥0.02 100":
+          - text: ￥0.02
+          - generic: "100"
+        - cell "1971-01-01 00:00:00 至 9999-12-31 23:59:59":
+          - generic: 1971-01-01 00:00:00 至 9999-12-31 23:59:59
+        - cell "可关联":
+          - generic: 可关联
+        - cell "规则详情":
+          - button "规则详情"
+      - row "选择赛事验收1117－云程－双人日历分日价格 赛事验收1117－云程－双人日历分日价格 TKWGYH5000NBI 呀诺达景区 — — — 比赛日期门票库存不足；项目报名时间与原票可售时间无交集；原票使用日期未覆盖比赛日期 规则详情":
+        - cell "选择赛事验收1117－云程－双人日历分日价格":
+          - radio "选择赛事验收1117－云程－双人日历分日价格" [disabled]:
+            - radio [disabled]
+        - cell "赛事验收1117－云程－双人日历分日价格 TKWGYH5000NBI":
+          - text: 赛事验收1117－云程－双人日历分日价格
+          - generic: TKWGYH5000NBI
+        - cell "呀诺达景区":
+          - generic: 呀诺达景区
+        - cell "— —":
+          - text: —
+          - generic: —
+        - cell "—":
+          - generic: —
+        - cell "比赛日期门票库存不足；项目报名时间与原票可售时间无交集；原票使用日期未覆盖比赛日期":
+          - generic: 比赛日期门票库存不足；项目报名时间与原票可售时间无交集；原票使用日期未覆盖比赛日期
+        - cell "规则详情":
+          - button "规则详情"
+      - row "选择赛事验收1117－云程－双人大库存99999 赛事验收1117－云程－双人大库存99999 TKW6WUP000N96 呀诺达景区 ￥0.02 99999 1971-01-01 00:00:00 至 9999-12-31 23:59:59 可关联 规则详情":
+        - cell "选择赛事验收1117－云程－双人大库存99999":
+          - radio "选择赛事验收1117－云程－双人大库存99999":
+            - radio
+        - cell "赛事验收1117－云程－双人大库存99999 TKW6WUP000N96":
+          - text: 赛事验收1117－云程－双人大库存99999
+          - generic: TKW6WUP000N96
+        - cell "呀诺达景区":
+          - generic: 呀诺达景区
+        - cell "￥0.02 99999":
+          - text: ￥0.02
+          - generic: "99999"
+        - cell "1971-01-01 00:00:00 至 9999-12-31 23:59:59":
+          - generic: 1971-01-01 00:00:00 至 9999-12-31 23:59:59
+        - cell "可关联":
+          - generic: 可关联
+        - cell "规则详情":
+          - button "规则详情"
+      - row "选择赛事验收1117－云程－双人库存仅两张 赛事验收1117－云程－双人库存仅两张 TKW692C000RK8 呀诺达景区 ￥0.02 2 1971-01-01 00:00:00 至 9999-12-31 23:59:59 已关联，请勿重复选择 规则详情":
+        - cell "选择赛事验收1117－云程－双人库存仅两张":
+          - radio "选择赛事验收1117－云程－双人库存仅两张" [disabled]:
+            - radio [disabled]
+        - cell "赛事验收1117－云程－双人库存仅两张 TKW692C000RK8":
+          - text: 赛事验收1117－云程－双人库存仅两张
+          - generic: TKW692C000RK8
+        - cell "呀诺达景区":
+          - generic: 呀诺达景区
+        - cell "￥0.02 2":
+          - text: ￥0.02
+          - generic: "2"
+        - cell "1971-01-01 00:00:00 至 9999-12-31 23:59:59":
+          - generic: 1971-01-01 00:00:00 至 9999-12-31 23:59:59
+        - cell "已关联，请勿重复选择":
+          - generic: 已关联，请勿重复选择
+        - cell "规则详情":
+          - button "规则详情"
+      - row "选择赛事验收1117－云程－双人不可退 赛事验收1117－云程－双人不可退 TKWBZ8X00093V 呀诺达景区 ￥0.02 100 1971-01-01 00:00:00 至 9999-12-31 23:59:59 可关联 规则详情":
+        - cell "选择赛事验收1117－云程－双人不可退":
+          - radio "选择赛事验收1117－云程－双人不可退":
+            - radio
+        - cell "赛事验收1117－云程－双人不可退 TKWBZ8X00093V":
+          - text: 赛事验收1117－云程－双人不可退
+          - generic: TKWBZ8X00093V
+        - cell "呀诺达景区":
+          - generic: 呀诺达景区
+        - cell "￥0.02 100":
+          - text: ￥0.02
+          - generic: "100"
+        - cell "1971-01-01 00:00:00 至 9999-12-31 23:59:59":
+          - generic: 1971-01-01 00:00:00 至 9999-12-31 23:59:59
+        - cell "可关联":
+          - generic: 可关联
+        - cell "规则详情":
+          - button "规则详情"
+      - row "选择赛事验收1117－云程－全部游客资料 赛事验收1117－云程－全部游客资料 TKW7C950003GY 呀诺达景区 ￥0.02 100 1971-01-01 00:00:00 至 9999-12-31 23:59:59 可关联 规则详情":
+        - cell "选择赛事验收1117－云程－全部游客资料":
+          - radio "选择赛事验收1117－云程－全部游客资料":
+            - radio
+        - cell "赛事验收1117－云程－全部游客资料 TKW7C950003GY":
+          - text: 赛事验收1117－云程－全部游客资料
+          - generic: TKW7C950003GY
+        - cell "呀诺达景区":
+          - generic: 呀诺达景区
+        - cell "￥0.02 100":
+          - text: ￥0.02
+          - generic: "100"
+        - cell "1971-01-01 00:00:00 至 9999-12-31 23:59:59":
+          - generic: 1971-01-01 00:00:00 至 9999-12-31 23:59:59
+        - cell "可关联":
+          - generic: 可关联
+        - cell "规则详情":
+          - button "规则详情"
+  - generic: 共 14 条
+  - button "" [disabled]:
+    - generic: 
+  - list:
+    - listitem: "1"
+    - listitem: "2"
+  - button "":
+    - generic: 
+  - text: 前往
+  - spinbutton: "1"
+  - text: 页
+  - button "取消"
+  - button "确定" [disabled]

@@ -1,0 +1,201 @@
+- banner:
+  - generic: 配置报名项目
+  - textbox "请选择": 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺，店主 40430
+  - generic: 
+  - button "西瓜 ID:40430 店主 ":
+    - generic: 西瓜
+    - generic: ID:40430
+    - generic: 店主
+    - generic: 
+- navigation:
+  - generic: 报名项目
+  - generic: 
+  - generic: 报名记录
+  - generic: 
+  - generic: 配置报名项目
+  - generic: 
+  - generic: 赛事列表
+  - generic: 
+  - generic: 短信通知
+  - generic: 
+  - generic: 编辑赛事
+  - generic: 
+- complementary:
+  - heading "全域景区后台" [level=1]
+  - menubar:
+    - generic: 
+    - text: 实时数据大盘
+    - generic: 
+    - text: 团队预约管理
+    - generic: 
+    - generic: 
+    - text: 门票商品
+    - generic: 
+    - generic: 
+    - text: 电商商品
+    - generic: 
+    - generic: 
+    - text: 商家中心
+    - generic: 
+    - generic: 
+    - text: 订单中心
+    - generic: 
+    - generic: 
+    - text: 售后中心
+    - generic: 
+    - generic: 
+    - text: 配送管理
+    - generic: 
+    - generic: 
+    - text: 结算中心
+    - generic: 
+    - generic: 
+    - text: 小程序装修
+    - generic: 
+    - generic: 
+    - text: 投诉建议
+    - generic: 
+    - generic: 
+    - text: 内容管理
+    - generic: 
+    - generic: 
+    - text: 智慧地图
+    - generic: 
+    - generic: 
+    - text: 会员管理
+    - generic: 
+    - generic: 
+    - text: 积分中心
+    - generic: 
+    - generic: 
+    - text: 营销中心
+    - generic: 
+    - generic: 
+    - text: 数据中心
+    - generic: 
+    - generic: 
+    - text: 员工管理
+    - generic: 
+    - generic: 
+    - text: 运营数据上报
+    - generic: 
+    - generic: 
+    - text: 专家库
+    - generic: 
+    - generic: 
+    - text: 数字文旅学院
+    - generic: 
+    - generic: 
+    - text: 乘车预约管理
+    - generic: 
+    - generic: 
+    - text: 金钥匙服务
+    - generic: 
+    - generic: 
+    - text: 系统配置
+    - generic: 
+    - generic: 
+    - text: 溪降挑战
+    - generic: 
+    - generic: 
+    - text: 活动预约管理
+    - generic: 
+    - generic: 
+    - text: 赛事管理
+    - generic: 
+    - list:
+      - listitem: 赛事列表
+    - text: 动物认养
+    - generic: 
+  - generic "折叠侧边栏":
+    - generic: 
+- main:
+  - generic: 赛事管理/
+  - generic: 赛事列表
+  - button " 基本信息":
+    - generic: 
+    - generic: 基本信息
+  - button " 报名资料":
+    - generic: 
+    - generic: 报名资料
+  - button " 报名人数":
+    - generic: 
+    - generic: 报名人数
+  - button "4 关联门票":
+    - generic: "4"
+    - generic: 关联门票
+  - alert:
+    - generic: 
+    - generic: 关联门票库存可支持人数不足项目总名额 
+  - text: "* *  * "
+  - generic: 关联门票
+  - generic: 比赛日期（使用日期）：
+  - generic: 2026-11-25 至 2026-11-25
+  - generic: 项目报名时间：
+  - generic: 2026-11-17 00:00:00 至 2026-11-25 23:59:59
+  - generic: 项目总报名名额：
+  - generic: 6人
+  - button " 添加关联门票":
+    - generic: 
+    - text: 添加关联门票
+  - button "刷新匹配情况"
+  - paragraph: 每次报名固定购买1张所选票；报名时间取项目与原票可售时间的交集，价格和库存读取原票。
+  - table:
+    - rowgroup:
+      - row "报名展示名称 关联门票 价格 / 独立票库存 可报名时间 匹配情况":
+        - columnheader "报名展示名称":
+          - generic: 报名展示名称
+        - columnheader "关联门票":
+          - generic: 关联门票
+        - columnheader "价格 / 独立票库存":
+          - generic: 价格 / 独立票库存
+        - columnheader "可报名时间":
+          - generic: 可报名时间
+        - columnheader "匹配情况":
+          - generic: 匹配情况
+        - columnheader
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "QA库存边界双人 8/20 报名限制条件（选填） 赛事验收1117－云程－双人库存仅两张 TKW692C000RK8 ￥0.02 库存 2 2026-11-17 00:00:00 至 2026-11-25 23:59:59 可关联":
+        - cell "QA库存边界双人 8/20 报名限制条件（选填）":
+          - textbox "请输入展示名称": QA库存边界双人
+          - generic: 8/20
+          - generic: 报名限制条件（选填）
+          - textbox "填写本报名项的年龄、地区、性别等限制说明"
+        - cell "赛事验收1117－云程－双人库存仅两张 TKW692C000RK8":
+          - text: 赛事验收1117－云程－双人库存仅两张
+          - generic: TKW692C000RK8
+        - cell "￥0.02 库存 2":
+          - text: ￥0.02
+          - generic: 库存 2
+        - cell "2026-11-17 00:00:00 至 2026-11-25 23:59:59":
+          - generic: 2026-11-17 00:00:00 至 2026-11-25 23:59:59
+        - cell "可关联":
+          - generic: 可关联
+        - cell
+  - table:
+    - rowgroup:
+      - row "操作":
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup:
+      - row "规则详情 移除":
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell "规则详情 移除":
+          - button "规则详情"
+          - button "移除"
+  - text:  
+  - button "取消"
+  - button "上一步"
+  - button "完成"

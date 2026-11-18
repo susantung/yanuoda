@@ -1,0 +1,75 @@
+赛事 报名成功海报配置 短信通知 报名项目 推广 报名查询页":
+          - button "编辑赛事"
+          - button "报名成功海报配置"
+          - button "短信通知"
+          - button "报名项目"
+          - button "推广"
+          - button "报名查询页"
+      - row "编辑赛事 报名成功海报配置 短信通知 报名项目 推广 报名查询页":
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell "编辑赛事 报名成功海报配置 短信通知 报名项目 推广 报名查询页":
+          - button "编辑赛事"
+          - button "报名成功海报配置"
+          - button "短信通知"
+          - button "报名项目"
+          - button "推广"
+          - button "报名查询页"
+      - row "编辑赛事 报名成功海报配置 短信通知 报名项目 推广 报名查询页":
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell "编辑赛事 报名成功海报配置 短信通知 报名项目 推广 报名查询页":
+          - button "编辑赛事"
+          - button "报名成功海报配置"
+          - button "短信通知"
+          - button "报名项目"
+          - button "推广"
+          - button "报名查询页"
+      - row "编辑赛事 报名成功海报配置 短信通知 报名项目 推广 报名查询页":
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell "编辑赛事 报名成功海报配置 短信通知 报名项目 推广 报名查询页":
+          - button "编辑赛事"
+          - button "报名成功海报配置"
+          - button "短信通知"
+          - button "报名项目"
+          - button "推广"
+          - button "报名查询页"
+  - generic: 共 8 条
+  - textbox "请选择": 10条/页
+  - generic: 
+  - button "" [disabled]:
+    - generic: 
+  - list:
+    - listitem: "1"
+  - button "" [disabled]:
+    - generic: 
+  - text: 前往
+  - spinbutton: "1"
+  - text: 页
+- dialog "推广":
+  - text: 推广
+  - button "Close":
+    - generic: 
+  - alert:
+    - generic: 赛事小程序推广页面尚未配置 
+  - button "重新加载"
+  - tablist:
+    - tab "访问路径" [selected]
+    - tab "小程序码"
+  - tabpanel "访问路径":
+    - generic: 小程序路径
+    - textbox "暂无可用推广路径"
+    - button "复制" [disabled]
+    - generic: H5跳小程序路径
+    - textbox "暂无可用推广路径"
+    - button "复制" [disabled]
+    - generic: 小程序短路径
+    - textbox "暂无可用推广路径"
+    - button "复制" [disabled]

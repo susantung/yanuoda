@@ -1,0 +1,43 @@
+
+  - generic: 赛事管理/
+  - generic: 赛事列表
+  - button " 基本信息":
+    - generic: 
+    - generic: 基本信息
+  - button " 报名资料":
+    - generic: 
+    - generic: 报名资料
+  - button " 签署材料":
+    - generic: 
+    - generic: 签署材料
+  - button "4 报名人数" [active]:
+    - generic: "4"
+    - generic: 报名人数
+  - text: "* *  * "
+  - generic: 报名人数配置
+  - generic: "*单次报名人数："
+  - textbox "请输入人数": "2"
+  - text: 人
+  - generic: 每次报名填写对应人数的资料；需要签署时，每位参赛者分别签署。
+  - generic: "*是否关联门票："
+  - radiogroup:
+    - radio "否（免费报名）" [checked]:
+      - radio [checked]
+      - generic: 否（免费报名）
+    - radio "是（关联门票收费）":
+      - radio
+      - generic: 是（关联门票收费）
+  - generic: "*总报名名额："
+  - radiogroup:
+    - radio "限制名额" [checked]:
+      - radio [checked]
+      - generic: 限制名额
+    - radio "不限名额":
+      - radio
+      - generic: 不限名额
+  - textbox "请输入总名额": "4"
+  - text: 人
+  - paragraph: 总名额须为单次报名人数的整数倍。
+  - button "取消"
+  - button "上一步"
+  - button "完成"

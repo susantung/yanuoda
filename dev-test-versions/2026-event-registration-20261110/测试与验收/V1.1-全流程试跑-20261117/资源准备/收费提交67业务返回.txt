@@ -1,0 +1,1 @@
+project32 option7 ticket132935；submit HTTP200 code0；registrationId67,status READY,submitState FAILED,failureReason 原票下单校验未通过，请检查报名条件后重试,paymentLink null；traceId96d2cec1527ca53a89afa39df638f339。后台待提交0/4，无原订单。

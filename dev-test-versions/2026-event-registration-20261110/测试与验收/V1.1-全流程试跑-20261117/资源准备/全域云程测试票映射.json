@@ -1,0 +1,152 @@
+[
+  {
+    "id": 132928,
+    "name": "赛事验收1117－云程－双人固定日期可退",
+    "purpose": "双人收费主链、暂存/取消恢复、退款需审核、海报",
+    "configuration": "每券2人；固定有效期；可退、需审核",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132929,
+    "name": "赛事验收1117－云程－单人固定日期可退",
+    "purpose": "单人收费及N=2时人数不匹配的关联校验",
+    "configuration": "每券1人；固定有效期；可退、需审核",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132932,
+    "name": "赛事验收1117－云程－十人上限可退",
+    "purpose": "单次报名人数10人的上限",
+    "configuration": "每券10人；固定有效期；可退、需审核",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132935,
+    "name": "赛事验收1117－云程－不收集游客资料",
+    "purpose": "原票不收集游客资料仍按报名规则收集",
+    "configuration": "不需要信息；固定有效期",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132942,
+    "name": "赛事验收1117－云程－全部游客资料",
+    "purpose": "全部游客信息透传",
+    "configuration": "需要所有客人信息；姓名、身份证必填",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132945,
+    "name": "赛事验收1117－云程－双人不可退",
+    "purpose": "不可退分支",
+    "configuration": "每券2人；不可退",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132948,
+    "name": "赛事验收1117－云程－双人库存仅两张",
+    "purpose": "有限库存与项目名额换算、正常消耗至售罄",
+    "configuration": "每券2人；库存2张；项目名额可设4人",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132951,
+    "name": "赛事验收1117－云程－双人大库存99999",
+    "purpose": "大库存对照；无限库存口径待核实",
+    "configuration": "每券2人；重开库存回显99999",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132954,
+    "name": "赛事验收1117－云程－双人日历分日价格",
+    "purpose": "按比赛日报价；缺日无报价；多日赛事拒绝日历票",
+    "configuration": "每券2人；日历票；11-24售0.02，11-25售0.03，11-26不设报价",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132955,
+    "name": "赛事验收1117－云程－两张起售",
+    "purpose": "起售限制；实际提交1张时沿原票校验",
+    "configuration": "每券2人；2张起售",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132958,
+    "name": "赛事验收1117－云程－手机号限购一张",
+    "purpose": "手机号限购及重复下单校验",
+    "configuration": "每券2人；每手机号限购1张",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132961,
+    "name": "赛事验收1117－云程－双人退款免审核",
+    "purpose": "退款免审核分支",
+    "configuration": "每券2人；可退、不需要审核",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132964,
+    "name": "赛事验收1117－云程－十八至六十岁",
+    "purpose": "逐位年龄校验，含第二位不符合条件",
+    "configuration": "每券2人；18岁≤年龄≤60岁",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132967,
+    "name": "赛事验收1117－云程－未来可售期不相交",
+    "purpose": "报名时间和票可售期无交集",
+    "configuration": "每券2人；可售期2026-11-30至2026-12-31",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  },
+  {
+    "id": 132970,
+    "name": "赛事验收1117－云程－待上架与下架专用",
+    "purpose": "候选票排除待上架；后续下架历史关联回查",
+    "configuration": "每券2人；专用于上下架状态",
+    "status": "待上架",
+    "thirdParty": "云程票务",
+    "temporaryProduct": "雨林拓展 TKRNNVF000WGD",
+    "mappingStatus": "临时关联，待程程票务对应产品替换"
+  }
+]

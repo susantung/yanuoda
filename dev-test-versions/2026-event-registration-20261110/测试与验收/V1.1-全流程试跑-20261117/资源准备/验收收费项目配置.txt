@@ -1,0 +1,100 @@
+
+  - generic: 赛事管理/
+  - generic: 赛事列表
+  - text: 所属赛事：
+  - strong: 赛事验收1118－全链路QA
+  - generic: 项目名称：
+  - textbox "请输入项目名称"
+  - button "查询"
+  - button "重置"
+  - button " 新建报名项目":
+    - generic: 
+    - text: 新建报名项目
+  - table:
+    - rowgroup:
+      - row "排序 项目名称 单次报名人数 报名人数 报名时间 项目报名状态 签署要求 收费方式 配置状态":
+        - columnheader "排序":
+          - generic: 排序
+        - columnheader "项目名称":
+          - generic: 项目名称
+        - columnheader "单次报名人数":
+          - generic: 单次报名人数
+        - columnheader "报名人数":
+          - generic: 报名人数
+        - columnheader "报名时间":
+          - generic: 报名时间
+        - columnheader "项目报名状态":
+          - generic: 项目报名状态
+        - columnheader "签署要求":
+          - generic: 签署要求
+        - columnheader "收费方式":
+          - generic: 收费方式
+        - columnheader "配置状态":
+          - generic: 配置状态
+        - columnheader
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "拖动排序：QA双人收费免签 QA双人收费免签 2人 0/20 2026-11-17 00:00:00 至 2026-11-23 23:59:59 进行中 无需签署 关联门票 已配置":
+        - cell "拖动排序：QA双人收费免签":
+          - button "拖动排序：QA双人收费免签":
+            - generic: 
+        - cell "QA双人收费免签":
+          - generic: QA双人收费免签
+        - cell "2人":
+          - generic: 2人
+        - cell "0/20":
+          - generic: 0/20
+        - cell "2026-11-17 00:00:00 至 2026-11-23 23:59:59":
+          - generic: 2026-11-17 00:00:00
+          - generic: 至 2026-11-23 23:59:59
+        - cell "进行中":
+          - generic: 进行中
+        - cell "无需签署":
+          - generic: 无需签署
+        - cell "关联门票":
+          - generic: 关联门票
+        - cell "已配置":
+          - generic: 已配置
+        - cell
+  - table:
+    - rowgroup:
+      - row "操作":
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup:
+      - row "编辑 报名记录":
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell "编辑 报名记录":
+          - button "编辑"
+          - button "报名记录"
+  - generic: 共 1 条
+  - textbox "请选择": 10条/页
+  - generic: 
+  - button "" [disabled]:
+    - generic: 
+  - list:
+    - listitem: "1"
+  - button "" [disabled]:
+    - generic: 
+  - text: 前往
+  - spinbutton: "1"
+  - text: 页

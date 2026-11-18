@@ -1,0 +1,93 @@
+
+  - generic: 赛事管理/
+  - generic: 赛事列表
+  - strong: QA双人收费免签
+  - generic: 进行中
+  - generic: 报名时间：2026-11-17 00:00:00 至 2026-11-23 23:59:59
+  - generic: 比赛时间：2026-11-24 至 2026-11-25
+  - text: 报名人数
+  - strong: 0/20
+  - text: 人
+  - generic: 姓名
+  - textbox "请输入参赛者姓名"
+  - generic: 手机号
+  - textbox "请输入手机号"
+  - button "查询"
+  - button "重置"
+  - button "展开筛选 ":
+    - text: 展开筛选
+    - generic: 
+  - text:   
+  - table:
+    - rowgroup:
+      - row "参赛者 报名状态 报名提交时间 订单号 门票名称 订单状态 实收金额":
+        - columnheader "参赛者":
+          - generic: 参赛者
+        - columnheader "报名状态":
+          - generic: 报名状态
+        - columnheader "报名提交时间":
+          - generic: 报名提交时间
+        - columnheader "订单号":
+          - generic: 订单号
+        - columnheader "门票名称":
+          - generic: 门票名称
+        - columnheader "订单状态":
+          - generic: 订单状态
+        - columnheader "实收金额":
+          - generic: 实收金额
+        - columnheader
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "验收甲、未填写 资料待完善 — — — — —":
+        - cell "验收甲、未填写":
+          - generic: 验收甲、未填写
+        - cell "资料待完善":
+          - generic: 资料待完善
+        - cell "—":
+          - generic: —
+        - cell "—":
+          - generic: —
+        - cell "—":
+          - generic: —
+        - cell "—":
+          - generic: —
+        - cell "—":
+          - generic: —
+        - cell
+  - table:
+    - rowgroup:
+      - row "操作":
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup:
+      - row "详情":
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell "详情":
+          - button "详情"
+  - generic: 共 1 条
+  - textbox "请选择": 10条/页
+  - generic: 
+  - button "" [disabled]:
+    - generic: 
+  - list:
+    - listitem: "1"
+  - button "" [disabled]:
+    - generic: 
+  - text: 前往
+  - spinbutton: "1"
+  - text: 页
