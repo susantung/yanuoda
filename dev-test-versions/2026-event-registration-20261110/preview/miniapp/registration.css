@@ -62,3 +62,16 @@
 .form-summary-people{display:flex;align-items:baseline;gap:3px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:#ffffffb8;color:var(--brand);font-size:14px;white-space:nowrap}
 .form-summary-people strong{font-size:21px;line-height:1.2;font-weight:700}
 .form-summary .signature-jump{border-top:1px solid var(--line);min-height:50px;margin:0;padding:8px 0;font-size:13px}
+
+.materials-review-entry{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:44px;padding:8px 0;background:none;border:0;border-top:1px solid var(--line);color:var(--brand);font-size:14px;text-align:left}
+.materials-review-list{display:flex;flex-direction:column;gap:8px;margin:16px 0}
+.materials-review-list button{min-height:44px;padding:10px 12px;text-align:left;overflow-wrap:anywhere;background:#fff;border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:14px}
+.materials-review-list button[aria-current="true"]{border-color:var(--brand);color:var(--brand);background:var(--brand-soft)}
+
+/* Compact supporting actions preserve the summary's primary visual hierarchy. */
+.summary-signature-tools{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0 12px;border-top:1px solid var(--line);min-height:50px;padding:2px 0}
+.summary-signature-label{color:var(--muted);font-size:13px;line-height:1.5}
+.summary-signature-links{display:flex;align-items:center;gap:8px;margin-left:auto}
+.form-summary .summary-signature-links button{display:inline-flex;align-items:center;justify-content:center;gap:4px;width:auto;min-height:44px;margin:0;padding:0 2px;background:none;border:0;border-radius:6px;color:var(--brand);font:inherit;font-size:13px;white-space:nowrap;cursor:pointer}
+.summary-link-divider{width:1px;height:12px;background:var(--line)}
+.form-summary .summary-signature-links button:focus-visible{outline:2px solid var(--brand);outline-offset:1px}

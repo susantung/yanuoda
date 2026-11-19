@@ -46,7 +46,7 @@ function fieldMarkup(field,person){
 }
 function renderRegistration(){
  const hasNotice=document.querySelector('#notice-demo').value!=='none';
- formView.innerHTML='<div class="form-summary"><h2>'+escapeHtml(formContext.project.name)+'</h2>'+(formContext.free?'':'<p class="form-summary-option">'+escapeHtml(formContext.option.name)+'</p>')+'<div class="form-summary-facts">'+(formContext.free?'':'<div class="form-summary-price"><span class="currency">¥</span><strong>'+escapeHtml(String(formContext.option.price))+'</strong><span class="price-unit">/ '+(formContext.people===1?'':formContext.people)+'人</span></div>')+'<div class="form-summary-people"><strong>'+formContext.people+'</strong>位参赛者</div></div>'+(formContext.project.signature?'<button class="signature-jump" type="button">签署要求：需逐人签署<span>查看进度 ›</span></button>':'')+'</div>'+
+ formView.innerHTML='<div class="form-summary"><h2>'+escapeHtml(formContext.project.name)+'</h2>'+(formContext.free?'':'<p class="form-summary-option">'+escapeHtml(formContext.option.name)+'</p>')+'<div class="form-summary-facts">'+(formContext.free?'':'<div class="form-summary-price"><span class="currency">¥</span><strong>'+escapeHtml(String(formContext.option.price))+'</strong><span class="price-unit">/ '+(formContext.people===1?'':formContext.people)+'人</span></div>')+'<div class="form-summary-people"><strong>'+formContext.people+'</strong>位参赛者</div></div>'+(formContext.project.signature?'<div class="summary-signature-tools"><span class="summary-signature-label">需逐人签署</span><div class="summary-signature-links"><button class="materials-review-entry" type="button" aria-label="查看签署材料">查看材料</button><span class="summary-link-divider" aria-hidden="true"></span><button class="signature-jump" type="button">签署进度<span aria-hidden="true">›</span></button></div></div>':'')+'</div>'+
  (hasNotice?'<div class="form-tabs" role="tablist" aria-label="报名内容"><button role="tab" id="notice-tab" aria-controls="notice-panel" aria-selected="false" tabindex="-1">报名须知</button><button role="tab" id="data-tab" aria-controls="data-panel" aria-selected="true">参赛资料</button></div>':'')+
  (hasNotice?'<section class="form-panel" role="tabpanel" id="notice-panel" aria-labelledby="notice-tab" tabindex="0" hidden><article class="notice-paper"><h3>报名须知</h3>'+Array.from({length:document.querySelector('#notice-demo').value==='long'?24:1},(_,i)=>'<p>第'+(i+1)+'段须知内容占位。此处展示后台配置的报名须知图文，正式赛事内容待运营提供。</p>').join('')+'</article></section>':'')+
  '<section class="form-panel" '+(hasNotice?'role="tabpanel" aria-labelledby="data-tab" ':'')+'id="data-panel" tabindex="0">'+formValues.map((v,i)=>'<section class="person-card"><h3>第'+(i+1)+'位参赛者</h3>'+formFields.map(f=>fieldMarkup(f,i)).join('')+'</section>').join('')+
@@ -141,6 +141,7 @@ formView.addEventListener('focusout',e=>{
  updateSignatureEntries();
 });
 formView.addEventListener('click',e=>{
+ if(e.target.closest('.materials-review-entry')){openMaterialsReview();return;}
  if(e.target.closest('.signature-jump')){setRegistrationTabIfPresent();const section=formView.querySelector('.signature-card');section.scrollIntoView({block:'start'});section.focus({preventScroll:true});}
  if(e.target.closest('#notice-tab'))setRegistrationTab('notice');
  if(e.target.closest('#data-tab'))setRegistrationTab('data');
@@ -169,3 +170,37 @@ document.querySelector('#signature-demo').addEventListener('change',e=>{
  updateSignatureEntries();
  outcome.textContent='已切换签署进度演示，仅检查报名按钮显示时机；未生成或保存真实签名。';
 });
+
+// Read-only material review keeps the original form DOM and all record permissions.
+const materialsReviewView=document.createElement('section');
+materialsReviewView.className='reader-view materials-review-view';materialsReviewView.hidden=true;
+readerPhone.append(materialsReviewView);
+const materialsReviewBack=document.createElement('button');
+materialsReviewBack.className='reader-back';materialsReviewBack.textContent='‹';
+materialsReviewBack.setAttribute('aria-label','返回原报名资料');materialsReviewBack.hidden=true;
+readerPhone.querySelector('.nav').append(materialsReviewBack);
+let materialsReviewTitle='';
+function openMaterialsReview(){
+ if(!formContext?.project.signature)return;
+ materialsReviewTitle=readerNav.textContent;
+ formView.hidden=true;formBack.hidden=true;materialsReviewView.hidden=false;
+ materialsReviewBack.hidden=false;readerNav.textContent='签署材料';
+ materialsReviewView.innerHTML='<div class="reader-scroll"><div class="reader-context">'+escapeHtml(formContext.project.name)+'</div><nav class="materials-review-list" aria-label="签署材料目录">'+readerDemoMaterials.map((m,i)=>'<button type="button" data-material-review="'+i+'">'+escapeHtml(m.title)+'</button>').join('')+'</nav><article class="reader-paper" aria-live="polite"></article></div><footer class="reader-footer"><button type="button" class="reader-next materials-review-close">返回报名资料</button></footer>';
+ showReviewMaterial(0);
+}
+function showReviewMaterial(index){
+ const material=readerDemoMaterials[index];if(!material)return;
+ materialsReviewView.querySelector('.reader-paper').innerHTML='<h2>'+escapeHtml(material.title)+'</h2>'+material.body;
+ materialsReviewView.querySelectorAll('[data-material-review]').forEach(b=>b.setAttribute('aria-current',String(Number(b.dataset.materialReview)===index)));
+}
+function closeMaterialsReview(){
+ materialsReviewView.hidden=true;materialsReviewBack.hidden=true;formView.hidden=false;
+ formBack.hidden=false;readerNav.textContent=materialsReviewTitle;
+ formView.querySelector('.materials-review-entry')?.focus({preventScroll:true});
+}
+materialsReviewView.addEventListener('click',e=>{
+ const button=e.target.closest('[data-material-review]');
+ if(button)showReviewMaterial(Number(button.dataset.materialReview));
+ if(e.target.closest('.materials-review-close'))closeMaterialsReview();
+});
+materialsReviewBack.addEventListener('click',closeMaterialsReview);

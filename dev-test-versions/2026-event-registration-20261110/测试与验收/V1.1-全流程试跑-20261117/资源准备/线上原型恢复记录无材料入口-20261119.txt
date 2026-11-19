@@ -1,0 +1,1 @@
+本地/GitHub原型专项定位：线上index.html、reader.js、records.js与本地逐字节相同。线上当前浏览器点击专业竞技组报名选项一，实际恢复张三/李四已签2/2的只读报名资料，未进入材料阅读。records.js的restoreHomepageRecord匹配localSavedRecords后调用openDemoRecord，restoreDemoRecord直接openRegistration；C03没有材料回看入口。本地截图处于C02阅读路径，不能仅凭两张图推定发布不一致。该结论针对资料站原型，不等于开发QA版本同一根因。截图：资源准备/线上原型恢复记录无材料入口-20261119.png。未清除用户浏览器存储，未改原型或发布。
