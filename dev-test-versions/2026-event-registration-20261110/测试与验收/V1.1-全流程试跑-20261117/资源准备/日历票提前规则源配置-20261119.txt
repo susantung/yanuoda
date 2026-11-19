@@ -1,0 +1,398 @@
+- banner:
+  - generic: 新增/编辑门票
+  - textbox "请选择": 景区测试店铺景区测试店铺景试店铺景区测试店铺景区测试店铺景区测试店铺景区测试店铺，店主 40430
+  - generic: 
+  - button "西瓜 ID:40430 店主 ":
+    - generic: 西瓜
+    - generic: ID:40430
+    - generic: 店主
+    - generic: 
+- navigation:
+  - generic: 散客票
+  - generic: 
+  - generic: 新增/编辑门票
+  - generic: 
+- complementary:
+  - heading "全域景区后台" [level=1]
+  - menubar:
+    - generic: 
+    - text: 实时数据大盘
+    - generic: 
+    - text: 团队预约管理
+    - generic: 
+    - generic: 
+    - text: 门票商品
+    - generic: 
+    - list:
+      - listitem: 景区管理
+      - listitem: 散客票
+      - listitem: 门票保险
+      - listitem: 卡券管理
+      - listitem: 活动预约
+      - listitem: 共享票池规则
+      - listitem: 票种管理
+    - generic: 
+    - text: 电商商品
+    - generic: 
+    - generic: 
+    - text: 商家中心
+    - generic: 
+    - generic: 
+    - text: 订单中心
+    - generic: 
+    - generic: 
+    - text: 售后中心
+    - generic: 
+    - generic: 
+    - text: 配送管理
+    - generic: 
+    - generic: 
+    - text: 结算中心
+    - generic: 
+    - generic: 
+    - text: 小程序装修
+    - generic: 
+    - generic: 
+    - text: 投诉建议
+    - generic: 
+    - generic: 
+    - text: 内容管理
+    - generic: 
+    - generic: 
+    - text: 智慧地图
+    - generic: 
+    - generic: 
+    - text: 会员管理
+    - generic: 
+    - generic: 
+    - text: 积分中心
+    - generic: 
+    - generic: 
+    - text: 营销中心
+    - generic: 
+    - generic: 
+    - text: 数据中心
+    - generic: 
+    - generic: 
+    - text: 员工管理
+    - generic: 
+    - generic: 
+    - text: 运营数据上报
+    - generic: 
+    - generic: 
+    - text: 专家库
+    - generic: 
+    - generic: 
+    - text: 数字文旅学院
+    - generic: 
+    - generic: 
+    - text: 乘车预约管理
+    - generic: 
+    - generic: 
+    - text: 金钥匙服务
+    - generic: 
+    - generic: 
+    - text: 系统配置
+    - generic: 
+    - generic: 
+    - text: 溪降挑战
+    - generic: 
+    - generic: 
+    - text: 活动预约管理
+    - generic: 
+    - generic: 
+    - text: 赛事管理
+    - generic: 
+    - text: 动物认养
+    - generic: 
+  - generic "折叠侧边栏":
+    - generic: 
+- main:
+  - generic: 门票商品/
+  - generic: 散客票
+  - generic: "1"
+  - generic: 基础信息
+  - generic: "2"
+  - generic: 价格库存
+  - generic: "3"
+  - generic: 添加成功
+  - generic: 基本信息
+  - generic: "*景区名称 :"
+  - textbox "请输入对应景区关键词" [disabled]: 呀诺达票务系统（TEST）
+  - generic: 
+  - paragraph: 如果没有景区，请联系店主进行添加
+  - generic: "*发码类型:"
+  - radiogroup:
+    - radio "自营发码" [disabled]:
+      - radio [disabled]
+      - generic: 自营发码
+    - radio "三方系统发码" [checked] [disabled]:
+      - radio [checked] [disabled]
+      - generic: 三方系统发码
+  - generic: "*票务系统:"
+  - textbox "请选择": 云程票务
+  - generic: 
+  - generic: "*票务系统产品:"
+  - textbox "请输入产品名称或门票编码搜索": 赛事验收1119－云程－双人非实名限女套票 TKCXRMA000JRW-CT
+  - button " 复制":
+    - generic: 
+    - text: 复制
+  - generic: 仅展示该分销商已授权且已上架的产品
+  - generic: "*产品展示名称:"
+  - textbox "请输入产品展示名称": 赛事验收1119－云程－双人非实名限女套票
+  - generic: 21/50
+  - generic: 用户端展示名称
+  - generic: "门票简介:"
+  - textbox "请输入门票简介": QA资格来源反向样本：子票预定规则仅限女性，套票无需实名
+  - generic: 28/50
+  - generic: "适用人群:"
+  - textbox "请输入适用人群"
+  - generic: 0/50
+  - generic: "门票标签:"
+  - textbox "请输入门票标签"
+  - generic: 0/7
+  - textbox "请输入门票标签"
+  - generic: 0/7
+  - textbox "请输入门票标签"
+  - generic: 0/7
+  - generic: "攻略:"
+  - textbox "请选择" [disabled]
+  - button "选择链接"
+  - generic: "初始销量:"
+  - textbox "请输入初始销量"
+  - generic: "门票图片 :"
+  - paragraph: 已上传0张
+  - generic:  
+  - generic: 说明：C端按照如上图片排序进行显示,建议上传图片每张小于2M，张数不超过20张，建议图片大小1:1，jpg或者png均可
+  - generic: "门票详情:"
+  - application:
+    - menubar
+    - toolbar:
+      - button "Bold":
+        - button "":
+          - generic: 
+      - button "Text color":
+        - button "":
+          - generic: 
+        - button
+      - button "Italic":
+        - button "":
+          - generic: 
+      - button "Underline":
+        - button "":
+          - generic: 
+      - button "Strikethrough":
+        - button "":
+          - generic: 
+      - button "Align left":
+        - button "":
+          - generic: 
+      - button "Align center":
+        - button "":
+          - generic: 
+      - button "Align right":
+        - button "":
+          - generic: 
+      - button "从图像库中选择图像":
+        - button "":
+          - generic: 
+      - button "Fullscreen":
+        - button "":
+          - generic: 
+    - toolbar:
+      - button "Font Sizes":
+        - button "14px":
+          - generic: 14px
+    - iframe [id="vue-tinymce-1795026815387625_ifr"]:
+      - paragraph
+    - generic: 0 字
+    - text: 
+  - generic:  
+  - generic: 费用说明
+  - generic: 费用包含：
+  - textbox "请输入"
+  - generic: 0/300
+  - generic: 费用不含：
+  - textbox "请输入"
+  - generic: 0/300
+  - generic: 赠送：
+  - textbox "请输入"
+  - generic: 0/300
+  - generic: 预定规则
+  - generic: "*预定信息 :"
+  - radiogroup:
+    - radio "不需要信息" [checked]:
+      - radio [checked]
+      - generic: 不需要信息
+    - radio "仅需要一位客人信息" [disabled]:
+      - radio [disabled]
+      - generic: 仅需要一位客人信息
+    - radio "需要所有客人信息":
+      - radio
+      - generic: 需要所有客人信息
+    - radio "每一张券需要   3 位游客信息":
+      - radio
+      - text: 每一张券需要
+      - button "":
+        - generic: 
+      - button "":
+        - generic: 
+      - spinbutton: "3"
+      - text: 位游客信息
+  - generic: "*起售限制 :"
+  - radiogroup:
+    - radio "不限" [checked]:
+      - radio [checked]
+      - generic: 不限
+    - radio "限制":
+      - radio
+      - generic: 限制
+  - textbox [disabled]
+  - text: 张
+  - generic: "*预定限制 :"
+  - radiogroup:
+    - radio "不限" [checked]:
+      - radio [checked]
+      - generic: 不限
+    - radio "每个" [disabled]:
+      - radio [disabled]
+      - generic: 每个
+  - textbox "请选择" [disabled]
+  - generic: 
+  - text: 限购
+  - textbox [disabled]
+  - text: 张
+  - generic: "*开放时间 :"
+  - radiogroup:
+    - radio "上架后立即开放预约":
+      - radio
+      - generic: 上架后立即开放预约
+    - radio "游玩日期前" [checked]:
+      - radio [checked]
+      - generic: 游玩日期前
+  - textbox: "5"
+  - text: 天开放
+  - generic: "*截止时间 :"
+  - radiogroup:
+    - radio "可订当日，需提前 小时预定 （仅做文案说明，不进行真实核销校验）":
+      - radio
+      - text: 可订当日，需提前
+      - textbox [disabled]
+      - text: 小时预定
+      - generic: （仅做文案说明，不进行真实核销校验）
+    - radio "可订当日，并在 时 分前预定":
+      - radio
+      - text: 可订当日，并在
+      - textbox [disabled]
+      - text: 时
+      - textbox [disabled]
+      - text: 分前预定
+    - radio "需提前 1 天，并在 18 时 30 分前预定（不填写时间点，默认23:59分）" [checked]:
+      - radio [checked]
+      - text: 需提前
+      - textbox: "1"
+      - text: 天，并在
+      - textbox: "18"
+      - text: 时
+      - textbox: "30"
+      - text: 分前预定（不填写时间点，默认23:59分）
+  - generic: "消息通知 :"
+  - checkbox "预约成功短信消息通知"
+  - generic: 预约成功短信消息通知
+  - checkbox "预约成功微信消息通知"
+  - generic: 预约成功微信消息通知
+  - generic: "预定说明 :"
+  - textbox "请输入，该内容会显示到电话预约页面，提示给客人的预约注意事项"
+  - generic: 0/1000
+  - generic: 消费规则
+  - generic: "*使用日期 :"
+  - radiogroup:
+    - paragraph:
+      - radio "下单选择日期当日可验证使用" [checked]:
+        - radio [checked]
+        - generic: 下单选择日期当日可验证使用
+    - paragraph:
+      - radio "下单选择日期起 1 天内可使用":
+        - radio
+        - text: 下单选择日期起
+        - textbox [disabled]: "1"
+        - text: 天内可使用
+    - paragraph:
+      - radio "下单不需要选择日期，固定日期内可使用  至":
+        - radio
+        - text: 下单不需要选择日期，固定日期内可使用
+        - generic: 
+        - textbox "开始日期" [disabled]
+        - generic: 至
+        - textbox "结束日期" [disabled]
+    - paragraph:
+      - radio "下单不需要选择日期，固定日期内  至 ，且下单 天后可使用":
+        - radio
+        - text: 下单不需要选择日期，固定日期内
+        - generic: 
+        - textbox "开始日期" [disabled]
+        - generic: 至
+        - textbox "结束日期" [disabled]
+        - text: ，且下单
+        - textbox [disabled]
+        - text: 天后可使用
+  - generic: "*入园次数 :"
+  - radiogroup:
+    - paragraph:
+      - radio "使用日期内允许使用 1 次" [checked]:
+        - radio [checked]
+        - text: 使用日期内允许使用
+        - textbox: "1"
+        - text: 次
+    - paragraph:
+      - radio "使用日期内不限次数":
+        - radio
+        - generic: 使用日期内不限次数
+    - paragraph:
+      - radio "使用日期内允许总使用 1 次，每日不超过 1 次":
+        - radio
+        - text: 使用日期内允许总使用
+        - textbox [disabled]: "1"
+        - text: 次，每日不超过
+        - textbox [disabled]: "1"
+        - text: 次
+  - generic: "核销码展示 :"
+  - radiogroup:
+    - radio "核销后二维码失效" [checked]:
+      - radio [checked]
+      - generic: 核销后二维码失效
+    - radio "核销码一直展示，不失效（说明：谨慎使用，选择该配置后，订单完成后二维码一直展示，不失效）":
+      - radio
+      - generic: 核销码一直展示，不失效（说明：谨慎使用，选择该配置后，订单完成后二维码一直展示，不失效）
+  - generic: "消费说明 :"
+  - textbox "请输入"
+  - generic: 0/1000
+  - generic: 退改规则
+  - generic: "*退改规则 :"
+  - radiogroup:
+    - radio "不可退":
+      - radio
+      - generic: 不可退
+    - radio "未消费状态时，有效期内可退（已过期状态不可申请退款）" [checked]:
+      - radio [checked]
+      - generic: 未消费状态时，有效期内可退（已过期状态不可申请退款）
+    - radio "未消费均可退款（已过期状态可申请退款）":
+      - radio
+      - generic: 未消费均可退款（已过期状态可申请退款）
+  - generic: "*退改审核 :"
+  - radiogroup:
+    - radio "需要审核" [checked]:
+      - radio [checked]
+      - generic: 需要审核
+    - radio "不需要审核":
+      - radio
+      - generic: 不需要审核
+  - generic: "退改说明 :"
+  - textbox "请输入"
+  - generic: 0/1000
+  - text: 其他预约说明
+  - button "添加"
+  - button "取消"
+  - button "下一步"
+  - text: 
+- text:  

@@ -1,0 +1,232 @@
+generic: 报名人数
+  - button "4 关联门票":
+    - generic: "4"
+    - generic: 关联门票
+  - text: "* *  * "
+  - generic: 关联门票
+  - generic: 比赛日期（使用日期）：
+  - generic: 2026-11-25 至 2026-11-25
+  - generic: 项目报名时间：
+  - generic: 2026-11-17 00:00:00 至 2026-11-25 23:59:59
+  - generic: 项目总报名名额：
+  - generic: 4人
+  - button " 添加关联门票":
+    - generic: 
+    - text: 添加关联门票
+  - button "刷新匹配情况"
+  - paragraph: 每次报名固定购买1张所选票；报名时间取项目与原票可售时间的交集，价格和库存读取原票。
+  - table:
+    - rowgroup:
+      - row "报名展示名称 关联门票 门票状态 价格 / 独立票库存 可报名时间 匹配情况":
+        - columnheader "报名展示名称":
+          - generic: 报名展示名称
+        - columnheader "关联门票":
+          - generic: 关联门票
+        - columnheader "门票状态":
+          - generic: 门票状态
+        - columnheader "价格 / 独立票库存":
+          - generic: 价格 / 独立票库存
+        - columnheader "可报名时间":
+          - generic: 可报名时间
+        - columnheader "匹配情况":
+          - generic: 匹配情况
+        - columnheader
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "QA库存边界双人 8/20 报名限制条件（选填） 赛事验收1117－云程－双人库存仅两张 TKW692C000RK8 已上架 ￥0.02 库存 2 2026-11-17 00:00:00 至 2026-11-25 23:59:59 可关联":
+        - cell "QA库存边界双人 8/20 报名限制条件（选填）":
+          - textbox "请输入展示名称": QA库存边界双人
+          - generic: 8/20
+          - generic: 报名限制条件（选填）
+          - textbox "填写本报名项的年龄、地区、性别等限制说明"
+        - cell "赛事验收1117－云程－双人库存仅两张 TKW692C000RK8":
+          - text: 赛事验收1117－云程－双人库存仅两张
+          - generic: TKW692C000RK8
+        - cell "已上架":
+          - generic: 已上架
+        - cell "￥0.02 库存 2":
+          - text: ￥0.02
+          - generic: 库存 2
+        - cell "2026-11-17 00:00:00 至 2026-11-25 23:59:59":
+          - generic: 2026-11-17 00:00:00 至 2026-11-25 23:59:59
+        - cell "可关联":
+          - generic: 可关联
+        - cell
+  - table:
+    - rowgroup:
+      - row "操作":
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader
+        - columnheader "操作":
+          - generic: 操作
+  - table:
+    - rowgroup:
+      - row "规则详情 移除":
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell
+        - cell "规则详情 移除":
+          - button "规则详情"
+          - button "移除"
+  - button "取消"
+  - button "上一步"
+  - button "完成"
+- text:  
+- dialog "选择关联门票":
+  - text: 选择关联门票
+  - button "Close":
+    - generic: 
+  - generic: 门票名称
+  - textbox
+  - generic: 门票编码
+  - textbox "自营门票ID / 票务系统编码": TKWGYH5000NBI
+  - button "查询"
+  - button "重置"
+  - table:
+    - rowgroup:
+      - row "选择 门票名称 / 编码 景区 价格 / 库存 可售时间范围 匹配情况 操作":
+        - columnheader "选择":
+          - generic: 选择
+        - columnheader "门票名称 / 编码":
+          - generic: 门票名称 / 编码
+        - columnheader "景区":
+          - generic: 景区
+        - columnheader "价格 / 库存":
+          - generic: 价格 / 库存
+        - columnheader "可售时间范围":
+          - generic: 可售时间范围
+        - columnheader "匹配情况":
+          - generic: 匹配情况
+        - columnheader "操作":
+          - generic: 操作
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "选择赛事验收1117－云程－双人日历分日价格 赛事验收1117－云程－双人日历分日价格 TKWGYH5000NBI 呀诺达景区 ￥0.03 100 — 项目报名时间与原票可售时间无交集 规则详情":
+        - cell "选择赛事验收1117－云程－双人日历分日价格":
+          - radio "选择赛事验收1117－云程－双人日历分日价格" [disabled]:
+            - radio [disabled]
+        - cell "赛事验收1117－云程－双人日历分日价格 TKWGYH5000NBI":
+          - text: 赛事验收1117－云程－双人日历分日价格
+          - generic: TKWGYH5000NBI
+        - cell "呀诺达景区":
+          - generic: 呀诺达景区
+        - cell "￥0.03 100":
+          - text: ￥0.03
+          - generic: "100"
+        - cell "—":
+          - generic: —
+        - cell "项目报名时间与原票可售时间无交集":
+          - generic: 项目报名时间与原票可售时间无交集
+        - cell "规则详情":
+          - button "规则详情" [active]
+  - generic: 共 1 条
+  - button "" [disabled]:
+    - generic: 
+  - list:
+    - listitem: "1"
+  - button "" [disabled]:
+    - generic: 
+  - text: 前往
+  - spinbutton: "1"
+  - text: 页
+  - button "取消"
+  - button "确定" [disabled]
+- dialog "原票规则详情":
+  - text: 原票规则详情
+  - button "Close":
+    - generic: 
+  - paragraph:
+    - strong: 赛事验收1117－云程－双人日历分日价格
+  - generic: 发码类型/门票编码：
+  - generic: 三方系统发码 / TKWGYH5000NBI
+  - generic: 价格 / 独立票库存：
+  - generic: ￥0.03； 库存100张
+  - generic: 开放时间：
+  - generic: 上架后立即开放预约
+  - generic: 截止时间：
+  - generic: 可订当日，需提前0小时预定
+  - table:
+    - rowgroup:
+      - row "规则 原票要求 匹配情况":
+        - columnheader "规则":
+          - generic: 规则
+        - columnheader "原票要求":
+          - generic: 原票要求
+        - columnheader "匹配情况":
+          - generic: 匹配情况
+        - columnheader
+  - table:
+    - rowgroup:
+      - row "预定信息 指定2位游客信息 报名2人；原票指定2位游客信息；全部报名人员资料传原链路，提交沿用原票校验":
+        - cell "预定信息":
+          - generic: 预定信息
+        - cell "指定2位游客信息":
+          - generic: 指定2位游客信息
+        - cell "报名2人；原票指定2位游客信息；全部报名人员资料传原链路，提交沿用原票校验":
+          - generic: 报名2人；原票指定2位游客信息；全部报名人员资料传原链路，提交沿用原票校验
+      - row "输入信息 姓名（必填）、身份证（必填） 报名资料已配置原票要求字段；提交沿用原票校验":
+        - cell "输入信息":
+          - generic: 输入信息
+        - cell "姓名（必填）、身份证（必填）":
+          - generic: 姓名（必填）、身份证（必填）
+        - cell "报名资料已配置原票要求字段；提交沿用原票校验":
+          - generic: 报名资料已配置原票要求字段；提交沿用原票校验
+      - row "预定限制 不限 无额外限购要求":
+        - cell "预定限制":
+          - generic: 预定限制
+        - cell "不限":
+          - generic: 不限
+        - cell "无额外限购要求":
+          - generic: 无额外限购要求
+      - row "性别限制 不限 无额外证件要求":
+        - cell "性别限制":
+          - generic: 性别限制
+        - cell "不限":
+          - generic: 不限
+        - cell "无额外证件要求":
+          - generic: 无额外证件要求
+      - row "允许购买区域 不限 无额外证件要求":
+        - cell "允许购买区域":
+          - generic: 允许购买区域
+        - cell "不限":
+          - generic: 不限
+        - cell "无额外证件要求":
+          - generic: 无额外证件要求
+      - row "允许购买年龄 — 数据缺失，待核实":
+        - cell "允许购买年龄":
+          - generic: 允许购买年龄
+        - cell "—":
+          - generic: —
+        - cell "数据缺失，待核实":
+          - generic: 数据缺失，待核实
+      - row "上下架状态 已上架 已上架":
+        - cell "上下架状态":
+          - generic: 上下架状态
+        - cell "已上架":
+          - generic: 已上架
+        - cell "已上架":
+          - generic: 已上架
+      - row "使用日期 下单选择日期，有效期内有效 比赛日期：2026-11-25 至 2026-11-25":
+        - cell "使用日期":
+          - generic: 使用日期
+        - cell "下单选择日期，有效期内有效":
+          - generic: 下单选择日期，有效期内有效
+        - cell "比赛日期：2026-11-25 至 2026-11-25":
+          - generic: 比赛日期：2026-11-25 至 2026-11-25
+      - row "可售时间 1970-01-01 00:00:00 至 1970-01-01 00:00:00 报名时间与门票可售时间不匹配":
+        - cell "可售时间":
+          - generic: 可售时间
+        - cell "1970-01-01 00:00:00 至 1970-01-01 00:00:00":
+          - generic: 1970-01-01 00:00:00 至 1970-01-01 00:00:00
+        - cell "报名时间与门票可售时间不匹配":
+          - generic: 报名时间与门票可售时间不匹配
+  - button "关闭"

@@ -1,0 +1,52 @@
+[
+  {
+    "id": 134623,
+    "code": "TKCPFDL000TNM-CT",
+    "display": "赛事验收1119－云程－三人全实名可退套票",
+    "price": "0.06",
+    "stock": 33,
+    "travellers": 3,
+    "child": "TKW4B4Z000HUL",
+    "qty": 3,
+    "mode": "所有游客身份证",
+    "verified": true
+  },
+  {
+    "id": 134810,
+    "code": "TKCWY1O000QJJ-CT",
+    "display": "赛事验收1119－云程－十人全实名上限套票",
+    "price": "0.20",
+    "stock": 10,
+    "travellers": 10,
+    "child": "TKW7C950003GY",
+    "qty": 10,
+    "mode": "所有游客身份证",
+    "verified": true
+  },
+  {
+    "id": 134817,
+    "code": "TKCXRMA000JRW-CT",
+    "display": "赛事验收1119－云程－双人非实名限女套票",
+    "price": "0.04",
+    "stock": 50,
+    "travellers": 2,
+    "child": "TKWAZ0F0009JT",
+    "qty": 2,
+    "mode": "无需实名",
+    "verified": true,
+    "limitation": "子票原规则仅限女性，全域不需要信息时隐藏性别配置；仅作资格来源反向样本，未验证下单兼容"
+  },
+  {
+    "id": null,
+    "code": "TKCYGYY0001CB-CT",
+    "display": "赛事验收1119－云程－双人仅一位实名套票",
+    "price": "0.04",
+    "stock": 50,
+    "travellers": 2,
+    "child": "TKW7C950003GY",
+    "qty": 2,
+    "mode": "提供一位取票人信息",
+    "verified": true,
+    "limitation": "票务已上架并授权官网小程序；全域三方票仅需要一位客人信息禁用，未保存全域副本"
+  }
+]

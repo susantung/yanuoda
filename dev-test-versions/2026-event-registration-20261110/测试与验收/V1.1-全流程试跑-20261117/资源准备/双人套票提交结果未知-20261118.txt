@@ -1,0 +1,22 @@
+双人套票提交回查 2026-11-18 18:45
+赛事24 / 项目30 / option6 / registration65 / 全域132928
+套票TKYYCUE000EGW-CT，0.04元，库存50，每券2位游客。
+资料为专用合成测试资料，不记录完整证件号。
+已暂存；仅提交一次，主动查询一次（页面另有自动轮询日志）。
+UI：报名结果正在核实，请查询结果，勿重复报名。
+submission/result 外层code=0；status=READY；submitState=UNKNOWN；failureReason=""；paymentLink=null。
+traceId=204c5ffff5e77a4ebe931d783abad5e6
+后台列表：验收甲更新、验收乙；待提交；订单号、提交时间、票名、订单状态、实收金额均—。
+界面未提供拒绝原因，不能断定是身份数据或票务配置导致；也未查数据库。
+未支付、未重复提交。请开发按trace排查下单和结果回查。
+
+继续定位（18:54）：
+开发者工具Network中首次POST /event/customer/submit：HTTP200，3.62秒。
+首次traceId：7d58be5d3d6d75ed93712d5b4662916e（更适合排查下单原因）。
+首次本身就返回READY/UNKNOWN，failureReason空，paymentLink=null；非仅查询结果如此。
+请求ID：mwlzs3d8-1hgqy5eei7i-3bltyhxax24；registration65/activity24/project30/option6。
+响应context回显两人48/49、姓名与身份证字段61/62；price=0.04，contactPhoneAuthorized=true，readComplete=true，allSigned=true，signatureRequired=false。
+本地只读核查form/index.js:365-380及api/index.js:6-33：前端读取服务端原data，UNKNOWN且无支付链接时最多自动回查两次，再显示核实中。主动查询也最多自动回查两次，因此主动点一次会产生多个查询网络请求。
+前端未收到拒绝原因可透传；当前不能断言身份校验或套票配置是根因。
+仍缺服务端该trace下的异常、原票服务调用与订单落地日志；未访问数据库或后端日志系统。
+未修改业务代码、未重复提交、未支付。
