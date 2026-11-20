@@ -13,3 +13,4 @@ body:not(.signature-review)>.foot{grid-column:1;grid-row:3;margin:0;padding:0;fo
 @media(max-width:899px){.review{max-width:600px}.review-group-body{grid-template-columns:1fr 1fr}.stage{padding:8px 12px 20px}.review .refund-review{margin-bottom:16px}}
 
 .refund-review label{min-width:0}
+

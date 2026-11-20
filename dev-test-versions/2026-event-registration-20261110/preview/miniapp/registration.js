@@ -157,7 +157,12 @@ formView.addEventListener('click',e=>{
 });
 formView.addEventListener('keydown',e=>{if(e.target.getAttribute('role')==='tab'&&['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();const name=e.target.id==='data-tab'?'notice':'data';setRegistrationTab(name);formView.querySelector('#'+name+'-tab').focus();}});
 formBack.addEventListener('click',closeRegistration);
-formPreview.addEventListener('click',()=>openRegistration(projects[0],projects[0].options[0],Number(document.querySelector('#people').value)));
+formPreview.addEventListener('click',()=>{
+ if(typeof hideRecordSources==='function')hideRecordSources();
+ activeRecord=null;recordEntrySource='home';
+ recordRoleControl.querySelector('select').value='initiator';
+ openRegistration(projects[0],projects[0].options[0],Number(document.querySelector('#people').value));
+});
 // Demo settings apply on the next entry; changing them does not silently save or erase current input.
 for(const id of ['notice-demo','template-demo'])document.querySelector('#'+id).addEventListener('change',()=>{if(formContext)outcome.textContent='示例设置已修改；返回总览后重新进入C03生效，当前输入不自动保存。';});
 

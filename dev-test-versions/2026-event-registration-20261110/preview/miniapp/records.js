@@ -14,7 +14,7 @@ function recordActions(r){
  const choices=isMemberPreview()?[['data','查看资料']]:r.status==='cancelled'?[['continue','继续报名'],['order','查看订单']]:['incomplete','signing','ready'].includes(r.status)?[['continue','继续报名']]:[['data','查看资料'],...(!r.free?[['order','查看订单']]:[]),...(r.status==='success'?[['poster','查看海报']]:[])];
  return choices.map(([action,label])=>`<button class="${action==='continue'?'record-main':''}" data-record="${r.id}" data-record-action="${action}" aria-label="${recordStates[r.status]}：${label}">${label}</button>`).join('');
 }
-let activeRecord=null,recordReadOnly=false,recordEntrySource='records';
+let activeRecord=null,recordReadOnly=false,recordEntrySource='records',homepageRecordCandidates=null;
 function currentRecordPerson(){return isMemberPreview()?1:0;}
 let localSavedRecords=[];try{const saved=JSON.parse(localStorage.getItem('event-registration-local-records-v1')||'[]');if(Array.isArray(saved))localSavedRecords=saved.filter(r=>r&&r.id&&r.draftKey&&r.project&&r.option&&Array.isArray(r.participants));}catch{}
 function findSavedDraftRecord(key){return localSavedRecords.find(r=>r.draftKey===key);}
@@ -25,14 +25,14 @@ function hideRecordSources(){
  recordsView.hidden=true;recordsBack.hidden=true;readerMain.hidden=true;readerView.hidden=true;backReading.hidden=true;formView.hidden=true;formBack.hidden=true;signatureView.hidden=true;signatureBack.hidden=true;sharedView.hidden=true;sharedBack.hidden=true;resetPaymentPreview();readerPhone.classList.remove('is-signing');readerPhone.classList.add('is-reading');
 }
 function openRecords(){
- recordEntrySource='records';
+ homepageRecordCandidates=null;recordEntrySource='records';
  hideRecordSources();activeRecord=null;recordReadOnly=false;recordsView.hidden=false;recordsBack.hidden=false;readerNav.textContent='我的报名';
  renderRecords();outcome.textContent=isMemberPreview()?'已关联组员权限演示：只展示第2位参赛者已签署的虚构记录，可只读查看整组资料及本人签名；真实登录、UID关联与服务端权限未接入。':'C09发起人虚构记录演示；未接服务器、正式排序分页及真实关联身份权限。';
 }
 function renderRecords(){
  const scene=document.querySelector('#records-scene').value;
  const eventName=document.querySelector('.event-title').textContent;
- recordsView.innerHTML='<div class="records-scroll"><p class="records-event">'+escapeHtml(eventName)+'</p>'+(['normal','free'].includes(scene)?(scene==='free'?freeDemoRecords:demoRecords).concat(localSavedRecords.filter(r=>!!r.free===(scene==='free'))).filter(r=>!isMemberPreview()||!!r.signed[1]&&r.signed[1]===r.participants[1]?.name).map(r=>{
+ recordsView.innerHTML='<div class="records-scroll"><p class="records-event">'+escapeHtml(eventName)+'</p>'+(homepageRecordCandidates?'<p class="record-selection-hint" role="status">此报名项有多条本地演示记录，请选择要继续的记录；资料和签署进度会保留。</p>':'')+(['normal','free'].includes(scene)?(homepageRecordCandidates||(scene==='free'?freeDemoRecords:demoRecords).concat(localSavedRecords.filter(r=>!!r.free===(scene==='free')))).filter(r=>!isMemberPreview()||!!r.signed[1]&&r.signed[1]===r.participants[1]?.name).map(r=>{
  const names=r.participants.map((p,i)=>p.name||'第'+(i+1)+'位待填写').join('、');
  return `<section class="record-card"><header><h2>${escapeHtml(r.project.name)}</h2><span class="record-state ${r.status}">${recordStates[r.status]}</span></header>${r.free?'':`<p class="record-option">${escapeHtml(r.option.name)}</p>`}<dl class="record-facts"><div><dt>参赛者</dt><dd>${escapeHtml(names)}（${r.people}人）</dd></div><div><dt>比赛时间</dt><dd>2027-01-03</dd></div>${r.submittedAt?`<div><dt>报名时间</dt><dd>${r.submittedAt}</dd></div>`:''}</dl><div class="record-actions">${recordActions(r)}</div></section>`;
  }).join(''):`<section class="records-empty"><h2>${scene==='empty'?'暂无报名记录':'加载失败'}</h2><p>${scene==='empty'?'你在本赛事还没有报名记录':'报名记录暂时无法加载，请重试'}</p>${scene==='empty'?'':'<button data-records-retry>重新加载</button>'}</section>`)+'</div>';
@@ -94,7 +94,11 @@ if(new URLSearchParams(location.search).get('role')==='member'){recordRoleContro
 // Existing-record recovery is only reached after C01's disabled guard.
 function restoreHomepageRecord(project,option,free){
  const matches=localSavedRecords.filter(r=>r.project.id===project.id&&!!r.free===!!free&&(free||r.option.id===option.id));
- if(matches.length>1){outcome.textContent='当前报名项有多条历史记录，请从我的报名查看；未新建记录。';return true;}
+ if(matches.length>1){
+  recordRoleControl.querySelector('select').value='initiator';document.querySelector('#records-scene').value=free?'free':'normal';
+  openRecords();homepageRecordCandidates=matches;renderRecords();
+  outcome.textContent='当前报名项有多条本地演示记录，已打开记录选择。请选择待签署记录继续；不合并、不删除记录，也不自动创建另一条报名。';return true;
+ }
  if(!matches.length)return false;
  recordRoleControl.querySelector('select').value='initiator';recordEntrySource='home';openDemoRecord(matches[0],'data');return true;
 }

@@ -25,8 +25,8 @@ function stopReaderTimer(){clearInterval(readerTimer);readerTimer=null;}
 function closeReader(){readerSession++;stopReaderTimer();readerView.hidden=true;backReading.hidden=true;readerMain.hidden=false;readerPhone.classList.remove('is-reading');readerNav.textContent='赛事报名';readerContext=null;}
 function readerFirstIncomplete(){return readerDemoMaterials.findIndex(m=>!readerDone.includes(m.id));}
 function readerGoForward(){readerReview=false;const index=readerFirstIncomplete();readerIndex=index<0?readerDemoMaterials.length-1:index;renderReader();}
-function openReader(project,option,people,shared=null){
- readerSession++;stopReaderTimer();readerContext={project,option,people,shared};readerError='';readerReview=false;readerBusy=false;readerFailedOnce=false;
+function openReader(project,option,people,shared=null,homeEntry=false){
+ readerSession++;stopReaderTimer();readerContext={project,option,people,shared,homeEntry};readerError='';readerReview=false;readerBusy=false;readerFailedOnce=false;
  try{const saved=JSON.parse(localStorage.getItem(readerStorageKey())||'[]');readerDone=Array.isArray(saved)?saved.filter(id=>readerDemoMaterials.some(m=>m.id===id)):[];}catch{readerDone=[];}
  readerMain.hidden=true;readerView.hidden=false;backReading.hidden=false;readerPhone.classList.add('is-reading');readerNav.textContent='阅读材料';readerGoForward();
  outcome.textContent='C02结构原型：3份材料分别演示不限制、等待3秒、滚动到底。仅在本浏览器保存示例阅读进度，未接后台或创建报名；C03已接入结构原型。';
@@ -88,4 +88,13 @@ document.querySelector('#reader-scene').addEventListener('change',()=>{readerFai
 resetReading.addEventListener('click',()=>{if(!readerContext){outcome.textContent='请先选择需要签署的报名项，再重置当前示例阅读进度。';return;}if(readerBusy)return;try{localStorage.removeItem(readerStorageKey());readerDone=[];readerError='';readerGoForward();}catch{outcome.textContent='本地示例进度无法重置。';}});
 new ResizeObserver(()=>{const scroll=readerView.querySelector('.reader-scroll');if(scroll&&scroll.scrollHeight<=scroll.clientHeight+3){readerAtBottom=true;updateReaderButton();}}).observe(readerView);
 
-function readerContinueToRegistration(){const c=readerContext;if(c.shared){closeReader();openSharedRegistration(c.shared);}else openRegistration(c.project,c.option,c.people);}
+function readerContinueToRegistration(){
+ const c=readerContext;if(!c)return;
+ if(c.shared){closeReader();openSharedRegistration(c.shared);return;}
+ if(c.homeEntry){
+  closeReader();
+  if(typeof restoreHomepageRecord==='function'&&restoreHomepageRecord(c.project,c.option,false))return;
+  activeRecord=null;recordEntrySource='home';
+ }
+ openRegistration(c.project,c.option,c.people);
+}
