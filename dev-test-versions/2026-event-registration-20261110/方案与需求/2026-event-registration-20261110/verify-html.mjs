@@ -23,6 +23,12 @@ for(const file of audit.pages){
  if(/<(?:script|link|img)\b[^>]+(?:src|href)="https?:/i.test(html))errors.push(file+' external rendering dependency');
 }
 const fragments=await fs.readdir(path.join(root,'assets/ai-pages'));
+// Every declared iteration must render as a real table row, not a pipe-filled paragraph.
+const changeSource=await fs.readFile(path.join(root,'08-V1.1迭代对照.md'),'utf8');
+const changeHtml=await fs.readFile(path.join(root,'changes.html'),'utf8');
+for(const id of new Set([...changeSource.matchAll(/^\| (V11-\d+) \|/gm)].map(m=>m[1]))){
+ if(!new RegExp('<tr[^>]*>\\s*<td[^>]*>\\s*'+id+'\\s*</td>').test(changeHtml))errors.push('iteration missing table row '+id);
+}
 if(fragments.filter(f=>f.endsWith('.md')).length!==31)errors.push('AI fragment count');
 if(audit.flows.length!==9)errors.push('flow count');
 for(const f of audit.flows)if(!f.nodes||!f.edges)errors.push('empty flow '+f.file);
