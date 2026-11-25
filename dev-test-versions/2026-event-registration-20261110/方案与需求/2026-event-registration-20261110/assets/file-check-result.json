@@ -1,9 +1,9 @@
 {
   "date": "2026-11-10",
   "passed": true,
-  "htmlPages": 8,
-  "localLinksAndAnchors": 519,
-  "inlineScriptsParsed": 8,
+  "htmlPages": 9,
+  "localLinksAndAnchors": 578,
+  "inlineScriptsParsed": 9,
   "flows": 9,
   "aiFragments": 31,
   "oldRuleGroupsMapped": 45,

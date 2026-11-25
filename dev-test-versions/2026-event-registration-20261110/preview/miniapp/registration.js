@@ -77,7 +77,6 @@ function syncRegistrationValues(){
  formValues.forEach((values,i)=>formFields.forEach(field=>{
   const element=formView.querySelector('#participant-'+i+'-'+field.key);
   if(!element)return;
-  if(field.key==='name'&&formSignedNames[i]&&formSignedNames[i]!==element.value){formSignedNames[i]=null;formSignatureRecords[i]=null;try{localStorage.setItem(formKey()+':signatures',JSON.stringify(formSignatureRecords));}catch{}}
   values[field.key]=field.kind==='multiple'?[...element.querySelectorAll('input:checked')].map(e=>e.value):element.value;
  }));
 }
@@ -119,7 +118,7 @@ async function saveRegistrationDraft(){
  const session=formSession,snapshot=JSON.stringify(formValues),key=formKey();formBusy=true;const button=formView.querySelector('.draft-save');button.disabled=true;button.textContent='正在暂存…';updateSignatureEntries();
  await new Promise(resolve=>setTimeout(resolve,250));
  if(session!==formSession||!formContext)return;
- try{if(document.querySelector('#draft-demo').value==='fail')throw new Error('demo');localStorage.setItem(key,snapshot);if(typeof recordDraftSaved==='function')recordDraftSaved();formSavedSnapshot=snapshot;formMessage('已暂存');}
+ try{if(document.querySelector('#draft-demo').value==='fail')throw new Error('demo');saveV12Draft(key,snapshot);if(typeof recordDraftSaved==='function')recordDraftSaved();formSavedSnapshot=snapshot;formMessage('已暂存');}
  catch{formMessage('暂存失败，请重试',true);}
  formBusy=false;button.disabled=false;button.textContent='暂存';updateSignatureEntries();
 }

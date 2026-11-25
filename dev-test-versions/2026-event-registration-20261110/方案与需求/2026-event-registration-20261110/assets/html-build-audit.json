@@ -6,6 +6,7 @@
     "development-spec.html",
     "acceptance.html",
     "changes.html",
+    "changes-v1.2.html",
     "pending.html",
     "ai-reading.html"
   ],
@@ -65,6 +66,7 @@
     "06-公共业务规则.md",
     "04-开发核对与验收清单.md",
     "08-V1.1迭代对照.md",
+    "09-V1.2迭代对照.md",
     "07-待确认与实施边界.md",
     "任务索引.md"
   ],

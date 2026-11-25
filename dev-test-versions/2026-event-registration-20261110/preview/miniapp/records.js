@@ -1,4 +1,5 @@
-/* C09 structure review. Five fictitious initiator-owned records, no account or server reads. */
+/* 本地重复样例选择仅供审阅，禁止作为正式业务实现；唯一记录规则见C01 V11-17及V1.2澄清。
+ C09 structure review. Five fictitious initiator-owned records, no account or server reads. */
 const recordsView=document.createElement('section');recordsView.className='records-view';recordsView.hidden=true;readerPhone.append(recordsView);
 const recordsBack=document.createElement('button');recordsBack.className='reader-back';recordsBack.textContent='‹';recordsBack.setAttribute('aria-label','返回赛事报名');recordsBack.hidden=true;readerPhone.querySelector('.nav').append(recordsBack);
 const recordsControls=document.createElement('label');recordsControls.innerHTML='我的报名演示<select id="records-scene"><option value="normal">收费六种状态</option><option value="free">免费报名</option><option value="empty">暂无记录</option><option value="error">加载失败</option></select>';
@@ -32,7 +33,7 @@ function openRecords(){
 function renderRecords(){
  const scene=document.querySelector('#records-scene').value;
  const eventName=document.querySelector('.event-title').textContent;
- recordsView.innerHTML='<div class="records-scroll"><p class="records-event">'+escapeHtml(eventName)+'</p>'+(homepageRecordCandidates?'<p class="record-selection-hint" role="status">此报名项有多条本地演示记录，请选择要继续的记录；资料和签署进度会保留。</p>':'')+(['normal','free'].includes(scene)?(homepageRecordCandidates||(scene==='free'?freeDemoRecords:demoRecords).concat(localSavedRecords.filter(r=>!!r.free===(scene==='free')))).filter(r=>!isMemberPreview()||!!r.signed[1]&&r.signed[1]===r.participants[1]?.name).map(r=>{
+ recordsView.innerHTML='<div class="records-scroll"><p class="records-event">'+escapeHtml(eventName)+'</p>'+(['normal','free'].includes(scene)?(homepageRecordCandidates||(scene==='free'?freeDemoRecords:demoRecords).concat(localSavedRecords.filter(r=>!!r.free===(scene==='free')))).filter(r=>!isMemberPreview()||!!r.signed[1]&&r.signed[1]===r.participants[1]?.name).map(r=>{
  const names=r.participants.map((p,i)=>p.name||'第'+(i+1)+'位待填写').join('、');
  return `<section class="record-card"><header><h2>${escapeHtml(r.project.name)}</h2><span class="record-state ${r.status}">${recordStates[r.status]}</span></header>${r.free?'':`<p class="record-option">${escapeHtml(r.option.name)}</p>`}<dl class="record-facts"><div><dt>参赛者</dt><dd>${escapeHtml(names)}（${r.people}人）</dd></div><div><dt>比赛时间</dt><dd>2027-01-03</dd></div>${r.submittedAt?`<div><dt>报名时间</dt><dd>${r.submittedAt}</dd></div>`:''}</dl><div class="record-actions">${recordActions(r)}</div></section>`;
  }).join(''):`<section class="records-empty"><h2>${scene==='empty'?'暂无报名记录':'加载失败'}</h2><p>${scene==='empty'?'你在本赛事还没有报名记录':'报名记录暂时无法加载，请重试'}</p>${scene==='empty'?'':'<button data-records-retry>重新加载</button>'}</section>`)+'</div>';
@@ -97,7 +98,7 @@ function restoreHomepageRecord(project,option,free){
  if(matches.length>1){
   recordRoleControl.querySelector('select').value='initiator';document.querySelector('#records-scene').value=free?'free':'normal';
   openRecords();homepageRecordCandidates=matches;renderRecords();
-  outcome.textContent='当前报名项有多条本地演示记录，已打开记录选择。请选择待签署记录继续；不合并、不删除记录，也不自动创建另一条报名。';return true;
+  outcome.textContent='仅原型：为保留多次本地操作的样例而展示记录选择，不是产品流程或重复报名规则。研发／AI不得实现此选择分支；正式业务按主报人＋赛事＋项目＋选项恢复唯一原记录，任何状态均复用。正式异常重复数据需核实，不让游客选择。';return true;
  }
  if(!matches.length)return false;
  recordRoleControl.querySelector('select').value='initiator';recordEntrySource='home';openDemoRecord(matches[0],'data');return true;

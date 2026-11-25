@@ -20,7 +20,7 @@ const readerDemoMaterials=[
  {id:'material-3',title:'示例阅读材料三',mode:'scroll',body:Array.from({length:12},(_,i)=>'<p>第'+(i+1)+'段材料正文示例。正式内容待配置；请完整阅读本份材料后继续，具体赛事材料以运营提供的正式内容为准。</p>').join('')}
 ];
 let readerContext=null,readerDone=[],readerIndex=0,readerReview=false,readerBusy=false,readerFailedOnce=false,readerError='',readerTimer=null,readerRemaining=0,readerAtBottom=false,readerSession=0;
-function readerStorageKey(){return 'event-registration-C02-demo:'+readerContext.project.id+':'+readerContext.option.id+':'+readerContext.people+(readerContext.shared?':shared:'+readerContext.shared.person:'');}
+function readerStorageKey(){return 'event-registration-C02-demo:'+readerContext.project.id+':'+readerContext.option.id+':'+readerContext.people+(readerContext.shared?':shared:'+readerContext.shared.person+':revision:'+(readerContext.shared.revision||0):'');}
 function stopReaderTimer(){clearInterval(readerTimer);readerTimer=null;}
 function closeReader(){readerSession++;stopReaderTimer();readerView.hidden=true;backReading.hidden=true;readerMain.hidden=false;readerPhone.classList.remove('is-reading');readerNav.textContent='赛事报名';readerContext=null;}
 function readerFirstIncomplete(){return readerDemoMaterials.findIndex(m=>!readerDone.includes(m.id));}

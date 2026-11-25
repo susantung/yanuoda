@@ -4,12 +4,14 @@ const sharedView=document.createElement('section');sharedView.className='form-vi
 const sharedBack=document.createElement('button');sharedBack.className='reader-back';sharedBack.textContent='‹';sharedBack.hidden=true;sharedBack.setAttribute('aria-label','返回阅读材料');readerPhone.querySelector('.nav').append(sharedBack);
 function openSharedPreview(person){
  if(!validateRegistration(true)||!registrationDataSaved()){formMessage('请先暂存资料，再分享签署',true);return;}
- const snapshot={person,context:JSON.parse(JSON.stringify(formContext)),values:JSON.parse(JSON.stringify(formValues)),fields:JSON.parse(JSON.stringify(formFields)),notice:document.querySelector('#notice-demo').value};
+ const snapshot={...createV12Share(person),person,context:JSON.parse(JSON.stringify(formContext)),values:JSON.parse(JSON.stringify(formValues)),fields:JSON.parse(JSON.stringify(formFields)),notice:document.querySelector('#notice-demo').value};
  formView.hidden=true;formBack.hidden=true;
  openReader(snapshot.context.project,snapshot.context.option,snapshot.context.people,snapshot);
  outcome.textContent='分享接收者预览：先按顺序阅读材料，再只读查看全部参赛资料，只能签指定的本人。本次仅复制内存示例供审阅，没有发送微信、创建分享链接或自动暂存普通资料。';
 }
 function openSharedRegistration(snapshot){
+ if(!validV12Share(snapshot)){showV12Expired(snapshot);return;}
+ if(snapshot.key){try{const saved=JSON.parse(localStorage.getItem(snapshot.key)||'null');if(Array.isArray(saved))snapshot={...snapshot,values:saved};}catch{}}
  sharedViewerContext=snapshot;
  const {context,values,fields,person,notice}=snapshot;
  formView.hidden=true;formBack.hidden=true;readerMain.hidden=true;readerView.hidden=true;backReading.hidden=true;sharedView.hidden=false;sharedBack.hidden=false;

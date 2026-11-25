@@ -11,8 +11,9 @@ const docs=[
  {out:'page-list.html',name:'页面清单',intro:'按后台、小程序、弹窗和公共能力定位，不把流程节点当成独立页面。',files:['01-页面清单.md']},
  {out:'flows.html',name:'全程流程图',intro:'配置、暂存签署、统一提交、原订单及查询共9条流程，可离线缩放拖动。',files:['02-全程流程图.md']},
  {out:'development-spec.html',name:'完整需求方案',intro:'按页面查字段、来源、操作和校验；跨页规则集中维护，正文不夹聊天和阶段记录。',files:['00-文档信息与需求背景.md','03-后台逐页功能方案.md','05-小程序逐页功能方案.md','06-公共业务规则.md']},
- {out:'acceptance.html',name:'开发与验收',intro:'研发依赖和43项验收预期；清单不代表真实接口或全部页面已经验收通过。',files:['04-开发核对与验收清单.md']},
- {out:'changes.html',name:'项目内迭代新增V1.1',intro:'对照已交付研发评审目录，只标实质业务和交互变化；21项变动可逐项定位，区分业务变化、规则细化与文档完善。',files:['08-V1.1迭代对照.md']},
+ {out:'acceptance.html',name:'开发与验收',intro:'研发依赖、既有验收及V1.2新增验收预期；清单不代表真实接口或全部页面已经验收通过。',files:['04-开发核对与验收清单.md']},
+ {out:'changes.html',name:'项目内迭代新增V1.1',intro:'对照已交付研发评审目录，只标实质业务和交互变化；23项变动可逐项定位，区分业务变化、规则细化与文档完善。',files:['08-V1.1迭代对照.md']},
+ {out:'changes-v1.2.html',name:'V1.2新增需求',intro:'换人后重新分享签署：资料修改、旧签名与授权失效、重新分享及验收要求。',files:['09-V1.2迭代对照.md']},
  {out:'pending.html',name:'待确认与实施边界',intro:'业务未定、用户暂缓、已定待接入分开处理，不把接口未做误当业务未确认。',files:['07-待确认与实施边界.md']}
 ];
 const mdToHtml=Object.fromEntries(docs.flatMap(d=>d.files.map(f=>[f,d.out])));
@@ -100,9 +101,9 @@ await fs.writeFile(path.join(root,'index.html'),page('index.html','方案总览'
 const aiFiles=(await fs.readdir(aiDir)).filter(f=>f.endsWith('.md'));
 const aiBody=`<article class="doc"><h2 id="ai">给开发AI的读取方式</h2><p>先给页面清单，确定页面号；再给下列对应片段，按需补公共规则与未决清单。片段由MD自动生成，不另维护。</p><p>例如只修改待付款底部按钮：读取C03.md、C07.md、K06.md即可。不要将整个旧会话和全部历史文件重新塞入上下文。</p><ul class="source-list">${aiFiles.map(f=>`<li><a href="assets/ai-pages/${f}">${f}</a></li>`).join('')}</ul><p><a href="PRD｜赛事活动报名_整理评审稿_20261110.md">确需一次读取完整PRD</a> · <a href="07-待确认与实施边界.md">待确认与实施边界</a></p></article>`;
 await fs.writeFile(path.join(root,'ai-reading.html'),page('ai-reading.html','开发AI按页读取','先定位，再读相关页与公共规则，降低一次读取和重复理解的负担。',aiBody,[{id:'ai',label:'页级Markdown'}]));
-const full=['# 赛事活动报名｜完整PRD（自动生成）\n\nV3.7 赛事活动报名。页面规则、业务流程与验收要求。\n',...['00-文档信息与需求背景.md','03-后台逐页功能方案.md','05-小程序逐页功能方案.md','06-公共业务规则.md','01-页面清单.md','02-全程流程图.md','04-开发核对与验收清单.md','07-待确认与实施边界.md','08-V1.1迭代对照.md'].map(f=>docs.find(d=>d.files.includes(f))).map(()=>null)];
+const full=['# 赛事活动报名｜完整PRD（自动生成）\n\nV3.7 赛事活动报名。页面规则、业务流程与验收要求。\n',...['00-文档信息与需求背景.md','03-后台逐页功能方案.md','05-小程序逐页功能方案.md','06-公共业务规则.md','01-页面清单.md','02-全程流程图.md','04-开发核对与验收清单.md','07-待确认与实施边界.md','08-V1.1迭代对照.md','09-V1.2迭代对照.md'].map(f=>docs.find(d=>d.files.includes(f))).map(()=>null)];
 // Read the individual sources exactly once, without introducing a separate editable PRD.
-const fullParts=await Promise.all(['00-文档信息与需求背景.md','03-后台逐页功能方案.md','05-小程序逐页功能方案.md','06-公共业务规则.md','01-页面清单.md','02-全程流程图.md','04-开发核对与验收清单.md','07-待确认与实施边界.md','08-V1.1迭代对照.md'].map(f=>fs.readFile(path.join(root,f),'utf8')));
+const fullParts=await Promise.all(['00-文档信息与需求背景.md','03-后台逐页功能方案.md','05-小程序逐页功能方案.md','06-公共业务规则.md','01-页面清单.md','02-全程流程图.md','04-开发核对与验收清单.md','07-待确认与实施边界.md','08-V1.1迭代对照.md','09-V1.2迭代对照.md'].map(f=>fs.readFile(path.join(root,f),'utf8')));
 await fs.writeFile(path.join(root,'PRD｜赛事活动报名_整理评审稿_20261110.md'),full[0]+'\n\n'+fullParts.join('\n\n---\n\n'));
 await fs.writeFile(path.join(root,'assets/search-index.json'),JSON.stringify(searchEntries,null,2));
 await fs.writeFile(path.join(root,'assets/html-build-audit.json'),JSON.stringify({pages:['index.html',...docs.map(d=>d.out),'ai-reading.html'],flows:audit,sourceFiles:Object.keys(mdToHtml),aiFiles,reference:'支付配置化方案文档样式与离线流程图交互'},null,2));

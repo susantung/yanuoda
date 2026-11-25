@@ -4,9 +4,11 @@ const signatureBack=document.createElement('button');signatureBack.className='re
 let signaturePerson=null,signatureStrokes=[],signatureDrawing=false,signatureResize=null;
 function closeSignature(){if(typeof sharedViewerContext!=='undefined'&&sharedViewerContext){readerPhone.classList.remove('is-signing');readerNav.removeAttribute('title');signatureView.hidden=true;signatureBack.hidden=true;signaturePerson=null;openSharedRegistration(sharedViewerContext);return;}readerPhone.classList.remove('is-signing');readerNav.removeAttribute('title');signatureView.hidden=true;signatureBack.hidden=true;formView.hidden=false;formBack.hidden=false;readerNav.textContent='填写参赛资料';signaturePerson=null;updateSignatureEntries();}
 function openSignature(person){
+ if(typeof sharedViewerContext!=='undefined'&&sharedViewerContext&&!validV12Share(sharedViewerContext)){showV12Expired(sharedViewerContext);return;}
  if(!registrationDataSaved()){formMessage('请先暂存资料，再进行签署',true);return;}
  const saved=formSignatureRecords[person];const validSaved=saved&&saved.name===formValues[person].name;if(!validSaved&&!validateRegistration(true))return;if(validSaved)formSignedNames[person]=saved.name;
  if(signatureResize)signatureResize.disconnect();signaturePerson=person;signatureStrokes=validSaved?JSON.parse(JSON.stringify(saved.strokes)):[];signatureDrawing=false;
+ v12SigningContext={key:formKey(),person,revision:v12Revision(formKey(),person)};
  const explanation=formContext.project.signatureExplanation||'';
  signatureView.innerHTML='<div class="sign-workspace"><canvas class="sign-pad" aria-label="手写签名区"></canvas></div><div class="sign-bottom">'+(explanation.trim()?'<div class="sign-explanation" tabindex="0" aria-label="签署说明">'+escapeHtml(explanation)+'</div>':'')+'<p class="sign-message" role="status"></p><footer class="sign-actions"><button class="sign-clear">清空</button><button class="sign-confirm">确认签署</button></footer></div>';
  formView.hidden=true;formBack.hidden=true;signatureView.hidden=false;signatureBack.hidden=false;readerPhone.classList.add('is-signing');readerNav.textContent=readerMain.querySelector('h1').textContent;readerNav.title=readerNav.textContent;
@@ -31,8 +33,9 @@ signatureBack.addEventListener('click',closeSignature);
 signatureView.addEventListener('click',e=>{
  if(e.target.closest('.sign-clear')){signatureStrokes=[];drawSignature();signatureView.querySelector('.sign-message').textContent='';}
  if(e.target.closest('.sign-confirm')){
+  if(!validV12Signing()){showV12Expired(sharedViewerContext);return;}
   if(!signatureStrokes.some(stroke=>stroke.length>1&&stroke.some(point=>Math.hypot(point.x-stroke[0].x,point.y-stroke[0].y)>.015))){signatureView.querySelector('.sign-message').textContent='请先完成签名';return;}
-  const records=formSignatureRecords.slice();records[signaturePerson]={name:formValues[signaturePerson].name,strokes:JSON.parse(JSON.stringify(signatureStrokes)),confirmedAt:new Date().toISOString()};
+  const records=formSignatureRecords.slice();records[signaturePerson]={identity:formValues[signaturePerson].identity||'',name:formValues[signaturePerson].name,strokes:JSON.parse(JSON.stringify(signatureStrokes)),confirmedAt:new Date().toISOString()};
   try{localStorage.setItem(formKey()+':signatures',JSON.stringify(records));}catch{signatureView.querySelector('.sign-message').textContent='签署保存失败，请重试';return;}
   formSignatureRecords=records;formSignedNames[signaturePerson]=formValues[signaturePerson].name;if(typeof recordSignatureSaved==='function')recordSignatureSaved();closeSignature();
   if(typeof sharedViewerContext!=='undefined'&&sharedViewerContext){const feedback=sharedView.querySelector('.shared-signature-feedback');feedback.textContent='签署成功';feedback.scrollIntoView({block:'center'});}else formMessage('签署成功');
