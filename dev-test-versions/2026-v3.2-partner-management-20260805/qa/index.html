@@ -23,9 +23,9 @@
 </head>
 <body>
 <aside class="sidebar">
-  <h2>V3.2 QA 测试总览</h2><div class="sub">最新回归 2026-11-14 · R07执行中</div>
+  <h2>V3.2 QA 测试总览</h2><div class="sub">最新回归 2026-11-27 · R10</div>
   <div class="group">方案入口</div>
-  <a id="return-overview" href="../index.html" data-source-href="../../2026-v3.2-partner-management-20260805/index.html">← 返回方案总览</a>
+  <a id="return-overview" href="../index.html" data-source-href="../index.html">← 返回方案总览</a>
   <div class="group">先看结论</div>
   <a href="#latest-r07" class="current">最新回归结论</a><a href="#overview">历史回归结论</a><a href="#regression-20260829">本轮执行场景</a><a href="#p0">当前问题</a><a href="#issues">首轮问题档案</a>
   <div class="group">执行与证据</div>
@@ -42,7 +42,7 @@
     <div class="hero-actions"><a class="btn" href="#p0">查看当前问题</a><a class="btn" href="#test-plan">查看测试方案</a><button class="btn" type="button" onclick="window.print()">打印 / 导出 PDF</button></div>
   </header>
 
-  <section class="section" id="latest-r07"><div class="callout"><strong>R09后台7项补验：</strong>3项导出已实读xlsx并核验通过；4项人工确认审计仍待可核验证据，无新增缺陷。<a href="R09-20261114-增补后台导出与审计补验.md">查看补验结果</a></div><div class="section-title"><h2>2026-11-14 最新回归状态</h2><p>历史7项已复测；最新范围仅增补后台联动</p></div><div class="metrics"><div class="metric"><strong>49</strong><span>原54用例累计通过，含历史沿用</span></div><div class="metric danger"><strong>5</strong><span>当前缺陷：原版2项＋共享增补3项</span></div><div class="metric"><strong>34</strong><span>统一问题池已验证修复</span></div><div class="metric"><strong>40</strong><span>问题池总数，另1项按方案关闭</span></div></div><div class="callout"><strong>上版7项：5项已验证修复，2项仍存在。</strong>修复BUG-033、040、041、042、043；BUG-038仅其他收入详情长单号仍换行，BUG-039原1470×724仍超出首屏。新增PM-BUG-010为其他收入流水显示账户号，金额记账未发现异常。</div><div class="callout"><strong>执行范围：</strong>原54用例累计49通过、4有问题（W-08、F-06、F-05、W-09）、1阻塞（T-02审计信息回查）；这不是11月14日54项全部重跑完成。用户最新已取消原54条全量重跑，仅检查增补新增部分的后台关联；其他累计项保留原验证日期。<a href="R07-20261114-历史全量回归.md">本轮执行记录</a></div></section>
+  <section class="section" id="latest-r07"><div class="section-title"><h2>2026-11-27 R10 最新回归状态</h2><p>仅原缺陷与增补后台关联，历史54条不全量重跑</p></div><div class="metrics"><div class="metric"><strong>52</strong><span>原54用例累计通过，含历史沿用</span></div><div class="metric danger"><strong>2</strong><span>当前缺陷：BUG-039、PM-BUG-003</span></div><div class="metric"><strong>37</strong><span>统一问题池已验证修复</span></div><div class="metric"><strong>40</strong><span>问题池总数，另1项按方案关闭</span></div></div><div class="callout"><strong>R10：BUG-038及共享PM-BUG-008/010已验证修复。</strong>BUG-039原1470×724仍超出可视区；PM-BUG-003新合并回款仍丢失多负责人组合。<a href="../../2026-v3.2-partner-management-supplement-20261011/qa/R10-20261127-开发修复回归.md">查看本轮记录</a></div><div class="callout">原54用例累计52通过、1有问题（W-09）、1阻塞（T-02）。W-08/F-05/F-06本轮修复通过，其他沿用原执行日期。增补报告另有PM-BUG-005/006，未在原版问题池重复新增。所有临时配置已恢复；发布状态见项目发布记录。</div></section>
 
   <section class="section" id="regression-20260831"><div class="section-title"><h2>2026-08-31～09-01 历史轮次全链路补测</h2><p>只采信本轮通过 QA 页面实际录入、提交和跨端回查的新数据</p></div><div class="card"><div class="markdown-body"><table><thead><tr><th>范围</th><th>已完成验证</th><th>当前有问题 / 未跑</th></tr></thead><tbody><tr><td>档案、账户与售票校验</td><td>B-01～B-08 全部通过：建档、唯一临客、禁用、额度限制、默认账户切换均已实测。</td><td>页面样式：UI-04 / BUG-041。</td></tr><tr><td>后台充值与导入</td><td>R-02～R-11 通过；合法导入生成 <code>RG3508249769984294913</code>，重复流水号被拒绝，51 行导入被拦截并提示“导入非空数据超过五十行”。</td><td>有问题：R-01 / BUG-040。</td></tr><tr><td>资金流水、回款与迁移</td><td>已回款订单退款生成正数退款与等额负数退款调账；不同快照多订单出现二次确认；迁移订单售后展示目标伙伴和变更记录；部分回款被拦截且未写入。</td><td>有问题：F-02 / BUG-043。</td></tr><tr><td>对帐单与窗口</td><td>按日/按月默认值、标题、到款口径、窗口充值/其他收入记录及点击查询后的充值报表均已回查；对帐单位于报表中心，符合方案；BUG-023、BUG-032、BUG-034 修复。</td><td>有问题：W-10 / BUG-033、W-08 / BUG-038、UI-01 / BUG-039、UI-05 / BUG-042。</td></tr></tbody></table></div></div></section>
 
@@ -53,10 +53,10 @@
     <div class="reading-path"><div class="path-step"><b>1</b><strong>先看当前问题</strong><span>确认当前不能放过的业务与数据问题。</span></div><div class="path-step"><b>2</b><strong>再按模块筛选</strong><span>分给对应开发并展开查看复现证据。</span></div><div class="path-step"><b>3</b><strong>最后看测试台账</strong><span>按样例和顺序继续执行、复测与退出。</span></div></div>
   </section>
 
-  <section class="section" id="p0"><div class="section-title"><h2>当前确认问题</h2><p>2026-11-14 R07实测；已修复5项退出当前列表</p></div><div class="module-grid"><button class="module-card" type="button" onclick="document.getElementById('bug-038').scrollIntoView()"><span>BUG-038 · P3</span><strong>其他收入详情长单号换行</strong><small>2026-11-14仍复现</small></button><button class="module-card" type="button" onclick="document.getElementById('bug-039').scrollIntoView()"><span>BUG-039 · P3</span><strong>新增弹窗在1470×724超出首屏</strong><small>2026-11-14仍复现</small></button><button class="module-card" type="button" onclick="document.getElementById('pm-bug-010').scrollIntoView()"><span>PM-BUG-010 · P2</span><strong>其他收入流水显示合作伙伴账户号</strong><small>显示字段问题，余额及到账实测正确</small></button><button class="module-card" type="button" onclick="document.getElementById('pm-bug-003').scrollIntoView()"><span>PM-BUG-003 · P1</span><strong>临客回款报表丢失订单负责人快照并错误合并分组</strong><small>与增补报告共用同一问题编号</small></button><button class="module-card" type="button" onclick="document.getElementById('pm-bug-008').scrollIntoView()"><span>PM-BUG-008 · P2</span><strong>部分退款迁移后目标退款流水把订单号显示为售后单号</strong><small>与增补报告共用同一问题编号</small></button></div></section>
+  <section class="section" id="p0"><div class="section-title"><h2>当前确认问题</h2><p>2026-11-27 R10实测；当前仅BUG-039、PM-BUG-003</p></div><div class="module-grid"><button class="module-card" type="button" onclick="document.getElementById('bug-038').scrollIntoView()"><span>BUG-038 · P3</span><strong>其他收入详情长单号换行</strong><small>2026-11-14仍复现</small></button><button class="module-card" type="button" onclick="document.getElementById('bug-039').scrollIntoView()"><span>BUG-039 · P3</span><strong>新增弹窗在1470×724超出首屏</strong><small>2026-11-14仍复现</small></button><button class="module-card" type="button" onclick="document.getElementById('pm-bug-010').scrollIntoView()"><span>PM-BUG-010 · P2</span><strong>其他收入流水显示合作伙伴账户号</strong><small>显示字段问题，余额及到账实测正确</small></button><button class="module-card" type="button" onclick="document.getElementById('pm-bug-003').scrollIntoView()"><span>PM-BUG-003 · P1</span><strong>临客回款报表丢失订单负责人快照并错误合并分组</strong><small>与增补报告共用同一问题编号</small></button><button class="module-card" type="button" onclick="document.getElementById('pm-bug-008').scrollIntoView()"><span>PM-BUG-008 · P2</span><strong>部分退款迁移后目标退款流水把订单号显示为售后单号</strong><small>与增补报告共用同一问题编号</small></button></div></section>
 
   <section class="section" id="issues">
-    <div class="section-title"><h2>统一问题池</h2><p>统一问题池40项：当前5、已验证修复34、方案关闭1；PM-BUG-003/008/010与增补报告共用编号</p></div>
+    <div class="section-title"><h2>统一问题池</h2><p>统一问题池40项：当前2、已验证修复37、方案关闭1；共享编号沿原记录更新，旧轮次保留追溯</p></div>
     <div class="module-grid" style="margin-bottom:14px"><button class="module-card" type="button" data-module-filter="资金流水">
     <span>资金流水</span><strong>8</strong><small>当前 2 项</small>
   </button><button class="module-card" type="button" data-module-filter="档案与账户">
@@ -71,18 +71,18 @@
     <span>订单、退款与临客</span><strong>4</strong><small>当前 0 项</small>
   </button></div>
     <div class="filter-bar"><input id="issue-search" type="search" placeholder="搜索缺陷号、标题、流程、入口或影响"><select id="severity-filter"><option value="all">全部级别</option><option value="P0">仅 P0</option><option value="P1">仅 P1</option><option value="P2">仅 P2</option></select><select id="category-filter"><option value="all">全部模块</option><option value="资金流水">资金流水</option><option value="档案与账户">档案与账户</option><option value="后台充值与导入">后台充值与导入</option><option value="合作伙伴对帐单">合作伙伴对帐单</option><option value="售票窗口充值">售票窗口充值</option><option value="订单、退款与临客">订单、退款与临客</option></select><select id="type-filter"><option value="all">全部类型</option><option value="function">功能逻辑</option><option value="visual">页面样式</option></select><select id="status-filter"><option value="all">全部状态</option><option value="active">当前缺陷</option><option value="fixed">已验证修复</option><option value="baseline">方案调整后关闭</option></select><button class="btn" id="reset-filter" type="button">重置</button><span class="filter-count" id="filter-count">显示 40 / 40 项</span></div>
-    <div id="issue-list"><details class="issue-card" id="pm-bug-010" data-severity="P2" data-category="资金流水" data-search="pm-bug-010 其他收入 账户号"><summary><span class="issue-id">PM-BUG-010</span><span class="issue-title">其他收入资金流水账户号未按规则显示“—”</span><span class="chip category-chip">资金流水</span><span class="chip severity p2">P2</span><span class="chevron">⌄</span></summary><div class="issue-body markdown-body"><p>2026-11-14 R07新测：AA本轮四笔收入流水均显示账号A3619146993810292737；其他收入标签仍如此，而收入详情账号为—。原V3.2第8章及F-06要求无账户收入两字段显示—，增补未改变此显示规则。账户仅增加充值0.08，收入0.04未进余额，对账正确，不宣称账务错误。</p><p>复现：后台→合作伙伴管理→资金流水→其他收入→查询AA→核对收入RG3619836336061300738等四笔。<a href="evidence/PM-BUG-010-R07-其他收入流水账户号.png">本轮证据</a>。沿用增补同一编号，不重复报号。</p></div></details>
+    <div id="issue-list"><details class="issue-card" id="pm-bug-010" data-severity="P2" data-category="资金流水" data-search="pm-bug-010 其他收入 账户号"><summary><span class="issue-id">PM-BUG-010</span><span class="issue-title">其他收入资金流水账户号未按规则显示“—”</span><span class="chip category-chip">资金流水</span><span class="chip severity p2">P2</span><span class="chevron">⌄</span></summary><div class="issue-body markdown-body"><p><strong>2026-11-27 R10：已验证修复。</strong>2026-11-27 R10：R10两入口各执行仅其他收入/充值加其他收入共4笔：其他收入各0.01，B11账户号/类型均—；W15亦—；W15售票组合收入RG3639041694646353924正确关联充值RG3639041694646353922；AA预付款只增加两笔充值共0.02，从0.07到0.09；W16充值0.02+其他收入0.04=0.06，总计含公共回款0.03为0.09，迁移调账未计实收。原4条历史收入行也已修正—。 B08新增仅两笔正充值RG3639041419768446978/RG3639041694646353922各0.01，没有0金额账户充值；B10四笔收入记录类型—；B12按日2026-11-27到账0.02、当前预付0.09，未把收入0.04计入到账。 <a href="../../2026-v3.2-partner-management-supplement-20261011/qa/R10-20261127-开发修复回归.md">本轮回归证据与单据</a></p><p>以下为旧轮次复现记录，保留追溯：</p><p>2026-11-14 R07新测：AA本轮四笔收入流水均显示账号A3619146993810292737；其他收入标签仍如此，而收入详情账号为—。原V3.2第8章及F-06要求无账户收入两字段显示—，增补未改变此显示规则。账户仅增加充值0.08，收入0.04未进余额，对账正确，不宣称账务错误。</p><p>复现：后台→合作伙伴管理→资金流水→其他收入→查询AA→核对收入RG3619836336061300738等四笔。<a href="evidence/PM-BUG-010-R07-其他收入流水账户号.png">本轮证据</a>。沿用增补同一编号，不重复报号。</p></div></details>
   <details class="issue-card" id="bug-033" data-severity="P1" data-category="售票窗口充值" data-search="bug-033 售票窗口充值报表默认当天但不自动加载 充值报表 首次进入 默认当天 查询">
     <summary><span class="issue-id">BUG-033</span><span class="issue-title">售票窗口充值报表默认当天但不自动加载</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p1">P1</span><span class="chevron" aria-hidden="true">⌄</span></summary>
     <div class="issue-body markdown-body"><p><strong>2026-11-14 R07：</strong>已验证修复：独立标签首次进入充值报表，未点查询已自动显示2026-11-14当天明细，AA充值0.08、收入0.04、小计0.12。</p><ul><li>前置数据：本轮窗口扫码付充值 <code>RG3505575757704495106</code> 已成功写入。</li><li>复现步骤：进入“合作伙伴 → 充值报表”，日期默认 2026-08-29，不修改任何条件。</li><li>历史复现：首次显示“暂无数据、制单人：-、打印时间：-”；点击“查询”后立即显示本轮 3.00 元扫码付及柜台号。</li><li>方案预期：默认加载当天数据，无需二次点击查询。</li><li>历史状态：2026-08-31 浏览器实际复现。</li></ul></div>
   </details>
   <details class="issue-card" id="bug-038" data-severity="P3" data-category="售票窗口充值" data-search="bug-038 售票窗口 账户充值 其他收入 详情 弹窗 标签 长单号 换行 样式">
     <summary><span class="issue-id">BUG-038</span><span class="issue-title">其他收入详情长单号仍换行（充值详情已正常）</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p3">P3</span><span class="chevron" aria-hidden="true">⌄</span></summary>
-    <div class="issue-body markdown-body"><p><strong>2026-11-14 R07：</strong>仍有缺陷（部分修复）：1280×800账户充值详情单号及标签已单行；其他收入详情本轮RG3619836696838553604仍拆行，保留此项，不能整体关闭。</p><ul><li>所属流程：FL-07～FL-09，W-08。</li><li>QA入口：售票窗口 → 合作伙伴 → 账户充值记录 / 其他收入记录 → 查看。</li><li>历史复现：充值记录 <code>RG3508351526349471746</code>、其他收入记录 <code>RG3508351526349471748</code> 的详情弹窗中，长单号末位折行；“对接负责人”“柜台号/POS编号”“其他收入金额”等标签也被强制换行。</li><li>方案预期：详情字段双列整齐展示；短标签和单号完整单行显示；备注说明保留独立整行展示。</li><li>影响：页面阅读和人工核对效率受影响，不涉及金额、状态、记录关系或业务处理。</li><li>历史状态：2026-08-31 浏览器实际复现。</li></ul></div>
+    <div class="issue-body markdown-body"><p><strong>2026-11-27 R10：已验证修复。</strong>1470×724复测其他收入详情RG3619087757621346310，标签不换行，20位单号单行，备注及关联号可读。 <a href="../../2026-v3.2-partner-management-supplement-20261011/qa/R10-20261127-开发修复回归.md">本轮回归证据与单据</a></p><p>以下为旧轮次复现记录，保留追溯：</p><p><strong>2026-11-14 R07：</strong>仍有缺陷（部分修复）：1280×800账户充值详情单号及标签已单行；其他收入详情本轮RG3619836696838553604仍拆行，保留此项，不能整体关闭。</p><ul><li>所属流程：FL-07～FL-09，W-08。</li><li>QA入口：售票窗口 → 合作伙伴 → 账户充值记录 / 其他收入记录 → 查看。</li><li>历史复现：充值记录 <code>RG3508351526349471746</code>、其他收入记录 <code>RG3508351526349471748</code> 的详情弹窗中，长单号末位折行；“对接负责人”“柜台号/POS编号”“其他收入金额”等标签也被强制换行。</li><li>方案预期：详情字段双列整齐展示；短标签和单号完整单行显示；备注说明保留独立整行展示。</li><li>影响：页面阅读和人工核对效率受影响，不涉及金额、状态、记录关系或业务处理。</li><li>历史状态：2026-08-31 浏览器实际复现。</li></ul></div>
   </details>
   <details class="issue-card" id="bug-039" data-severity="P3" data-category="售票窗口充值" data-search="bug-039 售票窗口 新增合作伙伴 弹窗 可视区 页面滚动 样式">
     <summary><span class="issue-id">BUG-039</span><span class="issue-title">售票窗口新增合作伙伴弹窗超出可视区</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p3">P3</span><span class="chevron" aria-hidden="true">⌄</span></summary>
-    <div class="issue-body markdown-body"><p><strong>2026-11-14 R07：</strong>仍有缺陷：按原1470×724复测，新增弹窗顶部100、底部776，按钮底部732，首屏被截。1280×800可见不替代原尺寸验证。已取消草稿。</p><ul><li>所属流程：FL-01，W-01。</li><li>QA入口：售票窗口 → 合作伙伴 → 合作伙伴充值 → 新增。</li><li>历史复现：当前 QA 售票窗口可视区为 <code>1470×724</code>；弹窗为 <code>600×752px</code>，外层实际内容高 <code>852px</code>。底部“取消 / 确定”需依赖页面级滚动才能完整进入可视区。</li><li>方案/原型预期：同宽原型弹窗为 <code>600×582px</code>，字段、备注与底部操作均应在首屏完整显示。</li><li>影响：桌面端字段与操作无法同时查看，属于定位、尺寸和滚动承载问题；不影响数据逻辑。</li><li>历史状态：2026-08-31 浏览器实际复现。</li></ul></div>
+    <div class="issue-body markdown-body"><p><strong>2026-11-27 R10：当前缺陷。</strong>1470×724新增伙伴弹窗top100/bottom776，底部按钮bottom732仍超出724，未提供有效内部滚动。草稿取消。 <a href="../../2026-v3.2-partner-management-supplement-20261011/qa/R10-20261127-开发修复回归.md">本轮回归证据与单据</a></p><p>以下为旧轮次复现记录，保留追溯：</p><p><strong>2026-11-14 R07：</strong>仍有缺陷：按原1470×724复测，新增弹窗顶部100、底部776，按钮底部732，首屏被截。1280×800可见不替代原尺寸验证。已取消草稿。</p><ul><li>所属流程：FL-01，W-01。</li><li>QA入口：售票窗口 → 合作伙伴 → 合作伙伴充值 → 新增。</li><li>历史复现：当前 QA 售票窗口可视区为 <code>1470×724</code>；弹窗为 <code>600×752px</code>，外层实际内容高 <code>852px</code>。底部“取消 / 确定”需依赖页面级滚动才能完整进入可视区。</li><li>方案/原型预期：同宽原型弹窗为 <code>600×582px</code>，字段、备注与底部操作均应在首屏完整显示。</li><li>影响：桌面端字段与操作无法同时查看，属于定位、尺寸和滚动承载问题；不影响数据逻辑。</li><li>历史状态：2026-08-31 浏览器实际复现。</li></ul></div>
   </details>
   <details class="issue-card" id="bug-040" data-severity="P1" data-category="后台充值与导入" data-search="bug-040 充值申请 账户类型 筛选 处理操作 充值状态">
     <summary><span class="issue-id">BUG-040</span><span class="issue-title">充值申请筛选缺少账户类型</span><span class="chip category-chip">后台充值与导入</span><span class="chip severity p1">P1</span><span class="chevron" aria-hidden="true">⌄</span></summary>
@@ -704,7 +704,7 @@
 <li>状态：已复现</li>
 </ul>
 </div>
-  </details></div><details class="issue-card" id="pm-bug-003" data-severity="P1" data-category="售票窗口充值" data-search="PM-BUG-003 临客回款报表丢失订单负责人快照并错误合并分组"><summary><span class="issue-id">PM-BUG-003</span><span class="issue-title">临客回款报表丢失订单负责人快照并错误合并分组</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p1">P1</span><span class="chevron">⌄</span></summary><div class="issue-body markdown-body"><p><strong>2026-11-14真实回归，共享现有问题编号。</strong></p><ul><li>入口：售票临时客户造单→公共临时客户回款→充值报表</li><li>前置：本轮A/B分别由管理员/张悦轩负责，公共临时客户挂帐订单各0.01，分别普通现金结清</li><li>预期：20号方案W16按合作类型+伙伴名称+负责人快照分组，负责人不同分别成组；公司收入不分摊个人。</li><li>实际：订单两位负责人正确，报表公共临客客户充值0.02却被合并入负责人空白组，且与公司收入0.01同组小计0.03。 补测多负责人组合管理员+张悦轩，目标充值RG3619136531269959684前后台负责人均空；W16公共临客0.11→0.13并入原空负责人组。test666来源及负数归属正确。 再测甲250来源由乙结临客200及收入50，目标RG3619664726348021764对接负责人仍为空，原订单负责人管理员；乙当日报表公共临客也为空负责人，重复现有缺陷。</li><li>影响：负责人维度的回款归属及小计错误，无法按原订单负责人核对；本次总额未发现差错。</li><li>恢复：本轮订单及回款保留追溯；无配置修改。</li><li>回归要求：修复后同一两位负责人及多负责人组合分别回归，核对充值分组与公司收入口径。</li></ul><p><a href="evidence/PM-BUG-003-临客负责人报表空白合并.png">PM-BUG-003-临客负责人报表空白合并.png</a> · <a href="evidence/PM-BUG-003-订单两位负责人快照.png">PM-BUG-003-订单两位负责人快照.png</a> · <a href="evidence/PM-BUG-003-多负责人回款仍并入空负责人组.png">PM-BUG-003-多负责人回款仍并入空负责人组.png</a> · <a href="evidence/跨人回款200及收入50-最终回查.png">跨人回款200及收入50-最终回查.png</a></p></div></details><details class="issue-card" id="pm-bug-008" data-severity="P2" data-category="资金流水" data-search="PM-BUG-008 部分退款迁移后目标退款流水把订单号显示为售后单号"><summary><span class="issue-id">PM-BUG-008</span><span class="issue-title">部分退款迁移后目标退款流水把订单号显示为售后单号</span><span class="chip category-chip">资金流水</span><span class="chip severity p2">P2</span><span class="chevron">⌄</span></summary><div class="issue-body markdown-body"><p><strong>2026-11-14真实回归，共享现有问题编号。</strong></p><ul><li>入口：窗口临客迁移后查询后台目标账户资金流水</li><li>前置：Q两票0.02挂帐，退一张0.01，实际售后单LYAS3619047264581386240</li><li>预期：迁移承接原消费及退款，目标退款流水显示实际LYAS售后单号并可追溯原退款。</li><li>实际：Q总额0.02、退款0.01、净额0.01，公共账户迁移调账+0.01；目标消费-0.02和退款+0.01，挂帐-0.01正确。但目标退款流水的售后单号显示DD261114033701001001s，实际应为LYAS3619047264581386240。原退款流水及原账户迁移调账备注均为正确LYAS号。</li><li>影响：净金额正确，但目标退款流水错号，不能按显示的售后号追溯原退款；未查数据库存储。</li><li>恢复：未改支付和资源配置；测试订单、退款及迁移保留，未调账抹平。</li><li>回归要求：部分退款后迁移，对照原LYAS号、目标退款流水号及详情；同时核验净额和不计实收。</li></ul><p><a href="evidence/PM-BUG-008-迁移退款流水误用订单号.png">PM-BUG-008-迁移退款流水误用订单号.png</a> · <a href="evidence/PM-BUG-008-原退款与迁移平账售后号正确.png">PM-BUG-008-原退款与迁移平账售后号正确.png</a></p></div></details><div class="empty-results" id="empty-results">没有符合当前条件的问题。</div>
+  </details></div><details class="issue-card" id="pm-bug-003" data-severity="P1" data-category="售票窗口充值" data-search="PM-BUG-003 临客回款报表丢失订单负责人快照并错误合并分组"><summary><span class="issue-id">PM-BUG-003</span><span class="issue-title">临客合并回款未保留多负责人组合</span><span class="chip category-chip">售票窗口充值</span><span class="chip severity p1">P1</span><span class="chevron">⌄</span></summary><div class="issue-body markdown-body"><p><strong>2026-11-27 R10：当前缺陷。</strong>2026-11-27 R10：新订单A管理员0.01、B张悦轩0.01，合并回款0.02+公司收入0.01，现金0.04找零0.01。W13/B08目标充值负责人仅张悦轩；W16挂帐充值0.02也仅张悦轩，而正式规则要求保留管理员＋张悦轩多负责人组合。公司收入0.01独立，公司收入及收款总额0.03正确。 <a href="../../2026-v3.2-partner-management-supplement-20261011/qa/R10-20261127-开发修复回归.md">本轮回归证据与单据</a></p><p>以下为旧轮次复现记录，保留追溯：</p><p><strong>2026-11-14真实回归，共享现有问题编号。</strong></p><ul><li>入口：售票临时客户造单→公共临时客户回款→充值报表</li><li>前置：本轮A/B分别由管理员/张悦轩负责，公共临时客户挂帐订单各0.01，分别普通现金结清</li><li>预期：20号方案W16按合作类型+伙伴名称+负责人快照分组，负责人不同分别成组；公司收入不分摊个人。</li><li>实际：订单两位负责人正确，报表公共临客客户充值0.02却被合并入负责人空白组，且与公司收入0.01同组小计0.03。 补测多负责人组合管理员+张悦轩，目标充值RG3619136531269959684前后台负责人均空；W16公共临客0.11→0.13并入原空负责人组。test666来源及负数归属正确。 再测甲250来源由乙结临客200及收入50，目标RG3619664726348021764对接负责人仍为空，原订单负责人管理员；乙当日报表公共临客也为空负责人，重复现有缺陷。</li><li>影响：负责人维度的回款归属及小计错误，无法按原订单负责人核对；本次总额未发现差错。</li><li>恢复：本轮订单及回款保留追溯；无配置修改。</li><li>回归要求：修复后同一两位负责人及多负责人组合分别回归，核对充值分组与公司收入口径。</li></ul><p><a href="evidence/PM-BUG-003-临客负责人报表空白合并.png">PM-BUG-003-临客负责人报表空白合并.png</a> · <a href="evidence/PM-BUG-003-订单两位负责人快照.png">PM-BUG-003-订单两位负责人快照.png</a> · <a href="evidence/PM-BUG-003-多负责人回款仍并入空负责人组.png">PM-BUG-003-多负责人回款仍并入空负责人组.png</a> · <a href="evidence/跨人回款200及收入50-最终回查.png">跨人回款200及收入50-最终回查.png</a></p></div></details><details class="issue-card" id="pm-bug-008" data-severity="P2" data-category="资金流水" data-search="PM-BUG-008 部分退款迁移后目标退款流水把订单号显示为售后单号"><summary><span class="issue-id">PM-BUG-008</span><span class="issue-title">部分退款迁移后目标退款流水把订单号显示为售后单号</span><span class="chip category-chip">资金流水</span><span class="chip severity p2">P2</span><span class="chevron">⌄</span></summary><div class="issue-body markdown-body"><p><strong>2026-11-27 R10：已验证修复。</strong>2026-11-27 R10：本轮新造C两票0.02退一张0.01，与D0.01合并迁移净0.02。目标消费-0.02/-0.01、退款+0.01，退款列为实际LYAS3639028826832437248，可点入原C订单售后单且退款成功；原旧DD格式数据仍保留历史，未据此误判新修复。 <a href="../../2026-v3.2-partner-management-supplement-20261011/qa/R10-20261127-开发修复回归.md">本轮回归证据与单据</a></p><p>以下为旧轮次复现记录，保留追溯：</p><p><strong>2026-11-14真实回归，共享现有问题编号。</strong></p><ul><li>入口：窗口临客迁移后查询后台目标账户资金流水</li><li>前置：Q两票0.02挂帐，退一张0.01，实际售后单LYAS3619047264581386240</li><li>预期：迁移承接原消费及退款，目标退款流水显示实际LYAS售后单号并可追溯原退款。</li><li>实际：Q总额0.02、退款0.01、净额0.01，公共账户迁移调账+0.01；目标消费-0.02和退款+0.01，挂帐-0.01正确。但目标退款流水的售后单号显示DD261114033701001001s，实际应为LYAS3619047264581386240。原退款流水及原账户迁移调账备注均为正确LYAS号。</li><li>影响：净金额正确，但目标退款流水错号，不能按显示的售后号追溯原退款；未查数据库存储。</li><li>恢复：未改支付和资源配置；测试订单、退款及迁移保留，未调账抹平。</li><li>回归要求：部分退款后迁移，对照原LYAS号、目标退款流水号及详情；同时核验净额和不计实收。</li></ul><p><a href="evidence/PM-BUG-008-迁移退款流水误用订单号.png">PM-BUG-008-迁移退款流水误用订单号.png</a> · <a href="evidence/PM-BUG-008-原退款与迁移平账售后号正确.png">PM-BUG-008-原退款与迁移平账售后号正确.png</a></p></div></details><div class="empty-results" id="empty-results">没有符合当前条件的问题。</div>
   </section>
 
   <section class="section" id="coverage">
@@ -1456,15 +1456,15 @@
 <td>F-05</td>
 <td>查询临客迁移流水。</td>
 <td>原流水保留；目标伙伴重建消费/退款流水；公共临客生成调账-往来并可追溯。</td>
-<td>有问题</td>
-<td>2026-11-14 R01：迁移净额正确；部分退款迁移至Q后，目标退款流水把订单DD261114033701001001s显示为售后号，实际LYAS3619047264581386240，沿PM-BUG-008。</td>
+<td>通过</td>
+<td>2026-11-27 R10：PM-BUG-008新样本C订单0.02退0.01，连D订单0.01迁移；目标退款真实LYAS3639028826832437248可打开原售后，目标挂帐-0.02。旧11月14日错误数据未宣称修复。</td>
 </tr>
 <tr>
 <td>F-06</td>
 <td>切换其他收入标签。</td>
 <td>隐藏账户号、账户类型；筛选恢复默认时间。</td>
-<td>有问题</td>
-<td>2026-11-14 R07：PM-BUG-010：收入流水四笔0.01账户号仍显示A3619146993810292737，原规则应为—；筛选项隐藏正常，余额及对账正确。</td>
+<td>通过</td>
+<td>2026-11-27 R10：PM-BUG-010两入口四笔其他收入流水账号/类型均—；收入0.04未进账户，充值0.02使预付0.07→0.09；对账到账0.02，窗口AA收款0.06。</td>
 </tr>
 </tbody></table>
 </div></details>
@@ -1647,15 +1647,15 @@
 <td>W-08</td>
 <td>查询其他收入记录。</td>
 <td>默认当天；包含支付方式、柜台/POS、状态、完成时间和详情。</td>
-<td>有问题</td>
-<td>2026-11-14 R07：仍有缺陷（部分修复）：1280×800账户充值详情单号及标签已单行；其他收入详情本轮RG3619836696838553604仍拆行，保留此项，不能整体关闭。</td>
+<td>通过</td>
+<td>2026-11-27 R10：BUG-038已验证修复；1470×724其他收入详情RG3619087757621346310标签及20位单号均单行。</td>
 </tr>
 <tr>
 <td>W-09</td>
 <td>查询充值报表。</td>
 <td>当前售票员范围；按伙伴/负责人/类型汇总；银行卡按POS、扫码付按柜台号拆列。</td>
 <td>有问题</td>
-<td>2026-11-14 R01：公共临客回款负责人快照丢失并合并为空白组，沿PM-BUG-003；总额核对正常，负责人分组不能判通过。</td>
+<td>2026-11-27 R10：新AB各0.01、负责人管理员/张悦轩，合并回款RG3639024703755730946未保留多负责人组合，前后台及报表只归张悦轩。公司收入0.01独立，总额0.03正确。</td>
 </tr>
 <tr>
 <td>W-10</td>
@@ -2674,15 +2674,15 @@
 <td>F-05</td>
 <td>查询临客迁移流水。</td>
 <td>原流水保留；目标伙伴重建消费/退款流水；公共临客生成调账-往来并可追溯。</td>
-<td>有问题</td>
-<td>2026-11-14 R01：迁移净额正确；部分退款迁移至Q后，目标退款流水把订单DD261114033701001001s显示为售后号，实际LYAS3619047264581386240，沿PM-BUG-008。</td>
+<td>通过</td>
+<td>2026-11-27 R10：PM-BUG-008新样本C订单0.02退0.01，连D订单0.01迁移；目标退款真实LYAS3639028826832437248可打开原售后，目标挂帐-0.02。旧11月14日错误数据未宣称修复。</td>
 </tr>
 <tr>
 <td>F-06</td>
 <td>切换其他收入标签。</td>
 <td>隐藏账户号、账户类型；筛选恢复默认时间。</td>
-<td>有问题</td>
-<td>2026-11-14 R07：PM-BUG-010：收入流水四笔0.01账户号仍显示A3619146993810292737，原规则应为—；筛选项隐藏正常，余额及对账正确。</td>
+<td>通过</td>
+<td>2026-11-27 R10：PM-BUG-010两入口四笔其他收入流水账号/类型均—；收入0.04未进账户，充值0.02使预付0.07→0.09；对账到账0.02，窗口AA收款0.06。</td>
 </tr>
 </tbody></table>
 <h2>8. 后台：临时客户转合作伙伴与订单详情</h2>
@@ -2864,15 +2864,15 @@
 <td>W-08</td>
 <td>查询其他收入记录。</td>
 <td>默认当天；包含支付方式、柜台/POS、状态、完成时间和详情。</td>
-<td>有问题</td>
-<td>2026-11-14 R07：仍有缺陷（部分修复）：1280×800账户充值详情单号及标签已单行；其他收入详情本轮RG3619836696838553604仍拆行，保留此项，不能整体关闭。</td>
+<td>通过</td>
+<td>2026-11-27 R10：BUG-038已验证修复；1470×724其他收入详情RG3619087757621346310标签及20位单号均单行。</td>
 </tr>
 <tr>
 <td>W-09</td>
 <td>查询充值报表。</td>
 <td>当前售票员范围；按伙伴/负责人/类型汇总；银行卡按POS、扫码付按柜台号拆列。</td>
 <td>有问题</td>
-<td>2026-11-14 R01：公共临客回款负责人快照丢失并合并为空白组，沿PM-BUG-003；总额核对正常，负责人分组不能判通过。</td>
+<td>2026-11-27 R10：新AB各0.01、负责人管理员/张悦轩，合并回款RG3639024703755730946未保留多负责人组合，前后台及报表只归张悦轩。公司收入0.01独立，总额0.03正确。</td>
 </tr>
 </tbody></table>
 <h2>11. 售票窗口：下单、退款与公共临客</h2>
@@ -3032,7 +3032,7 @@ const cards=[...document.querySelectorAll('.issue-card')];const search=document.
 const returnOverview=document.getElementById('return-overview');if(decodeURI(location.pathname).includes('/测试与验收/'))returnOverview.href=returnOverview.dataset.sourceHref;
 const statusMap={active:'当前缺陷',fixed:'已验证修复',baseline:'方案调整后关闭'};
 const fixedIds=new Set(['BUG-001','BUG-002','BUG-003','BUG-004','BUG-005','BUG-006','BUG-007','BUG-008','BUG-009','BUG-010','BUG-011','BUG-013','BUG-015','BUG-016','BUG-017','BUG-018','BUG-019','BUG-020','BUG-022','BUG-023','BUG-024','BUG-025','BUG-026','BUG-027','BUG-028','BUG-029','BUG-030','BUG-032','BUG-033','BUG-040','BUG-041','BUG-042','BUG-043']);
-const activeIds=new Set(['BUG-038','BUG-039','PM-BUG-003','PM-BUG-008','PM-BUG-010']);const baselineIds=new Set(['BUG-012']);
+const activeIds=new Set(['BUG-039','PM-BUG-003']);const baselineIds=new Set(['BUG-012']);
 const visualIds=new Set(['BUG-038','BUG-039','BUG-041','BUG-042']);
 cards.forEach(card=>{const id=card.querySelector('.issue-id')?.textContent.trim();const state=activeIds.has(id)?'active':baselineIds.has(id)?'baseline':'fixed';const issueType=visualIds.has(id)?'visual':'function';card.dataset.status=state;card.dataset.type=issueType;const typeBadge=document.createElement('span');typeBadge.className='chip type-chip';typeBadge.textContent=issueType==='visual'?'页面样式':'功能逻辑';card.querySelector('summary .category-chip')?.insertAdjacentElement('afterend',typeBadge);const badge=document.createElement('span');badge.className='chip status-chip status-'+state;badge.textContent=statusMap[state];card.querySelector('summary .severity')?.insertAdjacentElement('afterend',badge)});
 function applyFilters(){const q=search.value.trim().toLowerCase();let visible=0;cards.forEach(card=>{const source=(card.dataset.search||card.textContent).toLowerCase();const show=(!q||source.includes(q))&&(severity.value==='all'||card.dataset.severity===severity.value)&&(category.value==='all'||card.dataset.category===category.value)&&(type.value==='all'||card.dataset.type===type.value)&&(status.value==='all'||card.dataset.status===status.value);card.classList.toggle('hidden',!show);if(show)visible+=1});count.textContent='显示 '+visible+' / '+cards.length+' 项';empty.style.display=visible?'none':'block'}
@@ -3042,10 +3042,10 @@ document.querySelectorAll('[data-jump-issue]').forEach(button=>button.addEventLi
 const currentCases={
  'B-01':['通过','新建 <code>QA企业0831</code>，档案及挂帐/预付款账户均生成。'],'B-02':['通过','新建 <code>QA个人0831</code>，账户结构及名称唯一校验正确。'],'B-03':['通过','重复新建被提示公共临时客户已存在。'],'B-04':['通过','禁用后售票窗口不可选，后台财务查询仍可用；已恢复启用。'],'B-05':['通过','挂帐可用额度不足时出票被明确拦截。'],'B-06':['通过','预付款限额开启时 0 余额拦截；关闭后可出票并生成消费流水。'],'B-07':['通过','源账户余额非 0 时切换被拦截，未产生资金记录。'],'B-08':['通过','源账户清零后，默认账户类型切换成功。'],
  'R-01':['通过','2026-11-14 R07：已验证修复：默认筛选包含账户类型，紧随处理操作；本轮AA选择预付款命中四笔0.02，改挂帐后为空，筛选实际生效。'],'R-02':['通过','售票窗口充值的支付方式、柜台/POS、时间、状态均可回查。'],'R-03':['通过','后台详情字段完整，原 BUG-019 已修复。'],'R-04':['通过','浏览器实际新增挂帐 +10.00、预付款 +20.00；记录与流水一致。'],'R-05':['通过','新增挂帐调账 -2.00；未保存支付时间、付款人、支付方式。'],'R-06':['通过','调账-往来不再展示错误支付时间，原 BUG-018 已修复。'],'R-07':['通过','其他收入生成独立记录与流水，账户余额未变。'],'R-08':['通过','已核对模板首列、填写说明、第 6 行起及 50 行上限。'],'R-09':['通过','<code>QA-IMP-20260831-001</code> 导入成功，生成 <code>RG3508249769984294913</code> 并回查流水。'],'R-10':['通过','重复导入成功 0、失败 1，提示“线下流水号已使用”。'],'R-11':['通过','51 行文件被拦截并提示“导入非空数据超过五十行”。'],
- 'F-01':['通过','标签及调账筛选已符合方案，原 BUG-001 已修复。'],'F-02':['通过','2026-11-14 R07：已验证修复：当前资金流水筛选及列表首列均显示“合作类型”。'],'F-03':['通过','充值流水的金额、支付方式、POS、售票员/窗口备注已核对。'],'F-04':['通过','订单 <code>DD260831172713001001s</code> 已回款后退款，资金流水同时生成退款 <code>+0.01</code> 和退款调账 <code>-0.01</code>；仅消费流水显示已回款。'],'F-05':['有问题','2026-11-14 R01：迁移净额正确；部分退款迁移至Q后，目标退款流水把订单DD261114033701001001s显示为售后号，实际LYAS3619047264581386240，沿PM-BUG-008。'],'F-06':['有问题','2026-11-14 R07：PM-BUG-010：收入流水四笔0.01账户号仍显示A3619146993810292737，原规则应为—；筛选项隐藏正常，余额及对账正确。'],
+ 'F-01':['通过','标签及调账筛选已符合方案，原 BUG-001 已修复。'],'F-02':['通过','2026-11-14 R07：已验证修复：当前资金流水筛选及列表首列均显示“合作类型”。'],'F-03':['通过','充值流水的金额、支付方式、POS、售票员/窗口备注已核对。'],'F-04':['通过','订单 <code>DD260831172713001001s</code> 已回款后退款，资金流水同时生成退款 <code>+0.01</code> 和退款调账 <code>-0.01</code>；仅消费流水显示已回款。'],'F-05':["通过", "2026-11-27 R10：PM-BUG-008新样本C订单0.02退0.01，连D订单0.01迁移；目标退款真实LYAS3639028826832437248可打开原售后，目标挂帐-0.02。旧11月14日错误数据未宣称修复。"],'F-06':["通过", "2026-11-27 R10：PM-BUG-010两入口四笔其他收入流水账号/类型均—；收入0.04未进账户，充值0.02使预付0.07→0.09；对账到账0.02，窗口AA收款0.06。"],
  'T-01':['通过','候选订单入口及提示已核对。'],'T-02':['阻塞','2026-11-14 R01：不同客户/负责人二次确认、返回及确认后提交均已实测；页面未提供独立确认人、确认时间、确认时快照回查，不能判全部通过，也不据此断言后端未保存。'],'T-03':['通过','订单 <code>DD260831145706001001s</code> 已迁移至启用预付款伙伴 <code>QA2-PA12005-6168652</code>；生成目标账户消费流水 <code>-0.01</code> 与转移单号 <code>MG524cabf61811d982575a4fd2caaa</code>。'],'T-04':['通过','迁移至新建 <code>QA迁移0831</code> 成功，档案和账户已生成。'],'T-05':['通过','订单详情展示目标伙伴及合作伙伴变更记录。'],'T-06':['通过','已迁移订单的售后详情按目标伙伴展示；订单详情可由目标伙伴、变更记录及转移单号回溯。'],
  'S-01':['通过','入口位于报表中心，符合最新方案与后台主原型。'],'S-02':['通过','按日、按月默认范围均已回归核对。'],'S-03':['通过','未选伙伴查询时的标题、空态与打印时间逻辑已验证。'],'S-04':['通过','查询标题已带合作伙伴名称，原 BUG-022 已修复。'],'S-05':['通过','日消费、到款、调账口径均已核对。'],'S-06':['通过','0 余额显示“－”，原 BUG-024 已修复。'],'S-07':['通过','成功查询后未再出现独立打印按钮，BUG-023 已修复。'],
- 'W-01':['通过','固定伙伴回填及账户支付方式锁定已验证。'],'W-02':['通过','扫码付显示柜台号，不显示现金找零。'],'W-03':['通过','银行卡显示 POS 编号，不显示现金找零。'],'W-04':['通过','充值写入与账户变更闭环已回查。'],'W-05':['通过','记录默认日期、申请人、状态及完成时间已回归。'],'W-06':['通过','详情完整字段及柜台/POS位置已回归。'],'W-07':['通过','充值与其他收入独立生成，账户仅按充值额变更。'],'W-08':['有问题','2026-11-14 R07：仍有缺陷（部分修复）：1280×800账户充值详情单号及标签已单行；其他收入详情本轮RG3619836696838553604仍拆行，保留此项，不能整体关闭。'],'W-09':['有问题','2026-11-14 R01：公共临客回款负责人快照丢失并合并为空白组，沿PM-BUG-003；总额核对正常，负责人分组不能判通过。'],'W-10':['通过','2026-11-14 R07：已验证修复：独立标签首次进入充值报表，未点查询已自动显示2026-11-14当天明细，AA充值0.08、收入0.04、小计0.12。'],
+ 'W-01':['通过','固定伙伴回填及账户支付方式锁定已验证。'],'W-02':['通过','扫码付显示柜台号，不显示现金找零。'],'W-03':['通过','银行卡显示 POS 编号，不显示现金找零。'],'W-04':['通过','充值写入与账户变更闭环已回查。'],'W-05':['通过','记录默认日期、申请人、状态及完成时间已回归。'],'W-06':['通过','详情完整字段及柜台/POS位置已回归。'],'W-07':['通过','充值与其他收入独立生成，账户仅按充值额变更。'],'W-08':["通过", "2026-11-27 R10：BUG-038已验证修复；1470×724其他收入详情RG3619087757621346310标签及20位单号均单行。"],'W-09':["有问题", "2026-11-27 R10：新AB各0.01、负责人管理员/张悦轩，合并回款RG3639024703755730946未保留多负责人组合，前后台及报表只归张悦轩。公司收入0.01独立，总额0.03正确。"],'W-10':['通过','2026-11-14 R07：已验证修复：独立标签首次进入充值报表，未点查询已自动显示2026-11-14当天明细，AA充值0.08、收入0.04、小计0.12。'],
  'O-01':['通过','支付确认前不创建订单、不变更账户。'],'O-02':['通过','固定伙伴挂帐订单、消费流水及账户扣减闭环已回归。'],'O-03':['通过','正常退款流水与账户回补已回归。'],'O-04':['通过','公共临客可下单并完成未回款退款；未生成退款调账，BUG-032 已修复。'],'O-05':['通过','订单 <code>DD260831172713001001s</code> 已回款后退款，售后 <code>LYAS3508577630530994176</code> 对应退款 <code>+0.01</code> 与等额退款调账 <code>-0.01</code>。'],'O-06':['通过','订单 <code>DD260831174926001001s</code> 应回款 0.02 元，填 0.01 元即提示“本次应回款金额超过充值金额，无法选择该订单”；未写入回款记录。']
 };
 document.querySelectorAll('#test-plan .plan-block > .markdown-body > table tbody tr').forEach(row=>{const id=row.cells[0]?.textContent.trim();const result=currentCases[id];if(!result)return;row.cells[3].textContent=result[0];row.cells[4].innerHTML=result[1];row.dataset.currentStatus=result[0]});
